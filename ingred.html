@@ -25,6 +25,14 @@
             line-height: 1.6;
             padding-bottom: 60px;
         }
+        /* Dynamic Direction Control */
+        body[dir="rtl"] {
+            text-align: right;
+        }
+        body[dir="ltr"] {
+            text-align: left;
+        }
+
         header {
             text-align: center;
             padding: 30px 20px 15px 20px;
@@ -73,6 +81,13 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+        body[dir="rtl"] .category-title {
+            text-align: right;
+        }
+        body[dir="ltr"] .category-title {
+            text-align: left;
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -128,6 +143,7 @@
             white-space: pre-line;
             flex-grow: 1;
         }
+
         /* Secret Admin Trigger */
         #secret-admin-trigger {
             position: fixed;
@@ -147,13 +163,11 @@
         #secret-admin-trigger:hover {
             background-color: var(--primary-color);
         }
-        #secret-admin-trigger:hover::after {
-            color: #fff;
-        }
         #secret-admin-trigger::after {
             content: "⚙️";
             font-size: 18px;
         }
+
         /* Modal */
         .modal-overlay {
             display: none;
@@ -164,6 +178,8 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            direction: ltr !important; /* Admin panel stays LTR for ease */
+            text-align: left;
         }
         .modal-content {
             background: #fff;
@@ -183,6 +199,7 @@
         }
         .form-group {
             margin-bottom: 15px;
+            text-align: left;
         }
         .form-group label {
             display: block;
@@ -238,7 +255,7 @@
         }
     </style>
 </head>
-<body>
+<body dir="ltr" id="mainBody">
 
     <header>
         <div class="lang-container">
@@ -267,25 +284,19 @@
         <!-- Base Oils Section -->
         <div class="category-section" id="section-base-oils">
             <h2 class="category-title" data-translate="cat_base_oils">Base Oils</h2>
-            <div class="products-grid" id="grid-base-oils">
-                <!-- Dynamic Cards -->
-            </div>
+            <div class="products-grid" id="grid-base-oils"></div>
         </div>
 
         <!-- Seeds Section -->
         <div class="category-section" id="section-seeds">
             <h2 class="category-title" data-translate="cat_seeds">Seeds</h2>
-            <div class="products-grid" id="grid-seeds">
-                <!-- Dynamic Cards -->
-            </div>
+            <div class="products-grid" id="grid-seeds"></div>
         </div>
 
         <!-- Herbs Section -->
         <div class="category-section" id="section-herbs">
             <h2 class="category-title" data-translate="cat_herbs">Herbs</h2>
-            <div class="products-grid" id="grid-herbs">
-                <!-- Dynamic Cards -->
-            </div>
+            <div class="products-grid" id="grid-herbs"></div>
         </div>
     </div>
 
@@ -343,10 +354,8 @@
     </div>
 
     <script>
-        // CONFIGURATION: Replace with your deployed Google Apps Script Web App URL
         const APPS_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
-        // Initial default sample data if none in localStorage
         let defaultProducts = [
             {
                 id: '1',
@@ -377,7 +386,6 @@
             localStorage.setItem('fangam_products', JSON.stringify(products));
         }
 
-        // Render Products to DOM
         function renderProducts() {
             ['base-oils', 'seeds', 'herbs'].forEach(cat => {
                 const grid = document.getElementById(`grid-${cat}`);
@@ -404,11 +412,9 @@
                     grid.appendChild(card);
                 });
             });
-            // Re-apply current language translation if selected
             changeLanguage();
         }
 
-        // Image Base64 Encoder
         function encodeImageFileAsURL(element) {
             const file = element.files[0];
             if (file) {
@@ -420,7 +426,6 @@
             }
         }
 
-        // Admin Modals control
         function openPasswordModal() {
             document.getElementById('passwordModal').style.display = 'flex';
             document.getElementById('adminPasswordInput').value = '';
@@ -429,7 +434,6 @@
 
         function verifyPassword() {
             const pwd = document.getElementById('adminPasswordInput').value;
-            // Simple secure check (Can be customized)
             if (pwd === 'fangam123' || pwd === 'admin123') {
                 closeModals();
                 document.getElementById('productModal').style.display = 'flex';
@@ -443,7 +447,6 @@
             document.getElementById('productModal').style.display = 'none';
         }
 
-        // Handle Product Submission & GAS Backup
         async function handleProductSubmit(event) {
             event.preventDefault();
             const category = document.getElementById('productCategory').value;
@@ -467,11 +470,9 @@
             document.getElementById('loadingSpinner').style.display = 'block';
             document.getElementById('saveBtn').disabled = true;
 
-            // Push to local array & storage
             products.push(newProduct);
             saveProductsToStorage();
 
-            // Try sending to Google Apps Script Web App backend if configured
             if (APPS_SCRIPT_URL && APPS_SCRIPT_URL !== "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE") {
                 try {
                     await fetch(APPS_SCRIPT_URL, {
@@ -481,7 +482,7 @@
                         body: JSON.stringify(newProduct)
                     });
                 } catch (err) {
-                    console.log('Cloud sync note: Saved locally, network sync deferred.', err);
+                    console.log('Cloud sync note:', err);
                 }
             }
 
@@ -495,12 +496,17 @@
             }, 800);
         }
 
-        // Multi-Language Translation Simulation using Google Translate API / MyMemory / LibreTranslate or local dictionaries
-        // For zero external token keys, we use LibreTranslate public API or MyMemory free translation with caching fallback
         async function changeLanguage() {
             const lang = document.getElementById('languageSelect').value;
+            const bodyTag = document.getElementById('mainBody');
+
+            // Set RTL for Urdu, Arabic, Persian; LTR for others
+            if (lang === 'ur' || lang === 'ar' || lang === 'fa') {
+                bodyTag.setAttribute('dir', 'rtl');
+            } else {
+                bodyTag.setAttribute('dir', 'ltr');
+            }
             
-            // UI Static Headers translation dictionary
             const staticTexts = {
                 en: { main_title: "Fangam Organic Products & Herbs", cat_base_oils: "Base Oils", cat_seeds: "Seeds", cat_herbs: "Herbs" },
                 ur: { main_title: "فینگم آرگینک پروڈکٹس اینڈ ہربز", cat_base_oils: "بیس آئلز", cat_seeds: "بیج (Seeds)", cat_herbs: "جڑی بوٹیاں (Herbs)" },
@@ -519,14 +525,12 @@
                 it: { main_title: "Prodotti Biologici ed Erbe Fangam", cat_base_oils: "Oli Base", cat_seeds: "Semi", cat_herbs: "Erbe" }
             };
 
-            // Update static headers
             const t = staticTexts[lang] || staticTexts['en'];
             document.querySelectorAll('[data-translate]').forEach(el => {
                 const key = el.getAttribute('data-translate');
                 if (t[key]) el.innerText = t[key];
             });
 
-            // If language is English, restore original text
             if (lang === 'en') {
                 document.querySelectorAll('.product-title').forEach(el => {
                     el.innerText = el.getAttribute('data-original');
@@ -537,13 +541,11 @@
                 return;
             }
 
-            // For dynamic text translation, utilize free MyMemory translation API batching
             const elements = document.querySelectorAll('.product-title, .product-desc');
             for (let el of elements) {
                 const originalText = el.getAttribute('data-original');
                 if (!originalText) continue;
 
-                // Check sessionStorage cache
                 const cacheKey = `trans_${lang}_${originalText.substring(0, 20)}_${originalText.length}`;
                 const cached = sessionStorage.getItem(cacheKey);
                 if (cached) {
@@ -552,7 +554,6 @@
                 }
 
                 try {
-                    // Call free translation service
                     const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(originalText)}&langpair=en|${lang}`;
                     const res = await fetch(url);
                     const data = await res.json();
@@ -564,13 +565,11 @@
                         }
                     }
                 } catch (err) {
-                    // Fallback to original if offline
-                    console.log('Translation API limit or offline', err);
+                    console.log('Translation offline', err);
                 }
             }
         }
 
-        // Initialize on load
         window.onload = function() {
             renderProducts();
         };
