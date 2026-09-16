@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use - Fangam Organic Hair Oil</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Poppins', 'Noto Nastaliq Urdu', sans-serif;
+            background-color: #fcfbf9;
+            color: #2c3e50;
+            line-height: 1.8;
+        }
+        /* Header & Navigation */
+        header {
+            background: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .logo-area img {
+            height: 50px;
+            width: auto;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #f1c40f;
+        }
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        /* Language Selector Bar */
+        .lang-bar {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .lang-bar select {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #27ae60;
+            background: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #27ae60;
+            cursor: pointer;
+            outline: none;
+        }
+        /* Card Layout */
+        .usage-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+            border: 1px solid #e8f5e9;
+        }
+        .image-side {
+            flex: 1;
+            min-width: 300px;
+            background: #f4f6f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+        .image-side img {
+            max-width: 100%;
+            height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .content-side {
+            flex: 1.2;
+            min-width: 300px;
+            padding: 40px;
+        }
+        h1 {
+            color: #27ae60;
+            font-size: 2rem;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e8f5e9;
+            padding-bottom: 10px;
+        }
+        ul.steps {
+            list-style: none;
+        }
+        ul.steps li {
+            position: relative;
+            padding-right: 30px;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+            color: #333;
+        }
+        ul.steps li::before {
+            content: "🌿";
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+        /* Responsive */
+        @media(max-width: 768px) {
+            .usage-card {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo-area">
+            <a href="index.html">
+                <img src="https://fangamorganic.gt.tc/wp-content/uploads/2026/09/Artboard-1-1.png" alt="Fangam Organic Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ingredients.html">Ingredients</a></li>
+                <li><a href="how-to-use.html" style="color: #f1c40f;">How to Use</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Language Selector Dropdown -->
+        <div class="lang-bar">
+            <label for="languageSelect" style="font-weight: 600; margin-left: 10px; color: #2d3748;">🌐 Language / زبان:</label>
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="ur">اردو (Urdu)</option>
+                <option value="ar">العربية (Arabic)</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+                <option value="fr">Français (French)</option>
+                <option value="es">Español (Spanish)</option>
+                <option value="de">Deutsch (German)</option>
+                <option value="zh">中文 (Chinese)</option>
+                <option value="tr">Türkçe (Turkish)</option>
+                <option value="it">Italiano (Italian)</option>
+            </select>
+        </div>
+
+        <div class="usage-card">
+            <!-- Left Side: Product Bottle Image -->
+            <div class="image-side">
+                <img src="https://fangamorganic-glitch.github.io/hairoil/bottle.png" alt="Fangam Organic Hair Oil Bottle" onerror="this.src='https://fangamorganic.gt.tc/wp-content/uploads/2026/09/Artboard-1-1.png'">
+            </div>
+
+            <!-- Right Side: How to Use Steps -->
+            <div class="content-side">
+                <h1 id="page-title">How to Use:</h1>
+                <ul class="steps" id="steps-list">
+                    <li id="step1">Apply oil to scalp and roots.</li>
+                    <li id="step2">Massage gently for 5–10 mins.</li>
+                    <li id="step3">Leave for 2–3 hours or overnight.</li>
+                    <li id="step4">Wash off with a herbal shampoo.</li>
+                    <li id="step5">Use 3–5 times a week.</li>
+                    <li id="step6">Comb through hair.</li>
+                    <li id="step7">Shake well before use.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Fangam Organic. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Multi-Language Translation Script -->
+    <script>
+        const translations = {
+            en: {
+                title: "How to Use:",
+                steps: [
+                    "Apply oil to scalp and roots.",
+                    "Massage gently for 5–10 mins.",
+                    "Leave for 2–3 hours or overnight.",
+                    "Wash off with a herbal shampoo.",
+                    "Use 3–5 times a week.",
+                    "Comb through hair.",
+                    "Shake well before use."
+                ]
+            },
+            ur: {
+                title: "استعمال کا طریقہ:",
+                steps: [
+                    "تیل کو سر کی جلد (scalp) اور جڑوں پر لگائیں۔",
+                    "5 سے 10 منٹ تک ہلکے ہاتھوں سے مساج کریں۔",
+                    "2 سے 3 گھنٹے یا پوری رات لگا رہنے دیں۔",
+                    "کسی اچھے ہربل شیمپو سے بال دھو لیں۔",
+                    "ہفتے میں 3 سے 5 بار استعمال کریں۔",
+                    "بالوں میں کنگھی کریں۔",
+                    "استعمال کرنے سے پہلے بوتل کو اچھی طرح ہلا لیں۔"
+                ]
+            },
+            ar: {
+                title: "طريقة الاستخدام:",
+                steps: [
+                    "ضعي الزيت على فروة الرأس والجذور.",
+                    "دلكي بلطف لمدة 5-10 دقائق.",
+                    "اتركيه لمدة 2-3 ساعات أو طوال الليل.",
+                    "اغسلي الشعر بشامبو عشبي.",
+                    "استخدميه 3-5 مرات في الأسبوع.",
+                    "مشطي الشعر.",
+                    "رج العبوة جيداً قبل الاستخدام."
+                ]
+            },
+            hi: {
+                title: "उपयोग करने का तरीका:",
+                steps: [
+                    "स्कैल्प और जड़ों पर तेल लगाएं।",
+                    "5-10 मिनट तक हल्के हाथों से मालिश करें।",
+                    "2-3 घंटे या रात भर के लिए छोड़ दें।",
+                    "हर्बल शैम्पू से धो लें।",
+                    "हफ्ते में 3-5 बार इस्तेमाल करें।",
+                    "बालों में कंघी करें।",
+                    "इस्तेमाल करने से पहले अच्छी तरह हिलाएं।"
+                ]
+            },
+            fr: {
+                title: "Conseils d'utilisation :",
+                steps: [
+                    "Appliquer l'huile sur le cuir chevelu et les racines.",
+                    "Masser doucement pendant 5 à 10 minutes.",
+                    "Laisser agir 2 à 3 heures ou toute la nuit.",
+                    "Laver avec un shampooing aux herbes.",
+                    "Utiliser 3 à 5 fois par semaine.",
+                    "Peigner les cheveux.",
+                    "Bien agiter avant l'emploi."
+                ]
+            },
+            es: {
+                title: "Modo de empleo:",
+                steps: [
+                    "Aplicar aceite en el cuero cabelludo y las raíces.",
+                    "Masajear suavemente durante 5-10 minutos.",
+                    "Dejar actuar durante 2-3 horas o toda la noche.",
+                    "Lavar con un champú herbal.",
+                    "Usar de 3 a 5 veces por semana.",
+                    "Peinar el cabello.",
+                    "Agitar bien antes de usar."
+                ]
+            },
+            de: {
+                title: "Anwendung:",
+                steps: [
+                    "Tragen Sie das Öl auf die Kopfhaut und den Ansatz auf.",
+                    "Sanft 5–10 Minuten lang einmassieren.",
+                    "2–3 Stunden oder über Nacht einwirken lassen.",
+                    "Mit einem Kräutershampoo auswaschen.",
+                    "3–5 mal pro Woche anwenden.",
+                    "Durchkämmen.",
+                    "Vor Gebrauch gut schütteln."
+                ]
+            },
+            zh: {
+                title: "使用方法：",
+                steps: [
+                    "将精油涂抹在头皮和发根上。",
+                    "轻柔按摩5-10分钟。",
+                    "放置2-3小时或过夜。",
+                    "用草本洗发水洗净。",
+                    "每周使用3-5次。",
+                    "梳理头发。",
+                    "使用前请摇匀。"
+                ]
+            },
+            tr: {
+                title: "Nasıl Kullanılır:",
+                steps: [
+                    "Yağı kafa derisine ve saç köklerine uygulayın.",
+                    "5-10 dakika nazikçe masaj yapın.",
+                    "2-3 saat veya gece boyunca bekletin.",
+                    "Bitkisel şampuanla yıkayın.",
+                    "Haftada 3-5 kez kullanın.",
+                    "Saçınızı tarayın.",
+                    "Kullanmadan önce iyice çalkalayın."
+                ]
+            },
+            it: {
+                title: "Come si usa:",
+                steps: [
+                    "Applicare l'olio sul cuoio capelluto e sulle radici.",
+                    "Massaggiare delicatamente per 5-10 minuti.",
+                    "Lasciare agire per 2-3 ore o tutta la notte.",
+                    "Lavare con uno shampoo alle erbe.",
+                    "Usare 3-5 volte a settimana.",
+                    "Pettinare i capelli.",
+                    "Agitare bene prima dell'uso."
+                ]
+            }
+        };
+
+        function changeLanguage() {
+            const selectedLang = document.getElementById("languageSelect").value;
+            const data = translations[selectedLang];
+            
+            // Update Title
+            document.getElementById("page-title").innerText = data.title;
+            
+            // Update Steps list direction for Urdu/Arabic
+            const stepsList = document.getElementById("steps-list");
+            if (selectedLang === 'ur' || selectedLang === 'ar') {
+                stepsList.style.direction = "rtl";
+                stepsList.style.textAlign = "right";
+            } else {
+                stepsList.style.direction = "ltr";
+                stepsList.style.textAlign = "left";
+            }
+
+            // Update Steps
+            for (let i = 0; i < data.steps.length; i++) {
+                const stepElement = document.getElementById("step" + (i + 1));
+                if (stepElement) {
+                    stepElement.innerText = data.steps[i];
+                }
+            }
+        }
+    </script>
+</body>
+</html>
