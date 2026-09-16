@@ -6,15 +6,8 @@
     <title>Fangam Organic Products & Herbs</title>
     <!-- Official Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: 'MehrNastaliq';
-            src: url('https://cdn.jsdelivr.net/gh/Sharjeel-Anjum/Mehr-Nastaliq-Web@main/MehrNastaliqWeb.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
         :root {
             --primary-green: #1b4332;       
             --secondary-green: #2d6A4f;     
@@ -33,11 +26,11 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Urdu/Persian/Arabic RTL & Nastaliq Enforcement */
+        /* Perfect RTL & Nastaliq Support */
         body.rtl-mode {
-            text-align: right;
-            direction: rtl;
-            font-family: 'MehrNastaliq', 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
+            direction: rtl !important;
+            text-align: right !important;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
         }
 
         body.rtl-mode h1, 
@@ -45,17 +38,29 @@
         body.rtl-mode h3, 
         body.rtl-mode p, 
         body.rtl-mode span, 
+        body.rtl-mode div, 
         body.rtl-mode .product-desc,
         body.rtl-mode .product-title,
         body.rtl-mode .category-title {
-            font-family: 'MehrNastaliq', 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
-            letter-spacing: 0px !important;
-            line-height: 2.3 !important;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
+            direction: rtl !important;
+            text-align: right !important;
+            line-height: 2.2 !important;
+        }
+
+        body.rtl-mode .product-card {
+            text-align: right !important;
+            direction: rtl !important;
         }
 
         body.ltr-mode {
-            text-align: left;
-            direction: ltr;
+            direction: ltr !important;
+            text-align: left !important;
+        }
+
+        body.ltr-mode .product-card {
+            text-align: left !important;
+            direction: ltr !important;
         }
 
         body {
@@ -67,46 +72,70 @@
 
         header {
             text-align: center;
-            padding: 40px 20px 20px 20px;
+            padding: 30px 20px 20px 20px;
             background: linear-gradient(to bottom, #d8e8dc, var(--bg-color));
             border-bottom: 3px solid var(--secondary-green);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
 
-        /* Custom Google Translate Styling container */
+        .brand-logo-container {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--secondary-green);
+            box-shadow: 0 4px 15px rgba(27,67,50,0.15);
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .lang-container {
-            margin-top: 15px;
             display: inline-block;
             background: #ffffff;
-            padding: 6px 15px;
-            border-radius: 25px;
+            padding: 5px 15px;
+            border-radius: 30px;
             border: 2px solid var(--secondary-green);
-            box-shadow: 0 4px 10px rgba(27,67,50,0.1);
+            box-shadow: 0 4px 15px rgba(27,67,50,0.08);
         }
 
-        /* Hide Google's default top banner and tooltip */
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; }
-        .goog-tooltip { display: none !important; }
-        .goog-tooltip:hover { display: none !important; }
-        .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
-        
-        /* Style the Google combo dropdown to match theme */
-        .goog-te-combo {
+        .custom-lang-select {
             background: transparent;
             border: none;
             color: var(--primary-green);
-            font-weight: 700;
-            font-size: 0.95rem;
+            font-weight: 600;
+            font-size: 0.9rem;
             outline: none;
             cursor: pointer;
-            padding: 4px;
+            padding: 2px 6px;
+            font-family: 'Poppins', sans-serif;
         }
 
+        .goog-te-banner-frame.skiptranslate, 
+        .goog-te-gadget, 
+        .skiptranslate,
+        .goog-tooltip { 
+            display: none !important; 
+        }
+        
+        body { top: 0px !important; position: static !important; }
+        .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+
         h1 {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             color: var(--primary-green);
-            margin-top: 15px;
             font-weight: 700;
+            margin-top: 5px;
         }
 
         .container {
@@ -293,30 +322,50 @@
 <body class="ltr-mode" id="mainBody">
 
     <header>
-        <!-- Google Translate Live Widget Container -->
-        <div class="lang-container">
-            <div id="google_translate_element"></div>
+        <div class="brand-logo-container">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200&auto=format&fit=crop&q=80" alt="Fangam Organic Logo">
         </div>
-        <h1 class="notranslate">Fangam Organic Products & Herbs</h1>
+
+        <div class="lang-container">
+            <select id="customLangSelect" class="custom-lang-select" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="ur">اردو (Urdu)</option>
+                <option value="ar">العربية (Arabic)</option>
+                <option value="fa">فارسی (Persian)</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+                <option value="zh-CN">中文 (Chinese)</option>
+                <option value="es">Español (Spanish)</option>
+                <option value="fr">Français (French)</option>
+                <option value="de">Deutsch (German)</option>
+                <option value="tr">Türkçe (Turkish)</option>
+            </select>
+        </div>
+        
+        <div id="google_translate_element" style="display:none;"></div>
+
+        <h1>Fangam Organic Products & Herbs</h1>
     </header>
 
     <div class="container">
-        <!-- Base Oils Section -->
         <div class="category-section">
             <h2 class="category-title">Base Oils</h2>
-            <div class="products-grid" id="grid-base-oils"></div>
+            <div class="products-grid" id="grid-base-oils">
+                <p style="color:#777; grid-column: 1/-1; padding: 20px; text-align:center;">Loading from Google Sheet...</p>
+            </div>
         </div>
 
-        <!-- Seeds Section -->
         <div class="category-section">
             <h2 class="category-title">Seeds</h2>
-            <div class="products-grid" id="grid-seeds"></div>
+            <div class="products-grid" id="grid-seeds">
+                <p style="color:#777; grid-column: 1/-1; padding: 20px; text-align:center;">Loading from Google Sheet...</p>
+            </div>
         </div>
 
-        <!-- Herbs Section -->
         <div class="category-section">
             <h2 class="category-title">Herbs</h2>
-            <div class="products-grid" id="grid-herbs"></div>
+            <div class="products-grid" id="grid-herbs">
+                <p style="color:#777; grid-column: 1/-1; padding: 20px; text-align:center;">Loading from Google Sheet...</p>
+            </div>
         </div>
     </div>
 
@@ -364,7 +413,7 @@
                     <input type="file" id="productImageFile" accept="image/*" required onchange="encodeImageFileAsURL(this)">
                     <input type="hidden" id="productImageBase64">
                 </div>
-                <div class="loading-spinner" id="loadingSpinner">Saving...</div>
+                <div class="loading-spinner" id="loadingSpinner">Saving to Google Sheet...</div>
                 <div class="modal-btns">
                     <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
                     <button type="submit" class="btn btn-primary" id="saveBtn">Save & Publish</button>
@@ -373,13 +422,11 @@
         </div>
     </div>
 
-    <!-- Google Translate Script Setup -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
-                includedLanguages: 'en,ur,fa,ar,hi,zh,es,fr,de,tr,id,ru,ja,ko,it',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                includedLanguages: 'en,ur,ar,fa,hi,zh-CN,es,fr,de,tr',
                 autoDisplay: false
             }, 'google_translate_element');
         }
@@ -387,31 +434,28 @@
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
-        let defaultProducts = [
-            {
-                id: '1',
-                category: 'base-oils',
-                name: 'Mustard Oil',
-                desc: 'Effect on Hair: Mustard oil is a heavy, warming, and deeply penetrating oil. When massaged into the scalp, it stimulates blood circulation, which helps activate dormant hair follicles and promotes natural growth. Its antimicrobial and antifungal properties help keep the scalp clean and prevent dandruff.',
-                image: 'https://images.unsplash.com/photo-1608248597359-f53856cb3c0b?w=600&auto=format&fit=crop&q=80'
-            },
-            {
-                id: '2',
-                category: 'base-oils',
-                name: 'Coconut Oil',
-                desc: 'Effect on Hair: Coconut oil has a unique chemical structure featuring a high affinity for hair proteins, allowing it to penetrate deep into the hair shaft rather than just coating the surface. Prevents protein loss from washing and reduces hygral fatigue.',
-                image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=600&auto=format&fit=crop&q=80'
-            },
-            {
-                id: '3',
-                category: 'base-oils',
-                name: 'Castor Oil',
-                desc: 'Effect on Hair: Castor oil penetrates deep into roots when infused in Fangam Organic oils, providing ultimate nourishment. Accelerates Hair Growth & Thickness and prevents split ends and hair breakage.',
-                image: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=600&auto=format&fit=crop&q=80'
-            }
-        ];
+        let products = [];
 
-        let products = JSON.parse(localStorage.getItem('fangam_products')) || defaultProducts;
+        // 👇 یہاں نیچے اپنا گوگل ایپ سکرپٹ کا نیا یو آر ایل لازمی پیسٹ کریں 👇
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwORgU_f2YlvROD4p7wPr--EQvtIuLIMzlfbGJFA0XS35Uf6-D5AoQPUyAxQaEzkiAALQ/exec';
+
+        // پیج کھلتے ہی گوگل شیٹ سے لائیو ڈیٹا لوڈ کرنا
+        function fetchProductsFromSheet() {
+            if (scriptURL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+                console.warn('Apps Script URL is missing!');
+                return;
+            }
+
+            fetch(scriptURL)
+                .then(response => response.json())
+                .then(data => {
+                    products = data;
+                    renderProducts();
+                })
+                .catch(error => {
+                    console.error('Error fetching data from Google Sheet:', error);
+                });
+        }
 
         function renderProducts() {
             ['base-oils', 'seeds', 'herbs'].forEach(cat => {
@@ -441,43 +485,33 @@
             });
         }
 
-        // Observer to automatically handle RTL direction & Nastaliq font for Urdu, Persian & Arabic when Google Translate changes language
-        const observer = new MutationObserver(() => {
-            const body = document.getElementById('mainBody');
-            const selectBox = document.querySelector('.goog-te-combo');
-            if (selectBox) {
-                const lang = selectBox.value;
-                if (['ur', 'fa', 'ar'].includes(lang)) {
-                    body.className = 'rtl-mode';
-                } else {
-                    body.className = 'ltr-mode';
-                }
+        function changeLanguage(langCode) {
+            const selectField = document.querySelector('.goog-te-combo');
+            if (selectField) {
+                selectField.value = langCode;
+                selectField.dispatchEvent(new Event('change'));
             }
-        });
+            
+            const body = document.getElementById('mainBody');
+            if (['ur', 'ar', 'fa'].includes(langCode)) {
+                body.className = 'rtl-mode';
+            } else {
+                body.className = 'ltr-mode';
+            }
+        }
 
         window.onload = function() {
-            renderProducts();
-            setTimeout(() => {
-                const targetNode = document.body;
-                observer.observe(targetNode, { attributes: true, attributeFilter: ['class'] });
-                
-                // Track language changes via combo box directly
-                const checkInterval = setInterval(() => {
-                    const selectBox = document.querySelector('.goog-te-combo');
-                    if (selectBox) {
-                        selectBox.addEventListener('change', (e) => {
-                            const lang = e.target.value;
-                            const body = document.getElementById('mainBody');
-                            if (['ur', 'fa', 'ar'].includes(lang)) {
-                                body.className = 'rtl-mode';
-                            } else {
-                                body.className = 'ltr-mode';
-                            }
-                        });
-                        clearInterval(checkInterval);
-                    }
-                }, 500);
-            }, 1000);
+            fetchProductsFromSheet(); // شیٹ سے ڈیٹا لے کر آئے گا
+            
+            const cookieMatch = document.cookie.match(/googtrans=\/en\/([a-z-]+)/);
+            if (cookieMatch) {
+                const activeLang = cookieMatch[1];
+                const dropdown = document.getElementById('customLangSelect');
+                if (dropdown) dropdown.value = activeLang;
+                if (['ur', 'ar', 'fa'].includes(activeLang)) {
+                    document.getElementById('mainBody').className = 'rtl-mode';
+                }
+            }
         };
 
         function encodeImageFileAsURL(element) {
@@ -514,7 +548,13 @@
 
         function handleProductSubmit(event) {
             event.preventDefault();
-            const category = document.getElementById('productCategory').value;
+
+            if (scriptURL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+                alert('Please update your Google Apps Script URL in the code first!');
+                return;
+            }
+
+            const categoryEl = document.getElementById('productCategory').value;
             const name = document.getElementById('productName').value;
             const desc = document.getElementById('productDesc').value;
             const image = document.getElementById('productImageBase64').value;
@@ -524,14 +564,41 @@
                 return;
             }
 
-            const newProduct = { id: Date.now().toString(), category, name, desc, image };
-            products.push(newProduct);
-            localStorage.setItem('fangam_products', JSON.stringify(products));
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('saveBtn').disabled = true;
 
-            document.getElementById('productForm').reset();
-            closeModals();
-            renderProducts();
-            alert('Product added successfully and ready for translation!');
+            const newProduct = { 
+                id: Date.now().toString(), 
+                category: categoryEl, 
+                name: name, 
+                desc: desc, 
+                image: image 
+            };
+
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newProduct)
+            })
+            .then(() => {
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('saveBtn').disabled = false;
+                document.getElementById('productForm').reset();
+                closeModals();
+                
+                alert('Product successfully added and saved to Google Sheet!');
+                
+                // فوری طور پر سکرین پر شو کرنے کے لیے لسٹ میں ایڈ کر کے رینڈر کریں
+                products.push(newProduct);
+                renderProducts();
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('saveBtn').disabled = false;
+                alert('Error saving to Google Sheet. Please check your URL.');
+            });
         }
     </script>
 </body>
