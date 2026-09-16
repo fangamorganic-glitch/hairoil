@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why & How to Use - Fangam Organic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            /* پریمیم آرگینک گرین گریڈینٹ اور ہلکا نیچرل بیک گراؤنڈ */
+            background: linear-gradient(135deg, #f4f8f3 0%, #e8f2e6 100%);
+            color: #2d3748;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .main-container {
+            width: 100%;
+            max-width: 480px; /* موبائل فرینڈلی سائز */
+            background: #ffffff;
+            padding: 30px 20px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(44, 94, 59, 0.1);
+            border: 1px solid #d4ebd0;
+        }
+        .brand-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .brand-header h1 {
+            font-size: 22px;
+            color: #1b4d2e;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+        .brand-header p {
+            font-size: 13px;
+            color: #557a62;
+        }
+        
+        /* نیویگیشن بٹن سیکشن */
+        .nav-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            color: #1b4d2e;
+            padding: 16px 20px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            border: 2px solid #c8e6c9;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+        .nav-btn span {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        /* ہاور اور ایکٹو ایفیکٹس (اوور سٹائلنگ) */
+        .nav-btn:hover {
+            background: #2c5e3b;
+            color: #ffffff;
+            border-color: #2c5e3b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(44, 94, 59, 0.25);
+        }
+        .nav-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* تفصیلی سیکشنز (کارڈز) */
+        .content-section {
+            background: #f9fbf9;
+            border-left: 4px solid #2c5e3b;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-top: 1px solid #edf5ec;
+            border-right: 1px solid #edf5ec;
+            border-bottom: 1px solid #edf5ec;
+        }
+        .content-section h2 {
+            font-size: 16px;
+            color: #1b4d2e;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .content-section p, .content-section ul {
+            font-size: 13px;
+            color: #4a5568;
+        }
+        .content-section ul {
+            padding-left: 18px;
+            margin-top: 4px;
+        }
+        .content-section li {
+            margin-bottom: 3px;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 11px;
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <!-- برانڈ ہیڈر -->
+        <div class="brand-header">
+            <h1>🌿 Fangam Organic Hair Oil</h1>
+            <p>Pure Herbal Care – Know Your Product Inside Out</p>
+        </div>
+
+        <!-- تین اہم بٹن (یہاں آپ اپنے لنکس یا سیکشن آئی ڈیز ڈال سکتے ہیں) -->
+        <div class="nav-buttons">
+            <!-- بٹن 1: انگریڈینٹس -->
+            <a href="#ingredients-section" class="nav-btn">
+                <span>🌿 Natural Ingredients</span>
+                <span>➔</span>
+            </a>
+
+            <!-- بٹن 2: کی بینیفٹس -->
+            <a href="#benefits-section" class="nav-btn">
+                <span>✨ Key Benefits</span>
+                <span>➔</span>
+            </a>
+
+            <!-- بٹن 3: ہاؤ ٹو یوز -->
+            <a href="#usage-section" class="nav-btn">
+                <span>💧 How to Use</span>
+                <span>➔</span>
+            </a>
+        </div>
+
+        <!-- تفصیلات والے حصے (Sections) -->
+        
+        <!-- Ingredients Section -->
+        <div id="ingredients-section" class="content-section">
+            <h2>🌿 Natural Ingredients</h2>
+            <p>Crafted with a powerful blend of pure organic elements:</p>
+            <ul>
+                <li>Pure Sesame Oil & Amla Extract</li>
+                <li>Nourishing Kalonji Seeds</li>
+                <li>Fresh Rose Petals & Natural Herbs</li>
+            </ul>
+        </div>
+
+        <!-- Key Benefits Section -->
+        <div id="benefits-section" class="content-section">
+            <h2>✨ Key Benefits</h2>
+            <p>Designed to transform your hair health naturally:</p>
+            <ul>
+                <li>Strengthens hair roots and reduces hair fall</li>
+                <li>Promotes natural hair growth and thickness</li>
+                <li>Adds a healthy shine and deep scalp nourishment</li>
+            </ul>
+        </div>
+
+        <!-- How to Use Section -->
+        <div id="usage-section" class="content-section">
+            <h2>💧 How to Use</h2>
+            <p><strong>Step 1:</strong> Take a sufficient amount of oil on your palm.</p>
+            <p><strong>Step 2:</strong> Gently massage your scalp and hair roots for 5-10 minutes.</p>
+            <p><strong>Step 3:</strong> Leave it for at least 2 hours (or overnight) before washing.</p>
+        </div>
+
+        <div class="footer-note">
+            &copy; Fangam Organic. All Rights Reserved.
+        </div>
+    </div>
+
+</body>
+</html>
