@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fangam Organic - فینگم آرگینک</title>
+    
+    <!-- گوگل Noto Nastaliq Urdu فونٹ -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Noto Nastaliq Urdu', serif, Arial !important;
+            background-color: #fcfbf9;
+            color: #2c3e50;
+            margin: 0; padding: 0;
+            direction: rtl; text-align: right;
+            width: 100%; overflow-x: hidden;
+            line-height: 2.8 !important; /* اردو کے لیے بہتر لائن اسپیسنگ تاکہ الفاظ نہ جڑیں */
+        }
+        body.ltr { 
+            direction: ltr; 
+            text-align: left; 
+            font-family: Arial, sans-serif !important; 
+            line-height: 1.7 !important; /* انگلش کے لیے نارمل اسپیسنگ */
+        }
+        
+        .fangam-header {
+            background: #27ae60; color: white;
+            padding: 12px 15px; display: flex;
+            justify-content: space-between; align-items: center;
+            width: 100%; position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .logo-container img { max-height: 40px; max-width: 140px; object-fit: contain; }
+        .lang-btn {
+            background: white; color: #27ae60; border: none;
+            padding: 6px 14px; border-radius: 5px; cursor: pointer;
+            font-weight: bold; font-size: 14px; font-family: Arial, sans-serif;
+        }
+        #hidden-admin-trigger {
+            width: 30px; height: 30px; background: transparent;
+            border: none; cursor: pointer; position: absolute; top: 0; left: 0; z-index: 9999;
+        }
+
+        .fangam-container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 15px; }
+        .page-title { text-align: center; margin: 20px 0; font-size: 26px; font-weight: 700; font-family: 'Noto Nastaliq Urdu', serif !important; }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px; width: 100%;
+        }
+        .product-card {
+            background: white; border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 22px; text-align: right; width: 100%;
+        }
+        body.ltr .product-card {
+            text-align: left;
+        }
+
+        .product-card img { 
+            width: 100%; 
+            height: 260px; 
+            object-fit: cover; 
+            border-radius: 10px; 
+            margin-bottom: 15px; 
+        }
+
+        .product-card h3 { 
+            font-size: 22px; 
+            margin: 10px 0; 
+            font-weight: 700; 
+            font-family: 'Noto Nastaliq Urdu', serif !important; 
+        }
+        body.ltr .product-card h3 {
+            font-family: Arial, sans-serif !important;
+        }
+
+        .product-card p { 
+            font-size: 16px; 
+            color: #444; 
+            margin: 0; 
+            font-family: 'Noto Nastaliq Urdu', serif !important; 
+            line-height: 2.2 !important; /* کارڈ کی تفصیل کے لیے بھی مناسب اسپیسنگ */
+        }
+        body.ltr .product-card p {
+            font-family: Arial, sans-serif !important;
+        }
+
+        @media (max-width: 600px) {
+            .page-title { font-size: 20px; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
+
+        #admin-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 10000;
+        }
+        .modal-content {
+            background: white; padding: 20px; border-radius: 10px;
+            width: 90%; max-width: 350px; direction: ltr; text-align: left;
+            font-family: Arial, sans-serif; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .modal-content input, .modal-content textarea {
+            width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;
+        }
+        .modal-content button {
+            background: #27ae60; color: white; border: none; padding: 10px;
+            border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; margin-top: 5px;
+        }
+        .close-modal { background: #e74c3c !important; }
+    </style>
+</head>
+<body>
+
+    <div class="fangam-header">
+        <button id="hidden-admin-trigger" onclick="openAdminPanel()" title="Admin"></button>
+        <div class="logo-container">
+            <img id="site-logo" src="https://lh3.googleusercontent.com/d/1vxrQpsgOFSRaTifTZ53S4zmXVgM-KBu5" alt="Fangam Organic Logo">
+        </div>
+        <div class="controls">
+            <button class="lang-btn" id="lang-toggle-btn" onclick="toggleLanguage()">English</button>
+        </div>
+    </div>
+
+    <div class="fangam-container">
+        <h1 id="page-heading" class="page-title">فینگم آرگینک پروڈکٹس اور جڑی بوٹیاں</h1>
+        <div class="products-grid" id="products-container">
+            <!-- ڈیٹا گوگل شیٹ سے لائیو لوڈ ہوگا -->
+        </div>
+    </div>
+
+    <div id="admin-modal">
+        <div class="modal-content" id="modal-body-content">
+            <h3>Admin Login</h3>
+            <p style="color: #666; font-size: 14px;">Please enter password:</p>
+            <input type="password" id="admin-pass" placeholder="Enter Password">
+            <button onclick="verifyAdmin()">Login</button>
+            <button class="close-modal" onclick="closeAdminModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyet2YK39oSXPp2H9-Y-7ws66ZOLZzOVX5A9kIyZ4DH7jXE3WZ5Kdv5nZh4VSol6UiT/exec";
+        let currentLang = 'ur';
+        let productsData = [];
+
+        window.onload = function() {
+            fetchProducts();
+        };
+
+        function fetchProducts() {
+            fetch(SCRIPT_URL)
+            .then(res => res.json())
+            .then(data => {
+                productsData = data;
+                renderProducts();
+            })
+            .catch(err => console.error("Error loading products:", err));
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+            container.innerHTML = "";
+
+            if (productsData.length === 0) {
+                container.innerHTML = "<p style='text-align:center; width:100%;'>کوئی پروڈکٹ موجود نہیں ہے۔</p>";
+                return;
+            }
+
+            productsData.forEach(p => {
+                let displayName = "";
+                let displayDesc = "";
+
+                if (currentLang === 'en') {
+                    displayName = (p.nameEn && p.nameEn.trim() !== "") ? p.nameEn : p.nameUr;
+                    displayDesc = (p.descEn && p.descEn.trim() !== "") ? p.descEn : p.descUr;
+                } else {
+                    displayName = (p.nameUr && p.nameUr.trim() !== "") ? p.nameUr : p.nameEn;
+                    displayDesc = (p.descUr && p.descUr.trim() !== "") ? p.descUr : p.descEn;
+                }
+
+                let imgSrc = p.imageUrl || "";
+                if (imgSrc.includes("drive.google.com")) {
+                    let match = imgSrc.match(/\/d\/(.*?)\//);
+                    if (match && match[1]) {
+                        imgSrc = "https://lh3.googleusercontent.com/d/" + match[1];
+                    }
+                }
+                if (!imgSrc) {
+                    imgSrc = "https://via.placeholder.com/300x200?text=Product";
+                }
+
+                container.innerHTML += `
+                    <div class="product-card">
+                        <img src="${imgSrc}" alt="Product">
+                        <h3 class="p-name">${displayName}</h3>
+                        <p class="p-desc">${displayDesc}</p>
+                    </div>
+                `;
+            });
+        }
+
+        function toggleLanguage() {
+            const body = document.body;
+            const btn = document.getElementById('lang-toggle-btn');
+            const heading = document.getElementById('page-heading');
+
+            if (currentLang === 'ur') {
+                body.classList.add('ltr');
+                btn.innerText = "اردو";
+                heading.innerText = "Fangam Organic Products & Herbs";
+                currentLang = 'en';
+            } else {
+                body.classList.remove('ltr');
+                btn.innerText = "English";
+                heading.innerText = "فینگم آرگینک پروڈکٹس اور جڑی بوٹیاں";
+                currentLang = 'ur';
+            }
+            renderProducts();
+        }
+
+        function openAdminPanel() { document.getElementById('admin-modal').style.display = 'flex'; }
+        function closeAdminModal() { document.getElementById('admin-modal').style.display = 'none'; resetAdminModal(); }
+
+        function resetAdminModal() {
+            document.getElementById('modal-body-content').innerHTML = `
+                <h3>Admin Login</h3>
+                <p style="color: #666; font-size: 14px;">Please enter password:</p>
+                <input type="password" id="admin-pass" placeholder="Enter Password">
+                <button onclick="verifyAdmin()">Login</button>
+                <button class="close-modal" onclick="closeAdminModal()">Close</button>
+            `;
+        }
+
+        function verifyAdmin() {
+            const pass = document.getElementById('admin-pass').value;
+            if (pass === '1234') {
+                document.getElementById('modal-body-content').innerHTML = `
+                    <h3>Add New Product</h3>
+                    <input type="text" id="prod-name-ur" placeholder="Urdu Name (اردو نام)">
+                    <input type="text" id="prod-name-en" placeholder="English Name (Urdu Translation / Name)">
+                    <textarea id="prod-desc-ur" placeholder="Urdu Description (اردو تفصیلی تعارف)" rows="2"></textarea>
+                    <textarea id="prod-desc-en" placeholder="English Description (English Details)" rows="2"></textarea>
+                    <input type="file" id="prod-image" accept="image/*">
+                    <button onclick="uploadNewProduct()">Save to Google Sheet</button>
+                    <button class="close-modal" onclick="closeAdminModal()">Close</button>
+                `;
+            } else {
+                alert('Wrong password!');
+            }
+        }
+
+        function uploadNewProduct() {
+            const nameUr = document.getElementById('prod-name-ur').value;
+            const nameEn = document.getElementById('prod-name-en').value;
+            const descUr = document.getElementById('prod-desc-ur').value;
+            const descEn = document.getElementById('prod-desc-en').value;
+            const imageInput = document.getElementById('prod-image');
+
+            if(!nameUr && !nameEn) {
+                alert('Please enter at least product name.');
+                return;
+            }
+
+            alert('Uploading data to Google Sheet & Drive...');
+
+            if (imageInput.files && imageInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    sendDataToScript({
+                        nameUr: nameUr || nameEn,
+                        nameEn: nameEn || nameUr,
+                        descUr: descUr || descEn,
+                        descEn: descEn || descUr,
+                        imageBase64: e.target.result,
+                        imageName: imageInput.files[0].name,
+                        imageType: imageInput.files[0].type
+                    });
+                };
+                reader.readAsDataURL(imageInput.files[0]);
+            } else {
+                sendDataToScript({
+                    nameUr: nameUr || nameEn,
+                    nameEn: nameEn || nameUr,
+                    descUr: descUr || descEn,
+                    descEn: descEn || descUr,
+                    imageBase64: "", imageName: "", imageType: ""
+                });
+            }
+        }
+
+        function sendDataToScript(payload) {
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(payload)
+            })
+            .then(res => res.json())
+            .then(res => {
+                alert('Product saved successfully to Google Sheet!');
+                closeAdminModal();
+                fetchProducts();
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Error uploading data.');
+            });
+        }
+    </script>
+</body>
+</html>
