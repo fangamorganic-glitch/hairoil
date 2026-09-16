@@ -12,9 +12,8 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            /* آرگینک گرین گریڈینٹ اور ہلکا نیچرل پتیوں کا بیک گراؤنڈ پیٹرن */
             background: linear-gradient(135deg, #f0f7ed 0%, #d8eade 100%), 
-                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.04"><path d="M30 10 Q50 30 30 50 Q10 30 30 10 Z M70 60 Q90 80 70 100 Q50 80 70 60 Z" fill="%232c5e3b"/></svg>');
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.04"><path d="M30 10 Q50 30 30 50 Q10 30 30 10 Z M70 60 Q90 80 70 100 Q50 80 70 60 Z" fill="%232c5e3b"/></svg>');
             color: #2d3748;
             display: flex;
             justify-content: center;
@@ -38,7 +37,7 @@
             justify-content: space-between;
         }
         
-        /* برانڈ ہیڈر (اوپر نام اور ٹیگ لائن) */
+        /* برانڈ ہیڈر */
         .brand-header {
             text-align: center;
             margin-bottom: 2px;
@@ -54,35 +53,35 @@
             color: #557a62;
         }
 
-        /* فینگم آرگینک کا بڑا لوگو (درمیان والی جگہ کے لیے) */
+        /* فینگم آرگینک کا بڑا لوگو - سائز بڑا کیا گیا ہے تاکہ M اور F نہ چھپیں */
         .logo-container {
             text-align: center;
-            margin: 8px 0;
+            margin: auto 0;
         }
         .brand-logo {
-            width: 90px;
-            height: 90px;
+            width: 130px;
+            height: 130px;
             object-fit: contain;
             border-radius: 50%;
-            border: 2.5s solid #c8e6c9;
+            border: 2.5px solid #c8e6c9;
             box-shadow: 0 4px 12px rgba(44, 94, 59, 0.12);
             background: #f7fbf6;
             padding: 4px;
         }
         
-        /* مینو کنٹینر - بیلنسڈ سپیسنگ */
+        /* مینو کنٹینر - بٹنوں کو ایک ساتھ سینتر میں کرنے کے لیے */
         .menu-container {
             display: flex;
             flex-direction: column;
-            justify-content: space-evenly;
-            flex-grow: 1;
+            justify-content: center;
+            gap: 12px;
             padding: 5px 0;
         }
 
         .menu-item {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
         }
 
         /* مین کلک ایبل بٹن */
@@ -102,7 +101,7 @@
             transition: all 0.3s ease;
         }
         
-        /* ہاور / اوور سٹائلنگ ایفیکٹ */
+        /* ہاور ایفیکٹ */
         .action-btn:hover {
             background: #2c5e3b;
             color: #ffffff;
@@ -111,7 +110,7 @@
             box-shadow: 0 5px 14px rgba(44, 94, 59, 0.2);
         }
 
-        /* ہکس (بٹن کے بالکل نیچے) */
+        /* ہکس */
         .btn-hook {
             font-size: 11px;
             color: #555;
@@ -138,13 +137,12 @@
             <p>Pure Herbal Hair Care Secrets</p>
         </div>
 
-        <!-- ہیڈنگ کے بالکل نیچے بڑے سائز کا لوگو -->
+        <!-- درمیان میں بڑے سائز کا لوگو -->
         <div class="logo-container">
-            <!-- یہاں اپنے لوگو کا صحیح امیج لنک (URL) ڈال دیجیے گا -->
             <img src="https://lh3.googleusercontent.com/d/1W6S6i8dSpXE1leOJ2bCx2tl6naEAl5i3" alt="Fangam Organic Logo" class="brand-logo" onerror="this.style.display='none'">
         </div>
 
-        <!-- مینو کنٹینر (تینوں بٹن اور ہکس) -->
+        <!-- مینو کنٹینر (تینوں بٹن اور ہکس سینٹر میں) -->
         <div class="menu-container">
             
             <!-- 1. انگریڈینٹس -->
