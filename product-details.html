@@ -12,7 +12,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         body {
-            /* آرگینک گرین بیک گراؤنڈ اور بیل بوٹوں/پتوں کا ہلکا فیل */
+            /* آرگینک گرین گریڈینٹ اور ہلکا نیچرل پتیوں کا بیک گراؤنڈ پیٹرن */
             background: linear-gradient(135deg, #f0f7ed 0%, #d8eade 100%), 
                         url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.04"><path d="M30 10 Q50 30 30 50 Q10 30 30 10 Z M70 60 Q90 80 70 100 Q50 80 70 60 Z" fill="%232c5e3b"/></svg>');
             color: #2d3748;
@@ -20,43 +20,51 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden; /* پیج کو سکول سے بچانے کے لیے */
-            padding: 10px;
+            overflow: hidden;
+            padding: 8px;
         }
         .mobile-screen {
             width: 100%;
-            max-width: 390px;
-            height: 90vh;
-            max-height: 750px; /* موبائل 9:16 یا ریل سائز کے قریب ترین */
+            max-width: 380px;
+            height: 94vh;
+            max-height: 720px;
             background: #ffffff;
-            padding: 20px 16px;
-            border-radius: 28px;
-            box-shadow: 0 12px 35px rgba(44, 94, 59, 0.15);
+            padding: 16px 14px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(44, 94, 59, 0.15);
             border: 2px solid #c2e0bc;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            position: relative;
         }
         
-        /* برانڈ ہیڈر */
+        /* برانڈ لوگو اور ہیڈر */
         .brand-header {
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 2px;
+        }
+        .brand-logo {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            border-radius: 50%;
+            margin-bottom: 4px;
+            border: 2px solid #c8e6c9;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .brand-header h1 {
-            font-size: 20px;
+            font-size: 17px;
             color: #1b4d2e;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 1px;
         }
         .brand-header p {
-            font-size: 12px;
+            font-size: 11px;
             color: #557a62;
         }
         
-        /* کنٹینر برائے کارڈز/بٹنز */
-        .sections-container {
+        /* تینوں آئٹمز کا مین کنٹینر */
+        .menu-container {
             display: flex;
             flex-direction: column;
             gap: 12px;
@@ -64,95 +72,101 @@
             justify-content: center;
         }
 
-        /* ہر ایک سیکشن باکس (بٹن + شارٹ ہک ڈسکرپشن) */
-        .interactive-card {
-            background: #f9fbf8;
-            border: 1.5px solid #d4ebd0;
-            border-left: 4px solid #2c5e3b;
-            border-radius: 12px;
-            padding: 12px 14px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.02);
-            display: block;
-        }
-        
-        /* ہاور / اوور سٹائلنگ ایفیکٹ */
-        .interactive-card:hover {
-            background: #f0f7ed;
-            border-color: #2c5e3b;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(44, 94, 59, 0.12);
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
-        .card-title {
+        /* مین کلک ایبل بٹن */
+        .action-btn {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 14px;
-            font-weight: 700;
+            background: #ffffff;
             color: #1b4d2e;
-            margin-bottom: 4px;
+            padding: 11px 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 700;
+            border: 2px solid #c8e6c9;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+        }
+        
+        /* ہاور / اوور سٹائلنگ ایفیکٹ */
+        .action-btn:hover {
+            background: #2c5e3b;
+            color: #ffffff;
+            border-color: #2c5e3b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 94, 59, 0.2);
         }
 
-        .card-desc {
-            font-size: 11.5px;
+        /* سسپنس اور اٹریکٹو ہکس (بٹن کے بالکل نیچے) */
+        .btn-hook {
+            font-size: 11px;
             color: #555;
-            line-height: 1.4;
+            padding-left: 4px;
+            line-height: 1.35;
+            font-style: italic;
         }
 
         .footer-note {
             text-align: center;
-            font-size: 10px;
+            font-size: 9.5px;
             color: #718096;
-            margin-top: 5px;
+            margin-top: 2px;
         }
     </style>
 </head>
 <body>
 
     <div class="mobile-screen">
-        <!-- برانڈ ہیڈر -->
+        <!-- برانڈ لوگو اور ہیڈر -->
         <div class="brand-header">
+            <!-- یہاں اپنی لوگو کی امیج کا لنک (URL) ڈال دیں -->
+            <img src="YOUR_LOGO_URL_HERE" alt="Fangam Organic Logo" class="brand-logo">
             <h1>🌿 Fangam Organic</h1>
             <p>Pure Herbal Hair Care Secrets</p>
         </div>
 
-        <!-- تینوں انٹرایکٹو خانے (بٹن + شارٹ ہکس) -->
-        <div class="sections-container">
+        <!-- مینو کنٹینر (تینوں بٹن اور ان کی سسپنس فل ہکس) -->
+        <div class="menu-container">
             
             <!-- 1. انگریڈینٹس -->
-            <a href="#ingredients-link" class="interactive-card">
-                <div class="card-title">
+            <div class="menu-item">
+                <a href="#ingredients-link" class="action-btn">
                     <span>🌿 Natural Ingredients</span>
                     <span>➔</span>
+                </a>
+                <div class="btn-hook">
+                    Discover the secret blend of ancient herbs packed inside this bottle.
                 </div>
-                <div class="card-desc">
-                    Crafted with pure Sesame Oil, Amla extract, Kalonji seeds & fresh Rose petals.
-                </div>
-            </a>
+            </div>
 
             <!-- 2. کی بینیفٹس -->
-            <a href="#benefits-link" class="interactive-card">
-                <div class="card-title">
+            <div class="menu-item">
+                <a href="#benefits-link" class="action-btn">
                     <span>✨ Key Benefits</span>
                     <span>➔</span>
+                </a>
+                <div class="btn-hook">
+                    See how this organic care transforms your hair health completely.
                 </div>
-                <div class="card-desc">
-                    Stops hair fall, strengthens roots, boosts natural growth & adds deep shine.
-                </div>
-            </a>
+            </div>
 
             <!-- 3. ہاؤ ٹو یوز -->
-            <a href="#usage-link" class="interactive-card">
-                <div class="card-title">
+            <div class="menu-item">
+                <a href="#usage-link" class="action-btn">
                     <span>💧 How to Use</span>
                     <span>➔</span>
+                </a>
+                <div class="btn-hook">
+                    Use these expert methods to unlock the ultimate results for your hair.
                 </div>
-                <div class="card-desc">
-                    Massage gently on roots for 5-10 mins. Leave for 2+ hours (or overnight) then wash.
-                </div>
-            </a>
+            </div>
 
         </div>
 
