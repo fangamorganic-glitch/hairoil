@@ -28,20 +28,19 @@
             height: 94vh;
             max-height: 720px;
             background: #ffffff;
-            padding: 16px 16px;
+            padding: 20px 16px;
             border-radius: 24px;
             box-shadow: 0 10px 30px rgba(44, 94, 59, 0.15);
             border: 2px solid #c2e0bc;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* اوپر سے الائن کرنے کے لیے تاکہ اوپر اٹھ جائیں */
+            justify-content: space-between;
         }
         
         /* برانڈ ہیڈر */
         .brand-header {
             text-align: center;
-            margin-top: 2px;
-            margin-bottom: 5px;
+            margin-top: 5px;
         }
         .brand-header h1 {
             font-size: 18px;
@@ -54,26 +53,27 @@
             color: #557a62;
         }
 
-        /* لوگو کنٹینر - سائز مزید بڑا کر دیا گیا ہے */
+        /* لوگو کنٹینر - اب لوگو مکمل نظر آئے گا بغیر کٹے */
         .logo-container {
             text-align: center;
-            margin: 15px 0 20px 0;
+            margin: 10px 0;
         }
         .brand-logo {
-            width: 190px;
+            width: 150px;
             height: auto;
-            max-height: 120px;
+            max-height: 90px;
             object-fit: contain;
             border-radius: 12px;
             padding: 2px;
         }
         
-        /* مینو کنٹینر - بٹن اوپر اٹھانے کے لیے مارجن سیٹ کیا گیا ہے */
+        /* مینو کنٹینر - بٹن اب بالکل ساتھ جڑے ہوئے اور سینٹر میں ہوں گے */
         .menu-container {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            margin-top: 5px;
+            justify-content: center;
+            margin-bottom: 10px;
         }
 
         .menu-item {
@@ -121,8 +121,7 @@
             text-align: center;
             font-size: 10px;
             color: #718096;
-            margin-top: auto; /* فوٹر کو بالکل نیچے رکھنے کے لیے */
-            padding-top: 10px;
+            margin-bottom: 2px;
         }
     </style>
 </head>
@@ -136,12 +135,12 @@
             <p>Pure Herbal Hair Care Secrets</p>
         </div>
 
-        <!-- درمیان میں بڑا لوگو -->
+        <!-- درمیان میں مکمل لوگو (بغیر کٹے) -->
         <div class="logo-container">
             <img src="https://lh3.googleusercontent.com/d/1W6S6i8dSpXE1leOJ2bCx2tl6naEAl5i3" alt="Fangam Organic Logo" class="brand-logo" onerror="this.style.display='none'">
         </div>
 
-        <!-- مینو کنٹینر (اوپر اٹھائے گئے بٹن) -->
+        <!-- مینو کنٹینر (تینوں بٹن بالکل ساتھ اور سینٹر میں) -->
         <div class="menu-container">
             
             <!-- 1. انگریڈینٹس -->
