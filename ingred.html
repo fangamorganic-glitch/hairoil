@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fangam Organic Products & Herbs</title>
+    <style>
+        :root {
+            --primary-color: #2c4a3e;
+            --accent-color: #d4a373;
+            --bg-color: #fcfbf9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e0dcd0;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+        header {
+            text-align: center;
+            padding: 30px 20px 15px 20px;
+            background: linear-gradient(to bottom, #f4efe6, var(--bg-color));
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+        .lang-container {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .lang-container select {
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background-color: #fff;
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        h1 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .category-section {
+            margin-top: 40px;
+        }
+        .category-title {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        .product-img-container {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            background-color: #f4efe6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-img-container img {
+            transform: scale(1.03);
+        }
+        .product-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .product-desc {
+            font-size: 0.95rem;
+            color: #555;
+            white-space: pre-line;
+            flex-grow: 1;
+        }
+        /* Secret Admin Trigger */
+        #secret-admin-trigger {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(44, 74, 62, 0.1);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+        #secret-admin-trigger:hover {
+            background-color: var(--primary-color);
+        }
+        #secret-admin-trigger:hover::after {
+            color: #fff;
+        }
+        #secret-admin-trigger::after {
+            content: "⚙️";
+            font-size: 18px;
+        }
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: #fff;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        .modal-btns {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        .btn-secondary {
+            background-color: #e0dcd0;
+            color: #333;
+        }
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        @media(max-width: 768px) {
+            h1 { font-size: 1.7rem; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="lang-container">
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="en">English (Default)</option>
+                <option value="ur">اردو (Urdu)</option>
+                <option value="ar">العربية (Arabic)</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+                <option value="fa">فارسی (Persian)</option>
+                <option value="zh">中文 (Chinese)</option>
+                <option value="es">Español (Spanish)</option>
+                <option value="fr">Français (French)</option>
+                <option value="de">Deutsch (German)</option>
+                <option value="tr">Türkçe (Turkish)</option>
+                <option value="id">Bahasa Indonesia</option>
+                <option value="ru">Русский (Russian)</option>
+                <option value="ja">日本語 (Japanese)</option>
+                <option value="ko">한국어 (Korean)</option>
+                <option value="it">Italiano (Italian)</option>
+            </select>
+        </div>
+        <h1 data-translate="main_title">Fangam Organic Products & Herbs</h1>
+    </header>
+
+    <div class="container">
+        <!-- Base Oils Section -->
+        <div class="category-section" id="section-base-oils">
+            <h2 class="category-title" data-translate="cat_base_oils">Base Oils</h2>
+            <div class="products-grid" id="grid-base-oils">
+                <!-- Dynamic Cards -->
+            </div>
+        </div>
+
+        <!-- Seeds Section -->
+        <div class="category-section" id="section-seeds">
+            <h2 class="category-title" data-translate="cat_seeds">Seeds</h2>
+            <div class="products-grid" id="grid-seeds">
+                <!-- Dynamic Cards -->
+            </div>
+        </div>
+
+        <!-- Herbs Section -->
+        <div class="category-section" id="section-herbs">
+            <h2 class="category-title" data-translate="cat_herbs">Herbs</h2>
+            <div class="products-grid" id="grid-herbs">
+                <!-- Dynamic Cards -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Secret Admin Trigger -->
+    <div id="secret-admin-trigger" onclick="openPasswordModal()" title="Admin Panel"></div>
+
+    <!-- Password Modal -->
+    <div class="modal-overlay" id="passwordModal">
+        <div class="modal-content" style="max-width: 380px;">
+            <h2>Admin Authentication</h2>
+            <div class="form-group">
+                <label>Enter Admin Password</label>
+                <input type="password" id="adminPasswordInput" placeholder="Password">
+            </div>
+            <div class="modal-btns">
+                <button class="btn btn-secondary" onclick="closeModals()">Cancel</button>
+                <button class="btn btn-primary" onclick="verifyPassword()">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <h2>Add New Product / Herb</h2>
+            <form id="productForm" onsubmit="handleProductSubmit(event)">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="productCategory" required>
+                        <option value="base-oils">Base Oils</option>
+                        <option value="seeds">Seeds</option>
+                        <option value="herbs">Herbs</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Product Name (English)</label>
+                    <input type="text" id="productName" required placeholder="e.g. Coconut Oil">
+                </div>
+                <div class="form-group">
+                    <label>Description (English)</label>
+                    <textarea id="productDesc" required placeholder="Enter detailed benefits and description in English..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Product Image</label>
+                    <input type="file" id="productImageFile" accept="image/*" required onchange="encodeImageFileAsURL(this)">
+                    <input type="hidden" id="productImageBase64">
+                </div>
+                <div class="loading-spinner" id="loadingSpinner">Saving and syncing with Google Sheets...</div>
+                <div class="modal-btns">
+                    <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="saveBtn">Save & Publish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURATION: Replace with your deployed Google Apps Script Web App URL
+        const APPS_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+        // Initial default sample data if none in localStorage
+        let defaultProducts = [
+            {
+                id: '1',
+                category: 'base-oils',
+                name: 'Mustard Oil',
+                desc: 'Effect on Hair: Mustard oil is a heavy, warming, and deeply penetrating oil. When massaged into the scalp, it stimulates blood circulation, which helps activate dormant hair follicles and promotes natural growth. Its antimicrobial and antifungal properties help keep the scalp clean and prevent dandruff. Benefits: Promotes Hair Growth. Regular massage enhances blood flow to the roots, accelerating hair growth. Prevents Premature Graying.',
+                image: 'https://images.unsplash.com/photo-1608248597359-f53856cb3c0b?w=600&auto=format&fit=crop&q=80'
+            },
+            {
+                id: '2',
+                category: 'base-oils',
+                name: 'Coconut Oil',
+                desc: 'Effect on Hair: Coconut oil has a unique chemical structure featuring a high affinity for hair proteins, allowing it to penetrate deep into the hair shaft rather than just coating the surface. It prevents protein loss from washing and reduces hygral fatigue. Benefits: Deep Protein Retention. Binds easily with natural hair proteins to strengthen hair strands from the inside out and prevent breakage. Frizz Control & Softness.',
+                image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=600&auto=format&fit=crop&q=80'
+            },
+            {
+                id: '3',
+                category: 'base-oils',
+                name: 'Castor Oil',
+                desc: 'Effect on Hair: Castor oil penetrates deep into roots when infused in Fangam Organic oils, providing ultimate nourishment to hair roots. Accelerates Hair Growth & Thickness. It dramatically boosts blood circulation to the scalp, stimulating dormant hair follicles to promote faster, thicker, and healthier hair growth. Prevents Split Ends & Hair Breakage.',
+                image: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=600&auto=format&fit=crop&q=80'
+            }
+        ];
+
+        let products = JSON.parse(localStorage.getItem('fangam_products')) || defaultProducts;
+
+        function saveProductsToStorage() {
+            localStorage.setItem('fangam_products', JSON.stringify(products));
+        }
+
+        // Render Products to DOM
+        function renderProducts() {
+            ['base-oils', 'seeds', 'herbs'].forEach(cat => {
+                const grid = document.getElementById(`grid-${cat}`);
+                grid.innerHTML = '';
+                const filtered = products.filter(p => p.category === cat);
+                
+                if (filtered.length === 0) {
+                    grid.innerHTML = `<p style="color:#777; grid-column: 1/-1; padding: 20px; text-align:center;">No items added in this category yet.</p>`;
+                    return;
+                }
+
+                filtered.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <div class="product-img-container">
+                            <img src="${p.image}" alt="${p.name}">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title" data-original="${p.name}">${p.name}</h3>
+                            <p class="product-desc" data-original="${p.desc}">${p.desc}</p>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            });
+            // Re-apply current language translation if selected
+            changeLanguage();
+        }
+
+        // Image Base64 Encoder
+        function encodeImageFileAsURL(element) {
+            const file = element.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onloadend = function() {
+                    document.getElementById('productImageBase64').value = reader.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Admin Modals control
+        function openPasswordModal() {
+            document.getElementById('passwordModal').style.display = 'flex';
+            document.getElementById('adminPasswordInput').value = '';
+            document.getElementById('adminPasswordInput').focus();
+        }
+
+        function verifyPassword() {
+            const pwd = document.getElementById('adminPasswordInput').value;
+            // Simple secure check (Can be customized)
+            if (pwd === 'fangam123' || pwd === 'admin123') {
+                closeModals();
+                document.getElementById('productModal').style.display = 'flex';
+            } else {
+                alert('Incorrect password!');
+            }
+        }
+
+        function closeModals() {
+            document.getElementById('passwordModal').style.display = 'none';
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        // Handle Product Submission & GAS Backup
+        async function handleProductSubmit(event) {
+            event.preventDefault();
+            const category = document.getElementById('productCategory').value;
+            const name = document.getElementById('productName').value;
+            const desc = document.getElementById('productDesc').value;
+            const image = document.getElementById('productImageBase64').value;
+
+            if (!image) {
+                alert('Please select a product image.');
+                return;
+            }
+
+            const newProduct = {
+                id: Date.now().toString(),
+                category,
+                name,
+                desc,
+                image
+            };
+
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('saveBtn').disabled = true;
+
+            // Push to local array & storage
+            products.push(newProduct);
+            saveProductsToStorage();
+
+            // Try sending to Google Apps Script Web App backend if configured
+            if (APPS_SCRIPT_URL && APPS_SCRIPT_URL !== "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE") {
+                try {
+                    await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(newProduct)
+                    });
+                } catch (err) {
+                    console.log('Cloud sync note: Saved locally, network sync deferred.', err);
+                }
+            }
+
+            setTimeout(() => {
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('saveBtn').disabled = false;
+                document.getElementById('productForm').reset();
+                closeModals();
+                renderProducts();
+                alert('Product successfully added and updated!');
+            }, 800);
+        }
+
+        // Multi-Language Translation Simulation using Google Translate API / MyMemory / LibreTranslate or local dictionaries
+        // For zero external token keys, we use LibreTranslate public API or MyMemory free translation with caching fallback
+        async function changeLanguage() {
+            const lang = document.getElementById('languageSelect').value;
+            
+            // UI Static Headers translation dictionary
+            const staticTexts = {
+                en: { main_title: "Fangam Organic Products & Herbs", cat_base_oils: "Base Oils", cat_seeds: "Seeds", cat_herbs: "Herbs" },
+                ur: { main_title: "فینگم آرگینک پروڈکٹس اینڈ ہربز", cat_base_oils: "بیس آئلز", cat_seeds: "بیج (Seeds)", cat_herbs: "جڑی بوٹیاں (Herbs)" },
+                ar: { main_title: "فانغام منتجات عضوية وأعشاب", cat_base_oils: "زيوت أساسية", cat_seeds: "بذور", cat_herbs: "أعشاب" },
+                hi: { main_title: "फैंगम ऑर्गेनिक उत्पाद और जड़ी-बूटियाँ", cat_base_oils: "बेस ऑयल्स", cat_seeds: "बीज", cat_herbs: "जड़ी-बूटियाँ" },
+                fa: { main_title: "محصولات ارگانیک و گیاهان فانگام", cat_base_oils: "روغن‌های پایه", cat_seeds: "دانه‌ها", cat_herbs: "گیاهان دارویی" },
+                zh: { main_title: "Fangam 有机产品与草本", cat_base_oils: "基础油", cat_seeds: "种子", cat_herbs: "草本" },
+                es: { main_title: "Productos Orgánicos y Hierbas Fangam", cat_base_oils: "Aceites Base", cat_seeds: "Semillas", cat_herbs: "Hierbas" },
+                fr: { main_title: "Produits Biologiques et Herbes Fangam", cat_base_oils: "Huiles de Base", cat_seeds: "Graines", cat_herbs: "Herbes" },
+                de: { main_title: "Fangam Bio-Produkte & Kräuter", cat_base_oils: "Basisöl", cat_seeds: "Samen", cat_herbs: "Kräuter" },
+                tr: { main_title: "Fangam Organik Ürünler ve Bitkiler", cat_base_oils: "Baz Yağlar", cat_seeds: "Tohumlar", cat_herbs: "Bitkiler" },
+                id: { main_title: "Produk Organik & Herbal Fangam", cat_base_oils: "Minyak Dasar", cat_seeds: "Biji-bijian", cat_herbs: "Herbal" },
+                ru: { main_title: "Органические продукты и травы Fangam", cat_base_oils: "Базовые масла", cat_seeds: "Семена", cat_herbs: "Травы" },
+                ja: { main_title: "ファンガム オーガニック製品＆ハーブ", cat_base_oils: "ベースオイル", cat_seeds: "種子", cat_herbs: "ハーブ" },
+                ko: { main_title: "팡암 유기농 제품 및 허브", cat_base_oils: "베이스 오일", cat_seeds: "씨앗", cat_herbs: "허브" },
+                it: { main_title: "Prodotti Biologici ed Erbe Fangam", cat_base_oils: "Oli Base", cat_seeds: "Semi", cat_herbs: "Erbe" }
+            };
+
+            // Update static headers
+            const t = staticTexts[lang] || staticTexts['en'];
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (t[key]) el.innerText = t[key];
+            });
+
+            // If language is English, restore original text
+            if (lang === 'en') {
+                document.querySelectorAll('.product-title').forEach(el => {
+                    el.innerText = el.getAttribute('data-original');
+                });
+                document.querySelectorAll('.product-desc').forEach(el => {
+                    el.innerText = el.getAttribute('data-original');
+                });
+                return;
+            }
+
+            // For dynamic text translation, utilize free MyMemory translation API batching
+            const elements = document.querySelectorAll('.product-title, .product-desc');
+            for (let el of elements) {
+                const originalText = el.getAttribute('data-original');
+                if (!originalText) continue;
+
+                // Check sessionStorage cache
+                const cacheKey = `trans_${lang}_${originalText.substring(0, 20)}_${originalText.length}`;
+                const cached = sessionStorage.getItem(cacheKey);
+                if (cached) {
+                    el.innerText = cached;
+                    continue;
+                }
+
+                try {
+                    // Call free translation service
+                    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(originalText)}&langpair=en|${lang}`;
+                    const res = await fetch(url);
+                    const data = await res.json();
+                    if (data && data.responseData && data.responseData.translatedText) {
+                        let translated = data.responseData.translatedText;
+                        if (!translated.includes("MYMEMORY WARNING")) {
+                            el.innerText = translated;
+                            sessionStorage.setItem(cacheKey, translated);
+                        }
+                    }
+                } catch (err) {
+                    // Fallback to original if offline
+                    console.log('Translation API limit or offline', err);
+                }
+            }
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            renderProducts();
+        };
+    </script>
+</body>
+</html>
