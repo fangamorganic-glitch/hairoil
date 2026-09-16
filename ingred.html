@@ -70,19 +70,43 @@
             padding-bottom: 60px;
         }
 
+        /* Header Layout: Logo -> Language Selector -> Title */
         header {
             text-align: center;
-            padding: 35px 20px 20px 20px;
+            padding: 30px 20px 20px 20px;
             background: linear-gradient(to bottom, #d8e8dc, var(--bg-color));
             border-bottom: 3px solid var(--secondary-green);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Brand Logo Styling */
+        .brand-logo-container {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--secondary-green);
+            box-shadow: 0 4px 15px rgba(27,67,50,0.15);
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         /* Modern Custom Language Switcher */
         .lang-container {
-            margin-bottom: 15px;
             display: inline-block;
             background: #ffffff;
-            padding: 6px 16px;
+            padding: 5px 15px;
             border-radius: 30px;
             border: 2px solid var(--secondary-green);
             box-shadow: 0 4px 15px rgba(27,67,50,0.08);
@@ -93,14 +117,14 @@
             border: none;
             color: var(--primary-green);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             outline: none;
             cursor: pointer;
-            padding: 4px 8px;
+            padding: 2px 6px;
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Completely Hide Google's Ugly Default Elements & Banners */
+        /* Completely Hide Google's Default Elements & Banners */
         .goog-te-banner-frame.skiptranslate, 
         .goog-te-gadget, 
         .skiptranslate,
@@ -112,10 +136,10 @@
         .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
 
         h1 {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             color: var(--primary-green);
-            margin-top: 10px;
             font-weight: 700;
+            margin-top: 5px;
         }
 
         .container {
@@ -302,7 +326,12 @@
 <body class="ltr-mode" id="mainBody">
 
     <header>
-        <!-- Clean Custom Language Switcher -->
+        <!-- 1. Brand Logo (آپ یہاں اپنے لوگو کا لنک یا امیج پاتھ دے سکتے ہیں) -->
+        <div class="brand-logo-container">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200&auto=format&fit=crop&q=80" alt="Fangam Organic Logo">
+        </div>
+
+        <!-- 2. Clean Custom Language Switcher -->
         <div class="lang-container">
             <select id="customLangSelect" class="custom-lang-select" onchange="changeLanguage(this.value)">
                 <option value="en">English</option>
@@ -321,6 +350,7 @@
         <!-- Hidden Google Translate Element to power the background translation -->
         <div id="google_translate_element" style="display:none;"></div>
 
+        <!-- 3. Main Title -->
         <h1>Fangam Organic Products & Herbs</h1>
     </header>
 
@@ -515,7 +545,7 @@
         }
 
         function verifyPassword() {
-            const pwd = document.getElementById('adminPasswordInput5') || document.getElementById('adminPasswordInput').value;
+            const pwd = document.getElementById('adminPasswordInput').value;
             if (pwd === 'fangam123' || pwd === 'admin123') {
                 closeModals();
                 document.getElementById('productModal').style.display = 'flex';
@@ -533,7 +563,7 @@
             event.preventDefault();
             const categoryEl = document.getElementById('productCategory').value;
             const name = document.getElementById('productName').value;
-            const desc = document.getElementById('productDesc5') ? document.getElementById('productDesc5').value : document.getElementById('productDesc').value;
+            const desc = document.getElementById('productDesc').value;
             const image = document.getElementById('productImageBase64').value;
 
             if (!image) {
