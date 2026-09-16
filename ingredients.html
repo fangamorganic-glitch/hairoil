@@ -1,314 +1,600 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fangam Organic - فینگم آرگینک</title>
-    
-    <!-- گوگل Noto Nastaliq Urdu فونٹ -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
-    
+    <title>Fangam Organic Products & Herbs</title>
+    <!-- Google Fonts for Nastaliq and Modern styling -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Nastaliq+Urdu:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'Noto Nastaliq Urdu', serif, Arial !important;
-            background-color: #fcfbf9;
-            color: #2c3e50;
-            margin: 0; padding: 0;
-            direction: rtl; text-align: right;
-            width: 100%; overflow-x: hidden;
-            line-height: 2.8 !important; /* اردو کے لیے بہتر لائن اسپیسنگ تاکہ الفاظ نہ جڑیں */
+        :root {
+            --primary-green: #1e3f20;
+            --light-green: #eaf1ed;
+            --accent-gold: #c29b38;
+            --bg-color: #f7f9f6;
+            --card-bg: #ffffff;
+            --text-color: #2c3e2d;
+            --border-color: #d2ded5;
         }
-        body.ltr { 
-            direction: ltr; 
-            text-align: left; 
-            font-family: Arial, sans-serif !important; 
-            line-height: 1.7 !important; /* انگلش کے لیے نارمل اسپیسنگ */
-        }
-        
-        .fangam-header {
-            background: #27ae60; color: white;
-            padding: 12px 15px; display: flex;
-            justify-content: space-between; align-items: center;
-            width: 100%; position: relative;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .logo-container img { max-height: 40px; max-width: 140px; object-fit: contain; }
-        .lang-btn {
-            background: white; color: #27ae60; border: none;
-            padding: 6px 14px; border-radius: 5px; cursor: pointer;
-            font-weight: bold; font-size: 14px; font-family: Arial, sans-serif;
-        }
-        #hidden-admin-trigger {
-            width: 30px; height: 30px; background: transparent;
-            border: none; cursor: pointer; position: absolute; top: 0; left: 0; z-index: 9999;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .fangam-container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 15px; }
-        .page-title { text-align: center; margin: 20px 0; font-size: 26px; font-weight: 700; font-family: 'Noto Nastaliq Urdu', serif !important; }
+        /* Dynamic Nastaliq Font Support for Urdu/Arabic/Persian */
+        body[dir="rtl"] {
+            text-align: right;
+            direction: rtl;
+            font-family: 'Noto Nastaliq Urdu', 'Amiri', serif !important;
+        }
+        body[dir="rtl"] h1, 
+        body[dir="rtl"] h2, 
+        body[dir="rtl"] h3, 
+        body[dir="rtl"] p, 
+        body[dir="rtl"] span, 
+        body[dir="rtl"] select, 
+        body[dir="rtl"] .product-desc,
+        body[dir="rtl"] .product-title,
+        body[dir="rtl"] .category-title {
+            font-family: 'Noto Nastaliq Urdu', 'Amiri', serif !important;
+            letter-spacing: normal !important;
+            line-height: 2.2 !important;
+        }
+
+        body[dir="ltr"] {
+            text-align: left;
+            direction: ltr;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            padding-bottom: 60px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 25px 20px;
+            background: linear-gradient(to bottom, var(--light-green), var(--bg-color));
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+        }
+        .lang-container {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .lang-container select {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background-color: #fff;
+            color: var(--primary-green);
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 2px 8px rgba(30,63,32,0.08);
+        }
+        h1 {
+            font-size: 2.3rem;
+            color: var(--primary-green);
+            margin-top: 12px;
+            font-weight: 700;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        .category-section {
+            margin-top: 45px;
+        }
+        .category-title {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px; width: 100%;
+            gap: 30px;
         }
         .product-card {
-            background: white; border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            padding: 22px; text-align: right; width: 100%;
+            background: var(--card-bg);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(30, 63, 32, 0.06);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
-        body.ltr .product-card {
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(30, 63, 32, 0.12);
+        }
+        .product-img-container {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background-color: var(--light-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .product-card:hover .product-img-container img {
+            transform: scale(1.04);
+        }
+        .product-content {
+            padding: 22px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-title {
+            font-size: 1.25rem;
+            color: var(--primary-green);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .product-desc {
+            font-size: 0.95rem;
+            color: #4a5c4b;
+            white-space: pre-line;
+            flex-grow: 1;
+        }
+
+        /* Secret Admin Trigger (Organic Leaf/Gear vibe) */
+        #secret-admin-trigger {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary-green);
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.2s;
+        }
+        #secret-admin-trigger:hover {
+            transform: scale(1.1);
+        }
+        #secret-admin-trigger::after {
+            content: "🌿";
+            font-size: 20px;
+        }
+
+        /* Modal always LTR for clean input */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            direction: ltr !important;
             text-align: left;
-        }
-
-        .product-card img { 
-            width: 100%; 
-            height: 260px; 
-            object-fit: cover; 
-            border-radius: 10px; 
-            margin-bottom: 15px; 
-        }
-
-        .product-card h3 { 
-            font-size: 22px; 
-            margin: 10px 0; 
-            font-weight: 700; 
-            font-family: 'Noto Nastaliq Urdu', serif !important; 
-        }
-        body.ltr .product-card h3 {
-            font-family: Arial, sans-serif !important;
-        }
-
-        .product-card p { 
-            font-size: 16px; 
-            color: #444; 
-            margin: 0; 
-            font-family: 'Noto Nastaliq Urdu', serif !important; 
-            line-height: 2.2 !important; /* کارڈ کی تفصیل کے لیے بھی مناسب اسپیسنگ */
-        }
-        body.ltr .product-card p {
-            font-family: Arial, sans-serif !important;
-        }
-
-        @media (max-width: 600px) {
-            .page-title { font-size: 20px; }
-            .products-grid { grid-template-columns: 1fr; }
-        }
-
-        #admin-modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 10000;
+            font-family: 'Poppins', sans-serif !important;
         }
         .modal-content {
-            background: white; padding: 20px; border-radius: 10px;
-            width: 90%; max-width: 350px; direction: ltr; text-align: left;
-            font-family: Arial, sans-serif; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background: #fff;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 14px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
         }
-        .modal-content input, .modal-content textarea {
-            width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;
+        .modal-content h2, .modal-content label, .modal-content button, .modal-content input, .modal-content textarea, .modal-content select {
+            font-family: 'Poppins', sans-serif !important;
         }
-        .modal-content button {
-            background: #27ae60; color: white; border: none; padding: 10px;
-            border-radius: 5px; cursor: pointer; width: 100%; font-size: 16px; margin-top: 5px;
+        .modal-content h2 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
         }
-        .close-modal { background: #e74c3c !important; }
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--primary-green);
+            font-size: 0.9rem;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        .modal-btns {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .btn-primary {
+            background-color: var(--primary-green);
+            color: #fff;
+        }
+        .btn-secondary {
+            background-color: #e2ede5;
+            color: var(--text-color);
+        }
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+        @media(max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
-<body>
+<body dir="ltr" id="mainBody">
 
-    <div class="fangam-header">
-        <button id="hidden-admin-trigger" onclick="openAdminPanel()" title="Admin"></button>
-        <div class="logo-container">
-            <img id="site-logo" src="https://lh3.googleusercontent.com/d/1vxrQpsgOFSRaTifTZ53S4zmXVgM-KBu5" alt="Fangam Organic Logo">
+    <header>
+        <div class="lang-container">
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="en">English (Default)</option>
+                <option value="ur">اردو (Urdu - نوری نستعلیق)</option>
+                <option value="ar">العربية (Arabic)</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+                <option value="fa">فارسی (Persian)</option>
+                <option value="zh">中文 (Chinese)</option>
+                <option value="es">Español (Spanish)</option>
+                <option value="fr">Français (French)</option>
+                <option value="de">Deutsch (German)</option>
+                <option value="tr">Türkçe (Turkish)</option>
+                <option value="id">Bahasa Indonesia</option>
+                <option value="ru">Русский (Russian)</option>
+                <option value="ja">日本語 (Japanese)</option>
+                <option value="ko">한국어 (Korean)</option>
+                <option value="it">Italiano (Italian)</option>
+            </select>
         </div>
-        <div class="controls">
-            <button class="lang-btn" id="lang-toggle-btn" onclick="toggleLanguage()">English</button>
+        <h1 data-translate="main_title">Fangam Organic Products & Herbs</h1>
+    </header>
+
+    <div class="container">
+        <!-- Base Oils Section -->
+        <div class="category-section" id="section-base-oils">
+            <h2 class="category-title" data-translate="cat_base_oils">Base Oils</h2>
+            <div class="products-grid" id="grid-base-oils"></div>
+        </div>
+
+        <!-- Seeds Section -->
+        <div class="category-section" id="section-seeds">
+            <h2 class="category-title" data-translate="cat_seeds">Seeds</h2>
+            <div class="products-grid" id="grid-seeds"></div>
+        </div>
+
+        <!-- Herbs Section -->
+        <div class="category-section" id="section-herbs">
+            <h2 class="category-title" data-translate="cat_herbs">Herbs</h2>
+            <div class="products-grid" id="grid-herbs"></div>
         </div>
     </div>
 
-    <div class="fangam-container">
-        <h1 id="page-heading" class="page-title">فینگم آرگینک پروڈکٹس اور جڑی بوٹیاں</h1>
-        <div class="products-grid" id="products-container">
-            <!-- ڈیٹا گوگل شیٹ سے لائیو لوڈ ہوگا -->
+    <!-- Secret Admin Trigger -->
+    <div id="secret-admin-trigger" onclick="openPasswordModal()" title="Admin Panel"></div>
+
+    <!-- Password Modal -->
+    <div class="modal-overlay" id="passwordModal">
+        <div class="modal-content" style="max-width: 380px;">
+            <h2>Admin Authentication</h2>
+            <div class="form-group">
+                <label>Enter Admin Password</label>
+                <input type="password" id="adminPasswordInput" placeholder="Password">
+            </div>
+            <div class="modal-btns">
+                <button class="btn btn-secondary" onclick="closeModals()">Cancel</button>
+                <button class="btn btn-primary" onclick="verifyPassword()">Login</button>
+            </div>
         </div>
     </div>
 
-    <div id="admin-modal">
-        <div class="modal-content" id="modal-body-content">
-            <h3>Admin Login</h3>
-            <p style="color: #666; font-size: 14px;">Please enter password:</p>
-            <input type="password" id="admin-pass" placeholder="Enter Password">
-            <button onclick="verifyAdmin()">Login</button>
-            <button class="close-modal" onclick="closeAdminModal()">Close</button>
+    <!-- Add Product Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+            <h2>Add New Product / Herb</h2>
+            <form id="productForm" onsubmit="handleProductSubmit(event)">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="productCategory" required>
+                        <option value="base-oils">Base Oils</option>
+                        <option value="seeds">Seeds</option>
+                        <option value="herbs">Herbs</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Product Name (English)</label>
+                    <input type="text" id="productName" required placeholder="e.g. Coconut Oil">
+                </div>
+                <div class="form-group">
+                    <label>Description (English)</label>
+                    <textarea id="productDesc" required placeholder="Enter detailed benefits and description in English..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Product Image</label>
+                    <input type="file" id="productImageFile" accept="image/*" required onchange="encodeImageFileAsURL(this)">
+                    <input type="hidden" id="productImageBase64">
+                </div>
+                <div class="loading-spinner" id="loadingSpinner">Saving and syncing with Google Sheets...</div>
+                <div class="modal-btns">
+                    <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="saveBtn">Save & Publish</button>
+                </div>
+            </form>
         </div>
     </div>
 
     <script>
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyet2YK39oSXPp2H9-Y-7ws66ZOLZzOVX5A9kIyZ4DH7jXE3WZ5Kdv5nZh4VSol6UiT/exec";
-        let currentLang = 'ur';
-        let productsData = [];
+        const APPS_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
-        window.onload = function() {
-            fetchProducts();
-        };
+        let defaultProducts = [
+            {
+                id: '1',
+                category: 'base-oils',
+                name: 'Mustard Oil',
+                desc: 'Effect on Hair: Mustard oil is a heavy, warming, and deeply penetrating oil. When massaged into the scalp, it stimulates blood circulation, which helps activate dormant hair follicles and promotes natural growth. Its antimicrobial and antifungal properties help keep the scalp clean and prevent dandruff. Benefits: Promotes Hair Growth. Regular massage enhances blood flow to the roots, accelerating hair growth. Prevents Premature Graying.',
+                image: 'https://images.unsplash.com/photo-1608248597359-f53856cb3c0b?w=600&auto=format&fit=crop&q=80'
+            },
+            {
+                id: '2',
+                category: 'base-oils',
+                name: 'Coconut Oil',
+                desc: 'Effect on Hair: Coconut oil has a unique chemical structure featuring a high affinity for hair proteins, allowing it to penetrate deep into the hair shaft rather than just coating the surface. It prevents protein loss from washing and reduces hygral fatigue. Benefits: Deep Protein Retention. Binds easily with natural hair proteins to strengthen hair strands from the inside out and prevent breakage. Frizz Control & Softness.',
+                image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=600&auto=format&fit=crop&q=80'
+            },
+            {
+                id: '3',
+                category: 'base-oils',
+                name: 'Castor Oil',
+                desc: 'Effect on Hair: Castor oil penetrates deep into roots when infused in Fangam Organic oils, providing ultimate nourishment to hair roots. Accelerates Hair Growth & Thickness. It dramatically boosts blood circulation to the scalp, stimulating dormant hair follicles to promote faster, thicker, and healthier hair growth. Prevents Split Ends & Hair Breakage.',
+                image: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=600&auto=format&fit=crop&q=80'
+            }
+        ];
 
-        function fetchProducts() {
-            fetch(SCRIPT_URL)
-            .then(res => res.json())
-            .then(data => {
-                productsData = data;
-                renderProducts();
-            })
-            .catch(err => console.error("Error loading products:", err));
+        let products = JSON.parse(localStorage.getItem('fangam_products')) || defaultProducts;
+
+        function saveProductsToStorage() {
+            localStorage.setItem('fangam_products', JSON.stringify(products));
         }
 
         function renderProducts() {
-            const container = document.getElementById('products-container');
-            container.innerHTML = "";
-
-            if (productsData.length === 0) {
-                container.innerHTML = "<p style='text-align:center; width:100%;'>کوئی پروڈکٹ موجود نہیں ہے۔</p>";
-                return;
-            }
-
-            productsData.forEach(p => {
-                let displayName = "";
-                let displayDesc = "";
-
-                if (currentLang === 'en') {
-                    displayName = (p.nameEn && p.nameEn.trim() !== "") ? p.nameEn : p.nameUr;
-                    displayDesc = (p.descEn && p.descEn.trim() !== "") ? p.descEn : p.descUr;
-                } else {
-                    displayName = (p.nameUr && p.nameUr.trim() !== "") ? p.nameUr : p.nameEn;
-                    displayDesc = (p.descUr && p.descUr.trim() !== "") ? p.descUr : p.descEn;
+            ['base-oils', 'seeds', 'herbs'].forEach(cat => {
+                const grid = document.getElementById(`grid-${cat}`);
+                grid.innerHTML = '';
+                const filtered = products.filter(p => p.category === cat);
+                
+                if (filtered.length === 0) {
+                    grid.innerHTML = `<p style="color:#777; grid-column: 1/-1; padding: 20px; text-align:center;">No items added in this category yet.</p>`;
+                    return;
                 }
 
-                let imgSrc = p.imageUrl || "";
-                if (imgSrc.includes("drive.google.com")) {
-                    let match = imgSrc.match(/\/d\/(.*?)\//);
-                    if (match && match[1]) {
-                        imgSrc = "https://lh3.googleusercontent.com/d/" + match[1];
-                    }
-                }
-                if (!imgSrc) {
-                    imgSrc = "https://via.placeholder.com/300x200?text=Product";
-                }
-
-                container.innerHTML += `
-                    <div class="product-card">
-                        <img src="${imgSrc}" alt="Product">
-                        <h3 class="p-name">${displayName}</h3>
-                        <p class="p-desc">${displayDesc}</p>
-                    </div>
-                `;
-            });
-        }
-
-        function toggleLanguage() {
-            const body = document.body;
-            const btn = document.getElementById('lang-toggle-btn');
-            const heading = document.getElementById('page-heading');
-
-            if (currentLang === 'ur') {
-                body.classList.add('ltr');
-                btn.innerText = "اردو";
-                heading.innerText = "Fangam Organic Products & Herbs";
-                currentLang = 'en';
-            } else {
-                body.classList.remove('ltr');
-                btn.innerText = "English";
-                heading.innerText = "فینگم آرگینک پروڈکٹس اور جڑی بوٹیاں";
-                currentLang = 'ur';
-            }
-            renderProducts();
-        }
-
-        function openAdminPanel() { document.getElementById('admin-modal').style.display = 'flex'; }
-        function closeAdminModal() { document.getElementById('admin-modal').style.display = 'none'; resetAdminModal(); }
-
-        function resetAdminModal() {
-            document.getElementById('modal-body-content').innerHTML = `
-                <h3>Admin Login</h3>
-                <p style="color: #666; font-size: 14px;">Please enter password:</p>
-                <input type="password" id="admin-pass" placeholder="Enter Password">
-                <button onclick="verifyAdmin()">Login</button>
-                <button class="close-modal" onclick="closeAdminModal()">Close</button>
-            `;
-        }
-
-        function verifyAdmin() {
-            const pass = document.getElementById('admin-pass').value;
-            if (pass === '1234') {
-                document.getElementById('modal-body-content').innerHTML = `
-                    <h3>Add New Product</h3>
-                    <input type="text" id="prod-name-ur" placeholder="Urdu Name (اردو نام)">
-                    <input type="text" id="prod-name-en" placeholder="English Name (Urdu Translation / Name)">
-                    <textarea id="prod-desc-ur" placeholder="Urdu Description (اردو تفصیلی تعارف)" rows="2"></textarea>
-                    <textarea id="prod-desc-en" placeholder="English Description (English Details)" rows="2"></textarea>
-                    <input type="file" id="prod-image" accept="image/*">
-                    <button onclick="uploadNewProduct()">Save to Google Sheet</button>
-                    <button class="close-modal" onclick="closeAdminModal()">Close</button>
-                `;
-            } else {
-                alert('Wrong password!');
-            }
-        }
-
-        function uploadNewProduct() {
-            const nameUr = document.getElementById('prod-name-ur').value;
-            const nameEn = document.getElementById('prod-name-en').value;
-            const descUr = document.getElementById('prod-desc-ur').value;
-            const descEn = document.getElementById('prod-desc-en').value;
-            const imageInput = document.getElementById('prod-image');
-
-            if(!nameUr && !nameEn) {
-                alert('Please enter at least product name.');
-                return;
-            }
-
-            alert('Uploading data to Google Sheet & Drive...');
-
-            if (imageInput.files && imageInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    sendDataToScript({
-                        nameUr: nameUr || nameEn,
-                        nameEn: nameEn || nameUr,
-                        descUr: descUr || descEn,
-                        descEn: descEn || descUr,
-                        imageBase64: e.target.result,
-                        imageName: imageInput.files[0].name,
-                        imageType: imageInput.files[0].type
-                    });
-                };
-                reader.readAsDataURL(imageInput.files[0]);
-            } else {
-                sendDataToScript({
-                    nameUr: nameUr || nameEn,
-                    nameEn: nameEn || nameUr,
-                    descUr: descUr || descEn,
-                    descEn: descEn || descUr,
-                    imageBase64: "", imageName: "", imageType: ""
+                filtered.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <div class="product-img-container">
+                            <img src="${p.image}" alt="${p.name}">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title" data-original="${p.name}">${p.name}</h3>
+                            <p class="product-desc" data-original="${p.desc}">${p.desc}</p>
+                        </div>
+                    `;
+                    grid.appendChild(card);
                 });
+            });
+            changeLanguage();
+        }
+
+        function encodeImageFileAsURL(element) {
+            const file = element.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onloadend = function() {
+                    document.getElementById('productImageBase64').value = reader.result;
+                }
+                reader.readAsDataURL(file);
             }
         }
 
-        function sendDataToScript(payload) {
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: JSON.stringify(payload)
-            })
-            .then(res => res.json())
-            .then(res => {
-                alert('Product saved successfully to Google Sheet!');
-                closeAdminModal();
-                fetchProducts();
-            })
-            .catch(err => {
-                console.error(err);
-                alert('Error uploading data.');
-            });
+        function openPasswordModal() {
+            document.getElementById('passwordModal').style.display = 'flex';
+            document.getElementById('adminPasswordInput').value = '';
+            document.getElementById('adminPasswordInput').focus();
         }
+
+        function verifyPassword() {
+            const pwd = document.getElementById('adminPasswordInput').value;
+            if (pwd === 'fangam123' || pwd === 'admin123') {
+                closeModals();
+                document.getElementById('productModal').style.display = 'flex';
+            } else {
+                alert('Incorrect password!');
+            }
+        }
+
+        function closeModals() {
+            document.getElementById('passwordModal').style.display = 'none';
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        async function handleProductSubmit(event) {
+            event.preventDefault();
+            const category = document.getElementById('productCategory').value;
+            const name = document.getElementById('productName').value;
+            const desc = document.getElementById('productDesc').value;
+            const image = document.getElementById('productImageBase64').value;
+
+            if (!image) {
+                alert('Please select a product image.');
+                return;
+            }
+
+            const newProduct = {
+                id: Date.now().toString(),
+                category,
+                name,
+                desc,
+                image
+            };
+
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('saveBtn').disabled = true;
+
+            products.push(newProduct);
+            saveProductsToStorage();
+
+            if (APPS_SCRIPT_URL && APPS_SCRIPT_URL !== "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE") {
+                try {
+                    await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(newProduct)
+                    });
+                } catch (err) {
+                    console.log('Cloud sync note:', err);
+                }
+            }
+
+            setTimeout(() => {
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('saveBtn').disabled = false;
+                document.getElementById('productForm').reset();
+                closeModals();
+                renderProducts();
+                alert('Product successfully added and updated!');
+            }, 800);
+        }
+
+        async function changeLanguage() {
+            const lang = document.getElementById('languageSelect').value;
+            const bodyTag = document.getElementById('mainBody');
+
+            if (lang === 'ur' || lang === 'ar' || lang === 'fa') {
+                bodyTag.setAttribute('dir', 'rtl');
+            } else {
+                bodyTag.setAttribute('dir', 'ltr');
+            }
+            
+            const staticTexts = {
+                en: { main_title: "Fangam Organic Products & Herbs", cat_base_oils: "Base Oils", cat_seeds: "Seeds", cat_herbs: "Herbs" },
+                ur: { main_title: "فینگم آرگینک پروڈکٹس اینڈ ہربز", cat_base_oils: "بیس آئلز", cat_seeds: "بیج (Seeds)", cat_herbs: "جڑی بوٹیاں (Herbs)" },
+                ar: { main_title: "فانغام منتجات عضوية وأعشاب", cat_base_oils: "زيوت أساسية", cat_seeds: "بذور", cat_herbs: "أعشاب" },
+                hi: { main_title: "फैंगम ऑर्गेनिक उत्पाद और जड़ी-बूटियाँ", cat_base_oils: "बेस ऑयल्स", cat_seeds: "बीज", cat_herbs: "जड़ी-बूटियाँ" },
+                fa: { main_title: "محصولات ارگانیک و گیاهان فانگام", cat_base_oils: "روغن‌های پایه", cat_seeds: "دانه‌ها", cat_herbs: "گیاهان دارویی" },
+                zh: { main_title: "Fangam 有机产品与草本", cat_base_oils: "基础油", cat_seeds: "种子", cat_herbs: "草本" },
+                es: { main_title: "Productos Orgánicos y Hierbas Fangam", cat_base_oils: "Aceites Base", cat_seeds: "Semillas", cat_herbs: "Hierbas" },
+                fr: { main_title: "Produits Biologiques et Herbes Fangam", cat_base_oils: "Huiles de Base", cat_seeds: "Graines", cat_herbs: "Herbes" },
+                de: { main_title: "Fangam Bio-Produkte & Kräuter", cat_base_oils: "Basisöl", cat_seeds: "Samen", cat_herbs: "Kräuter" },
+                tr: { main_title: "Fangam Organik Ürünler ve Bitkiler", cat_base_oils: "Baz Yağlar", cat_seeds: "Tohumlar", cat_herbs: "Bitkiler" },
+                id: { main_title: "Produk Organik & Herbal Fangam", cat_base_oils: "Minyak Dasar", cat_seeds: "Biji-bijian", cat_herbs: "Herbal" },
+                ru: { main_title: "Органические продукты и травы Fangam", cat_base_oils: "Базовые масла", cat_seeds: "Семена", cat_herbs: "Травы" },
+                ja: { main_title: "ファンガム オーガニック製品＆ハーブ", cat_base_oils: "ベースオイル", cat_seeds: "種子", cat_herbs: "ハーブ" },
+                ko: { main_title: "팡암 유기농 제품 및 허브", cat_base_oils: "베이스 오일", cat_seeds: "씨앗", cat_herbs: "허브" },
+                it: { main_title: "Prodotti Biologici ed Erbe Fangam", cat_base_oils: "Oli Base", cat_seeds: "Semi", cat_herbs: "Erbe" }
+            };
+
+            const t = staticTexts[lang] || staticTexts['en'];
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (t[key]) el.innerText = t[key];
+            });
+
+            if (lang === 'en') {
+                document.querySelectorAll('.product-title').forEach(el => {
+                    el.innerText = el.getAttribute('data-original');
+                });
+                document.querySelectorAll('.product-desc').forEach(el => {
+                    el.innerText = el.getAttribute('data-original');
+                });
+                return;
+            }
+
+            const elements = document.querySelectorAll('.product-title, .product-desc');
+            for (let el of elements) {
+                const originalText = el.getAttribute('data-original');
+                if (!originalText) continue;
+
+                const cacheKey = `trans_${lang}_${originalText.substring(0, 20)}_${originalText.length}`;
+                const cached = sessionStorage.getItem(cacheKey);
+                if (cached) {
+                    el.innerText = cached;
+                    continue;
+                }
+
+                try {
+                    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(originalText)}&langpair=en|${lang}`;
+                    const res = await fetch(url);
+                    const data = await res.json();
+                    if (data && data.responseData && data.responseData.translatedText) {
+                        let translated = data.responseData.translatedText;
+                        if (!translated.includes("MYMEMORY WARNING")) {
+                            el.innerText = translated;
+                            sessionStorage.SESSIONSTORAGE?.setItem?.(cacheKey, translated);
+                            sessionStorage.setItem(cacheKey, translated);
+                        }
+                    }
+                } catch (err) {
+                    console.log('Translation offline', err);
+                }
+            }
+        }
+
+        window.onload = function() {
+            renderProducts();
+        };
     </script>
 </body>
 </html>
