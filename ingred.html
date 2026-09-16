@@ -6,15 +6,8 @@
     <title>Fangam Organic Products & Herbs</title>
     <!-- Official Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: 'MehrNastaliq';
-            src: url('https://cdn.jsdelivr.net/gh/Sharjeel-Anjum/Mehr-Nastaliq-Web@main/MehrNastaliqWeb.woff2') format('woff2');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-        }
-
         :root {
             --primary-green: #1b4332;       
             --secondary-green: #2d6A4f;     
@@ -33,11 +26,11 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Urdu/Persian/Arabic RTL & Nastaliq Enforcement */
+        /* Perfect RTL & Nastaliq Support */
         body.rtl-mode {
-            text-align: right;
-            direction: rtl;
-            font-family: 'MehrNastaliq', 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
+            direction: rtl !important;
+            text-align: right !important;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
         }
 
         body.rtl-mode h1, 
@@ -45,17 +38,29 @@
         body.rtl-mode h3, 
         body.rtl-mode p, 
         body.rtl-mode span, 
+        body.rtl-mode div, 
         body.rtl-mode .product-desc,
         body.rtl-mode .product-title,
         body.rtl-mode .category-title {
-            font-family: 'MehrNastaliq', 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
-            letter-spacing: 0px !important;
-            line-height: 2.3 !important;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
+            direction: rtl !important;
+            text-align: right !important;
+            line-height: 2.2 !important;
+        }
+
+        body.rtl-mode .product-card {
+            text-align: right !important;
+            direction: rtl !important;
         }
 
         body.ltr-mode {
-            text-align: left;
-            direction: ltr;
+            direction: ltr !important;
+            text-align: left !important;
+        }
+
+        body.ltr-mode .product-card {
+            text-align: left !important;
+            direction: ltr !important;
         }
 
         body {
@@ -67,44 +72,49 @@
 
         header {
             text-align: center;
-            padding: 40px 20px 20px 20px;
+            padding: 35px 20px 20px 20px;
             background: linear-gradient(to bottom, #d8e8dc, var(--bg-color));
             border-bottom: 3px solid var(--secondary-green);
         }
 
-        /* Custom Google Translate Styling container */
+        /* Modern Custom Language Switcher */
         .lang-container {
-            margin-top: 15px;
+            margin-bottom: 15px;
             display: inline-block;
             background: #ffffff;
-            padding: 6px 15px;
-            border-radius: 25px;
+            padding: 6px 16px;
+            border-radius: 30px;
             border: 2px solid var(--secondary-green);
-            box-shadow: 0 4px 10px rgba(27,67,50,0.1);
+            box-shadow: 0 4px 15px rgba(27,67,50,0.08);
         }
 
-        /* Hide Google's default top banner and tooltip */
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; }
-        .goog-tooltip { display: none !important; }
-        .goog-tooltip:hover { display: none !important; }
-        .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
-        
-        .goog-te-combo {
+        .custom-lang-select {
             background: transparent;
             border: none;
             color: var(--primary-green);
-            font-weight: 700;
+            font-weight: 600;
             font-size: 0.95rem;
             outline: none;
             cursor: pointer;
-            padding: 4px;
+            padding: 4px 8px;
+            font-family: 'Poppins', sans-serif;
         }
+
+        /* Completely Hide Google's Ugly Default Elements & Banners */
+        .goog-te-banner-frame.skiptranslate, 
+        .goog-te-gadget, 
+        .skiptranslate,
+        .goog-tooltip { 
+            display: none !important; 
+        }
+        
+        body { top: 0px !important; position: static !important; }
+        .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
 
         h1 {
             font-size: 2.4rem;
             color: var(--primary-green);
-            margin-top: 15px;
+            margin-top: 10px;
             font-weight: 700;
         }
 
@@ -292,29 +302,44 @@
 <body class="ltr-mode" id="mainBody">
 
     <header>
-        <!-- Google Translate Live Widget Container -->
+        <!-- Clean Custom Language Switcher -->
         <div class="lang-container">
-            <div id="google_translate_element"></div>
+            <select id="customLangSelect" class="custom-lang-select" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="ur">اردو (Urdu)</option>
+                <option value="ar">العربية (Arabic)</option>
+                <option value="fa">فارسی (Persian)</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+                <option value="zh-CN">中文 (Chinese)</option>
+                <option value="es">Español (Spanish)</option>
+                <option value="fr">Français (French)</option>
+                <option value="de">Deutsch (German)</option>
+                <option value="tr">Türkçe (Turkish)</option>
+            </select>
         </div>
-        <h1 class="notranslate" data-original="Fangam Organic Products & Herbs">Fangam Organic Products & Herbs</h1>
+        
+        <!-- Hidden Google Translate Element to power the background translation -->
+        <div id="google_translate_element" style="display:none;"></div>
+
+        <h1>Fangam Organic Products & Herbs</h1>
     </header>
 
     <div class="container">
         <!-- Base Oils Section -->
         <div class="category-section">
-            <h2 class="category-title" data-original="Base Oils">Base Oils</h2>
+            <h2 class="category-title">Base Oils</h2>
             <div class="products-grid" id="grid-base-oils"></div>
         </div>
 
         <!-- Seeds Section -->
         <div class="category-section">
-            <h2 class="category-title" data-original="Seeds">Seeds</h2>
+            <h2 class="category-title">Seeds</h2>
             <div class="products-grid" id="grid-seeds"></div>
         </div>
 
         <!-- Herbs Section -->
         <div class="category-section">
-            <h2 class="category-title" data-original="Herbs">Herbs</h2>
+            <h2 class="category-title">Herbs</h2>
             <div class="products-grid" id="grid-herbs"></div>
         </div>
     </div>
@@ -377,8 +402,7 @@
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
-                includedLanguages: 'en,ur,fa,ar,hi,zh,es,fr,de,tr,id,ru,ja,ko,it',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                includedLanguages: 'en,ur,ar,fa,hi,zh-CN,es,fr,de,tr',
                 autoDisplay: false
             }, 'google_translate_element');
         }
@@ -431,8 +455,8 @@
                             <img src="${p.image}" alt="${p.name}">
                         </div>
                         <div class="product-content">
-                            <h3 class="product-title" data-original="${p.name}">${p.name}</h3>
-                            <p class="product-desc" data-original="${p.desc}">${p.desc}</p>
+                            <h3 class="product-title">${p.name}</h3>
+                            <p class="product-desc">${p.desc}</p>
                         </div>
                     `;
                     grid.appendChild(card);
@@ -440,33 +464,37 @@
             });
         }
 
-        // Handle RTL / LTR layout and font switching based on Google Translate selection
-        function checkLanguageAndApplyStyles() {
-            const selectBox = document.querySelector('.goog-te-combo');
+        // Bridge function to trigger Google Translate via custom dropdown
+        function changeLanguage(langCode) {
+            const selectField = document.querySelector('.goog-te-combo');
+            if (selectField) {
+                selectField.value = langCode;
+                selectField.dispatchEvent(new Event('change'));
+            }
+            
+            // Apply RTL instantly for Urdu, Arabic, Persian
             const body = document.getElementById('mainBody');
-            if (selectBox) {
-                const lang = selectBox.value;
-                if (['ur', 'fa', 'ar'].includes(lang)) {
-                    body.className = 'rtl-mode';
-                } else {
-                    body.className = 'ltr-mode';
-                }
+            if (['ur', 'ar', 'fa'].includes(langCode)) {
+                body.className = 'rtl-mode';
+            } else {
+                body.className = 'ltr-mode';
             }
         }
 
+        // Sync custom dropdown with cookie on page load
         window.onload = function() {
             renderProducts();
             
-            // Check Google Translate dropdown periodically and bind change event
-            const checkInterval = setInterval(() => {
-                const selectBox = document.querySelector('.goog-te-combo');
-                if (selectBox) {
-                    selectBox.addEventListener('change', () => {
-                        setTimeout(checkLanguageAndApplyStyles, 300);
-                    });
-                    clearInterval(checkInterval);
+            const cookieMatch = document.cookie.match(/googtrans=\/en\/([a-z-]+)/);
+            if (cookieMatch) {
+                const activeLang = cookieMatch[1];
+                const dropdown = document.getElementById('customLangSelect');
+                if (dropdown) dropdown.value = activeLang;
+                
+                if (['ur', 'ar', 'fa'].includes(activeLang)) {
+                    document.getElementById('mainBody').className = 'rtl-mode';
                 }
-            }, 500);
+            }
         };
 
         function encodeImageFileAsURL(element) {
@@ -487,7 +515,7 @@
         }
 
         function verifyPassword() {
-            const pwd = document.getElementById('adminPasswordInput').value;
+            const pwd = document.getElementById('adminPasswordInput5') || document.getElementById('adminPasswordInput').value;
             if (pwd === 'fangam123' || pwd === 'admin123') {
                 closeModals();
                 document.getElementById('productModal').style.display = 'flex';
@@ -503,10 +531,9 @@
 
         function handleProductSubmit(event) {
             event.preventDefault();
-            const category = document.getElementById('origin' || 'productCategory').value;
             const categoryEl = document.getElementById('productCategory').value;
             const name = document.getElementById('productName').value;
-            const desc = document.getElementById('productDesc').value;
+            const desc = document.getElementById('productDesc5') ? document.getElementById('productDesc5').value : document.getElementById('productDesc').value;
             const image = document.getElementById('productImageBase64').value;
 
             if (!image) {
