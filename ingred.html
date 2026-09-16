@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fangam Organic Products & Herbs</title>
-    <!-- Official Mehr Nastaliq Web Font & Poppins -->
+    <!-- Official Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Loading Mehr Nastaliq Web Font for True Nastaliq Look */
         @font-face {
             font-family: 'MehrNastaliq';
             src: url('https://cdn.jsdelivr.net/gh/Sharjeel-Anjum/Mehr-Nastaliq-Web@main/MehrNastaliqWeb.woff2') format('woff2');
@@ -17,11 +16,11 @@
         }
 
         :root {
-            --primary-green: #1b4332;       /* Deep Organic Forest Green */
-            --secondary-green: #2d6A4f;     /* Herb Leaf Green */
-            --light-green: #e8f5e9;         /* Soft Mint Background */
-            --accent-gold: #d4a373;         /* Natural Earthy Gold */
-            --bg-color: #f4f7f4;            /* Clean Organic Pale Green-Gray */
+            --primary-green: #1b4332;       
+            --secondary-green: #2d6A4f;     
+            --light-green: #e8f5e9;         
+            --accent-gold: #d4a373;         
+            --bg-color: #f4f7f4;            
             --card-bg: #ffffff;
             --text-color: #212529;
             --border-color: #c8d6c9;
@@ -34,7 +33,6 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* RTL & Nastaliq Enforcement for Urdu/Arabic/Persian */
         body[dir="rtl"] {
             text-align: right;
             direction: rtl;
@@ -52,7 +50,7 @@
         body[dir="rtl"] .category-title {
             font-family: 'MehrNastaliq', 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
             letter-spacing: 0px !important;
-            line-height: 2.4 !important;
+            line-height: 2.2 !important;
         }
 
         body[dir="ltr"] {
@@ -100,7 +98,6 @@
             color: var(--primary-green);
             margin-top: 12px;
             font-weight: 700;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
 
         .container {
@@ -188,7 +185,6 @@
             flex-grow: 1;
         }
 
-        /* Secret Organic Leaf Trigger */
         #secret-admin-trigger {
             position: fixed;
             bottom: 20px;
@@ -203,11 +199,6 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 15px rgba(27,67,50,0.3);
-            transition: transform 0.2s;
-        }
-
-        #secret-admin-trigger:hover {
-            transform: scale(1.1);
         }
 
         #secret-admin-trigger::after {
@@ -215,7 +206,6 @@
             font-size: 22px;
         }
 
-        /* Modal styling */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -227,7 +217,6 @@
             padding: 20px;
             direction: ltr !important;
             text-align: left;
-            font-family: 'Poppins', sans-serif !important;
         }
 
         .modal-content {
@@ -237,19 +226,6 @@
             border-radius: 16px;
             padding: 30px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-content h2, .modal-content label, .modal-content button, .modal-content input, .modal-content textarea, .modal-content select {
-            font-family: 'Poppins', sans-serif !important;
-        }
-
-        .modal-content h2 {
-            color: var(--primary-green);
-            margin-bottom: 20px;
-            font-size: 1.4rem;
         }
 
         .form-group {
@@ -295,23 +271,9 @@
             font-size: 0.95rem;
         }
 
-        .btn-primary {
-            background-color: var(--primary-green);
-            color: #fff;
-        }
-
-        .btn-secondary {
-            background-color: #e2ede5;
-            color: var(--text-color);
-        }
-
-        .loading-spinner {
-            display: none;
-            text-align: center;
-            margin-top: 10px;
-            color: var(--primary-green);
-            font-weight: 600;
-        }
+        .btn-primary { background-color: var(--primary-green); color: #fff; }
+        .btn-secondary { background-color: #e2ede5; color: var(--text-color); }
+        .loading-spinner { display: none; text-align: center; margin-top: 10px; color: var(--primary-green); font-weight: 600; }
 
         @media(max-width: 768px) {
             h1 { font-size: 1.8rem; }
@@ -341,31 +303,31 @@
                 <option value="it">Italiano (Italian)</option>
             </select>
         </div>
-        <h1 data-translate="main_title">Fangam Organic Products & Herbs</h1>
+        <h1 id="mainTitle">Fangam Organic Products & Herbs</h1>
     </header>
 
     <div class="container">
         <!-- Base Oils Section -->
-        <div class="category-section" id="section-base-oils">
-            <h2 class="category-title" data-translate="cat_base_oils">Base Oils</h2>
+        <div class="category-section">
+            <h2 class="category-title" id="catTitle1">Base Oils</h2>
             <div class="products-grid" id="grid-base-oils"></div>
         </div>
 
         <!-- Seeds Section -->
-        <div class="category-section" id="section-seeds">
-            <h2 class="category-title" data-translate="cat_seeds">Seeds</h2>
+        <div class="category-section">
+            <h2 class="category-title" id="catTitle2">Seeds</h2>
             <div class="products-grid" id="grid-seeds"></div>
         </div>
 
         <!-- Herbs Section -->
-        <div class="category-section" id="section-herbs">
-            <h2 class="category-title" data-translate="cat_herbs">Herbs</h2>
+        <div class="category-section">
+            <h2 class="category-title" id="catTitle3">Herbs</h2>
             <div class="products-grid" id="grid-herbs"></div>
         </div>
     </div>
 
     <!-- Secret Admin Trigger -->
-    <div id="secret-admin-trigger" onclick="openPasswordModal()" title="Admin Panel"></div>
+    <div id="secret-admin-trigger" onclick="openPasswordModal()"></div>
 
     <!-- Password Modal -->
     <div class="modal-overlay" id="passwordModal">
@@ -401,14 +363,14 @@
                 </div>
                 <div class="form-group">
                     <label>Description (English)</label>
-                    <textarea id="productDesc" required placeholder="Enter detailed benefits and description in English..."></textarea>
+                    <textarea id="productDesc" required placeholder="Enter description..."></textarea>
                 </div>
                 <div class="form-group">
                     <label>Product Image</label>
                     <input type="file" id="productImageFile" accept="image/*" required onchange="encodeImageFileAsURL(this)">
                     <input type="hidden" id="productImageBase64">
                 </div>
-                <div class="loading-spinner" id="loadingSpinner">Saving and syncing with Google Sheets...</div>
+                <div class="loading-spinner" id="loadingSpinner">Saving...</div>
                 <div class="modal-btns">
                     <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
                     <button type="submit" class="btn btn-primary" id="saveBtn">Save & Publish</button>
@@ -418,37 +380,89 @@
     </div>
 
     <script>
-        const APPS_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+        const translations = {
+            en: {
+                mainTitle: "Fangam Organic Products & Herbs",
+                cat1: "Base Oils",
+                cat2: "Seeds",
+                cat3: "Herbs",
+                products: {
+                    'Mustard Oil': {
+                        name: 'Mustard Oil',
+                        desc: 'Effect on Hair: Mustard oil is a heavy, warming, and deeply penetrating oil. Stimulates blood circulation, promotes natural growth, and prevents dandruff.'
+                    },
+                    'Coconut Oil': {
+                        name: 'Coconut Oil',
+                        desc: 'Effect on Hair: Coconut oil penetrates deep into the hair shaft, prevents protein loss, controls frizz, and gives natural softness.'
+                    },
+                    'Castor Oil': {
+                        name: 'Castor Oil',
+                        desc: 'Effect on Hair: Castor oil provides ultimate nourishment to roots, accelerates hair growth, increases thickness, and prevents split ends.'
+                    }
+                }
+            },
+            ur: {
+                mainTitle: "فینگم آرگینک پروڈکٹس اینڈ ہربز",
+                cat1: "بیس آئلز",
+                cat2: "بیج (Seeds)",
+                cat3: "جڑی بوٹیاں (Herbs)",
+                products: {
+                    'Mustard Oil': {
+                        name: 'سرسوں کا تیل (Mustard Oil)',
+                        desc: 'بالوں پر اثر: سرسوں کا تیل گہرائی تک جڑوں کو گرمائش اور غذا دیتا ہے۔ یہ خون کی گردش کو تیز کرتا ہے، بالوں کی قدرتی افزائش کرتا ہے اور خشکی (Dandruff) سے بچاتا ہے۔'
+                    },
+                    'Coconut Oil': {
+                        name: 'ناریل کا تیل (Coconut Oil)',
+                        desc: 'بالوں پر اثر: ناریل کا تیل بالوں کے اندرونی حصوں میں جذب ہو کر پروٹین کی کمی کو روکتا ہے، بالوں کو مضبوط، نرم اور چمکدار بناتا ہے۔'
+                    },
+                    'Castor Oil': {
+                        name: 'ارنڈی کا تیل (Castor Oil)',
+                        desc: 'بالوں پر اثر: ارنڈی کا تیل جڑوں کو زبردست طاقت دیتا ہے، بالوں کی موٹائی اور لمبائی میں تیز اضافہ کرتا ہے اور دو منہ والے بالوں سے بچاتا ہے۔'
+                    }
+                }
+            },
+            ar: {
+                mainTitle: "فانغام منتجات عضوية وأعشاب",
+                cat1: "زيوت أساسية",
+                cat2: "بذور",
+                cat3: "أعشاب",
+                products: {
+                    'Mustard Oil': { name: 'زيت الخردل', desc: 'يتحكم في تساقط الشعر ويحفز نمو بصيلات الشعر الطبيعية.' },
+                    'Coconut Oil': { name: 'زيت جوز الهند', desc: 'يرطب الشعر بعمق ويمنع تلف البروتين ويحارب التجعد.' },
+                    'Castor Oil': { name: 'زيت الخروع', desc: 'يعزز نمو الشعر ويقوي الجذور ويمنع تقصف الأطراف.' }
+                }
+            },
+            hi: {
+                mainTitle: "फैंगम ऑर्गेनिक उत्पाद और जड़ी-बूटियाँ",
+                cat1: "बेस ऑयल्स",
+                cat2: "बीज",
+                cat3: "जड़ी-बूटियाँ",
+                products: {
+                    'Mustard Oil': { name: 'सरसों का तेल', desc: 'बालों की जड़ों को मजबूत करता है और रूसी रोकता है।' },
+                    'Coconut Oil': { name: 'नारियल का तेल', desc: 'बालों में गहराई से जाकर प्रोटीन बचाता है और चमक लाता है।' },
+                    'Castor Oil': { name: 'अरंडी का तेल', desc: 'बालों के विकास को तेज करता है और उन्हें घना बनाता है।' }
+                }
+            },
+            es: {
+                mainTitle: "Productos Orgánicos y Hierbas Fangam",
+                cat1: "Aceites Base",
+                cat2: "Semillas",
+                cat3: "Hierbas",
+                products: {
+                    'Mustard Oil': { name: 'Aceite de Mostaza', desc: 'Estimula la circulación sanguínea y promueve el crecimiento natural del cabello.' },
+                    'Coconut Oil': { name: 'Aceite de Coco', desc: 'Penetra profundamente en la hebra capilar previniendo la pérdida de proteínas.' },
+                    'Castor Oil': { name: 'Aceite de Ricino', desc: 'Acelera el crecimiento del cabello, aporta grosor y previene puntas abiertas.' }
+                }
+            }
+        };
 
         let defaultProducts = [
-            {
-                id: '1',
-                category: 'base-oils',
-                name: 'Mustard Oil',
-                desc: 'Effect on Hair: Mustard oil is a heavy, warming, and deeply penetrating oil. When massaged into the scalp, it stimulates blood circulation, which helps activate dormant hair follicles and promotes natural growth. Its antimicrobial and antifungal properties help keep the scalp clean and prevent dandruff. Benefits: Promotes Hair Growth. Regular massage enhances blood flow to the roots, accelerating hair growth. Prevents Premature Graying.',
-                image: 'https://images.unsplash.com/photo-1608248597359-f53856cb3c0b?w=600&auto=format&fit=crop&q=80'
-            },
-            {
-                id: '2',
-                category: 'base-oils',
-                name: 'Coconut Oil',
-                desc: 'Effect on Hair: Coconut oil has a unique chemical structure featuring a high affinity for hair proteins, allowing it to penetrate deep into the hair shaft rather than just coating the surface. It prevents protein loss from washing and reduces hygral fatigue. Benefits: Deep Protein Retention. Binds easily with natural hair proteins to strengthen hair strands from the inside out and prevent breakage. Frizz Control & Softness.',
-                image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=600&auto=format&fit=crop&q=80'
-            },
-            {
-                id: '3',
-                category: 'base-oils',
-                name: 'Castor Oil',
-                desc: 'Effect on Hair: Castor oil penetrates deep into roots when infused in Fangam Organic oils, providing ultimate nourishment to hair roots. Accelerates Hair Growth & Thickness. It dramatically boosts blood circulation to the scalp, stimulating dormant hair follicles to promote faster, thicker, and healthier hair growth. Prevents Split Ends & Hair Breakage.',
-                image: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=600&auto=format&fit=crop&q=80'
-            }
+            { id: '1', category: 'base-oils', name: 'Mustard Oil', image: 'https://images.unsplash.com/photo-1608248597359-f53856cb3c0b?w=600&auto=format&fit=crop&q=80' },
+            { id: '2', category: 'base-oils', name: 'Coconut Oil', image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=600&auto=format&fit=crop&q=80' },
+            { id: '3', category: 'base-oils', name: 'Castor Oil', image: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=600&auto=format&fit=crop&q=80' }
         ];
 
         let products = JSON.parse(localStorage.getItem('fangam_products')) || defaultProducts;
-
-        function saveProductsToStorage() {
-            localStorage.setItem('fangam_products', JSON.stringify(products));
-        }
 
         function renderProducts() {
             ['base-oils', 'seeds', 'herbs'].forEach(cat => {
@@ -457,7 +471,7 @@
                 const filtered = products.filter(p => p.category === cat);
                 
                 if (filtered.length === 0) {
-                    grid.innerHTML = `<p style="color:#777; grid-column: 1/-1; padding: 20px; text-align:center;">No items added in this category yet.</p>`;
+                    grid.innerHTML = `<p style="color:#777; grid-column: 1/-1; padding: 20px; text-align:center;">No items added yet.</p>`;
                     return;
                 }
 
@@ -469,14 +483,48 @@
                             <img src="${p.image}" alt="${p.name}">
                         </div>
                         <div class="product-content">
-                            <h3 class="product-title" data-original="${p.name}">${p.name}</h3>
-                            <p class="product-desc" data-original="${p.desc}">${p.desc}</p>
+                            <h3 class="product-title" data-product-key="${p.name}">${p.name}</h3>
+                            <p class="product-desc" data-product-desc-key="${p.name}">${p.desc || 'Effect on Hair: Natural herbal nourishment.'}</p>
                         </div>
                     `;
                     grid.appendChild(card);
                 });
             });
             changeLanguage();
+        }
+
+        function changeLanguage() {
+            const lang = document.getElementById('languageSelect').value;
+            const bodyTag = document.getElementById('mainBody');
+
+            if (['ur', 'ar', 'fa'].includes(lang)) {
+                bodyTag.setAttribute('dir', 'rtl');
+            } else {
+                bodyTag.setAttribute('dir', 'ltr');
+            }
+
+            const t = translations[lang] || translations['en'];
+
+            document.getElementById('mainTitle').innerText = t.mainTitle;
+            document.getElementById('catTitle1').innerText = t.cat1;
+            document.getElementById('catTitle2').innerText = t.cat2;
+            document.getElementById('catTitle3').innerText = t.cat3;
+
+            document.querySelectorAll('.product-title').forEach(el => {
+                const key = el.getAttribute('data-product-key');
+                if (t.products && t.products[key]) {
+                    el.innerText = t.products[key].name;
+                } else {
+                    el.innerText = key;
+                }
+            });
+
+            document.querySelectorAll('.product-desc').forEach(el => {
+                const key = el.getAttribute('data-product-desc-key');
+                if (t.products && t.products[key]) {
+                    el.innerText = t.products[key].desc;
+                }
+            });
         }
 
         function encodeImageFileAsURL(element) {
@@ -511,7 +559,7 @@
             document.getElementById('productModal').style.display = 'none';
         }
 
-        async function handleProductSubmit(event) {
+        function handleProductSubmit(event) {
             event.preventDefault();
             const category = document.getElementById('productCategory').value;
             const name = document.getElementById('productName').value;
@@ -519,118 +567,18 @@
             const image = document.getElementById('productImageBase64').value;
 
             if (!image) {
-                alert('Please select a product image.');
+                alert('Please select an image.');
                 return;
             }
 
-            const newProduct = {
-                id: Date.now().toString(),
-                category,
-                name,
-                desc,
-                image
-            };
-
-            document.getElementById('loadingSpinner').style.display = 'block';
-            document.getElementById('saveBtn').disabled = true;
-
+            const newProduct = { id: Date.now().toString(), category, name, desc, image };
             products.push(newProduct);
-            saveProductsToStorage();
+            localStorage.setItem('fangam_products', JSON.stringify(products));
 
-            if (APPS_SCRIPT_URL && APPS_SCRIPT_URL !== "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE") {
-                try {
-                    await fetch(APPS_SCRIPT_URL, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(newProduct)
-                    });
-                } catch (err) {
-                    console.log('Cloud sync note:', err);
-                }
-            }
-
-            setTimeout(() => {
-                document.getElementById('loadingSpinner').style.display = 'none';
-                document.getElementById('saveBtn').disabled = false;
-                document.getElementById('productForm').reset();
-                closeModals();
-                renderProducts();
-                alert('Product successfully added and updated!');
-            }, 800);
-        }
-
-        async function changeLanguage() {
-            const lang = document.getElementById('languageSelect').value;
-            const bodyTag = document.getElementById('mainBody');
-
-            if (lang === 'ur' || lang === 'ar' || lang === 'fa') {
-                bodyTag.setAttribute('dir', 'rtl');
-            } else {
-                bodyTag.setAttribute('dir', 'ltr');
-            }
-            
-            const staticTexts = {
-                en: { main_title: "Fangam Organic Products & Herbs", cat_base_oils: "Base Oils", cat_seeds: "Seeds", cat_herbs: "Herbs" },
-                ur: { main_title: "فینگم آرگینک پروڈکٹس اینڈ ہربز", cat_base_oils: "بیس آئلز", cat_seeds: "بیج (Seeds)", cat_herbs: "جڑی بوٹیاں (Herbs)" },
-                ar: { main_title: "فانغام منتجات عضوية وأعشاب", cat_base_oils: "زيوت أساسية", cat_seeds: "بذور", cat_herbs: "أعشاب" },
-                hi: { main_title: "फैंगम ऑर्गेनिक उत्पाद और जड़ी-बूटियाँ", cat_base_oils: "बेस ऑयल्स", cat_seeds: "बीज", cat_herbs: "जड़ी-बूटियाँ" },
-                fa: { main_title: "محصولات ارگانیک و گیاهان فانگام", cat_base_oils: "روغن‌های پایه", cat_seeds: "دانه‌ها", cat_herbs: "گیاهان دارویی" },
-                zh: { main_title: "Fangam 有机产品与草本", cat_base_oils: "基础油", cat_seeds: "种子", cat_herbs: "草本" },
-                es: { main_title: "Productos Orgánicos y Hierbas Fangam", cat_base_oils: "Aceites Base", cat_seeds: "Semillas", cat_herbs: "Hierbas" },
-                fr: { main_title: "Produits Biologiques et Herbes Fangam", cat_base_oils: "Huiles de Base", cat_seeds: "Graines", cat_herbs: "Herbes" },
-                de: { main_title: "Fangam Bio-Produkte & Kräuter", cat_base_oils: "Basisöl", cat_seeds: "Samen", cat_herbs: "Kräuter" },
-                tr: { main_title: "Fangam Organik Ürünler ve Bitkiler", cat_base_oils: "Baz Yağlar", cat_seeds: "Tohumlar", cat_herbs: "Bitkiler" },
-                id: { main_title: "Produk Organik & Herbal Fangam", cat_base_oils: "Minyak Dasar", cat_seeds: "Biji-bijian", cat_herbs: "Herbal" },
-                ru: { main_title: "Органические продукты и травы Fangam", cat_base_oils: "Базовые масла", cat_seeds: "Семена", cat_herbs: "Травы" },
-                ja: { main_title: "ファンガム オーガニック製品＆ハーブ", cat_base_oils: "ベースオイル", cat_seeds: "種子", cat_herbs: "ハーブ" },
-                ko: { main_title: "팡암 유기농 제품 및 허브", cat_base_oils: "베이스 오일", cat_seeds: "씨앗", cat_herbs: "허브" },
-                it: { main_title: "Prodotti Biologici ed Erbe Fangam", cat_base_oils: "Oli Base", cat_seeds: "Semi", cat_herbs: "Erbe" }
-            };
-
-            const t = staticTexts[lang] || staticTexts['en'];
-            document.querySelectorAll('[data-translate]').forEach(el => {
-                const key = el.getAttribute('data-translate');
-                if (t[key]) el.innerText = t[key];
-            });
-
-            if (lang === 'en') {
-                document.querySelectorAll('.product-title').forEach(el => {
-                    el.innerText = el.getAttribute('data-original');
-                });
-                document.querySelectorAll('.product-desc').forEach(el => {
-                    el.innerText = el.getAttribute('data-original');
-                });
-                return;
-            }
-
-            const elements = document.querySelectorAll('.product-title, .product-desc');
-            for (let el of elements) {
-                const originalText = el.getAttribute('data-original');
-                if (!originalText) continue;
-
-                const cacheKey = `trans_${lang}_${originalText.substring(0, 20)}_${originalText.length}`;
-                const cached = sessionStorage.getItem(cacheKey);
-                if (cached) {
-                    el.innerText = cached;
-                    continue;
-                }
-
-                try {
-                    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(originalText)}&langpair=en|${lang}`;
-                    const res = await fetch(url);
-                    const data = await res.json();
-                    if (data && data.responseData && data.responseData.translatedText) {
-                        let translated = data.responseData.translatedText;
-                        if (!translated.includes("MYMEMORY WARNING")) {
-                            el.innerText = translated;
-                            sessionStorage.setItem(cacheKey, translated);
-                        }
-                    }
-                } catch (err) {
-                    console.log('Translation offline', err);
-                }
-            }
+            document.getElementById('productForm').reset();
+            closeModals();
+            renderProducts();
+            alert('Product added successfully!');
         }
 
         window.onload = function() {
