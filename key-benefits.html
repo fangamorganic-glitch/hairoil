@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Benefits - Fangam Organic Hair Oil</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Poppins', 'Noto Nastaliq Urdu', sans-serif;
+            background-color: #fcfbf9;
+            color: #2c3e50;
+            line-height: 1.8;
+        }
+        /* Header & Navigation */
+        header {
+            background: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .logo-area img {
+            height: 55px;
+            width: auto;
+            border-radius: 50%;
+            background: white;
+            padding: 2px;
+            object-fit: contain;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #f1c40f;
+        }
+        /* Main Container */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        /* Language Selector Bar */
+        .lang-bar {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .lang-bar select {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #27ae60;
+            background: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #27ae60;
+            cursor: pointer;
+            outline: none;
+        }
+        /* Clean Full-Width Card Layout */
+        .usage-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            padding: 40px;
+            border: 1px solid #e8f5e9;
+        }
+        h1 {
+            color: #27ae60;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #e8f5e9;
+            padding-bottom: 15px;
+        }
+        
+        /* Dynamic List Styling */
+        ul.steps {
+            list-style: none;
+        }
+        ul.steps li {
+            position: relative;
+            margin-bottom: 22px;
+            font-size: 1.15rem;
+            color: #333;
+        }
+
+        /* LTR Layout (English, etc.) */
+        body.ltr-mode ul.steps li {
+            padding-left: 35px;
+            text-align: left;
+        }
+        body.ltr-mode ul.steps li::before {
+            content: "🌿";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* RTL Layout (Urdu, Arabic) */
+        body.rtl-mode ul.steps li {
+            padding-right: 35px;
+            text-align: right;
+            font-family: 'Noto Nastaliq Urdu', sans-serif;
+        }
+        body.rtl-mode ul.steps li::before {
+            content: "🌿";
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        body.rtl-mode h1 {
+            text-align: right;
+            font-family: 'Noto Nastaliq Urdu', sans-serif;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body class="ltr-mode">
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo-area">
+            <a href="#">
+                <!-- آپ یہاں لوگو کا یو آر ایل خود درج کر سکتے ہیں -->
+                <img src="YOUR_HOSTED_LOGO_URL_HERE" alt="Fangam Organic Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="ingredients.html">Ingredients</a></li>
+                <li><a href="how-to-use.html">How to Use</a></li>
+                <li><a href="key-benefits.html" style="color: #f1c40f;">Key Benefits</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Language Selector Dropdown -->
+        <div class="lang-bar">
+            <label for="languageSelect" style="font-weight: 600; margin-left: 10px; color: #2d3748;">🌐 Language / زبان:</label>
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="ur">اردو (Urdu)</option>
+                <option value="ar">العربية (Arabic)</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+                <option value="fr">Français (French)</option>
+                <option value="es">Español (Spanish)</option>
+                <option value="de">Deutsch (German)</option>
+                <option value="zh">中文 (Chinese)</option>
+                <option value="tr">Türkçe (Turkish)</option>
+                <option value="it">Italiano (Italian)</option>
+            </select>
+        </div>
+
+        <div class="usage-card">
+            <!-- Key Benefits Content -->
+            <h1 id="page-title">Key Benefits:</h1>
+            <ul class="steps" id="steps-list">
+                <li id="step1">Deep Scalp Nourishment: Penetrates deep into hair roots to provide essential nutrients, vitamins, and deep hydration for strong, healthy hair growth.</li>
+                <li id="step2">Controls Hair Fall: Strengthens weak hair follicles and effectively reduces hair shedding, breakage, and thinning over regular use.</li>
+                <li id="step3">Stimulates Hair Growth: Powerful organic herbs and pure base oils activate dormant follicles, promoting faster and thicker hair growth.</li>
+                <li id="step4">Prevents Premature Greying: Rich natural ingredients help retain your hair’s natural pigment and melanin, keeping it dark and youthful.</li>
+                <li id="step5">Fights Dandruff & Itchiness: Natural antimicrobial and cooling properties eliminate dandruff flakes, soothe itchy scalps, and clear fungal buildup.</li>
+                <li id="step6">Adds Natural Shine & Gloss: Smooths the hair cuticles to give your locks a brilliant, non-greasy natural shine and a silky-smooth texture.</li>
+                <li id="step7">Repairs Damaged & Split Ends: Deeply conditions dry, brittle, and heat-damaged hair, restoring vitality and repairing split ends from within.</li>
+                <li id="step8">Improves Hair Texture & Volume: Adds noticeable thickness, bounce, and strength, transforming dull and lifeless hair into voluminous, manageable locks.</li>
+                <li id="step9">Natural Stress Relief: Massaging with this herbal blend relaxes the mind, relieves tension, and provides a calming aromatherapy experience.</li>
+                <li id="step10">100% Pure & Chemical-Free: Crafted with 20+ rare herbs and premium base oils with zero artificial fragrances, parabens, or harmful chemicals.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Fangam Organic. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Multi-Language Translation Script -->
+    <script>
+        const translations = {
+            en: {
+                title: "Key Benefits:",
+                steps: [
+                    "Deep Scalp Nourishment: Penetrates deep into hair roots to provide essential nutrients, vitamins, and deep hydration for strong, healthy hair growth.",
+                    "Controls Hair Fall: Strengthens weak hair follicles and effectively reduces hair shedding, breakage, and thinning over regular use.",
+                    "Stimulates Hair Growth: Powerful organic herbs and pure base oils activate dormant follicles, promoting faster and thicker hair growth.",
+                    "Prevents Premature Greying: Rich natural ingredients help retain your hair’s natural pigment and melanin, keeping it dark and youthful.",
+                    "Fights Dandruff & Itchiness: Natural antimicrobial and cooling properties eliminate dandruff flakes, soothe itchy scalps, and clear fungal buildup.",
+                    "Adds Natural Shine & Gloss: Smooths the hair cuticles to give your locks a brilliant, non-greasy natural shine and a silky-smooth texture.",
+                    "Repairs Damaged & Split Ends: Deeply conditions dry, brittle, and heat-damaged hair, restoring vitality and repairing split ends from within.",
+                    "Improves Hair Texture & Volume: Adds noticeable thickness, bounce, and strength, transforming dull and lifeless hair into voluminous, manageable locks.",
+                    "Natural Stress Relief: Massaging with this herbal blend relaxes the mind, relieves tension, and provides a calming aromatherapy experience.",
+                    "100% Pure & Chemical-Free: Crafted with 20+ rare herbs and premium base oils with zero artificial fragrances, parabens, or harmful chemicals."
+                ]
+            },
+            ur: {
+                title: "اہم فوائد (Key Benefits)",
+                steps: [
+                    "سر کی جلد کی گہری غذائیت: جڑوں میں پیوست ہو کر مضبوط اور صحت مند بالوں کی نشوونما کے لیے ضروری وٹامنز اور نمی فراہم کرتا ہے۔",
+                    "بالوں کا گرنا روکے: کمزور بالوں کے مساموں کو مضبوط کرتا ہے اور باقاعدہ استعمال سے بالوں کا ٹوٹنا اور جھڑنا مؤثر طریقے سے کم کرتا ہے۔",
+                    "نئے بال اگانے میں مددگار: طاقتور ہربل جڑی بوٹیاں اور خالص تیل مردہ جڑوں کو متحرک کرتے ہیں، جس سے گھنے اور لمبے بال تیزی سے اگتے ہیں۔",
+                    "وقت سے پہلے بال سفید ہونے سے روکے: بھرپور قدرتی اجزاء بالوں کے قدرتی رنگ اور میلانین کو برقرار رکھتے ہیں تاکہ بال سیاہ اور جوان رہیں۔",
+                    "خشکی اور خارش کا خاتمہ: قدرتی اینٹی مائکروبیل خصوصیات خشکی کے ذرات کو ختم کرتی ہیں، سر کی خارش کو سکون دیتی ہیں اور فنگس کا خاتمہ کرتی ہیں۔",
+                    "قدرتی چمک اور شائن: بالوں کی کیوٹیکلز کو نکھارتا ہے تاکہ بال بغیر کسی چکناہٹ کے ریشمی، ملائم اور چمکدار رہیں۔",
+                    "ڈیمج اور دو منہ والے بالوں کی مرمت: خشک، کمزور اور ہیٹ سے خراب بالوں کو گہرائی سے کنڈیشن کرتا ہے اور دو منہ والے بالوں کو اندر سے ٹھیک کرتا ہے۔",
+                    "بالوں کی ساخت اور گھنا پن بہتر بنائے: بالوں میں جان ڈالتا ہے، انہیں موٹاپا، باؤنس اور مضبوطی بخشتا ہے تاکہ بے جان بال گھنے اور سنبھلنے میں آسان ہو جائیں۔",
+                    "قدرتی ذہنی سکون: اس ہربل تیل سے مالش کرنے سے دماغ کو سکون ملتا ہے، تناؤ دور ہوتا ہے اور ایک پرسکون اروما تھراپی کا احساس ہوتا ہے۔",
+                    "100% خالص اور کیمیکل سے پاک: 20 سے زائد نایاب جڑی بوٹیوں اور پریمیم بیس آئلز سے تیار کردہ، جس میں کوئی مصنوعی خوشبو، پیرابین یا نقصان دہ کیمیکل شامل نہیں۔"
+                ]
+            },
+            ar: {
+                title: "الفوائد الرئيسية:",
+                steps: [
+                    "تغذية عميقة لفروة الرأس: يتغلغل بعمق في جذور الشعر لتوفير العناصر الغذائية الأساسية والفيتامينات لنمو شعر قوي وصحي.",
+                    "يوقف تساقط الشعر: يقوي بصيلات الشعر الضعيفة ويقلل بشكل فعال من تساقط الشعر وتقصفه مع الاستخدام المنتظم.",
+                    "يحفز نمو الشعر: تعمل الأعشاب العضوية القوية والزيوت النقية على تنشيط البصيلات الخاملة، مما يعزز نمو الشعر بشكل أسرع وأكثر كثافة.",
+                    "يمنع الشيب المبكر: تساعد المكونات الطبيعية الغنية في الحفاظ على صبغة الشعر الطبيعية والميلانين ليبقى داكناً وشبابياً.",
+                    "يكافح القشرة والحكة: خصائص طبيعية مضادة للميكروبات تقضي على قشور القشرة وتهدئ فروة الرأس وتزيل تراكم الفطريات.",
+                    "يضيف لمعاناً وبريقاً طبيعياً: ينعم خصلات الشعر ليمنحها لمعاناً طبيعياً مذهلاً وغير دهني وملمساً ناعماً كالحرير.",
+                    "يعالج الشعر التالف والمتقصف: يرطب بعمق الشعر الجاف والتالف ويستعيد حيويته ويصلح الأطراف المتقصفة من الداخل.",
+                    "يحسن ملمس الشعر وحجمه: يضيف كثافة وقوة ملحوظة، محولاً الشعر الباهت إلى خصلات كثيفة وسهلة التصفيف.",
+                    "تخفيف التوتر الطبيعي: التدليك بهذه الخلطة العشبية يرحّب العقل ويخفف التوتر ويمنح تجربة استرخاء مهدئة.",
+                    "نقي 100% وخالي من الكيمياء: مصنوع من أكثر من 20 عشبة نادرة وزيوت أساسية ممتازة دون أي عطور صناعية أو بارابين."
+                ]
+            },
+            hi: {
+                title: "प्रमुख लाभ (Key Benefits):",
+                steps: [
+                    "स्कैल्प का गहरा पोषण: मजबूत और स्वस्थ बालों के विकास के लिए जड़ों तक गहराई से आवश्यक पोषक तत्व और विटामिन पहुंचाता है।",
+                    "बालों का झड़ना रोके: कमजोर बालों के रोम को मजबूत करता है और नियमित उपयोग से बालों के टूटने को कम करता है।",
+                    "बालों के विकास को बढ़ावा दे: शक्तिशाली हर्बल जड़ी-बूटियां और शुद्ध तेल सुप्त रोमों को सक्रिय करते हैं, जिससे बाल घने उगते हैं।",
+                    "समय से पहले सफेद होने से रोके: प्राकृतिक तत्व आपके बालों के प्राकृतिक रंग और पिगमेंट को बनाए रखते हैं, जिससे बाल काले रहते हैं।",
+                    "डैंड्रफ और खुजली से लड़े: प्राकृतिक एंटीमाइक्रोबियल गुण रूसी के कणों को खत्म करते हैं और स्कैल्प को शांत करते हैं।",
+                    "प्राकृतिक चमक और शाइन जोड़े: आपके बालों को बिना चिपचिपाहट के एक शानदार प्राकृतिक चमक और रेशमी बनावट देता है।",
+                    "क्षतिग्रस्त और दोमुंहे बालों की मरम्मत करे: सूखे और कमजोर बालों को गहराई से कंडीशन करता है और दोमुंहे बालों को ठीक करता है।",
+                    "बालों की बनावट और वॉल्यूम सुधारे: बालों में उल्लेखनीय मोटाई, उछाल और मजबूती जोड़ता है, जिससे बाल घने और खूबसूरत दिखते हैं।",
+                    "प्राकृतिक तनाव से राहत: इस हर्बल मिश्रण से मालिश करने से मन को शांति मिलती है, तनाव दूर होता है और आराम मिलता है।",
+                    "100% शुद्ध और रसायन मुक्त: 20+ दुर्लभ जड़ी-बूटियों और प्रीमियम बेस ऑयल से तैयार, बिना किसी कृत्रिम खुशबू या पैराबेन के।"
+                ]
+            },
+            fr: {
+                title: "Principaux avantages :",
+                steps: [
+                    "Nourri profondément le cuir chevelu : Pénètre les racines pour fournir des nutriments essentiels et une hydratation profonde.",
+                    "Contrôle la chute des cheveux : Renforce les follicules pileux faibles et réduit efficacement la casse.",
+                    "Stimule la croissance : Les herbes organiques puissantes activent les follicules pour une pousse plus rapide et épaisse.",
+                    "Prévient les cheveux blancs prématurés : Aide à conserver le pigment naturel et la mélanine des cheveux.",
+                    "Lutte contre les pellicules et les démangeaisons : Propriétés antimicrobiennes naturelles pour apaiser le cuir chevelu.",
+                    "Apporte brillance et éclat naturels : Lisse la cuticule capillaire pour une texture soyeuse et non grasse.",
+                    "Répare les pointes abîmées : Conditionne profondément les cheveux secs et répare les pointes fourchues de l'intérieur.",
+                    "Améliore la texture et le volume : Transforme les cheveux ternes en boucles volumineuses et faciles à coiffer.",
+                    "Soulagement naturel du stress : Le massage avec ce mélange herbal détend l'esprit et soulage la tension.",
+                    "100 % pur et sans produits chimiques : Fabriqué avec plus de 20 herbes rares et huiles de base sans parfums artificiels."
+                ]
+            },
+            es: {
+                title: "Beneficios Clave:",
+                steps: [
+                    "Nutrición profunda del cuero cabelludo: Penetra hasta las raíces para proporcionar nutrientes esenciales e hidratación profunda.",
+                    "Controla la caída del cabello: Fortalece los folículos débiles y reduce eficazmente la rotura y el adelgazamiento.",
+                    "Estimula el crecimiento capilar: Las hierbas orgánicas y aceites puros activan los folículos para un crecimiento más rápido.",
+                    "Previene las canas prematuras: Los ricos ingredientes naturales ayudan a retener el pigmento natural y la melanina del cabello.",
+                    "Combate la caspa y la picazón: Propiedades antimicrobianas naturales que eliminan la caspa y calman el cuero cabelludo.",
+                    "Añade brillo y luminosidad natural: Suaviza la cutícula del cabello para darle un brillo sedoso y sin grasa.",
+                    "Repara puntas dañadas y abiertas: Acondiciona profundamente el cabello seco y dañado, reparando las puntas desde el interior.",
+                    "Mejora la textura y el volumen: Añade grosor, elasticidad y fuerza, transformando el cabello opaco en mechones manejables.",
+                    "Alivio natural del estrés: Masajear con esta mezcla herbal relaja la mente y alivia la tensión.",
+                    "100% Puro y libre de químicos: Elaborado con más de 20 hierbas raras y aceites base sin fragancias artificiales ni parabenos."
+                ]
+            },
+            de: {
+                title: "Hauptvorteile:",
+                steps: [
+                    "Tiefen-Kopfhautnährung: Dringt tief in die Haarwurzeln ein, um Nährstoffe und Feuchtigkeit für starkes Haar zu liefern.",
+                    "Kontrolliert Haarausfall: Stärkt geschwächte Haarfollikel und reduziert Haarbruch effektiv bei regelmäßiger Anwendung.",
+                    "Stimuliert das Haarwachstum: Leistungsstarke Bio-Kräuter und Öle aktivieren ruhende Follikel für schnelleres Wachstum.",
+                    "Verhindert frühzeitiges Ergrauen: Natürliche Inhaltsstoffe bewahren das natürliche Haarpigment und Melanin.",
+                    "Bekämpft Schuppen und Juckreiz: Antimikrobielle und kühlende Eigenschaften beseitigen Schuppen und beruhigen die Kopfhaut.",
+                    "Verleiht natürlichen Glanz: Glättet die Haarkutikula für einen brillanten, nicht fettenden und seidigen Look.",
+                    "Repariert beschädigtes Haar und Spliss: Pflegt trockenes, strapaziertes Haar tiefenwirksam von innen.",
+                    "Verbessert Haartextur und Volumen: Verleiht spürbare Dicke, Sprungkraft und Stärke für voluminöses Haar.",
+                    "Natürliche Stressabbau: Die Massage mit dieser Kräutermischung entspannt den Geist und löst Verspannungen.",
+                    "100% rein und chemiefrei: Hergestellt aus über 20 seltenen Kräutern und Basisölen ohne künstliche Duftstoffe."
+                ]
+            },
+            zh: {
+                title: "主要益处：",
+                steps: [
+                    "深层滋养头皮：深入发根，为强韧健康的头发生长提供必需的营养、维生素和深层保湿。",
+                    "控油防脱：强健脆弱的发囊，在定期使用下有效减少头发脱落、断裂和变薄。",
+                    "促进头发生长：强效有机草本和纯净基底油可激活休眠毛囊，促进更快更浓密的头发生长。",
+                    "预防白发早生：丰富的天然成分有助于保持头发的天然色素和黑色素，使其保持乌黑亮丽。",
+                    "去屑止痒：天然抗菌和清凉特性可消除头屑，舒缓发痒头皮并清除真菌积聚。",
+                    "增添天然光泽：平滑毛鳞片，让您的秀发焕发耀眼、不油腻的天然光泽和丝滑质感。",
+                    "修护受损和分叉：深层调理干燥、脆弱和热损伤的头发，从内部恢复活力并修护分叉。",
+                    "改善发质与发量：增加明显的厚度、弹性和强度，将暗沉无生气的头发转变为丰盈易打理的秀发。",
+                    "天然舒缓压力：用这种草本混合物按摩可放松身心，缓解紧张情绪，带来平静的芳香疗法体验。",
+                    "100%纯天然无化学添加：采用20多种珍贵草本和优质基础油制成，绝无人工香精、对羟基苯甲酸酯或有害化学物质。"
+                ]
+            },
+            tr: {
+                title: "Temel Faydaları:",
+                steps: [
+                    "Derin Kafa Derisi Beslenmesi: Güçlü ve sağlıklı saç büyümesi için köklere derinlemesine nüfuz ederek gerekli besinleri sağlar.",
+                    "Saç Dökülmesini Kontrol Eder: Zayıf saç köklerini güçlendirir ve düzenli kullanımda dökülmeyi etkili bir şekilde azaltır.",
+                    "Saç Büyümesini Uyarır: Güçlü organik bitkiler ve saf baz yağlar, daha hızlı ve kalın saç büyümesini destekler.",
+                    "Erken Beyazlamayı Önler: Zengin doğal içerikler saçın doğal pigmentini ve melaninini korumasına yardımcı olur.",
+                    "Kefeni ve Kaşıntıyı Önler: Doğal antimikrobiyal özellikler kepek pullarını ortadan kaldırır ve kafa derisini yatıştırır.",
+                    "Doğal Parlaklık Katar: Saç tellerini pürüzsüzleştirerek muhteşem, yağsız ve ipeksi bir doku kazandırır.",
+                    "Hasarlı ve Kırık Uçları Onarır: Kuru ve yıpranmış saçları derinlemesine onararak canlılığını geri kazandırır.",
+                    "Saç Doku ve Hacmini Artırır: Mat ve cansız saçları hacimli, kolay taranan saçlara dönüştürür.",
+                    "Doğal Stres Giderici: Bu bitkisel karışımla masaj yapmak zihni rahatlatır ve gerginliği alır.",
+                    "%100 Saf ve Kimyasal İçermez: Yapay koku, paraben veya zararlı kimyasallar içermeyen 20'den fazla nadir bitki ile üretilmiştir."
+                ]
+            },
+            it: {
+                title: "Benefici Principali:",
+                steps: [
+                    "Profondo nutrimento del cuoio capelluto: Penetra in profondità nelle radici per fornire nutrienti essenziali e idratazione.",
+                    "Controlla la caduta dei capelli: Rinforza i follicoli deboli riducendo efficacemente la rottura e il diradamento.",
+                    "Stimola la crescita dei capelli: Le potenti erbe biologiche e gli oli puri attivano i follicoli per una crescita più folta.",
+                    "Previene l'ingמורimento precoce: I ricchi ingredienti naturali aiutano a trattenere il pigmento naturale e la melanina.",
+                    "Combatte forfora e prurito: Proprietà antimicrobiche naturali eliminano la forfora e leniscono il cuoio capelluto.",
+                    "Aggiunge lucentezza e brillantezza naturale: Leviga la cuticola donando una lucentezza setosa e non unta.",
+                    "Ripara capelli danneggiati e doppie punte: Condiziona profondamente i capelli secchi ripristinandone la vitalità dall'interno.",
+                    "Migliora consistenza e volume: Aggiunge spessore ed elasticità, trasformando i capelli spenti in ciocche voluminose.",
+                    "Naturale sollievo dallo stress: Massaggiare con questa miscela di erbe rilassa la mente e allevia la tensione.",
+                    "100% Puro e senza sostanze chimiche: Realizzato con oltre 20 erbe rare e oli base senza profumi artificiali o parabeni."
+                ]
+            }
+        };
+
+        function changeLanguage() {
+            const selectedLang = document.getElementById("languageSelect").value;
+            const data = translations[selectedLang];
+            const bodyElement = document.body;
+            const stepsList = document.getElementById("steps-list");
+            
+            document.getElementById("page-title").innerText = data.title;
+            
+            if (selectedLang === 'ur' || selectedLang === 'ar') {
+                bodyElement.classList.remove('ltr-mode');
+                bodyElement.classList.add('rtl-mode');
+                stepsList.style.direction = "rtl";
+            } else {
+                bodyElement.classList.remove('rtl-mode');
+                bodyElement.classList.add('ltr-mode');
+                stepsList.style.direction = "ltr";
+            }
+
+            for (let i = 0; i < data.steps.length; i++) {
+                const stepElement = document.getElementById("step" + (i + 1));
+                if (stepElement) {
+                    stepElement.innerText = data.steps[i];
+                }
+            }
+        }
+    </script>
+</body>
+</html>
