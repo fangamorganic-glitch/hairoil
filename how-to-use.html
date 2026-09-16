@@ -173,7 +173,6 @@
     <header>
         <div class="logo-area">
             <a href="index.html">
-                <!-- Corrected Logo File Name -->
                 <img src="logo.png" alt="Fangam Organic Logo">
             </a>
         </div>
@@ -209,7 +208,6 @@
         <div class="usage-card">
             <!-- Left Side: Product Bottle Image -->
             <div class="image-side">
-                <!-- Corrected Bottle File Name -->
                 <img src="bottle.png" alt="Fangam Organic Hair Oil Bottle">
             </div>
 
@@ -340,7 +338,7 @@
                     "5-10 dakika nazikçe masaj yapın.",
                     "2-3 saat veya gece boyunca bekletin.",
                     "Bitkisel şampuanla yıkayın.",
-                    "Haftada 3-5 kez kullanın.",
+                    "Haftada 3-5 kez kullanین.",
                     "Saçınızı tarayın.",
                     "Kullanmadan önce iyice çalkalayın."
                 ]
@@ -365,10 +363,8 @@
             const bodyElement = document.body;
             const stepsList = document.getElementById("steps-list");
             
-            // Update Title
             document.getElementById("page-title").innerText = data.title;
             
-            // Switch direction classes cleanly for RTL/LTR
             if (selectedLang === 'ur' || selectedLang === 'ar') {
                 bodyElement.classList.remove('ltr-mode');
                 bodyElement.classList.add('rtl-mode');
@@ -379,7 +375,6 @@
                 stepsList.style.direction = "ltr";
             }
 
-            // Update Steps text
             for (let i = 0; i < data.steps.length; i++) {
                 const stepElement = document.getElementById("step" + (i + 1));
                 if (stepElement) {
