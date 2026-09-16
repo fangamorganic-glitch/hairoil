@@ -18,51 +18,39 @@
             color: #2c3e50;
             line-height: 1.8;
         }
-        /* Header & Navigation */
+        /* Header & Centered Logo Area */
         header {
             background: #27ae60;
             color: white;
-            padding: 15px 30px;
+            padding: 20px 30px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .logo-area img {
-            height: 55px;
+            height: 65px;
             width: auto;
             border-radius: 50%;
             background: white;
             padding: 2px;
             object-fit: contain;
         }
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover {
-            color: #f1c40f;
-        }
+        
         /* Main Container */
         .container {
             max-width: 800px;
-            margin: 40px auto;
+            margin: 30px auto;
             padding: 0 20px;
         }
-        /* Language Selector Bar */
+        
+        /* Centered Language Selector Bar */
         .lang-bar {
-            text-align: right;
-            margin-bottom: 20px;
+            text-align: center;
+            margin-bottom: 25px;
         }
         .lang-bar select {
-            padding: 8px 15px;
+            padding: 8px 20px;
             border-radius: 20px;
             border: 1px solid #27ae60;
             background: white;
@@ -71,7 +59,9 @@
             color: #27ae60;
             cursor: pointer;
             outline: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
+
         /* Clean Full-Width Card Layout */
         .usage-card {
             background: white;
@@ -140,28 +130,21 @@
 </head>
 <body class="ltr-mode">
 
-    <!-- Header / Navigation -->
+    <!-- Header / Centered Logo -->
     <header>
         <div class="logo-area">
             <a href="#">
-                <!-- آپ یہاں لوگو کا یو آر ایل خود درج کر سکتے ہیں -->
                 <img src="https://lh3.googleusercontent.com/d/1vxrQpsgOFSRaTifTZ53S4zmXVgM-KBu5" alt="Fangam Organic Logo">
             </a>
         </div>
-        <nav>
-            <ul>
-                <li><a href="ingredients.html">Ingredients</a></li>
-                <li><a href="how-to-use.html" style="color: #f1c40f;">How to Use</a></li>
-            </ul>
-        </nav>
     </header>
 
     <!-- Main Content -->
     <div class="container">
         
-        <!-- Language Selector Dropdown -->
+        <!-- Centered Language Selector Dropdown -->
         <div class="lang-bar">
-            <label for="languageSelect" style="font-weight: 600; margin-left: 10px; color: #2d3748;">🌐 Language / زبان:</label>
+            <label for="languageSelect" style="font-weight: 600; margin-left: 5px; margin-right: 8px; color: #2d3748;">🌐 Language / زبان:</label>
             <select id="languageSelect" onchange="changeLanguage()">
                 <option value="en">English</option>
                 <option value="ur">اردو (Urdu)</option>
@@ -300,7 +283,7 @@
                 steps: [
                     "Yağı kafa derisine ve saç köklerine uygulayın.",
                     "5-10 dakika nazikçe masaj yapın.",
-                    "2-3 saat یا gece boyunca bekletin.",
+                    "2-3 saat veya gece boyunca bekletin.",
                     "Bitkisel şampuanla yıkayın.",
                     "Haftada 3-5 kez kullanın.",
                     "Saçınızı tarayın.",
