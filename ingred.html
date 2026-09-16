@@ -326,7 +326,7 @@
 <body class="ltr-mode" id="mainBody">
 
     <header>
-        <!-- 1. Brand Logo (آپ یہاں اپنے لوگو کا لنک یا امیج پاتھ دے سکتے ہیں) -->
+        <!-- 1. Brand Logo -->
         <div class="brand-logo-container">
             <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=200&auto=format&fit=crop&q=80" alt="Fangam Organic Logo">
         </div>
@@ -347,7 +347,7 @@
             </select>
         </div>
         
-        <!-- Hidden Google Translate Element to power the background translation -->
+        <!-- Hidden Google Translate Element -->
         <div id="google_translate_element" style="display:none;"></div>
 
         <!-- 3. Main Title -->
@@ -418,7 +418,7 @@
                     <input type="file" id="productImageFile" accept="image/*" required onchange="encodeImageFileAsURL(this)">
                     <input type="hidden" id="productImageBase64">
                 </div>
-                <div class="loading-spinner" id="loadingSpinner">Saving...</div>
+                <div class="loading-spinner" id="loadingSpinner">Saving to Google Sheet...</div>
                 <div class="modal-btns">
                     <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
                     <button type="submit" class="btn btn-primary" id="saveBtn">Save & Publish</button>
@@ -445,22 +445,15 @@
                 id: '1',
                 category: 'base-oils',
                 name: 'Mustard Oil',
-                desc: 'Effect on Hair: Mustard oil is a heavy, warming, and deeply penetrating oil. When massaged into the scalp, it stimulates blood circulation, which helps activate dormant hair follicles and promotes natural growth. Its antimicrobial and antifungal properties help keep the scalp clean and prevent dandruff.',
+                desc: 'Effect on Hair: Mustard oil is a heavy, warming, and deeply penetrating oil. When massaged into the scalp, it stimulates blood circulation, which helps activate dormant hair follicles and promotes natural growth.',
                 image: 'https://images.unsplash.com/photo-1608248597359-f53856cb3c0b?w=600&auto=format&fit=crop&q=80'
             },
             {
                 id: '2',
                 category: 'base-oils',
                 name: 'Coconut Oil',
-                desc: 'Effect on Hair: Coconut oil has a unique chemical structure featuring a high affinity for hair proteins, allowing it to penetrate deep into the hair shaft rather than just coating the surface. Prevents protein loss from washing and reduces hygral fatigue.',
+                desc: 'Effect on Hair: Coconut oil has a unique chemical structure featuring a high affinity for hair proteins, allowing it to penetrate deep into the hair shaft rather than just coating the surface.',
                 image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=600&auto=format&fit=crop&q=80'
-            },
-            {
-                id: '3',
-                category: 'base-oils',
-                name: 'Castor Oil',
-                desc: 'Effect on Hair: Castor oil penetrates deep into roots when infused in Fangam Organic oils, providing ultimate nourishment. Accelerates Hair Growth & Thickness and prevents split ends and hair breakage.',
-                image: 'https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=600&auto=format&fit=crop&q=80'
             }
         ];
 
@@ -494,7 +487,6 @@
             });
         }
 
-        // Bridge function to trigger Google Translate via custom dropdown
         function changeLanguage(langCode) {
             const selectField = document.querySelector('.goog-te-combo');
             if (selectField) {
@@ -502,7 +494,6 @@
                 selectField.dispatchEvent(new Event('change'));
             }
             
-            // Apply RTL instantly for Urdu, Arabic, Persian
             const body = document.getElementById('mainBody');
             if (['ur', 'ar', 'fa'].includes(langCode)) {
                 body.className = 'rtl-mode';
@@ -511,16 +502,13 @@
             }
         }
 
-        // Sync custom dropdown with cookie on page load
         window.onload = function() {
             renderProducts();
-            
             const cookieMatch = document.cookie.match(/googtrans=\/en\/([a-z-]+)/);
             if (cookieMatch) {
                 const activeLang = cookieMatch[1];
                 const dropdown = document.getElementById('customLangSelect');
                 if (dropdown) dropdown.value = activeLang;
-                
                 if (['ur', 'ar', 'fa'].includes(activeLang)) {
                     document.getElementById('mainBody').className = 'rtl-mode';
                 }
@@ -545,7 +533,7 @@
         }
 
         function verifyPassword() {
-            const pwd = document.getElementById('adminPasswordInput').value;
+            const pwd = document.getElementById('adminPasswordInput' ).value;
             if (pwd === 'fangam123' || pwd === 'admin123') {
                 closeModals();
                 document.getElementById('productModal').style.display = 'flex';
@@ -559,8 +547,20 @@
             document.getElementById('productModal').style.display = 'none';
         }
 
+        // ==========================================
+        // GOOGLE SHEET SUBMISSION FUNCTION
+        // ==========================================
         function handleProductSubmit(event) {
             event.preventDefault();
+            
+            // 👇 یہاں نیچے کوٹس کے اندر اپنا گوگل ایپ سکرپٹ کا یو آر ایل پیسٹ کریں 👇
+            const scriptURL = 'YOUR_APPS_SCRIPT_URL_HERE'; 
+
+            if (scriptURL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+                alert('Please update your Google Apps Script URL in the code first!');
+                return;
+            }
+
             const categoryEl = document.getElementById('productCategory').value;
             const name = document.getElementById('productName').value;
             const desc = document.getElementById('productDesc').value;
@@ -571,14 +571,42 @@
                 return;
             }
 
-            const newProduct = { id: Date.now().toString(), category: categoryEl, name, desc, image };
-            products.push(newProduct);
-            localStorage.setItem('fangam_products', JSON.stringify(products));
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('saveBtn').disabled = true;
 
-            document.getElementById('productForm').reset();
-            closeModals();
-            renderProducts();
-            alert('Product added successfully!');
+            const newProduct = { 
+                id: Date.now().toString(), 
+                category: categoryEl, 
+                name: name, 
+                desc: desc, 
+                image: image 
+            };
+
+            // Send data to Google Sheet via fetch
+            fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newProduct)
+            })
+            .then(() => {
+                // Also save locally so it updates immediately on screen
+                products.push(newProduct);
+                localStorage.setItem('fangam_products', JSON.stringify(products));
+
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('saveBtn').disabled = false;
+                document.getElementById('productForm').reset();
+                closeModals();
+                renderProducts();
+                alert('Product successfully added and saved to Google Sheet!');
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('saveBtn').disabled = false;
+                alert('Error saving to Google Sheet. Please check your URL.');
+            });
         }
     </script>
 </body>
