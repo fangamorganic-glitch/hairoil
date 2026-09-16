@@ -52,7 +52,7 @@
         }
         /* Main Container */
         .container {
-            max-width: 1000px;
+            max-width: 800px;
             margin: 40px auto;
             padding: 0 20px;
         }
@@ -72,42 +72,20 @@
             cursor: pointer;
             outline: none;
         }
-        /* Card Layout */
+        /* Clean Full-Width Card Layout */
         .usage-card {
             background: white;
             border-radius: 15px;
             box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-            display: flex;
-            flex-wrap: wrap;
-            overflow: hidden;
-            border: 1px solid #e8f5e9;
-        }
-        .image-side {
-            flex: 1;
-            min-width: 300px;
-            background: #f4f6f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-        }
-        .image-side img {
-            max-width: 100%;
-            height: 420px;
-            object-fit: contain;
-            border-radius: 10px;
-        }
-        .content-side {
-            flex: 1.2;
-            min-width: 300px;
             padding: 40px;
+            border: 1px solid #e8f5e9;
         }
         h1 {
             color: #27ae60;
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 25px;
             border-bottom: 2px solid #e8f5e9;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
         
         /* Dynamic List Styling */
@@ -116,14 +94,14 @@
         }
         ul.steps li {
             position: relative;
-            margin-bottom: 18px;
-            font-size: 1.05rem;
+            margin-bottom: 22px;
+            font-size: 1.15rem;
             color: #333;
         }
 
         /* LTR Layout (English, etc.) */
         body.ltr-mode ul.steps li {
-            padding-left: 30px;
+            padding-left: 35px;
             text-align: left;
         }
         body.ltr-mode ul.steps li::before {
@@ -135,7 +113,7 @@
 
         /* RTL Layout (Urdu, Arabic) */
         body.rtl-mode ul.steps li {
-            padding-right: 30px;
+            padding-right: 35px;
             text-align: right;
             font-family: 'Noto Nastaliq Urdu', sans-serif;
         }
@@ -158,13 +136,6 @@
             padding: 25px;
             margin-top: 50px;
         }
-
-        /* Responsive */
-        @media(max-width: 768px) {
-            .usage-card {
-                flex-direction: column;
-            }
-        }
     </style>
 </head>
 <body class="ltr-mode">
@@ -173,7 +144,8 @@
     <header>
         <div class="logo-area">
             <a href="index.html">
-                <img src="logo.png" alt="Fangam Organic Logo">
+                <!-- آپ یہاں لوگو کا یو آر ایل خود درج کر سکتے ہیں -->
+                <img src="YOUR_LOGO_URL_HERE" alt="Fangam Organic Logo">
             </a>
         </div>
         <nav>
@@ -206,24 +178,17 @@
         </div>
 
         <div class="usage-card">
-            <!-- Left Side: Product Bottle Image -->
-            <div class="image-side">
-                <img src="bottle.png" alt="Fangam Organic Hair Oil Bottle">
-            </div>
-
-            <!-- Right Side: How to Use Steps -->
-            <div class="content-side">
-                <h1 id="page-title">How to Use:</h1>
-                <ul class="steps" id="steps-list">
-                    <li id="step1">Apply oil to scalp and roots.</li>
-                    <li id="step2">Massage gently for 5–10 mins.</li>
-                    <li id="step3">Leave for 2–3 hours or overnight.</li>
-                    <li id="step4">Wash off with a herbal shampoo.</li>
-                    <li id="step5">Use 3–5 times a week.</li>
-                    <li id="step6">Comb through hair.</li>
-                    <li id="step7">Shake well before use.</li>
-                </ul>
-            </div>
+            <!-- How to Use Content (No Image Hassle) -->
+            <h1 id="page-title">How to Use:</h1>
+            <ul class="steps" id="steps-list">
+                <li id="step1">Apply oil to scalp and roots.</li>
+                <li id="step2">Massage gently for 5–10 mins.</li>
+                <li id="step3">Leave for 2–3 hours or overnight.</li>
+                <li id="step4">Wash off with a herbal shampoo.</li>
+                <li id="step5">Use 3–5 times a week.</li>
+                <li id="step6">Comb through hair.</li>
+                <li id="step7">Shake well before use.</li>
+            </ul>
         </div>
     </div>
 
@@ -338,7 +303,7 @@
                     "5-10 dakika nazikçe masaj yapın.",
                     "2-3 saat veya gece boyunca bekletin.",
                     "Bitkisel şampuanla yıkayın.",
-                    "Haftada 3-5 kez kullanین.",
+                    "Haftada 3-5 kez kullanın.",
                     "Saçınızı tarayın.",
                     "Kullanmadan önce iyice çalkalayın."
                 ]
