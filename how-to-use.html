@@ -29,8 +29,11 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .logo-area img {
-            height: 50px;
+            height: 55px;
             width: auto;
+            border-radius: 50%;
+            background: white;
+            padding: 2px;
         }
         nav ul {
             list-style: none;
@@ -89,10 +92,9 @@
         }
         .image-side img {
             max-width: 100%;
-            height: 400px;
+            height: 380px;
             object-fit: contain;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         .content-side {
             flex: 1.2;
@@ -106,22 +108,47 @@
             border-bottom: 2px solid #e8f5e9;
             padding-bottom: 10px;
         }
+        
+        /* Dynamic List Styling */
         ul.steps {
             list-style: none;
         }
         ul.steps li {
             position: relative;
-            padding-right: 30px;
             margin-bottom: 18px;
             font-size: 1.05rem;
             color: #333;
         }
-        ul.steps li::before {
+
+        /* LTR Layout (English, etc.) */
+        body.ltr-mode ul.steps li {
+            padding-left: 30px;
+            text-align: left;
+        }
+        body.ltr-mode ul.steps li::before {
+            content: "🌿";
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* RTL Layout (Urdu, Arabic) */
+        body.rtl-mode ul.steps li {
+            padding-right: 30px;
+            text-align: right;
+            font-family: 'Noto Nastaliq Urdu', sans-serif;
+        }
+        body.rtl-mode ul.steps li::before {
             content: "🌿";
             position: absolute;
             right: 0;
             top: 0;
         }
+        body.rtl-mode h1 {
+            text-align: right;
+            font-family: 'Noto Nastaliq Urdu', sans-serif;
+        }
+
         /* Footer */
         footer {
             background: #2c3e50;
@@ -130,6 +157,7 @@
             padding: 25px;
             margin-top: 50px;
         }
+
         /* Responsive */
         @media(max-width: 768px) {
             .usage-card {
@@ -138,13 +166,14 @@
         }
     </style>
 </head>
-<body>
+<body class="ltr-mode">
 
     <!-- Header / Navigation -->
     <header>
         <div class="logo-area">
             <a href="index.html">
-                <img src="https://fangamorganic.gt.tc/wp-content/uploads/2026/09/Artboard-1-1.png" alt="Fangam Organic Logo">
+                <!-- Updated Brand Logo -->
+                <img src="https://fangamorganic-glitch.github.io/hairoil/logo.png" alt="Fangam Organic Logo" onerror="this.src='https://raw.githubusercontent.com/fangamorganic-glitch/hairoil/main/logo.png'">
             </a>
         </div>
         <nav>
@@ -179,7 +208,7 @@
         <div class="usage-card">
             <!-- Left Side: Product Bottle Image -->
             <div class="image-side">
-                <img src="https://fangamorganic-glitch.github.io/hairoil/bottle.png" alt="Fangam Organic Hair Oil Bottle" onerror="this.src='https://fangamorganic.gt.tc/wp-content/uploads/2026/09/Artboard-1-1.png'">
+                <img src="https://fangamorganic-glitch.github.io/hairoil/bottle.png" alt="Fangam Organic Hair Oil Bottle">
             </div>
 
             <!-- Right Side: How to Use Steps -->
@@ -219,9 +248,9 @@
                 ]
             },
             ur: {
-                title: "استعمال کا طریقہ:",
+                title: "استعمال کا طریقہ",
                 steps: [
-                    "تیل کو سر کی جلد (scalp) اور جڑوں پر لگائیں۔",
+                    "تیل کو سر کی جلد اور جڑوں پر لگائیں۔",
                     "5 سے 10 منٹ تک ہلکے ہاتھوں سے مساج کریں۔",
                     "2 سے 3 گھنٹے یا پوری رات لگا رہنے دیں۔",
                     "کسی اچھے ہربل شیمپو سے بال دھو لیں۔",
@@ -231,7 +260,7 @@
                 ]
             },
             ar: {
-                title: "طريقة الاستخدام:",
+                title: "طريقة الاستخدام",
                 steps: [
                     "ضعي الزيت على فروة الرأس والجذور.",
                     "دلكي بلطف لمدة 5-10 دقائق.",
@@ -331,21 +360,24 @@
         function changeLanguage() {
             const selectedLang = document.getElementById("languageSelect").value;
             const data = translations[selectedLang];
+            const bodyElement = document.body;
+            const stepsList = document.getElementById("steps-list");
             
             // Update Title
             document.getElementById("page-title").innerText = data.title;
             
-            // Update Steps list direction for Urdu/Arabic
-            const stepsList = document.getElementById("steps-list");
+            // Switch direction classes cleanly for RTL/LTR
             if (selectedLang === 'ur' || selectedLang === 'ar') {
+                bodyElement.classList.remove('ltr-mode');
+                bodyElement.classList.add('rtl-mode');
                 stepsList.style.direction = "rtl";
-                stepsList.style.textAlign = "right";
             } else {
+                bodyElement.classList.remove('rtl-mode');
+                bodyElement.classList.add('ltr-mode');
                 stepsList.style.direction = "ltr";
-                stepsList.style.textAlign = "left";
             }
 
-            // Update Steps
+            // Update Steps text
             for (let i = 0; i < data.steps.length; i++) {
                 const stepElement = document.getElementById("step" + (i + 1));
                 if (stepElement) {
