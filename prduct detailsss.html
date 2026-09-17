@@ -6,134 +6,170 @@
     <title>Fangam Organic Catalog</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: #eef2f3; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        body { 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 20px;
+        }
 
-        /* Mobile Screen Mockup */
-        .mobile-screen {
+        /* Full Screen Desktop Wrapper */
+        .container {
             width: 100%;
-            max-width: 400px;
-            height: 85vh;
+            max-width: 1100px;
             background: #ffffff;
-            border-radius: 35px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             overflow: hidden;
             position: relative;
-            border: 8px solid #2c3e50;
+            display: flex;
+            flex-direction: column;
+            min-height: 90vh;
         }
 
-        /* App Header */
-        .app-header {
+        /* Header */
+        .header {
             background: #2c5e3b;
             color: white;
-            padding: 20px;
+            padding: 30px 20px;
             text-align: center;
-            font-size: 1.3rem;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-            position: relative;
+        }
+        .header h1 { font-size: 2.2rem; margin-bottom: 8px; letter-spacing: 1px; }
+        .header p { font-size: 1rem; opacity: 0.9; }
+
+        /* Main Content Layout */
+        .main-content {
+            padding: 40px 30px;
+            flex: 1;
         }
 
-        /* Secret Admin Trigger Button */
-        .secret-trigger {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 22px;
-            height: 22px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .section-title h2 { font-size: 1.6rem; color: #2c5e3b; margin-bottom: 5px; }
+        .section-title p { color: #666; font-size: 0.95rem; }
+
+        /* Category Cards Grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .cat-card {
+            background: #ffffff;
+            border: 2px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
             cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cat-card:hover {
+            border-color: #2c5e3b;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(44,94,59,0.15);
+        }
+
+        .cat-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+        }
+
+        .cat-card h3 {
+            font-size: 1.4rem;
+            color: #2c5e3b;
+            margin-bottom: 10px;
+        }
+
+        .explore-btn {
+            background: #2c5e3b;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: auto;
+        }
+        .cat-card:hover .explore-btn { background: #1e3f27; }
+
+        /* Secret Bottom-Right Admin Logo/Button */
+        .admin-trigger {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #2c5e3b;
+            color: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            color: white;
-            transition: background 0.2s;
-        }
-        .secret-trigger:hover { background: rgba(255,255,255,0.4); }
-
-        /* App Body */
-        .app-body {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            background: #f9f9f9;
-        }
-
-        .welcome-text {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #333;
-        }
-        .welcome-text h3 { font-size: 1.2rem; color: #2c5e3b; margin-bottom: 5px; }
-        .welcome-text p { font-size: 0.85rem; color: #666; }
-
-        /* Category Selection Buttons */
-        .category-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .cat-btn {
-            background: #ffffff;
-            border: 2px solid #2c5e3b;
-            color: #2c5e3b;
-            padding: 16px;
-            border-radius: 14px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 24px;
             cursor: pointer;
-            transition: all 0.25s ease;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(44,94,59,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+            z-index: 100;
         }
+        .admin-trigger:hover { transform: scale(1.1); }
 
-        .cat-btn:hover {
-            background: #2c5e3b;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(44,94,59,0.15);
-        }
-
-        /* Generic Modal Popups */
+        /* Modals */
         .modal {
             display: none;
-            position: absolute;
+            position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.6);
             justify-content: center;
             align-items: center;
-            z-index: 200;
+            z-index: 1000;
+            padding: 20px;
         }
 
-        .modal-content {
+        .modal-box {
             background: white;
-            width: 92%;
-            max-height: 82vh;
+            width: 100%;
+            max-width: 600px;
+            max-height: 85vh;
             border-radius: 20px;
-            padding: 20px;
+            padding: 30px;
             overflow-y: auto;
             position: relative;
-            animation: popUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeIn 0.3s ease;
         }
 
-        @keyframes popUp {
-            from { transform: scale(0.8); opacity: 0; }
+        @keyframes fadeIn {
+            from { transform: scale(0.9); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
 
-        .close-modal {
+        .close-btn {
             float: right;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: bold;
             cursor: pointer;
             color: #e74c3c;
             background: #fde8e8;
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -142,59 +178,64 @@
 
         .modal-title {
             color: #2c5e3b;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
             font-weight: bold;
         }
 
-        /* Product Cards inside Modal */
-        .product-card {
-            background: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            padding: 12px;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        /* Items Display Grid inside Category Modal */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
         }
 
-        .product-card img {
-            width: 65px;
-            height: 65px;
+        .item-card {
+            background: #fdfdfd;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .item-card img {
+            width: 100%;
+            height: 130px;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
             border: 1px solid #eee;
         }
 
-        .product-info h4 { font-size: 1rem; color: #333; margin-bottom: 4px; }
-        .product-info p { font-size: 0.8rem; color: #666; line-height: 1.2; }
+        .item-card h4 { font-size: 1.1rem; color: #333; margin-bottom: 5px; }
+        .item-card p { font-size: 0.85rem; color: #666; line-height: 1.3; }
 
-        /* Admin Form Elements */
-        .admin-form label {
+        /* Admin Form Inputs */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
             display: block;
-            font-size: 0.85rem;
             font-weight: 600;
             color: #444;
             margin-bottom: 5px;
-            margin-top: 10px;
+            font-size: 0.9rem;
         }
-
-        .admin-form input, .admin-form select, .admin-form textarea {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
-            padding: 10px;
+            padding: 10px 12px;
             border: 1px solid #ccc;
             border-radius: 8px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             outline: none;
         }
-
-        .admin-form input:focus, .admin-form select:focus, .admin-form textarea:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             border-color: #2c5e3b;
         }
 
-        .save-btn {
+        .submit-btn {
             background: #2c5e3b;
             color: white;
             border: none;
@@ -202,133 +243,155 @@
             padding: 12px;
             border-radius: 8px;
             font-weight: bold;
-            cursor: pointer;
-            margin-top: 15px;
             font-size: 1rem;
-        }
-        .save-btn:hover { background: #1e3f27; }
-
-        .back-btn {
-            background: #7f8c8d;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
             cursor: pointer;
-            font-size: 0.85rem;
-            margin-bottom: 10px;
+            margin-top: 10px;
         }
+        .submit-btn:hover { background: #1e3f27; }
     </style>
 </head>
 <body>
 
-    <div class="mobile-screen">
-        <!-- Secret Admin Trigger Icon (Top Right) -->
-        <div class="secret-trigger" onclick="openAdminModal()" title="Upload & Add Items">⚙</div>
-
-        <!-- App Header -->
-        <div class="app-header">
-            Fangam Organic
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Fangam Organic</h1>
+            <p>Pure & Natural Herbal Products Catalog</p>
         </div>
 
-        <!-- Main Body Categories Selection -->
-        <div class="app-body">
-            <div class="welcome-text">
-                <h3>Welcome Catalog</h3>
-                <p>Select a category below to explore ingredients:</p>
+        <!-- Main Content Section -->
+        <div class="main-content">
+            <div class="section-title">
+                <h2>Welcome to Catalog</h2>
+                <p>Select a category below to explore our pure ingredients:</p>
             </div>
 
-            <div class="category-menu">
-                <button class="cat-btn" onclick="openCategory('Seeds')">Seeds</button>
-                <button class="cat-btn" onclick="openCategory('Base Oils')">Base Oils</button>
-                <button class="cat-btn" onclick="openCategory('Herbs')">Herbs</button>
+            <!-- Categories Grid with Large Professional Layout -->
+            <div class="category-grid">
+                <!-- Seeds Category -->
+                <div class="cat-card" onclick="openCategory('Seeds')">
+                    <img src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=400" alt="Seeds">
+                    <h3>Seeds (بیج)</h3>
+                    <button class="explore-btn">Explore Seeds</button>
+                </div>
+
+                <!-- Base Oils Category -->
+                <div class="cat-card" onclick="openCategory('Base Oils')">
+                    <img src="https://images.unsplash.com/photo-1608248597359-f584742f9b84?w=400" alt="Base Oils">
+                    <h3>Base Oils (بیس آئل)</h3>
+                    <button class="explore-btn">Explore Base Oils</button>
+                </div>
+
+                <!-- Herbs Category -->
+                <div class="cat-card" onclick="openCategory('Herbs')">
+                    <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=400" alt="Herbs">
+                    <h3>Herbs (ہربز)</h3>
+                    <button class="explore-btn">Explore Herbs</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Category Items View Modal -->
+    <!-- Secret Bottom-Right Admin Trigger Logo -->
+    <div class="admin-trigger" onclick="promptPassword()" title="Admin Panel">⚙</div>
+
+    <!-- Category Items Modal Popup -->
     <div class="modal" id="categoryModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('categoryModal')">&times;</span>
-            <button class="back-btn" onclick="closeModal('categoryModal')">← Back</button>
-            <h3 class="modal-title" id="modalCategoryTitle">Category Items</h3>
-            <div id="productList">
-                <!-- Dynamic Items Populated Here -->
+        <div class="modal-box">
+            <span class="close-btn" onclick="closeModal('categoryModal')">&times;</span>
+            <h2 class="modal-title" id="modalCategoryTitle">Category Items</h2>
+            <div class="items-grid" id="itemsGridContainer">
+                <!-- Dynamic Items Inserted Here -->
             </div>
         </div>
     </div>
 
-    <!-- Admin Upload Panel Modal -->
+    <!-- Admin Password & Management Modal -->
     <div class="modal" id="adminModal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('adminModal')">&times;</span>
-            <h3 class="modal-title">Admin Upload Panel</h3>
-            <div class="admin-form">
+        <div class="modal-box" style="max-width: 450px;">
+            <span class="close-btn" onclick="closeModal('adminModal')">&times;</span>
+            <h2 class="modal-title">Admin Management Panel</h2>
+            
+            <div class="form-group">
                 <label>Select Category:</label>
-                <select id="itemCategory">
+                <select id="adminCategory">
                     <option value="Seeds">Seeds</option>
                     <option value="Base Oils">Base Oils</option>
                     <option value="Herbs">Herbs</option>
                 </select>
-
-                <label>Item Name:</label>
-                <input type="text" id="itemName" placeholder="e.g. Kalonji Seeds">
-
-                <label>Description:</label>
-                <textarea id="itemDesc" rows="2" placeholder="Short details..."></textarea>
-
-                <label>Upload Product Image:</label>
-                <input type="file" id="itemImageFile" accept="image/*">
-
-                <button class="save-btn" onclick="saveNewItem()">Save & Publish Item</button>
             </div>
+
+            <div class="form-group">
+                <label>Product Name:</label>
+                <input type="text" id="adminName" placeholder="e.g. Kalonji Seeds">
+            </div>
+
+            <div class="form-group">
+                <label>Description:</label>
+                <textarea id="adminDesc" rows="3" placeholder="Enter details..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Upload Product Image:</label>
+                <input type="file" id="adminImageFile" accept="image/*">
+            </div>
+
+            <button class="submit-btn" onclick="saveProductItem()">Save & Publish Product</button>
         </div>
     </div>
 
 <script>
-    // Initial local database array
+    // Initial Database storage array with sample items
     let database = [
         {
             category: "Seeds",
             name: "Kalonji Seeds",
-            description: "High quality pure black seeds.",
-            image: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=150"
+            description: "High quality pure black seeds for organic formulation.",
+            image: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=300"
         },
         {
             category: "Base Oils",
-            name: "Sesame Oil",
-            description: "Organic base oil for hair care.",
-            image: "https://images.unsplash.com/photo-1608248597359-f584742f9b84?w=150"
+            name: "Pure Sesame Oil",
+            description: "Rich organic base oil for deep hair nourishment.",
+            image: "https://images.unsplash.com/photo-1608248597359-f584742f9b84?w=300"
         },
         {
             category: "Herbs",
             name: "Amla Powder",
-            description: "Natural herbal powder for roots strength.",
-            image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=150"
+            description: "Natural herbal extract for strong and dark hair roots.",
+            image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=300"
         }
     ];
 
-    function openCategory(catName) {
+    function promptPassword() {
+        let pass = prompt("Enter Admin Password:");
+        // Default password set to '1234' (you can change it here easily)
+        if (pass === "1234") {
+            document.getElementById('adminModal').style.display = "flex";
+        } else if (pass !== null) {
+            alert("Incorrect Password!");
+        }
+    }
+
+    function openCategory(categoryName) {
         const modal = document.getElementById('categoryModal');
-        const modalTitle = document.getElementById('modalCategoryTitle');
-        const productList = document.getElementById('productList');
+        const title = document.getElementById('modalCategoryTitle');
+        const grid = document.getElementById('itemsGridContainer');
 
-        modalTitle.innerText = "Category: " + catName;
-        productList.innerHTML = "";
+        title.innerText = categoryName + " Collection";
+        grid.innerHTML = "";
 
-        const filteredItems = database.filter(item => item.category === catName);
+        const filtered = database.filter(item => item.category === categoryName);
 
-        if(filteredItems.length === 0) {
-            productList.innerHTML = "<p style='text-align:center; color:#777; padding:20px;'>No items found in this category yet.</p>";
+        if (filtered.length === 0) {
+            grid.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: #777; padding: 20px;'>No items available in this category yet.</p>";
         } else {
-            filteredItems.forEach(item => {
-                productList.innerHTML += `
-                    <div class="product-card">
+            filtered.forEach(item => {
+                grid.innerHTML += `
+                    <div class="item-card">
                         <img src="${item.image}" alt="${item.name}">
-                        <div class="product-info">
-                            <h4>${item.name}</h4>
-                            <p>${item.description}</p>
-                        </div>
+                        <h4>${item.name}</h4>
+                        <p>${item.description}</p>
                     </div>
                 `;
             });
@@ -337,44 +400,42 @@
         modal.style.display = "flex";
     }
 
-    function openAdminModal() {
-        document.getElementById('adminModal').style.display = "flex";
-    }
-
     function closeModal(modalId) {
         document.getElementById(modalId).style.display = "none";
     }
 
-    function saveNewItem() {
-        const category = document.getElementById('itemCategory').value;
-        const name = document.getElementById('itemName').value;
-        const description = document.getElementById('itemDesc').value;
-        const fileInput = document.getElementById('itemImageFile');
+    function saveProductItem() {
+        const category = document.getElementById('adminCategory').value;
+        const name = document.getElementById('adminName').value;
+        const description = document.getElementById('adminDesc').value;
+        const fileInput = document.getElementById('adminImageFile');
 
-        if(!name || !description) {
-            alert("Please fill in both the item name and description.");
+        if (!name || !description) {
+            alert("Please fill in both the product name and description fields.");
             return;
         }
 
-        if(fileInput.files && fileInput.files[0]) {
+        if (fileInput.files && fileInput.files[0]) {
             const reader = new FileReader();
             reader.onload = function(e) {
                 database.push({
                     category: category,
                     name: name,
                     description: description,
-                    image: e.target.result // Converts uploaded image into displayable base64 string
+                    image: e.target.result // Auto saves image file data into the array
                 });
-                alert("Item saved and published successfully!");
+
+                alert("Product successfully added to " + category + "!");
                 closeModal('adminModal');
-                // Clear fields
-                document.getElementById('itemName').value = "";
-                document.getElementById('itemDesc').value = "";
-                document.getElementById('itemImageFile').value = "";
+
+                // Clear input fields
+                document.getElementById('adminName').value = "";
+                document.getElementById('adminDesc').value = "";
+                document.getElementById('adminImageFile').value = "";
             };
             reader.readAsDataURL(fileInput.files[0]);
         } else {
-            alert("Please select a product image file from your device.");
+            alert("Please choose an image file to upload.");
         }
     }
 </script>
