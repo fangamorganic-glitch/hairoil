@@ -9,11 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-green: #1b4332;       
-            --secondary-green: #2d6A4f;     
-            --light-green: #e8f5e9;         
-            --accent-gold: #d4a373;         
-            --bg-color: #f4f7f4;           
+            --primary-green: #1b4332;        
+            --secondary-green: #2d6A4f;      
+            --light-green: #e8f5e9;          
+            --accent-gold: #d4a373;          
+            --bg-color: #f4f7f4;            
             --card-bg: #ffffff;
             --text-color: #212529;
             --border-color: #c8d6c9;
@@ -335,21 +335,21 @@
         <div class="category-section">
             <h2 class="category-title">Base Oils</h2>
             <div class="products-grid" id="grid-base-oils">
-                <p style="color:#777; grid-column: 1/-1; padding: 20px; text-align:center;">Loading data...</p>
+                <p style="color:#777; grid-column: 1/-1; padding: 20px; text-align:center;">Loading from Google Sheet...</p>
             </div>
         </div>
 
         <div class="category-section">
             <h2 class="category-title">Seeds</h2>
             <div class="products-grid" id="grid-seeds">
-                <p style="color:#777; grid-column: 1/-1; padding: 20px; text-align:center;">Loading data...</p>
+                <p style="color:#777; grid-column: 1/-1; padding: 20px; text-align:center;">Loading from Google Sheet...</p>
             </div>
         </div>
 
         <div class="category-section">
             <h2 class="category-title">Herbs</h2>
             <div class="products-grid" id="grid-herbs">
-                <p style="color:#777; grid-column: 1/-1; padding: 20px; text-align:center;">Loading data...</p>
+                <p style="color:#777; grid-column: 1/-1; padding: 20px; text-align:center;">Loading from Google Sheet...</p>
             </div>
         </div>
     </div>
@@ -398,7 +398,7 @@
                     <input type="file" id="productImageFile" accept="image/*" required onchange="encodeImageFileAsURL(this)">
                     <input type="hidden" id="productImageBase64">
                 </div>
-                <div class="loading-spinner" id="loadingSpinner">Saving to Google Sheet...</div>
+                <div class="loading-spinner" id="loadingSpinner">Uploading image & Saving to Google Sheet...</div>
                 <div class="modal-btns">
                     <button type="button" class="btn btn-secondary" onclick="closeModals()">Cancel</button>
                     <button type="submit" class="btn btn-primary" id="saveBtn">Save & Publish</button>
@@ -421,15 +421,9 @@
     <script>
         let products = [];
 
-        // 👇 یہاں اپنا نیا گوگل ایپ سکرپٹ کا یو آر ایل لازمی پیسٹ کریں 👇
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbxB3cURBUj5NmCYPlQ1FJPrA00BBxAEB92vHAr-6MhIYk4DG5IMJy15QrGYDVSEX8ng2A/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbznvMcIPAJTPkbDL7ueaPZu2hlN-CeFm3P5gDXVkmZaYTWtoWS4535s1HbpoLflLJa1nQ/exec';
 
         function fetchProductsFromSheet() {
-            if (scriptURL.includes('YOUR_NEW_APPS_SCRIPT_URL_HERE')) {
-                console.warn('Apps Script URL is missing!');
-                return;
-            }
-
             fetch(scriptURL)
                 .then(response => response.json())
                 .then(data => {
@@ -569,7 +563,12 @@
                 document.getElementById('productForm').reset();
                 closeModals();
                 
-                alert('Product successfully added and saved to Google Sheet!');
+                alert('Product successfully added and image saved to Google Drive!');
+                
+                // اگر سرور نے ڈرائیو کا نیا لنک واپس کیا ہے تو اسے لسٹ میں اپڈیٹ کریں
+                if (result.url) {
+                    newProduct.image = result.url;
+                }
                 
                 products.push(newProduct);
                 renderProducts();
