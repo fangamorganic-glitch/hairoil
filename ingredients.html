@@ -26,22 +26,15 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Perfect RTL & Nastaliq Support */
         body.rtl-mode {
             direction: rtl !important;
             text-align: right !important;
             font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
         }
 
-        body.rtl-mode h1, 
-        body.rtl-mode h2, 
-        body.rtl-mode h3, 
-        body.rtl-mode p, 
-        body.rtl-mode span, 
-        body.rtl-mode div, 
-        body.rtl-mode .product-desc,
-        body.rtl-mode .product-title,
-        body.rtl-mode .category-title {
+        body.rtl-mode h1, body.rtl-mode h2, body.rtl-mode h3, 
+        body.rtl-mode p, body.rtl-mode span, body.rtl-mode div, 
+        body.rtl-mode .product-desc, body.rtl-mode .product-title, body.rtl-mode .category-title {
             font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', Arial, sans-serif !important;
             direction: rtl !important;
             text-align: right !important;
@@ -121,10 +114,7 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        .goog-te-banner-frame.skiptranslate, 
-        .goog-te-gadget, 
-        .skiptranslate,
-        .goog-tooltip { 
+        .goog-te-banner-frame.skiptranslate, .goog-te-gadget, .skiptranslate, .goog-tooltip { 
             display: none !important; 
         }
         
@@ -196,10 +186,6 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.4s ease;
-        }
-
-        .product-card:hover .product-img-container img {
-            transform: scale(1.04);
         }
 
         .product-content {
@@ -342,7 +328,6 @@
         </div>
         
         <div id="google_translate_element" style="display:none;"></div>
-
         <h1>Fangam Organic Products & Herbs</h1>
     </header>
 
@@ -436,12 +421,11 @@
     <script>
         let products = [];
 
-        // 👇 یہاں نیچے اپنا گوگل ایپ سکرپٹ کا نیا یو آر ایل لازمی پیسٹ کریں 👇
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwORgU_f2YlvROD4p7wPr--EQvtIuLIMzlfbGJFA0XS35Uf6-D5AoQPUyAxQaEzkiAALQ/exec';
+        // 👇 یہاں اپنا نیا گوگل ایپ سکرپٹ کا یو آر ایل لازمی پیسٹ کریں 👇
+        const scriptURL = 'YOUR_NEW_APPS_SCRIPT_URL_HERE';
 
-        // پیج کھلتے ہی گوگل شیٹ سے لائیو ڈیٹا لوڈ کرنا
         function fetchProductsFromSheet() {
-            if (scriptURL === 'YOUR_APPS_SCRIPT_URL_HERE') {
+            if (scriptURL.includes('YOUR_NEW_APPS_SCRIPT_URL_HERE')) {
                 console.warn('Apps Script URL is missing!');
                 return;
             }
@@ -449,8 +433,12 @@
             fetch(scriptURL)
                 .then(response => response.json())
                 .then(data => {
-                    products = data;
-                    renderProducts();
+                    if (Array.isArray(data)) {
+                        products = data;
+                        renderProducts();
+                    } else {
+                        console.error('Invalid data format:', data);
+                    }
                 })
                 .catch(error => {
                     console.error('Error fetching data from Google Sheet:', error);
@@ -501,7 +489,7 @@
         }
 
         window.onload = function() {
-            fetchProductsFromSheet(); // شیٹ سے ڈیٹا لے کر آئے گا
+            fetchProductsFromSheet();
             
             const cookieMatch = document.cookie.match(/googtrans=\/en\/([a-z-]+)/);
             if (cookieMatch) {
@@ -549,11 +537,6 @@
         function handleProductSubmit(event) {
             event.preventDefault();
 
-            if (scriptURL === 'YOUR_APPS_SCRIPT_URL_HERE') {
-                alert('Please update your Google Apps Script URL in the code first!');
-                return;
-            }
-
             const categoryEl = document.getElementById('productCategory').value;
             const name = document.getElementById('productName').value;
             const desc = document.getElementById('productDesc').value;
@@ -577,11 +560,10 @@
 
             fetch(scriptURL, {
                 method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newProduct)
             })
-            .then(() => {
+            .then(response => response.json())
+            .then(result => {
                 document.getElementById('loadingSpinner').style.display = 'none';
                 document.getElementById('saveBtn').disabled = false;
                 document.getElementById('productForm').reset();
@@ -589,12 +571,11 @@
                 
                 alert('Product successfully added and saved to Google Sheet!');
                 
-                // فوری طور پر سکرین پر شو کرنے کے لیے لسٹ میں ایڈ کر کے رینڈر کریں
                 products.push(newProduct);
                 renderProducts();
             })
             .catch(error => {
-                console.error('Error!', error.message);
+                console.error('Error!', error);
                 document.getElementById('loadingSpinner').style.display = 'none';
                 document.getElementById('saveBtn').disabled = false;
                 alert('Error saving to Google Sheet. Please check your URL.');
