@@ -20,29 +20,29 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-        header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .nav-container { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; width: 100%; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .logo img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
         .logo span { font-size: 22px; font-weight: 700; color: var(--primary); }
-        .nav-links { display: flex; list-style: none; gap: 22px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 15px; transition: var(--transition); }
+        .nav-links { display: flex; list-style: none; gap: 18px; align-items: center; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 14px; transition: var(--transition); }
         .nav-links a:hover { color: var(--primary); }
 
         .hero-section { max-width: 1200px; margin: 30px auto; padding: 0 20px; position: relative; }
         .slider-container { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); border-radius: 20px; overflow: hidden; color: var(--white); box-shadow: var(--shadow); position: relative; min-height: 400px; display: flex; align-items: center; }
-        .slide { display: none; width: 100%; padding: 50px; justify-content: space-between; align-items: center; gap: 30px; }
+        .slide { display: none; width: 100%; padding: 40px; justify-content: space-between; align-items: center; gap: 30px; }
         .slide.active { display: flex; }
         .slide-content { max-width: 600px; }
-        .slide-content h1 { font-size: 40px; margin-bottom: 15px; color: var(--accent); }
-        .slide-content p { font-size: 16px; margin-bottom: 25px; opacity: 0.9; }
+        .slide-content h1 { font-size: 36px; margin-bottom: 15px; color: var(--accent); line-height: 1.2; }
+        .slide-content p { font-size: 15px; margin-bottom: 25px; opacity: 0.9; }
         .btn { background-color: var(--accent); color: var(--primary-dark); padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-block; transition: var(--transition); }
         .btn:hover { background-color: #e5c158; }
-        .slide-image img { width: 320px; height: 320px; object-fit: cover; border-radius: 15px; border: 4px solid rgba(255,255,255,0.2); }
-        .slider-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
+        .slide-image img { width: 280px; height: 280px; object-fit: cover; border-radius: 15px; border: 4px solid rgba(255,255,255,0.2); max-width: 100%; }
+        .slider-dots { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; }
         .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: var(--transition); }
         .dot.active { background: var(--accent); width: 30px; border-radius: 6px; }
 
@@ -51,13 +51,13 @@
 
         .main-content { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         .category-section { margin-bottom: 50px; }
-        .section-header-flex { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 25px; }
-        .category-section h2 { font-size: 28px; color: var(--primary); display: flex; align-items: center; gap: 12px; }
+        .section-header-flex { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 25px; flex-wrap: wrap; gap: 10px; }
+        .category-section h2 { font-size: 26px; color: var(--primary); display: flex; align-items: center; gap: 12px; }
         .explore-more-link { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 8px; transition: var(--transition); }
         .explore-more-link:hover { color: var(--accent); }
 
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
-        .product-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); cursor: pointer; display: flex; flex-direction: column; border: 1px solid #edf2f7; transition: var(--transition); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
+        .product-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); cursor: pointer; display: flex; flex-direction: column; border: 1px solid #edf2f7; transition: var(--transition); width: 100%; }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
         .product-img-wrapper { width: 100%; height: 220px; overflow: hidden; background: #f1f5f9; position: relative; }
         .product-card img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
@@ -66,12 +66,12 @@
         .product-title { font-size: 17px; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; }
         .product-price { font-size: 16px; font-weight: 700; color: var(--primary); }
 
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 20px; backdrop-filter: blur(4px); }
-        .modal-content { background: var(--white); border-radius: 16px; max-width: 500px; width: 100%; padding: 30px; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.2); animation: modalOpen 0.3s ease; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 20px; backdrop-filter: blur(4px); overflow-y: auto; }
+        .modal-content { background: var(--white); border-radius: 16px; max-width: 500px; width: 100%; padding: 30px; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.2); animation: modalOpen 0.3s ease; max-height: 90vh; overflow-y: auto; }
         @keyframes modalOpen { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-light); transition: var(--transition); }
         .close-modal:hover { color: var(--text-dark); }
-        .modal-img { width: 100%; height: 240px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
+        .modal-img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
         .modal-title { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
         .modal-price { font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
         .modal-desc { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
@@ -87,6 +87,18 @@
 
         footer { background: var(--primary-dark); color: var(--white); text-align: center; padding: 30px 20px; margin-top: 60px; }
         footer p { opacity: 0.8; font-size: 14px; }
+
+        /* Responsive Media Queries for Mobile & Desktop Perfection */
+        @media (max-width: 768px) {
+            .nav-container { justify-content: center; flex-direction: column; text-align: center; }
+            .nav-links { justify-content: center; gap: 12px; font-size: 13px; }
+            .slide { flex-direction: column-reverse; text-align: center; padding: 30px 20px 50px 20px; gap: 20px; }
+            .slide-content h1 { font-size: 26px; }
+            .slide-content p { font-size: 14px; }
+            .slide-image img { width: 200px; height: 200px; }
+            .products-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+            .category-section h2 { font-size: 22px; }
+        }
     </style>
 </head>
 <body>
@@ -300,14 +312,13 @@
     </footer>
 
     <script>
-        const WHATSAPP_NUMBER = "923000634445"; // اپنا واٹس ایپ نمبر یہاں درج کریں
-        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx-MU0hwXp_SfV8Fk6XFmyIRlXF8VH0nwDic353jbdA9uuovAF-4zQ1U8XPml8y0Edb/exec"; // یہاں اپنا درست نیا ویب ایپ یو آر ایل رکھیں
+        const WHATSAPP_NUMBER = "923000634445"; 
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx-MU0hwXp_SfV8Fk6XFmyIRlXF8VH0nwDic353jbdA9uuovAF-4zQ1U8XPml8y0Edb/exec"; 
 
         window.addEventListener('DOMContentLoaded', () => {
             fetchProductsFromSheet();
         });
 
-        // گوگل شیٹ سے ڈیٹا فیچ کرنے کا فنکشن (GET)
         function fetchProductsFromSheet() {
             if (APPS_SCRIPT_URL.includes("YOUR_GOOGLE_APPS_SCRIPT")) return;
 
@@ -410,7 +421,6 @@
             sendDataToGoogleSheet(category, name, price, desc, imageUrl);
         }
 
-        // گوگل شیٹ پر ڈیٹا بھیجنے کا طریقہ (POST)
         function sendDataToGoogleSheet(category, name, price, desc, imageUrl) {
             const payload = { 
                 category: category, 
@@ -444,7 +454,6 @@
             });
         }
 
-        // فرنٹ اینڈ کے DOM میں پروڈکٹ کارڈ شو کرنے کا فنکشن
         function appendProductToDOM(category, name, price, desc, image) {
             const gridId = 'grid-' + category;
             const gridContainer = document.getElementById(gridId);
