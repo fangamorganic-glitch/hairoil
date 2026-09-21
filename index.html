@@ -1,341 +1,888 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fangam Organic</title>
+    <title>Fangam Organic - Pure & Natural Hair & Skin Care</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
-            --primary-color: #2c5e3b;
-            --accent-color: #d4af37;
-            --bg-color: #fcfbf9;
-            --text-color: #2b2b2b;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            direction: ltr;
-        }
-        header {
-            background: linear-gradient(135deg, #1e3f26, #2c5e3b);
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 36px;
-            letter-spacing: 1px;
-        }
-        header p {
-            margin: 10px 0 0 0;
-            font-size: 18px;
-            color: #e2d2a5;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        .section-box {
-            background: white;
-            margin-bottom: 40px;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-            border-top: 5px solid var(--primary-color);
-            position: relative;
-        }
-        .section-title {
-            font-size: 28px;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        .product-card {
-            background: #faf8f5;
-            border: 1px solid #e8e4dc;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-        .product-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 10px;
-        }
-        .product-name {
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-        .product-price {
-            font-size: 18px;
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .explore-btn {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: background 0.2s;
-        }
-        .explore-btn:hover {
-            background-color: #1e3f26;
-        }
-        .explore-btn span {
-            margin-right: 8px;
-            font-size: 18px;
-        }
-        footer {
-            background-color: #1e241f;
-            color: white;
-            text-align: center;
-            padding: 25px 20px;
-            margin-top: 60px;
-        }
-        footer .footer-links {
-            margin-bottom: 15px;
-        }
-        footer a {
-            color: #d4af37;
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 16px;
-        }
-        footer a:hover {
-            text-decoration: underline;
+            --primary-green: #2e7d32;
+            --light-green: #4caf50;
+            --accent-green: #e8f5e9;
+            --dark-text: #2c3e50;
+            --light-bg: #f9fbf9;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
-        /* Secret Admin Button & Popup Modal */
-        #secret-admin-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            width: 45px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+        }
+
+        /* Header & Navbar */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-area img {
             height: 45px;
+            object-fit: contain;
+        }
+
+        .logo-area span {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .nav-links::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            font-size: 13px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: 0.3s;
+            white-space: nowrap;
+            background: #f1f8f1;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: var(--primary-green);
+            color: var(--white);
+        }
+
+        /* Hero Slider Section (Sab se ooper) */
+        .hero-slider {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .slider-container {
+            position: relative;
+            background: linear-gradient(135deg, #1b5e20, #4caf50);
+            border-radius: 20px;
+            overflow: hidden;
+            color: var(--white);
+            box-shadow: var(--shadow);
+            min-height: 380px;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            padding: 40px;
+            animation: fadeIn 0.8s ease-in-out;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        .slide-content {
+            flex: 1;
+            min-width: 280px;
+            padding-right: 20px;
+        }
+
+        .slide-content h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .slide-content p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .slide-btn {
+            background: var(--white);
+            color: var(--primary-green);
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .slide-btn:hover {
+            background: var(--accent-green);
+            transform: translateY(-2px);
+        }
+
+        .slide-image {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .slide-image img {
+            max-width: 100%;
+            height: 240px;
+            object-fit: contain;
+            border-radius: 15px;
+        }
+
+        /* Slider Controls */
+        .slider-dots {
+            text-align: center;
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+        }
+
+        .dot {
+            display: inline-block;
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: rgba(255, 255, 255, 0.5);
             border-radius: 50%;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 1000;
-            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background-color: var(--white);
+            width: 25px;
+            border-radius: 5px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Main Sections Styling */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section-box {
+            margin: 50px 0;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--primary-green);
+        }
+
+        .section-title {
+            font-size: 26px;
+            color: var(--primary-green);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 10px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: var(--light-bg);
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--light-green);
+        }
+
+        .product-img {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            background: #e8f5e9;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .view-btn {
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .view-btn:hover {
+            background: #1b5e20;
+        }
+
+        /* Modal Popup Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 500px;
+            width: 100%;
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            animation: slideDown 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+            transition: 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--dark-text);
+        }
+
+        .modal-body img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body h2 {
+            color: var(--primary-green);
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .modal-body .price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #d32f2f;
+            margin-bottom: 10px;
+        }
+
+        .modal-body p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .whatsapp-order-btn {
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 10px;
+            background: #25d366;
+            color: var(--white);
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
         }
-        #admin-modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1001;
+
+        .whatsapp-order-btn:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
         }
-        #admin-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            border-radius: 12px;
-            z-index: 1002;
-            width: 90%;
-            max-width: 450px;
+
+        @keyframes slideDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
-        #admin-modal h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
+
+        /* Footer */
+        footer {
+            background: #1b5e20;
+            color: var(--white);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
         }
-        #admin-modal label {
-            display: block;
-            margin-top: 12px;
-            font-weight: bold;
-            color: #444;
+
+        footer p {
+            font-size: 14px;
+            opacity: 0.9;
         }
-        #admin-modal input, #admin-modal select, #admin-modal textarea {
-            width: 100%;
-            margin-top: 5px;
-            padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-family: inherit;
-        }
-        .modal-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        .btn-save {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            flex: 1;
-            margin-left: 10px;
-            font-size: 16px;
-        }
-        .btn-close {
-            background: #d9534f;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .slide-content h1 { font-size: 24px; }
+            .slide-content p { font-size: 14px; }
+            .section-title { font-size: 22px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Header & Navigation (Ooper الگ پیجز کے لنکس) -->
     <header>
-        <h1>Fangam Organic</h1>
-        <p>Pure and Natural Herbal Products for Natural Beauty</p>
+        <div class="nav-container">
+            <a href="#" class="logo-area">
+                <img src="https://via.placeholder.com/45?text=FO" alt="Fangam Organic Logo">
+                <span>Fangam Organic</span>
+            </a>
+            <ul class="nav-links">
+                <!-- Section Jump Links -->
+                <li><a href="#oils">Oils Section</a></li>
+                <li><a href="#shampoos">Shampoos Section</a></li>
+                <li><a href="#soaps">Soaps Section</a></li>
+                <li><a href="#ubtan">Ubtan Section</a></li>
+                <li><a href="#serums">Serums Section</a></li>
+                <li><a href="#masks">Masks Section</a></li>
+                <!-- Separate Dedicated Pages Links -->
+                <li><a href="oils-page.html" style="background:#e8f5e9; color:#2e7d32; font-weight:600;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Oils Page</a></li>
+                <li><a href="shampoos-page.html" style="background:#e8f5e9; color:#2e7d32; font-weight:600;"><i class="fa-solid fa-arrow-up-right-from-square"></i> Shampoos Page</a></li>
+            </ul>
+        </div>
     </header>
 
-    <div class="container">
-        <!-- Signature Herbal Oil Section -->
-        <div class="section-box">
-            <div class="section-title">Signature Herbal Oil</div>
-            <div class="products-grid">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/250x180" alt="Oil Image">
-                    <div class="product-name">Fangam Signature Oil</div>
-                    <div class="product-price">1,200 PKR</div>
-                    <p style="font-size: 14px; color: #666;">Prepared with pure natural ingredients for hair strength and growth.</p>
+    <!-- 1. HERO SLIDER SECTION (Sab se ooper) -->
+    <div class="hero-slider">
+        <div class="slider-container">
+            <!-- Slide 1: Oils -->
+            <div class="slide active">
+                <div class="slide-content">
+                    <h1>Fangam Signature Hair Oils</h1>
+                    <p>Experience 100% pure, chemical-free organic hair oils infused with nature's best ingredients for strong, healthy hair.</p>
+                    <a href="#oils" class="slide-btn">Explore Oils Section</a>
+                </div>
+                <div class="slide-image">
+                    <img src="https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80" alt="Organic Oils">
                 </div>
             </div>
-            <a href="oil-page.html" class="explore-btn"><span>→</span> Explore More</a>
-        </div>
+            <!-- Slide 2: Shampoos -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h1>Herbal & Onion Shampoos</h1>
+                    <p>Revitalize your scalp and stop hair fall naturally with our specialized herbal and onion extract formulations.</p>
+                    <a href="#shampoos" class="slide-btn">Explore Shampoos Section</a>
+                </div>
+                <div class="slide-image">
+                    <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80" alt="Herbal Shampoos">
+                </div>
+            </div>
+            <!-- Slide 3: Soaps -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h1>Handmade Organic Soaps</h1>
+                    <p>Nourish your skin with chemical-free Neem, Charcoal, and Aloe Vera handmade soaps designed for a radiant glow.</p>
+                    <a href="#soaps" class="slide-btn">Explore Soaps Section</a>
+                </div>
+                <div class="slide-image">
+                    <img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=400&q=80" alt="Organic Soaps">
+                </div>
+            </div>
+            <!-- Slide 4: Ubtan -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h1>Traditional Royal Ubtan</h1>
+                    <p>Bring back your natural skin complexion with our traditional herb-rich ubtan formula for brides and everyday glow.</p>
+                    <a href="#ubtan" class="slide-btn">Explore Ubtan Section</a>
+                </div>
+                <div class="slide-image">
+                    <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80" alt="Royal Ubtan">
+                </div>
+            </div>
+            <!-- Slide 5: Serums -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h1>Root Nourishment Serums</h1>
+                    <p>Lightweight, non-sticky hair growth serums enriched with botanical extracts to stimulate follicles and control frizz.</p>
+                    <a href="#serums" class="slide-btn">Explore Serums Section</a>
+                </div>
+                <div class="slide-image">
+                    <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80" alt="Hair Serums">
+                </div>
+            </div>
+            <!-- Slide 6: Masks -->
+            <div class="slide">
+                <div class="slide-content">
+                    <h1>Deep Conditioning Hair Masks</h1>
+                    <p>Intensive repair spa masks for damaged, dry, and chemically treated hair to restore silky smooth texture.</p>
+                    <a href="#masks" class="slide-btn">Explore Masks Section</a>
+                </div>
+                <div class="slide-image">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80" alt="Hair Masks">
+                </div>
+            </div>
 
-        <!-- Herbal Shampoo Section -->
-        <div class="section-box">
-            <div class="section-title">Herbal Shampoo</div>
-            <div class="products-grid">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/250x180" alt="Shampoo Image">
-                    <div class="product-name">Fangam Herbal Shampoo</div>
-                    <div class="product-price">950 PKR</div>
-                    <p style="font-size: 14px; color: #666;">Pure herbal formula for hair cleansing and dandruff control.</p>
-                </div>
+            <!-- Dots -->
+            <div class="slider-dots">
+                <span class="dot active" onclick="currentSlide(0)"></span>
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
             </div>
-            <a href="shampoo-page.html" class="explore-btn"><span>→</span> Explore More</a>
         </div>
     </div>
 
-    <!-- Footer Links -->
-    <footer>
-        <div class="footer-links">
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact Us</a>
+    <!-- Main Content Sections (Neeche 6 Sections) -->
+    <div class="container">
+
+        <!-- 1. OILS SECTION (10 Items) -->
+        <section id="oils" class="section-box">
+            <h2 class="section-title"><i class="fa-solid fa-droplet"></i> Organic Hair Oils</h2>
+            <div class="products-grid">
+                <div class="product-card" onclick="openModal('Signature Hair Oil', 'Rs. 1,200', 'Our master formulation packed with 21 rare organic herbs to stop hair fall and boost dense growth.', 'https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Signature Oil">
+                    <div>
+                        <div class="product-name">Signature Hair Oil</div>
+                        <div class="product-price">Rs. 1,200</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Pure Coconut Oil', 'Rs. 850', 'Cold-pressed extra virgin coconut oil deeply moisturizes and conditions dry hair strands.', 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Coconut Oil">
+                    <div>
+                        <div class="product-name">Pure Coconut Oil</div>
+                        <div class="product-price">Rs. 850</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Onion Hair Oil', 'Rs. 950', 'Rich in sulphur, antioxidants and potassium to minimize hair breakage and thinness.', 'https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Onion Oil">
+                    <div>
+                        <div class="product-name">Onion Hair Oil</div>
+                        <div class="product-price">Rs. 950</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Mustard Hair Oil', 'Rs. 650', 'Traditional pure mustard oil to stimulate blood circulation in scalp and warm hair roots.', 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Mustard Oil">
+                    <div>
+                        <div class="product-name">Mustard Hair Oil</div>
+                        <div class="product-price">Rs. 650</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Castor Hair Oil', 'Rs. 750', 'Thick organic castor oil ideal for faster eyebrow, eyelash, and edge hair growth.', 'https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Castor Oil">
+                    <div>
+                        <div class="product-name">Castor Hair Oil</div>
+                        <div class="product-price">Rs. 750</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Amla Reetha Shikakai Oil', 'Rs. 900', 'Ayurvedic triple-blend oil for dark, lustrous, and thick hair strands.', 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Amla Oil">
+                    <div>
+                        <div class="product-name">Amla Reetha Oil</div>
+                        <div class="product-price">Rs. 900</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Rosemary Hair Oil', 'Rs. 1,100', 'Infused with organic rosemary leaves to fight hair thinning and stimulate follicles.', 'https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Rosemary Oil">
+                    <div>
+                        <div class="product-name">Rosemary Hair Oil</div>
+                        <div class="product-price">Rs. 1,100</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Almond Hair Oil', 'Rs. 800', 'Sweet almond oil enriched with Vitamin E for soft, shiny, and manageable hair.', 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Almond Oil">
+                    <div>
+                        <div class="product-name">Almond Hair Oil</div>
+                        <div class="product-price">Rs. 800</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Argan Oil Extract', 'Rs. 1,300', 'Moroccan argan oil liquid gold that repairs frizzy ends and heat damage instantly.', 'https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Argan Oil">
+                    <div>
+                        <div class="product-name">Argan Oil Extract</div>
+                        <div class="product-price">Rs. 1,300</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Black Seed (Kalonji) Oil', 'Rs. 950', 'Pure cold-pressed kalonji oil to treat stubborn hair loss and scalp infections.', 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Kalonji Oil">
+                    <div>
+                        <div class="product-name">Black Seed (Kalonji) Oil</div>
+                        <div class="product-price">Rs. 950</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SHAMPOOS SECTION (5 Items) -->
+        <section id="shampoos" class="section-box">
+            <h2 class="section-title"><i class="fa-solid fa-pump-soap"></i> Herbal Shampoos</h2>
+            <div class="products-grid">
+                <div class="product-card" onclick="openModal('Signature Herbal Shampoo', 'Rs. 950', 'Sulfate-free gentle cleansing shampoo formulated with natural reetha and shikakai.', 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Herbal Shampoo">
+                    <div>
+                        <div class="product-name">Signature Herbal Shampoo</div>
+                        <div class="product-price">Rs. 950</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Onion Anti-Hairfall Shampoo', 'Rs. 1,050', 'Strengthens weak hair roots and cleanses scalp impurities effectively.', 'https://images.unsplash.com/photo-1585232351913-73eac975bb4a?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1585232351913-73eac975bb4a?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Onion Shampoo">
+                    <div>
+                        <div class="product-name">Onion Anti-Hairfall Shampoo</div>
+                        <div class="product-price">Rs. 1,050</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Anti-Dandruff Neem Shampoo', 'Rs. 900', 'Combats stubborn dandruff, itching, and flaking with active neem and tea tree oil.', 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Neem Shampoo">
+                    <div>
+                        <div class="product-name">Anti-Dandruff Neem Shampoo</div>
+                        <div class="product-price">Rs. 900</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Keratin Smooth Shampoo', 'Rs. 1,150', 'Deep repair protein formula for silky, straight, and frizz-free manageable hair.', 'https://images.unsplash.com/photo-1585232351913-73eac975bb4a?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1585232351913-73eac975bb4a?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Keratin Shampoo">
+                    <div>
+                        <div class="product-name">Keratin Smooth Shampoo</div>
+                        <div class="product-price">Rs. 1,150</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Aloe Vera Hydrating Shampoo', 'Rs. 850', 'Pure aloe vera infusion provides intense moisture to dry and brittle hair strands.', 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Aloe Shampoo">
+                    <div>
+                        <div class="product-name">Aloe Vera Hydrating Shampoo</div>
+                        <div class="product-price">Rs. 850</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SOAPS SECTION (5 Items) -->
+        <section id="soaps" class="section-box">
+            <h2 class="section-title"><i class="fa-solid fa-soap"></i> Handmade Organic Soaps</h2>
+            <div class="products-grid">
+                <div class="product-card" onclick="openModal('Neem & Tea Tree Soap', 'Rs. 350', 'Antibacterial soap bar that clears acne, blemishes, and protects against skin infections.', 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Neem Soap">
+                    <div>
+                        <div class="product-name">Neem & Tea Tree Soap</div>
+                        <div class="product-price">Rs. 350</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Activated Charcoal Soap', 'Rs. 400', 'Deep pore cleansing soap that draws out dirt, oil, and toxins from skin.', 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Charcoal Soap">
+                    <div>
+                        <div class="product-name">Activated Charcoal Soap</div>
+                        <div class="product-price">Rs. 400</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Ubtan Glow Soap', 'Rs. 380', 'Infused with turmeric, chickpea flour, and sandalwood for a daily natural glow.', 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Ubtan Soap">
+                    <div>
+                        <div class="product-name">Ubtan Glow Soap</div>
+                        <div class="product-price">Rs. 380</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Aloe Vera Soothing Soap', 'Rs. 320', 'Calms irritated skin and locks in natural hydration with fresh aloe extracts.', 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Aloe Soap">
+                    <div>
+                        <div class="product-name">Aloe Vera Soothing Soap</div>
+                        <div class="product-price">Rs. 320</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Rose Petal Velvet Soap', 'Rs. 380', 'Luxurious soap scented with real rose petals for soft and fragrant skin.', 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Rose Soap">
+                    <div>
+                        <div class="product-name">Rose Petal Velvet Soap</div>
+                        <div class="product-price">Rs. 380</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. UBTAN SECTION (4 Items) -->
+        <section id="ubtan" class="section-box">
+            <h2 class="section-title"><i class="fa-solid fa-spa"></i> Traditional Ubtan</h2>
+            <div class="products-grid">
+                <div class="product-card" onclick="openModal('Royal Bridal Ubtan', 'Rs. 750', 'Traditional wedding ubtan mix with saffron, almond, and turmeric for a bridal glow.', 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Bridal Ubtan">
+                    <div>
+                        <div class="product-name">Royal Bridals Ubtan</div>
+                        <div class="product-price">Rs. 750</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Daily Glow Facial Ubtan', 'Rs. 550', 'Gentle exfoliating herbal powder for everyday face wash and deep cleansing.', 'https://images.unsplash.com/photo-1512290900722-9a70f8a85f39?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1512290900722-9a70f8a85f39?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Daily Ubtan">
+                    <div>
+                        <div class="product-name">Daily Glow Facial Ubtan</div>
+                        <div class="product-price">Rs. 550</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Tan Removal Ubtan Scrub', 'Rs. 650', 'Effectively removes sun tan, dark spots, and pigmentation from face and body.', 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Tan Removal Ubtan">
+                    <div>
+                        <div class="product-name">Tan Removal Ubtan Scrub</div>
+                        <div class="product-price">Rs. 650</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Multani Mitti Herbal Ubtan', 'Rs. 500', 'Fuller earth blend with sandalwood to control excess oil and cool acne-prone skin.', 'https://images.unsplash.com/photo-1512290900722-9a70f8a85f39?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1512290900722-9a70f8a85f39?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Multani Ubtan">
+                    <div>
+                        <div class="product-name">Multani Mitti Herbal Ubtan</div>
+                        <div class="product-price">Rs. 500</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SERUMS SECTION (3 Items) -->
+        <section id="serums" class="section-box">
+            <h2 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Hair & Scalp Serums</h2>
+            <div class="products-grid">
+                <div class="product-card" onclick="openModal('Advanced Hair Growth Serum', 'Rs. 1,400', 'Concentrated active peptide serum for fast hair re-growth and bald spot recovery.', 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Growth Serum">
+                    <div>
+                        <div class="product-name">Advanced Hair Growth Serum</div>
+                        <div class="product-price">Rs. 1,400</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Anti-Frizz Shine Serum', 'Rs. 1,100', 'Lightweight non-greasy serum that tames frizzy hair and adds glossy shine.', 'https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Frizz Serum">
+                    <div>
+                        <div class="product-name">Anti-Frizz Shine Serum</div>
+                        <div class="product-price">Rs. 1,100</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Root Nourishment Scalp Serum', 'Rs. 1,250', 'Vitamin-enriched botanical formula that feeds weak hair roots and stops shedding.', 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Root Serum">
+                    <div>
+                        <div class="product-name">Root Nourishment Scalp Serum</div>
+                        <div class="product-price">Rs. 1,250</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. HAIR MASKS SECTION (3 Items) -->
+        <section id="masks" class="section-box">
+            <h2 class="section-title"><i class="fa-solid fa-masks-theater"></i> Organic Hair Masks</h2>
+            <div class="products-grid">
+                <div class="product-card" onclick="openModal('Deep Conditioning Spa Mask', 'Rs. 1,350', 'Intensive hair spa treatment mask for dry, damaged, and chemically processed hair.', 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Spa Mask">
+                    <div>
+                        <div class="product-name">Deep Conditioning Spa Mask</div>
+                        <div class="product-price">Rs. 1,350</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Keratin Repair Hair Mask', 'Rs. 1,500', 'Rebuilds damaged hair protein bonds and leaves locks ultra-silky and manageable.', 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Keratin Mask">
+                    <div>
+                        <div class="product-name">Keratin Repair Hair Mask</div>
+                        <div class="product-price">Rs. 1,500</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+                <div class="product-card" onclick="openModal('Herbal Silk Protein Mask', 'Rs. 1,200', 'Natural protein mask enriched with plant extracts to provide gloss and bounce.', 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80')">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80" class="product-img" alt="Silk Mask">
+                    <div>
+                        <div class="product-name">Herbal Silk Protein Mask</div>
+                        <div class="product-price">Rs. 1,200</div>
+                    </div>
+                    <button class="view-btn">View Details</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Modal Popup Box -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <img id="modalImg" src="" alt="Product Image">
+                <h2 id="modalTitle">Product Title</h2>
+                <div id="modalPrice" class="price">Rs. 0</div>
+                <p id="modalDesc">Product description goes here...</p>
+                <a id="whatsappBtn" href="#" target="_blank" class="whatsapp-order-btn">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> Order on WhatsApp
+                </a>
+            </div>
         </div>
-        <p>&copy; 2026 Fangam Organic. All Rights Reserved.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Fangam Organic. All Rights Reserved. Designed for Pure Natural Care.</p>
     </footer>
 
-    <!-- Secret Admin Button -->
-    <button id="secret-admin-btn" onclick="openAdminPanel()" title="Admin Panel">⚙️</button>
-
-    <!-- Admin Modal Overlay -->
-    <div id="admin-modal-overlay" onclick="closeAdminPanel()"></div>
-
-    <!-- Admin Modal Window -->
-    <div id="admin-modal">
-        <h3>Product Management Panel</h3>
-        <div id="login-form">
-            <label>Enter Password:</label>
-            <input type="password" id="admin-pass" placeholder="Password (Fangam123)">
-            <div class="modal-buttons">
-                <button class="btn-close" onclick="closeAdminPanel()">Close</button>
-                <button class="btn-save" onclick="verifyPassword()">Login</button>
-            </div>
-        </div>
-        <div id="panel-content" style="display:none;">
-            <label>Select Section:</label>
-            <select id="sel-section">
-                <option value="oil">Signature Herbal Oil</option>
-                <option value="shampoo">Herbal Shampoo</option>
-            </select>
-            <label>Product Name:</label>
-            <input type="text" id="prod-name" placeholder="Enter product name">
-            <label>Product Price (PKR):</label>
-            <input type="text" id="prod-price" placeholder="Enter price">
-            <label>Details:</label>
-            <textarea id="prod-desc" rows="3" placeholder="Enter product details"></textarea>
-            <label>Upload Image:</label>
-            <input type="file" id="prod-img">
-            <div class="modal-buttons">
-                <button class="btn-close" onclick="closeAdminPanel()">Close</button>
-                <button class="btn-save" onclick="saveProductData()">Update</button>
-            </div>
-        </div>
-    </div>
-
+    <!-- JavaScript for Slider & Modal -->
     <script>
-        function openAdminPanel() {
-            document.getElementById('admin-modal-overlay').style.display = 'block';
-            document.getElementById('admin-modal').style.display = 'block';
+        // Hero Slider Logic
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slideIndex = (n + slides.length) % slides.length;
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
         }
-        function closeAdminPanel() {
-            document.getElementById('admin-modal-overlay').style.display = 'none';
-            document.getElementById('admin-modal').style.display = 'none';
-            document.getElementById('panel-content').style.display = 'none';
-            document.getElementById('login-form').style.display = 'block';
-            document.getElementById('admin-pass').value = '';
+
+        function currentSlide(n) {
+            showSlide(n);
         }
-        function verifyPassword() {
-            const pass = document.getElementById('admin-pass').value;
-            if(pass === 'Fangam123') {
-                document.getElementById('login-form').style.display = 'none';
-                document.getElementById('panel-content').style.display = 'block';
-            } else {
-                alert('Incorrect password! Please enter the correct password (Fangam123).');
+
+        // Auto slide every 4 seconds
+        setInterval(() => {
+            showSlide(slideIndex + 1);
+        }, 4000);
+
+        // Modal Popup Logic
+        function openModal(title, price, desc, imgSrc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalPrice').innerText = price;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalImg').src = imgSrc;
+            
+            let whatsappNumber = "923000000000"; // یہاں اپنا واٹس ایپ نمبر درج کریں
+            let message = `Hello Fangam Organic, I want to order:\n\n*${title}*\nPrice: ${price}\n\nPlease confirm my order.`;
+            let encodedMessage = encodeURIComponent(message);
+            document.getElementById('whatsappBtn').href = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            let modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                closeModal();
             }
         }
-        function saveProductData() {
-            alert('Data updated successfully!');
-            closeAdminPanel();
-        }
     </script>
-
 </body>
 </html>
