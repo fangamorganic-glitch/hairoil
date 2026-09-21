@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فینگم آرگینک - Fangam Organic</title>
+    <title>Fangam Organic</title>
     <style>
         :root {
             --primary-color: #2c5e3b;
@@ -12,12 +12,12 @@
             --text-color: #2b2b2b;
         }
         body {
-            font-family: 'Jameel Noori Nastaleeq', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
             padding: 0;
-            direction: rtl;
+            direction: ltr;
         }
         header {
             background: linear-gradient(135deg, #1e3f26, #2c5e3b);
@@ -135,11 +135,11 @@
             text-decoration: underline;
         }
 
-        /* خفیہ ایڈمن بٹن اور پاپ اپ ونڈو */
+        /* Secret Admin Button & Popup Modal */
         #secret-admin-btn {
             position: fixed;
             bottom: 25px;
-            left: 25px;
+            right: 25px;
             background: var(--primary-color);
             color: white;
             border: none;
@@ -229,41 +229,41 @@
 <body>
 
     <header>
-        <h1>فینگم آرگینک (Fangam Organic)</h1>
-        <p>خالص اور قدرتی ہربل پروڈکٹس کے ساتھ قدرتی خوبصورتی</p>
+        <h1>Fangam Organic</h1>
+        <p>Pure and Natural Herbal Products for Natural Beauty</p>
     </header>
 
     <div class="container">
-        <!-- پہلا سیکشن: سگنیچر ہربل آئل -->
+        <!-- Signature Herbal Oil Section -->
         <div class="section-box">
-            <div class="section-title">سگنیچر ہربل آئل</div>
+            <div class="section-title">Signature Herbal Oil</div>
             <div class="products-grid">
                 <div class="product-card">
-                    <img src="https://via.placeholder.com/250x180" alt="آئل تصویر">
-                    <div class="product-name">فینگم سگنیچر آئل</div>
+                    <img src="https://via.placeholder.com/250x180" alt="Oil Image">
+                    <div class="product-name">Fangam Signature Oil</div>
                     <div class="product-price">1,200 PKR</div>
-                    <p style="font-size: 14px; color: #666;">بالوں کی مضبوطی اور نشوونما کے لیے بہترین قدرتی اجزاء سے تیار کردہ۔</p>
+                    <p style="font-size: 14px; color: #666;">Prepared with pure natural ingredients for hair strength and growth.</p>
                 </div>
             </div>
-            <a href="oil-page.html" class="explore-btn"><span>←</span> ایکسپلور مور</a>
+            <a href="oil-page.html" class="explore-btn"><span>→</span> Explore More</a>
         </div>
 
-        <!-- دوسرا سیکشن: ہربل شیمپو -->
+        <!-- Herbal Shampoo Section -->
         <div class="section-box">
-            <div class="section-title">ہربل شیمپو</div>
+            <div class="section-title">Herbal Shampoo</div>
             <div class="products-grid">
                 <div class="product-card">
-                    <img src="https://via.placeholder.com/250x180" alt="شیمپو تصویر">
-                    <div class="product-name">فینگم ہربل شیمپو</div>
+                    <img src="https://via.placeholder.com/250x180" alt="Shampoo Image">
+                    <div class="product-name">Fangam Herbal Shampoo</div>
                     <div class="product-price">950 PKR</div>
-                    <p style="font-size: 14px; color: #666;">بالوں کی صفائی اور خشکی کے خاتمے کے لیے خالص ہربل فارمولا۔</p>
+                    <p style="font-size: 14px; color: #666;">Pure herbal formula for hair cleansing and dandruff control.</p>
                 </div>
             </div>
-            <a href="shampoo-page.html" class="explore-btn"><span>←</span> ایکسپلور مور</a>
+            <a href="shampoo-page.html" class="explore-btn"><span>→</span> Explore More</a>
         </div>
     </div>
 
-    <!-- فوٹر لنکس -->
+    <!-- Footer Links -->
     <footer>
         <div class="footer-links">
             <a href="about.html">About Us</a>
@@ -272,40 +272,40 @@
         <p>&copy; 2026 Fangam Organic. All Rights Reserved.</p>
     </footer>
 
-    <!-- خفیہ منتظم بٹن -->
-    <button id="secret-admin-btn" onclick="openAdminPanel()" title="ایڈمن پینل">⚙️</button>
+    <!-- Secret Admin Button -->
+    <button id="secret-admin-btn" onclick="openAdminPanel()" title="Admin Panel">⚙️</button>
 
-    <!-- پاپ اپ ونڈو بیک گراؤنڈ -->
+    <!-- Admin Modal Overlay -->
     <div id="admin-modal-overlay" onclick="closeAdminPanel()"></div>
 
-    <!-- پاپ اپ ونڈو -->
+    <!-- Admin Modal Window -->
     <div id="admin-modal">
-        <h3>پروڈکٹ مینجمنٹ پینل</h3>
+        <h3>Product Management Panel</h3>
         <div id="login-form">
-            <label>پاسورڈ درج کریں:</label>
-            <input type="password" id="admin-pass" placeholder="پاسورڈ (Fangam123)">
+            <label>Enter Password:</label>
+            <input type="password" id="admin-pass" placeholder="Password (Fangam123)">
             <div class="modal-buttons">
-                <button class="btn-close" onclick="closeAdminPanel()">بند کریں</button>
-                <button class="btn-save" onclick="verifyPassword()">لاگ ان</button>
+                <button class="btn-close" onclick="closeAdminPanel()">Close</button>
+                <button class="btn-save" onclick="verifyPassword()">Login</button>
             </div>
         </div>
         <div id="panel-content" style="display:none;">
-            <label>سیکشن منتخب کریں:</label>
+            <label>Select Section:</label>
             <select id="sel-section">
-                <option value="oil">سگنیچر ہربل آئل</option>
-                <option value="shampoo">ہربل شیمپو</option>
+                <option value="oil">Signature Herbal Oil</option>
+                <option value="shampoo">Herbal Shampoo</option>
             </select>
-            <label>پروڈکٹ کا نام:</label>
-            <input type="text" id="prod-name" placeholder="نام درج کریں">
-            <label>پروڈکٹ کی قیمت (PKR):</label>
-            <input type="text" id="prod-price" placeholder="قیمت درج کریں">
-            <label>تفصیلات:</label>
-            <textarea id="prod-desc" rows="3" placeholder="تفصیلات لکھیں"></textarea>
-            <label>تصویر اپلوڈ کریں:</label>
+            <label>Product Name:</label>
+            <input type="text" id="prod-name" placeholder="Enter product name">
+            <label>Product Price (PKR):</label>
+            <input type="text" id="prod-price" placeholder="Enter price">
+            <label>Details:</label>
+            <textarea id="prod-desc" rows="3" placeholder="Enter product details"></textarea>
+            <label>Upload Image:</label>
             <input type="file" id="prod-img">
             <div class="modal-buttons">
-                <button class="btn-close" onclick="closeAdminPanel()">بند کریں</button>
-                <button class="btn-save" onclick="saveProductData()">اپڈیٹ کریں</button>
+                <button class="btn-close" onclick="closeAdminPanel()">Close</button>
+                <button class="btn-save" onclick="saveProductData()">Update</button>
             </div>
         </div>
     </div>
@@ -328,11 +328,11 @@
                 document.getElementById('login-form').style.display = 'none';
                 document.getElementById('panel-content').style.display = 'block';
             } else {
-                alert('गलت پاسورڈ! درست پاسورڈ درج کریں۔ (Fangam123)');
+                alert('Incorrect password! Please enter the correct password (Fangam123).');
             }
         }
         function saveProductData() {
-            alert('ڈیٹا کامیابی سے محفوظ ہو گیا ہے!');
+            alert('Data updated successfully!');
             closeAdminPanel();
         }
     </script>
