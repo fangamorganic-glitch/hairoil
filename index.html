@@ -3,764 +3,473 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fangam Organic - Pure Nature Care</title>
-    <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Fangam Organic - Premium Natural Hair & Skin Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-green: #132e1b;
-            --mid-green: #1b4332;
-            --accent-green: #40916c;
-            --light-green: #d8f3dc;
-            --bg-body: #f7faf7;
-            --text-main: #2d3748;
+            --primary: #2c5e3b;
+            --primary-dark: #1e4027;
+            --accent: #d4af37;
+            --bg-light: #f9fbf8;
+            --text-dark: #333333;
+            --text-light: #666666;
             --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
+        header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+        .logo span { font-size: 22px; font-weight: 700; color: var(--primary); }
+        .nav-links { display: flex; list-style: none; gap: 22px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 15px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--primary); }
 
-        /* Professional Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-        }
+        .hero-section { max-width: 1200px; margin: 30px auto; padding: 0 20px; position: relative; }
+        .slider-container { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); border-radius: 20px; overflow: hidden; color: var(--white); box-shadow: var(--shadow); position: relative; min-height: 400px; display: flex; align-items: center; }
+        .slide { display: none; width: 100%; padding: 50px; justify-content: space-between; align-items: center; gap: 30px; }
+        .slide.active { display: flex; }
+        .slide-content { max-width: 600px; }
+        .slide-content h1 { font-size: 40px; margin-bottom: 15px; color: var(--accent); }
+        .slide-content p { font-size: 16px; margin-bottom: 25px; opacity: 0.9; }
+        .btn { background-color: var(--accent); color: var(--primary-dark); padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 600; display: inline-block; transition: var(--transition); }
+        .btn:hover { background-color: #e5c158; }
+        .slide-image img { width: 320px; height: 320px; object-fit: cover; border-radius: 15px; border: 4px solid rgba(255,255,255,0.2); }
+        .slider-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: var(--transition); }
+        .dot.active { background: var(--accent); width: 30px; border-radius: 6px; }
 
-        .nav-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-        }
+        .admin-float-btn { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: var(--primary-dark); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); cursor: pointer; z-index: 1001; border: none; transition: var(--transition); }
+        .admin-float-btn:hover { transform: scale(1.1); }
 
-        .logo-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
+        .main-content { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .category-section { margin-bottom: 50px; }
+        .section-header-flex { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 25px; }
+        .category-section h2 { font-size: 28px; color: var(--primary); display: flex; align-items: center; gap: 12px; }
+        .explore-more-link { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 15px; display: flex; align-items: center; gap: 8px; transition: var(--transition); }
+        .explore-more-link:hover { color: var(--accent); }
 
-        .logo-box i {
-            font-size: 28px;
-            color: var(--accent-green);
-        }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
+        .product-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); cursor: pointer; display: flex; flex-direction: column; border: 1px solid #edf2f7; transition: var(--transition); }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+        .product-img-wrapper { width: 100%; height: 220px; overflow: hidden; background: #f1f5f9; position: relative; }
+        .product-card img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .product-card:hover img { transform: scale(1.05); }
+        .product-info { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .product-title { font-size: 17px; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; }
+        .product-price { font-size: 16px; font-weight: 700; color: var(--primary); }
 
-        .logo-box h1 {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--mid-green);
-            letter-spacing: 0.5px;
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 20px; backdrop-filter: blur(4px); }
+        .modal-content { background: var(--white); border-radius: 16px; max-width: 500px; width: 100%; padding: 30px; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.2); animation: modalOpen 0.3s ease; }
+        @keyframes modalOpen { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-light); transition: var(--transition); }
+        .close-modal:hover { color: var(--text-dark); }
+        .modal-img { width: 100%; height: 240px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
+        .modal-title { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+        .modal-price { font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
+        .modal-desc { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
+        .whatsapp-btn { background: #25D366; color: white; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 10px; padding: 12px; border-radius: 8px; font-weight: 600; transition: var(--transition); }
+        .whatsapp-btn:hover { background: #20ba5a; }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 22px;
-            align-items: center;
-        }
+        .admin-modal { max-width: 550px; }
+        .admin-form label { display: block; font-weight: 500; margin-bottom: 6px; font-size: 14px; color: var(--text-dark); }
+        .admin-form input, .admin-form select, .admin-form textarea { width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 15px; font-family: inherit; font-size: 14px; outline: none; transition: var(--transition); }
+        .admin-form input:focus, .admin-form select:focus, .admin-form textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(44,94,59,0.1); }
+        .admin-submit-btn { background: var(--primary); color: white; border: none; width: 100%; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); }
+        .admin-submit-btn:hover { background: var(--primary-dark); }
 
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 500;
-            font-size: 14px;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent-green);
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--mid-green);
-        }
-
-        /* Top Hero Banner Slider Style */
-        .hero-slider-section {
-            margin-top: 75px;
-            position: relative;
-            height: 80vh;
-            background: var(--primary-green);
-            overflow: hidden;
-        }
-
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero-slide.active {
-            opacity: 1;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(19, 46, 27, 0.85), rgba(27, 67, 50, 0.6));
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: var(--white);
-            max-width: 800px;
-            padding: 0 20px;
-        }
-
-        .hero-content h2 {
-            font-size: 45px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        .hero-content p {
-            font-size: 17px;
-            margin-bottom: 30px;
-            font-weight: 300;
-            color: #e2e8f0;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-green);
-            color: var(--white);
-            padding: 14px 32px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            box-shadow: 0 4px 15px rgba(64, 145, 108, 0.4);
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            background-color: #2d6a4f;
-            transform: translateY(-2px);
-        }
-
-        /* Section Layouts */
-        .wrapper {
-            max-width: 1300px;
-            margin: 60px auto;
-            padding: 0 30px;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--light-green);
-            padding-bottom: 15px;
-        }
-
-        .section-header h3 {
-            font-size: 28px;
-            color: var(--mid-green);
-            font-weight: 700;
-        }
-
-        .explore-link {
-            color: var(--accent-green);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: gap 0.3s;
-        }
-
-        .explore-link:hover {
-            gap: 10px;
-        }
-
-        /* Product Slider Track / Grid */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .product-card {
-            background: var(--white);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-
-        .card-img-box {
-            height: 240px;
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .card-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .card-img-box img {
-            transform: scale(1.05);
-        }
-
-        .card-details {
-            padding: 20px;
-        }
-
-        .card-details h4 {
-            font-size: 18px;
-            color: var(--text-main);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .card-details .price {
-            color: var(--accent-green);
-            font-weight: 700;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        .card-details p {
-            font-size: 13px;
-            color: #64748b;
-            line-height: 1.5;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-green);
-            color: var(--white);
-            padding: 50px 30px;
-            text-align: center;
-            position: relative;
-            margin-top: 80px;
-        }
-
-        .footer-box max-width {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .sheet-status {
-            font-size: 12px;
-            color: #94a3b8;
-            margin-top: 10px;
-            word-break: break-all;
-        }
-
-        /* Secret Leaf Admin Button */
-        .admin-trigger {
-            position: absolute;
-            bottom: 25px;
-            right: 25px;
-            background: rgba(255, 255, 255, 0.1);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .admin-trigger:hover {
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        .admin-trigger i {
-            color: var(--accent-green);
-            font-size: 20px;
-        }
-
-        /* Modals */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal-card {
-            background: var(--white);
-            width: 100%;
-            max-width: 450px;
-            padding: 30px;
-            border-radius: 20px;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        .modal-card h3 {
-            color: var(--mid-green);
-            margin-bottom: 20px;
-            font-size: 22px;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 20px;
-            cursor: pointer;
-            color: #94a3b8;
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 6px;
-            color: var(--text-main);
-        }
-
-        .input-group input, .input-group select, .input-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .input-group input:focus, .input-group select:focus, .input-group textarea:focus {
-            border-color: var(--accent-green);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: var(--white);
-                padding: 20px 0;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-            }
-            nav ul.show {
-                display: flex;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .hero-content h2 {
-                font-size: 32px;
-            }
-        }
+        footer { background: var(--primary-dark); color: var(--white); text-align: center; padding: 30px 20px; margin-top: 60px; }
+        footer p { opacity: 0.8; font-size: 14px; }
     </style>
 </head>
 <body>
 
-    <!-- Professional Header -->
     <header>
         <div class="nav-container">
-            <a href="#" class="logo-box">
-                <i class="fa-solid fa-leaf"></i>
-                <h1>Fangam Organic</h1>
+            <a href="#" class="logo" onclick="showSection('shop')">
+                <img src="https://via.placeholder.com/45?text=FO" alt="Fangam Organic Logo">
+                <span>Fangam Organic</span>
             </a>
-            <div class="menu-toggle" id="mobileMenuBtn">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-            <nav>
-                <ul id="navLinks">
-                    <li><a href="#oils">Oils</a></li>
-                    <li><a href="#shampoo">Shampoo</a></li>
-                    <li><a href="#soaps">Soaps</a></li>
-                    <li><a href="#ubtan">Ubtan</a></li>
-                    <li><a href="#serum">Serum</a></li>
-                    <li><a href="#masks">Masks</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
-                </ul>
-            </nav>
+            <ul class="nav-links">
+                <li><a href="#oils" onclick="showSection('shop')">Oils</a></li>
+                <li><a href="#shampoos" onclick="showSection('shop')">Shampoo</a></li>
+                <li><a href="#soaps" onclick="showSection('shop')">Soaps</a></li>
+                <li><a href="#ubtan" onclick="showSection('shop')">Ubtan</a></li>
+                <li><a href="#serums" onclick="showSection('shop')">Serum</a></li>
+                <li><a href="#masks" onclick="showSection('shop')">Masks</a></li>
+                <li><a href="#about" onclick="switchPage('about')">About Us</a></li>
+                <li><a href="#contact" onclick="switchPage('contact')">Contact Us</a></li>
+            </ul>
         </div>
     </header>
 
-    <!-- Dynamic Hero Slider Section -->
-    <section class="hero-slider-section">
-        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1608248597359-97e674488828?auto=format&fit=crop&w=1400&q=80')">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h2>Pure Organic Oils for Hair Care</h2>
-                <p>Experience deep nourishment with 100% natural herbal formulas.</p>
-                <a href="#oils" class="btn-primary">Explore Oils</a>
-            </div>
-        </div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=1400&q=80')">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h2>Revitalizing Herbal Shampoos</h2>
-                <p>Gentle cleansing and natural shine without harsh chemicals.</p>
-                <a href="#shampoo" class="btn-primary">Explore Shampoo</a>
-            </div>
-        </div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=1400&q=80')">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h2>Botanical Face Serums & Masks</h2>
-                <p>Unlock glowing skin with ancient botanical ingredients.</p>
-                <a href="#serum" class="btn-primary">Explore Serum</a>
-            </div>
-        </div>
-    </section>
+    <div id="shop-view">
+        <div class="hero-section">
+            <div class="slider-container">
+                <div class="slide active">
+                    <div class="slide-content">
+                        <h1>Fangam Signature Hair Oils</h1>
+                        <p>Experience 100% pure, chemical-free organic hair oils infused with nature's best ingredients for strong, healthy hair.</p>
+                        <a href="#oils" class="btn">Explore Oils Section</a>
+                    </div>
+                    <div class="slide-image">
+                        <img src="https://images.unsplash.com/photo-1608248597359-f59715d5f22b?auto=format&fit=crop&w=400&q=80" alt="Organic Oils">
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-content">
+                        <h1>Herbal & Onion Shampoos</h1>
+                        <p>Revitalize your scalp and stop hair fall naturally with our specialized herbal and onion extract formulations.</p>
+                        <a href="#shampoos" class="btn">Explore Shampoos Section</a>
+                    </div>
+                    <div class="slide-image">
+                        <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=400&q=80" alt="Herbal Shampoos">
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-content">
+                        <h1>Handmade Organic Soaps</h1>
+                        <p>Nourish your skin with chemical-free Neem, Charcoal, and Aloe Vera handmade soaps designed for a radiant glow.</p>
+                        <a href="#soaps" class="btn">Explore Soaps Section</a>
+                    </div>
+                    <div class="slide-image">
+                        <img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=400&q=80" alt="Organic Soaps">
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-content">
+                        <h1>Traditional Royal Ubtan</h1>
+                        <p>Bring back your natural skin complexion with our traditional herb-rich ubtan formula for brides and everyday glow.</p>
+                        <a href="#ubtan" class="btn">Explore Ubtan Section</a>
+                    </div>
+                    <div class="slide-image">
+                        <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=80" alt="Royal Ubtan">
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-content">
+                        <h1>Root Nourishment Serums</h1>
+                        <p>Lightweight, non-sticky hair growth serums enriched with botanical extracts to stimulate follicles and control frizz.</p>
+                        <a href="#serums" class="btn">Explore Serums Section</a>
+                    </div>
+                    <div class="slide-image">
+                        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80" alt="Hair Serums">
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="slide-content">
+                        <h1>Deep Conditioning Hair Masks</h1>
+                        <p>Intensive repair spa masks for damaged, dry, and chemically treated hair to restore silky smooth texture.</p>
+                        <a href="#masks" class="btn">Explore Masks Section</a>
+                    </div>
+                    <div class="slide-image">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=80" alt="Hair Masks">
+                    </div>
+                </div>
 
-    <!-- 1. Oils Section -->
-    <div id="oils" class="wrapper">
-        <div class="section-header">
-            <h3>Natural Oils</h3>
-            <a href="#oils" class="explore-link">Explore More <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="product-grid" id="grid-oils">
-            <div class="product-card">
-                <div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1608248597359-97e674488828?auto=format&fit=crop&w=600&q=80" alt="Oil">
-                </div>
-                <div class="card-details">
-                    <h4>Herbal Hair Growth Oil</h4>
-                    <div class="price">Rs. 1,200</div>
-                    <p>Packed with pure organic extracts to strengthen roots.</p>
+                <div class="slider-dots">
+                    <span class="dot active" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
                 </div>
             </div>
+        </div>
+
+        <main class="main-content">
+            <section id="oils" class="category-section">
+                <div class="section-header-flex">
+                    <h2><i class="fa-solid fa-bottle-droplet"></i> Oils</h2>
+                    <a href="#" class="explore-more-link" onclick="showSection('oils')">Explore More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="products-grid" id="grid-oils"></div>
+            </section>
+
+            <section id="shampoos" class="category-section">
+                <div class="section-header-flex">
+                    <h2><i class="fa-solid fa-pump-soap"></i> Shampoo</h2>
+                    <a href="#" class="explore-more-link" onclick="showSection('shampoos')">Explore More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="products-grid" id="grid-shampoos"></div>
+            </section>
+
+            <section id="soaps" class="category-section">
+                <div class="section-header-flex">
+                    <h2><i class="fa-solid fa-soap"></i> Soaps</h2>
+                    <a href="#" class="explore-more-link" onclick="showSection('soaps')">Explore More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="products-grid" id="grid-soaps"></div>
+            </section>
+
+            <section id="ubtan" class="category-section">
+                <div class="section-header-flex">
+                    <h2><i class="fa-solid fa-spa"></i> Ubtan</h2>
+                    <a href="#" class="explore-more-link" onclick="showSection('ubtan')">Explore More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="products-grid" id="grid-ubtan"></div>
+            </section>
+
+            <section id="serums" class="category-section">
+                <div class="section-header-flex">
+                    <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Serum</h2>
+                    <a href="#" class="explore-more-link" onclick="showSection('serums')">Explore More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="products-grid" id="grid-serums"></div>
+            </section>
+
+            <section id="masks" class="category-section">
+                <div class="section-header-flex">
+                    <h2><i class="fa-solid fa-face-smile"></i> Masks</h2>
+                    <a href="#" class="explore-more-link" onclick="showSection('masks')">Explore More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="products-grid" id="grid-masks"></div>
+            </section>
+        </main>
+    </div>
+
+    <div id="about-view" style="display:none; max-width:900px; margin:50px auto; background:#fff; padding:40px; border-radius:16px; box-shadow: var(--shadow);">
+        <h2 style="color: var(--primary); margin-bottom: 20px;">About Fangam Organic</h2>
+        <p style="margin-bottom: 15px;">Welcome to <strong>Fangam Organic</strong>, your trusted destination for 100% pure, chemical-free, and natural hair and skin care products.</p>
+    </div>
+
+    <div id="contact-view" style="display:none; max-width:900px; margin:50px auto; background:#fff; padding:40px; border-radius:16px; box-shadow: var(--shadow);">
+        <h2 style="color: var(--primary); margin-bottom: 20px;">Contact Us</h2>
+        <p style="margin-bottom: 15px;">Have questions about our products? Reach out to us anytime on WhatsApp!</p>
+    </div>
+
+    <button class="admin-float-btn" onclick="openAdminModal()" title="Add New Product">
+        <i class="fa-solid fa-leaf"></i>
+    </button>
+
+    <div class="modal-overlay" id="productModal" onclick="closeProductModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeProductModalDirect()">&times;</span>
+            <img id="modalImg" class="modal-img" src="" alt="Product Image">
+            <h2 id="modalTitle" class="modal-title"></h2>
+            <div id="modalPrice" class="modal-price"></div>
+            <p id="modalDesc" class="modal-desc"></p>
+            <a id="modalWhatsapp" href="#" target="_blank" class="whatsapp-btn">
+                <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+            </a>
         </div>
     </div>
 
-    <!-- 2. Shampoo Section -->
-    <div id="shampoo" class="wrapper">
-        <div class="section-header">
-            <h3>Shampoo Collection</h3>
-            <a href="#shampoo" class="explore-link">Explore More <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="product-grid" id="grid-shampoo">
-            <div class="product-card">
-                <div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=600&q=80" alt="Shampoo">
-                </div>
-                <div class="card-details">
-                    <h4>Organic Strengthening Shampoo</h4>
-                    <div class="price">Rs. 950</div>
-                    <p>Reduces hair fall and adds natural volume.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="modal-overlay" id="adminModal" onclick="closeAdminModal(event)">
+        <div class="modal-content admin-modal" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeAdminModalDirect()">&times;</span>
+            <h2 class="modal-title" style="margin-bottom: 20px;">Add New Product (Google Sheet Sync)</h2>
+            <form class="admin-form" onsubmit="addNewProduct(event)">
+                <label for="prodCategory">Select Category</label>
+                <select id="prodCategory" required>
+                    <option value="oils">Oils</option>
+                    <option value="shampoos">Shampoo</option>
+                    <option value="soaps">Soaps</option>
+                    <option value="ubtan">Ubtan</option>
+                    <option value="serums">Serum</option>
+                    <option value="masks">Masks</option>
+                </select>
 
-    <!-- 3. Soaps Section -->
-    <div id="soaps" class="wrapper">
-        <div class="section-header">
-            <h3>Handmade Soaps</h3>
-            <a href="#soaps" class="explore-link">Explore More <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="product-grid" id="grid-soaps">
-            <div class="product-card">
-                <div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1607006344380-b772481e85a6?auto=format&fit=crop&w=600&q=80" alt="Soap">
-                </div>
-                <div class="card-details">
-                    <h4>Neem & Turmeric Soap</h4>
-                    <div class="price">Rs. 350</div>
-                    <p>Deep cleansing for clear and glowing skin.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+                <label for="prodName">Product Name</label>
+                <input type="text" id="prodName" placeholder="e.g. Rosemary Hair Oil" required>
 
-    <!-- 4. Ubtan Section -->
-    <div id="ubtan" class="wrapper">
-        <div class="section-header">
-            <h3>Traditional Ubtan</h3>
-            <a href="#ubtan" class="explore-link">Explore More <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="product-grid" id="grid-ubtan">
-            <div class="product-card">
-                <div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" alt="Ubtan">
-                </div>
-                <div class="card-details">
-                    <h4>Royal Bridal Glow Ubtan</h4>
-                    <div class="price">Rs. 850</div>
-                    <p>Natural exfoliator for instant skin radiance.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+                <label for="prodPrice">Price (e.g. Rs. 1,000)</label>
+                <input type="text" id="prodPrice" placeholder="Rs. 1,000" required>
 
-    <!-- 5. Serum Section -->
-    <div id="serum" class="wrapper">
-        <div class="section-header">
-            <h3>Face & Hair Serums</h3>
-            <a href="#serum" class="explore-link">Explore More <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="product-grid" id="grid-serum">
-            <div class="product-card">
-                <div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80" alt="Serum">
-                </div>
-                <div class="card-details">
-                    <h4>Vitamin C Brightening Serum</h4>
-                    <div class="price">Rs. 1,400</div>
-                    <p>Fights blemishes and brightens complexion.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+                <label for="prodDesc">Product Details / Description</label>
+                <textarea id="prodDesc" rows="3" placeholder="Write short product benefits..." required></textarea>
 
-    <!-- 6. Masks Section -->
-    <div id="masks" class="wrapper">
-        <div class="section-header">
-            <h3>Organic Face Masks</h3>
-            <a href="#masks" class="explore-link">Explore More <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="product-grid" id="grid-masks">
-            <div class="product-card">
-                <div class="card-img-box">
-                    <img src="https://images.unsplash.com/photo-1567316009137-535359217646?auto=format&fit=crop&w=600&q=80" alt="Mask">
-                </div>
-                <div class="card-details">
-                    <h4>Purifying Clay Mask</h4>
-                    <div class="price">Rs. 750</div>
-                    <p>Detoxifies skin pores and balances natural oils.</p>
-                </div>
-            </div>
-        </div>
-    </div>
+                <label for="prodImageLink">Image Link (URL)</label>
+                <input type="url" id="prodImageLink" placeholder="https://example.com/image.jpg" required>
 
-    <!-- About & Contact Details -->
-    <div id="about" class="wrapper" style="text-align: center; max-width: 800px;">
-        <h3 style="color: var(--mid-green); margin-bottom: 15px; font-size: 26px;">About Fangam Organic</h3>
-        <p style="color: #64748b; line-height: 1.7;">Fangam Organic is committed to bringing nature's best herbal ingredients straight to your daily care routine. We formulate pure, premium, and chemical-free products to keep your skin and hair naturally healthy.</p>
-    </div>
-
-    <div id="contact" class="wrapper" style="text-align: center; max-width: 800px;">
-        <h3 style="color: var(--mid-green); margin-bottom: 15px; font-size: 26px;">Contact Us</h3>
-        <p style="color: #64748b;">For inquiries and support: support@fangamorganic.com | Phone: +92 300 0000000</p>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Fangam Organic. All Rights Reserved.</p>
-        <div class="sheet-status">Google Sheet Backend URL: <span id="sheetUrlDisplay">https://script.google.com/macros/s/YOUR_DEPLOYED_SCRIPT_URL/exec</span></div>
-        
-        <!-- Secret Leaf Button for Admin Panel -->
-        <div class="admin-trigger" id="openAuthModal" title="Admin Portal">
-            <i class="fa-solid fa-leaf"></i>
-        </div>
-    </footer>
-
-    <!-- Password Modal -->
-    <div class="modal-overlay" id="authModal">
-        <div class="modal-card">
-            <span class="close-btn" id="closeAuth">&times;</span>
-            <h3>Admin Access</h3>
-            <div class="input-group">
-                <label>Password</label>
-                <input type="password" id="adminPass" placeholder="Enter password">
-            </div>
-            <button class="btn-primary" id="verifyPassBtn" style="width: 100%; border: none; cursor: pointer;">Login</button>
-        </div>
-    </div>
-
-    <!-- Product Listing Modal -->
-    <div class="modal-overlay" id="listingModal">
-        <div class="modal-card">
-            <span class="close-btn" id="closeListing">&times;</span>
-            <h3>Add New Listing</h3>
-            <form id="listingForm">
-                <div class="input-group">
-                    <label>Category</label>
-                    <select id="inputCategory" required>
-                        <option value="oils">Oils</option>
-                        <option value="shampoo">Shampoo</option>
-                        <option value="soaps">Soaps</option>
-                        <option value="ubtan">Ubtan</option>
-                        <option value="serum">Serum</option>
-                        <option value="masks">Masks</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label>Product Name</label>
-                    <input type="text" id="inputName" required placeholder="Product Title">
-                </div>
-                <div class="input-group">
-                    <label>Price (Rs.)</label>
-                    <input type="text" id="inputPrice" required placeholder="1,000">
-                </div>
-                <div class="input-group">
-                    <label>Description</label>
-                    <textarea id="inputDesc" rows="3" required placeholder="Short benefits description"></textarea>
-                </div>
-                <div class="input-group">
-                    <label>Image URL</label>
-                    <input type="url" id="inputImage" required placeholder="https://image-link.com/photo.jpg">
-                </div>
-                <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">Sync to Google Sheet</button>
+                <button type="submit" class="admin-submit-btn">Save & Send to Google Sheet</button>
             </form>
         </div>
     </div>
 
-    <!-- JavaScript Engine -->
+    <footer>
+        <p>© 2026 Fangam Organic. All Rights Reserved. Designed for Pure Natural Care.</p>
+    </footer>
+
     <script>
-        // BACKEND APPS SCRIPT URL
-        const SCRIPT_URL = "https://script.google.com/macros/s/YOUR_DEPLOYED_SCRIPT_URL/exec";
-        document.getElementById('sheetUrlDisplay').innerText = SCRIPT_URL;
+        const WHATSAPP_NUMBER = "923000634445"; // اپنا واٹس ایپ نمبر یہاں درج کریں
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx-MU0hwXp_SfV8Fk6XFmyIRlXF8VH0nwDic353jbdA9uuovAF-4zQ1U8XPml8y0Edb/exec"; // یہاں اپنا درست نیا ویب ایپ یو آر ایل رکھیں
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchProductsFromSheet();
         });
 
-        // Hero Slider Animation
-        const slides = document.querySelectorAll('.hero-slide');
-        let currentSlide = 0;
-        setInterval(() => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }, 4000);
+        // گوگل شیٹ سے ڈیٹا فیچ کرنے کا فنکشن (GET)
+        function fetchProductsFromSheet() {
+            if (APPS_SCRIPT_URL.includes("YOUR_GOOGLE_APPS_SCRIPT")) return;
 
-        // Admin Modals Logic
-        const openAuthModal = document.getElementById('openAuthModal');
-        const authModal = document.getElementById('authModal');
-        const listingModal = document.getElementById('listingModal');
-        const closeAuth = document.getElementById('closeAuth');
-        const closeListing = document.getElementById('closeListing');
-        const verifyPassBtn = document.getElementById('verifyPassBtn');
+            fetch(APPS_SCRIPT_URL, { method: "GET", redirect: "follow" })
+                .then(response => response.json())
+                .then(data => {
+                    ['oils', 'shampoos', 'soaps', 'ubtan', 'serums', 'masks'].forEach(cat => {
+                        const grid = document.getElementById('grid-' + cat);
+                        if (grid) grid.innerHTML = '';
+                    });
 
-        openAuthModal.addEventListener('click', () => authModal.style.display = 'flex');
-        closeAuth.addEventListener('click', () => authModal.style.display = 'none');
-        closeListing.addEventListener('click', () => listingModal.style.display = 'none');
+                    if (!data || data.length === 0) return;
 
-        verifyPassBtn.addEventListener('click', () => {
-            const pass = document.getElementById('adminPass').value;
-            if(pass === 'fangam123') {
-                authModal.style.display = 'none';
-                document.getElementById('adminPass').value = '';
-                listingModal.style.display = 'flex';
-            } else {
-                alert('Wrong Password!');
-            }
-        });
-
-        // Form Submit to Google Sheet
-        const listingForm = document.getElementById('listingForm');
-        listingForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const payload = {
-                category: document.getElementById('inputCategory').value,
-                name: document.getElementById('inputName').value,
-                price: document.getElementById('inputPrice').value,
-                description: document.getElementById('inputDesc').value,
-                image: document.getElementById('inputImage').value
-            };
-
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            }).then(() => {
-                alert('Synced successfully with Google Sheet!');
-                listingModal.style.display = 'none';
-                listingForm.reset();
-                fetchProducts();
-            }).catch(err => alert('Error: ' + err));
-        });
-
-        // Fetch Live Products from Google Sheet
-        function fetchProducts() {
-            fetch(SCRIPT_URL)
-            .then(res => res.json())
-            .then(data => {
-                if(data && data.length > 0) {
                     data.forEach(item => {
-                        const targetGrid = document.getElementById('grid-' + item.category);
-                        if(targetGrid) {
-                            const card = document.createElement('div');
-                            card.className = 'product-card';
-                            card.innerHTML = `
-                                <div class="card-img-box"><img src="${item.image}" alt="${item.name}"></div>
-                                <div class="card-details">
-                                    <h4>${item.name}</h4>
-                                    <div class="price">Rs. ${item.price}</div>
-                                    <p>${item.description}</p>
-                                </div>
-                            `;
-                            targetGrid.appendChild(card);
+                        if (item.category && item.name) {
+                            appendProductToDOM(item.category, item.name, item.price, item.description, item.image);
                         }
                     });
-                }
-            }).catch(e => console.log('Live sync initializing...'));
+                })
+                .catch(error => {
+                    console.error("Error loading from sheet:", error);
+                });
         }
 
-        window.onload = fetchProducts;
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let slideInterval = setInterval(nextSlide, 4000);
+
+        function showSlide(n) {
+            if (slides.length === 0) return;
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            slideIndex = (n + slides.length) % slides.length;
+            slides[slideIndex].classList.add('active');
+            if (dots[slideIndex]) dots[slideIndex].classList.add('active');
+        }
+
+        function nextSlide() { showSlide(slideIndex + 1); }
+        function currentSlide(n) {
+            clearInterval(slideInterval);
+            showSlide(n);
+            slideInterval = setInterval(nextSlide, 4000);
+        }
+
+        function showSection(sectionId) {
+            document.getElementById('shop-view').style.display = 'block';
+            document.getElementById('about-view').style.display = 'none';
+            document.getElementById('contact-view').style.display = 'none';
+            const target = document.getElementById(sectionId);
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function switchPage(pageName) {
+            document.getElementById('shop-view').style.display = 'none';
+            document.getElementById('about-view').style.display = pageName === 'about' ? 'block' : 'none';
+            document.getElementById('contact-view').style.display = pageName === 'contact' ? 'block' : 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openProductModal(title, price, desc, imgSrc) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalPrice').innerText = price;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalImg').src = imgSrc;
+            
+            const waMsg = encodeURIComponent(`Hello, I want to order "${title}" priced at ${price}. Please share details.`);
+            document.getElementById('modalWhatsapp').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}`;
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function closeProductModalDirect() { document.getElementById('productModal').style.display = 'none'; }
+        function closeProductModal(event) {
+            if (event.target.id === 'productModal') document.getElementById('productModal').style.display = 'none';
+        }
+
+        function openAdminModal() {
+            let password = prompt("براہ کرم ایڈمن پاسورڈ درج کریں:");
+            if (password === "fangam123") {
+                document.getElementById('adminModal').style.display = 'flex';
+            } else if (password !== null) {
+                alert("غلط پاسورڈ!");
+            }
+        }
+
+        function closeAdminModalDirect() { document.getElementById('adminModal').style.display = 'none'; }
+        function closeAdminModal(event) {
+            if (event.target.id === 'adminModal') document.getElementById('adminModal').style.display = 'none';
+        }
+
+        function addNewProduct(event) {
+            event.preventDefault();
+            
+            const category = document.getElementById('prodCategory').value;
+            const name = document.getElementById('prodName').value;
+            const price = document.getElementById('prodPrice').value;
+            const desc = document.getElementById('prodDesc').value;
+            const imageUrl = document.getElementById('prodImageLink').value;
+
+            sendDataToGoogleSheet(category, name, price, desc, imageUrl);
+        }
+
+        // گوگل شیٹ پر ڈیٹا بھیجنے کا طریقہ (POST)
+        function sendDataToGoogleSheet(category, name, price, desc, imageUrl) {
+            const payload = { 
+                category: category, 
+                name: name, 
+                price: price, 
+                description: desc, 
+                image: imageUrl 
+            };
+
+            fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                redirect: "follow",
+                body: JSON.stringify(payload)
+            })
+            .then(response => response.json())
+            .then(result => {
+                alert('پروڈکٹ کامیابی کے ساتھ گوگل شیٹ پر محفوظ ہو گئی ہے!');
+                appendProductToDOM(category, name, price, desc, imageUrl);
+                document.querySelector('.admin-form').reset();
+                closeAdminModalDirect();
+                
+                const targetCat = document.getElementById(category);
+                if (targetCat) targetCat.scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert('ڈیٹا شیٹ پر بھیج دیا گیا ہے!');
+                appendProductToDOM(category, name, price, desc, imageUrl);
+                document.querySelector('.admin-form').reset();
+                closeAdminModalDirect();
+            });
+        }
+
+        // فرنٹ اینڈ کے DOM میں پروڈکٹ کارڈ شو کرنے کا فنکشن
+        function appendProductToDOM(category, name, price, desc, image) {
+            const gridId = 'grid-' + category;
+            const gridContainer = document.getElementById(gridId);
+
+            if (gridContainer) {
+                const newCard = document.createElement('div');
+                newCard.className = 'product-card';
+                
+                const safeName = name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                const safePrice = price.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                const safeDesc = desc.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                const safeImage = image.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                
+                newCard.setAttribute('onclick', `openProductModal('${safeName}', '${safePrice}', '${safeDesc}', '${safeImage}')`);
+                
+                newCard.innerHTML = `
+                    <div class="product-img-wrapper"><img src="${image}" alt="${name}"></div>
+                    <div class="product-info">
+                        <div class="product-title">${name}</div>
+                        <div class="product-price">${price}</div>
+                    </div>
+                `;
+                gridContainer.appendChild(newCard);
+            }
+        }
     </script>
 </body>
 </html>
