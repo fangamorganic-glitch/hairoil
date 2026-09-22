@@ -21,6 +21,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
         header { background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; width: 100%; }
         .nav-container { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; position: relative; }
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -39,8 +40,8 @@
         .offer-image img { width: 200px; height: 200px; object-fit: cover; border-radius: 12px; border: 3px solid rgba(255,255,255,0.4); }
 
         .hero-section { max-width: 1200px; margin: 30px auto; padding: 0 20px; position: relative; }
-        .slider-container { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); border-radius: 20px; overflow: hidden; color: var(--white); box-shadow: var(--shadow); position: relative; min-height: 400px; display: flex; align-items: center; }
-        .slide { display: none; width: 100%; padding: 40px; justify-content: space-between; align-items: center; gap: 30px; }
+        .slider-container { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); border-radius: 20px; overflow: hidden; color: var(--white); box-shadow: var(--shadow); position: relative; min-height: 420px; display: flex; align-items: center; }
+        .slide { display: none; width: 100%; padding: 50px; justify-content: space-between; align-items: center; gap: 30px; }
         .slide.active { display: flex; }
         .slide-content { max-width: 600px; }
         .slide-content h1 { font-size: 38px; margin-bottom: 15px; color: var(--accent); line-height: 1.2; }
@@ -162,25 +163,34 @@
         .admin-submit-btn { background: var(--primary); color: white; border: none; width: 100%; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); }
         .admin-submit-btn:hover { background: var(--primary-dark); }
 
-        /* Mobile Responsive Fixes */
-        @media (max-width: 900px) {
+        /* Perfect Responsive Media Queries for Desktop & Mobile Balance */
+        @media (max-width: 1024px) {
+            .footer-container { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        }
+
+        @media (max-width: 768px) {
             .menu-toggle { display: block; }
             .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: var(--white); flex-direction: column; align-items: flex-start; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); display: none; border-top: 1px solid #eee; }
             .nav-links.active { display: flex; }
             .nav-links li { width: 100%; padding: 8px 0; border-bottom: 1px solid #f1f5f9; }
             .nav-links a { display: block; font-size: 16px; }
+            
             .slide { flex-direction: column-reverse; text-align: center; padding: 30px 15px; gap: 20px; }
             .slide-content h1 { font-size: 24px; }
             .slide-content p { font-size: 13px; }
             .slide-image img { width: 200px; height: 200px; }
-            .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+            
+            .products-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
             .category-section h2 { font-size: 20px; }
+            
             .offer-banner { flex-direction: column; text-align: center; padding: 20px; }
             .offer-image img { width: 140px; height: 140px; }
+            
             .follow-container { flex-direction: column; text-align: center; padding: 20px; }
             .follow-text-side { text-align: center; }
             .follow-text-side h2 { justify-content: center; font-size: 24px; }
             .social-buttons { justify-content: center; }
+            
             .footer-container { grid-template-columns: 1fr; gap: 30px; text-align: center; }
             .footer-social-links { justify-content: center; }
             .newsletter-form input, .newsletter-form button { width: 100%; }
@@ -228,7 +238,7 @@
             </div>
         </div>
 
-        <!-- 2. MAIN HERO SLIDER (All 6 Slides Recovered) -->
+        <!-- 2. MAIN HERO SLIDER (All 6 Slides) -->
         <div class="hero-section">
             <div class="slider-container">
                 <div class="slide active">
@@ -469,7 +479,6 @@
     <!-- 8. PROFESSIONAL MULTI-COLUMN FOOTER SECTION -->
     <footer class="site-footer">
         <div class="footer-container">
-            <!-- Column 1: Newsletter -->
             <div class="footer-col">
                 <h3>Let's get in touch</h3>
                 <p>Sign up for our newsletter and receive 10% off your first order.</p>
@@ -479,7 +488,6 @@
                 </form>
             </div>
 
-            <!-- Column 2: Quick Links -->
             <div class="footer-col">
                 <h3>Quick link</h3>
                 <ul>
@@ -492,7 +500,6 @@
                 </ul>
             </div>
 
-            <!-- Column 3: Company -->
             <div class="footer-col">
                 <h3>Company</h3>
                 <ul>
@@ -506,7 +513,6 @@
                 </ul>
             </div>
 
-            <!-- Column 4: Social Media Links -->
             <div class="footer-col">
                 <h3>Social Media Links</h3>
                 <p>Follow us on our social platforms for daily updates and skincare tips.</p>
