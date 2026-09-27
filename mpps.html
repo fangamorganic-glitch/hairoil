@@ -18,6 +18,7 @@
             --card-bg: #ffffff;
             --text-color: #2c3e50;
             --border-color: #dcedc8;
+            --note-bg: #f1f8e9;
         }
 
         * {
@@ -150,7 +151,6 @@
             color: var(--primary-green);
         }
 
-        /* Custom Styled Clean Selector hiding native branding */
         .custom-lang-select {
             padding: 8px 15px;
             border-radius: 6px;
@@ -167,7 +167,6 @@
             border-color: var(--primary-green);
         }
 
-        /* Hide default google widget box, we map it programmatically */
         #google_translate_element {
             display: none;
         }
@@ -186,7 +185,7 @@
             border-radius: 12px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.04);
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             border: 1px solid var(--border-color);
         }
 
@@ -213,6 +212,35 @@
             margin: 0 auto;
         }
 
+        /* Notice / Reader Hint Box (Appears once before videos) */
+        .reader-notice-box {
+            background-color: var(--note-bg);
+            border-left: 4px solid var(--accent-green);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        body.translated-rtl .reader-notice-box {
+            border-left: none;
+            border-right: 4px solid var(--accent-green);
+        }
+
+        .reader-notice-box i {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .reader-notice-box p {
+            font-size: 0.98rem;
+            color: #333;
+            font-weight: 500;
+        }
+
         /* Content Cards */
         .content-card {
             background: var(--card-bg);
@@ -234,7 +262,7 @@
             gap: 10px;
         }
 
-        /* Vertical Shorts/Reels Format (9:16) for ALL videos including Facebook */
+        /* Vertical Shorts/Reels Format (9:16) for ALL videos */
         .video-wrapper {
             position: relative;
             width: 100%;
@@ -347,7 +375,7 @@
         </div>
     </header>
 
-    <!-- Global Professional Language Toggle Bar (Max International Languages & RTL Support) -->
+    <!-- Global Professional Language Toggle Bar -->
     <div class="control-bar">
         <div class="lang-switcher">
             <label for="global-lang-select"><i class="fa-solid fa-globe"></i> Change Language:</label>
@@ -388,6 +416,12 @@
             <h1>Fangam Organic Herbal Hair Oil</h1>
             <p>100% Pure & Natural botanical formula designed for deep root nourishment, severe hair fall control, and natural shine.</p>
         </section>
+
+        <!-- Single Reader Notice / Hint Box (Placed once before videos start) -->
+        <div class="reader-notice-box">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>Prefer reading? Detailed written instructions and benefits are available in text format right beneath each video clip below.</p>
+        </div>
 
         <!-- 1. YouTube Section -->
         <div class="content-card">
@@ -437,7 +471,6 @@
         <!-- 4. Facebook Section -->
         <div class="content-card">
             <h2><i class="fab fa-facebook" style="color: #1877f2;"></i> Facebook</h2>
-            <!-- Converted Facebook video container to vertical short/reel style -->
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/YOUR_FB_VIDEO_ID" allowfullscreen></iframe>
             </div>
@@ -454,7 +487,7 @@
         <div class="content-card" id="ingredients-section">
             <h2><i class="fa-solid fa-seedling" style="color: var(--accent-green);"></i> Key Ingredients & Detailed Read</h2>
             <div class="text-content">
-                <p>Prefer reading? Here is the exact breakdown of the potent natural ingredients packed inside every bottle:</p>
+                <p>Here is the exact breakdown of the potent natural ingredients packed inside every bottle:</p>
                 <ul class="ingredients-list">
                     <li><strong>Cold-Pressed Carrier Oils:</strong> Deeply penetrate the scalp to lock in moisture and essential nutrients.</li>
                     <li><strong>Hand-Picked Herbal Extracts:</strong> Traditional botanicals known for stimulating dormant hair follicles.</li>
