@@ -440,7 +440,7 @@
 
         <!-- 1. YouTube Section -->
         <div class="content-card">
-            <h2><i class="fab fa-youtube" style="color: #ff0000;"></i> See Benefits & How to Use on YouTube</h2>
+            <h2><i class="fab fa-youtube" style="color: #ff0000;"></i> <span class="platform-text-yt">See Benefits & How to Use on YouTube</span></h2>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_SHORT_ID" allowfullscreen></iframe>
             </div>
@@ -448,7 +448,7 @@
 
         <!-- 2. TikTok Section -->
         <div class="content-card">
-            <h2><i class="fab fa-tiktok" style="color: #000;"></i> See Benefits & How to Use on TikTok</h2>
+            <h2><i class="fab fa-tiktok" style="color: #000;"></i> <span class="platform-text-tk">See Benefits & How to Use on TikTok</span></h2>
             <div class="video-wrapper">
                 <iframe src="https://www.tiktok.com/embed/v2/YOUR_TIKTOK_VIDEO_ID" allowfullscreen></iframe>
             </div>
@@ -456,7 +456,7 @@
 
         <!-- 3. Instagram Section -->
         <div class="content-card">
-            <h2><i class="fab fa-instagram" style="color: #cc2366;"></i> See Benefits & How to Use on Instagram</h2>
+            <h2><i class="fab fa-instagram" style="color: #cc2366;"></i> <span class="platform-text-ig">See Benefits & How to Use on Instagram</span></h2>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/YOUR_INSTAGRAM_REEL_EMBED_ID" allowfullscreen></iframe>
             </div>
@@ -464,7 +464,7 @@
 
         <!-- 4. Facebook Section -->
         <div class="content-card">
-            <h2><i class="fab fa-facebook" style="color: #1877f2;"></i> See Benefits & How to Use on Facebook</h2>
+            <h2><i class="fab fa-facebook" style="color: #1877f2;"></i> <span class="platform-text-fb">See Benefits & How to Use on Facebook</span></h2>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/YOUR_FB_VIDEO_ID" allowfullscreen></iframe>
             </div>
@@ -512,18 +512,32 @@
                 selectField.dispatchEvent(new Event('change'));
             }
             
-            // Handle RTL (Right-to-Left) and Noto Nastaliq Urdu layout adjustments automatically
+            // Handle RTL and Native Platform Names replacement dynamically
             setTimeout(function() {
-                if (langCode === 'ur' || langCode === 'ar' || langCode === 'fa' || langCode === 'ps') {
+                var ytEl = document.querySelector('.platform-text-yt');
+                var tkEl = document.querySelector('.platform-text-tk');
+                var igEl = document.querySelector('.platform-text-ig');
+                var fbEl = document.querySelector('.platform-text-fb');
+
+                if (langCode === 'ur') {
+                    document.body.classList.add('translated-rtl', 'translated-urdu');
+                    if(ytEl) ytEl.innerText = "یوٹیوب پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
+                    if(tkEl) tkEl.innerText = "ٹک ٹاک پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
+                    if(igEl) igEl.innerText = "انسٹاگرام پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
+                    if(fbEl) fbEl.innerText = "فیس بک پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
+                } else if (langCode === 'ar' || langCode === 'fa' || langCode === 'ps') {
                     document.body.classList.add('translated-rtl');
-                    if (langCode === 'ur') {
-                        document.body.classList.add('translated-urdu');
-                    } else {
-                        document.body.classList.remove('translated-urdu');
-                    }
-                } else {
-                    document.body.classList.remove('translated-rtl');
                     document.body.classList.remove('translated-urdu');
+                    if(ytEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على يوتيوب" : "مشاهده مزایا و نحوه استفاده در یوتیوب";
+                    if(tkEl) tkEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على تيك توك" : "مشاهده مزایا و نحوه استفاده در تیک تاک";
+                    if(igEl) igEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على إنستغرام" : "مشاهده مزایا و نحوه استفاده در اینستاگرام";
+                    if(fbEl) fbEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على فيسبوك" : "مشاهده مزایا و نحوه استفاده در فیسبوک";
+                } else {
+                    document.body.classList.remove('translated-rtl', 'translated-urdu');
+                    if(ytEl) ytEl.innerText = "See Benefits & How to Use on YouTube";
+                    if(tkEl) ytEl.innerText = "See Benefits & How to Use on TikTok";
+                    if(igEl) ytEl.innerText = "See Benefits & How to Use on Instagram";
+                    if(fbEl) ytEl.innerText = "See Benefits & How to Use on Facebook";
                 }
             }, 800);
         }
