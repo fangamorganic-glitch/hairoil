@@ -28,15 +28,18 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Professional hiding of Google Translate native top banner & default branding */
+        /* Completely hide Google Translate top banner, popup frames & default branding */
         .goog-te-banner-frame.skiptranslate, 
         .goog-logo-link, 
         .gskiptranslate,
-        #goog-gt-tt {
+        #goog-gt-tt,
+        .goog-te-balloon-frame {
             display: none !important;
         }
+        
         body {
             top: 0 !important;
+            position: static !important;
         }
 
         /* Dynamic RTL & Nastaliq Support for Urdu, Arabic, Persian, etc. */
@@ -168,7 +171,7 @@
         }
 
         #google_translate_element {
-            display: none;
+            display: none !important;
         }
 
         /* Main Container */
@@ -212,7 +215,7 @@
             margin: 0 auto;
         }
 
-        /* Notice / Reader Hint Box (Appears once before videos) */
+        /* Notice / Reader Hint Box (Placed once before videos start) */
         .reader-notice-box {
             background-color: var(--note-bg);
             border-left: 4px solid var(--accent-green);
@@ -262,13 +265,12 @@
             gap: 10px;
         }
 
-        /* Vertical Shorts/Reels Format (9:16) for ALL videos */
+        /* Optimized Compact Vertical Video Wrapper (Fixed overly tall issue) */
         .video-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 177.77%; /* Vertical 9:16 Mobile-friendly format */
-            max-width: 360px;
-            height: 0;
+            max-width: 300px; /* Reduced max-width for a compact, neat look */
+            height: 480px;      /* Fixed optimal height to prevent excessive stretching */
             margin: 0 auto 20px auto;
             overflow: hidden;
             border-radius: 10px;
@@ -354,6 +356,10 @@
             .product-hero h1 {
                 font-size: 1.7rem;
             }
+            .video-wrapper {
+                max-width: 100%;
+                height: 450px;
+            }
         }
     </style>
 </head>
@@ -405,8 +411,8 @@
         </div>
     </div>
 
-    <!-- Hidden Google Element for backend execution -->
-    <div id="google_translate_element"></div>
+    <!-- Hidden Google Element for backend execution without banners -->
+    <div id="google_translate_element" style="display:none;"></div>
 
     <div class="container">
 
