@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fangam Organic - Product Master Page</title>
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #27ae60;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Translate Widget Container */
+        .translate-container {
+            padding: 10px 5%;
+            background: #eef2f3;
+            text-align: right;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* Product Hero Section */
+        .product-hero {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .product-hero img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            max-height: 350px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .product-hero h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .product-hero p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Section Cards */
+        .content-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        .content-card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Embedded Video Wrapper */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 6px;
+            background: #000;
+            margin-bottom: 15px;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Written Content & Ingredients */
+        .text-content {
+            font-size: 1.05rem;
+            color: #444;
+        }
+
+        .ingredients-list {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--primary-color);
+            color: white;
+            margin-top: 40px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .product-hero h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Logo and Social Links -->
+    <header>
+        <div class="logo">Fangam Organic</div>
+        <div class="social-icons">
+            <a href="https://facebook.com/yourpage" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://instagram.com/yourprofile" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com/@yourprofile" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://youtube.com/yourchannel" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+    </header>
+
+    <!-- Global Google Translate Widget Bar -->
+    <div class="translate-container">
+        <div id="google_translate_element"></div>
+    </div>
+
+    <div class="container">
+
+        <!-- Product Hero Section (Change details here for a new product) -->
+        <section class="product-hero">
+            <img src="product-image.jpg" alt="Product Image">
+            <h1>Fangam Organic Herbal Hair Oil</h1>
+            <p>Experience pure natural care for strong, healthy, and shining hair.</p>
+        </section>
+
+        <!-- 1. YouTube Section -->
+        <div class="content-card">
+            <h2>
+                <span>Benefits & How to Use on YouTube</span>
+            </h2>
+            <div class="video-wrapper">
+                <!-- Replace src with your YouTube Embed Link -->
+                <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID" allowfullscreen></iframe>
+            </div>
+            <div class="text-content">
+                <p><strong>Benefits:</strong> Deeply nourishes hair roots, stops hair fall, and promotes rapid natural hair growth.</p>
+                <p style="margin-top: 8px;"><strong>How to Use:</strong> Take a small amount of oil, massage gently into your scalp for 5-10 minutes, leave it overnight or for at least 2 hours, then wash with a mild shampoo.</p>
+            </div>
+        </div>
+
+        <!-- 2. TikTok Section -->
+        <div class="content-card">
+            <h2>
+                <span>Benefits & How to Use on TikTok</span>
+            </h2>
+            <div class="video-wrapper">
+                <!-- Replace src with your TikTok/Video Embed Link -->
+                <iframe src="https://www.youtube.com/embed/YOUR_TIKTOK_EMBED_ID" allowfullscreen></iframe>
+            </div>
+            <div class="text-content">
+                <p><strong>Quick Benefits:</strong> Controls frizz instantly, adds natural shine, and protects against heat damage.</p>
+            </div>
+        </div>
+
+        <!-- 3. Facebook Page Section -->
+        <div class="content-card">
+            <h2>
+                <span>Benefits & How to Use on Facebook Page</span>
+            </h2>
+            <div class="video-wrapper">
+                <!-- Replace src with your Facebook Video Embed Link -->
+                <iframe src="https://www.youtube.com/embed/YOUR_FB_VIDEO_ID" allowfullscreen></iframe>
+            </div>
+            <div class="text-content">
+                <p><strong>Community Guide:</strong> Learn how our regular customers achieve visible results within 3 weeks of application.</p>
+            </div>
+        </div>
+
+        <!-- 4. Written Content & Key Ingredients Section -->
+        <div class="content-card" id="ingredients-section">
+            <h2>
+                <span>Key Ingredients & Detailed Read</span>
+            </h2>
+            <div class="text-content">
+                <p>If you prefer reading instead of watching, here is the complete breakdown of our organic formulation:</p>
+                <ul class="ingredients-list">
+                    <li><strong>Pure Cold-Pressed Oils:</strong> Base carrier oils that penetrate deep into follicles.</li>
+                    <li><strong>Natural Herbal Extracts:</strong> Hand-picked botanical ingredients sourced locally for maximum potency.</li>
+                    <li><strong>Essential Vitamins:</strong> Formulated to strengthen hair strands from root to tip without any artificial chemicals.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Fangam Organic. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Google Translate Script for 20+ Languages Support -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'ur,hi,ar,fa,es,fr,de,zh-CN,tr,id,bn,pa,ru,ja,ko,it,vi,ta,te,mr',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
