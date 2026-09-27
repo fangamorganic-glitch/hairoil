@@ -3,35 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fangam Organic - Product Master Page</title>
-    <!-- FontAwesome for Social Icons -->
+    <title>Fangam Organic - Master Product Page</title>
+    <!-- FontAwesome for Branded Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for English & Noto Nastaliq Urdu -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #27ae60;
-            --bg-color: #f9f9f9;
+            --primary-green: #1e4620;
+            --accent-green: #2ecc71;
+            --light-green: #e8f5e9;
+            --bg-color: #f4f7f4;
             --card-bg: #ffffff;
-            --text-color: #333333;
+            --text-color: #2c3e50;
+            --border-color: #dcedc8;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Nastaliq support class for Urdu translation */
+        .goog-te-banner-frame.skiptranslate, 
+        body.translated-urdu * {
+            font-family: 'Noto Nastaliq Urdu', serif !important;
+            letter-spacing: normal !important;
+            line-height: 2.2 !important;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* Header & Navigation */
+        /* Professional Header */
         header {
             background-color: var(--card-bg);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(30, 70, 32, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -39,102 +52,189 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 5%;
+            border-bottom: 3px solid var(--accent-green);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            letter-spacing: 0.5px;
+        }
+
+        .social-follow-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .follow-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .social-icons {
             display: flex;
-            gap: 15px;
+            gap: 12px;
         }
 
         .social-icons a {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            transition: color 0.3s;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
 
         .social-icons a:hover {
-            color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
         }
 
-        /* Translate Widget Container */
-        .translate-container {
-            padding: 10px 5%;
-            background: #eef2f3;
-            text-align: right;
+        /* Brand Social Colors */
+        .facebook { background-color: #1877f2; }
+        .instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #df4996 5%, #to do 100%, #833ab4 50%, #fd1d1d 35%, #fcb045 100%); background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+        .tiktok { background-color: #000000; }
+        .youtube { background-color: #ff0000; }
+
+        /* Custom Pro Language Toggle Bar */
+        .control-bar {
+            background-color: var(--light-green);
+            padding: 12px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-switcher label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary-green);
+        }
+
+        .lang-switcher select {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--accent-green);
+            background-color: white;
+            color: var(--text-color);
+            font-weight: 500;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .lang-switcher select:hover {
+            border-color: var(--primary-green);
         }
 
         /* Main Container */
         .container {
-            max-width: 900px;
-            margin: 20px auto;
+            max-width: 850px;
+            margin: 30px auto;
             padding: 0 15px;
         }
 
         /* Product Hero Section */
         .product-hero {
             background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            padding: 35px 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
             text-align: center;
             margin-bottom: 30px;
+            border: 1px solid var(--border-color);
         }
 
         .product-hero img {
             max-width: 100%;
             height: auto;
-            border-radius: 6px;
-            max-height: 350px;
+            border-radius: 10px;
+            max-height: 380px;
             object-fit: cover;
             margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
 
         .product-hero h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            color: var(--primary-green);
         }
 
         .product-hero p {
-            color: #666;
+            color: #555;
             font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        /* Section Cards */
+        /* Content Cards */
         .content-card {
             background: var(--card-bg);
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
         }
 
         .content-card h2 {
             font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 8px;
+            margin-bottom: 20px;
+            color: var(--primary-green);
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 10px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 10px;
         }
 
-        /* Embedded Video Wrapper */
+        /* Video / Short Embed Containers (Supports Vertical Shorts/Reels & Horizontal Videos) */
+        .video-container-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            width: 100%;
+            padding-bottom: 56.25%; /* Default Standard 16:9 for normal videos */
             height: 0;
             overflow: hidden;
-            border-radius: 6px;
+            border-radius: 10px;
             background: #000;
-            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Use this class wrapper if embedding Vertical YouTube Shorts / TikTok / Instagram Reels (9:16 aspect ratio) */
+        .video-wrapper.short-vertical {
+            padding-bottom: 177.77%; /* 9:16 Vertical aspect ratio */
+            max-width: 360px;
+            margin: 0 auto;
         }
 
         .video-wrapper iframe {
@@ -146,120 +246,155 @@
             border: 0;
         }
 
-        /* Written Content & Ingredients */
+        /* Text & Ingredients Styling */
         .text-content {
             font-size: 1.05rem;
             color: #444;
         }
 
         .ingredients-list {
-            list-style-type: disc;
-            margin-left: 20px;
-            margin-top: 10px;
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .ingredients-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            font-size: 1.02rem;
+        }
+
+        .ingredients-list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 20px;
-            background: var(--primary-color);
+            padding: 25px;
+            background: var(--primary-green);
             color: white;
-            margin-top: 40px;
+            margin-top: 50px;
+            font-size: 0.95rem;
         }
 
-        /* Responsive adjustments */
+        /* Responsive Design */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
-                gap: 10px;
+                gap: 15px;
+                padding: 15px;
+            }
+            .social-follow-area {
+                flex-direction: column;
+                gap: 8px;
             }
             .product-hero h1 {
-                font-size: 1.6rem;
+                font-size: 1.7rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header with Logo and Social Links -->
+    <!-- Professional Header with Social Links & Follow Us -->
     <header>
-        <div class="logo">Fangam Organic</div>
-        <div class="social-icons">
-            <a href="https://facebook.com/yourpage" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://instagram.com/yourprofile" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://tiktok.com/@yourprofile" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="https://youtube.com/yourchannel" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <div class="brand-container">
+            <div class="logo"><i class="fa-solid fa-leaf" style="color: #2ecc71;"></i> Fangam Organic</div>
+        </div>
+        <div class="social-follow-area">
+            <span class="follow-text">Follow Us:</span>
+            <div class="social-icons">
+                <!-- Facebook -->
+                <a href="https://facebook.com/yourpage" target="_blank" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <!-- Instagram -->
+                <a href="https://instagram.com/yourprofile" target="_blank" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <!-- TikTok -->
+                <a href="https://tiktok.com/@yourprofile" target="_blank" class="tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <!-- YouTube -->
+                <a href="https://youtube.com/yourchannel" target="_blank" class="youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
     </header>
 
-    <!-- Global Google Translate Widget Bar -->
-    <div class="translate-container">
-        <div id="google_translate_element"></div>
+    <!-- Pro Language Toggle Bar -->
+    <div class="control-bar">
+        <div class="lang-switcher">
+            <label for="language-select"><i class="fa-solid fa-globe"></i> Change Language:</label>
+            <div id="google_translate_element"></div>
+        </div>
     </div>
 
     <div class="container">
 
         <!-- Product Hero Section (Change details here for a new product) -->
         <section class="product-hero">
-            <img src="product-image.jpg" alt="Product Image">
+            <img src="product-image.jpg" alt="Fangam Organic Product">
             <h1>Fangam Organic Herbal Hair Oil</h1>
-            <p>Experience pure natural care for strong, healthy, and shining hair.</p>
+            <p>100% Pure & Natural botanical formula designed for deep root nourishment, severe hair fall control, and natural shine.</p>
         </section>
 
-        <!-- 1. YouTube Section -->
+        <!-- 1. YouTube Shorts / Video Section -->
         <div class="content-card">
-            <h2>
-                <span>Benefits & How to Use on YouTube</span>
-            </h2>
-            <div class="video-wrapper">
-                <!-- Replace src with your YouTube Embed Link -->
-                <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_VIDEO_ID" allowfullscreen></iframe>
+            <h2><i class="fab fa-youtube" style="color: #ff0000;"></i> Benefits & How to Use on YouTube</h2>
+            <!-- Remove 'short-vertical' class if you want normal 16:9 video, keep it if it's a Short -->
+            <div class="video-wrapper short-vertical">
+                <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_SHORT_ID" allowfullscreen></iframe>
             </div>
-            <div class="text-content">
-                <p><strong>Benefits:</strong> Deeply nourishes hair roots, stops hair fall, and promotes rapid natural hair growth.</p>
-                <p style="margin-top: 8px;"><strong>How to Use:</strong> Take a small amount of oil, massage gently into your scalp for 5-10 minutes, leave it overnight or for at least 2 hours, then wash with a mild shampoo.</p>
+            <div class="text-content" style="margin-top: 15px;">
+                <p><strong>Benefits:</strong> Revitalizes damaged hair follicles, stops premature hair thinning, and promotes healthy growth.</p>
+                <p style="margin-top: 8px;"><strong>How to Use:</strong> Massage gently onto the scalp for 5 minutes using fingertips. Leave for 2 hours or overnight before washing.</p>
             </div>
         </div>
 
         <!-- 2. TikTok Section -->
         <div class="content-card">
-            <h2>
-                <span>Benefits & How to Use on TikTok</span>
-            </h2>
-            <div class="video-wrapper">
-                <!-- Replace src with your TikTok/Video Embed Link -->
-                <iframe src="https://www.youtube.com/embed/YOUR_TIKTOK_EMBED_ID" allowfullscreen></iframe>
+            <h2><i class="fab fa-tiktok" style="color: #000;"></i> Benefits & How to Use on TikTok</h2>
+            <!-- Use 'short-vertical' for TikTok vertical videos -->
+            <div class="video-wrapper short-vertical">
+                <iframe src="https://www.tiktok.com/embed/v2/YOUR_TIKTOK_VIDEO_ID" allowfullscreen></iframe>
             </div>
-            <div class="text-content">
-                <p><strong>Quick Benefits:</strong> Controls frizz instantly, adds natural shine, and protects against heat damage.</p>
+            <div class="text-content" style="margin-top: 15px;">
+                <p><strong>Quick Application Guide:</strong> Watch how fast our organic formula absorbs into roots to control frizz instantly.</p>
             </div>
         </div>
 
-        <!-- 3. Facebook Page Section -->
+        <!-- 3. Instagram Reels Section -->
         <div class="content-card">
-            <h2>
-                <span>Benefits & How to Use on Facebook Page</span>
-            </h2>
+            <h2><i class="fab fa-instagram" style="color: #cc2366;"></i> Benefits & How to Use on Instagram</h2>
+            <div class="video-wrapper short-vertical">
+                <!-- Instagram / Video embed link -->
+                <iframe src="https://www.youtube.com/embed/YOUR_INSTAGRAM_REEL_EMBED_ID" allowfullscreen></iframe>
+            </div>
+            <div class="text-content" style="margin-top: 15px;">
+                <p><strong>Community Results:</strong> Real feedback and application steps shared by our daily users.</p>
+            </div>
+        </div>
+
+        <!-- 4. Facebook Page Section -->
+        <div class="content-card">
+            <h2><i class="fab fa-facebook" style="color: #1877f2;"></i> Benefits & How to Use on Facebook</h2>
             <div class="video-wrapper">
-                <!-- Replace src with your Facebook Video Embed Link -->
                 <iframe src="https://www.youtube.com/embed/YOUR_FB_VIDEO_ID" allowfullscreen></iframe>
             </div>
-            <div class="text-content">
-                <p><strong>Community Guide:</strong> Learn how our regular customers achieve visible results within 3 weeks of application.</p>
+            <div class="text-content" style="margin-top: 15px;">
+                <p><strong>Detailed Overview:</strong> Comprehensive guide on product benefits and routine care tips.</p>
             </div>
         </div>
 
-        <!-- 4. Written Content & Key Ingredients Section -->
+        <!-- 5. Written Key Ingredients & Detailed Read Section (Fully Customizable) -->
         <div class="content-card" id="ingredients-section">
-            <h2>
-                <span>Key Ingredients & Detailed Read</span>
-            </h2>
+            <h2><i class="fa-solid fa-seedling" style="color: var(--accent-green);"></i> Key Ingredients & Detailed Read</h2>
             <div class="text-content">
-                <p>If you prefer reading instead of watching, here is the complete breakdown of our organic formulation:</p>
+                <p>Prefer reading? Here is the exact breakdown of the potent natural ingredients packed inside every bottle:</p>
                 <ul class="ingredients-list">
-                    <li><strong>Pure Cold-Pressed Oils:</strong> Base carrier oils that penetrate deep into follicles.</li>
-                    <li><strong>Natural Herbal Extracts:</strong> Hand-picked botanical ingredients sourced locally for maximum potency.</li>
-                    <li><strong>Essential Vitamins:</strong> Formulated to strengthen hair strands from root to tip without any artificial chemicals.</li>
+                    <li><strong>Cold-Pressed Carrier Oils:</strong> Deeply penetrate the scalp to lock in moisture and essential nutrients.</li>
+                    <li><strong>Hand-Picked Herbal Extracts:</strong> Traditional botanicals known for stimulating dormant hair follicles.</li>
+                    <li><strong>Pure Organic Vitamins:</strong> Strengthens hair strands from core to tip without any synthetic chemicals or parabens.</li>
                 </ul>
             </div>
         </div>
@@ -267,15 +402,15 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Fangam Organic. All Rights Reserved.</p>
+        <p>&copy; 2026 Fangam Organic. All Rights Reserved. Crafted for Natural Care.</p>
     </footer>
 
-    <!-- Google Translate Script for 20+ Languages Support -->
+    <!-- Google Translate Script & Professional Pro Styling Configuration -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
-                includedLanguages: 'ur,hi,ar,fa,es,fr,de,zh-CN,tr,id,bn,pa,ru,ja,ko,it,vi,ta,te,mr',
+                includedLanguages: 'ur,ar,fa,ps,hi,es,fr,de,zh-CN,tr,id,bn,pa,ru,ja,ko,it,vi',
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
         }
