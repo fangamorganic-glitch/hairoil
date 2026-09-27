@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Fangam Organic</title>
+    <style>
+        :root {
+            --primary-color: #2D5A27;
+            --secondary-color: #4A7C59;
+            --accent-color: #8FBC8F;
+            --bg-color: #F4F9F4;
+            --text-color: #333333;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 12px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .product-card h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Fangam Organic</h1>
+            <div class="tagline">Pure, Natural & Chemical-Free Care for Your Skin and Hair</div>
+        </header>
+
+        <section>
+            <h2 class="section-title">Who We Are</h2>
+            <p>Welcome to <strong>Fangam Organic</strong>, your ultimate destination for authentic, 100% pure, and organic personal care products. We believe that true beauty comes from nature. Our journey began with a simple mission: to bring back traditional, chemical-free herbal formulations that nourish your body without any harmful side effects.</p>
+            <p>Every single product we create is crafted with utmost care, premium organic ingredients, and a deep commitment to quality, ensuring safety and visible results for you and your family.</p>
+        </section>
+
+        <section>
+            <h2 class="section-title">Our Pure Product Range</h2>
+            <p>We take pride in offering a diverse range of natural formulations designed to elevate your daily self-care routine:</p>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <h3>Organic Hair Oils</h3>
+                    <p>Deeply nourishing herbal blends designed to strengthen roots, control hair fall, and stimulate healthy hair growth.</p>
+                </div>
+                <div class="product-card">
+                    <h3>Herbal Shampoos</h3>
+                    <p>Gentle, sulfate-free cleansers that cleanse the scalp while preserving natural moisture and shine.</p>
+                </div>
+                <div class="product-card">
+                    <h3>Traditional Ubtan</h3>
+                    <p>Authentic herbal glowing powders made from pure roots, grains, and floral extracts for flawless skin texture.</p>
+                </div>
+                <div class="product-card">
+                    <h3>Natural Soaps</h3>
+                    <p>Handmade organic soaps enriched with nourishing plant oils and butter to keep your skin soft and hydrated.</p>
+                </div>
+                <div class="product-card">
+                    <h3>Hair Masks</h3>
+                    <p>Intensive repair treatments crafted to restore dry, damaged hair and add a natural, glossy texture.</p>
+                </div>
+                <div class="product-card">
+                    <h3>Beauty Serums</h3>
+                    <p>Lightweight, nutrient-rich botanical serums formulated to give your skin and hair an instant healthy glow.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Our Promise to You</h2>
+            <p>At Fangam Organic, quality is our top priority. We promise zero synthetic fragrances, zero harsh chemicals, and zero parabens. What you get is pure, unadulterated goodness straight from nature's lap.</p>
+        </section>
+    </div>
+
+</body>
+</html>
