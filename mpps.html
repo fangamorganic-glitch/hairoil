@@ -28,6 +28,15 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        /* Prevent Google Translate from messing up FontAwesome icons */
+        .fa, .fas, .far, .fab {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+            font-weight: 900;
+        }
+        .fab {
+            font-weight: 400 !important;
+        }
+
         /* Completely hide Google Translate top banner, popup frames & default branding */
         .goog-te-banner-frame.skiptranslate, 
         .goog-logo-link, 
@@ -255,7 +264,7 @@
         }
 
         .content-card h2 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 20px;
             color: var(--primary-green);
             border-bottom: 2px solid var(--accent-green);
@@ -431,7 +440,7 @@
 
         <!-- 1. YouTube Section -->
         <div class="content-card">
-            <h2><i class="fab fa-youtube" style="color: #ff0000;"></i> See Benefits on YouTube</h2>
+            <h2><i class="fab fa-youtube" style="color: #ff0000;"></i> See Benefits & How to Use on YouTube</h2>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_SHORT_ID" allowfullscreen></iframe>
             </div>
@@ -439,7 +448,7 @@
 
         <!-- 2. TikTok Section -->
         <div class="content-card">
-            <h2><i class="fab fa-tiktok" style="color: #000;"></i> See Benefits on TikTok</h2>
+            <h2><i class="fab fa-tiktok" style="color: #000;"></i> See Benefits & How to Use on TikTok</h2>
             <div class="video-wrapper">
                 <iframe src="https://www.tiktok.com/embed/v2/YOUR_TIKTOK_VIDEO_ID" allowfullscreen></iframe>
             </div>
@@ -447,7 +456,7 @@
 
         <!-- 3. Instagram Section -->
         <div class="content-card">
-            <h2><i class="fab fa-instagram" style="color: #cc2366;"></i> See Benefits on Instagram</h2>
+            <h2><i class="fab fa-instagram" style="color: #cc2366;"></i> See Benefits & How to Use on Instagram</h2>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/YOUR_INSTAGRAM_REEL_EMBED_ID" allowfullscreen></iframe>
             </div>
@@ -455,7 +464,7 @@
 
         <!-- 4. Facebook Section -->
         <div class="content-card">
-            <h2><i class="fab fa-facebook" style="color: #1877f2;"></i> See Benefits on Facebook</h2>
+            <h2><i class="fab fa-facebook" style="color: #1877f2;"></i> See Benefits & How to Use on Facebook</h2>
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/YOUR_FB_VIDEO_ID" allowfullscreen></iframe>
             </div>
