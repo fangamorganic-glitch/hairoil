@@ -54,8 +54,10 @@
         .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: var(--transition); }
         .dot.active { background: var(--accent); width: 25px; border-radius: 5px; }
 
-        .admin-float-btn { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: var(--primary-dark); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); cursor: pointer; z-index: 1001; border: none; transition: var(--transition); }
-        .admin-float-btn:hover { transform: scale(1.1); }
+        /* New Floating Product Details Button with Header */
+        .product-details-float-btn { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: var(--primary-dark); padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; box-shadow: 0 6px 20px rgba(0,0,0,0.25); cursor: pointer; z-index: 1001; border: none; transition: var(--transition); text-decoration: none; }
+        .product-details-float-btn i { font-size: 18px; }
+        .product-details-float-btn:hover { transform: scale(1.05); background-color: #e5c158; }
 
         .main-content { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         .category-section { margin-bottom: 50px; }
@@ -420,9 +422,10 @@
         <p style="margin-bottom: 15px;">Have questions about our products? Reach out to us anytime on WhatsApp!</p>
     </div>
 
-    <button class="admin-float-btn" onclick="openAdminModal()" title="Add New Product">
-        <i class="fa-solid fa-leaf"></i>
-    </button>
+    <!-- Replaced Floating Button with Header Text -->
+    <a href="#" id="productDetailsBtn" class="product-details-float-btn">
+        <i class="fa-solid fa-circle-info"></i> Product Details
+    </a>
 
     <div class="modal-overlay" id="productModal" onclick="closeProductModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -434,33 +437,6 @@
             <a id="modalWhatsapp" href="#" target="_blank" class="whatsapp-btn">
                 <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
             </a>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="adminModal" onclick="closeAdminModal(event)">
-        <div class="modal-content admin-modal" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeAdminModalDirect()">&times;</span>
-            <h2 class="modal-title" style="margin-bottom: 20px;">Add New Product (Local Direct Entry)</h2>
-            <form class="admin-form" onsubmit="addNewProductLocally(event)">
-                <label for="prodCategory">Select Category</label>
-                <select id="prodCategory" required>
-                    <option value="oils">Oils</option>
-                    <option value="shampoos">Shampoo</option>
-                    <option value="soaps">Soaps</option>
-                    <option value="ubtan">Ubtan</option>
-                    <option value="serums">Serum</option>
-                    <option value="masks">Masks</option>
-                </select>
-                <label for="prodName">Product Name</label>
-                <input type="text" id="prodName" placeholder="e.g. Rosemary Hair Oil" required>
-                <label for="prodPrice">Price (e.g. Rs. 1,000)</label>
-                <input type="text" id="prodPrice" placeholder="Rs. 1,000" required>
-                <label for="prodDesc">Product Details / Description</label>
-                <textarea id="prodDesc" rows="3" placeholder="Write short product benefits..." required></textarea>
-                <label for="prodImageLink">Image Link (URL)</label>
-                <input type="url" id="prodImageLink" placeholder="https://example.com/image.jpg" required>
-                <button type="submit" class="admin-submit-btn">Save Product</button>
-            </form>
         </div>
     </div>
 
@@ -527,10 +503,6 @@
             image: "https://lh3.googleusercontent.com/d/1njHDlat-P-A5rJIEvdfibeXDlrWi_PCE"
         };
 
-        // =========================================================================
-        // یہاں آپ اپنی پروڈکٹس ڈائریکٹ درج کر سکتے ہیں
-        // category کے آگے لکھیں: 'oils', 'shampoos', 'soaps', 'ubtan', 'serums', 'masks'
-        // =========================================================================
         let localProductsData = [
             { 
                 category: 'oils', 
@@ -807,38 +779,6 @@
         function closeProductModalDirect() { document.getElementById('productModal').style.display = 'none'; }
         function closeProductModal(event) {
             if (event.target.id === 'productModal') document.getElementById('productModal').style.display = 'none';
-        }
-
-        function openAdminModal() {
-            let password = prompt("براہ کرم ایڈمن پاسورڈ درج کریں:");
-            if (password === "fangam123") {
-                document.getElementById('adminModal').style.display = 'flex';
-            } else if (password !== null) {
-                alert("غلط پاسورڈ!");
-            }
-        }
-
-        function closeAdminModalDirect() { document.getElementById('adminModal').style.display = 'none'; }
-        function closeAdminModal(event) {
-            if (event.target.id === 'adminModal') document.getElementById('adminModal').style.display = 'none';
-        }
-
-        function addNewProductLocally(event) {
-            event.preventDefault();
-            const category = document.getElementById('prodCategory').value;
-            const name = document.getElementById('prodName').value;
-            const price = document.getElementById('prodPrice').value;
-            const desc = document.getElementById('prodDesc').value;
-            const imageUrl = document.getElementById('prodImageLink').value;
-
-            localProductsData.push({ category: category, name: name, price: price, description: desc, image: imageUrl });
-            loadProductsToDOM();
-
-            alert('پروڈکٹ کامیابی کے ساتھ شامل کر دی گئی ہے!');
-            document.querySelector('.admin-form').reset();
-            closeAdminModalDirect();
-            const targetCat = document.getElementById(category);
-            if (targetCat) targetCat.scrollIntoView({ behavior: 'smooth' });
         }
 
         function appendProductToDOM(category, name, price, desc, image) {
