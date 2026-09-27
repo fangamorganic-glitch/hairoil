@@ -38,7 +38,7 @@
         .offer-content h2 { font-size: 32px; margin-bottom: 10px; color: #1e4027; }
         .offer-content p { font-size: 16px; margin-bottom: 15px; opacity: 0.95; color: #fff; }
         .offer-price { font-size: 22px; font-weight: 700; background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 8px; display: inline-block; margin-bottom: 15px; }
-        .offer-image img { width: 220px; height: 220px; object-fit: contain; border-radius: 12px; background: rgba(255,255,255,0.1); padding: 10px; border: 3px solid rgba(255,255,255,0.4); }
+        .offer-image img { width: 200px; height: 200px; object-fit: contain; border-radius: 12px; background: rgba(255,255,255,0.1); padding: 10px; border: 3px solid rgba(255,255,255,0.4); }
 
         .hero-section { max-width: 1200px; margin: 30px auto; padding: 0 20px; position: relative; }
         .slider-container { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); border-radius: 20px; overflow: hidden; color: var(--white); box-shadow: var(--shadow); position: relative; min-height: 420px; display: flex; align-items: center; }
@@ -54,7 +54,7 @@
         .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: var(--transition); }
         .dot.active { background: var(--accent); width: 25px; border-radius: 5px; }
 
-        /* Floating Product Details Button with Header */
+        /* Floating Product Details Button */
         .product-details-float-btn { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: var(--primary-dark); padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; box-shadow: 0 6px 20px rgba(0,0,0,0.25); cursor: pointer; z-index: 1001; border: none; transition: var(--transition); text-decoration: none; }
         .product-details-float-btn i { font-size: 18px; }
         .product-details-float-btn:hover { transform: scale(1.05); background-color: #e5c158; }
@@ -70,8 +70,8 @@
         .product-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); cursor: pointer; display: flex; flex-direction: column; border: 1px solid #edf2f7; transition: var(--transition); width: 100%; }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
         
-        /* Updated wrapper to fit images completely inside frame without cutting */
-        .product-img-wrapper { width: 100%; height: 230px; overflow: hidden; background: #ffffff; position: relative; display: flex; align-items: center; justify-content: center; padding: 12px; }
+        /* Fixed uniform frame height for all product images across all devices */
+        .product-img-wrapper { width: 100%; height: 220px; overflow: hidden; background: #ffffff; position: relative; display: flex; align-items: center; justify-content: center; padding: 12px; }
         .product-card img { width: 100%; height: 100%; object-fit: contain; transition: var(--transition); }
         .product-card:hover img { transform: scale(1.05); }
         
@@ -173,7 +173,10 @@
             .slide-content p { font-size: 13px; }
             .slide-image img { width: 200px; height: 200px; }
             
-            .products-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+            /* Responsive adjustments for mobile grids and product cards */
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .product-img-wrapper { height: 160px; }
+            
             .category-section h2 { font-size: 20px; }
             
             .offer-banner { flex-direction: column; text-align: center; padding: 20px; }
