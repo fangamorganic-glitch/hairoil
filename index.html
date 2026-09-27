@@ -34,11 +34,11 @@
         .menu-toggle { display: none; background: none; border: none; font-size: 24px; color: var(--primary); cursor: pointer; }
         
         .offer-section { max-width: 1200px; margin: 25px auto; padding: 0 20px; }
-        .offer-banner { background: linear-gradient(135deg, #d4af37, #b8860b); border-radius: 16px; padding: 30px; color: var(--white); display: flex; align-items: center; justify-content: space-between; gap: 25px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+        .offer-banner { background: linear-gradient(135deg, #d4af37, #b8860b); border-radius: 16px; padding: 35px; color: var(--white); display: flex; align-items: center; justify-content: space-between; gap: 25px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
         .offer-content h2 { font-size: 32px; margin-bottom: 10px; color: #1e4027; }
         .offer-content p { font-size: 16px; margin-bottom: 15px; opacity: 0.95; color: #fff; }
         .offer-price { font-size: 22px; font-weight: 700; background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 8px; display: inline-block; margin-bottom: 15px; }
-        .offer-image img { width: 200px; height: 200px; object-fit: cover; border-radius: 12px; border: 3px solid rgba(255,255,255,0.4); }
+        .offer-image img { width: 200px; height: 200px; object-fit: contain; border-radius: 12px; background: rgba(255,255,255,0.1); padding: 10px; border: 3px solid rgba(255,255,255,0.4); }
 
         .hero-section { max-width: 1200px; margin: 30px auto; padding: 0 20px; position: relative; }
         .slider-container { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); border-radius: 20px; overflow: hidden; color: var(--white); box-shadow: var(--shadow); position: relative; min-height: 420px; display: flex; align-items: center; }
@@ -54,8 +54,10 @@
         .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.4); cursor: pointer; transition: var(--transition); }
         .dot.active { background: var(--accent); width: 25px; border-radius: 5px; }
 
-        .admin-float-btn { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: var(--primary-dark); width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; box-shadow: 0 6px 20px rgba(0,0,0,0.25); cursor: pointer; z-index: 1001; border: none; transition: var(--transition); }
-        .admin-float-btn:hover { transform: scale(1.1); }
+        /* Floating Product Details Button */
+        .product-details-float-btn { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: var(--primary-dark); padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; box-shadow: 0 6px 20px rgba(0,0,0,0.25); cursor: pointer; z-index: 1001; border: none; transition: var(--transition); text-decoration: none; }
+        .product-details-float-btn i { font-size: 18px; }
+        .product-details-float-btn:hover { transform: scale(1.05); background-color: #e5c158; }
 
         .main-content { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         .category-section { margin-bottom: 50px; }
@@ -67,10 +69,13 @@
         .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
         .product-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); cursor: pointer; display: flex; flex-direction: column; border: 1px solid #edf2f7; transition: var(--transition); width: 100%; }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
-        .product-img-wrapper { width: 100%; height: 220px; overflow: hidden; background: #f1f5f9; position: relative; }
-        .product-card img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        
+        /* Fixed uniform frame height for all product images across all devices */
+        .product-img-wrapper { width: 100%; height: 220px; overflow: hidden; background: #ffffff; position: relative; display: flex; align-items: center; justify-content: center; padding: 12px; }
+        .product-card img { width: 100%; height: 100%; object-fit: contain; transition: var(--transition); }
         .product-card:hover img { transform: scale(1.05); }
-        .product-info { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        
+        .product-info { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; background: #fdfefe; border-top: 1px solid #f1f5f9; }
         .product-title { font-size: 17px; font-weight: 600; color: var(--text-dark); margin-bottom: 8px; }
         .product-price { font-size: 16px; font-weight: 700; color: var(--primary); }
 
@@ -145,19 +150,12 @@
         @keyframes modalOpen { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-light); transition: var(--transition); }
         .close-modal:hover { color: var(--text-dark); }
-        .modal-img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
+        .modal-img { width: 100%; height: 220px; object-fit: contain; border-radius: 10px; margin-bottom: 15px; background: #f8fafc; padding: 5px; }
         .modal-title { font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
         .modal-price { font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
         .modal-desc { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
         .whatsapp-btn { background: #25D366; color: white; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 10px; padding: 12px; border-radius: 8px; font-weight: 600; transition: var(--transition); }
         .whatsapp-btn:hover { background: #20ba5a; }
-
-        .admin-modal { max-width: 550px; }
-        .admin-form label { display: block; font-weight: 500; margin-bottom: 6px; font-size: 14px; color: var(--text-dark); }
-        .admin-form input, .admin-form select, .admin-form textarea { width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px; margin-bottom: 15px; font-family: inherit; font-size: 14px; outline: none; transition: var(--transition); }
-        .admin-form input:focus, .admin-form select:focus, .admin-form textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(44,94,59,0.1); }
-        .admin-submit-btn { background: var(--primary); color: white; border: none; width: 100%; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: var(--transition); }
-        .admin-submit-btn:hover { background: var(--primary-dark); }
 
         @media (max-width: 1024px) {
             .footer-container { grid-template-columns: repeat(2, 1fr); gap: 30px; }
@@ -175,11 +173,14 @@
             .slide-content p { font-size: 13px; }
             .slide-image img { width: 200px; height: 200px; }
             
-            .products-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+            /* Responsive adjustments for mobile grids and product cards */
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .product-img-wrapper { height: 160px; }
+            
             .category-section h2 { font-size: 20px; }
             
             .offer-banner { flex-direction: column; text-align: center; padding: 20px; }
-            .offer-image img { width: 140px; height: 140px; }
+            .offer-image img { width: 160px; height: 160px; }
             
             .follow-container { flex-direction: column; text-align: center; padding: 20px; }
             .follow-text-side { text-align: center; }
@@ -205,13 +206,13 @@
             </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#oils" onclick="showSection('shop'); closeMenu();">Oils</a></li>
-                <li><a href="#shampoos" onclick="showSection('shop'); closeMenu();">Shampoo</a></li>
-                <li><a href="#soaps" onclick="showSection('shop'); closeMenu();">Soaps</a></li>
-                <li><a href="#ubtan" onclick="showSection('shop'); closeMenu();">Ubtan</a></li>
-                <li><a href="#serums" onclick="showSection('shop'); closeMenu();">Serum</a></li>
-                <li><a href="#masks" onclick="showSection('shop'); closeMenu();">Masks</a></li>
-                <li><a href="#about" onclick="switchPage('about'); closeMenu();">About Us</a></li>
-                <li><a href="#contact" onclick="switchPage('contact'); closeMenu();">Contact Us</a></li>
+                <li><a href="https://fangamorganic.com/shampoo.html" onclick="showSection('shop'); closeMenu();">Shampoo</a></li>
+                <li><a href="https://fangamorganic.com/soaps.html" onclick="showSection('shop'); closeMenu();">Soaps</a></li>
+                <li><a href="https://fangamorganic.com/ubtan.html" onclick="showSection('shop'); closeMenu();">Ubtan</a></li>
+                <li><a href="https://fangamorganic.com/serum.html" onclick="showSection('shop'); closeMenu();">Serum</a></li>
+                <li><a href="https://fangamorganic.com/masks.html" onclick="showSection('shop'); closeMenu();">Masks</a></li>
+                <li><a href="https://fangamorganic.com/aboutus" onclick="switchPage('about'); closeMenu();">About Us</a></li>
+                <li><a href="https://fangamorganic.com/contact-us" onclick="switchPage('contact'); closeMenu();">Contact Us</a></li>
             </ul>
         </div>
     </header>
@@ -248,7 +249,7 @@
                     <div class="slide-content">
                         <h1>Herbal Shampoos</h1>
                         <p>Revitalize your scalp and stop hair fall naturally with our specialized herbal formulations.</p>
-                        <a href="#shampoos" class="btn">Explore Shampoos Section</a>
+                        <a href="https://fangamorganic.com/shampoo.html" class="btn">Explore Shampoos Section</a>
                     </div>
                     <div class="slide-image">
                         <img src="https://lh3.googleusercontent.com/d/1zjbg0bNwlta9ybdpxHhowmR1-j4y6c2r" alt="Herbal Shampoos">
@@ -258,7 +259,7 @@
                     <div class="slide-content">
                         <h1>Handmade Organic Soaps</h1>
                         <p>Nourish your skin with chemical-free Neem, Charcoal, and Aloe Vera handmade soaps.</p>
-                        <a href="#soaps" class="btn">Explore Soaps Section</a>
+                        <a href="https://fangamorganic.com/soaps.html" class="btn">Explore Soaps Section</a>
                     </div>
                     <div class="slide-image">
                         <img src="https://lh3.googleusercontent.com/d/1DZ_OuuNZf0BjNWUT2TAVvlwUpJ3aUaRw" alt="Organic Soaps">
@@ -268,7 +269,7 @@
                     <div class="slide-content">
                         <h1>Traditional Royal Ubtan</h1>
                         <p>Bring back your natural skin complexion with our traditional herb-rich ubtan formula.</p>
-                        <a href="#ubtan" class="btn">Explore Ubtan Section</a>
+                        <a href="https://fangamorganic.com/ubtan.html" class="btn">Explore Ubtan Section</a>
                     </div>
                     <div class="slide-image">
                         <img src="https://lh3.googleusercontent.com/d/1ymso3c54Rs_TQUUwpkCBvVHqQEHXe4ih" alt="Royal Ubtan">
@@ -278,7 +279,7 @@
                     <div class="slide-content">
                         <h1>Root Nourishment Serums</h1>
                         <p>Lightweight, non-sticky hair growth serums enriched with botanical extracts.</p>
-                        <a href="#serums" class="btn">Explore Serums Section</a>
+                        <a href="https://fangamorganic.com/serum.html" class="btn">Explore Serums Section</a>
                     </div>
                     <div class="slide-image">
                         <img src="https://lh3.googleusercontent.com/d/1lw7jw3Fn-890hqhHAjzM7KJcLrfNiwGs" alt="Hair Serums">
@@ -288,7 +289,7 @@
                     <div class="slide-content">
                         <h1>Deep Conditioning Hair Masks</h1>
                         <p>Intensive repair spa masks for damaged, dry, and chemically treated hair.</p>
-                        <a href="#masks" class="btn">Explore Masks Section</a>
+                        <a href="https://fangamorganic.com/masks.html" class="btn">Explore Masks Section</a>
                     </div>
                     <div class="slide-image">
                         <img src="https://lh3.googleusercontent.com/d/1siCeX5bnAxAjYyIflxMrB-09mYobyLBM" alt="Hair Masks">
@@ -420,9 +421,10 @@
         <p style="margin-bottom: 15px;">Have questions about our products? Reach out to us anytime on WhatsApp!</p>
     </div>
 
-    <button class="admin-float-btn" onclick="openAdminModal()" title="Add New Product">
-        <i class="fa-solid fa-leaf"></i>
-    </button>
+    <!-- Floating Product Details Button -->
+    <a href="#" id="productDetailsBtn" class="product-details-float-btn">
+        <i class="fa-solid fa-circle-info"></i> Product Details
+    </a>
 
     <div class="modal-overlay" id="productModal" onclick="closeProductModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
@@ -434,33 +436,6 @@
             <a id="modalWhatsapp" href="#" target="_blank" class="whatsapp-btn">
                 <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
             </a>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="adminModal" onclick="closeAdminModal(event)">
-        <div class="modal-content admin-modal" onclick="event.stopPropagation()">
-            <span class="close-modal" onclick="closeAdminModalDirect()">&times;</span>
-            <h2 class="modal-title" style="margin-bottom: 20px;">Add New Product (Local Direct Entry)</h2>
-            <form class="admin-form" onsubmit="addNewProductLocally(event)">
-                <label for="prodCategory">Select Category</label>
-                <select id="prodCategory" required>
-                    <option value="oils">Oils</option>
-                    <option value="shampoos">Shampoo</option>
-                    <option value="soaps">Soaps</option>
-                    <option value="ubtan">Ubtan</option>
-                    <option value="serums">Serum</option>
-                    <option value="masks">Masks</option>
-                </select>
-                <label for="prodName">Product Name</label>
-                <input type="text" id="prodName" placeholder="e.g. Rosemary Hair Oil" required>
-                <label for="prodPrice">Price (e.g. Rs. 1,000)</label>
-                <input type="text" id="prodPrice" placeholder="Rs. 1,000" required>
-                <label for="prodDesc">Product Details / Description</label>
-                <textarea id="prodDesc" rows="3" placeholder="Write short product benefits..." required></textarea>
-                <label for="prodImageLink">Image Link (URL)</label>
-                <input type="url" id="prodImageLink" placeholder="https://example.com/image.jpg" required>
-                <button type="submit" class="admin-submit-btn">Save Product</button>
-            </form>
         </div>
     </div>
 
@@ -527,10 +502,6 @@
             image: "https://lh3.googleusercontent.com/d/1njHDlat-P-A5rJIEvdfibeXDlrWi_PCE"
         };
 
-        // =========================================================================
-        // یہاں آپ اپنی پروڈکٹس ڈائریکٹ درج کر سکتے ہیں
-        // category کے آگے لکھیں: 'oils', 'shampoos', 'soaps', 'ubtan', 'serums', 'masks'
-        // =========================================================================
         let localProductsData = [
             { 
                 category: 'oils', 
@@ -807,38 +778,6 @@
         function closeProductModalDirect() { document.getElementById('productModal').style.display = 'none'; }
         function closeProductModal(event) {
             if (event.target.id === 'productModal') document.getElementById('productModal').style.display = 'none';
-        }
-
-        function openAdminModal() {
-            let password = prompt("براہ کرم ایڈمن پاسورڈ درج کریں:");
-            if (password === "fangam123") {
-                document.getElementById('adminModal').style.display = 'flex';
-            } else if (password !== null) {
-                alert("غلط پاسورڈ!");
-            }
-        }
-
-        function closeAdminModalDirect() { document.getElementById('adminModal').style.display = 'none'; }
-        function closeAdminModal(event) {
-            if (event.target.id === 'adminModal') document.getElementById('adminModal').style.display = 'none';
-        }
-
-        function addNewProductLocally(event) {
-            event.preventDefault();
-            const category = document.getElementById('prodCategory').value;
-            const name = document.getElementById('prodName').value;
-            const price = document.getElementById('prodPrice').value;
-            const desc = document.getElementById('prodDesc').value;
-            const imageUrl = document.getElementById('prodImageLink').value;
-
-            localProductsData.push({ category: category, name: name, price: price, description: desc, image: imageUrl });
-            loadProductsToDOM();
-
-            alert('پروڈکٹ کامیابی کے ساتھ شامل کر دی گئی ہے!');
-            document.querySelector('.admin-form').reset();
-            closeAdminModalDirect();
-            const targetCat = document.getElementById(category);
-            if (targetCat) targetCat.scrollIntoView({ behavior: 'smooth' });
         }
 
         function appendProductToDOM(category, name, price, desc, image) {
