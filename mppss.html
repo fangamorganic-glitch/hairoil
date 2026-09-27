@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fangam Organic - Global Master Product Page</title>
+    <!-- FontAwesome for Branded Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for English & Noto Nastaliq Urdu -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #1e4620;
+            --accent-green: #2ecc71;
+            --light-green: #e8f5e9;
+            --bg-color: #f4f7f4;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --border-color: #dcedc8;
+            --note-bg: #f1f8e9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Prevent Google Translate from messing up FontAwesome icons */
+        .fa, .fas, .far, .fab {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+            font-weight: 900;
+        }
+        .fab {
+            font-weight: 400 !important;
+        }
+
+        /* Completely hide Google Translate top banner, popup frames & default branding */
+        .goog-te-banner-frame.skiptranslate, 
+        .goog-logo-link, 
+        .gskiptranslate,
+        #goog-gt-tt,
+        .goog-te-balloon-frame {
+            display: none !important;
+        }
+        
+        body {
+            top: 0 !important;
+            position: static !important;
+        }
+
+        /* Dynamic RTL & Nastaliq Support for Urdu, Arabic, Persian, etc. */
+        body.translated-rtl {
+            direction: rtl;
+            text-align: right;
+        }
+
+        body.translated-rtl.translated-urdu * {
+            font-family: 'Noto Nastaliq Urdu', serif !important;
+            letter-spacing: normal !important;
+            line-height: 2.3 !important;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Professional Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 15px rgba(30, 70, 32, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            border-bottom: 3px solid var(--accent-green);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            letter-spacing: 0.5px;
+        }
+
+        .social-follow-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .follow-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Brand Social Colors */
+        .facebook { background-color: #1877f2; }
+        .instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+        .tiktok { background-color: #000000; }
+        .youtube { background-color: #ff0000; }
+
+        /* Pro Custom Clean Language Bar */
+        .control-bar {
+            background-color: var(--light-green);
+            padding: 12px 5%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-switcher label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary-green);
+        }
+
+        .custom-lang-select {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid var(--accent-green);
+            background-color: white;
+            color: var(--text-color);
+            font-weight: 500;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .custom-lang-select:hover {
+            border-color: var(--primary-green);
+        }
+
+        #google_translate_element {
+            display: none !important;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 850px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        /* Product Hero Section */
+        .product-hero {
+            background: var(--card-bg);
+            padding: 35px 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            text-align: center;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .product-hero img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            max-height: 380px;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        .product-hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+            color: var(--primary-green);
+        }
+
+        .product-hero p {
+            color: #555;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Notice / Reader Hint Box */
+        .reader-notice-box {
+            background-color: var(--note-bg);
+            border-left: 4px solid var(--accent-green);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        body.translated-rtl .reader-notice-box {
+            border-left: none;
+            border-right: 4px solid var(--accent-green);
+        }
+
+        .reader-notice-box i {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .reader-notice-box p {
+            font-size: 0.98rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Content Cards */
+        .content-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .content-card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary-green);
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Optimized Compact Vertical Video Wrapper */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            height: 480px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Text & Sub-sections Styling */
+        .text-content {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        .sub-heading {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-top: 15px;
+            margin-bottom: 12px;
+        }
+
+        /* Organic Leaf / Numbered List Styling */
+        .organic-list {
+            list-style: none;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .organic-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            font-size: 1.02rem;
+            line-height: 1.6;
+        }
+
+        body.translated-rtl .organic-list li {
+            padding-left: 0;
+            padding-right: 35px;
+        }
+
+        .organic-list li::before {
+            content: "\f06c"; /* FontAwesome leaf icon */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--accent-green);
+            font-size: 1rem;
+        }
+
+        body.translated-rtl .organic-list li::before {
+            left: auto;
+            right: 0;
+        }
+
+        .organic-list li strong {
+            color: var(--primary-green);
+        }
+
+        .ingredients-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .ingredients-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+
+        body.translated-rtl .ingredients-list li {
+            padding-left: 0;
+            padding-right: 25px;
+        }
+
+        .ingredients-list li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        body.translated-rtl .ingredients-list li::before {
+            left: auto;
+            right: 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: var(--primary-green);
+            color: white;
+            margin-top: 50px;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            .social-follow-area {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .product-hero h1 {
+                font-size: 1.7rem;
+            }
+            .video-wrapper {
+                max-width: 100%;
+                height: 450px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Professional Header with Social Links & Follow Us -->
+    <header>
+        <div class="brand-container">
+            <div class="logo"><i class="fa-solid fa-leaf" style="color: #2ecc71;"></i> Fangam Organic</div>
+        </div>
+        <div class="social-follow-area">
+            <span class="follow-text">Follow Us:</span>
+            <div class="social-icons">
+                <a href="https://facebook.com/yourpage" target="_blank" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/yourprofile" target="_blank" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@yourprofile" target="_blank" class="tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://youtube.com/yourchannel" target="_blank" class="youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Global Professional Language Toggle Bar -->
+    <div class="control-bar">
+        <div class="lang-switcher">
+            <label for="global-lang-select"><i class="fa-solid fa-globe"></i> Change Language:</label>
+            <select id="global-lang-select" class="custom-lang-select" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="ur">اردو (Urdu)</option>
+                <option value="ar">العربية (Arabic)</option>
+                <option value="fa">فارسی (Persian)</option>
+                <option value="ps">پښتو (Pashto)</option>
+                <option value="hi">हिन्दी (Hindi)</option>
+                <option value="zh-CN">中文 (Chinese)</option>
+                <option value="es">Español (Spanish)</option>
+                <option value="fr">Français (French)</option>
+                <option value="de">Deutsch (German)</option>
+                <option value="tr">Türkçe (Turkish)</option>
+                <option value="id">Bahasa Indonesia</option>
+                <option value="bn">বাংলা (Bengali)</option>
+                <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+                <option value="ru">Русский (Russian)</option>
+                <option value="ja">日本語 (Japanese)</option>
+                <option value="ko">한국어 (Korean)</option>
+                <option value="it">Italiano (Italian)</option>
+                <option value="vi">Tiếng Việt (Vietnamese)</option>
+                <option value="ms">Bahasa Melayu</option>
+                <option value="th">ไทย (Thai)</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Hidden Google Element for backend execution without banners -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <div class="container">
+
+        <!-- Product Hero Section -->
+        <section class="product-hero">
+            <img src="https://lh3.googleusercontent.com/d/1DADEJ28GlBu27VqSDKGTY4v7Lnd5m9nW" alt="Fangam Organic Product">
+            <h1>Fangam Organic Herbal Hair Oil</h1>
+            <p>100% Pure & Natural botanical formula designed for deep root nourishment, severe hair fall control, and natural shine.</p>
+        </section>
+
+        <!-- Single Reader Notice / Hint Box -->
+        <div class="reader-notice-box">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>Prefer reading? Detailed written instructions and benefits are available in text format in the dedicated section at the bottom.</p>
+        </div>
+
+        <!-- 1. YouTube Section -->
+        <div class="content-card">
+            <h2><i class="fab fa-youtube" style="color: #ff0000;"></i> <span class="platform-text-yt">See Benefits & How to Use on YouTube</span></h2>
+            <div class="video-wrapper">
+                <iframe src="https://youtube.com/embed/pG-9jadY9PA" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- 2. TikTok Section -->
+        <div class="content-card">
+            <h2><i class="fab fa-tiktok" style="color: #000;"></i> <span class="platform-text-tk">See Benefits & How to Use on TikTok</span></h2>
+            <div class="video-wrapper">
+                <iframe src="https://www.tiktok.com/embed/v2/7689691123991842069" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- 3. Instagram Section -->
+        <div class="content-card">
+            <h2><i class="fab fa-instagram" style="color: #cc2366;"></i> <span class="platform-text-ig">See Benefits & How to Use on Instagram</span></h2>
+            <div class="video-wrapper">
+                <iframe src="https://www.instagram.com/reel/DdwXFMriI3Q/embed/" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- 4. Facebook Section -->
+        <div class="content-card">
+            <h2><i class="fab fa-facebook" style="color: #1877f2;"></i> <span class="platform-text-fb">See Benefits & How to Use on Facebook</span></h2>
+            <div class="video-wrapper">
+                <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/watch/?v=946286318550226" width="100%" height="100%" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+        </div>
+
+        <!-- 5. Combined Final Section for Benefits, How to Use & Ingredients -->
+        <div class="content-card" id="ingredients-section">
+            <h2><i class="fa-solid fa-seedling" style="color: var(--accent-green);"></i> Complete Product Benefits & How to Use</h2>
+            <div class="text-content">
+                <div class="sub-heading">Key Benefits</div>
+                <ul class="organic-list">
+                    <li><strong>1. Deep Scalp Nourishment:</strong> Penetrates deep into hair roots to provide essential nutrients, vitamins, and deep hydration for strong, healthy hair growth.</li>
+                    <li><strong>2. Controls Hair Fall:</strong> Strengthens weak hair follicles and effectively reduces hair shedding, breakage, and thinning over regular use.</li>
+                    <li><strong>3. Stimulates Hair Growth:</strong> Powerful organic herbs and pure base oils activate dormant follicles, promoting faster and thicker hair growth.</li>
+                    <li><strong>4. Prevents Premature Greying:</strong> Rich natural ingredients help retain your hair’s natural pigment and melanin, keeping it dark and youthful.</li>
+                    <li><strong>5. Fights Dandruff & Itchiness:</strong> Natural antimicrobial and cooling properties eliminate dandruff flakes, soothe itchy scalps, and clear fungal buildup.</li>
+                    <li><strong>6. Adds Natural Shine & Gloss:</strong> Smooths the hair cuticles to give your locks a brilliant, non-greasy natural shine and a silky-smooth texture.</li>
+                    <li><strong>7. Repairs Damaged & Split Ends:</strong> Deeply conditions dry, brittle, and heat-damaged hair, restoring vitality and repairing split ends from within.</li>
+                    <li><strong>8. Improves Hair Texture & Volume:</strong> Adds noticeable thickness, bounce, and strength, transforming dull and lifeless hair into voluminous, manageable locks.</li>
+                    <li><strong>9. Natural Stress Relief:</strong> Massaging with this herbal blend relaxes the mind, relieves tension, and provides a calming aromatherapy experience.</li>
+                    <li><strong>10. 100% Pure & Chemical-Free:</strong> Crafted with 20+ rare herbs and premium base oils with zero artificial fragrances, parabens, or harmful chemicals.</li>
+                    <li><strong>11. Strengthens Hair Roots:</strong> Fortifies the dermal papilla cells to anchor hair firmly and prevent premature hair loss.</li>
+                    <li><strong>12. Balances Scalp Oils:</strong> Regulates natural sebum production, preventing excessive oiliness or dryness in the scalp.</li>
+                    <li><strong>13. Enhances Manageability:</strong> Tames frizz and makes detangling effortless after every wash routine.</li>
+                    <li><strong>14. Improves Blood Circulation:</strong> Gentle massaging action stimulates microcirculation in the scalp for enhanced nutrient delivery.</li>
+                    <li><strong>15. Long-term Scalp Health:</strong> Restores the natural microbiome balance of the scalp for sustained hair vitality over time.</li>
+                </ul>
+
+                <div class="sub-heading">How to Use</div>
+                <ul class="organic-list">
+                    <li><strong>1. Scalp Application:</strong> Massage gently onto the scalp for 5 minutes using fingertips to activate blood circulation.</li>
+                    <li><strong>2. Deep Conditioning Time:</strong> Leave the oil applied for at least 2 hours, or keep it overnight for maximum deep root absorption.</li>
+                    <li><strong>3. Gentle Cleansing:</strong> Wash thoroughly using a mild organic shampoo to clear out impurities while retaining natural moisture.</li>
+                    <li><strong>4. Regular Routine:</strong> Repeat this complete treatment 2 to 3 times a week for visible, long-lasting hair transformation.</li>
+                    <li><strong>5. Daily Protection:</strong> Apply 3-4 drops lightly along the length of your damp or dry hair for instant frizz control and shine.</li>
+                </ul>
+
+                <div class="sub-heading">Key Ingredients Breakdown</div>
+                <ul class="ingredients-list">
+                    <li><strong>Cold-Pressed Carrier Oils:</strong> Deeply penetrate the scalp to lock in moisture and essential nutrients.</li>
+                    <li><strong>Hand-Picked Herbal Extracts:</strong> Traditional botanicals known for stimulating dormant hair follicles.</li>
+                    <li><strong>Pure Organic Vitamins:</strong> Strengthens hair strands from core to tip without any synthetic chemicals or parabens.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Fangam Organic. All Rights Reserved. Crafted for Global Natural Care.</p>
+    </footer>
+
+    <!-- Google Translate Backend Initialization & Custom Global Language Handler script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,ur,ar,fa,ps,hi,zh-CN,es,fr,de,tr,id,bn,pa,ru,ja,ko,it,vi,ms,th',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        function changeLanguage(langCode) {
+            var selectField = document.querySelector('.goog-te-combo');
+            if (selectField) {
+                selectField.value = langCode;
+                selectField.dispatchEvent(new Event('change'));
+            }
+            
+            // Handle RTL and Native Platform Names replacement dynamically
+            setTimeout(function() {
+                var ytEl = document.querySelector('.platform-text-yt');
+                var tkEl = document.querySelector('.platform-text-tk');
+                var igEl = document.querySelector('.platform-text-ig');
+                var fbEl = document.querySelector('.platform-text-fb');
+
+                if (langCode === 'ur') {
+                    document.body.classList.add('translated-rtl', 'translated-urdu');
+                    if(ytEl) ytEl.innerText = "یوٹیوب پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
+                    if(tkEl) tkEl.innerText = "ٹک ٹاک پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
+                    if(igEl) igEl.innerText = "انسٹاگرام پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
+                    if(fbEl) fbEl.innerText = "فیس بک پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
+                } else if (langCode === 'ar' || langCode === 'fa' || langCode === 'ps') {
+                    document.body.classList.add('translated-rtl');
+                    document.body.classList.remove('translated-urdu');
+                    if(ytEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على يوتيوب" : "مشاهده مزایا و نحوه استفاده در یوتیوب";
+                    if(tkEl) tkEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على تيك توك" : "مشاهده مزایا و نحوه استفاده در تیک تاک";
+                    if(igEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على إنستغرام" : "مشاهده مزایا و نحوه استفاده در اینستاگرام";
+                    if(fbEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على فيسبوك" : "مشاهده مزایا و نحوه استفاده در فیسبوک";
+                } else {
+                    document.body.classList.remove('translated-rtl', 'translated-urdu');
+                    if(ytEl) ytEl.innerText = "See Benefits & How to Use on YouTube";
+                    if(tkEl) ytEl.innerText = "See Benefits & How to Use on TikTok";
+                    if(igEl) ytEl.innerText = "See Benefits & How to Use on Instagram";
+                    if(fbEl) ytEl.innerText = "See Benefits & How to Use on Facebook";
+                }
+            }, 800);
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
