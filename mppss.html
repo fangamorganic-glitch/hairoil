@@ -468,14 +468,14 @@
         <!-- Product Hero Section -->
         <section class="product-hero">
             <img src="https://lh3.googleusercontent.com/d/1DADEJ28GlBu27VqSDKGTY4v7Lnd5m9nW" alt="Fangam Organic Product">
-            <h1>Fangam Singnature Organic Hair Oil</h1>
-            <p>100% Pure & Natural botanical formula designed for deep root nourishment, severe hair fall control, and natural shine.</p>
+            <h1 class="hero-title-text">Fangam Signature Organic Hair Oil</h1>
+            <p class="hero-desc-text">100% Pure & Natural botanical formula designed for deep root nourishment, severe hair fall control, and natural shine.</p>
         </section>
 
         <!-- Single Reader Notice / Hint Box -->
         <div class="reader-notice-box">
             <i class="fa-solid fa-circle-info"></i>
-            <p>Prefer reading? Detailed written instructions and benefits are available in text format in the dedicated section at the bottom.</p>
+            <p class="notice-text-content">Prefer reading? Detailed written instructions and benefits are available in text format in the dedicated section at the bottom.</p>
         </div>
 
         <!-- 1. YouTube Section -->
@@ -512,10 +512,10 @@
 
         <!-- 5. Combined Final Section for Benefits, How to Use & Ingredients -->
         <div class="content-card" id="ingredients-section">
-            <h2><i class="fa-solid fa-seedling" style="color: var(--accent-green);"></i> Complete Product Benefits & How to Use</h2>
+            <h2><i class="fa-solid fa-seedling" style="color: var(--accent-green);"></i> <span class="section-main-title">Complete Product Benefits & How to Use</span></h2>
             <div class="text-content">
-                <div class="sub-heading">Key Benefits</div>
-                <ul class="organic-list">
+                <div class="sub-heading sub-heading-1">Key Benefits</div>
+                <ul class="organic-list benefits-list-content">
                     <li><strong>Provides deep root nourishment to hair</strong></li>
                     <li><strong>Effectively controls hair fall</strong></li>
                     <li><strong>Stimulates natural hair growth</strong></li>
@@ -526,8 +526,8 @@
                     <li><strong>Improves overall hair thickness and volume</strong></li>
                 </ul>
 
-                <div class="sub-heading">How to Use</div>
-                <ul class="organic-list">
+                <div class="sub-heading sub-heading-2">How to Use</div>
+                <ul class="organic-list usage-list-content">
                     <li>Gently massage with your fingertips for five minutes.</li>
                     <li>For best results, leave the oil on for at least two hours or overnight, but this method is intended for adults rather than children.</li>
                     <li>Using an organic shampoo is best to maintain the hair's natural moisture.</li>
@@ -535,8 +535,8 @@
                     <li>You can also use it in small quantities as part of your daily routine.</li>
                 </ul>
 
-                <div class="sub-heading">Key Ingredients Breakdown</div>
-                <ul class="ingredients-list">
+                <div class="sub-heading sub-heading-3">Key Ingredients Breakdown</div>
+                <ul class="ingredients-list ingredients-list-content">
                     <li><strong>Cold-Pressed Carrier Oils:</strong> Deeply penetrate the scalp to lock in moisture and essential nutrients.</li>
                     <li><strong>Hand-Picked Herbal Extracts:</strong> Traditional botanicals known for stimulating dormant hair follicles.</li>
                     <li><strong>Pure Organic Vitamins:</strong> Strengthens hair strands from core to tip without any synthetic chemicals or parabens.</li>
@@ -547,7 +547,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Fangam Organic. All Rights Reserved. Crafted for Global Natural Care.</p>
+        <p class="footer-text-content">&copy; 2026 Fangam Organic. All Rights Reserved. Crafted for Global Natural Care.</p>
     </footer>
 
     <!-- Google Translate Backend Initialization & Custom Global Language Handler script -->
@@ -567,32 +567,139 @@
                 selectField.dispatchEvent(new Event('change'));
             }
             
-            // Handle RTL and Native Platform Names replacement dynamically
+            // Handle RTL and Native Platform Names & Full Urdu Translation Dynamically
             setTimeout(function() {
                 var ytEl = document.querySelector('.platform-text-yt');
                 var tkEl = document.querySelector('.platform-text-tk');
                 var igEl = document.querySelector('.platform-text-ig');
                 var fbEl = document.querySelector('.platform-text-fb');
+                
+                var heroTitle = document.querySelector('.hero-title-text');
+                var heroDesc = document.querySelector('.hero-desc-text');
+                var noticeText = document.querySelector('.notice-text-content');
+                
+                var secMainTitle = document.querySelector('.section-main-title');
+                var subH1 = document.querySelector('.sub-heading-1');
+                var subH2 = document.querySelector('.sub-heading-2');
+                var subH3 = document.querySelector('.sub-heading-3');
+                
+                var benefitsList = document.querySelector('.benefits-list-content');
+                var usageList = document.querySelector('.usage-list-content');
+                var ingredientsList = document.querySelector('.ingredients-list-content');
+                var footerText = document.querySelector('.footer-text-content');
 
                 if (langCode === 'ur') {
                     document.body.classList.add('translated-rtl', 'translated-urdu');
+                    
+                    // Platform Headings with Proper Brand Alignment
                     if(ytEl) ytEl.innerText = "یوٹیوب پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
-                    if(tkEl) ytEl.innerText = "ٹک ٹاک پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
-                    if(igEl) ytEl.innerText = "انسٹاگرام پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
-                    if(fbEl) ytEl.innerText = "فیس بک پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
+                    if(tkEl) tkEl.innerText = "ٹک ٹاک پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
+                    if(igEl) igEl.innerText = "انسٹاگرام پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
+                    if(fbEl) fbEl.innerText = "فیس بک پر فوائد اور استعمال کرنے کا طریقہ دیکھیں";
+
+                    // Hero Section
+                    if(heroTitle) heroTitle.innerText = "فینگم سگنیچر آرگینک ہیئر آئل";
+                    if(heroDesc) heroDesc.innerText = "۱۰۰٪ خالص اور قدرتی بوٹینیکل فارمولا جو بالوں کی جڑوں کو گہرائی سے خوراک فراہم کرتا ہے، بالوں کا گرنا شدت سے روکتا ہے اور قدرتی چمک بحال کرتا ہے۔";
+                    if(noticeText) noticeText.innerText = "پڑھنا پسند ہے؟ تفصیلی تحریری ہدایات اور فوائد نیچے دیے گئے مخصوص سیکشن میں متن کی شکل میں موجود ہیں۔";
+
+                    // Bottom Red / Main Section Full Urdu
+                    if(secMainTitle) secMainTitle.innerText = "مصنوعات کے مکمل فوائد اور استعمال کا طریقہ";
+                    if(subH1) subH1.innerText = "اہم فوائد";
+                    if(subH2) subH2.innerText = "استعمال کرنے کا طریقہ";
+                    if(subH3) subH3.innerText = "اہم اجزاء کی تفصیل";
+
+                    if(benefitsList) {
+                        benefitsList.innerHTML = `
+                            <li><strong>بالوں کو جڑوں سے گہرائی تک خوراک اور تقویت فراہم کرتا ہے</strong></li>
+                            <li><strong>بالوں کے گرنے کو مؤثر طریقے سے کنٹرول کرتا ہے</strong></li>
+                            <li><strong>بالوں کی قدرتی نشوونما کو تیز کرتا ہے</strong></li>
+                            <li><strong>بالوں کو قبل از وقت سفید ہونے سے بچاتا ہے</strong></li>
+                            <li><strong>سر کی خشکی اور خارش کا خاتمہ کرتا ہے</strong></li>
+                            <li><strong>بالوں کی قدرتی چمک اور توانائی بحال کرتا ہے</strong></li>
+                            <li><strong>خراب اور دو شاخہ بالوں کا علاج کرتا ہے</strong></li>
+                            <li><strong>بالوں کی مجموعی موٹائی اور گھناپن بہتر بناتا ہے</strong></li>
+                        `;
+                    }
+
+                    if(usageList) {
+                        usageList.innerHTML = `
+                            <li>اپنے انگلیوں کے پوروں سے پانچ منٹ تک ہلکے ہاتھوں سے مساج کریں۔</li>
+                            <li>بہترین نتائج کے لیے تیل کو کم از کم دو گھنٹے یا پوری رات لگا رہنے دیں، لیکن یہ طریقہ بچوں کی بجائے بالغوں کے لیے ہے۔</li>
+                            <li>بالوں کی قدرتی نمی کو برقرار رکھنے کے لیے آرگینک شیمپو کا استعمال بہترین ہے۔</li>
+                            <li>اس آمیزے کو ہفتے میں دو سے تین بار استعمال کریں۔</li>
+                            <li>آپ اسے اپنے روزمرہ کے معمول کے طور پر بھی کم مقدار میں استعمال کر سکتے ہیں۔</li>
+                        `;
+                    }
+
+                    if(ingredientsList) {
+                        ingredientsList.innerHTML = `
+                            <li><strong>کولڈ پریسڈ کیریئر آئلز:</strong> کھوپڑی میں گہرائی تک جذب ہو کر نمی اور ضروری غذائی اجزاء کو لاک کرتے ہیں۔</li>
+                            <li><strong>ہاتھ سے چنے ہوئے ہربل عرق:</strong> روایتی بوٹینیکلز جو غیر فعال بالوں کے فولیکلز کو متحرک کرنے کے لیے جانے جاتے ہیں۔</li>
+                            <li><strong>خالص آرگینک وٹامنز:</strong> بغیر کسی مصنوعی کیمیکل یا پارابینز کے بالوں کے ریشوں کو جڑ سے سرے تک مضبوط بناتے ہیں۔</li>
+                        `;
+                    }
+
+                    if(footerText) footerText.innerHTML = "&copy; 2026 فینگم آرگینک۔ جملہ حقوق محفوظ ہیں۔ عالمی قدرتی نگہداشت کے لیے تیار کردہ۔";
+
                 } else if (langCode === 'ar' || langCode === 'fa' || langCode === 'ps') {
                     document.body.classList.add('translated-rtl');
                     document.body.classList.remove('translated-urdu');
+                    
                     if(ytEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على يوتيوب" : "مشاهده مزایا و نحوه استفاده در یوتیوب";
-                    if(tkEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على تيك توك" : "مشاهده مزایا و نحوه استفاده در تیک تاک";
-                    if(igEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على إنستغرام" : "مشاهده مزایا و نحوه استفاده در اینستاگرام";
-                    if(fbEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على فيسبوك" : "مشاهده مزایا و نحوه استفاده در فیسبوک";
+                    if(tkEl) tkEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على تيك توك" : "مشاهده مزایا و نحوه استفاده در تیک تاک";
+                    if(igEl) igEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على إنستغرام" : "مشاهده مزایا و نحوه استفاده در اینستاگرام";
+                    if(fbEl) fbEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على فيسبوك" : "مشاهده مزایا و نحوه استفاده در فیسبوک";
+
                 } else {
                     document.body.classList.remove('translated-rtl', 'translated-urdu');
+                    
+                    // Reset to Original English
                     if(ytEl) ytEl.innerText = "See Benefits & How to Use on YouTube";
-                    if(tkEl) ytEl.innerText = "See Benefits & How to Use on TikTok";
-                    if(igEl) ytEl.innerText = "See Benefits & How to Use on Instagram";
-                    if(fbEl) ytEl.innerText = "See Benefits & How to Use on Facebook";
+                    if(tkEl) tkEl.innerText = "See Benefits & How to Use on TikTok";
+                    if(igEl) igEl.innerText = "See Benefits & How to Use on Instagram";
+                    if(fbEl) fbEl.innerText = "See Benefits & How to Use on Facebook";
+
+                    if(heroTitle) heroTitle.innerText = "Fangam Signature Organic Hair Oil";
+                    if(heroDesc) heroDesc.innerText = "100% Pure & Natural botanical formula designed for deep root nourishment, severe hair fall control, and natural shine.";
+                    if(noticeText) noticeText.innerText = "Prefer reading? Detailed written instructions and benefits are available in text format in the dedicated section at the bottom.";
+
+                    if(secMainTitle) secMainTitle.innerText = "Complete Product Benefits & How to Use";
+                    if(subH1) subH1.innerText = "Key Benefits";
+                    if(subH2) subH2.innerText = "How to Use";
+                    if(subH3) subH3.innerText = "Key Ingredients Breakdown";
+
+                    if(benefitsList) {
+                        benefitsList.innerHTML = `
+                            <li><strong>Provides deep root nourishment to hair</strong></li>
+                            <li><strong>Effectively controls hair fall</strong></li>
+                            <li><strong>Stimulates natural hair growth</strong></li>
+                            <li><strong>Prevents premature graying of hair</strong></li>
+                            <li><strong>Relieves scalp dryness and itchiness</strong></li>
+                            <li><strong>Restores natural shine and vitality</strong></li>
+                            <li><strong>Treats damaged and split ends</strong></li>
+                            <li><strong>Improves overall hair thickness and volume</strong></li>
+                        `;
+                    }
+
+                    if(usageList) {
+                        usageList.innerHTML = `
+                            <li>Gently massage with your fingertips for five minutes.</li>
+                            <li>For best results, leave the oil on for at least two hours or overnight, but this method is intended for adults rather than children.</li>
+                            <li>Using an organic shampoo is best to maintain the hair's natural moisture.</li>
+                            <li>Use this blend two to three times a week.</li>
+                            <li>You can also use it in small quantities as part of your daily routine.</li>
+                        `;
+                    }
+
+                    if(ingredientsList) {
+                        ingredientsList.innerHTML = `
+                            <li><strong>Cold-Pressed Carrier Oils:</strong> Deeply penetrate the scalp to lock in moisture and essential nutrients.</li>
+                            <li><strong>Hand-Picked Herbal Extracts:</strong> Traditional botanicals known for stimulating dormant hair follicles.</li>
+                            <li><strong>Pure Organic Vitamins:</strong> Strengthens hair strands from core to tip without any synthetic chemicals or parabens.</li>
+                        `;
+                    }
+
+                    if(footerText) footerText.innerHTML = "&copy; 2026 Fangam Organic. All Rights Reserved. Crafted for Global Natural Care.";
                 }
             }, 800);
         }
