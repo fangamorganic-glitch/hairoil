@@ -1,901 +1,1075 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fangam Organic | Pure Herbal Hair & Skin Care</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+    <title>Fangam Organic - Pure & Natural Herbal Products</title>
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #132E1B;
-            --primary-green: #234E35;
-            --accent-gold: #C5A059;
-            --bg-light: #F4F7F4;
-            --text-main: #2C2C2C;
-            --text-muted: #666666;
-            --white: #FFFFFF;
-            --transition: all 0.4s ease;
+            --primary-green: #2e7d32;
+            --light-green: #4caf50;
+            --accent-green: #e8f5e9;
+            --dark-text: #2c3e50;
+            --light-bg: #f9fbf9;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-main);
-            line-height: 1.6;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .serif-font {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Announcement Bar */
-        .announcement-bar {
-            background-color: var(--primary-dark);
+        /* --- Top Announcement / Offer Slider (Toggleable) --- */
+        .top-offer-bar {
+            background: linear-gradient(135deg, #1b5e20, var(--primary-green));
             color: var(--white);
             text-align: center;
-            font-size: 13px;
-            padding: 9px 15px;
-            letter-spacing: 1px;
+            padding: 10px 15px;
+            font-size: 14px;
             font-weight: 500;
+            position: relative;
+            display: flex; /* Set to 'none' if you want to turn it off */
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1001;
+        }
+        .top-offer-bar.off {
+            display: none;
+        }
+        .top-offer-bar span {
+            background: #fff;
+            color: var(--primary-green);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
-        /* OFFER BANNER SETTING: display block rakhen ya none kar den */
-        .special-offer-banner {
-            display: block;
-            background: linear-gradient(135deg, #C5A059, #a3813e);
-            color: var(--white);
-            text-align: center;
-            padding: 12px 20px;
-            font-weight: 600;
-            font-size: 15px;
-            letter-spacing: 0.5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        /* Header & Navigation */
+        /* --- Header & Navigation --- */
         header {
-            background-color: var(--white);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-
         .nav-container {
             max-width: 1300px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
+            padding: 15px 20px;
         }
-
-        .logo-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-brand img {
-            height: 40px;
-            width: 40px;
-            object-fit: contain;
-            border-radius: 50%;
-        }
-
         .logo {
             font-size: 24px;
             font-weight: 700;
-            color: var(--primary-dark);
-            letter-spacing: 0.5px;
+            color: var(--primary-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-
-        .logo span {
-            color: var(--accent-gold);
+        .logo i {
+            color: var(--light-green);
         }
-
         .nav-links {
             display: flex;
-            gap: 15px;
             list-style: none;
+            gap: 25px;
+            align-items: center;
         }
-
         .nav-links a {
             text-decoration: none;
-            color: var(--text-main);
+            color: var(--dark-text);
             font-weight: 500;
-            font-size: 12px;
+            font-size: 15px;
             transition: var(--transition);
         }
-
         .nav-links a:hover {
-            color: var(--accent-gold);
+            color: var(--primary-green);
+        }
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-green);
         }
 
-        /* Hero Slider Section */
-        .hero-slider {
+        /* --- Hero Slider Section --- */
+        .hero-slider-container {
             position: relative;
-            height: 600px;
-            width: 100%;
+            max-width: 1300px;
+            margin: 20px auto;
+            border-radius: 12px;
             overflow: hidden;
-            background-color: var(--primary-dark);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            height: 450px;
         }
-
-        .slide {
+        .hero-slide {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
-            background-size: cover;
-            background-position: center;
+            transition: opacity 0.8s ease-in-out;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
+            background-size: cover;
+            background-position: center;
         }
-
-        .slide.active {
+        .hero-slide.active {
             opacity: 1;
         }
-
-        .slide::after {
+        .hero-slide::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(19, 46, 27, 0.65);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, transparent 100%);
         }
-
-        .slide-content {
+        .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 850px;
-            padding: 0 20px;
+            color: var(--white);
+            padding: 0 60px;
+            max-width: 600px;
         }
-
-        .slide-content h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
+        .hero-content h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+            font-weight: 700;
             line-height: 1.2;
         }
-
-        .slide-content p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            opacity: 0.95;
+        .hero-content p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            opacity: 0.9;
         }
-
-        .btn-primary {
-            background-color: var(--accent-gold);
+        .btn-shop {
+            background: var(--light-green);
             color: var(--white);
-            padding: 14px 35px;
+            padding: 12px 28px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: var(--transition);
             display: inline-block;
-            border: none;
-            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
         }
-
-        .btn-primary:hover {
-            background-color: #b08d46;
+        .btn-shop:hover {
+            background: var(--primary-green);
             transform: translateY(-2px);
         }
 
-        /* Compact Modern Floating Icon Buttons */
-        .floating-buttons {
-            position: fixed;
-            bottom: 25px;
-            right: 20px;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        /* --- Main Content Container --- */
+        .main-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        .float-btn {
-            background-color: var(--primary-green);
-            color: var(--white);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
+        /* --- Product Sections --- */
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-size: 18px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-            transition: var(--transition);
-            position: relative;
+            gap: 10px;
+            border-bottom: 2px solid var(--accent-green);
+            padding-bottom: 10px;
         }
-
-        .float-btn:hover {
-            background-color: var(--accent-gold);
-            transform: scale(1.1);
-        }
-
-        .float-btn::before {
-            content: attr(data-tooltip);
-            position: absolute;
-            right: 58px;
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding: 5px 10px;
-            font-size: 11px;
-            border-radius: 4px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .float-btn:hover::before {
-            opacity: 1;
-        }
-
-        /* Section Layouts */
-        .section-container {
-            max-width: 1200px;
-            margin: 70px auto;
-            padding: 0 20px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-header h2 {
-            font-size: 34px;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 15px;
-        }
-
-        /* Mobile Friendly Grid for Multiple Products */
-        .products-grid {
+        
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .product-card {
             background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
             transition: var(--transition);
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            position: relative;
         }
-
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.12);
+            border-color: var(--light-green);
         }
-
-        .product-image {
-            height: 260px;
-            background-color: #eee;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-image img {
+        /* Slim frame tailored for Hair Oil & Bottles */
+        .product-img-box {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: 220px;
+            background: var(--accent-green);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .product-img-box img {
+            max-height: 90%;
+            max-width: 90%;
+            object-fit: contain;
             transition: var(--transition);
         }
-
-        .product-card:hover .product-image img {
+        .product-card:hover .product-img-box img {
             transform: scale(1.05);
         }
-
-        .badge-tag {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: var(--primary-green);
-            color: var(--white);
-            padding: 4px 10px;
-            font-size: 11px;
+        .product-name {
+            font-size: 16px;
             font-weight: 600;
-            border-radius: 20px;
-            z-index: 2;
-        }
-
-        .product-info {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .product-rating {
-            color: #f39c12;
-            font-size: 12px;
             margin-bottom: 8px;
+            color: var(--dark-text);
         }
-
-        .product-info h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: var(--primary-dark);
-        }
-
-        .product-info p {
-            color: var(--text-muted);
-            font-size: 13px;
+        .product-price {
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 16px;
             margin-bottom: 12px;
         }
-
-        .product-price {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-        }
-
-        .btn-whatsapp {
-            display: block;
+        .btn-add-cart {
+            background: var(--accent-green);
+            color: var(--primary-green);
+            border: none;
             width: 100%;
-            padding: 10px;
-            background-color: #25D366;
-            color: var(--white);
+            padding: 8px;
+            border-radius: 5px;
             font-weight: 600;
-            border-radius: 30px;
             cursor: pointer;
             transition: var(--transition);
-            text-decoration: none;
-            text-align: center;
-            font-size: 14px;
+        }
+        .btn-add-cart:hover {
+            background: var(--primary-green);
+            color: var(--white);
         }
 
-        .btn-whatsapp:hover {
-            background-color: #1ebe5d;
+        /* Toggle Hidden Products (Explore More) */
+        .hidden-products {
+            display: none;
         }
-
-        /* Before & After Section */
-        .ba-container {
-            background-color: #EAF2EC;
-            padding: 70px 20px;
-            margin: 60px 0;
-        }
-
-        .ba-grid {
-            max-width: 1200px;
-            margin: 0 auto;
+        .hidden-products.show {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            animation: fadeIn 0.5s ease;
         }
-
-        .ba-card {
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .explore-btn-container {
             text-align: center;
-            padding-bottom: 20px;
+            margin: 15px 0 40px 0;
+        }
+        .btn-explore {
+            background: transparent;
+            border: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 8px 22px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-explore:hover {
+            background: var(--primary-green);
+            color: var(--white);
         }
 
-        .ba-images {
-            display: flex;
-            gap: 5px;
-            height: 260px;
-        }
-
-        .ba-images img {
-            width: 50%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .ba-card h4 {
-            margin-top: 15px;
-            font-size: 18px;
-            color: var(--primary-dark);
-        }
-
-        .ba-card p {
-            font-size: 13px;
-            color: var(--text-muted);
-            padding: 0 15px;
-        }
-
-        /* Client Testimonials */
-        .testimonials-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .testimonial-card {
+        /* --- Before / After Results Section --- */
+        .results-section {
+            margin: 50px 0;
             background: var(--white);
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .results-slider-wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .result-card {
+            background: var(--light-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            text-align: center;
+            padding-bottom: 15px;
+        }
+        .result-img-container {
+            display: flex;
+            height: 180px;
+            background: #ccc;
+        }
+        .result-img-container div {
+            flex: 1;
             position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        .result-img-container span {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        .result-card h4 {
+            margin: 12px 0 5px;
+            font-size: 15px;
+            color: var(--primary-green);
+        }
+        .result-card p {
+            font-size: 13px;
+            color: #666;
+            padding: 0 10px;
         }
 
-        .testimonial-card i.fa-quote-left {
-            color: var(--accent-gold);
-            font-size: 24px;
-            margin-bottom: 15px;
+        /* --- Testimonials / Client Reviews --- */
+        .reviews-section {
+            margin: 50px 0;
         }
-
-        .testimonial-card p {
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .review-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            border-left: 4px solid var(--light-green);
+        }
+        .review-stars {
+            color: #f39c12;
+            margin-bottom: 10px;
             font-size: 14px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
+        }
+        .review-card p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 12px;
             font-style: italic;
         }
+        .review-author {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--primary-green);
+        }
 
-        .client-profile {
+        /* --- Video Embed Section --- */
+        .video-section {
+            margin: 50px 0;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- Floating Widgets (Info & Social Media Wall) --- */
+        .floating-widgets {
+            position: fixed;
+            right: 20px;
+            bottom: 30px;
             display: flex;
-            align-items: center;
-            gap: 15px;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 999;
         }
-
-        .client-profile img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent-gold);
-        }
-
-        .client-info h5 {
-            font-size: 16px;
-            color: var(--primary-dark);
-        }
-
-        .client-info span {
-            font-size: 12px;
-            color: var(--accent-gold);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-dark);
+        .float-btn {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-green);
             color: var(--white);
-            padding: 70px 20px 30px 20px;
-            margin-top: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            position: relative;
+        }
+        .float-btn:hover {
+            transform: scale(1.1);
+            background: var(--light-green);
+        }
+        .float-btn::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 55px;
+            background: var(--dark-text);
+            color: var(--white);
+            padding: 4px 10px;
+            font-size: 12px;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .float-btn:hover::before {
+            opacity: 1;
         }
 
+        /* --- Professional Shopify Style Footer --- */
+        footer {
+            background: #192e1b;
+            color: #d1d5db;
+            padding: 60px 20px 20px 20px;
+            margin-top: 60px;
+        }
         .footer-container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 40px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
-
-        .footer-col h4 {
+        .footer-col h3 {
+            color: var(--white);
             font-size: 18px;
             margin-bottom: 20px;
-            color: var(--accent-gold);
-            letter-spacing: 0.5px;
+            font-weight: 600;
+            position: relative;
         }
-
-        .footer-col p, .footer-col a {
-            color: #d1d1d1;
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: -8px;
+            width: 35px; height: 2px;
+            background: var(--light-green);
+        }
+        .footer-col p {
             font-size: 14px;
-            text-decoration: none;
-            display: block;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col ul li {
             margin-bottom: 10px;
+        }
+        .footer-col ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 14px;
             transition: var(--transition);
         }
-
-        .footer-col a:hover {
-            color: var(--accent-gold);
+        .footer-col ul li a:hover {
+            color: var(--light-green);
             padding-left: 5px;
         }
-
+        .social-icons-footer {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .social-icons-footer a {
+            width: 36px; height: 36px;
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .social-icons-footer a:hover {
+            background: var(--light-green);
+        }
         .footer-bottom {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 25px;
-            text-align: center;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 13px;
-            color: #aaa;
         }
 
-        @media(max-width: 768px) {
-            .nav-links { display: none; }
-            .slide-content h1 { font-size: 28px; }
+        /* --- Responsive Styles --- */
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Can be handled via JS toggle */
+                position: absolute;
+                top: 70px; left: 0; width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+            /* Mobile View: Exactly 2 columns as requested */
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .results-slider-wrapper, .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-slider-container {
+                height: 350px;
+            }
+            .hero-content {
+                padding: 0 20px;
+            }
+            .hero-content h1 {
+                font-size: 28px;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Floating Action Buttons -->
-    <div class="floating-buttons">
-        <a href="YOUR_PRODUCT_DETAILS_LINK_HERE" class="float-btn" target="_blank" data-tooltip="Product Details"><i class="fa-solid fa-circle-info"></i></a>
-        <a href="YOUR_SOCIAL_WALL_LINK_HERE" class="float-btn" target="_blank" data-tooltip="Social Media Wall"><i class="fa-solid fa-photo-film"></i></a>
+    <!-- Top Announcement / Offer Slider Bar (Toggleable: class="top-offer-bar" or "top-offer-bar off") -->
+    <div class="top-offer-bar">
+        <span>Limited Offer</span> 🌿 Flat 20% OFF on All Organic Hair Oils & Herbal Shampoos! Use Code: <b>FANGAM20</b>
     </div>
 
-    <!-- Announcement Bar -->
-    <div class="announcement-bar">
-        ✨ Free Nationwide Shipping on Orders Over PKR 2,000 | 100% Organic Formula
-    </div>
-
-    <!-- SPECIAL OFFER BANNER: Yahan aap offer on/off ya text change kar sakte hain -->
-    <div class="special-offer-banner">
-        🔥 Flash Sale: Get Flat 20% OFF on all Combo Oils & Items! Order via WhatsApp Now.
-    </div>
-
-    <!-- Header -->
+    <!-- Header & Navigation -->
     <header>
         <div class="nav-container">
-            <a href="#" class="logo-brand">
-                <img src="YOUR_LOGO_IMAGE_URL_HERE" alt="Fangam Organic Logo">
-                <div class="logo">Fangam <span>Organic</span></div>
-            </a>
-            <!-- Header Navigation Links -->
-            <ul class="nav-links">
-                <li><a href="#oils">Oils</a></li>
-                <li><a href="#shampoos">Shampoos</a></li>
-                <li><a href="#ubtan">Ubtan</a></li>
-                <li><a href="#serums">Serums</a></li>
-                <li><a href="#masks">Masks</a></li>
-                <li><a href="#soaps">Soaps</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <a href="#" class="logo"><i class="fa-solid fa-leaf"></i> Fangam Organic</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#oils">آئلز</a></li>
+                <li><a href="#shampoos">شیمپو</a></li>
+                <li><a href="#ubtan">اپٹن</a></li>
+                <li><a href="#serums">سیرم</a></li>
+                <li><a href="#masks">ماسک</a></li>
+                <li><a href="#soaps">سوپس</a></li>
+                <li><a href="#about">اباؤٹ</a></li>
+                <li><a href="#contact">کانٹیکٹ</a></li>
             </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Slider Section (Tamam sections ke mutabiq multiple sliders) -->
-    <div class="hero-slider">
-        <div class="slide active" style="background-image: url('YOUR_SLIDER_OIL_IMAGE_URL_HERE');">
-            <div class="slide-content">
-                <h1>Pure Botanical Hair Oils for Stronger Roots</h1>
-                <p>Nurture your hair with traditional herbal recipes backed by modern purity standards.</p>
-                <a href="#oils" class="btn-primary">Explore Oils</a>
+    <!-- Hero Slider Section (6 Slide Items) -->
+    <div class="hero-slider-container">
+        <!-- Slide 1: Hair Oil -->
+        <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=1200');">
+            <div class="hero-content">
+                <h1>Pure Herbal Hair Oil</h1>
+                <p>100% natural ingredients to stop hair fall and stimulate deep root growth.</p>
+                <a href="#oils" class="btn-shop">Explore Oils</a>
             </div>
         </div>
-        <div class="slide" style="background-image: url('YOUR_SLIDER_SHAMPOO_IMAGE_URL_HERE');">
-            <div class="slide-content">
-                <h1>Revitalizing Shampoos & Cleansers</h1>
-                <p>Gentle cleansing formulas free from harsh sulfates and parabens.</p>
-                <a href="#https://lh3.googleusercontent.com/d/1EBdoyfYoHizQXTfTdzMM1WjTHGyp_7qc" class="btn-primary">Discover Shampoos</a>
+        <!-- Slide 2: Shampoo -->
+        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=1200');">
+            <div class="hero-content">
+                <h1>Natural Nourishing Shampoo</h1>
+                <p>Gentle sulfate-free cleansing for soft, silky, and strong hair strands.</p>
+                <a href="#shampoos" class="btn-shop">Explore Shampoos</a>
             </div>
         </div>
-        <div class="slide" style="background-image: url('YOUR_SLIDER_UBTAN_IMAGE_URL_HERE');">
-            <div class="slide-content">
-                <h1>Traditional Ubtan Glow Treatments</h1>
-                <p>Authentic skin-brightening herbal scrubs for a natural radiant look.</p>
-                <a href="#ubtan" class="btn-primary">Explore Ubtan</a>
+        <!-- Slide 3: Ubtan -->
+        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=1200');">
+            <div class="hero-content">
+                <h1>Traditional Glow Ubtan</h1>
+                <p>Revive your skin's natural radiance with age-old herbal blends.</p>
+                <a href="#ubtan" class="btn-shop">Explore Ubtan</a>
             </div>
         </div>
-        <div class="slide" style="background-image: url('YOUR_SLIDER_SERUM_IMAGE_URL_HERE');">
-            <div class="slide-content">
-                <h1>Intensive Hair Growth Serums</h1>
-                <p>Targeted root repairing formulas for enhanced volume and thickness.</p>
-                <a href="#serums" class="btn-primary">View Serums</a>
+        <!-- Slide 4: Serum -->
+        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=1200');">
+            <div class="hero-content">
+                <h1>Advanced Botanical Serum</h1>
+                <p>Deep hydration and intense shine for flawless daily skincare.</p>
+                <a href="#serums" class="btn-shop">Explore Serums</a>
             </div>
         </div>
-        <div class="slide" style="background-image: url('YOUR_SLIDER_MASK_IMAGE_URL_HERE');">
-            <div class="slide-content">
-                <h1>Deep Conditioning Hair Masks</h1>
-                <p>Restore dry, damaged, and chemically treated strands naturally.</p>
-                <a href="#masks" class="btn-primary">View Masks</a>
+        <!-- Slide 5: Hair Mask -->
+        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1200');">
+            <div class="hero-content">
+                <h1>Repairing Hair Mask</h1>
+                <p>Intensive therapy for damaged, dry, and chemically treated hair.</p>
+                <a href="#masks" class="btn-shop">Explore Masks</a>
             </div>
         </div>
-        <div class="slide" style="background-image: url('YOUR_SLIDER_SOAP_IMAGE_URL_HERE');">
-            <div class="slide-content">
-                <h1>Handmade Cold-Processed Herbal Soaps</h1>
-                <p>Pure organic ingredients for glowing and nourished skin.</p>
-                <a href="#soaps" class="btn-primary">View Soaps</a>
+        <!-- Slide 6: Herbal Soaps -->
+        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&q=80&w=1200');">
+            <div class="hero-content">
+                <h1>Handmade Organic Soaps</h1>
+                <p>Pure botanical extracts for fresh, clean, and glowing skin all day.</p>
+                <a href="#soaps" class="btn-shop">Explore Soaps</a>
             </div>
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- SECTIONS & PRODUCTS (Jitni marzi product cards copy/paste karen) -->
-    <!-- ========================================== -->
+    <!-- Main Content Container -->
+    <div class="main-container">
 
-    <!-- SECTION 1: Oils -->
-    <section class="section-container" id="oils">
-        <div class="section-header">
-            <h2>Oils Collection</h2>
-            <p>Traditional herbal infusions crafted for deep root nourishment</p>
-        </div>
-        <div class="products-grid">
-            <!-- Product Card 1 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="badge-tag">Best Seller</span>
-                    <img src="https://lh3.googleusercontent.com/d/1EBdoyfYoHizQXTfTdzMM1WjTHGyp_7qc" alt="Organic Herbal Hair Oil">
+        <!-- 1. OILS SECTION -->
+        <section id="oils">
+            <h2 class="section-title"><i class="fa-solid fa-droplet"></i> آئلز (Herbal Oils)</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Oil"></div>
+                    <div class="product-name">Fangam Growth Hair Oil</div>
+                    <div class="product-price">Rs. 1,299</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
                 <div class="product-card">
-                <div class="product-image">
-                    <span class="badge-tag">Best Seller</span>
-                    <img src="https://lh3.googleusercontent.com/d/1EBdoyfYoHizQXTfTdzMM1WjTHGyp_7qc" alt="Organic Herbal Hair Oil">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Oil"></div>
+                    <div class="product-name">Amla & Almond Oil</div>
+                    <div class="product-price">Rs. 1,099</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
-                    <div class="product-card">
-                <div class="product-image">
-                    <span class="badge-tag">Best Seller</span>
-                    <img src="https://lh3.googleusercontent.com/d/1EBdoyfYoHizQXTfTdzMM1WjTHGyp_7qc" alt="Organic Herbal Hair Oil">
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Oil"></div>
+                    <div class="product-name">Rosemary Scalp Oil</div>
+                    <div class="product-price">Rs. 1,499</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
-                        <div class="product-card">
-                <div class="product-image">
-                    <span class="badge-tag">Best Seller</span>
-                    <img src="https://lh3.googleusercontent.com/d/1EBdoyfYoHizQXTfTdzMM1WjTHGyp_7qc" alt="Organic Herbal Hair Oil">
-                </div>
-                <div class="product-info">
-                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
-                    <h3>Organic Herbal Hair Oil</h3>
-                    <p>Enriched with rare bدکجفلکجکسجدف robust hair growth.</p>
-                    <div class="product-price">PKR 1,499</div>
-                    <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Organic%20Herbal%20Hair%20Oil" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Oil"></div>
+                    <div class="product-name">Anti-Dandruff Herbal Oil</div>
+                    <div class="product-price">Rs. 1,199</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
             </div>
-                <div class="product-info">
-                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
-                    <h3>Organic Herbal Hair Oil</h3>
-                    <p>Enriched with rare botanical extracts for robust hair growth.</p>
-                    <div class="product-price">PKR 1,499</div>
-                    <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Organic%20Herbal%20Hair%20Oil" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
+            <!-- Hidden Extra Products for Toggle -->
+            <div class="product-grid hidden-products" id="oils-extra">
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Oil"></div>
+                    <div class="product-name">Extra Virgin Coconut Oil</div>
+                    <div class="product-price">Rs. 999</div>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Oil"></div>
+                    <div class="product-name">Black Seed Miracle Oil</div>
+                    <div class="product-price">Rs. 1,399</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
             </div>
-            <!-- Product Card 2 (Mazeed dalne ke liye yehi card dobara copy/paste karen) -->
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="badge-tag">New Formula</span>
-                    <img src="YOUR_OIL_IMAGE_2_URL_HERE" alt="Amla & Almond Hair Oil">
-                </div>
-                <div class="product-info">
-                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.8)</div>
-                    <h3>Amla & Almond Hair Oil</h3>
-                    <p>Deep conditioning blend for shiny and silky locks.</p>
-                    <div class="product-price">PKR 1,299</div>
-                    <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Amla%20Almond%20Hair%20Oil" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
-                </div>
+            <div class="explore-btn-container">
+                <button class="btn-explore" onclick="toggleSection('oils-extra', this)">مزید دیکھیں (Explore)</button>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- SECTION 2: Shampoos -->
-    <section class="section-container" id="shampoos">
-        <div class="section-header">
-            <h2>Shampoos</h2>
-            <p>Sulfate-free cleansers for healthy and manageable hair</p>
-        </div>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="badge-tag">Natural</span>
-                    <img src="YOUR_SHAMPOO_IMAGE_1_URL_HERE" alt="Herbal Rejuvenating Shampoo">
+        <!-- 2. SHAMPOOS SECTION -->
+        <section id="shampoos">
+            <h2 class="section-title"><i class="fa-solid fa-pump-soap"></i> شیمپو (Herbal Shampoos)</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" alt="Shampoo"></div>
+                    <div class="product-name">Reetha & Shikakai Shampoo</div>
+                    <div class="product-price">Rs. 899</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
-                <div class="product-info">
-                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
-                    <h3>Herbal Rejuvenating Shampoo</h3>
-                    <p>Cleanses scalp gently while maintaining natural moisture balance.</p>
-                    <div class="product-price">PKR 1,199</div>
-                    <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Herbal%20Rejuvenating%20Shampoo" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" alt="Shampoo"></div>
+                    <div class="product-name">Aloe Vera Moisture Shampoo</div>
+                    <div class="product-price">Rs. 949</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="badge-tag">Anti-Dandruff</span>
-                    <img src="YOUR_SHAMPOO_IMAGE_2_URL_HERE" alt="Neem & Tea Tree Shampoo">
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" alt="Shampoo"></div>
+                    <div class="product-name">Onion Anti-Hairfall Shampoo</div>
+                    <div class="product-price">Rs. 1,099</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
-                <div class="product-info">
-                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.7)</div>
-                    <h3>Neem & Tea Tree Shampoo</h3>
-                    <p>Relieves itchy scalp and eliminates dandruff naturally.</p>
-                    <div class="product-price">PKR 1,349</div>
-                    <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Neem%20Tea%20Tree%20Shampoo" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" alt="Shampoo"></div>
+                    <div class="product-name">Keratin Smooth Shampoo</div>
+                    <div class="product-price">Rs. 1,199</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="product-grid hidden-products" id="shampoos-extra">
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" alt="Shampoo"></div>
+                    <div class="product-name">Tea Tree Scalp Wash</div>
+                    <div class="product-price">Rs. 999</div>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="explore-btn-container">
+                <button class="btn-explore" onclick="toggleSection('shampoos-extra', this)">مزید دیکھیں (Explore)</button>
+            </div>
+        </section>
 
-    <!-- SECTION 3: Ubtan -->
-    <section class="section-container" id="ubtan">
-        <div class="section-header">
-            <h2>Ubtan Collection</h2>
-            <p>Authentic glow-enhancing traditional skin treatments</p>
-        </div>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="badge-tag">Best Seller</span>
-                    <img src="YOUR_UBTAN_IMAGE_1_URL_HERE" alt="Traditional Bridal Ubtan">
+        <!-- 3. UBTAN SECTION -->
+        <section id="ubtan">
+            <h2 class="section-title"><i class="fa-solid fa-spa"></i> اپٹن (Organic Ubtan)</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" alt="Ubtan"></div>
+                    <div class="product-name">Royal Bride Ubtan</div>
+                    <div class="product-price">Rs. 799</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
-                <div class="product-info">
-                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (5.0)</div>
-                    <h3>Traditional Bridal Ubtan</h3>
-                    <p>Pure turmeric, sandalwood, and gram flour scrub for radiant skin.</p>
-                    <div class="product-price">PKR 999</div>
-                    <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Traditional%20Bridal%20Ubtan" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" alt="Ubtan"></div>
+                    <div class="product-name">Sandalwood Brightening Ubtan</div>
+                    <div class="product-price">Rs. 899</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="badge-tag">Organic</span>
-                    <img src="YOUR_UBTAN_IMAGE_2_URL_HERE" alt="Saffron & Glow Ubtan">
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" alt="Ubtan"></div>
+                    <div class="product-name">Turmeric & Haldi Glow Mask</div>
+                    <div class="product-price">Rs. 749</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
-                <div class="product-info">
-                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
-                    <h3>Saffron & Glow Ubtan</h3>
-                    <p>Infused with real saffron threads for instant skin brightening.</p>
-                    <div class="product-price">PKR 1,199</div>
-                    <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Saffron%20Glow%20Ubtan" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" alt="Ubtan"></div>
+                    <div class="product-name">Neat & Clear Body Ubtan</div>
+                    <div class="product-price">Rs. 849</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="explore-btn-container">
+                <button class="btn-explore" onclick="toggleSection('ubtan-extra', this)">مزید دیکھیں (Explore)</button>
+            </div>
+        </section>
 
-    <!-- SECTION 4: Serums -->
-    <section class="section-container" id="serums">
-        <div class="section-header">
-            <h2>Serums</h2>
-            <p>Targeted treatments for intense root repair and volume</p>
-        </div>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="badge-tag">Best Seller</span>
-                    <img src="YOUR_SERUM_IMAGE_1_URL_HERE" alt="Intensive Hair Growth Serum">
+        <!-- 4. SERUM SECTION -->
+        <section id="serums">
+            <h2 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> سیرم (Face & Hair Serums)</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=400" alt="Serum"></div>
+                    <div class="product-name">Vitamin C Face Serum</div>
+                    <div class="product-price">Rs. 1,499</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
-                <div class="product-info">
-                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> (4.7)</div>
-                    <h3>Intensive Hair Growth Serum</h3>
-                    <p>Stimulates dormant hair follicles for thicker volume.</p>
-                    <div class="product-price">PKR 1,899</div>
-                    <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Intensive%20Hair%20Growth%20Serum" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=400" alt="Serum"></div>
+                    <div class="product-name">Argan Hair Shine Serum</div>
+                    <div class="product-price">Rs. 1,299</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 5: Masks -->
-    <section class="section-container" id="masks">
-        <div class="section-header">
-            <h2>Masks</h2>
-            <p>Deep conditioning botanical masks for dry and damaged hair</p>
-        </div>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="badge-tag">Combo</span>
-                    <img src="YOUR_MASK_IMAGE_1_URL_HERE" alt="Deep Repair Hair Mask">
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=400" alt="Serum"></div>
+                    <div class="product-name">Hyaluronic Acid Serum</div>
+                    <div class="product-price">Rs. 1,599</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
-                <div class="product-info">
-                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
-                    <h3>Deep Repair Hair Mask</h3>
-                    <p>Restores dry, damaged, and chemically treated hair strands.</p>
-                    <div class="product-price">PKR 1,599</div>
-                    <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Deep%20Repair%20Hair%20Mask" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=400" alt="Serum"></div>
+                    <div class="product-name">Anti-Aging Night Serum</div>
+                    <div class="product-price">Rs. 1,699</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="explore-btn-container">
+                <button class="btn-explore" onclick="toggleSection('serum-extra', this)">مزید دیکھیں (Explore)</button>
+            </div>
+        </section>
 
-    <!-- SECTION 6: Soaps -->
-    <section class="section-container" id="soaps">
-        <div class="section-header">
-            <h2>Soaps</h2>
-            <p>Handmade cold-processed herbal soaps for glowing skin</p>
-        </div>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="badge-tag">Natural</span>
-                    <img src="YOUR_SOAP_IMAGE_1_URL_HERE" alt="Charcoal & Tea Tree Soap">
+        <!-- 5. MASK SECTION -->
+        <section id="masks">
+            <h2 class="section-title"><i class="fa-solid fa-masks-theater"></i> ماسک (Hair & Face Masks)</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=400" alt="Mask"></div>
+                    <div class="product-name">Deep Conditioning Hair Mask</div>
+                    <div class="product-price">Rs. 1,199</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
-                <div class="product-info">
-                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.8)</div>
-                    <h3>Charcoal & Tea Tree Soap</h3>
-                    <p>Deep cleansing formula for acne-prone and oily skin types.</p>
-                    <div class="product-price">PKR 499</div>
-                    <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Charcoal%20Soap" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=400" alt="Mask"></div>
+                    <div class="product-name">Clay Purifying Face Mask</div>
+                    <div class="product-price">Rs. 899</div>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=400" alt="Mask"></div>
+                    <div class="product-name">Banana & Honey Hair Mask</div>
+                    <div class="product-price">Rs. 1,099</div>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=400" alt="Mask"></div>
+                    <div class="product-name">Charcoal Detox Mask</div>
+                    <div class="product-price">Rs. 949</div>
+                    <button class="btn-add-cart">Add to Cart</button>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ========================================== -->
-
-    <!-- BEFORE & AFTER RESULTS SECTION -->
-    <div class="ba-container">
-        <div class="section-header">
-            <h2>Real Results: Before & After</h2>
-            <p>Witness the transformative power of Fangam Organic care routines</p>
-        </div>
-        <div class="ba-grid">
-            <div class="ba-card">
-                <div class="ba-images">
-                    <img src="YOUR_BEFORE_IMAGE_URL_HERE" alt="Before Hair Fall">
-                    <img src="YOUR_AFTER_IMAGE_URL_HERE" alt="After Hair Growth">
-                </div>
-                <h4>Hair Fall Recovery</h4>
-                <p>Results after 6 weeks of regular use.</p>
+            <div class="explore-btn-container">
+                <button class="btn-explore" onclick="toggleSection('mask-extra', this)">مزید دیکھیں (Explore)</button>
             </div>
-        </div>
+        </section>
+
+        <!-- 6. SOAPS SECTION -->
+        <section id="soaps">
+            <h2 class="section-title"><i class="fa-solid fa-soap"></i> سوپس (Handmade Organic Soaps)</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&q=80&w=400" alt="Soap"></div>
+                    <div class="product-name">Goat Milk & Honey Soap</div>
+                    <div class="product-price">Rs. 499</div>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&q=80&w=400" alt="Soap"></div>
+                    <div class="product-name">Neem & Tea Tree Soap</div>
+                    <div class="product-price">Rs. 450</div>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&q=80&w=400" alt="Soap"></div>
+                    <div class="product-name">Rose Petal Glow Soap</div>
+                    <div class="product-price">Rs. 499</div>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&q=80&w=400" alt="Soap"></div>
+                    <div class="product-name">Activated Charcoal Soap</div>
+                    <div class="product-price">Rs. 520</div>
+                    <button class="btn-add-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="explore-btn-container">
+                <button class="btn-explore" onclick="toggleSection('soap-extra', this)">مزید دیکھیں (Explore)</button>
+            </div>
+        </section>
+
+        <!-- Before / After Results Section -->
+        <section class="results-section">
+            <h2 class="section-title"><i class="fa-solid fa-chart-line"></i> کسٹمرز کے رزلٹس (Before & After Results)</h2>
+            <div class="results-slider-wrapper">
+                <div class="result-card">
+                    <div class="result-img-container">
+                        <div style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
+                        <div style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300');"><span>After 30 Days</span></div>
+                    </div>
+                    <h4>Hair Growth & Thickness</h4>
+                    <p>Noticeable reduction in hairfall and new baby hair growth within 4 weeks of using Fangam Oil.</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-img-container">
+                        <div style="background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
+                        <div style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300');"><span>After 21 Days</span></div>
+                    </div>
+                    <h4>Skin Glow & Clarity</h4>
+                    <p>Clear reduction in blemishes and dark spots with regular application of Ubtan & Serum.</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-img-container">
+                        <div style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
+                        <div style="background-image: url('https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=300');"><span>After 15 Days</span></div>
+                    </div>
+                    <h4>Dandruff Free Scalp</h4>
+                    <p>Complete relief from dry flakes and itchy scalp using our organic shampoo formulation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Client Reviews Section -->
+        <section class="reviews-section">
+            <h2 class="section-title"><i class="fa-solid fa-comments"></i> کلائنٹس کے جائزے (Customer Reviews)</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"میں نے فینگم آرگینک کا ہیئر آئل یوز کیا ہے، بال گرنا بالکل بند ہو گئے ہیں۔ انتہائی زبردست پروڈکٹ ہے!"</p>
+                    <div class="review-author">— عاصمہ فاروق، لاہور</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"شیمپو اور سیرم کا رزلٹ بہت لاجواب ہے۔ میرے بالوں میں شائن اور نرمی آ گئی ہے۔ شکریہ فینگم!"</p>
+                    <div class="review-author">— محمد علی، گوجرانوالہ</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"اپٹن اور سوپس کی خوشبو اور کوالٹی بالکل خالص آرگینک ہے۔ بہت ہی اچھا تجربہ رہا۔"</p>
+                    <div class="review-author">— عائشہ خان، سیالکوٹ</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Master Video Embed Section -->
+        <section class="video-section" id="about">
+            <h2 class="section-title" style="justify-content: center; border: none; margin-bottom: 5px;"><i class="fa-solid fa-video"></i> ہماری کہانی اور پروڈکشن</h2>
+            <p style="color: #666; font-size: 14px;">دیکھیے کہ کس طرح ہم خالص جڑی بوٹیوں سے آپ کے لیے آرگینک پروڈکٹس تیار کرتے ہیں۔</p>
+            <div class="video-container">
+                <!-- Replace src with your YouTube Master Video Embed Link -->
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Fangam Organic Master Video" allowfullscreen></iframe>
+            </div>
+        </section>
+
     </div>
 
-    <!-- CLIENTS TESTIMONIALS SECTION -->
-    <section class="section-container">
-        <div class="section-header">
-            <h2>What Our Clients Say</h2>
-            <p>Genuine feedback from valued customers</p>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <i class="fa-solid fa-quote-left"></i>
-                <p>"Fangam hair oil completely transformed my hair texture. Highly recommended!"</p>
-                <div class="client-profile">
-                    <img src="YOUR_CLIENT_PHOTO_URL_HERE" alt="Ayesha Khan">
-                    <div class="client-info">
-                        <h5>Ayesha Khan</h5>
-                        <span>Verified Buyer</span>
-                    </div>
+    <!-- Floating Fixed Widgets (Product Info & Social Media Wall) -->
+    <div class="floating-widgets">
+        <a href="https://wa.me/923000000000" target="_blank" class="float-btn" data-tooltip="WhatsApp Support" style="background: #25d366;">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://facebook.com" target="_blank" class="float-btn" data-tooltip="Social Wall" style="background: #3b5998;">
+            <i class="fa-solid fa-globe"></i>
+        </a>
+        <a href="#oils" class="float-btn" data-tooltip="Quick Products">
+            <i class="fa-solid fa-bag-shopping"></i>
+        </a>
+    </div>
+
+    <!-- Professional Shopify Style Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Fangam Organic</h3>
+                <p>خالص اور قدرتی اجزاء سے تیار کردہ آرگینک ہیئر آئل، شیمپو، اپٹن اور سکن کیئر پروڈکٹس جو آپ کی خوبصورتی کو نکھاریں۔</p>
+                <div class="social-icons-footer">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer id="contact">
-        <div class="footer-container" id="about">
             <div class="footer-col">
-                <h4>Fangam Organic</h4>
-                <p>Bringing the purity of traditional herbal heritage into modern care routines.</p>
+                <h3>فوری لنکس (Quick Links)</h3>
+                <ul>
+                    <li><a href="#oils">آئلز (Oils)</a></li>
+                    <li><a href="#shampoos">شیمپو (Shampoos)</a></li>
+                    <li><a href="#ubtan">اپٹن (Ubtan)</a></li>
+                    <li><a href="#serums">سیرم (Serums)</a></li>
+                    <li><a href="#masks">ماسک (Masks)</a></li>
+                    <li><a href="#soaps">سوپس (Soaps)</a></li>
+                </ul>
             </div>
             <div class="footer-col">
-                <h4>Quick Links</h4>
-                <a href="#about">About Us</a>
-                <a href="#contact">Contact Us</a>
-                <a href="#">Privacy Policy</a>
+                <h3>کسٹمر کیئر (Support)</h3>
+                <ul>
+                    <li><a href="#">پیمائش اور آرڈر کا طریقہ</a></li>
+                    <li><a href="#">ڈلیوری پالیسی</a></li>
+                    <li><a href="#">رقم واپسی (Refund Policy)</a></li>
+                    <li><a href="#">اکثر پوچھے جانے والے سوالات</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>رابطہ کریں (Contact Us)</h3>
+                <p><i class="fa-solid fa-location-dot"></i> سیالکوٹ، پنجاب، پاکستان</p>
+                <p><i class="fa-solid fa-phone"></i> +92 300 0000000</p>
+                <p><i class="fa-solid fa-envelope"></i> support@fangamorganic.com</p>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Fangam Organic. All Rights Reserved.</p>
+            <p>Designed with 🌿 for Pure Organic Living</p>
         </div>
     </footer>
 
-    <!-- Slider Script -->
+    <!-- JavaScript for Functionality -->
     <script>
+        // 1. Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // 2. Hero Slider Auto-rotation (6 Slides)
         let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        
+        const slides = document.querySelectorAll('.hero-slide');
         function nextSlide() {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
+        setInterval(nextSlide, 4000); // Change slide every 4 seconds
 
-        setInterval(nextSlide, 4000);
+        // 3. Explore More Toggle Function
+        function toggleSection(sectionId, btn) {
+            const extraGrid = document.getElementById(sectionId);
+            if (!extraGrid) return;
+            
+            if (extraGrid.classList.contains('show')) {
+                extraGrid.classList.remove('show');
+                btn.innerText = 'مزید دیکھیں (Explore)';
+            } else {
+                extraGrid.classList.add('show');
+                btn.innerText = 'کم دکھائیں (Show Less)';
+            }
+        }
     </script>
-
 </body>
 </html>
