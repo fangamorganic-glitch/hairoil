@@ -50,9 +50,9 @@
             font-weight: 500;
         }
 
-        /* OFFER BANNER SETTING: Agar offer on karni ho to display block rakhen, off karni ho to none kar den */
+        /* OFFER BANNER SETTING: display block rakhen ya none kar den */
         .special-offer-banner {
-            display: block; /* Yahan 'none' likhne se ye banner khatam/off ho jaye ga */
+            display: block;
             background: linear-gradient(135deg, #C5A059, #a3813e);
             color: var(--white);
             text-align: center;
@@ -161,7 +161,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(19, 46, 27, 0.6);
+            background: rgba(19, 46, 27, 0.65);
         }
 
         .slide-content {
@@ -172,7 +172,7 @@
         }
 
         .slide-content h1 {
-            font-size: 48px;
+            font-size: 42px;
             margin-bottom: 20px;
             line-height: 1.2;
         }
@@ -276,6 +276,7 @@
             font-size: 15px;
         }
 
+        /* Mobile Friendly Grid for Multiple Products */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -323,6 +324,7 @@
             font-size: 11px;
             font-weight: 600;
             border-radius: 20px;
+            z-index: 2;
         }
 
         .product-info {
@@ -526,7 +528,7 @@
 
         @media(max-width: 768px) {
             .nav-links { display: none; }
-            .slide-content h1 { font-size: 30px; }
+            .slide-content h1 { font-size: 28px; }
         }
     </style>
 </head>
@@ -543,9 +545,9 @@
         ✨ Free Nationwide Shipping on Orders Over PKR 2,000 | 100% Organic Formula
     </div>
 
-    <!-- SPECIAL OFFER BANNER (Yahan ap apni offer likh sakte hain, CSS mein display block/none se on/off karen) -->
+    <!-- SPECIAL OFFER BANNER: Yahan aap offer on/off ya text change kar sakte hain -->
     <div class="special-offer-banner">
-        🔥 Flash Sale: Get Flat 20% OFF on all Combo Oils! Order via WhatsApp Now.
+        🔥 Flash Sale: Get Flat 20% OFF on all Combo Oils & Items! Order via WhatsApp Now.
     </div>
 
     <!-- Header -->
@@ -555,7 +557,7 @@
                 <img src="YOUR_LOGO_IMAGE_URL_HERE" alt="Fangam Organic Logo">
                 <div class="logo">Fangam <span>Organic</span></div>
             </a>
-            <!-- HEADER NAVIGATION LINKS: Yahan se aap koi bhi link add ya remove kar sakte hain -->
+            <!-- Header Navigation Links -->
             <ul class="nav-links">
                 <li><a href="#oils">Oils</a></li>
                 <li><a href="#shampoos">Shampoos</a></li>
@@ -569,26 +571,54 @@
         </div>
     </header>
 
-    <!-- Hero Slider Section -->
+    <!-- Hero Slider Section (Tamam sections ke mutabiq multiple sliders) -->
     <div class="hero-slider">
-        <div class="slide active" style="background-image: url('YOUR_SLIDER_IMAGE_1_URL_HERE');">
+        <div class="slide active" style="background-image: url('YOUR_SLIDER_OIL_IMAGE_URL_HERE');">
             <div class="slide-content">
                 <h1>Pure Botanical Hair Oils for Stronger Roots</h1>
                 <p>Nurture your hair with traditional herbal recipes backed by modern purity standards.</p>
                 <a href="#oils" class="btn-primary">Explore Oils</a>
             </div>
         </div>
-        <div class="slide" style="background-image: url('YOUR_SLIDER_IMAGE_2_URL_HERE');">
+        <div class="slide" style="background-image: url('YOUR_SLIDER_SHAMPOO_IMAGE_URL_HERE');">
             <div class="slide-content">
-                <h1>Revitalizing Shampoos & Organic Ubtan</h1>
-                <p>Gentle cleansing and natural glow formulas free from harsh sulfates and parabens.</p>
+                <h1>Revitalizing Shampoos & Cleansers</h1>
+                <p>Gentle cleansing formulas free from harsh sulfates and parabens.</p>
                 <a href="#shampoos" class="btn-primary">Discover Shampoos</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('YOUR_SLIDER_UBTAN_IMAGE_URL_HERE');">
+            <div class="slide-content">
+                <h1>Traditional Ubtan Glow Treatments</h1>
+                <p>Authentic skin-brightening herbal scrubs for a natural radiant look.</p>
+                <a href="#ubtan" class="btn-primary">Explore Ubtan</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('YOUR_SLIDER_SERUM_IMAGE_URL_HERE');">
+            <div class="slide-content">
+                <h1>Intensive Hair Growth Serums</h1>
+                <p>Targeted root repairing formulas for enhanced volume and thickness.</p>
+                <a href="#serums" class="btn-primary">View Serums</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('YOUR_SLIDER_MASK_IMAGE_URL_HERE');">
+            <div class="slide-content">
+                <h1>Deep Conditioning Hair Masks</h1>
+                <p>Restore dry, damaged, and chemically treated strands naturally.</p>
+                <a href="#masks" class="btn-primary">View Masks</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('YOUR_SLIDER_SOAP_IMAGE_URL_HERE');">
+            <div class="slide-content">
+                <h1>Handmade Cold-Processed Herbal Soaps</h1>
+                <p>Pure organic ingredients for glowing and nourished skin.</p>
+                <a href="#soaps" class="btn-primary">View Soaps</a>
             </div>
         </div>
     </div>
 
     <!-- ========================================== -->
-    <!-- SECTION START: Naya section barhane ke liye ye pura block copy paste karen -->
+    <!-- SECTIONS & PRODUCTS (Jitni marzi product cards copy/paste karen) -->
     <!-- ========================================== -->
 
     <!-- SECTION 1: Oils -->
@@ -598,7 +628,7 @@
             <p>Traditional herbal infusions crafted for deep root nourishment</p>
         </div>
         <div class="products-grid">
-            <!-- PRODUCT CARD START: Mazeed product dalne ke liye ye card copy/paste karen -->
+            <!-- Product Card 1 -->
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge-tag">Best Seller</span>
@@ -612,7 +642,20 @@
                     <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Organic%20Herbal%20Hair%20Oil" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
                 </div>
             </div>
-            <!-- PRODUCT CARD END -->
+            <!-- Product Card 2 (Mazeed dalne ke liye yehi card dobara copy/paste karen) -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge-tag">New Formula</span>
+                    <img src="YOUR_OIL_IMAGE_2_URL_HERE" alt="Amla & Almond Hair Oil">
+                </div>
+                <div class="product-info">
+                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.8)</div>
+                    <h3>Amla & Almond Hair Oil</h3>
+                    <p>Deep conditioning blend for shiny and silky locks.</p>
+                    <div class="product-price">PKR 1,299</div>
+                    <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Amla%20Almond%20Hair%20Oil" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -625,8 +668,8 @@
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-image">
-                    <span class="badge-tag">New</span>
-                    <img src="YOUR_SHAMPOO_IMAGE_URL_HERE" alt="Herbal Rejuvenating Shampoo">
+                    <span class="badge-tag">Natural</span>
+                    <img src="YOUR_SHAMPOO_IMAGE_1_URL_HERE" alt="Herbal Rejuvenating Shampoo">
                 </div>
                 <div class="product-info">
                     <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
@@ -634,6 +677,19 @@
                     <p>Cleanses scalp gently while maintaining natural moisture balance.</p>
                     <div class="product-price">PKR 1,199</div>
                     <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Herbal%20Rejuvenating%20Shampoo" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge-tag">Anti-Dandruff</span>
+                    <img src="YOUR_SHAMPOO_IMAGE_2_URL_HERE" alt="Neem & Tea Tree Shampoo">
+                </div>
+                <div class="product-info">
+                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.7)</div>
+                    <h3>Neem & Tea Tree Shampoo</h3>
+                    <p>Relieves itchy scalp and eliminates dandruff naturally.</p>
+                    <div class="product-price">PKR 1,349</div>
+                    <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Neem%20Tea%20Tree%20Shampoo" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
                 </div>
             </div>
         </div>
@@ -648,8 +704,8 @@
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-image">
-                    <span class="badge-tag">Organic</span>
-                    <img src="YOUR_UBTAN_IMAGE_URL_HERE" alt="Traditional Bridal Ubtan">
+                    <span class="badge-tag">Best Seller</span>
+                    <img src="YOUR_UBTAN_IMAGE_1_URL_HERE" alt="Traditional Bridal Ubtan">
                 </div>
                 <div class="product-info">
                     <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (5.0)</div>
@@ -657,6 +713,19 @@
                     <p>Pure turmeric, sandalwood, and gram flour scrub for radiant skin.</p>
                     <div class="product-price">PKR 999</div>
                     <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Traditional%20Bridal%20Ubtan" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge-tag">Organic</span>
+                    <img src="YOUR_UBTAN_IMAGE_2_URL_HERE" alt="Saffron & Glow Ubtan">
+                </div>
+                <div class="product-info">
+                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
+                    <h3>Saffron & Glow Ubtan</h3>
+                    <p>Infused with real saffron threads for instant skin brightening.</p>
+                    <div class="product-price">PKR 1,199</div>
+                    <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Saffron%20Glow%20Ubtan" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
                 </div>
             </div>
         </div>
@@ -672,7 +741,7 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge-tag">Best Seller</span>
-                    <img src="YOUR_SERUM_IMAGE_URL_HERE" alt="Intensive Hair Growth Serum">
+                    <img src="YOUR_SERUM_IMAGE_1_URL_HERE" alt="Intensive Hair Growth Serum">
                 </div>
                 <div class="product-info">
                     <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> (4.7)</div>
@@ -695,7 +764,7 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge-tag">Combo</span>
-                    <img src="YOUR_MASK_IMAGE_URL_HERE" alt="Deep Repair Hair Mask">
+                    <img src="YOUR_MASK_IMAGE_1_URL_HERE" alt="Deep Repair Hair Mask">
                 </div>
                 <div class="product-info">
                     <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
@@ -718,7 +787,7 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge-tag">Natural</span>
-                    <img src="YOUR_SOAP_IMAGE_URL_HERE" alt="Charcoal & Tea Tree Soap">
+                    <img src="YOUR_SOAP_IMAGE_1_URL_HERE" alt="Charcoal & Tea Tree Soap">
                 </div>
                 <div class="product-info">
                     <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.8)</div>
@@ -731,8 +800,6 @@
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- SECTION END -->
     <!-- ========================================== -->
 
     <!-- BEFORE & AFTER RESULTS SECTION -->
