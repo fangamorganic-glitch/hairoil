@@ -114,7 +114,7 @@
             color: var(--primary-green);
         }
 
-        /* --- Hero Slider Section (6 Slides Capacity) --- */
+        /* --- Hero Slider Section --- */
         .hero-slider-container {
             position: relative;
             max-width: 1300px;
@@ -318,7 +318,7 @@
             color: var(--white);
         }
 
-        /* --- Product Quick View Modal & Slider Styles (Mobile Friendly & Fixed Layout) --- */
+        /* --- Product Quick View Modal Styles --- */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -1004,7 +1004,7 @@
                 </div>
             </div>
             
-            <!-- Hidden Products for Explore More Feature -->
+            <!-- Hidden Products for Oils Section -->
             <div class="product-grid hidden-products" id="oils-extra">
                 <div class="product-card open-modal" 
                      data-name="Extra Virgin Coconut Oil" 
@@ -1102,6 +1102,14 @@
                     <button class="btn-buy-now">View Details</button>
                 </div>
             </div>
+            
+            <!-- Hidden Products for Shampoos Section -->
+            <div class="product-grid hidden-products" id="shampoos-extra">
+                <!-- Aap yahan mazeed shampoo add kar sakte hain -->
+            </div>
+            <div class="explore-btn-container">
+                <button class="btn-explore" onclick="toggleSection('shampoos-extra', this)">Explore More</button>
+            </div>
         </section>
 
         <!-- 3. UBTAN SECTION -->
@@ -1109,57 +1117,6 @@
             <h2 class="section-title"><i class="fa-solid fa-spa"></i> Organic Ubtan</h2>
             <div class="product-grid">
                 <div class="product-card open-modal" 
-                     data-name="Royal Bride Glow Ubtan" 
-                     data-price="Rs. 799" 
-                     data-capacity="150g Jar" 
-                     data-img1="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
-                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
-                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
-                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
-                     data-use="Mix with rose water or milk to form paste, apply for 15 mins." 
-                     data-ingredients="Turmeric, Sandalwood, Saffron, Gram flour, Almond powder." 
-                     data-benefits="Instant bridal glow, removes tan, and clears blemishes.">
-                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Ubtan"></div>
-                    <div class="product-name">Royal Bride Glow Ubtan</div>
-                    <div class="product-capacity">150g Jar</div>
-                    <div class="product-price">Rs. 799</div>
-                    <button class="btn-buy-now">View Details</button>
-                </div>
-                 <div class="product-card open-modal" 
-                     data-name="Royal Bride Glow Ubtan" 
-                     data-price="Rs. 799" 
-                     data-capacity="150g Jar" 
-                     data-img1="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
-                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
-                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
-                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
-                     data-use="Mix with rose water or milk to form paste, apply for 15 mins." 
-                     data-ingredients="Turmeric, Sandalwood, Saffron, Gram flour, Almond powder." 
-                     data-benefits="Instant bridal glow, removes tan, and clears blemishes.">
-                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Ubtan"></div>
-                    <div class="product-name">Royal Bride Glow Ubtan</div>
-                    <div class="product-capacity">150g Jar</div>
-                    <div class="product-price">Rs. 799</div>
-                    <button class="btn-buy-now">View Details</button>
-                </div>
-                 <div class="product-card open-modal" 
-                     data-name="Royal Bride Glow Ubtan" 
-                     data-price="Rs. 799" 
-                     data-capacity="150g Jar" 
-                     data-img1="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
-                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
-                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
-                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
-                     data-use="Mix with rose water or milk to form paste, apply for 15 mins." 
-                     data-ingredients="Turmeric, Sandalwood, Saffron, Gram flour, Almond powder." 
-                     data-benefits="Instant bridal glow, removes tan, and clears blemishes.">
-                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Ubtan"></div>
-                    <div class="product-name">Royal Bride Glow Ubtan</div>
-                    <div class="product-capacity">150g Jar</div>
-                    <div class="product-price">Rs. 799</div>
-                    <button class="btn-buy-now">View Details</button>
-                </div>
-                 <div class="product-card open-modal" 
                      data-name="Royal Bride Glow Ubtan" 
                      data-price="Rs. 799" 
                      data-capacity="150g Jar" 
@@ -1193,6 +1150,14 @@
                     <div class="product-price">Rs. 699</div>
                     <button class="btn-buy-now">View Details</button>
                 </div>
+            </div>
+            
+            <!-- Hidden Products for Ubtan Section -->
+            <div class="product-grid hidden-products" id="ubtan-extra">
+                <!-- Aap yahan mazeed ubtan add kar sakte hain -->
+            </div>
+            <div class="explore-btn-container">
+                <button class="btn-explore" onclick="toggleSection('ubtan-extra', this)">Explore More</button>
             </div>
         </section>
 
@@ -1235,6 +1200,14 @@
                     <button class="btn-buy-now">View Details</button>
                 </div>
             </div>
+            
+            <!-- Hidden Products for Serums Section -->
+            <div class="product-grid hidden-products" id="serums-extra">
+                <!-- Aap yahan mazeed serum add kar sakte hain -->
+            </div>
+            <div class="explore-btn-container">
+                <button class="btn-explore" onclick="toggleSection('serums-extra', this)">Explore More</button>
+            </div>
         </section>
 
         <!-- 5. MASKS SECTION -->
@@ -1276,6 +1249,14 @@
                     <button class="btn-buy-now">View Details</button>
                 </div>
             </div>
+            
+            <!-- Hidden Products for Masks Section -->
+            <div class="product-grid hidden-products" id="masks-extra">
+                <!-- Aap yahan mazeed mask add kar sakte hain -->
+            </div>
+            <div class="explore-btn-container">
+                <button class="btn-explore" onclick="toggleSection('masks-extra', this)">Explore More</button>
+            </div>
         </section>
 
         <!-- 6. SOAPS SECTION -->
@@ -1316,6 +1297,14 @@
                     <div class="product-price">Rs. 499</div>
                     <button class="btn-buy-now">View Details</button>
                 </div>
+            </div>
+            
+            <!-- Hidden Products for Soaps Section -->
+            <div class="product-grid hidden-products" id="soaps-extra">
+                <!-- Aap yahan mazeed soap add kar sakte hain -->
+            </div>
+            <div class="explore-btn-container">
+                <button class="btn-explore" onclick="toggleSection('soaps-extra', this)">Explore More</button>
             </div>
         </section>
 
@@ -1561,7 +1550,7 @@
         }
         setInterval(nextSlide, 4000);
 
-        // Toggle Extra Hidden Products (Explore More / Show Less)
+        // Toggle Extra Hidden Products (Explore More / Show Less for all sections)
         function toggleSection(sectionId, btn) {
             const extraGrid = document.getElementById(sectionId);
             if (!extraGrid) return;
