@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fangam Organic | Pure Herbal Hair Care</title>
-    <!-- Google Fonts for International Standard Typography -->
+    <title>Fangam Organic | Pure Herbal Hair & Skin Care</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Modern Icons -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -17,7 +17,7 @@
             --text-main: #2C2C2C;
             --text-muted: #666666;
             --white: #FFFFFF;
-            --transition: all 0.3s ease;
+            --transition: all 0.4s ease;
         }
 
         * {
@@ -38,7 +38,7 @@
             font-family: 'Playfair Display', serif;
         }
 
-        /* Top Announcement Bar */
+        /* Announcement Bar */
         .announcement-bar {
             background-color: var(--primary-dark);
             color: var(--white);
@@ -81,7 +81,7 @@
 
         .nav-links {
             display: flex;
-            gap: 35px;
+            gap: 25px;
             list-style: none;
         }
 
@@ -89,7 +89,7 @@
             text-decoration: none;
             color: var(--text-main);
             font-weight: 500;
-            font-size: 15px;
+            font-size: 14px;
             transition: var(--transition);
         }
 
@@ -113,30 +113,62 @@
             color: var(--accent-gold);
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(26, 46, 34, 0.75), rgba(26, 46, 34, 0.75)), url('https://images.unsplash.com/photo-1608248597359-f5383a54b383?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
-            color: var(--white);
-            text-align: center;
-            padding: 120px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        /* Hero Slider Section */
+        .hero-slider {
+            position: relative;
+            height: 550px;
+            width: 100%;
+            overflow: hidden;
+            background-color: var(--primary-dark);
         }
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 46, 34, 0.65);
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
             max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .slide-content h1 {
+            font-size: 46px;
+            margin-bottom: 20px;
             line-height: 1.2;
         }
 
-        .hero p {
-            font-size: 18px;
-            max-width: 600px;
-            margin-bottom: 35px;
-            font-weight: 300;
+        .slide-content p {
+            font-size: 17px;
+            margin-bottom: 30px;
             opacity: 0.9;
         }
 
@@ -157,77 +189,35 @@
         .btn-primary:hover {
             background-color: #b08d46;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
         }
 
-        /* Features / Trust Badges */
-        .features-grid {
-            max-width: 1200px;
-            margin: -40px auto 60px auto;
-            position: relative;
-            z-index: 10;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 0 20px;
-        }
-
-        .feature-card {
-            background: var(--white);
-            padding: 30px 20px;
-            text-align: center;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-card i {
-            font-size: 32px;
-            color: var(--accent-gold);
-            margin-bottom: 15px;
-        }
-
-        .feature-card h3 {
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: var(--primary-dark);
-        }
-
-        .feature-card p {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        /* Section Styling */
+        /* Section Layouts */
         .section-container {
             max-width: 1200px;
-            margin: 80px auto;
+            margin: 70px auto;
             padding: 0 20px;
         }
 
-        .section-title {
+        .section-header {
             text-align: center;
-            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
             color: var(--primary-dark);
             margin-bottom: 10px;
         }
 
-        .section-subtitle {
-            text-align: center;
+        .section-header p {
             color: var(--text-muted);
-            margin-bottom: 50px;
-            font-size: 16px;
+            font-size: 15px;
         }
 
-        /* Products Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
         }
 
         .product-card {
@@ -236,16 +226,15 @@
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.04);
             transition: var(--transition);
-            position: relative;
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-5px);
             box-shadow: 0 12px 30px rgba(0,0,0,0.08);
         }
 
         .product-image {
-            height: 300px;
+            height: 260px;
             background-color: #eee;
             position: relative;
             overflow: hidden;
@@ -268,47 +257,46 @@
             left: 15px;
             background-color: var(--primary-dark);
             color: var(--white);
-            padding: 5px 12px;
-            font-size: 12px;
+            padding: 4px 10px;
+            font-size: 11px;
             font-weight: 600;
             border-radius: 20px;
-            letter-spacing: 0.5px;
         }
 
         .product-info {
-            padding: 25px;
+            padding: 20px;
             text-align: center;
         }
 
         .product-rating {
             color: #f39c12;
-            font-size: 13px;
-            margin-bottom: 10px;
+            font-size: 12px;
+            margin-bottom: 8px;
         }
 
         .product-info h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
+            font-size: 18px;
+            margin-bottom: 8px;
             color: var(--primary-dark);
         }
 
         .product-info p {
             color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 15px;
+            font-size: 13px;
+            margin-bottom: 12px;
         }
 
         .product-price {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--primary-dark);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .btn-outline {
             display: block;
             width: 100%;
-            padding: 12px;
+            padding: 10px;
             border: 2px solid var(--primary-dark);
             background: transparent;
             color: var(--primary-dark);
@@ -318,6 +306,7 @@
             transition: var(--transition);
             text-decoration: none;
             text-align: center;
+            font-size: 14px;
         }
 
         .btn-outline:hover {
@@ -325,11 +314,100 @@
             color: var(--white);
         }
 
-        /* Footer */
+        /* Before & After Section */
+        .ba-container {
+            background-color: #f0ede6;
+            padding: 60px 20px;
+            margin: 60px 0;
+        }
+
+        .ba-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .ba-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .ba-images {
+            display: flex;
+            gap: 5px;
+            height: 250px;
+        }
+
+        .ba-images img {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ba-card h4 {
+            margin-top: 15px;
+            font-size: 18px;
+            color: var(--primary-dark);
+        }
+
+        .ba-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            padding: 0 15px;
+        }
+
+        /* Client Comments / Testimonials */
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+            position: relative;
+        }
+
+        .testimonial-card i.fa-quote-left {
+            color: var(--accent-gold);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .client-info h5 {
+            font-size: 16px;
+            color: var(--primary-dark);
+        }
+
+        .client-info span {
+            font-size: 12px;
+            color: var(--accent-gold);
+        }
+
+        /* Footer & About / Privacy Policy */
         footer {
             background-color: var(--primary-dark);
             color: var(--white);
             padding: 70px 20px 30px 20px;
+            margin-top: 80px;
         }
 
         .footer-container {
@@ -394,23 +472,15 @@
             color: #aaa;
         }
 
-        /* Responsive */
         @media(max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .hero h1 {
-                font-size: 32px;
-            }
-            .nav-container {
-                padding: 15px 20px;
-            }
+            .nav-links { display: none; }
+            .slide-content h1 { font-size: 30px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Announcement Bar -->
+    <!-- Announcement Bar -->
     <div class="announcement-bar">
         ✨ Free Nationwide Shipping on Orders Over PKR 2,000 | 100% Organic Formula
     </div>
@@ -420,9 +490,10 @@
         <div class="nav-container">
             <a href="#" class="logo">Fangam<span>Organic</span></a>
             <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#oils">Hair Oils</a></li>
+                <li><a href="#shampoos">Shampoos & Ubtan</a></li>
+                <li><a href="#serums">Serums & Masks</a></li>
+                <li><a href="#soaps">Soaps</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -434,112 +505,241 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Revive Your Hair with Nature's Purest Essence</h1>
-        <p>Experience the ultimate botanical blend formulated to strengthen roots, eliminate hair fall, and restore natural radiance.</p>
-        <a href="#products" class="btn-primary">Shop Collection</a>
-    </section>
-
-    <!-- Trust Badges / Features Grid -->
-    <div class="features-grid" id="benefits">
-        <div class="feature-card">
-            <i class="fa-solid fa-leaf"></i>
-            <h3>100% Organic</h3>
-            <p>Crafted using pure, hand-picked natural herbs without synthetic additives.</p>
+    <!-- Hero Slider Section -->
+    <div class="hero-slider">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1608248597359-f5383a54b383?auto=format&fit=crop&q=80&w=1600');">
+            <div class="slide-content">
+                <h1>Pure Botanical Hair Oils for Stronger Roots</h1>
+                <p>Nurture your hair with traditional herbal recipes backed by modern purity standards.</p>
+                <a href="#oils" class="btn-primary">Explore Oils</a>
+            </div>
         </div>
-        <div class="feature-card">
-            <i class="fa-solid fa-shield-halved"></i>
-            <h3>Chemical Free</h3>
-            <p>Zero parabens, sulfates, or artificial fragrances. Safe for all hair types.</p>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=1600');">
+            <div class="slide-content">
+                <h1>Revitalizing Shampoos & Organic Ubtan</h1>
+                <p>Gentle cleansing and natural glow formulas free from harsh sulfates and parabens.</p>
+                <a href="#shampoos" class="btn-primary">Discover Collection</a>
+            </div>
         </div>
-        <div class="feature-card">
-            <i class="fa-solid fa-award"></i>
-            <h3>Lab Tested</h3>
-            <p>Rigorous quality standards to ensure maximum potency and safety.</p>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&q=80&w=1600');">
+            <div class="slide-content">
+                <h1>Intensive Serums & Nourishing Masks</h1>
+                <p>Advanced root therapy designed to eliminate hair fall and restore deep moisture.</p>
+                <a href="#serums" class="btn-primary">Shop Serums</a>
+            </div>
         </div>
     </div>
 
-    <!-- Featured Products Section -->
-    <section class="section-container" id="products">
-        <h2 class="section-title">Our Signature Formulations</h2>
-        <p class="section-subtitle">Discover the secret to healthier, thicker, and lustrous hair</p>
-
+    <!-- SECTION 1: Hair Oils -->
+    <section class="section-container" id="oils">
+        <div class="section-header">
+            <h2>Pure Hair Oils</h2>
+            <p>Traditional herbal infusions crafted for deep root nourishment</p>
+        </div>
         <div class="products-grid">
-            <!-- Product 1 -->
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge-tag">Best Seller</span>
-                    <img src="https://images.unsplash.com/photo-1608248597359-f5383a54b383?auto=format&fit=crop&q=80&w=600" alt="Fangam Organic Hair Oil">
+                    <img src="https://images.unsplash.com/photo-1608248597359-f5383a54b383?auto=format&fit=crop&q=80&w=600" alt="Organic Herbal Hair Oil">
                 </div>
                 <div class="product-info">
-                    <div class="product-rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <span>(4.9)</span>
-                    </div>
+                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
                     <h3>Organic Herbal Hair Oil</h3>
-                    <p>Deep nourishment blend enriched with rare botanical extracts for robust hair growth.</p>
+                    <p>Enriched with rare botanical extracts for robust hair growth.</p>
                     <div class="product-price">PKR 1,499</div>
                     <button class="btn-outline">Add to Cart</button>
                 </div>
             </div>
-
-            <!-- Product 2 -->
             <div class="product-card">
                 <div class="product-image">
-                    <span class="badge-tag">New</span>
-                    <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=600" alt="Herbal Growth Serum">
+                    <span class="badge-tag">Special</span>
+                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&q=80&w=600" alt="Amla & Almond Growth Oil">
                 </div>
                 <div class="product-info">
-                    <div class="product-rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star-half-stroke"></i>
-                        <span>(4.7)</span>
-                    </div>
-                    <h3>Intensive Hair Growth Serum</h3>
-                    <p>Targeted root therapy designed to stimulate dormant follicles and reduce hair thinning.</p>
-                    <div class="product-price">PKR 1,899</div>
-                    <button class="btn-outline">Add to Cart</button>
-                </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="badge-tag">Combo Pack</span>
-                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&q=80&w=600" alt="Complete Hair Care Bundle">
-                </div>
-                <div class="product-info">
-                    <div class="product-rating">
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <span>(5.0)</span>
-                    </div>
-                    <h3>Complete Care Bundle</h3>
-                    <p>The ultimate holistic package for comprehensive hair repair, strength, and shine.</p>
-                    <div class="product-price">PKR 2,999</div>
+                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> (4.8)</div>
+                    <h3>Amla & Almond Growth Oil</h3>
+                    <p>Deep conditioning blend to control hair thinning and split ends.</p>
+                    <div class="product-price">PKR 1,299</div>
                     <button class="btn-outline">Add to Cart</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- SECTION 2: Shampoos & Ubtan -->
+    <section class="section-container" id="shampoos">
+        <div class="section-header">
+            <h2>Shampoos & Ubtan</h2>
+            <p>Sulfate-free cleansers and authentic glow-enhancing body treatments</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge-tag">New</span>
+                    <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=600" alt="Herbal Rejuvenating Shampoo">
+                </div>
+                <div class="product-info">
+                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
+                    <h3>Herbal Rejuvenating Shampoo</h3>
+                    <p>Cleanses scalp gently while maintaining natural moisture balance.</p>
+                    <div class="product-price">PKR 1,199</div>
+                    <button class="btn-outline">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge-tag">Organic</span>
+                    <img src="https://images.unsplash.com/photo-1608248597359-f5383a54b383?auto=format&fit=crop&q=80&w=600" alt="Traditional Bridal Ubtan">
+                </div>
+                <div class="product-info">
+                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (5.0)</div>
+                    <h3>Traditional Bridal Ubtan</h3>
+                    <p>Pure turmeric, sandalwood, and gram flour scrub for radiant skin.</p>
+                    <div class="product-price">PKR 999</div>
+                    <button class="btn-outline">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Serums & Masks -->
+    <section class="section-container" id="serums">
+        <div class="section-header">
+            <h2>Serums & Masks</h2>
+            <p>Targeted treatments for intense repair and frizz control</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge-tag">Best Seller</span>
+                    <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=600" alt="Intensive Hair Growth Serum">
+                </div>
+                <div class="product-info">
+                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> (4.7)</div>
+                    <h3>Intensive Hair Growth Serum</h3>
+                    <p>Stimulates dormant hair follicles for thicker volume.</p>
+                    <div class="product-price">PKR 1,899</div>
+                    <button class="btn-outline">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge-tag">Combo</span>
+                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&q=80&w=600" alt="Deep Repair Hair Mask">
+                </div>
+                <div class="product-info">
+                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
+                    <h3>Deep Repair Hair Mask</h3>
+                    <p>Restores dry, damaged, and chemically treated hair strands.</p>
+                    <div class="product-price">PKR 1,599</div>
+                    <button class="btn-outline">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Soaps -->
+    <section class="section-container" id="soaps">
+        <div class="section-header">
+            <h2>Organic Soaps</h2>
+            <p>Handmade cold-processed herbal soaps for sensitive and glowing skin</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge-tag">Natural</span>
+                    <img src="https://images.unsplash.com/photo-1608248597359-f5383a54b383?auto=format&fit=crop&q=80&w=600" alt="Charcoal & Tea Tree Soap">
+                </div>
+                <div class="product-info">
+                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.8)</div>
+                    <h3>Charcoal & Tea Tree Soap</h3>
+                    <p>Deep cleansing formula for acne-prone and oily skin types.</p>
+                    <div class="product-price">PKR 499</div>
+                    <button class="btn-outline">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge-tag">Pure</span>
+                    <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=600" alt="Goat Milk & Honey Soap">
+                </div>
+                <div class="product-info">
+                    <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (4.9)</div>
+                    <h3>Goat Milk & Honey Soap</h3>
+                    <p>Ultra-hydrating nourishment for smooth and baby-soft skin.</p>
+                    <div class="product-price">PKR 549</div>
+                    <button class="btn-outline">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEFORE & AFTER RESULTS SECTION -->
+    <div class="ba-container">
+        <div class="section-header">
+            <h2>Real Results: Before & After</h2>
+            <p>Witness the transformative power of Fangam Organic care routines</p>
+        </div>
+        <div class="ba-grid">
+            <div class="ba-card">
+                <div class="ba-images">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=400" alt="Before Hair Fall">
+                    <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=400" alt="After Hair Growth">
+                </div>
+                <h4>Hair Fall Recovery</h4>
+                <p>Results after 6 weeks of regular use of Fangam Herbal Hair Oil and Serum.</p>
+            </div>
+            <div class="ba-card">
+                <div class="ba-images">
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&q=80&w=400" alt="Before Texture">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" alt="After Smoothness">
+                </div>
+                <h4>Frizz Control & Shine</h4>
+                <p>Noticeable thickness and natural lustre achieved in just 30 days.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLIENTS COMMENTS / TESTIMONIALS SECTION -->
+    <section class="section-container">
+        <div class="section-header">
+            <h2>What Our Clients Say</h2>
+            <p>Genuine feedback from valued customers across Pakistan</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <i class="fa-solid fa-quote-left"></i>
+                <p>"Fangam hair oil completely transformed my hair texture. Hair fall stopped within two weeks. Highly recommended!"</p>
+                <div class="client-info">
+                    <h5>Ayesha Khan</h5>
+                    <span>Verified Buyer</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <i class="fa-solid fa-quote-left"></i>
+                <p>"The Ubtan and organic soaps give an amazing natural glow without any chemical irritation. Exceptional quality."</p>
+                <div class="client-info">
+                    <h5>Zainab Malik</h5>
+                    <span>Verified Buyer</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <i class="fa-solid fa-quote-left"></i>
+                <p>"Genuine organic products with prompt delivery service. The hair growth serum works like magic."</p>
+                <div class="client-info">
+                    <h5>Usman Tariq</h5>
+                    <span>Verified Buyer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER WITH ABOUT US, CONTACT & PRIVACY POLICY -->
     <footer id="contact">
-        <div class="footer-container">
+        <div class="footer-container" id="about">
             <div class="footer-col">
                 <h4>Fangam Organic</h4>
-                <p>Bringing the purity of traditional herbal heritage into modern scientific hair care routines.</p>
+                <p>Bringing the purity of traditional herbal heritage into modern scientific hair and skin care routines.</p>
                 <div class="social-icons">
                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="#"><i class="fa-brands fa-instagram"></i></a>
@@ -549,27 +749,42 @@
             </div>
             <div class="footer-col">
                 <h4>Quick Links</h4>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact Us</a>
                 <a href="#">Privacy Policy</a>
                 <a href="#">Terms of Service</a>
-                <a href="#">Shipping Information</a>
-                <a href="#">Returns & Refunds</a>
             </div>
             <div class="footer-col">
                 <h4>Customer Support</h4>
-                <a href="#">Contact Us</a>
+                <a href="#">Shipping Information</a>
+                <a href="#">Returns & Refunds</a>
                 <a href="#">Track Order</a>
                 <a href="#">FAQs</a>
             </div>
             <div class="footer-col">
                 <h4>Get in Touch</h4>
                 <p>Email: support@fangamorganic.com</p>
-                <p>WhatsApp Support Available</p>
+                <p>WhatsApp Support Available 24/7</p>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Fangam Organic. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- Slider Script -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        setInterval(nextSlide, 4000); // Har 4 second baad slider change hoga
+    </script>
 
 </body>
 </html>
