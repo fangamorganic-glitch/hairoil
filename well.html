@@ -817,7 +817,6 @@
             .results-slider-wrapper, .reviews-grid {
                 grid-template-columns: 1fr;
             }
-            /* Mobile Modal Stack Fix: Image top, Details bottom, WhatsApp button visible without hiding */
             .modal-box {
                 grid-template-columns: 1fr;
                 max-height: 95vh;
@@ -854,7 +853,7 @@
 </head>
 <body>
 
-    <!-- Top Announcement Bar (Add 'off' class to hide) -->
+    <!-- Top Announcement Bar -->
     <div class="top-offer-bar off">
         <span>Limited Offer</span> 🌿 Flat 20% OFF on All Organic Hair Oils & Herbal Products! Use Code: <b>FANGAM20</b>
     </div>
@@ -882,7 +881,7 @@
         </div>
     </header>
 
-    <!-- Hero Slider Section (Full 6 Slides Capacity) -->
+    <!-- Hero Slider Section -->
     <div class="hero-slider-container">
         <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3');">
             <div class="hero-content">
@@ -935,28 +934,72 @@
         <section id="oils">
             <h2 class="section-title"><i class="fa-solid fa-droplet"></i> Herbal Oils</h2>
             <div class="product-grid">
-                <div class="product-card open-modal" data-name="Fangam Growth Hair Oil" data-price="Rs. 1,299" data-capacity="200ml Bottle" data-img="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3" data-use="Apply gently on scalp and massage for 10 minutes before washing." data-ingredients="Amla, Bhringraj, Almond Oil, Coconut Oil, Natural Herbs." data-benefits="Stops hair fall, promotes baby hair growth, removes dandruff.">
+                <!-- Product Card with 4 Unique Slide Image Attributes -->
+                <div class="product-card open-modal" 
+                     data-name="Fangam Growth Hair Oil" 
+                     data-price="Rs. 1,299" 
+                     data-capacity="200ml Bottle" 
+                     data-img1="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Apply gently on scalp and massage for 10 minutes before washing." 
+                     data-ingredients="Amla, Bhringraj, Almond Oil, Coconut Oil, Natural Herbs." 
+                     data-benefits="Stops hair fall, promotes baby hair growth, removes dandruff.">
                     <div class="product-img-box"><img src="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3" alt="Oil"></div>
                     <div class="product-name">Fangam Growth Hair Oil</div>
                     <div class="product-capacity">200ml Bottle</div>
                     <div class="product-price">Rs. 1,299</div>
                     <button class="btn-buy-now">View Details</button>
                 </div>
-                <div class="product-card open-modal" data-name="Amla & Almond Oil" data-price="Rs. 1,099" data-capacity="200ml Bottle" data-img="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3" data-use="Massage thoroughly into roots twice a week." data-ingredients="Pure Amla extract, Sweet Almond oil, Vitamin E." data-benefits="Adds natural shine and strengthens weak hair roots.">
+
+                <div class="product-card open-modal" 
+                     data-name="Amla & Almond Oil" 
+                     data-price="Rs. 1,099" 
+                     data-capacity="200ml Bottle" 
+                     data-img1="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Massage thoroughly into roots twice a week." 
+                     data-ingredients="Pure Amla extract, Sweet Almond oil, Vitamin E." 
+                     data-benefits="Adds natural shine and strengthens weak hair roots.">
                     <div class="product-img-box"><img src="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3" alt="Oil"></div>
                     <div class="product-name">Amla & Almond Oil</div>
                     <div class="product-capacity">200ml Bottle</div>
                     <div class="product-price">Rs. 1,099</div>
                     <button class="btn-buy-now">View Details</button>
                 </div>
-                <div class="product-card open-modal" data-name="Rosemary Scalp Oil" data-price="Rs. 1,499" data-capacity="120ml Bottle" data-img="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3" data-use="Use a few drops directly on dry scalp areas." data-ingredients="Rosemary essential oil, Jojoba oil carrier." data-benefits="Stimulates blood circulation and follicular growth.">
+
+                <div class="product-card open-modal" 
+                     data-name="Rosemary Scalp Oil" 
+                     data-price="Rs. 1,499" 
+                     data-capacity="120ml Bottle" 
+                     data-img1="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Use a few drops directly on dry scalp areas." 
+                     data-ingredients="Rosemary essential oil, Jojoba oil carrier." 
+                     data-benefits="Stimulates blood circulation and follicular growth.">
                     <div class="product-img-box"><img src="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3" alt="Oil"></div>
                     <div class="product-name">Rosemary Scalp Oil</div>
                     <div class="product-capacity">120ml Bottle</div>
                     <div class="product-price">Rs. 1,499</div>
                     <button class="btn-buy-now">View Details</button>
                 </div>
-                <div class="product-card open-modal" data-name="Anti-Dandruff Herbal Oil" data-price="Rs. 1,199" data-capacity="200ml Bottle" data-img="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" data-use="Apply to scalp overnight for best anti-flake results." data-ingredients="Tea tree oil, Neem extracts, Eucalyptus." data-benefits="Eliminates stubborn dandruff and soothes itchy scalp.">
+
+                <div class="product-card open-modal" 
+                     data-name="Anti-Dandruff Herbal Oil" 
+                     data-price="Rs. 1,199" 
+                     data-capacity="200ml Bottle" 
+                     data-img1="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Apply to scalp overnight for best anti-flake results." 
+                     data-ingredients="Tea tree oil, Neem extracts, Eucalyptus." 
+                     data-benefits="Eliminates stubborn dandruff and soothes itchy scalp.">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Oil"></div>
                     <div class="product-name">Anti-Dandruff Herbal Oil</div>
                     <div class="product-capacity">200ml Bottle</div>
@@ -966,7 +1009,17 @@
             </div>
             
             <div class="product-grid hidden-products" id="oils-extra">
-                <div class="product-card open-modal" data-name="Extra Virgin Coconut Oil" data-price="Rs. 999" data-capacity="250ml Bottle" data-img="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" data-use="Warm slightly and apply from roots to tips." data-ingredients="100% Cold-pressed coconut extract." data-benefits="Deep moisture lock and hair frizz control.">
+                <div class="product-card open-modal" 
+                     data-name="Extra Virgin Coconut Oil" 
+                     data-price="Rs. 999" 
+                     data-capacity="250ml Bottle" 
+                     data-img1="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Warm slightly and apply from roots to tips." 
+                     data-ingredients="100% Cold-pressed coconut extract." 
+                     data-benefits="Deep moisture lock and hair frizz control.">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Oil"></div>
                     <div class="product-name">Extra Virgin Coconut Oil</div>
                     <div class="product-capacity">250ml Bottle</div>
@@ -983,28 +1036,68 @@
         <section id="shampoos">
             <h2 class="section-title"><i class="fa-solid fa-pump-soap"></i> Herbal Shampoos</h2>
             <div class="product-grid">
-                <div class="product-card open-modal" data-name="Reetha & Shikakai Shampoo" data-price="Rs. 899" data-capacity="250ml Bottle" data-img="https://lh3.googleusercontent.com/d/1RgIYA8LU22QAWSm6lFre-QfvPtRzjiLT" data-use="Lather on wet hair, rinse thoroughly." data-ingredients="Reetha, Shikakai, Aqua base, Natural foaming agents." data-benefits="Natural cleansing without chemical side effects.">
+                <div class="product-card open-modal" 
+                     data-name="Reetha & Shikakai Shampoo" 
+                     data-price="Rs. 899" 
+                     data-capacity="250ml Bottle" 
+                     data-img1="https://lh3.googleusercontent.com/d/1RgIYA8LU22QAWSm6lFre-QfvPtRzjiLT" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Lather on wet hair, rinse thoroughly." 
+                     data-ingredients="Reetha, Shikakai, Aqua base, Natural foaming agents." 
+                     data-benefits="Natural cleansing without chemical side effects.">
                     <div class="product-img-box"><img src="https://lh3.googleusercontent.com/d/1RgIYA8LU22QAWSm6lFre-QfvPtRzjiLT" alt="Shampoo"></div>
                     <div class="product-name">Reetha & Shikakai Shampoo</div>
                     <div class="product-capacity">250ml Bottle</div>
                     <div class="product-price">Rs. 899</div>
                     <button class="btn-buy-now">View Details</button>
                 </div>
-                <div class="product-card open-modal" data-name="Aloe Vera Moisture Shampoo" data-price="Rs. 949" data-capacity="250ml Bottle" data-img="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" data-use="Massage into wet hair for 2-3 minutes before rinsing." data-ingredients="Fresh Aloe Vera gel extract, Glycerin." data-benefits="Soothes dry hair strands and adds long-lasting bounce.">
+                <div class="product-card open-modal" 
+                     data-name="Aloe Vera Moisture Shampoo" 
+                     data-price="Rs. 949" 
+                     data-capacity="250ml Bottle" 
+                     data-img1="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Massage into wet hair for 2-3 minutes before rinsing." 
+                     data-ingredients="Fresh Aloe Vera gel extract, Glycerin." 
+                     data-benefits="Soothes dry hair strands and adds long-lasting bounce.">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" alt="Shampoo"></div>
                     <div class="product-name">Aloe Vera Moisture Shampoo</div>
                     <div class="product-capacity">250ml Bottle</div>
                     <div class="product-price">Rs. 949</div>
                     <button class="btn-buy-now">View Details</button>
                 </div>
-                <div class="product-card open-modal" data-name="Onion Black Seed Shampoo" data-price="Rs. 1,099" data-capacity="250ml Bottle" data-img="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" data-use="Apply on wet hair, massage gently, and rinse." data-ingredients="Red Onion extract, Black seed oil, Pro-Vitamin B5." data-benefits="Strengthens hair follicles and controls hair thinning.">
+                <div class="product-card open-modal" 
+                     data-name="Onion Black Seed Shampoo" 
+                     data-price="Rs. 1,099" 
+                     data-capacity="250ml Bottle" 
+                     data-img1="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Apply on wet hair, massage gently, and rinse." 
+                     data-ingredients="Red Onion extract, Black seed oil, Pro-Vitamin B5." 
+                     data-benefits="Strengthens hair follicles and controls hair thinning.">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Shampoo"></div>
                     <div class="product-name">Onion Black Seed Shampoo</div>
                     <div class="product-capacity">250ml Bottle</div>
                     <div class="product-price">Rs. 1,099</div>
                     <button class="btn-buy-now">View Details</button>
                 </div>
-                <div class="product-card open-modal" data-name="Henna & Herb Volume Shampoo" data-price="Rs. 849" data-capacity="250ml Bottle" data-img="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" data-use="Work into rich lather on wet hair." data-ingredients="Henna leaf extracts, Green tea, Shikakai." data-benefits="Adds natural volume, bounce, and body to limp hair.">
+                <div class="product-card open-modal" 
+                     data-name="Henna & Herb Volume Shampoo" 
+                     data-price="Rs. 849" 
+                     data-capacity="250ml Bottle" 
+                     data-img1="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Work into rich lather on wet hair." 
+                     data-ingredients="Henna leaf extracts, Green tea, Shikakai." 
+                     data-benefits="Adds natural volume, bounce, and body to limp hair.">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" alt="Shampoo"></div>
                     <div class="product-name">Henna & Herb Volume Shampoo</div>
                     <div class="product-capacity">250ml Bottle</div>
@@ -1018,21 +1111,34 @@
         <section id="ubtan">
             <h2 class="section-title"><i class="fa-solid fa-spa"></i> Organic Ubtan</h2>
             <div class="product-grid">
-                <div class="product-card open-modal" data-name="Royal Bride Glow Ubtan" data-price="Rs. 799" data-capacity="150g Jar" data-img="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" data-use="Mix with rose water or milk to form paste, apply for 15 mins." data-ingredients="Turmeric, Sandalwood, Saffron, Gram flour, Almond powder." data-benefits="Instant bridal glow, removes tan, and clears blemishes.">
+                <div class="product-card open-modal" 
+                     data-name="Royal Bride Glow Ubtan" 
+                     data-price="Rs. 799" 
+                     data-capacity="150g Jar" 
+                     data-img1="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Mix with rose water or milk to form paste, apply for 15 mins." 
+                     data-ingredients="Turmeric, Sandalwood, Saffron, Gram flour, Almond powder." 
+                     data-benefits="Instant bridal glow, removes tan, and clears blemishes.">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Ubtan"></div>
                     <div class="product-name">Royal Bride Glow Ubtan</div>
                     <div class="product-capacity">150g Jar</div>
                     <div class="product-price">Rs. 799</div>
                     <button class="btn-buy-now">View Details</button>
                 </div>
-                <div class="product-card open-modal" data-name="Royal Bride Glow Ubtan" data-price="Rs. 799" data-capacity="150g Jar" data-img="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" data-use="Mix with rose water or milk to form paste, apply for 15 mins." data-ingredients="Turmeric, Sandalwood, Saffron, Gram flour, Almond powder." data-benefits="Instant bridal glow, removes tan, and clears blemishes.">
-                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Ubtan"></div>
-                    <div class="product-name">Royal Bride Glow Ubtan</div>
-                    <div class="product-capacity">150g Jar</div>
-                    <div class="product-price">Rs. 799</div>
-                    <button class="btn-buy-now">View Details</button>
-                </div>
-                <div class="product-card open-modal" data-name="Sandal & Turmeric Body Ubtan" data-price="Rs. 699" data-capacity="200g Jar" data-img="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" data-use="Use daily while bathing as natural scrub." data-ingredients="Pure Sandalwood powder, Wild turmeric, Multani mitti." data-benefits="Deep skin cleansing, cooling effect, and smooth texture.">
+                <div class="product-card open-modal" 
+                     data-name="Sandal & Turmeric Body Ubtan" 
+                     data-price="Rs. 699" 
+                     data-capacity="200g Jar" 
+                     data-img1="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Use daily while bathing as natural scrub." 
+                     data-ingredients="Pure Sandalwood powder, Wild turmeric, Multani mitti." 
+                     data-benefits="Deep skin cleansing, cooling effect, and smooth texture.">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Ubtan"></div>
                     <div class="product-name">Sandal & Turmeric Body Ubtan</div>
                     <div class="product-capacity">200g Jar</div>
@@ -1046,14 +1152,34 @@
         <section id="serums">
             <h2 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Serums</h2>
             <div class="product-grid">
-                <div class="product-card open-modal" data-name="Argan Hair Gloss Serum" data-price="Rs. 1,199" data-capacity="60ml Bottle" data-img="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" data-use="Take 2-3 drops on palm and apply on damp or dry hair length." data-ingredients="Moroccan Argan oil, Vitamin E, Cyclopentasiloxane." data-benefits="Instant mirror-like gloss and frizz-free manageable hair.">
+                <div class="product-card open-modal" 
+                     data-name="Argan Hair Gloss Serum" 
+                     data-price="Rs. 1,199" 
+                     data-capacity="60ml Bottle" 
+                     data-img1="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Take 2-3 drops on palm and apply on damp or dry hair length." 
+                     data-ingredients="Moroccan Argan oil, Vitamin E, Cyclopentasiloxane." 
+                     data-benefits="Instant mirror-like gloss and frizz-free manageable hair.">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" alt="Serum"></div>
                     <div class="product-name">Argan Hair Gloss Serum</div>
                     <div class="product-capacity">60ml Bottle</div>
                     <div class="product-price">Rs. 1,199</div>
                     <button class="btn-buy-now">View Details</button>
                 </div>
-                <div class="product-card open-modal" data-name="Vitamin C Face Glow Serum" data-price="Rs. 1,399" data-capacity="30ml Dropper" data-img="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" data-use="Apply 3-4 drops on clean face every morning and night." data-ingredients="L-Ascorbic Acid, Hyaluronic acid, Orange peel extract." data-benefits="Brightens skin tone, fades dark spots, boosts collagen.">
+                <div class="product-card open-modal" 
+                     data-name="Vitamin C Face Glow Serum" 
+                     data-price="Rs. 1,399" 
+                     data-capacity="30ml Dropper" 
+                     data-img1="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Apply 3-4 drops on clean face every morning and night." 
+                     data-ingredients="L-Ascorbic Acid, Hyaluronic acid, Orange peel extract." 
+                     data-benefits="Brightens skin tone, fades dark spots, boosts collagen.">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" alt="Serum"></div>
                     <div class="product-name">Vitamin C Face Glow Serum</div>
                     <div class="product-capacity">30ml Dropper</div>
@@ -1067,7 +1193,34 @@
         <section id="masks">
             <h2 class="section-title"><i class="fa-solid fa-face-smile"></i> Hair & Face Masks</h2>
             <div class="product-grid">
-                    <div class="product-card open-modal" data-name="Neem & Clay Purifying Mask" data-price="Rs. 899" data-capacity="150g Tub" data-img="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=400" data-use="Apply even layer on face, let dry for 12 mins, wash off." data-ingredients="Neem leaf extract, Bentonite clay, Tea tree oil." data-benefits="Controls excess oil production and prevents acne breakouts.">
+                <div class="product-card open-modal" 
+                     data-name="Keratin Repair Hair Mask" 
+                     data-price="Rs. 1,399" 
+                     data-capacity="250g Tub" 
+                     data-img1="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Apply generously after shampoo, leave for 10 mins, then rinse." 
+                     data-ingredients="Plant Keratin, Shea butter, Argan oil, Amino acids." 
+                     data-benefits="Deep repairs heat-damaged and frizzy brittle hair.">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=400" alt="Mask"></div>
+                    <div class="product-name">Keratin Repair Hair Mask</div>
+                    <div class="product-capacity">250g Tub</div>
+                    <div class="product-price">Rs. 1,399</div>
+                    <button class="btn-buy-now">View Details</button>
+                </div>
+                <div class="product-card open-modal" 
+                     data-name="Neem & Clay Purifying Mask" 
+                     data-price="Rs. 899" 
+                     data-capacity="150g Tub" 
+                     data-img1="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Apply even layer on face, let dry for 12 mins, wash off." 
+                     data-ingredients="Neem leaf extract, Bentonite clay, Tea tree oil." 
+                     data-benefits="Controls excess oil production and prevents acne breakouts.">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=400" alt="Mask"></div>
                     <div class="product-name">Neem & Clay Purifying Mask</div>
                     <div class="product-capacity">150g Tub</div>
@@ -1081,14 +1234,34 @@
         <section id="soaps">
             <h2 class="section-title"><i class="fa-solid fa-soap"></i> Organic Soaps</h2>
             <div class="product-grid">
-                <div class="product-card open-modal" data-name="Goat Milk & Honey Soap" data-price="Rs. 449" data-capacity="125g Bar" data-img="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=400" data-use="Work into lather with water, massage over skin and rinse." data-ingredients="Fresh goat milk, Organic wild honey, Olive oil." data-benefits="Deeply hydrates dry skin and leaves it soft and supple.">
+                <div class="product-card open-modal" 
+                     data-name="Goat Milk & Honey Soap" 
+                     data-price="Rs. 449" 
+                     data-capacity="125g Bar" 
+                     data-img1="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Work into lather with water, massage over skin and rinse." 
+                     data-ingredients="Fresh goat milk, Organic wild honey, Olive oil." 
+                     data-benefits="Deeply hydrates dry skin and leaves it soft and supple.">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=400" alt="Soap"></div>
                     <div class="product-name">Goat Milk & Honey Soap</div>
                     <div class="product-capacity">125g Bar</div>
                     <div class="product-price">Rs. 449</div>
                     <button class="btn-buy-now">View Details</button>
                 </div>
-                <div class="product-card open-modal" data-name="Charcoal Detox Soap" data-price="Rs. 499" data-capacity="125g Bar" data-img="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=400" data-use="Use daily during shower for deep pore cleansing." data-ingredients="Activated bamboo charcoal, Tea tree, Coconut oil." data-benefits="Draws out deep-seated impurities, dirt, and pollution.">
+                <div class="product-card open-modal" 
+                     data-name="Charcoal Detox Soap" 
+                     data-price="Rs. 499" 
+                     data-capacity="125g Bar" 
+                     data-img1="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Use daily during shower for deep pore cleansing." 
+                     data-ingredients="Activated bamboo charcoal, Tea tree, Coconut oil." 
+                     data-benefits="Draws out deep-seated impurities, dirt, and pollution.">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=400" alt="Soap"></div>
                     <div class="product-name">Charcoal Detox Soap</div>
                     <div class="product-capacity">125g Bar</div>
@@ -1206,32 +1379,32 @@
 
     </div>
 
-    <!-- Interactive Product Detail Modal (Popup) - Now with 4 Slides & Mobile Optimized -->
+    <!-- Interactive Product Detail Modal (Popup) with 4 Slides Setup -->
     <div class="modal-overlay" id="productModal">
         <div class="modal-box">
             <button class="modal-close-btn" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
             
-            <!-- Left Side: Image Slider with 4 Slides (Main, Ingredients, Benefits, How to Use) -->
+            <!-- Left Side: Image Slider with 4 Dynamic Slides -->
             <div class="modal-slider-container">
                 <div class="modal-slider-track" id="modalSliderTrack">
-                    <!-- Slide 1: Main Product View (Automatically fetched from product card data-img) -->
+                    <!-- Slide 1: Main Product View -->
                     <div class="modal-slide-item">
                         <img id="modalImg1" src="" alt="Main Product">
                         <div class="modal-slide-caption">1. Main Product View</div>
                     </div>
-                    <!-- Slide 2: Ingredients (Yahan aap apni Ingredients wali تصویر کا URL ڈال سکتے ہیں) -->
+                    <!-- Slide 2: Ingredients -->
                     <div class="modal-slide-item">
-                        <img id="modalImg2" src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Ingredients">
+                        <img id="modalImg2" src="" alt="Ingredients">
                         <div class="modal-slide-caption">2. Ingredients</div>
                     </div>
-                    <!-- Slide 3: Key Benefits (Yahan aap apni Benefits wali تصویر کا URL ڈال سکتے ہیں) -->
+                    <!-- Slide 3: Key Benefits -->
                     <div class="modal-slide-item">
-                        <img id="modalImg3" src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" alt="Key Benefits">
+                        <img id="modalImg3" src="" alt="Key Benefits">
                         <div class="modal-slide-caption">3. Key Benefits</div>
                     </div>
-                    <!-- Slide 4: How To Use (Yahan aap apni How to Use wali تصویر کا URL ڈال سکتے ہیں) -->
+                    <!-- Slide 4: How To Use -->
                     <div class="modal-slide-item">
-                        <img id="modalImg4" src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" alt="How To Use">
+                        <img id="modalImg4" src="" alt="How To Use">
                         <div class="modal-slide-caption">4. How To Use</div>
                     </div>
                 </div>
@@ -1266,7 +1439,7 @@
 
     <!-- Floating Fixed Widgets -->
     <div class="floating-widgets">
-        <a href="https://wa.me/923000634445" target="_blank" class="float-btn" data-tooltip="WhatsApp Support" style="background: #25d366;">
+        <a href="https://wa.me/923000000000" target="_blank" class="float-btn" data-tooltip="WhatsApp Support" style="background: #25d366;">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
         <a href="#oils" class="float-btn" data-tooltip="Quick Products">
@@ -1317,7 +1490,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Modal, Slider & WhatsApp Integration -->
+    <!-- JavaScript for Modal, 4-Slide Dynamic Images & WhatsApp Integration -->
     <script>
         const WHATSAPP_NUMBER = "923000000000"; // Yahan apna WhatsApp number likhein
 
@@ -1353,7 +1526,7 @@
             }
         }
 
-        // Product Modal & Slider Logic
+        // Product Modal & 4-Slide Dynamic Image Logic
         const modalOverlay = document.getElementById('productModal');
         const closeModalBtn = document.getElementById('closeModal');
         const modalTrack = document.getElementById('modalSliderTrack');
@@ -1364,18 +1537,27 @@
                 const name = card.getAttribute('data-name');
                 const price = card.getAttribute('data-price');
                 const capacity = card.getAttribute('data-capacity');
-                const img = card.getAttribute('data-img');
+                
+                // Fetching all 4 slide images directly from the product card
+                const img1 = card.getAttribute('data-img1');
+                const img2 = card.getAttribute('data-img2');
+                const img3 = card.getAttribute('data-img3');
+                const img4 = card.getAttribute('data-img4');
+
                 const use = card.getAttribute('data-use');
                 const ingredients = card.getAttribute('data-ingredients');
                 const benefits = card.getAttribute('data-benefits');
 
+                // Setting values inside popup modal
                 document.getElementById('modalTitle').innerText = name;
                 document.getElementById('modalPrice').innerText = price;
                 document.getElementById('modalCapacity').innerText = capacity;
-                document.getElementById('modalImg1').src = img; // Main Product Image
-                
-                // Note: Agar aap har product ke liye alag Ingredients, Benefits ya How-to-use ki tasweerein lagانا چاہیں 
-                // to aap yahan unke src bhi change kar sakte hain. Filhal ye default 4 slides chal rahi hain.
+
+                // Assigning all 4 images to respective popup slides
+                document.getElementById('modalImg1').src = img1;
+                document.getElementById('modalImg2').src = img2;
+                document.getElementById('modalImg3').src = img3;
+                document.getElementById('modalImg4').src = img4;
 
                 document.getElementById('modalUseText').innerText = use;
                 document.getElementById('modalIngText').innerText = ingredients;
