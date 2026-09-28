@@ -50,6 +50,19 @@
             font-weight: 500;
         }
 
+        /* OFFER BANNER SETTING: Agar offer on karni ho to display block rakhen, off karni ho to none kar den */
+        .special-offer-banner {
+            display: block; /* Yahan 'none' likhne se ye banner khatam/off ho jaye ga */
+            background: linear-gradient(135deg, #C5A059, #a3813e);
+            color: var(--white);
+            text-align: center;
+            padding: 12px 20px;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
         /* Header & Navigation */
         header {
             background-color: var(--white);
@@ -189,35 +202,55 @@
             transform: translateY(-2px);
         }
 
-        /* Floating Action Buttons */
+        /* Compact Modern Floating Icon Buttons */
         .floating-buttons {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 25px;
+            right: 20px;
             z-index: 999;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .float-btn {
             background-color: var(--primary-green);
             color: var(--white);
-            padding: 12px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
             transition: var(--transition);
+            position: relative;
         }
 
         .float-btn:hover {
             background-color: var(--accent-gold);
-            transform: translateY(-3px);
+            transform: scale(1.1);
+        }
+
+        .float-btn::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 58px;
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 5px 10px;
+            font-size: 11px;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .float-btn:hover::before {
+            opacity: 1;
         }
 
         /* Section Layouts */
@@ -481,28 +514,6 @@
             padding-left: 5px;
         }
 
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .social-icons a {
-            background: rgba(255,255,255,0.1);
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            color: var(--white);
-        }
-
-        .social-icons a:hover {
-            background: var(--accent-gold);
-            padding-left: 0;
-        }
-
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
@@ -521,10 +532,10 @@
 </head>
 <body>
 
-    <!-- Floating Action Buttons (Yahan Product Details aur Social Wall ke links dalen) -->
+    <!-- Floating Action Buttons -->
     <div class="floating-buttons">
-        <a href="YOUR_PRODUCT_DETAILS_LINK_HERE" class="float-btn" target="_blank"><i class="fa-solid fa-circle-info"></i> Product Details</a>
-        <a href="YOUR_SOCIAL_WALL_LINK_HERE" class="float-btn" target="_blank"><i class="fa-solid fa-photo-film"></i> Social Media Wall</a>
+        <a href="YOUR_PRODUCT_DETAILS_LINK_HERE" class="float-btn" target="_blank" data-tooltip="Product Details"><i class="fa-solid fa-circle-info"></i></a>
+        <a href="YOUR_SOCIAL_WALL_LINK_HERE" class="float-btn" target="_blank" data-tooltip="Social Media Wall"><i class="fa-solid fa-photo-film"></i></a>
     </div>
 
     <!-- Announcement Bar -->
@@ -532,14 +543,19 @@
         ✨ Free Nationwide Shipping on Orders Over PKR 2,000 | 100% Organic Formula
     </div>
 
+    <!-- SPECIAL OFFER BANNER (Yahan ap apni offer likh sakte hain, CSS mein display block/none se on/off karen) -->
+    <div class="special-offer-banner">
+        🔥 Flash Sale: Get Flat 20% OFF on all Combo Oils! Order via WhatsApp Now.
+    </div>
+
     <!-- Header -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo-brand">
-                <!-- LOGO URL: Yahan apna logo image URL dalen -->
                 <img src="YOUR_LOGO_IMAGE_URL_HERE" alt="Fangam Organic Logo">
                 <div class="logo">Fangam <span>Organic</span></div>
             </a>
+            <!-- HEADER NAVIGATION LINKS: Yahan se aap koi bhi link add ya remove kar sakte hain -->
             <ul class="nav-links">
                 <li><a href="#oils">Oils</a></li>
                 <li><a href="#shampoos">Shampoos</a></li>
@@ -555,7 +571,6 @@
 
     <!-- Hero Slider Section -->
     <div class="hero-slider">
-        <!-- Slider Image 1 URL -->
         <div class="slide active" style="background-image: url('YOUR_SLIDER_IMAGE_1_URL_HERE');">
             <div class="slide-content">
                 <h1>Pure Botanical Hair Oils for Stronger Roots</h1>
@@ -563,7 +578,6 @@
                 <a href="#oils" class="btn-primary">Explore Oils</a>
             </div>
         </div>
-        <!-- Slider Image 2 URL -->
         <div class="slide" style="background-image: url('YOUR_SLIDER_IMAGE_2_URL_HERE');">
             <div class="slide-content">
                 <h1>Revitalizing Shampoos & Organic Ubtan</h1>
@@ -573,6 +587,10 @@
         </div>
     </div>
 
+    <!-- ========================================== -->
+    <!-- SECTION START: Naya section barhane ke liye ye pura block copy paste karen -->
+    <!-- ========================================== -->
+
     <!-- SECTION 1: Oils -->
     <section class="section-container" id="oils">
         <div class="section-header">
@@ -580,10 +598,10 @@
             <p>Traditional herbal infusions crafted for deep root nourishment</p>
         </div>
         <div class="products-grid">
+            <!-- PRODUCT CARD START: Mazeed product dalne ke liye ye card copy/paste karen -->
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge-tag">Best Seller</span>
-                    <!-- Product Image URL -->
                     <img src="YOUR_OIL_IMAGE_1_URL_HERE" alt="Organic Herbal Hair Oil">
                 </div>
                 <div class="product-info">
@@ -591,10 +609,10 @@
                     <h3>Organic Herbal Hair Oil</h3>
                     <p>Enriched with rare botanical extracts for robust hair growth.</p>
                     <div class="product-price">PKR 1,499</div>
-                    <!-- WhatsApp Order Link (Yahan apna WhatsApp number aur message set karen) -->
                     <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Organic%20Herbal%20Hair%20Oil" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
                 </div>
             </div>
+            <!-- PRODUCT CARD END -->
         </div>
     </section>
 
@@ -608,7 +626,6 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge-tag">New</span>
-                    <!-- Product Image URL -->
                     <img src="YOUR_SHAMPOO_IMAGE_URL_HERE" alt="Herbal Rejuvenating Shampoo">
                 </div>
                 <div class="product-info">
@@ -616,7 +633,6 @@
                     <h3>Herbal Rejuvenating Shampoo</h3>
                     <p>Cleanses scalp gently while maintaining natural moisture balance.</p>
                     <div class="product-price">PKR 1,199</div>
-                    <!-- WhatsApp Order Link -->
                     <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Herbal%20Rejuvenating%20Shampoo" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
                 </div>
             </div>
@@ -633,7 +649,6 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge-tag">Organic</span>
-                    <!-- Product Image URL -->
                     <img src="YOUR_UBTAN_IMAGE_URL_HERE" alt="Traditional Bridal Ubtan">
                 </div>
                 <div class="product-info">
@@ -641,7 +656,6 @@
                     <h3>Traditional Bridal Ubtan</h3>
                     <p>Pure turmeric, sandalwood, and gram flour scrub for radiant skin.</p>
                     <div class="product-price">PKR 999</div>
-                    <!-- WhatsApp Order Link -->
                     <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Traditional%20Bridal%20Ubtan" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
                 </div>
             </div>
@@ -658,7 +672,6 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge-tag">Best Seller</span>
-                    <!-- Product Image URL -->
                     <img src="YOUR_SERUM_IMAGE_URL_HERE" alt="Intensive Hair Growth Serum">
                 </div>
                 <div class="product-info">
@@ -666,7 +679,6 @@
                     <h3>Intensive Hair Growth Serum</h3>
                     <p>Stimulates dormant hair follicles for thicker volume.</p>
                     <div class="product-price">PKR 1,899</div>
-                    <!-- WhatsApp Order Link -->
                     <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Intensive%20Hair%20Growth%20Serum" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
                 </div>
             </div>
@@ -683,7 +695,6 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge-tag">Combo</span>
-                    <!-- Product Image URL -->
                     <img src="YOUR_MASK_IMAGE_URL_HERE" alt="Deep Repair Hair Mask">
                 </div>
                 <div class="product-info">
@@ -691,7 +702,6 @@
                     <h3>Deep Repair Hair Mask</h3>
                     <p>Restores dry, damaged, and chemically treated hair strands.</p>
                     <div class="product-price">PKR 1,599</div>
-                    <!-- WhatsApp Order Link -->
                     <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Deep%20Repair%20Hair%20Mask" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
                 </div>
             </div>
@@ -708,7 +718,6 @@
             <div class="product-card">
                 <div class="product-image">
                     <span class="badge-tag">Natural</span>
-                    <!-- Product Image URL -->
                     <img src="YOUR_SOAP_IMAGE_URL_HERE" alt="Charcoal & Tea Tree Soap">
                 </div>
                 <div class="product-info">
@@ -716,12 +725,15 @@
                     <h3>Charcoal & Tea Tree Soap</h3>
                     <p>Deep cleansing formula for acne-prone and oily skin types.</p>
                     <div class="product-price">PKR 499</div>
-                    <!-- WhatsApp Order Link -->
                     <a href="https://wa.me/923001234567?text=I%20want%20to%20order%20Charcoal%20Soap" class="btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> Buy Now</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION END -->
+    <!-- ========================================== -->
 
     <!-- BEFORE & AFTER RESULTS SECTION -->
     <div class="ba-container">
@@ -732,9 +744,7 @@
         <div class="ba-grid">
             <div class="ba-card">
                 <div class="ba-images">
-                    <!-- Before Image URL -->
                     <img src="YOUR_BEFORE_IMAGE_URL_HERE" alt="Before Hair Fall">
-                    <!-- After Image URL -->
                     <img src="YOUR_AFTER_IMAGE_URL_HERE" alt="After Hair Growth">
                 </div>
                 <h4>Hair Fall Recovery</h4>
@@ -754,7 +764,6 @@
                 <i class="fa-solid fa-quote-left"></i>
                 <p>"Fangam hair oil completely transformed my hair texture. Highly recommended!"</p>
                 <div class="client-profile">
-                    <!-- Client Photo URL -->
                     <img src="YOUR_CLIENT_PHOTO_URL_HERE" alt="Ayesha Khan">
                     <div class="client-info">
                         <h5>Ayesha Khan</h5>
