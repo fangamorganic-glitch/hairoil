@@ -32,9 +32,7 @@
             overflow-x: hidden;
         }
 
-        /* --- Top Announcement / Offer Slider Bar ---
-           To turn OFF, add 'off' class: <div class="top-offer-bar off">
-           To turn ON, remove 'off' class: <div class="top-offer-bar"> */
+        /* --- Top Announcement / Offer Slider Bar --- */
         .top-offer-bar {
             background: linear-gradient(135deg, #1b5e20, var(--primary-green));
             color: var(--white);
@@ -222,7 +220,6 @@
             box-shadow: 0 8px 20px rgba(46, 125, 50, 0.12);
             border-color: var(--light-green);
         }
-        /* Slim frame tailored for Hair Oil & Bottles */
         .product-img-box {
             width: 100%;
             height: 220px;
@@ -250,6 +247,19 @@
             margin-bottom: 8px;
             color: var(--dark-text);
         }
+        
+        /* Dynamic Product Capacity Style (Auto-hides if empty/omitted) */
+        .product-capacity {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .product-capacity:empty {
+            display: none !important;
+            margin: 0 !important;
+        }
+
         .product-price {
             color: var(--primary-green);
             font-weight: 700;
@@ -275,7 +285,6 @@
             color: var(--white);
         }
 
-        /* Toggle Hidden Products (Explore More) */
         .hidden-products {
             display: none;
         }
@@ -361,7 +370,7 @@
             padding: 0 10px;
         }
 
-        /* --- Testimonials / Client Reviews --- */
+        /* --- Testimonials / Client Reviews with Circular Profile Images --- */
         .reviews-section {
             margin: 50px 0;
         }
@@ -377,11 +386,28 @@
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.04);
             border-left: 4px solid var(--light-green);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .review-content-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 12px;
+        }
+        /* Perfect Circle Frame for Reviewer Images */
+        .review-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--light-green);
+            flex-shrink: 0;
         }
         .review-stars {
             color: #f39c12;
-            margin-bottom: 10px;
-            font-size: 14px;
+            font-size: 13px;
         }
         .review-card p {
             font-size: 14px;
@@ -395,7 +421,7 @@
             color: var(--primary-green);
         }
 
-        /* --- Media & Story Section (Split: Social Wall Left, YouTube Right) --- */
+        /* --- Media & Story Section --- */
         .media-story-section {
             margin: 50px 0;
             background: var(--white);
@@ -457,7 +483,7 @@
         .video-box-right {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             border-radius: 8px;
             overflow: hidden;
@@ -472,7 +498,7 @@
             border: 0;
         }
 
-        /* --- Floating Widgets (Info & Social Media Wall) --- */
+        /* --- Floating Widgets --- */
         .floating-widgets {
             position: fixed;
             right: 20px;
@@ -519,7 +545,7 @@
             opacity: 1;
         }
 
-        /* --- Professional Shopify Style Footer --- */
+        /* --- Professional Footer --- */
         footer {
             background: #192e1b;
             color: #d1d5db;
@@ -628,7 +654,6 @@
             .hamburger {
                 display: block;
             }
-            /* Mobile View: Exactly 2 columns */
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
@@ -658,7 +683,7 @@
 </head>
 <body>
 
-    <!-- Top Announcement / Offer Bar (Remove 'off' class to turn ON, add 'off' to turn OFF) -->
+    <!-- Top Announcement Bar -->
     <div class="top-offer-bar">
         <span>Limited Offer</span> 🌿 Flat 20% OFF on All Organic Hair Oils & Herbal Products! Use Code: <b>FANGAM20</b>
     </div>
@@ -683,9 +708,8 @@
         </div>
     </header>
 
-    <!-- Hero Slider Section (6 Slide Items) -->
+    <!-- Hero Slider Section -->
     <div class="hero-slider-container">
-        <!-- Slide 1: Hair Oil -->
         <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3');">
             <div class="hero-content">
                 <h1>Pure Herbal Hair Oil</h1>
@@ -693,7 +717,6 @@
                 <a href="#oils" class="btn-shop">Explore Oils</a>
             </div>
         </div>
-        <!-- Slide 2: Shampoo -->
         <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=1200');">
             <div class="hero-content">
                 <h1>Natural Nourishing Shampoo</h1>
@@ -701,7 +724,6 @@
                 <a href="#shampoos" class="btn-shop">Explore Shampoos</a>
             </div>
         </div>
-        <!-- Slide 3: Ubtan -->
         <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3?auto=format&fit=crop&q=80&w=1200');">
             <div class="hero-content">
                 <h1>Traditional Glow Ubtan</h1>
@@ -709,7 +731,6 @@
                 <a href="#ubtan" class="btn-shop">Explore Ubtan</a>
             </div>
         </div>
-        <!-- Slide 4: Serum -->
         <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=1200');">
             <div class="hero-content">
                 <h1>Advanced Botanical Serum</h1>
@@ -717,7 +738,6 @@
                 <a href="#serums" class="btn-shop">Explore Serums</a>
             </div>
         </div>
-        <!-- Slide 5: Hair Mask -->
         <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1200');">
             <div class="hero-content">
                 <h1>Repairing Hair Mask</h1>
@@ -725,7 +745,6 @@
                 <a href="#masks" class="btn-shop">Explore Masks</a>
             </div>
         </div>
-        <!-- Slide 6: Herbal Soaps -->
         <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&q=80&w=1200');">
             <div class="hero-content">
                 <h1>Handmade Organic Soaps</h1>
@@ -745,39 +764,44 @@
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3" alt="Oil"></div>
                     <div class="product-name">Fangam Growth Hair Oil</div>
+                    <div class="product-capacity">200ml Bottle</div> <!-- Capacity tag (automatically hides if left empty) -->
                     <div class="product-price">Rs. 1,299</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Fangam Growth Hair Oil">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3" alt="Oil"></div>
                     <div class="product-name">Amla & Almond Oil</div>
+                    <div class="product-capacity">200ml Bottle</div>
                     <div class="product-price">Rs. 1,099</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Amla & Almond Oil">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3?auto=format&fit=crop&q=80&w=400" alt="Oil"></div>
                     <div class="product-name">Rosemary Scalp Oil</div>
+                    <div class="product-capacity">120ml Bottle</div>
                     <div class="product-price">Rs. 1,499</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Rosemary Scalp Oil">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Oil"></div>
                     <div class="product-name">Anti-Dandruff Herbal Oil</div>
+                    <div class="product-capacity">200ml Bottle</div>
                     <div class="product-price">Rs. 1,199</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Anti-Dandruff Herbal Oil">Buy Now</a>
                 </div>
             </div>
-            <!-- Hidden Extra Products for Toggle (Add/Remove dynamically as needed) -->
             <div class="product-grid hidden-products" id="oils-extra">
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Oil"></div>
                     <div class="product-name">Extra Virgin Coconut Oil</div>
+                    <div class="product-capacity">250ml Bottle</div>
                     <div class="product-price">Rs. 999</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Extra Virgin Coconut Oil">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3?auto=format&fit=crop&q=80&w=400" alt="Oil"></div>
                     <div class="product-name">Black Seed Miracle Oil</div>
+                    <div class="product-capacity">120ml Bottle</div>
                     <div class="product-price">Rs. 1,399</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Black Seed Miracle Oil">Buy Now</a>
                 </div>
@@ -794,24 +818,28 @@
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://lh3.googleusercontent.com/d/1RgIYA8LU22QAWSm6lFre-QfvPtRzjiLT" alt="Shampoo"></div>
                     <div class="product-name">Reetha & Shikakai Shampoo</div>
+                    <div class="product-capacity">250ml Bottle</div>
                     <div class="product-price">Rs. 899</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Reetha & Shikakai Shampoo">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" alt="Shampoo"></div>
                     <div class="product-name">Aloe Vera Moisture Shampoo</div>
+                    <div class="product-capacity">250ml Bottle</div>
                     <div class="product-price">Rs. 949</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Aloe Vera Moisture Shampoo">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" alt="Shampoo"></div>
                     <div class="product-name">Onion Anti-Hairfall Shampoo</div>
+                    <div class="product-capacity">250ml Bottle</div>
                     <div class="product-price">Rs. 1,099</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Onion Anti-Hairfall Shampoo">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" alt="Shampoo"></div>
                     <div class="product-name">Keratin Smooth Shampoo</div>
+                    <div class="product-capacity">250ml Bottle</div>
                     <div class="product-price">Rs. 1,199</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Keratin Smooth Shampoo">Buy Now</a>
                 </div>
@@ -820,6 +848,7 @@
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" alt="Shampoo"></div>
                     <div class="product-name">Tea Tree Scalp Wash</div>
+                    <div class="product-capacity">250ml Bottle</div>
                     <div class="product-price">Rs. 999</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Tea Tree Scalp Wash">Buy Now</a>
                 </div>
@@ -836,18 +865,21 @@
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://lh3.googleusercontent.com/d/1RgIYA8LU22QAWSm6lFre-QfvPtRzjiLT" alt="Ubtan"></div>
                     <div class="product-name">Royal Bride Ubtan</div>
+                    <div class="product-capacity">150g Jar</div>
                     <div class="product-price">Rs. 799</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Royal Bride Ubtan">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" alt="Ubtan"></div>
                     <div class="product-name">Sandalwood Brightening Ubtan</div>
+                    <div class="product-capacity">150g Jar</div>
                     <div class="product-price">Rs. 899</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Sandalwood Brightening Ubtan">Buy Now</a>
                 </div>
-                    <div class="product-card">
+                <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" alt="Ubtan"></div>
                     <div class="product-name">Neat & Clear Body Ubtan</div>
+                    <div class="product-capacity">200g Jar</div>
                     <div class="product-price">Rs. 849</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Neat & Clear Body Ubtan">Buy Now</a>
                 </div>
@@ -864,24 +896,28 @@
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=400" alt="Serum"></div>
                     <div class="product-name">Vitamin C Face Serum</div>
+                    <div class="product-capacity">30ml Dropper</div>
                     <div class="product-price">Rs. 1,499</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Vitamin C Face Serum">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=400" alt="Serum"></div>
                     <div class="product-name">Argan Hair Shine Serum</div>
+                    <div class="product-capacity">50ml Pump</div>
                     <div class="product-price">Rs. 1,299</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Argan Hair Shine Serum">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=400" alt="Serum"></div>
                     <div class="product-name">Hyaluronic Acid Serum</div>
+                    <div class="product-capacity">30ml Dropper</div>
                     <div class="product-price">Rs. 1,599</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Hyaluronic Acid Serum">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=400" alt="Serum"></div>
                     <div class="product-name">Anti-Aging Night Serum</div>
+                    <div class="product-capacity">30ml Dropper</div>
                     <div class="product-price">Rs. 1,699</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Anti-Aging Night Serum">Buy Now</a>
                 </div>
@@ -898,24 +934,28 @@
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=400" alt="Mask"></div>
                     <div class="product-name">Deep Conditioning Hair Mask</div>
+                    <div class="product-capacity">200g Tub</div>
                     <div class="product-price">Rs. 1,199</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Deep Conditioning Hair Mask">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=400" alt="Mask"></div>
                     <div class="product-name">Clay Purifying Face Mask</div>
+                    <div class="product-capacity">100g Jar</div>
                     <div class="product-price">Rs. 899</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Clay Purifying Face Mask">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=400" alt="Mask"></div>
                     <div class="product-name">Banana & Honey Hair Mask</div>
+                    <div class="product-capacity">200g Tub</div>
                     <div class="product-price">Rs. 1,099</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Banana & Honey Hair Mask">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=400" alt="Mask"></div>
                     <div class="product-name">Charcoal Detox Mask</div>
+                    <div class="product-capacity">100g Jar</div>
                     <div class="product-price">Rs. 949</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Charcoal Detox Mask">Buy Now</a>
                 </div>
@@ -932,24 +972,28 @@
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&q=80&w=400" alt="Soap"></div>
                     <div class="product-name">Goat Milk & Honey Soap</div>
+                    <div class="product-capacity">100g Bar</div>
                     <div class="product-price">Rs. 499</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Goat Milk & Honey Soap">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&q=80&w=400" alt="Soap"></div>
                     <div class="product-name">Neem & Tea Tree Soap</div>
+                    <div class="product-capacity">100g Bar</div>
                     <div class="product-price">Rs. 450</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Neem & Tea Tree Soap">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&q=80&w=400" alt="Soap"></div>
                     <div class="product-name">Rose Petal Glow Soap</div>
+                    <div class="product-capacity">100g Bar</div>
                     <div class="product-price">Rs. 499</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Rose Petal Glow Soap">Buy Now</a>
                 </div>
                 <div class="product-card">
                     <div class="product-img-box"><img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&q=80&w=400" alt="Soap"></div>
                     <div class="product-name">Activated Charcoal Soap</div>
+                    <div class="product-capacity">100g Bar</div>
                     <div class="product-price">Rs. 520</div>
                     <a href="#" class="btn-buy-now buy-whatsapp" data-product="Activated Charcoal Soap">Buy Now</a>
                 </div>
@@ -990,41 +1034,55 @@
             </div>
         </section>
 
-        <!-- Client Reviews Section -->
+        <!-- Client Reviews Section with Circular Profile Images -->
         <section class="reviews-section">
             <h2 class="section-title"><i class="fa-solid fa-comments"></i> Customer Reviews</h2>
             <div class="reviews-grid">
                 <div class="review-card">
-                    <div class="review-stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div>
+                        <div class="review-content-top">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150" alt="Asma Farooq" class="review-avatar">
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p>"I used Fangam Organic hair oil and my hair fall stopped completely. Extremely wonderful product!"</p>
                     </div>
-                    <p>"I used Fangam Organic hair oil and my hair fall stopped completely. Extremely wonderful product!"</p>
                     <div class="review-author">— Asma Farooq, Lahore</div>
                 </div>
                 <div class="review-card">
-                    <div class="review-stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div>
+                        <div class="review-content-top">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150" alt="Muhammad Ali" class="review-avatar">
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p>"The shampoo and serum results are amazing. My hair has got extra shine and softness. Thank you Fangam!"</p>
                     </div>
-                    <p>"The shampoo and serum results are amazing. My hair has got extra shine and softness. Thank you Fangam!"</p>
                     <div class="review-author">— Muhammad Ali, Gujranwala</div>
                 </div>
                 <div class="review-card">
-                    <div class="review-stars">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div>
+                        <div class="review-content-top">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Ayesha Khan" class="review-avatar">
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p>"The ubtan and soaps fragrance and quality are purely organic. Such a wonderful experience."</p>
                     </div>
-                    <p>"The ubtan and soaps fragrance and quality are purely organic. Such a wonderful experience."</p>
                     <div class="review-author">— Ayesha Khan, Sialkot</div>
                 </div>
             </div>
         </section>
 
-        <!-- Media & Story Section: Social Wall on Left & YouTube Video on Right -->
+        <!-- Media & Story Section -->
         <section class="media-story-section" id="about">
             <h2 class="section-title" style="border: none; margin-bottom: 5px;"><i class="fa-solid fa-film"></i> Our Story & Official Channels</h2>
             <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Explore our production story and connect with our official social media handles.</p>
             
             <div class="media-grid-layout">
-                <!-- Left: Social Wall (Facebook, Instagram, TikTok, WhatsApp Links) -->
                 <div class="social-wall-box">
                     <h3>Official Social Wall</h3>
                     <div class="social-channels-list">
@@ -1047,9 +1105,7 @@
                     </div>
                 </div>
 
-                <!-- Right: Master YouTube Video Embed Window -->
                 <div class="video-box-right">
-                    <!-- Replace src with your YouTube Master Video Embed Link -->
                     <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Fangam Organic Master Video" allowfullscreen></iframe>
                 </div>
             </div>
@@ -1057,10 +1113,9 @@
 
     </div>
 
-    <!-- Floating Fixed Widgets (Quick WhatsApp & Navigation) -->
+    <!-- Floating Fixed Widgets -->
     <div class="floating-widgets">
         <a href="https://wa.me/923000000000" target="_blank" class="float-btn" data-tooltip="WhatsApp Support" style="background: #25d366;">
-            <style>/* WhatsApp Floating Icon */</style>
             <i class="fa-brands fa-whatsapp"></i>
         </a>
         <a href="#oils" class="float-btn" data-tooltip="Quick Products">
@@ -1068,7 +1123,7 @@
         </a>
     </div>
 
-    <!-- Professional Shopify Style Footer -->
+    <!-- Footer -->
     <footer id="contact">
         <div class="footer-container">
             <div class="footer-col">
@@ -1114,21 +1169,16 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Functionality & Dynamic WhatsApp Setup -->
+    <!-- JavaScript -->
     <script>
-        // ==========================================================
-        // ⚙️ GLOBAL CONFIG: SET YOUR WHATSAPP NUMBER HERE ONCE!
-        // ==========================================================
-        const WHATSAPP_NUMBER = "923000000000"; // Format: Country code + Number without '+' or spaces
+        const WHATSAPP_NUMBER = "923000000000";
 
-        // 1. Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
 
-        // 2. Hero Slider Auto-rotation (6 Slides)
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         function nextSlide() {
@@ -1136,9 +1186,8 @@
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
-        setInterval(nextSlide, 4000); // Change slide every 4 seconds
+        setInterval(nextSlide, 4000);
 
-        // 3. Explore More Toggle Function
         function toggleSection(sectionId, btn) {
             const extraGrid = document.getElementById(sectionId);
             if (!extraGrid) return;
@@ -1152,7 +1201,6 @@
             }
         }
 
-        // 4. Dynamic WhatsApp Order Integration for all "Buy Now" buttons
         document.addEventListener('DOMContentLoaded', () => {
             const buyButtons = document.querySelectorAll('.buy-whatsapp');
             buyButtons.forEach(btn => {
