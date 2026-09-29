@@ -476,7 +476,7 @@
             margin-bottom: 5px;
         }
 
-        /* --- Before / After Results Section (Horizontal Scrollable Slider) --- */
+        /* --- Before / After Results Section (Auto-Scrolling Slider) --- */
         .results-section {
             margin: 50px 0;
             background: var(--white);
@@ -492,15 +492,10 @@
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             padding-bottom: 15px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary-green) #e0e0e0;
+            scrollbar-width: none; /* Hide scrollbar for clean look */
         }
         .results-slider-wrapper::-webkit-scrollbar {
-            height: 6px;
-        }
-        .results-slider-wrapper::-webkit-scrollbar-thumb {
-            background-color: var(--primary-green);
-            border-radius: 10px;
+            display: none;
         }
         .result-card {
             flex: 0 0 340px;
@@ -544,7 +539,7 @@
             padding: 0 10px;
         }
 
-        /* --- Testimonials / Client Reviews (Horizontal Scrollable Slider) --- */
+        /* --- Testimonials / Client Reviews (Auto-Scrolling Slider) --- */
         .reviews-section {
             margin: 50px 0;
         }
@@ -556,15 +551,10 @@
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             padding-bottom: 15px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary-green) #e0e0e0;
+            scrollbar-width: none; /* Hide scrollbar for clean look */
         }
         .reviews-grid::-webkit-scrollbar {
-            height: 6px;
-        }
-        .reviews-grid::-webkit-scrollbar-thumb {
-            background-color: var(--primary-green);
-            border-radius: 10px;
+            display: none;
         }
         .review-card {
             flex: 0 0 340px;
@@ -1329,17 +1319,17 @@
             
             <!-- Hidden Products for Soaps Section -->
             <div class="product-grid hidden-products" id="soaps-extra">
-                <!-- آپ یہاں اضافی پروڈکٹس ایڈ کر سکتے ہیں -->
+                <!-- آپ یہاں اضافی پروڈکٹس ایڈ कर सकते हैं -->
             </div>
             <div class="explore-btn-container">
                 <button class="btn-explore" onclick="toggleSection('soaps-extra', this)">Explore More</button>
             </div>
         </section>
 
-        <!-- Before / After Results Section (Now Horizontal Scrollable Slider supporting many cards) -->
+        <!-- Before / After Results Section (Auto-Scrolling Slider) -->
         <section class="results-section">
             <h2 class="section-title"><i class="fa-solid fa-chart-line"></i> Before & After Results</h2>
-            <div class="results-slider-wrapper">
+            <div class="results-slider-wrapper" id="resultsSlider">
                 <div class="result-card">
                     <div class="result-img-container">
                         <div style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
@@ -1364,7 +1354,6 @@
                     <h4>Dandruff Free Scalp</h4>
                     <p>Complete relief from dry flakes and itchy scalp using our organic formula.</p>
                 </div>
-                <!-- آپ یہاں مزید Before & After کارڈز جتنے مرضی ایڈ کریں، یہ خودکار ہوریزنٹل سکرول ہوں گے -->
                 <div class="result-card">
                     <div class="result-img-container">
                         <div style="background-image: url('https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
@@ -1376,10 +1365,10 @@
             </div>
         </section>
 
-        <!-- Client Reviews Section (Now Horizontal Scrollable Slider supporting many cards) -->
+        <!-- Client Reviews Section (Auto-Scrolling Slider) -->
         <section class="reviews-section">
             <h2 class="section-title"><i class="fa-solid fa-comments"></i> Customer Reviews</h2>
-            <div class="reviews-grid">
+            <div class="reviews-grid" id="reviewsSlider">
                 <div class="review-card">
                     <div>
                         <div class="review-content-top">
@@ -1416,7 +1405,6 @@
                     </div>
                     <div class="review-author">— Ayesha Khan, Sialkot</div>
                 </div>
-                <!-- آپ یہاں مزید کسٹمر ریویوز جتنے مرضی ایڈ کریں، یہ خودکار ہوریزنٹل سکرول ہوں گے -->
                 <div class="review-card">
                     <div>
                         <div class="review-content-top">
@@ -1577,7 +1565,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Modal, 4-Slide Dynamic Images & Explore More Toggle -->
+    <!-- JavaScript for Modal, 4-Slide Dynamic Images, Explore More & Auto-Scroll Sliders -->
     <script>
         const WHATSAPP_NUMBER = "923000000000"; // Yahan apna WhatsApp number likhein
 
@@ -1612,6 +1600,36 @@
                 btn.innerText = 'Show Less';
             }
         }
+
+        // Auto-Scroll Slider Function with Pause on Hover
+        function setupAutoScroll(sliderId, speed = 1, intervalTime = 20) {
+            const slider = document.getElementById(sliderId);
+            if (!slider) return;
+
+            let scrollTimer;
+
+            function startScrolling() {
+                scrollTimer = setInterval(() => {
+                    slider.scrollLeft += speed;
+                    // Jab akhir tak pahunch jaye toh wapas shuru mein aa jaye (Infinite Loop effect)
+                    if (slider.scrollLeft >= (slider.scrollWidth - slider.clientWidth - 5)) {
+                        slider.scrollLeft = 0;
+                    }
+                }, intervalTime);
+            }
+
+            startScrolling();
+
+            // Pause on Mouse/Touch Hover
+            slider.addEventListener('mouseenter', () => clearInterval(scrollTimer));
+            slider.addEventListener('mouseleave', () => startScrolling());
+            slider.addEventListener('touchstart', () => clearInterval(scrollTimer));
+            slider.addEventListener('touchend', () => startScrolling());
+        }
+
+        // Initialize Auto-Scroll for Results and Reviews Sliders
+        setupAutoScroll('resultsSlider', 1, 25);
+        setupAutoScroll('reviewsSlider', 1, 25);
 
         // Product Modal & 4-Slide Dynamic Image Logic
         const modalOverlay = document.getElementById('productModal');
