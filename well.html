@@ -476,7 +476,7 @@
             margin-bottom: 5px;
         }
 
-        /* --- Before / After Results Section (Auto-Scrolling Slider) --- */
+        /* --- Before / After Results Section (Proper Card-by-Card Auto Slider) --- */
         .results-section {
             margin: 50px 0;
             background: var(--white);
@@ -488,18 +488,18 @@
             display: flex;
             gap: 20px;
             margin-top: 20px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
+            overflow: hidden; /* Hide extra cards to act like true slider */
             padding-bottom: 15px;
-            scrollbar-width: none; /* Hide scrollbar for clean look */
+            width: 100%;
         }
-        .results-slider-wrapper::-webkit-scrollbar {
-            display: none;
+        .results-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.6s ease-in-out;
+            width: 100%;
         }
         .result-card {
-            flex: 0 0 340px;
-            scroll-snap-align: start;
+            flex: 0 0 calc(25% - 15px); /* Shows 4 cards at once on desktop */
             background: var(--light-bg);
             border-radius: 8px;
             overflow: hidden;
@@ -539,26 +539,26 @@
             padding: 0 10px;
         }
 
-        /* --- Testimonials / Client Reviews (Auto-Scrolling Slider) --- */
+        /* --- Testimonials / Client Reviews (Proper Card-by-Card Auto Slider) --- */
         .reviews-section {
             margin: 50px 0;
         }
-        .reviews-grid {
+        .reviews-grid-wrapper {
             display: flex;
             gap: 20px;
             margin-top: 20px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
+            overflow: hidden; /* Hide extra cards to act like true slider */
             padding-bottom: 15px;
-            scrollbar-width: none; /* Hide scrollbar for clean look */
+            width: 100%;
         }
-        .reviews-grid::-webkit-scrollbar {
-            display: none;
+        .reviews-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.6s ease-in-out;
+            width: 100%;
         }
         .review-card {
-            flex: 0 0 340px;
-            scroll-snap-align: start;
+            flex: 0 0 calc(25% - 15px); /* Shows 4 cards at once on desktop */
             background: var(--white);
             padding: 20px;
             border-radius: 10px;
@@ -804,6 +804,9 @@
             .product-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+            .result-card, .review-card {
+                flex: 0 0 calc(33.333% - 14px); /* Show 3 cards on tablets */
+            }
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -833,7 +836,7 @@
                 gap: 12px;
             }
             .result-card, .review-card {
-                flex: 0 0 280px;
+                flex: 0 0 100%; /* Show 1 full card at a time on mobile */
             }
             .modal-box {
                 grid-template-columns: 1fr;
@@ -1319,103 +1322,127 @@
             
             <!-- Hidden Products for Soaps Section -->
             <div class="product-grid hidden-products" id="soaps-extra">
-                <!-- آپ یہاں اضافی پروڈکٹس ایڈ कर सकते हैं -->
+                <!-- آپ یہاں اضافی پروڈکٹس ایڈ کر سکتے ہیں -->
             </div>
             <div class="explore-btn-container">
                 <button class="btn-explore" onclick="toggleSection('soaps-extra', this)">Explore More</button>
             </div>
         </section>
 
-        <!-- Before / After Results Section (Auto-Scrolling Slider) -->
-        <section class="results-section">
+        <!-- Before / After Results Section (Auto Slider Effect) -->
+        <section class="results-section" id="resultsSection">
             <h2 class="section-title"><i class="fa-solid fa-chart-line"></i> Before & After Results</h2>
-            <div class="results-slider-wrapper" id="resultsSlider">
-                <div class="result-card">
-                    <div class="result-img-container">
-                        <div style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
-                        <div style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300');"><span>After 30 Days</span></div>
+            <div class="results-slider-wrapper">
+                <div class="results-track" id="resultsTrack">
+                    <div class="result-card">
+                        <div class="result-img-container">
+                            <div style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
+                            <div style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300');"><span>After 30 Days</span></div>
+                        </div>
+                        <h4>Hair Growth & Thickness</h4>
+                        <p>Noticeable reduction in hairfall and new baby hair growth within 4 weeks.</p>
                     </div>
-                    <h4>Hair Growth & Thickness</h4>
-                    <p>Noticeable reduction in hairfall and new baby hair growth within 4 weeks.</p>
-                </div>
-                <div class="result-card">
-                    <div class="result-img-container">
-                        <div style="background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
-                        <div style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300');"><span>After 21 Days</span></div>
+                    <div class="result-card">
+                        <div class="result-img-container">
+                            <div style="background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
+                            <div style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300');"><span>After 21 Days</span></div>
+                        </div>
+                        <h4>Skin Glow & Clarity</h4>
+                        <p>Clear reduction in blemishes and dark spots with regular application.</p>
                     </div>
-                    <h4>Skin Glow & Clarity</h4>
-                    <p>Clear reduction in blemishes and dark spots with regular application.</p>
-                </div>
-                <div class="result-card">
-                    <div class="result-img-container">
-                        <div style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
-                        <div style="background-image: url('https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=300');"><span>After 15 Days</span></div>
+                    <div class="result-card">
+                        <div class="result-img-container">
+                            <div style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
+                            <div style="background-image: url('https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&q=80&w=300');"><span>After 15 Days</span></div>
+                        </div>
+                        <h4>Dandruff Free Scalp</h4>
+                        <p>Complete relief from dry flakes and itchy scalp using our organic formula.</p>
                     </div>
-                    <h4>Dandruff Free Scalp</h4>
-                    <p>Complete relief from dry flakes and itchy scalp using our organic formula.</p>
-                </div>
-                <div class="result-card">
-                    <div class="result-img-container">
-                        <div style="background-image: url('https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
-                        <div style="background-image: url('https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=300');"><span>After 45 Days</span></div>
+                    <div class="result-card">
+                        <div class="result-img-container">
+                            <div style="background-image: url('https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
+                            <div style="background-image: url('https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=300');"><span>After 45 Days</span></div>
+                        </div>
+                        <h4>Frizz Repair & Shine</h4>
+                        <p>Deep conditioning results for extremely dry and damaged hair strands.</p>
                     </div>
-                    <h4>Frizz Repair & Shine</h4>
-                    <p>Deep conditioning results for extremely dry and damaged hair strands.</p>
+                    <div class="result-card">
+                        <div class="result-img-container">
+                            <div style="background-image: url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
+                            <div style="background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=300');"><span>After 25 Days</span></div>
+                        </div>
+                        <h4>Strong Hair Roots</h4>
+                        <p>Prevents hair breakage and strengthens hair fibers from root to tip.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Client Reviews Section (Auto-Scrolling Slider) -->
-        <section class="reviews-section">
+        <!-- Client Reviews Section (Auto Slider Effect) -->
+        <section class="reviews-section" id="reviewsSection">
             <h2 class="section-title"><i class="fa-solid fa-comments"></i> Customer Reviews</h2>
-            <div class="reviews-grid" id="reviewsSlider">
-                <div class="review-card">
-                    <div>
-                        <div class="review-content-top">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150" alt="Asma" class="review-avatar">
-                            <div class="review-stars">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            <div class="reviews-grid-wrapper">
+                <div class="reviews-track" id="reviewsTrack">
+                    <div class="review-card">
+                        <div>
+                            <div class="review-content-top">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150" alt="Asma" class="review-avatar">
+                                <div class="review-stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
                             </div>
+                            <p>"I used Fangam Organic hair oil and my hair fall stopped completely. Extremely wonderful product!"</p>
                         </div>
-                        <p>"I used Fangam Organic hair oil and my hair fall stopped completely. Extremely wonderful product!"</p>
+                        <div class="review-author">— عاصمہ Asma, Lahore</div>
                     </div>
-                    <div class="review-author">— عاصمہ Asma, Lahore</div>
-                </div>
-                <div class="review-card">
-                    <div>
-                        <div class="review-content-top">
-                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150" alt="Ali" class="review-avatar">
-                            <div class="review-stars">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div class="review-card">
+                        <div>
+                            <div class="review-content-top">
+                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150" alt="Ali" class="review-avatar">
+                                <div class="review-stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
                             </div>
+                            <p>"The shampoo and serum results are amazing. My hair has got extra shine and softness. Thank you Fangam!"</p>
                         </div>
-                        <p>"The shampoo and serum results are amazing. My hair has got extra shine and softness. Thank you Fangam!"</p>
+                        <div class="review-author">— Muhammad Ali, Gujranwala</div>
                     </div>
-                    <div class="review-author">— Muhammad Ali, Gujranwala</div>
-                </div>
-                <div class="review-card">
-                    <div>
-                        <div class="review-content-top">
-                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Ayesha" class="review-avatar">
-                            <div class="review-stars">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div class="review-card">
+                        <div>
+                            <div class="review-content-top">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Ayesha" class="review-avatar">
+                                <div class="review-stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
                             </div>
+                            <p>"The ubtan and soaps fragrance and quality are purely organic. Such a wonderful experience."</p>
                         </div>
-                        <p>"The ubtan and soaps fragrance and quality are purely organic. Such a wonderful experience."</p>
+                        <div class="review-author">— Ayesha Khan, Sialkot</div>
                     </div>
-                    <div class="review-author">— Ayesha Khan, Sialkot</div>
-                </div>
-                <div class="review-card">
-                    <div>
-                        <div class="review-content-top">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="Usman" class="review-avatar">
-                            <div class="review-stars">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <div class="review-card">
+                        <div>
+                            <div class="review-content-top">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="Usman" class="review-avatar">
+                                <div class="review-stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
                             </div>
+                            <p>"Best organic products in Pakistan. The delivery was fast and results are genuine."</p>
                         </div>
-                        <p>"Best organic products in Pakistan. The delivery was fast and results are genuine."</p>
+                        <div class="review-author">— Usman Tariq, Faisalabad</div>
                     </div>
-                    <div class="review-author">— Usman Tariq, Faisalabad</div>
+                    <div class="review-card">
+                        <div>
+                            <div class="review-content-top">
+                                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" alt="Zainab" class="review-avatar">
+                                <div class="review-stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <p>"My skin feels so glowing and clean after using their ubtan. Highly recommended to everyone!"</p>
+                        </div>
+                        <div class="review-author">— Zainab Bibi, Islamabad</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1565,7 +1592,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Modal, 4-Slide Dynamic Images, Explore More & Auto-Scroll Sliders -->
+    <!-- JavaScript for Modal, 4-Slide Dynamic Images, Explore More & Card-by-Card Auto Slider -->
     <script>
         const WHATSAPP_NUMBER = "923000000000"; // Yahan apna WhatsApp number likhein
 
@@ -1577,16 +1604,16 @@
         });
 
         // Hero Slider (6 Slides Functionality)
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        function nextSlide() {
-            if(slides.length > 0) {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
+        let currentHeroSlide = 0;
+        const heroSlides = document.querySelectorAll('.hero-slide');
+        function nextHeroSlide() {
+            if(heroSlides.length > 0) {
+                heroSlides[currentHeroSlide].classList.remove('active');
+                currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
+                heroSlides[currentHeroSlide].classList.add('active');
             }
         }
-        setInterval(nextSlide, 4000);
+        setInterval(nextHeroSlide, 4000);
 
         // Toggle Extra Hidden Products (Explore More / Show Less for all sections)
         function toggleSection(sectionId, btn) {
@@ -1601,35 +1628,52 @@
             }
         }
 
-        // Auto-Scroll Slider Function with Pause on Hover
-        function setupAutoScroll(sliderId, speed = 1, intervalTime = 20) {
-            const slider = document.getElementById(sliderId);
-            if (!slider) return;
+        // True Card-by-Card Auto Slider Function (Like Hero Slider)
+        function setupCardSlider(trackId, sectionId, intervalTime = 3500) {
+            const track = document.getElementById(trackId);
+            const section = document.getElementById(sectionId);
+            if (!track || !section) return;
 
-            let scrollTimer;
+            let index = 0;
+            const cards = track.children;
+            const totalCards = cards.length;
+            let slideTimer;
 
-            function startScrolling() {
-                scrollTimer = setInterval(() => {
-                    slider.scrollLeft += speed;
-                    // Jab akhir tak pahunch jaye toh wapas shuru mein aa jaye (Infinite Loop effect)
-                    if (slider.scrollLeft >= (slider.scrollWidth - slider.clientWidth - 5)) {
-                        slider.scrollLeft = 0;
-                    }
-                }, intervalTime);
+            function getVisibleCount() {
+                if (window.innerWidth <= 768) return 1;
+                if (window.innerWidth <= 1024) return 3;
+                return 4;
             }
 
-            startScrolling();
+            function slideNext() {
+                const visibleCount = getVisibleCount();
+                const maxIndex = totalCards - visibleCount;
+                
+                index++;
+                if (index > maxIndex) {
+                    index = 0; // Wapas pehle card par aa jaye
+                }
 
-            // Pause on Mouse/Touch Hover
-            slider.addEventListener('mouseenter', () => clearInterval(scrollTimer));
-            slider.addEventListener('mouseleave', () => startScrolling());
-            slider.addEventListener('touchstart', () => clearInterval(scrollTimer));
-            slider.addEventListener('touchend', () => startScrolling());
+                const cardWidth = cards[0].getBoundingClientRect().width + 20; // card width + gap
+                track.style.transform = `translateX(-${index * cardWidth}px)`;
+            }
+
+            function startAutoSlide() {
+                slideTimer = setInterval(slideNext, intervalTime);
+            }
+
+            startAutoSlide();
+
+            // Pause on Hover / Touch
+            section.addEventListener('mouseenter', () => clearInterval(slideTimer));
+            section.addEventListener('mouseleave', () => startAutoSlide());
+            section.addEventListener('touchstart', () => clearInterval(slideTimer));
+            section.addEventListener('touchend', () => startAutoSlide());
         }
 
-        // Initialize Auto-Scroll for Results and Reviews Sliders
-        setupAutoScroll('resultsSlider', 1, 25);
-        setupAutoScroll('reviewsSlider', 1, 25);
+        // Initialize Card-by-Card Auto Sliders for Results and Reviews
+        setupCardSlider('resultsTrack', 'resultsSection', 3500);
+        setupCardSlider('reviewsTrack', 'reviewsSection', 4000);
 
         // Product Modal & 4-Slide Dynamic Image Logic
         const modalOverlay = document.getElementById('productModal');
