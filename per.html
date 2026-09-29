@@ -48,9 +48,6 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             z-index: 1001;
         }
-        .top-offer-bar.off {
-            display: none !important;
-        }
         .top-offer-bar span {
             background: #fff;
             color: var(--primary-green);
@@ -94,14 +91,14 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 20px;
             align-items: center;
         }
         .nav-links a {
             text-decoration: none;
             color: var(--dark-text);
             font-weight: 500;
-            font-size: 15px;
+            font-size: 14px;
             transition: var(--transition);
         }
         .nav-links a:hover {
@@ -256,10 +253,6 @@
             color: #666;
             margin-bottom: 6px;
             font-weight: 500;
-        }
-        .product-capacity:empty {
-            display: none !important;
-            margin: 0 !important;
         }
 
         .product-price {
@@ -874,8 +867,8 @@
 </head>
 <body>
 
-    <!-- Top Announcement Bar -->
-    <div class="top-offer-bar off">
+    <!-- Top Announcement Bar (Active & Visible) -->
+    <div class="top-offer-bar">
         <span>Limited Offer</span> 🌿 Flat 20% OFF on All Organic Hair Oils & Herbal Products! Use Code: <b>FANGAM20</b>
     </div>
 
@@ -890,6 +883,7 @@
                 <li><a href="#hair-care">Hair Care</a></li>
                 <li><a href="#skin-care">Skin Care</a></li>
                 <li><a href="#body-care">Body Care</a></li>
+                <li><a href="#combo-offers">Combo Offers</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -906,6 +900,13 @@
                 <h1>Pure Herbal Hair Care</h1>
                 <p>100% natural ingredients to stop hair fall and stimulate deep root growth.</p>
                 <a href="#hair-care" class="btn-shop">Explore Hair Care</a>
+            </div>
+        </div>
+        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=1200');">
+            <div class="hero-content">
+                <h1>Special Combo Offer - Flat 20% OFF</h1>
+                <p>Get exclusive herbal bundles and save more on your favorite organic packages today!</p>
+                <a href="#combo-offers" class="btn-shop">Grab Offer Now</a>
             </div>
         </div>
         <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=1200');">
@@ -1001,76 +1002,8 @@
                 </div>
             </div>
             
-            <!-- Hidden Products for Hair Care Section -->
             <div class="product-grid hidden-products" id="hair-extra">
-                <div class="product-card open-modal" 
-                     data-name="Extra Virgin Coconut Oil" 
-                     data-price="Rs. 999" 
-                     data-capacity="250ml Bottle" 
-                     data-img1="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
-                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
-                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
-                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
-                     data-use="Warm slightly and apply from roots to tips." 
-                     data-ingredients="100% Cold-pressed coconut extract." 
-                     data-benefits="Deep moisture lock and hair frizz control.">
-                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Oil"></div>
-                    <div class="product-name">Extra Virgin Coconut Oil</div>
-                    <div class="product-capacity">250ml Bottle</div>
-                    <div class="product-price">Rs. 999</div>
-                    <button class="btn-buy-now">View Details</button>
-                </div>
-                <div class="product-card open-modal" 
-                     data-name="Reetha & Shikakai Shampoo" 
-                     data-price="Rs. 899" 
-                     data-capacity="250ml Bottle" 
-                     data-img1="https://lh3.googleusercontent.com/d/1RgIYA8LU22QAWSm6lFre-QfvPtRzjiLT" 
-                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
-                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
-                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
-                     data-use="Lather on wet hair, rinse thoroughly." 
-                     data-ingredients="Reetha, Shikakai, Aqua base, Natural foaming agents." 
-                     data-benefits="Natural cleansing without chemical side effects.">
-                    <div class="product-img-box"><img src="https://lh3.googleusercontent.com/d/1RgIYA8LU22QAWSm6lFre-QfvPtRzjiLT" alt="Shampoo"></div>
-                    <div class="product-name">Reetha & Shikakai Shampoo</div>
-                    <div class="product-capacity">250ml Bottle</div>
-                    <div class="product-price">Rs. 899</div>
-                    <button class="btn-buy-now">View Details</button>
-                </div>
-                <div class="product-card open-modal" 
-                     data-name="Argan Hair Gloss Serum" 
-                     data-price="Rs. 1,199" 
-                     data-capacity="60ml Bottle" 
-                     data-img1="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
-                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
-                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
-                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
-                     data-use="Take 2-3 drops on palm and apply on damp or dry hair length." 
-                     data-ingredients="Moroccan Argan oil, Vitamin E, Cyclopentasiloxane." 
-                     data-benefits="Instant mirror-like gloss and frizz-free manageable hair.">
-                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" alt="Serum"></div>
-                    <div class="product-name">Argan Hair Gloss Serum</div>
-                    <div class="product-capacity">60ml Bottle</div>
-                    <div class="product-price">Rs. 1,199</div>
-                    <button class="btn-buy-now">View Details</button>
-                </div>
-                <div class="product-card open-modal" 
-                     data-name="Keratin Repair Hair Mask" 
-                     data-price="Rs. 1,399" 
-                     data-capacity="250g Tub" 
-                     data-img1="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=400" 
-                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
-                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
-                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
-                     data-use="Apply generously after shampoo, leave for 10 mins, then rinse." 
-                     data-ingredients="Plant Keratin, Shea butter, Argan oil, Amino acids." 
-                     data-benefits="Deep repairs heat-damaged and frizzy brittle hair.">
-                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=400" alt="Mask"></div>
-                    <div class="product-name">Keratin Repair Hair Mask</div>
-                    <div class="product-capacity">250g Tub</div>
-                    <div class="product-price">Rs. 1,399</div>
-                    <button class="btn-buy-now">View Details</button>
-                </div>
+                <!-- Hidden products -->
             </div>
             <div class="explore-btn-container">
                 <button class="btn-explore" onclick="toggleSection('hair-extra', this)">Explore More</button>
@@ -1099,11 +1032,6 @@
                     <button class="btn-buy-now">View Details</button>
                 </div>
             </div>
-            
-            <!-- Hidden Products for Skin Care Section -->
-            <div class="product-grid hidden-products" id="skin-extra">
-                <!-- آپ یہاں اضافی پروڈکٹس ایڈ کر سکتے ہیں -->
-            </div>
          </section>
 
         <!-- 3. BODY CARE SECTION -->
@@ -1128,51 +1056,55 @@
                     <button class="btn-buy-now">View Details</button>
                 </div>
             </div>
-            
-            <!-- Hidden Products for Body Care Section -->
-            <div class="product-grid hidden-products" id="body-extra">
-                <!-- آپ یہاں اضافی پروڈکٹس ایڈ کر سکتے ہیں -->
+        </section>
+
+        <!-- 4. COMBO OFFERS SECTION -->
+        <section id="combo-offers">
+            <h2 class="section-title"><i class="fa-solid fa-box-archive"></i> Combo Offers & Bundles</h2>
+            <div class="product-grid">
+                <div class="product-card open-modal" 
+                     data-name="Ultimate Hair Growth Combo" 
+                     data-price="Rs. 2,199" 
+                     data-capacity="Oil + Shampoo + Serum" 
+                     data-img1="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3" 
+                     data-img2="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Use oil twice a week, shampoo regularly, and apply serum on damp hair." 
+                     data-ingredients="Fangam Growth Oil, Reetha Shampoo, Argan Serum." 
+                     data-benefits="Complete hair fall solution with 3x faster growth and shine.">
+                    <div class="product-img-box"><img src="https://lh3.googleusercontent.com/d/1d_1U9DSxjdY3mX9fOqi3wR6jKkT43cs3" alt="Combo"></div>
+                    <div class="product-name">Ultimate Hair Growth Combo</div>
+                    <div class="product-capacity">Oil + Shampoo + Serum</div>
+                    <div class="product-price">Rs. 2,199</div>
+                    <button class="btn-buy-now">View Details</button>
+                </div>
+                <div class="product-card open-modal" 
+                     data-name="Bridal Glow & Skin Care Bundle" 
+                     data-price="Rs. 1,499" 
+                     data-capacity="Ubtan + Goat Milk Soap" 
+                     data-img1="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" 
+                     data-img2="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&q=80&w=400" 
+                     data-img3="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=400" 
+                     data-img4="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=400" 
+                     data-use="Use ubtan twice a week and soap daily for best radiance." 
+                     data-ingredients="Turmeric, Saffron, Goat Milk, Honey." 
+                     data-benefits="Spotless glowing complexion and deep skin nourishment.">
+                    <div class="product-img-box"><img src="https://images.unsplash.com/photo-1608248597359-97424e8bf951?auto=format&fit=crop&q=80&w=400" alt="Combo"></div>
+                    <div class="product-name">Bridal Glow & Skin Care Bundle</div>
+                    <div class="product-capacity">Ubtan + Goat Milk Soap</div>
+                    <div class="product-price">Rs. 1,499</div>
+                    <button class="btn-buy-now">View Details</button>
+                </div>
             </div>
         </section>
 
-        <!-- Before / After Results Section (Auto Slider Effect) -->
+        <!-- Before / After Results Section -->
         <section class="results-section" id="resultsSection">
             <h2 class="section-title"><i class="fa-solid fa-chart-line"></i> Before & After Results</h2>
             <div class="results-slider-wrapper">
                 <div class="results-track" id="resultsTrack">
                     <div class="result-card">
-                        <div class="result-img-container">
-                            <div style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
-                            <div style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300');"><span>After 30 Days</span></div>
-                        </div>
-                        <h4>Hair Growth & Thickness</h4>
-                        <p>Noticeable reduction in hairfall and new baby hair growth within 4 weeks.</p>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-img-container">
-                            <div style="background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
-                            <div style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300');"><span>After 21 Days</span></div>
-                        </div>
-                        <h4>Skin Glow & Clarity</h4>
-                        <p>Clear reduction in blemishes and dark spots with regular application.</p>
-                    </div>
-                       <div class="result-card">
-                        <div class="result-img-container">
-                            <div style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
-                            <div style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300');"><span>After 30 Days</span></div>
-                        </div>
-                        <h4>Hair Growth & Thickness</h4>
-                        <p>Noticeable reduction in hairfall and new baby hair growth within 4 weeks.</p>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-img-container">
-                            <div style="background-image: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
-                            <div style="background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300');"><span>After 21 Days</span></div>
-                        </div>
-                        <h4>Skin Glow & Clarity</h4>
-                        <p>Clear reduction in blemishes and dark spots with regular application.</p>
-                    </div>
-                       <div class="result-card">
                         <div class="result-img-container">
                             <div style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300');"><span>Before</span></div>
                             <div style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300');"><span>After 30 Days</span></div>
@@ -1200,7 +1132,7 @@
             </div>
         </section>
 
-        <!-- Client Reviews Section (Auto Slider Effect) -->
+        <!-- Client Reviews Section -->
         <section class="reviews-section" id="reviewsSection">
             <h2 class="section-title"><i class="fa-solid fa-comments"></i> Customer Reviews</h2>
             <div class="reviews-grid-wrapper">
@@ -1216,30 +1148,6 @@
                             <p>"I used Fangam Organic hair oil and my hair fall stopped completely. Extremely wonderful product!"</p>
                         </div>
                         <div class="review-author">— عاصمہ Asma, Lahore</div>
-                    </div>
-                    <div class="review-card">
-                        <div>
-                            <div class="review-content-top">
-                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150" alt="Asma" class="review-avatar">
-                                <div class="review-stars">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            <p>"I used Fangam Organic hair oil and my hair fall stopped completely. Extremely wonderful product!"</p>
-                        </div>
-                        <div class="review-author">— Abdullag, NY</div>
-                    </div>
-                    <div class="review-card">
-                        <div>
-                            <div class="review-content-top">
-                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150" alt="Asma" class="review-avatar">
-                                <div class="review-stars">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            <p>"I used Fangam Organic hair oil and my hair fall stopped completely. Extremely wonderful product!"</p>
-                        </div>
-                        <div class="review-author">— Ali, London</div>
                     </div>
                     <div class="review-card">
                         <div>
@@ -1264,30 +1172,6 @@
                             <p>"The ubtan and soaps fragrance and quality are purely organic. Such a wonderful experience."</p>
                         </div>
                         <div class="review-author">— Ayesha Khan, Sialkot</div>
-                    </div>
-                    <div class="review-card">
-                        <div>
-                            <div class="review-content-top">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="Usman" class="review-avatar">
-                                <div class="review-stars">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            <p>"Best organic products in Pakistan. The delivery was fast and results are genuine."</p>
-                        </div>
-                        <div class="review-author">— Usman Tariq, Faisalabad</div>
-                    </div>
-                    <div class="review-card">
-                        <div>
-                            <div class="review-content-top">
-                                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" alt="Zainab" class="review-avatar">
-                                <div class="review-stars">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            <p>"My skin feels so glowing and clean after using their ubtan. Highly recommended to everyone!"</p>
-                        </div>
-                        <div class="review-author">— Zainab Bibi, Islamabad</div>
                     </div>
                 </div>
             </div>
@@ -1327,36 +1211,30 @@
 
     </main>
 
-    <!-- Interactive Product Detail Modal (Popup) with 4 Slides Setup -->
+    <!-- Interactive Product Detail Modal -->
     <div class="modal-overlay" id="productModal">
         <div class="modal-box">
             <button class="modal-close-btn" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
             
-            <!-- Left Side: Image Slider with 4 Dynamic Slides -->
             <div class="modal-slider-container">
                 <div class="modal-slider-track" id="modalSliderTrack">
-                    <!-- Slide 1: Main Product View -->
                     <div class="modal-slide-item">
                         <img id="modalImg1" src="" alt="Main Product">
                         <div class="modal-slide-caption">1. Main Product View</div>
                     </div>
-                    <!-- Slide 2: Ingredients -->
                     <div class="modal-slide-item">
                         <img id="modalImg2" src="" alt="Ingredients">
                         <div class="modal-slide-caption">2. Ingredients</div>
                     </div>
-                    <!-- Slide 3: Key Benefits -->
                     <div class="modal-slide-item">
                         <img id="modalImg3" src="" alt="Key Benefits">
                         <div class="modal-slide-caption">3. Key Benefits</div>
                     </div>
-                    <!-- Slide 4: How To Use -->
                     <div class="modal-slide-item">
                         <img id="modalImg4" src="" alt="How To Use">
                         <div class="modal-slide-caption">4. How To Use</div>
                     </div>
                 </div>
-                <!-- 4 Thumb Dots Navigation -->
                 <div class="modal-thumbnails" id="modalThumbs">
                     <span class="thumb-dot active" onclick="scrollToSlide(0)"></span>
                     <span class="thumb-dot" onclick="scrollToSlide(1)"></span>
@@ -1365,7 +1243,6 @@
                 </div>
             </div>
 
-            <!-- Right Side: Details & WhatsApp Buy Button -->
             <div class="modal-details">
                 <div>
                     <h2 class="modal-title" id="modalTitle">Product Name</h2>
@@ -1414,6 +1291,7 @@
                     <li><a href="#hair-care">Hair Care</a></li>
                     <li><a href="#skin-care">Skin Care</a></li>
                     <li><a href="#body-care">Body Care</a></li>
+                    <li><a href="#combo-offers">Combo Offers</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1437,18 +1315,16 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Modal, 4-Slide Dynamic Images, Explore More & Card-by-Card Auto Slider -->
+    <!-- JavaScript -->
     <script>
         const WHATSAPP_NUMBER = "923000634445";
 
-        // Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
 
-        // Hero Slider Functionality
         let currentHeroSlide = 0;
         const heroSlides = document.querySelectorAll('.hero-slide');
         function nextHeroSlide() {
@@ -1460,7 +1336,6 @@
         }
         setInterval(nextHeroSlide, 4000);
 
-        // Toggle Extra Hidden Products
         function toggleSection(sectionId, btn) {
             const extraGrid = document.getElementById(sectionId);
             if (!extraGrid) return;
@@ -1473,7 +1348,6 @@
             }
         }
 
-        // True Card-by-Card Auto Slider Function
         function setupCardSlider(trackId, sectionId, intervalTime = 3500) {
             const track = document.getElementById(trackId);
             const section = document.getElementById(sectionId);
@@ -1492,7 +1366,7 @@
 
             function slideNext() {
                 const visibleCount = getVisibleCount();
-                const maxIndex = totalCards - visibleCount;
+                const maxIndex = Math.max(0, totalCards - visibleCount);
                 
                 index++;
                 if (index > maxIndex) {
@@ -1518,7 +1392,6 @@
         setupCardSlider('resultsTrack', 'resultsSection', 3500);
         setupCardSlider('reviewsTrack', 'reviewsSection', 4000);
 
-        // Product Modal Logic
         const modalOverlay = document.getElementById('productModal');
         const closeModalBtn = document.getElementById('closeModal');
         const modalTrack = document.getElementById('modalSliderTrack');
