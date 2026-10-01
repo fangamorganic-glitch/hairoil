@@ -544,6 +544,7 @@
                     <li>Using an organic shampoo is best to maintain the hair's natural moisture.</li>
                     <li>Use this blend two to three times a week.</li>
                     <li>You can also use it in small quantities as part of your daily routine.</li>
+                    <li>Shake well before use.</li>
                 </ul>
 
                 <div class="sub-heading sub-heading-3">Key Ingredients Breakdown</div>
@@ -639,6 +640,7 @@
                             <li>بالوں کی قدرتی نمی کو برقرار رکھنے کے لیے آرگینک شیمپو کا استعمال بہترین ہے۔</li>
                             <li>اس آمیزے کو ہفتے میں دو سے تین بار استعمال کریں۔</li>
                             <li>آپ اسے اپنے روزمرہ کے معمول کے طور پر بھی کم مقدار میں استعمال کر سکتے ہیں۔</li>
+                            <li>استعمال کرنے سے پہلے اچھی طرح ہلا لیں۔</li>
                         `;
                     }
 
@@ -658,16 +660,16 @@
                     
                     if(ytEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على يوتيوب" : "مشاهده مزایا و نحوه استفاده در یوتیوب";
                     if(tkEl) tkEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على تيك توك" : "مشاهده مزایا و نحوه استفاده در تیک تاک";
-                    if(igEl) igEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على إنستغرام" : "مشاهده مزایا و نحوه استفاده در اینستاگرام";
-                    if(fbEl) fbEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على فيسبوك" : "مشاهده مزایا و نحوه استفاده در فیسبوک";
+                    if(igEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على إنستغرام" : "مشاهده مزایا و نحوه استفاده در اینستاگرام";
+                    if(fbEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على فيسبوك" : "مشاهده مزایا و نحوه استفاده در فیسبوک";
 
                 } else {
                     document.body.classList.remove('translated-rtl', 'translated-urdu');
                     
                     // Reset to Original English
                     if(ytEl) ytEl.innerText = "See Benefits & How to Use on YouTube";
-                    if(tkEl) tkEl.innerText = "See Benefits & How to Use on TikTok";
-                    if(igEl) igEl.innerText = "See Benefits & How to Use on Instagram";
+                    if(tkEl) ytEl.innerText = "See Benefits & How to Use on TikTok";
+                    if(igEl) ytEl.innerText = "See Benefits & How to Use on Instagram";
                     if(fbEl) fbEl.innerText = "See Benefits & How to Use on Facebook";
 
                     if(heroTitle) heroTitle.innerText = "Fangam Signature Organic Hair Oil";
@@ -699,6 +701,7 @@
                             <li>Using an organic shampoo is best to maintain the hair's natural moisture.</li>
                             <li>Use this blend two to three times a week.</li>
                             <li>You can also use it in small quantities as part of your daily routine.</li>
+                            <li>Shake well before use.</li>
                         `;
                     }
 
