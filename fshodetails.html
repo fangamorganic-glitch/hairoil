@@ -539,12 +539,12 @@
 
                 <div class="sub-heading sub-heading-2">How to Use</div>
                 <ul class="organic-list usage-list-content">
-                    <li><strong>Shake well before use.</strong></li>
                     <li>Gently massage with your fingertips for five minutes.</li>
                     <li>For best results, leave the oil on for at least two hours or overnight, but this method is intended for adults rather than children.</li>
                     <li>Using an organic shampoo is best to maintain the hair's natural moisture.</li>
                     <li>Use this blend two to three times a week.</li>
                     <li>You can also use it in small quantities as part of your daily routine.</li>
+                    <li>Shake well before use.</li>
                 </ul>
 
                 <div class="sub-heading sub-heading-3">Key Ingredients Breakdown</div>
@@ -635,12 +635,12 @@
 
                     if(usageList) {
                         usageList.innerHTML = `
-                            <li><strong>استعمال کرنے سے پہلے اچھی طرح ہلا لیں۔</strong></li>
                             <li>اپنے انگلیوں کے پوروں سے پانچ منٹ تک ہلکے ہاتھوں سے مساج کریں۔</li>
                             <li>بہترین نتائج کے لیے تیل کو کم از کم دو گھنٹے یا پوری رات لگا رہنے دیں، لیکن یہ طریقہ بچوں کی بجائے بالغوں کے لیے ہے۔</li>
                             <li>بالوں کی قدرتی نمی کو برقرار رکھنے کے لیے آرگینک شیمپو کا استعمال بہترین ہے۔</li>
                             <li>اس آمیزے کو ہفتے میں دو سے تین بار استعمال کریں۔</li>
                             <li>آپ اسے اپنے روزمرہ کے معمول کے طور پر بھی کم مقدار میں استعمال کر سکتے ہیں۔</li>
+                            <li>استعمال کرنے سے پہلے اچھی طرح ہلا لیں۔</li>
                         `;
                     }
 
@@ -659,7 +659,7 @@
                     document.body.classList.remove('translated-urdu');
                     
                     if(ytEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على يوتيوب" : "مشاهده مزایا و نحوه استفاده در یوتیوب";
-                    if(tkEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على تيك توك" : "مشاهده مزایا و نحوه استفاده در تیک تاک";
+                    if(tkEl) tkEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على تيك توك" : "مشاهده مزایا و نحوه استفاده در تیک تاک";
                     if(igEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على إنستغرام" : "مشاهده مزایا و نحوه استفاده در اینستاگرام";
                     if(fbEl) ytEl.innerText = langCode === 'ar' ? "شاهد الفوائد وطريقة الاستخدام على فيسبوك" : "مشاهده مزایا و نحوه استفاده در فیسبوک";
 
@@ -670,7 +670,7 @@
                     if(ytEl) ytEl.innerText = "See Benefits & How to Use on YouTube";
                     if(tkEl) ytEl.innerText = "See Benefits & How to Use on TikTok";
                     if(igEl) ytEl.innerText = "See Benefits & How to Use on Instagram";
-                    if(fbEl) ytEl.innerText = "See Benefits & How to Use on Facebook";
+                    if(fbEl) fbEl.innerText = "See Benefits & How to Use on Facebook";
 
                     if(heroTitle) heroTitle.innerText = "Fangam Signature Organic Hair Oil";
                     if(heroDesc) heroDesc.innerText = "100% Pure & Natural botanical formula designed for deep root nourishment, severe hair fall control, and natural shine.";
@@ -696,12 +696,12 @@
 
                     if(usageList) {
                         usageList.innerHTML = `
-                            <li><strong>Shake well before use.</strong></li>
                             <li>Gently massage with your fingertips for five minutes.</li>
                             <li>For best results, leave the oil on for at least two hours or overnight, but this method is intended for adults rather than children.</li>
                             <li>Using an organic shampoo is best to maintain the hair's natural moisture.</li>
                             <li>Use this blend two to three times a week.</li>
                             <li>You can also use it in small quantities as part of your daily routine.</li>
+                            <li>Shake well before use.</li>
                         `;
                     }
 
