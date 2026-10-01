@@ -18,11 +18,11 @@
             theme: {
                 extend: {
                     colors: {
-                        brandBg: '#F5F3ED',
+                        brandBg: '#F0F5F1',
                         brandGreen: '#1A3320',
-                        brandCard: '#EAE6DC',
+                        brandCard: '#EAF2EC',
                         brandText: '#2D2B29',
-                        brandMuted: '#66635D',
+                        brandMuted: '#556B5D',
                     }
                 }
             }
@@ -31,7 +31,7 @@
 
     <style>
         body {
-            background-color: #F5F3ED;
+            background-color: #F0F5F1;
             color: #2D2B29;
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
@@ -58,68 +58,68 @@
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#1A3320] selection:text-white">
 
     <!-- Header Section -->
-    <header class="w-full bg-[#F5F3ED]/95 backdrop-blur-md sticky top-0 z-50 border-b border-[#E3DDD1]">
+    <header class="w-full bg-[#F0F5F1]/95 backdrop-blur-md sticky top-0 z-50 border-b border-[#D4E2D6]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
             <!-- Brand Logo & Name -->
             <div class="flex items-center space-x-3">
-                <div class="w-11 h-11 rounded-full bg-[#1A3320] flex items-center justify-center text-white font-bold text-xl shadow-md">
-                    F
+                <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center shadow-md overflow-hidden border border-[#D4E2D6]">
+                    <img src="https://lh3.googleusercontent.com/d/1NJYUBfxZMMcO2Wqh_wzsuyUjeC-mi97V" alt="Fangam Logo" class="w-full h-full object-cover">
                 </div>
                 <div>
                     <span class="brand-heading text-lg sm:text-xl tracking-tight text-[#1A3320]">Fangam Organic</span>
-                    <p class="text-[10px] tracking-widest text-[#66635D] uppercase font-semibold">Pure Natural Care</p>
+                    <p class="text-[10px] tracking-widest text-[#556B5D] uppercase font-semibold">Pure Natural Care</p>
                 </div>
             </div>
 
             <!-- Custom Language Dropdown Toggle Button -->
             <div class="relative">
-                <button id="langMenuBtn" onclick="toggleLangMenu()" class="flex items-center space-x-2 bg-white border border-[#D5CFC5] hover:border-[#1A3320] text-[#1A3320] px-4 py-2.5 rounded-full text-sm font-semibold shadow-xs transition-all cursor-pointer">
+                <button id="langMenuBtn" onclick="toggleLangMenu()" class="flex items-center space-x-2 bg-white border border-[#C5D6C8] hover:border-[#1A3320] text-[#1A3320] px-4 py-2.5 rounded-full text-sm font-semibold shadow-xs transition-all cursor-pointer">
                     <svg class="w-4 h-4 text-[#1A3320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
                     </svg>
                     <span id="currentLangLabel">Language / زبان</span>
-                    <svg class="w-4 h-4 ml-1 text-[#66635D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 ml-1 text-[#556B5D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
 
                 <!-- Dropdown Menu (40+ Languages) -->
-                <div id="langDropdown" class="hidden absolute right-0 mt-2 w-64 max-h-96 overflow-y-auto bg-white rounded-2xl shadow-xl border border-[#E3DDD1] py-2 z-50">
-                    <div class="px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#66635D] border-b border-gray-100">
+                <div id="langDropdown" class="hidden absolute right-0 mt-2 w-64 max-h-96 overflow-y-auto bg-white rounded-2xl shadow-xl border border-[#D4E2D6] py-2 z-50">
+                    <div class="px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#556B5D] border-b border-gray-100">
                         Select Language
                     </div>
                     <div class="divide-y divide-gray-50">
-                        <button onclick="changeLanguage('en', 'English')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>English</span><span class="text-xs text-gray-400">EN</span></button>
-                        <button onclick="changeLanguage('ur', 'اردو (Urdu)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>اردو</span><span class="text-xs text-gray-400">UR</span></button>
-                        <button onclick="changeLanguage('ar', 'العربية (Arabic)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>العربية</span><span class="text-xs text-gray-400">AR</span></button>
-                        <button onclick="changeLanguage('hi', 'हिन्दी (Hindi)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>हिन्दी</span><span class="text-xs text-gray-400">HI</span></button>
-                        <button onclick="changeLanguage('es', 'Español (Spanish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Español</span><span class="text-xs text-gray-400">ES</span></button>
-                        <button onclick="changeLanguage('fr', 'Français (French)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Français</span><span class="text-xs text-gray-400">FR</span></button>
-                        <button onclick="changeLanguage('de', 'Deutsch (German)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Deutsch</span><span class="text-xs text-gray-400">DE</span></button>
-                        <button onclick="changeLanguage('zh-CN', '中文 (Chinese)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>中文</span><span class="text-xs text-gray-400">ZH</span></button>
-                        <button onclick="changeLanguage('ja', '日本語 (Japanese)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>日本語</span><span class="text-xs text-gray-400">JA</span></button>
-                        <button onclick="changeLanguage('ru', 'Русский (Russian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Русский</span><span class="text-xs text-gray-400">RU</span></button>
-                        <button onclick="changeLanguage('tr', 'Türkçe (Turkish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Türkçe</span><span class="text-xs text-gray-400">TR</span></button>
-                        <button onclick="changeLanguage('fa', 'فارسی (Persian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>فارسی</span><span class="text-xs text-gray-400">FA</span></button>
-                        <button onclick="changeLanguage('bn', 'বাংলা (Bengali)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>বাংলা</span><span class="text-xs text-gray-400">BN</span></button>
-                        <button onclick="changeLanguage('pa', 'ਪੰਜਾਬੀ (Punjabi)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>ਪੰਜਾਬੀ</span><span class="text-xs text-gray-400">PA</span></button>
-                        <button onclick="changeLanguage('it', 'Italiano (Italian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Italiano</span><span class="text-xs text-gray-400">IT</span></button>
-                        <button onclick="changeLanguage('pt', 'Português (Portuguese)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Português</span><span class="text-xs text-gray-400">PT</span></button>
-                        <button onclick="changeLanguage('id', 'Bahasa Indonesia')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Indonesian</span><span class="text-xs text-gray-400">ID</span></button>
-                        <button onclick="changeLanguage('ms', 'Bahasa Melayu')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Malay</span><span class="text-xs text-gray-400">MS</span></button>
-                        <button onclick="changeLanguage('ko', '한국어 (Korean)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>한국어</span><span class="text-xs text-gray-400">KO</span></button>
-                        <button onclick="changeLanguage('vi', 'Tiếng Việt')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Tiếng Việt</span><span class="text-xs text-gray-400">VI</span></button>
-                        <button onclick="changeLanguage('th', 'ไทย (Thai)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>ไทย</span><span class="text-xs text-gray-400">TH</span></button>
-                        <button onclick="changeLanguage('nl', 'Nederlands (Dutch)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Nederlands</span><span class="text-xs text-gray-400">NL</span></button>
-                        <button onclick="changeLanguage('pl', 'Polski (Polish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Polski</span><span class="text-xs text-gray-400">PL</span></button>
-                        <button onclick="changeLanguage('uk', 'Українська (Ukrainian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Українська</span><span class="text-xs text-gray-400">UK</span></button>
-                        <button onclick="changeLanguage('el', 'Ελληνικά (Greek)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Ελληνικά</span><span class="text-xs text-gray-400">EL</span></button>
-                        <button onclick="changeLanguage('he', 'עברית (Hebrew)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>עברית</span><span class="text-xs text-gray-400">HE</span></button>
-                        <button onclick="changeLanguage('sv', 'Svenska (Swedish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Svenska</span><span class="text-xs text-gray-400">SV</span></button>
-                        <button onclick="changeLanguage('no', 'Norsk (Norwegian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Norsk</span><span class="text-xs text-gray-400">NO</span></button>
-                        <button onclick="changeLanguage('fi', 'Suomi (Finnish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Suomi</span><span class="text-xs text-gray-400">FI</span></button>
-                        <button onclick="changeLanguage('da', 'Dansk (Danish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Dansk</span><span class="text-xs text-gray-400">DA</span></button>
+                        <button onclick="changeLanguage('en', 'English')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>English</span><span class="text-xs text-gray-400">EN</span></button>
+                        <button onclick="changeLanguage('ur', 'اردو (Urdu)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>اردو</span><span class="text-xs text-gray-400">UR</span></button>
+                        <button onclick="changeLanguage('ar', 'العربية (Arabic)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>العربية</span><span class="text-xs text-gray-400">AR</span></button>
+                        <button onclick="changeLanguage('hi', 'हिन्दी (Hindi)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>हिन्दी</span><span class="text-xs text-gray-400">HI</span></button>
+                        <button onclick="changeLanguage('es', 'Español (Spanish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Español</span><span class="text-xs text-gray-400">ES</span></button>
+                        <button onclick="changeLanguage('fr', 'Français (French)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Français</span><span class="text-xs text-gray-400">FR</span></button>
+                        <button onclick="changeLanguage('de', 'Deutsch (German)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Deutsch</span><span class="text-xs text-gray-400">DE</span></button>
+                        <button onclick="changeLanguage('zh-CN', '中文 (Chinese)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>中文</span><span class="text-xs text-gray-400">ZH</span></button>
+                        <button onclick="changeLanguage('ja', '日本語 (Japanese)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>日本語</span><span class="text-xs text-gray-400">JA</span></button>
+                        <button onclick="changeLanguage('ru', 'Русский (Russian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Русский</span><span class="text-xs text-gray-400">RU</span></button>
+                        <button onclick="changeLanguage('tr', 'Türkçe (Turkish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Türkçe</span><span class="text-xs text-gray-400">TR</span></button>
+                        <button onclick="changeLanguage('fa', 'فارسی (Persian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>فارسی</span><span class="text-xs text-gray-400">FA</span></button>
+                        <button onclick="changeLanguage('bn', 'বাংলা (Bengali)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>বাংলা</span><span class="text-xs text-gray-400">BN</span></button>
+                        <button onclick="changeLanguage('pa', 'ਪੰਜਾਬੀ (Punjabi)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>ਪੰਜਾਬੀ</span><span class="text-xs text-gray-400">PA</span></button>
+                        <button onclick="changeLanguage('it', 'Italiano (Italian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Italiano</span><span class="text-xs text-gray-400">IT</span></button>
+                        <button onclick="changeLanguage('pt', 'Português (Portuguese)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Português</span><span class="text-xs text-gray-400">PT</span></button>
+                        <button onclick="changeLanguage('id', 'Bahasa Indonesia')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Indonesian</span><span class="text-xs text-gray-400">ID</span></button>
+                        <button onclick="changeLanguage('ms', 'Bahasa Melayu')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Malay</span><span class="text-xs text-gray-400">MS</span></button>
+                        <button onclick="changeLanguage('ko', '한국어 (Korean)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>한국어</span><span class="text-xs text-gray-400">KO</span></button>
+                        <button onclick="changeLanguage('vi', 'Tiếng Việt')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Tiếng Việt</span><span class="text-xs text-gray-400">VI</span></button>
+                        <button onclick="changeLanguage('th', 'ไทย (Thai)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>ไทย</span><span class="text-xs text-gray-400">TH</span></button>
+                        <button onclick="changeLanguage('nl', 'Nederlands (Dutch)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Nederlands</span><span class="text-xs text-gray-400">NL</span></button>
+                        <button onclick="changeLanguage('pl', 'Polski (Polish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Polski</span><span class="text-xs text-gray-400">PL</span></button>
+                        <button onclick="changeLanguage('uk', 'Українська (Ukrainian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Українська</span><span class="text-xs text-gray-400">UK</span></button>
+                        <button onclick="changeLanguage('el', 'Ελληνικά (Greek)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Ελληνικά</span><span class="text-xs text-gray-400">EL</span></button>
+                        <button onclick="changeLanguage('he', 'עברית (Hebrew)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>עברית</span><span class="text-xs text-gray-400">HE</span></button>
+                        <button onclick="changeLanguage('sv', 'Svenska (Swedish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Svenska</span><span class="text-xs text-gray-400">SV</span></button>
+                        <button onclick="changeLanguage('no', 'Norsk (Norwegian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Norsk</span><span class="text-xs text-gray-400">NO</span></button>
+                        <button onclick="changeLanguage('fi', 'Suomi (Finnish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Suomi</span><span class="text-xs text-gray-400">FI</span></button>
+                        <button onclick="changeLanguage('da', 'Dansk (Danish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Dansk</span><span class="text-xs text-gray-400">DA</span></button>
                     </div>
                 </div>
             </div>
@@ -135,13 +135,13 @@
         
         <!-- Hero Header -->
         <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-xs uppercase tracking-widest text-[#66635D] bg-[#EAE6DC] px-4 py-2 rounded-full inline-block mb-4 font-bold shadow-2xs">
+            <span class="text-xs uppercase tracking-widest text-[#556B5D] bg-[#EAF2EC] border border-[#D4E2D6] px-4 py-2 rounded-full inline-block mb-4 font-bold shadow-2xs">
                 Nature's Pure Essence
             </span>
             <h1 class="brand-heading text-4xl sm:text-5xl lg:text-6xl text-[#1A3320] tracking-tight mb-6">
                 Our Premium Organic Product Catalog
             </h1>
-            <p class="text-[#66635D] text-base sm:text-lg leading-relaxed font-normal">
+            <p class="text-[#556B5D] text-base sm:text-lg leading-relaxed font-normal">
                 Explore our handcrafted range of 100% natural oils and body care essentials. Click on any product below to learn more about its benefits and usage.
             </p>
         </div>
@@ -150,26 +150,26 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
 
             <!-- ================= PRODUCT CARD START (Copy & paste this block to add new products) ================= -->
-            <div class="bg-[#EAE6DC] rounded-3xl p-6 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-[#DDD7CC]">
+            <div class="bg-[#EAF2EC] rounded-3xl p-6 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-[#D4E2D6]">
                 <div>
                     <!-- Category & Size Header -->
                     <div class="flex justify-between items-center mb-5">
-                        <span class="text-xs uppercase tracking-wider font-extrabold text-[#66635D]">Hair Care</span>
-                        <span class="text-xs font-bold px-3 py-1 bg-[#F5F3ED] rounded-md text-[#2D2B29] shadow-2xs">150 ml</span>
+                        <span class="text-xs uppercase tracking-wider font-extrabold text-[#556B5D]">Hair Care</span>
+                        <span class="text-xs font-bold px-3 py-1 bg-[#F0F5F1] rounded-md text-[#2D2B29] shadow-2xs border border-[#D4E2D6]">150 ml</span>
                     </div>
 
                     <!-- Product Image Container -->
-                    <div class="w-full h-72 bg-[#F5F3ED] rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-[#E3DDD1] relative group shadow-inner">
+                    <div class="w-full h-72 bg-[#F0F5F1] rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-[#D4E2D6] relative group shadow-inner p-2">
                         <img src="https://lh3.googleusercontent.com/d/1WaV0yi4sCPE3E_wKbzGyRA3kD6yhGpy0" 
                              alt="Fangam Sesame Oil" 
-                             class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                             class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500">
                     </div>
 
                     <!-- Product Title -->
                     <h3 class="brand-heading text-2xl text-[#1A3320] mb-3">Fangam Signature Hair Oil</h3>
 
                     <!-- Product Short Description -->
-                    <p class="text-[#66635D] text-sm leading-relaxed mb-8">
+                    <p class="text-[#556B5D] text-sm leading-relaxed mb-8">
                         100% organic mixed herbs oil formulated to nourish, protect, and provide smooth skin and healthy hair.
                     </p>
                 </div>
@@ -193,8 +193,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="w-full border-t border-[#E3DDD1] mt-20 py-8 bg-[#EAE6DC]/50 text-center">
-        <p class="text-xs text-[#66635D] font-medium">
+    <footer class="w-full border-t border-[#D4E2D6] mt-20 py-8 bg-[#EAF2EC]/50 text-center">
+        <p class="text-xs text-[#556B5D] font-medium">
             &copy; 2026 Fangam Organic. All rights reserved. Designed for pure natural wellness.
         </p>
     </footer>
