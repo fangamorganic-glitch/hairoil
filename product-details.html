@@ -3,185 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details - Fangam Organic</title>
+    <title>Fangam Organic - Product Catalog</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans for clean modern sans-serif branding, Playfair Display for accents, Noto Nastaliq Urdu for Urdu -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBg: '#F5F3ED',
+                        brandGreen: '#1A3320',
+                        brandCard: '#EAE6DC',
+                        brandText: '#2D2B29',
+                        brandMuted: '#66635D',
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
         body {
-            background: linear-gradient(135deg, #f0f7ed 0%, #d8eade 100%), 
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" opacity="0.04"><path d="M30 10 Q50 30 30 50 Q10 30 30 10 Z M70 60 Q90 80 70 100 Q50 80 70 60 Z" fill="%232c5e3b"/></svg>');
-            color: #2d3748;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            padding: 8px;
-        }
-        .mobile-screen {
-            width: 100%;
-            max-width: 380px;
-            height: 94vh;
-            max-height: 720px;
-            background: #ffffff;
-            padding: 20px 16px;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(44, 94, 59, 0.15);
-            border: 2px solid #c2e0bc;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        /* برانڈ ہیڈر */
-        .brand-header {
-            text-align: center;
-            margin-top: 5px;
-        }
-        .brand-header h1 {
-            font-size: 18px;
-            color: #1b4d2e;
-            font-weight: 700;
-            margin-bottom: 2px;
-        }
-        .brand-header p {
-            font-size: 11.5px;
-            color: #557a62;
+            background-color: #F5F3ED;
+            color: #2D2B29;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* لوگو کنٹینر - اب لوگو مکمل نظر آئے گا بغیر کٹے */
-        .logo-container {
-            text-align: center;
-            margin: 10px 0;
-        }
-        .brand-logo {
-            width: 150px;
-            height: auto;
-            max-height: 90px;
-            object-fit: contain;
-            border-radius: 12px;
-            padding: 2px;
-        }
-        
-        /* مینو کنٹینر - بٹن اب بالکل ساتھ جڑے ہوئے اور سینٹر میں ہوں گے */
-        .menu-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            justify-content: center;
-            margin-bottom: 10px;
+        /* Clean modern heading font matching the branding screenshot */
+        .brand-heading {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
         }
 
-        .menu-item {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+        /* Urdu font override when translated or Urdu is selected */
+        html[lang="ur"] *, body[dir="rtl"] * {
+            font-family: 'Noto Nastaliq Urdu', serif !important;
+            line-height: 2.2 !important;
         }
 
-        /* مین کلک ایبل بٹن */
-        .action-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #ffffff;
-            color: #1b4d2e;
-            padding: 10px 14px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-size: 13.5px;
-            font-weight: 700;
-            border: 2px solid #c8e6c9;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
-        }
-        
-        /* ہاور ایفیکٹ */
-        .action-btn:hover {
-            background: #2c5e3b;
-            color: #ffffff;
-            border-color: #2c5e3b;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 14px rgba(44, 94, 59, 0.2);
-        }
-
-        /* ہکس */
-        .btn-hook {
-            font-size: 10.5px;
-            color: #555;
-            padding-left: 4px;
-            line-height: 1.3;
-            font-style: italic;
-        }
-
-        .footer-note {
-            text-align: center;
-            font-size: 10px;
-            color: #718096;
-            margin-bottom: 2px;
-        }
+        /* Hide default Google Translate banner frame */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
+        .goog-logo-link, .VIpgJd-ZVi9od-ORHb { display: none !important; }
+        #google_translate_element { display: none; } /* Hidden container for backend Google engine */
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between selection:bg-[#1A3320] selection:text-white">
 
-    <div class="mobile-screen">
-        
-        <!-- اوپر برانڈ کا نام اور ٹیگ لائن -->
-        <div class="brand-header">
-            <h1>🌿 Fangam Organic</h1>
-            <p>Pure Herbal Hair Care Secrets</p>
-        </div>
-
-        <!-- درمیان میں مکمل لوگو (بغیر کٹے) -->
-        <div class="logo-container">
-            <img src="https://lh3.googleusercontent.com/d/1W6S6i8dSpXE1leOJ2bCx2tl6naEAl5i3" alt="Fangam Organic Logo" class="brand-logo" onerror="this.style.display='none'">
-        </div>
-
-        <!-- مینو کنٹینر (تینوں بٹن بالکل ساتھ اور سینٹر میں) -->
-        <div class="menu-container">
+    <!-- Header Section -->
+    <header class="w-full bg-[#F5F3ED]/95 backdrop-blur-md sticky top-0 z-50 border-b border-[#E3DDD1]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
-            <!-- 1. انگریڈینٹس -->
-            <div class="menu-item">
-                <a href="https://fangamorganic-glitch.github.io/hairoil/ingredients.html" target="_blank" class="action-btn">
-                    <span>🌿 Natural Ingredients</span>
-                    <span>➔</span>
-                </a>
-                <div class="btn-hook">
-                    Discover the secret blend of ancient herbs packed inside this bottle.
+            <!-- Brand Logo & Name -->
+            <div class="flex items-center space-x-3">
+                <div class="w-11 h-11 rounded-full bg-[#1A3320] flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    F
+                </div>
+                <div>
+                    <span class="brand-heading text-lg sm:text-xl tracking-tight text-[#1A3320]">Fangam Organic</span>
+                    <p class="text-[10px] tracking-widest text-[#66635D] uppercase font-semibold">Pure Natural Care</p>
                 </div>
             </div>
 
-            <!-- 2. کی بینیفٹس -->
-            <div class="menu-item">
-                <a href="https://fangamorganic-glitch.github.io/hairoil/key-benefits.html" target="_blank" class="action-btn">
-                    <span>✨ Key Benefits</span>
-                    <span>➔</span>
-                </a>
-                <div class="btn-hook">
-                    See how this organic care transforms your hair health completely.
-                </div>
-            </div>
+            <!-- Custom Language Dropdown Toggle Button -->
+            <div class="relative">
+                <button id="langMenuBtn" onclick="toggleLangMenu()" class="flex items-center space-x-2 bg-white border border-[#D5CFC5] hover:border-[#1A3320] text-[#1A3320] px-4 py-2.5 rounded-full text-sm font-semibold shadow-xs transition-all cursor-pointer">
+                    <svg class="w-4 h-4 text-[#1A3320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+                    </svg>
+                    <span id="currentLangLabel">Language / زبان</span>
+                    <svg class="w-4 h-4 ml-1 text-[#66635D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
 
-            <!-- 3. ہاؤ ٹو یوز -->
-            <div class="menu-item">
-                <a href="https://fangamorganic-glitch.github.io/hairoil/how-to-use.html" target="_blank" class="action-btn">
-                    <span>💧 How to Use</span>
-                    <span>➔</span>
-                </a>
-                <div class="btn-hook">
-                    Use these expert methods to unlock the ultimate results for your hair.
+                <!-- Dropdown Menu (40+ Languages) -->
+                <div id="langDropdown" class="hidden absolute right-0 mt-2 w-64 max-h-96 overflow-y-auto bg-white rounded-2xl shadow-xl border border-[#E3DDD1] py-2 z-50">
+                    <div class="px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#66635D] border-b border-gray-100">
+                        Select Language
+                    </div>
+                    <div class="divide-y divide-gray-50">
+                        <button onclick="changeLanguage('en', 'English')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>English</span><span class="text-xs text-gray-400">EN</span></button>
+                        <button onclick="changeLanguage('ur', 'اردو (Urdu)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>اردو</span><span class="text-xs text-gray-400">UR</span></button>
+                        <button onclick="changeLanguage('ar', 'العربية (Arabic)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>العربية</span><span class="text-xs text-gray-400">AR</span></button>
+                        <button onclick="changeLanguage('hi', 'हिन्दी (Hindi)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>हिन्दी</span><span class="text-xs text-gray-400">HI</span></button>
+                        <button onclick="changeLanguage('es', 'Español (Spanish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Español</span><span class="text-xs text-gray-400">ES</span></button>
+                        <button onclick="changeLanguage('fr', 'Français (French)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Français</span><span class="text-xs text-gray-400">FR</span></button>
+                        <button onclick="changeLanguage('de', 'Deutsch (German)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Deutsch</span><span class="text-xs text-gray-400">DE</span></button>
+                        <button onclick="changeLanguage('zh-CN', '中文 (Chinese)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>中文</span><span class="text-xs text-gray-400">ZH</span></button>
+                        <button onclick="changeLanguage('ja', '日本語 (Japanese)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>日本語</span><span class="text-xs text-gray-400">JA</span></button>
+                        <button onclick="changeLanguage('ru', 'Русский (Russian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Русский</span><span class="text-xs text-gray-400">RU</span></button>
+                        <button onclick="changeLanguage('tr', 'Türkçe (Turkish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Türkçe</span><span class="text-xs text-gray-400">TR</span></button>
+                        <button onclick="changeLanguage('fa', 'فارسی (Persian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>فارسی</span><span class="text-xs text-gray-400">FA</span></button>
+                        <button onclick="changeLanguage('bn', 'বাংলা (Bengali)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>বাংলা</span><span class="text-xs text-gray-400">BN</span></button>
+                        <button onclick="changeLanguage('pa', 'ਪੰਜਾਬੀ (Punjabi)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>ਪੰਜਾਬੀ</span><span class="text-xs text-gray-400">PA</span></button>
+                        <button onclick="changeLanguage('it', 'Italiano (Italian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Italiano</span><span class="text-xs text-gray-400">IT</span></button>
+                        <button onclick="changeLanguage('pt', 'Português (Portuguese)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Português</span><span class="text-xs text-gray-400">PT</span></button>
+                        <button onclick="changeLanguage('id', 'Bahasa Indonesia')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Indonesian</span><span class="text-xs text-gray-400">ID</span></button>
+                        <button onclick="changeLanguage('ms', 'Bahasa Melayu')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Malay</span><span class="text-xs text-gray-400">MS</span></button>
+                        <button onclick="changeLanguage('ko', '한국어 (Korean)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>한국어</span><span class="text-xs text-gray-400">KO</span></button>
+                        <button onclick="changeLanguage('vi', 'Tiếng Việt')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Tiếng Việt</span><span class="text-xs text-gray-400">VI</span></button>
+                        <button onclick="changeLanguage('th', 'ไทย (Thai)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>ไทย</span><span class="text-xs text-gray-400">TH</span></button>
+                        <button onclick="changeLanguage('nl', 'Nederlands (Dutch)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Nederlands</span><span class="text-xs text-gray-400">NL</span></button>
+                        <button onclick="changeLanguage('pl', 'Polski (Polish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Polski</span><span class="text-xs text-gray-400">PL</span></button>
+                        <button onclick="changeLanguage('uk', 'Українська (Ukrainian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Українська</span><span class="text-xs text-gray-400">UK</span></button>
+                        <button onclick="changeLanguage('el', 'Ελληνικά (Greek)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Ελληνικά</span><span class="text-xs text-gray-400">EL</span></button>
+                        <button onclick="changeLanguage('he', 'עברית (Hebrew)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>עברית</span><span class="text-xs text-gray-400">HE</span></button>
+                        <button onclick="changeLanguage('sv', 'Svenska (Swedish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Svenska</span><span class="text-xs text-gray-400">SV</span></button>
+                        <button onclick="changeLanguage('no', 'Norsk (Norwegian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Norsk</span><span class="text-xs text-gray-400">NO</span></button>
+                        <button onclick="changeLanguage('fi', 'Suomi (Finnish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Suomi</span><span class="text-xs text-gray-400">FI</span></button>
+                        <button onclick="changeLanguage('da', 'Dansk (Danish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F5F3ED] text-[#2D2B29] font-medium flex items-center justify-between"><span>Dansk</span><span class="text-xs text-gray-400">DA</span></button>
+                    </div>
                 </div>
             </div>
 
         </div>
+    </header>
 
-        <div class="footer-note">
-            &copy; Fangam Organic. All Rights Reserved.
+    <!-- Hidden Google Translate Element for automatic translation execution -->
+    <div id="google_translate_element"></div>
+
+    <!-- Main Catalog Container -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 w-full">
+        
+        <!-- Hero Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs uppercase tracking-widest text-[#66635D] bg-[#EAE6DC] px-4 py-2 rounded-full inline-block mb-4 font-bold shadow-2xs">
+                Nature's Pure Essence
+            </span>
+            <h1 class="brand-heading text-4xl sm:text-5xl lg:text-6xl text-[#1A3320] tracking-tight mb-6">
+                Our Premium Organic Product Catalog
+            </h1>
+            <p class="text-[#66635D] text-base sm:text-lg leading-relaxed font-normal">
+                Explore our handcrafted range of 100% natural oils and body care essentials. Click on any product below to learn more about its benefits and usage.
+            </p>
         </div>
-    </div>
+
+        <!-- Products Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+
+            <!-- ================= PRODUCT CARD START (Copy & paste this block to add new products) ================= -->
+            <div class="bg-[#EAE6DC] rounded-3xl p-6 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-[#DDD7CC]">
+                <div>
+                    <!-- Category & Size Header -->
+                    <div class="flex justify-between items-center mb-5">
+                        <span class="text-xs uppercase tracking-wider font-extrabold text-[#66635D]">Body Care & Hair</span>
+                        <span class="text-xs font-bold px-3 py-1 bg-[#F5F3ED] rounded-md text-[#2D2B29] shadow-2xs">150 ml</span>
+                    </div>
+
+                    <!-- Product Image Container -->
+                    <div class="w-full h-72 bg-[#F5F3ED] rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-[#E3DDD1] relative group shadow-inner">
+                        <img src="https://images.unsplash.com/photo-1608248597359-f57abac53018?auto=format&fit=crop&q=80&w=600" 
+                             alt="Fangam Sesame Oil" 
+                             class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <!-- Product Title -->
+                    <h3 class="brand-heading text-2xl text-[#1A3320] mb-3">Fangam Sesame Oil</h3>
+
+                    <!-- Product Short Description -->
+                    <p class="text-[#66635D] text-sm leading-relaxed mb-8">
+                        100% organic sesame oil formulated to nourish, protect, and provide smooth skin and healthy hair.
+                    </p>
+                </div>
+
+                <!-- Action Button / Link -->
+                <div>
+                    <!-- Replace '#' with your actual product detail URL -->
+                    <a href="https://example.com/product-details-sesame-oil" 
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="w-full bg-[#1A3320] text-white py-4 px-6 rounded-2xl font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#284D2E] transition-all shadow-md group">
+                        <span>Click here to know more</span>
+                        <svg class="w-4 h-4 rtl:rotate-180 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <!-- ================= PRODUCT CARD END ================= -->
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-[#E3DDD1] mt-20 py-8 bg-[#EAE6DC]/50 text-center">
+        <p class="text-xs text-[#66635D] font-medium">
+            &copy; 2026 Fangam Organic. All rights reserved. Designed for pure natural wellness.
+        </p>
+    </footer>
+
+    <!-- Google Translate Script and Custom Dropdown Logic -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'ur,ar,hi,es,fr,de,zh-CN,ja,ru,pt,it,tr,fa,bn,id,ms,pa,sw,vi,ko,ta,te,mr,gu,kn,ml,pl,uk,ro,nl,el,hu,cs,sv,bg,fi,sk,da,no,hr,he',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        function toggleLangMenu() {
+            const dropdown = document.getElementById('langDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(e) {
+            const btn = document.getElementById('langMenuBtn');
+            const dropdown = document.getElementById('langDropdown');
+            if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
+        function changeLanguage(langCode, langName) {
+            document.getElementById('currentLangLabel').innerText = langName;
+            document.getElementById('langDropdown').classList.add('hidden');
+            
+            // Set text direction and html lang attribute for Urdu/Arabic/Persian
+            if (langCode === 'ur' || langCode === 'ar' || langCode === 'fa' || langCode === 'he') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', langCode);
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', langCode);
+            }
+
+            // Trigger Google Translate cookie and dropdown change
+            const selectField = document.querySelector('.goog-te-combo');
+            if (selectField) {
+                selectField.value = langCode;
+                selectField.dispatchEvent(new Event('change'));
+            } else {
+                // Fallback if google translate script is still loading
+                setTimeout(() => {
+                    const retrySelect = document.querySelector('.goog-te-combo');
+                    if (retrySelect) {
+                        retrySelect.value = langCode;
+                        retrySelect.dispatchEvent(new Event('change'));
+                    }
+                }, 1000);
+            }
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
