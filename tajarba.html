@@ -770,106 +770,6 @@
             opacity: 1;
         }
 
-        /* --- Interactive Control Panel Widget Styles --- */
-        .control-panel-toggler {
-            position: fixed;
-            right: 20px;
-            bottom: 145px;
-            background: #1b5e20;
-            color: white;
-            border: none;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 1002;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            transition: var(--transition);
-        }
-        .control-panel-toggler:hover {
-            background: var(--light-green);
-            transform: scale(1.1);
-        }
-        .control-panel-box {
-            position: fixed;
-            right: 80px;
-            bottom: 145px;
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-            width: 250px;
-            z-index: 1002;
-            display: none;
-            border: 1px solid #ddd;
-        }
-        .control-panel-box.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-        .control-panel-box h4 {
-            font-size: 14px;
-            color: var(--primary-green);
-            margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .control-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-            font-size: 13px;
-        }
-        .control-item label {
-            cursor: pointer;
-            font-weight: 500;
-        }
-        /* Toggle Switch Styling */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 36px;
-            height: 20px;
-        }
-        .switch input { 
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .slider-switch {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #ccc;
-            transition: .3s;
-            border-radius: 20px;
-        }
-        .slider-switch:before {
-            position: absolute;
-            content: "";
-            height: 14px;
-            width: 14px;
-            left: 3px;
-            bottom: 3px;
-            background-color: white;
-            transition: .3s;
-            border-radius: 50%;
-        }
-        input:checked + .slider-switch {
-            background-color: var(--primary-green);
-        }
-        input:checked + .slider-switch:before {
-            transform: translateX(16px);
-        }
-
         /* --- Professional Footer --- */
         footer {
             background: #192e1b;
@@ -1059,28 +959,32 @@
 
     <!-- Hero Slider Section -->
     <div class="hero-slider-container" id="heroSliderSection">
-        <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1o177Vcjr8RNk_TZaDwOFzWsWeQUolMlw');">
+        <!-- ہیرو سلائیڈر 1: ہیئر کیئر (Hero Slide 1: Hair Care) -->
+        <div class="hero-slide active" data-slide-index="0" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1o177Vcjr8RNk_TZaDwOFzWsWeQUolMlw');">
             <div class="hero-content">
                 <h1>Pure Herbal Hair Care</h1>
                 <p>100% natural ingredients to stop hair fall and stimulate deep root growth.</p>
                 <a href="#hair-care" class="btn-shop">Explore Hair Care</a>
             </div>
         </div>
-        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://lh3.googleusercontent.com/d/1HtES5W0qBoOSd5nwDzG976eleTCdKGRE');">
+        <!-- ہیرو سلائیڈر 2: کمبو افز (Hero Slide 2: Combo Offers) -->
+        <div class="hero-slide" data-slide-index="1" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://lh3.googleusercontent.com/d/1HtES5W0qBoOSd5nwDzG976eleTCdKGRE');">
             <div class="hero-content">
                 <h1>Special Combo and Bundle Offers</h1>
                 <p>Get exclusive herbal bundles and save more on your favorite organic packages today!</p>
                 <a href="#combo-offers" class="btn-shop">Grab Offer Now</a>
             </div>
         </div>
-        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1mWqQFc4Yi4H7mB5KqLA3KCrjp6gj9g2v');">
+        <!-- ہیرو سلائیڈر 3: سکن کیئر (Hero Slide 3: Skin Care) -->
+        <div class="hero-slide" data-slide-index="2" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1mWqQFc4Yi4H7mB5KqLA3KCrjp6gj9g2v');">
             <div class="hero-content">
                 <h1>Natural Skin Care</h1>
                 <p>Gentle cleansing, Ubtan glow, and facial serums for spotless radiant skin.</p>
                 <a href="#skin-care" class="btn-shop">Explore Skin Care</a>
             </div>
         </div>
-        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1x8Dj0uc9Ey98ryzmkqoWCkeiS4Le1_9H');">
+        <!-- ہیرو سلائیڈر 4: باڈی کیئر (Hero Slide 4: Body Care) -->
+        <div class="hero-slide" data-slide-index="3" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1x8Dj0uc9Ey98ryzmkqoWCkeiS4Le1_9H');">
             <div class="hero-content">
                 <h1>Body Care & Wellness</h1>
                 <p>Pure botanical bathing bars, massage oils and nourishing treatments.</p>
@@ -1537,7 +1441,7 @@
             </div>
         </section>
 
-        <!-- Client Reviews Section (Updated with Split-Screen Design) -->
+        <!-- Client Reviews Section (Split-Screen Design) -->
         <section class="reviews-section" id="reviewsSection">
             <h2 class="section-title"><i class="fa-solid fa-comments"></i> Customer Reviews</h2>
             <div class="reviews-grid-wrapper">
@@ -1683,7 +1587,7 @@
                     <span class="thumb-dot active" onclick="scrollToSlide(0)"></span>
                     <span class="thumb-dot" onclick="scrollToSlide(1)"></span>
                     <span class="thumb-dot" onclick="scrollToSlide(2)"></span>
-                    <span class="thumb-dot" onclick="scrollToSlide(3)"></span>
+                    <span class="thumb-dot" onclick="scrollToSlide(3)"><i></i></span>
                 </div>
             </div>
 
@@ -1703,70 +1607,6 @@
                     <i class="fa-brands fa-whatsapp"></i> Buy Now via WhatsApp
                 </a>
             </div>
-        </div>
-    </div>
-
-    <!-- Floating Interactive Control Panel Widget -->
-    <button class="control-panel-toggler" id="controlToggleBtn" title="Site Sections Control Panel">
-        <i class="fa-solid fa-sliders"></i>
-    </button>
-    <div class="control-panel-box" id="controlPanelBox">
-        <h4>Sections Control <i class="fa-solid fa-gear" style="font-size: 12px;"></i></h4>
-        <div class="control-item">
-            <label for="toggleHero">Hero Slider</label>
-            <label class="switch">
-                <input type="checkbox" id="toggleHero" checked onchange="toggleElement('heroSliderSection', this.checked)">
-                <span class="slider-switch"></span>
-            </label>
-        </div>
-        <div class="control-item">
-            <label for="toggleHair">Hair Care</label>
-            <label class="switch">
-                <input type="checkbox" id="toggleHair" checked onchange="toggleElement('hair-care', this.checked)">
-                <span class="slider-switch"></span>
-            </label>
-        </div>
-        <div class="control-item">
-            <label for="toggleSkin">Skin Care</label>
-            <label class="switch">
-                <input type="checkbox" id="toggleSkin" checked onchange="toggleElement('skin-care', this.checked)">
-                <span class="slider-switch"></span>
-            </label>
-        </div>
-        <div class="control-item">
-            <label for="toggleBody">Body Care</label>
-            <label class="switch">
-                <input type="checkbox" id="toggleBody" checked onchange="toggleElement('body-care', this.checked)">
-                <span class="slider-switch"></span>
-            </label>
-        </div>
-        <div class="control-item">
-            <label for="toggleCombo">Combo Offers</label>
-            <label class="switch">
-                <input type="checkbox" id="toggleCombo" checked onchange="toggleElement('combo-offers', this.checked)">
-                <span class="slider-switch"></span>
-            </label>
-        </div>
-        <div class="control-item">
-            <label for="toggleResults">Before / After</label>
-            <label class="switch">
-                <input type="checkbox" id="toggleResults" checked onchange="toggleElement('resultsSection', this.checked)">
-                <span class="slider-switch"></span>
-            </label>
-        </div>
-        <div class="control-item">
-            <label for="toggleReviews">Customer Reviews</label>
-            <label class="switch">
-                <input type="checkbox" id="toggleReviews" checked onchange="toggleElement('reviewsSection', this.checked)">
-                <span class="slider-switch"></span>
-            </label>
-        </div>
-        <div class="control-item">
-            <label for="toggleAbout">Our Story / Media</label>
-            <label class="switch">
-                <input type="checkbox" id="toggleAbout" checked onchange="toggleElement('about', this.checked)">
-                <span class="slider-switch"></span>
-            </label>
         </div>
     </div>
 
@@ -1824,8 +1664,79 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JavaScript & Backend Control Center -->
     <script>
+        /* ==========================================================================
+           BACKEND CONTROL CENTER (بیک اینڈ کنٹرول پینل)
+           آپ جب چاہیں یہاں true کو false کر کے کسی بھی سیکشن یا ہیرو سلائیڈر کو آن/آف کر سکتے ہیں۔
+           ========================================================================== */
+        const SITE_SETTINGS = {
+            sections: {
+                heroSlider: true,     // ہیرو سلائیڈر سیکشن (true = آن, false = آف)
+                hairCare: true,       // ہیئر کیئر سیکشن
+                skinCare: true,       // سکن کیئر سیکشن
+                bodyCare: true,       // باڈی کیئر سیکشن
+                comboOffers: true,    // کمبو افز سیکشن
+                beforeAfter: true,    // بیفور / آفٹر رزلٹس سیکشن
+                customerReviews: true,// کسٹمر ریویوز سیکشن
+                ourStory: true        // ہماری کہانی اور میڈیا سیکشن
+            },
+            heroSlides: {
+                slide1: true,         // پہلا سلائیڈر (ہیئر کیئر)
+                slide2: true,         // دوسرا سلائیڈر (کمبو افز)
+                slide3: true,         // تیسرا سلائیڈر (سکن کیئر)
+                slide4: true          // چوتھا سلائیڈر (باڈی کیئر)
+            }
+        };
+
+        // اسکرپٹ خود بخود سیٹنگز کو لاگو کر دے گا (کوڈ کے اندر سے کنٹرول)
+        document.addEventListener("DOMContentLoaded", function() {
+            // سیکشنز کو آن/آف کرنے کا فنکشن
+            if (!SITE_SETTINGS.sections.heroSlider) {
+                const el = document.getElementById('heroSliderSection');
+                if (el) el.style.display = 'none';
+            }
+            if (!SITE_SETTINGS.sections.hairCare) {
+                const el = document.getElementById('hair-care');
+                if (el) el.style.display = 'none';
+            }
+            if (!SITE_SETTINGS.sections.skinCare) {
+                const el = document.getElementById('skin-care');
+                if (el) el.style.display = 'none';
+            }
+            if (!SITE_SETTINGS.sections.bodyCare) {
+                const el = document.getElementById('body-care');
+                if (el) el.style.display = 'none';
+            }
+            if (!SITE_SETTINGS.sections.comboOffers) {
+                const el = document.getElementById('combo-offers');
+                if (el) el.style.display = 'none';
+            }
+            if (!SITE_SETTINGS.sections.beforeAfter) {
+                const el = document.getElementById('resultsSection');
+                if (el) el.style.display = 'none';
+            }
+            if (!SITE_SETTINGS.sections.customerReviews) {
+                const el = document.getElementById('reviewsSection');
+                if (el) el.style.display = 'none';
+            }
+            if (!SITE_SETTINGS.sections.ourStory) {
+                const el = document.getElementById('about');
+                if (el) el.style.display = 'none';
+            }
+
+            // انفرادی ہیرو سلائیڈرز کو آن/آف کرنے کا فنکشن
+            const slideElements = document.querySelectorAll('.hero-slide');
+            slideElements.forEach(slide => {
+                const idx = slide.getAttribute('data-slide-index');
+                if (idx === '0' && !SITE_SETTINGS.heroSlides.slide1) slide.remove();
+                if (idx === '1' && !SITE_SETTINGS.heroSlides.slide2) slide.remove();
+                if (idx === '2' && !SITE_SETTINGS.heroSlides.slide3) slide.remove();
+                if (idx === '3' && !SITE_SETTINGS.heroSlides.slide4) slide.remove();
+            });
+        });
+
+        // عمومی جاوا اسکرپٹ کوڈ
         const WHATSAPP_NUMBER = "923000634445";
 
         const hamburger = document.getElementById('hamburger');
@@ -1843,20 +1754,8 @@
                 heroSlides[currentHeroSlide].classList.add('active');
             }
         }
-        setInterval(nextHeroSlide, 4000);
-
-        // Control Panel Toggle Functionality
-        const controlToggleBtn = document.getElementById('controlToggleBtn');
-        const controlPanelBox = document.getElementById('controlPanelBox');
-        controlToggleBtn.addEventListener('click', () => {
-            controlPanelBox.classList.toggle('active');
-        });
-
-        function toggleElement(elementId, isVisible) {
-            const el = document.getElementById(elementId);
-            if (el) {
-                el.style.display = isVisible ? '' : 'none';
-            }
+        if(heroSlides.length > 0) {
+            setInterval(nextHeroSlide, 4000);
         }
 
         function toggleSection(sectionId, btn) {
@@ -1975,7 +1874,7 @@
 
         modalTrack.addEventListener('scroll', () => {
             const index = Math.round(modalTrack.scrollLeft / modalTrack.clientWidth);
-            updateActiveDot(index);
+            updateActive_dot(index);
         });
 
         function updateActiveDot(index, total) {
