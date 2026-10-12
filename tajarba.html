@@ -944,10 +944,10 @@
                 Fangam Organic
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#hair-care">Hair Care</a></li>
-                <li><a href="#skin-care">Skin Care</a></li>
-                <li><a href="#body-care">Body Care</a></li>
-                <li><a href="#combo-offers">Combo Offers</a></li>
+                <li id="nav-hair-care"><a href="#hair-care">Hair Care</a></li>
+                <li id="nav-skin-care"><a href="#skin-care">Skin Care</a></li>
+                <li id="nav-body-care"><a href="#body-care">Body Care</a></li>
+                <li id="nav-combo-offers"><a href="#combo-offers">Combo Offers</a></li>
                 <li><a href="https://fangamorganic.com/aboutus.html">About</a></li>
                 <li><a href="https://fangamorganic.com/contact-us.html">Contact</a></li>
             </ul>
@@ -959,7 +959,7 @@
 
     <!-- Hero Slider Section -->
     <div class="hero-slider-container" id="heroSliderSection">
-        <!-- ہیرو سلائیڈر 1: ہیئر کیئر (Hero Slide 1: Hair Care) -->
+        <!-- ہیرو سلائیڈر 1: ہیئر کیئر -->
         <div class="hero-slide active" data-slide-index="0" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1o177Vcjr8RNk_TZaDwOFzWsWeQUolMlw');">
             <div class="hero-content">
                 <h1>Pure Herbal Hair Care</h1>
@@ -967,7 +967,7 @@
                 <a href="#hair-care" class="btn-shop">Explore Hair Care</a>
             </div>
         </div>
-        <!-- ہیرو سلائیڈر 2: کمبو افز (Hero Slide 2: Combo Offers) -->
+        <!-- ہیرو سلائیڈر 2: کمبو افز -->
         <div class="hero-slide" data-slide-index="1" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://lh3.googleusercontent.com/d/1HtES5W0qBoOSd5nwDzG976eleTCdKGRE');">
             <div class="hero-content">
                 <h1>Special Combo and Bundle Offers</h1>
@@ -975,7 +975,7 @@
                 <a href="#combo-offers" class="btn-shop">Grab Offer Now</a>
             </div>
         </div>
-        <!-- ہیرو سلائیڈر 3: سکن کیئر (Hero Slide 3: Skin Care) -->
+        <!-- ہیرو سلائیڈر 3: سکن کیئر -->
         <div class="hero-slide" data-slide-index="2" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1mWqQFc4Yi4H7mB5KqLA3KCrjp6gj9g2v');">
             <div class="hero-content">
                 <h1>Natural Skin Care</h1>
@@ -983,7 +983,7 @@
                 <a href="#skin-care" class="btn-shop">Explore Skin Care</a>
             </div>
         </div>
-        <!-- ہیرو سلائیڈر 4: باڈی کیئر (Hero Slide 4: Body Care) -->
+        <!-- ہیرو سلائیڈر 4: باڈی کیئر -->
         <div class="hero-slide" data-slide-index="3" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1x8Dj0uc9Ey98ryzmkqoWCkeiS4Le1_9H');">
             <div class="hero-content">
                 <h1>Body Care & Wellness</h1>
@@ -1635,11 +1635,11 @@
             </div>
             <div class="footer-col">
                 <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#hair-care">Hair Care</a></li>
-                    <li><a href="#skin-care">Skin Care</a></li>
-                    <li><a href="#body-care">Body Care</a></li>
-                    <li><a href="#combo-offers">Combo Offers</a></li>
+                <ul id="footer-quick-links">
+                    <li id="footer-hair-care"><a href="#hair-care">Hair Care</a></li>
+                    <li id="footer-skin-care"><a href="#skin-care">Skin Care</a></li>
+                    <li id="footer-body-care"><a href="#body-care">Body Care</a></li>
+                    <li id="footer-combo-offers"><a href="#combo-offers">Combo Offers</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1668,48 +1668,73 @@
     <script>
         /* ==========================================================================
            BACKEND CONTROL CENTER (بیک اینڈ کنٹرول پینل)
-           آپ جب چاہیں یہاں true کو false کر کے کسی بھی سیکشن یا ہیرو سلائیڈر کو آن/آف کر سکتے ہیں۔
+           آپ جب چاہیں یہاں true کو false کر کے کسی بھی سیکشن، اس کے ہیرو سلائیڈر،
+           اور ہیڈر/فوٹر کے لنکس کو ایک ساتھ آن/آف کر سکتے ہیں۔
            ========================================================================== */
         const SITE_SETTINGS = {
             sections: {
                 heroSlider: true,     // ہیرو سلائیڈر سیکشن (true = آن, false = آف)
-                hairCare: true,       // ہیئر کیئر سیکشن
-                skinCare: false,       // سکن کیئر سیکشن
-                bodyCare: false,       // باڈی کیئر سیکشن
-                comboOffers: false,    // کمبو افز سیکشن
-                beforeAfter: false,    // بیفور / آفٹر رزلٹس سیکشن
+                hairCare: true,       // ہیئر کیئر سیکشن (اور ہیڈر/فوٹر کے لنکس)
+                skinCare: true,       // سکن کیئر سیکشن (اور ہیڈر/فوٹر کے لنکس)
+                bodyCare: true,       // باڈی کیئر سیکشن (اور ہیڈر/فوٹر کے لنکس)
+                comboOffers: true,    // کمبو افز سیکشن (اور ہیڈر/فوٹر کے لنکس)
+                beforeAfter: true,    // بیفور / آفٹر رزلٹس سیکشن
                 customerReviews: true,// کسٹمر ریویوز سیکشن
                 ourStory: true        // ہماری کہانی اور میڈیا سیکشن
             },
             heroSlides: {
                 slide1: true,         // پہلا سلائیڈر (ہیئر کیئر)
-                slide2: false,         // دوسرا سلائیڈر (کمبو افز)
-                slide3: false,         // تیسرا سلائیڈر (سکن کیئر)
-                slide4: false          // چوتھا سلائیڈر (باڈی کیئر)
+                slide2: true,         // دوسرا سلائیڈر (کمبو افز)
+                slide3: true,         // تیسرا سلائیڈر (سکن کیئر)
+                slide4: true          // چوتھا سلائیڈر (باڈی کیئر)
             }
         };
 
-        // اسکرپٹ خود بخود سیٹنگز کو لاگو کر دے گا (کوڈ کے اندر سے کنٹرول)
+        // اسکرپٹ خود بخود سیکشنز، ہیرو سلائیڈرز، اور ہیڈر/فوٹر لنکس کو کنٹرول کرے گا
         document.addEventListener("DOMContentLoaded", function() {
-            // سیکشنز کو آن/آف کرنے کا فنکشن
-            if (!SITE_SETTINGS.sections.heroSlider) {
-                const el = document.getElementById('heroSliderSection');
-                if (el) el.style.display = 'none';
-            }
+            // 1. Hair Care Control
             if (!SITE_SETTINGS.sections.hairCare) {
                 const el = document.getElementById('hair-care');
                 if (el) el.style.display = 'none';
+                const navEl = document.getElementById('nav-hair-care');
+                if (navEl) navEl.style.display = 'none';
+                const footEl = document.getElementById('footer-hair-care');
+                if (footEl) footEl.style.display = 'none';
             }
+
+            // 2. Skin Care Control
             if (!SITE_SETTINGS.sections.skinCare) {
                 const el = document.getElementById('skin-care');
                 if (el) el.style.display = 'none';
+                const navEl = document.getElementById('nav-skin-care');
+                if (navEl) navEl.style.display = 'none';
+                const footEl = document.getElementById('footer-skin-care');
+                if (footEl) footEl.style.display = 'none';
             }
+
+            // 3. Body Care Control
             if (!SITE_SETTINGS.sections.bodyCare) {
                 const el = document.getElementById('body-care');
                 if (el) el.style.display = 'none';
+                const navEl = document.getElementById('nav-body-care');
+                if (navEl) navEl.style.display = 'none';
+                const footEl = document.getElementById('footer-body-care');
+                if (footEl) footEl.style.display = 'none';
             }
+
+            // 4. Combo Offers Control
             if (!SITE_SETTINGS.sections.comboOffers) {
                 const el = document.getElementById('combo-offers');
+                if (el) el.style.display = 'none';
+                const navEl = document.getElementById('nav-combo-offers');
+                if (navEl) navEl.style.display = 'none';
+                const footEl = document.getElementById('footer-combo-offers');
+                if (footEl) footEl.style.display = 'none';
+            }
+
+            // Other Sections Control
+            if (!SITE_SETTINGS.sections.heroSlider) {
+                const el = document.getElementById('heroSliderSection');
                 if (el) el.style.display = 'none';
             }
             if (!SITE_SETTINGS.sections.beforeAfter) {
@@ -1874,7 +1899,7 @@
 
         modalTrack.addEventListener('scroll', () => {
             const index = Math.round(modalTrack.scrollLeft / modalTrack.clientWidth);
-            updateActive_dot(index);
+            updateActiveDot(index);
         });
 
         function updateActiveDot(index, total) {
