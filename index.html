@@ -580,7 +580,7 @@
             padding: 0 10px;
         }
 
-        /* --- Testimonials / Client Reviews --- */
+        /* --- Testimonials / Client Reviews (Split-Screen Design) --- */
         .reviews-section {
             margin: 50px 0;
         }
@@ -599,43 +599,53 @@
             width: 100%;
         }
         .review-card {
-            flex: 0 0 calc(25% - 15px);
+            flex: 0 0 calc(33.333% - 14px);
             background: var(--white);
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
             border-left: 4px solid var(--light-green);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+        }
+        .review-avatar-container {
+            flex-shrink: 0;
+            width: 110px;
+            height: 120px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--accent-green);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+        .review-avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .review-content-side {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-        }
-        .review-content-top {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 12px;
-        }
-        .review-avatar {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--light-green);
-            flex-shrink: 0;
+            flex-grow: 1;
+            height: 100%;
         }
         .review-stars {
             color: #f39c12;
-            font-size: 13px;
+            font-size: 12px;
+            margin-bottom: 5px;
         }
         .review-card p {
-            font-size: 14px;
+            font-size: 13px;
             color: #555;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             font-style: italic;
+            line-height: 1.4;
         }
         .review-author {
             font-weight: 600;
-            font-size: 13px;
+            font-size: 12px;
             color: var(--primary-green);
         }
 
@@ -845,8 +855,11 @@
             .product-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
-            .result-card, .review-card {
+            .result-card {
                 flex: 0 0 calc(33.333% - 14px);
+            }
+            .review-card {
+                flex: 0 0 calc(50% - 10px);
             }
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
@@ -912,13 +925,13 @@
             }
         }
         .top-offer-bar.off {
-    display: none;
-}
+            display: none;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Top Announcement Bar (Active & Visible) -->
+    <!-- Top Announcement Bar -->
     <div class="top-offer-bar off">
         <span>Limited Offer</span> 🌿 Flat 20% OFF on All Organic Hair Oils & Herbal Products! Use Code: <b>FANGAM20</b>
     </div>
@@ -931,10 +944,10 @@
                 Fangam Organic
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#hair-care">Hair Care</a></li>
-                <li><a href="#skin-care">Skin Care</a></li>
-                <li><a href="#body-care">Body Care</a></li>
-                <li><a href="#combo-offers">Combo Offers</a></li>
+                <li id="nav-hair-care"><a href="#hair-care">Hair Care</a></li>
+                <li id="nav-skin-care"><a href="#skin-care">Skin Care</a></li>
+                <li id="nav-body-care"><a href="#body-care">Body Care</a></li>
+                <li id="nav-combo-offers"><a href="#combo-offers">Combo Offers</a></li>
                 <li><a href="https://fangamorganic.com/aboutus.html">About</a></li>
                 <li><a href="https://fangamorganic.com/contact-us.html">Contact</a></li>
             </ul>
@@ -945,29 +958,33 @@
     </header>
 
     <!-- Hero Slider Section -->
-    <div class="hero-slider-container">
-        <div class="hero-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1o177Vcjr8RNk_TZaDwOFzWsWeQUolMlw');">
+    <div class="hero-slider-container" id="heroSliderSection">
+        <!-- ہیرو سلائیڈر 1: ہیئر کیئر -->
+        <div class="hero-slide active" data-slide-index="0" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1o177Vcjr8RNk_TZaDwOFzWsWeQUolMlw');">
             <div class="hero-content">
                 <h1>Pure Herbal Hair Care</h1>
                 <p>100% natural ingredients to stop hair fall and stimulate deep root growth.</p>
                 <a href="#hair-care" class="btn-shop">Explore Hair Care</a>
             </div>
         </div>
-        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://lh3.googleusercontent.com/d/1HtES5W0qBoOSd5nwDzG976eleTCdKGRE');">
+        <!-- ہیرو سلائیڈر 2: کمبو افز -->
+        <div class="hero-slide" data-slide-index="1" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://lh3.googleusercontent.com/d/1HtES5W0qBoOSd5nwDzG976eleTCdKGRE');">
             <div class="hero-content">
                 <h1>Special Combo and Bundle Offers</h1>
                 <p>Get exclusive herbal bundles and save more on your favorite organic packages today!</p>
                 <a href="#combo-offers" class="btn-shop">Grab Offer Now</a>
             </div>
         </div>
-        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1mWqQFc4Yi4H7mB5KqLA3KCrjp6gj9g2v');">
+        <!-- ہیرو سلائیڈر 3: سکن کیئر -->
+        <div class="hero-slide" data-slide-index="2" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1mWqQFc4Yi4H7mB5KqLA3KCrjp6gj9g2v');">
             <div class="hero-content">
                 <h1>Natural Skin Care</h1>
                 <p>Gentle cleansing, Ubtan glow, and facial serums for spotless radiant skin.</p>
                 <a href="#skin-care" class="btn-shop">Explore Skin Care</a>
             </div>
         </div>
-        <div class="hero-slide" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1x8Dj0uc9Ey98ryzmkqoWCkeiS4Le1_9H');">
+        <!-- ہیرو سلائیڈر 4: باڈی کیئر -->
+        <div class="hero-slide" data-slide-index="3" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://lh3.googleusercontent.com/d/1x8Dj0uc9Ey98ryzmkqoWCkeiS4Le1_9H');">
             <div class="hero-content">
                 <h1>Body Care & Wellness</h1>
                 <p>Pure botanical bathing bars, massage oils and nourishing treatments.</p>
@@ -1424,71 +1441,85 @@
             </div>
         </section>
 
-        <!-- Client Reviews Section -->
+        <!-- Client Reviews Section (Split-Screen Design) -->
         <section class="reviews-section" id="reviewsSection">
             <h2 class="section-title"><i class="fa-solid fa-comments"></i> Customer Reviews</h2>
             <div class="reviews-grid-wrapper">
                 <div class="reviews-track" id="reviewsTrack">
+                    <!-- Review Card 1 -->
                     <div class="review-card">
-                        <div>
-                            <div class="review-content-top">
-                                <img src="https://lh3.googleusercontent.com/d/15TKGJXkVCjcDsVxH_qceSYorSgWIKKyz" alt="Qamar Iqbal Khan" class="review-avatar">
+                        <div class="review-avatar-container">
+                            <img src="https://lh3.googleusercontent.com/d/15TKGJXkVCjcDsVxH_qceSYorSgWIKKyz" alt="Qamar Iqbal Khan" class="review-avatar">
+                        </div>
+                        <div class="review-content-side">
+                            <div>
                                 <div class="review-stars">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                                 </div>
+                                <p>"My beloved daughter used Fangam Organic hair oil and her hair fall stopped completely. Extremely wonderful product!"</p>
                             </div>
-                            <p>"My beloved daughter used Fangam Organic hair oil and her hair fall stopped completely. Extremely wonderful product!"</p>
+                            <div class="review-author">Qamar Iqbal Khan, Sialkot</div>
                         </div>
-                        <div class="review-author">Qamar Iqbal Khan, Sialkot</div>
                     </div>
-                         <div class="review-card">
-                        <div>
-                            <div class="review-content-top">
-                                <img src="https://lh3.googleusercontent.com/d/1dwOnTTUdz3pyhNcFl9Ui0JjetZWG7-X0" alt="Abid Hussain Abid" class="review-avatar">
-                                <div class="review-stars">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            <p>"Wonderful natural blend, amazing results on hair and beard! Highly recommended."</p>
-                        </div>
-                        <div class="review-author">Abid Hussain Abid, Sialkot</div>
-                    </div>
-                        <div class="review-card">
-                        <div>
-                            <div class="review-content-top">
-                                <img src="https://lh3.googleusercontent.com/d/1IQvcpmCbvLBnPqHsLZxVmOdSLXKEMJnb" alt="Asma" class="review-avatar">
-                                <div class="review-stars">
-                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                                </div>
-                            </div>
-                            <p>"I bought Fangam Organic Hair Oil for my little daughter, and I'm amazed by the results! 
-                                Within just 10-15 days of regular use, new baby hair has started growing in her bald spots. Highly recommended!"</p>
-                        </div>
-                        <div class="review-author">Malik Abdul Rehman, Sialkot</div>
-                    </div>
+                    <!-- Review Card 2 -->
                     <div class="review-card">
-                        <div>
-                            <div class="review-content-top">
-                                <img src="https://lh3.googleusercontent.com/d/1nVxbBlcotxEjbQM1WwKj5DfKowYxjFcy" alt="Ali" class="review-avatar">
+                        <div class="review-avatar-container">
+                            <img src="https://lh3.googleusercontent.com/d/1dwOnTTUdz3pyhNcFl9Ui0JjetZWG7-X0" alt="Abid Hussain Abid" class="review-avatar">
+                        </div>
+                        <div class="review-content-side">
+                            <div>
                                 <div class="review-stars">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                                 </div>
+                                <p>"Wonderful natural blend, amazing results on hair and beard! Highly recommended."</p>
                             </div>
-                            <p>"خالص جڑی بوٹیوں والا فینگم آرگینک آئل۔ بالوں کا گرنا روکتا ہے اور بہترین نتائج دیتا ہے۔ انتہائی تجویز کردہ"</p>
+                            <div class="review-author">Abid Hussain Abid, Sialkot</div>
                         </div>
-                        <div class="review-author">Malik Muhammad Azad and Family, Sialkot</div>
                     </div>
+                    <!-- Review Card 3 -->
                     <div class="review-card">
-                        <div>
-                            <div class="review-content-top">
-                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Ayesha" class="review-avatar">
+                        <div class="review-avatar-container">
+                            <img src="https://lh3.googleusercontent.com/d/1IQvcpmCbvLBnPqHsLZxVmOdSLXKEMJnb" alt="Asma" class="review-avatar">
+                        </div>
+                        <div class="review-content-side">
+                            <div>
                                 <div class="review-stars">
                                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                                 </div>
+                                <p>"I bought Fangam Organic Hair Oil for my little daughter, and I'm amazed by the results! Within just 10-15 days of regular use, new baby hair has started growing."</p>
                             </div>
-                            <p>"The ubtan and soaps fragrance and quality are purely organic. Such a wonderful experience."</p>
+                            <div class="review-author">Malik Abdul Rehman, Sialkot</div>
                         </div>
-                        <div class="review-author">— Ayesha Khan, Sialkot</div>
+                    </div>
+                    <!-- Review Card 4 -->
+                    <div class="review-card">
+                        <div class="review-avatar-container">
+                            <img src="https://lh3.googleusercontent.com/d/1nVxbBlcotxEjbQM1WwKj5DfKowYxjFcy" alt="Ali" class="review-avatar">
+                        </div>
+                        <div class="review-content-side">
+                            <div>
+                                <div class="review-stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <p>"خالص جڑی بوٹیوں والا فینگم آرگینک آئل۔ بالوں کا گرنا روکتا ہے اور بہترین نتائج دیتا ہے۔ انتہائی تجویز کردہ"</p>
+                            </div>
+                            <div class="review-author">Malik Muhammad Azad and Family</div>
+                        </div>
+                    </div>
+                    <!-- Review Card 5 -->
+                    <div class="review-card">
+                        <div class="review-avatar-container">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Ayesha" class="review-avatar">
+                        </div>
+                        <div class="review-content-side">
+                            <div>
+                                <div class="review-stars">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <p>"The ubtan and soaps fragrance and quality are purely organic. Such a wonderful experience."</p>
+                            </div>
+                            <div class="review-author">— Ayesha Khan, Sialkot</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1556,7 +1587,7 @@
                     <span class="thumb-dot active" onclick="scrollToSlide(0)"></span>
                     <span class="thumb-dot" onclick="scrollToSlide(1)"></span>
                     <span class="thumb-dot" onclick="scrollToSlide(2)"></span>
-                    <span class="thumb-dot" onclick="scrollToSlide(3)"></span>
+                    <span class="thumb-dot" onclick="scrollToSlide(3)"><i></i></span>
                 </div>
             </div>
 
@@ -1604,11 +1635,11 @@
             </div>
             <div class="footer-col">
                 <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#hair-care">Hair Care</a></li>
-                    <li><a href="#skin-care">Skin Care</a></li>
-                    <li><a href="#body-care">Body Care</a></li>
-                    <li><a href="#combo-offers">Combo Offers</a></li>
+                <ul id="footer-quick-links">
+                    <li id="footer-hair-care"><a href="#hair-care">Hair Care</a></li>
+                    <li id="footer-skin-care"><a href="#skin-care">Skin Care</a></li>
+                    <li id="footer-body-care"><a href="#body-care">Body Care</a></li>
+                    <li id="footer-combo-offers"><a href="#combo-offers">Combo Offers</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -1633,8 +1664,104 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JavaScript & Backend Control Center -->
     <script>
+        /* ==========================================================================
+           BACKEND CONTROL CENTER (بیک اینڈ کنٹرول پینل)
+           آپ جب چاہیں یہاں true کو false کر کے کسی بھی سیکشن، اس کے ہیرو سلائیڈر،
+           اور ہیڈر/فوٹر کے لنکس کو ایک ساتھ آن/آف کر سکتے ہیں۔
+           ========================================================================== */
+        const SITE_SETTINGS = {
+            sections: {
+                heroSlider: true,     // ہیرو سلائیڈر سیکشن (true = آن, false = آف)
+                hairCare: true,       // ہیئر کیئر سیکشن (اور ہیڈر/فوٹر کے لنکس)
+                skinCare: false,       // سکن کیئر سیکشن (اور ہیڈر/فوٹر کے لنکس)
+                bodyCare: false,       // باڈی کیئر سیکشن (اور ہیڈر/فوٹر کے لنکس)
+                comboOffers: false,    // کمبو افز سیکشن (اور ہیڈر/فوٹر کے لنکس)
+                beforeAfter: false,    // بیفور / آفٹر رزلٹس سیکشن
+                customerReviews: true,// کسٹمر ریویوز سیکشن
+                ourStory: true        // ہماری کہانی اور میڈیا سیکشن
+            },
+            heroSlides: {
+                slide1: true,         // پہلا سلائیڈر (ہیئر کیئر)
+                slide2: true,         // دوسرا سلائیڈر (کمبو افز)
+                slide3: true,         // تیسرا سلائیڈر (سکن کیئر)
+                slide4: true          // چوتھا سلائیڈر (باڈی کیئر)
+            }
+        };
+
+        // اسکرپٹ خود بخود سیکشنز، ہیرو سلائیڈرز، اور ہیڈر/فوٹر لنکس کو کنٹرول کرے گا
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. Hair Care Control
+            if (!SITE_SETTINGS.sections.hairCare) {
+                const el = document.getElementById('hair-care');
+                if (el) el.style.display = 'none';
+                const navEl = document.getElementById('nav-hair-care');
+                if (navEl) navEl.style.display = 'none';
+                const footEl = document.getElementById('footer-hair-care');
+                if (footEl) footEl.style.display = 'none';
+            }
+
+            // 2. Skin Care Control
+            if (!SITE_SETTINGS.sections.skinCare) {
+                const el = document.getElementById('skin-care');
+                if (el) el.style.display = 'none';
+                const navEl = document.getElementById('nav-skin-care');
+                if (navEl) navEl.style.display = 'none';
+                const footEl = document.getElementById('footer-skin-care');
+                if (footEl) footEl.style.display = 'none';
+            }
+
+            // 3. Body Care Control
+            if (!SITE_SETTINGS.sections.bodyCare) {
+                const el = document.getElementById('body-care');
+                if (el) el.style.display = 'none';
+                const navEl = document.getElementById('nav-body-care');
+                if (navEl) navEl.style.display = 'none';
+                const footEl = document.getElementById('footer-body-care');
+                if (footEl) footEl.style.display = 'none';
+            }
+
+            // 4. Combo Offers Control
+            if (!SITE_SETTINGS.sections.comboOffers) {
+                const el = document.getElementById('combo-offers');
+                if (el) el.style.display = 'none';
+                const navEl = document.getElementById('nav-combo-offers');
+                if (navEl) navEl.style.display = 'none';
+                const footEl = document.getElementById('footer-combo-offers');
+                if (footEl) footEl.style.display = 'none';
+            }
+
+            // Other Sections Control
+            if (!SITE_SETTINGS.sections.heroSlider) {
+                const el = document.getElementById('heroSliderSection');
+                if (el) el.style.display = 'none';
+            }
+            if (!SITE_SETTINGS.sections.beforeAfter) {
+                const el = document.getElementById('resultsSection');
+                if (el) el.style.display = 'none';
+            }
+            if (!SITE_SETTINGS.sections.customerReviews) {
+                const el = document.getElementById('reviewsSection');
+                if (el) el.style.display = 'none';
+            }
+            if (!SITE_SETTINGS.sections.ourStory) {
+                const el = document.getElementById('about');
+                if (el) el.style.display = 'none';
+            }
+
+            // انفرادی ہیرو سلائیڈرز کو آن/آف کرنے کا فنکشن
+            const slideElements = document.querySelectorAll('.hero-slide');
+            slideElements.forEach(slide => {
+                const idx = slide.getAttribute('data-slide-index');
+                if (idx === '0' && !SITE_SETTINGS.heroSlides.slide1) slide.remove();
+                if (idx === '1' && !SITE_SETTINGS.heroSlides.slide2) slide.remove();
+                if (idx === '2' && !SITE_SETTINGS.heroSlides.slide3) slide.remove();
+                if (idx === '3' && !SITE_SETTINGS.heroSlides.slide4) slide.remove();
+            });
+        });
+
+        // عمومی جاوا اسکرپٹ کوڈ
         const WHATSAPP_NUMBER = "923000634445";
 
         const hamburger = document.getElementById('hamburger');
@@ -1652,7 +1779,9 @@
                 heroSlides[currentHeroSlide].classList.add('active');
             }
         }
-        setInterval(nextHeroSlide, 4000);
+        if(heroSlides.length > 0) {
+            setInterval(nextHeroSlide, 4000);
+        }
 
         function toggleSection(sectionId, btn) {
             const extraGrid = document.getElementById(sectionId);
@@ -1678,8 +1807,8 @@
 
             function getVisibleCount() {
                 if (window.innerWidth <= 768) return 1;
-                if (window.innerWidth <= 1024) return 3;
-                return 4;
+                if (window.innerWidth <= 1024) return window.innerWidth <= 1024 && sectionId === 'reviewsSection' ? 2 : 3;
+                return sectionId === 'reviewsSection' ? 3 : 4;
             }
 
             function slideNext() {
