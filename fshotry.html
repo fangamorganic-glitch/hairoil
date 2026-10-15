@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://lh3.googleusercontent.com/d/1NJYUBfxZMMcO2Wqh_wzsuyUjeC-mi97V">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fangam Organic - Global Master Product Page</title>
+    <!-- FontAwesome for Branded Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for English & Noto Nastaliq Urdu -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-green: #113814;
+            --accent-green: #2ecc71;
+            --gold-accent: #d4af37;
+            --light-bg: #f8faf8;
+            --card-bg: #ffffff;
+            --text-color: #2c3e50;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 24px rgba(17, 56, 20, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Prevent Google Translate from messing up FontAwesome icons */
+        .fa, .fas, .far, .fab, .fa-solid {
+            font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+        }
+
+        /* Hide Google Translate Banners */
+        .goog-te-banner-frame.skiptranslate, 
+        .goog-logo-link, 
+        .gskiptranslate,
+        #goog-gt-tt,
+        .goog-te-balloon-frame {
+            display: none !important;
+        }
+        
+        body {
+            top: 0 !important;
+            position: static !important;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.7;
+            direction: ltr;
+            text-align: left;
+            padding-bottom: 80px; /* Space for Floating Button */
+        }
+
+        /* RTL & Urdu Support */
+        body.translated-rtl {
+            direction: rtl;
+            text-align: right;
+        }
+
+        body.translated-rtl.translated-urdu * {
+            font-family: 'Noto Nastaliq Urdu', serif !important;
+            line-height: 2.2 !important;
+        }
+
+        /* Luxury Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 6%;
+            border-bottom: 2px solid var(--gold-accent);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-follow-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .follow-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .social-icons a {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .facebook { background-color: #1877f2; }
+        .instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); }
+        .tiktok { background-color: #000000; }
+        .youtube { background-color: #ff0000; }
+
+        /* Pro Clean Control Bar */
+        .control-bar {
+            background: #eef5ef;
+            padding: 10px 6%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-switcher label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--primary-green);
+        }
+
+        .custom-lang-select {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--accent-green);
+            background-color: white;
+            color: var(--text-color);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 25px auto;
+            padding: 0 16px;
+        }
+
+        /* Product Hero Section */
+        .product-hero {
+            background: var(--card-bg);
+            padding: 28px 20px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .product-hero img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            max-height: 360px;
+            object-fit: cover;
+            margin-bottom: 18px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        }
+
+        .product-hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-green);
+            font-weight: 700;
+        }
+
+        .product-hero p {
+            color: #555;
+            font-size: 1rem;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* Reader Hint Box */
+        .reader-notice-box {
+            background-color: #f1f8e9;
+            border-left: 4px solid var(--accent-green);
+            padding: 14px 18px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        body.translated-rtl .reader-notice-box {
+            border-left: none;
+            border-right: 4px solid var(--accent-green);
+        }
+
+        .reader-notice-box i {
+            font-size: 1.3rem;
+            color: var(--primary-green);
+        }
+
+        .reader-notice-box p {
+            font-size: 0.92rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Interactive Smart Video Hub */
+        .video-hub-card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-hub-card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .platform-tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tab-btn {
+            padding: 8px 16px;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            color: #555;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 10px rgba(17, 56, 20, 0.2);
+        }
+
+        /* Compact Vertical Video Player Container */
+        .video-display-area {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            height: 500px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
