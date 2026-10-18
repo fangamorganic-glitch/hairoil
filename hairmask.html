@@ -1,1 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fangam Organic - Organic Hair Mask</title>
 
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Cinzel, Playfair Display, Outfit & Noto Nastaliq Urdu -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FFF8DC',
+                            300: '#F5E080',
+                            400: '#E5C158',
+                            500: '#D4AF37',
+                            600: '#B38F24',
+                            700: '#8C6C13'
+                        },
+                        botanical: {
+                            dark: '#0c0c0c',
+                            surface: '#121612',
+                            card: '#182018',
+                            border: '#273827',
+                            emerald: '#2D5A27',
+                            lightGreen: '#4ADE80'
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                        nastaliq: ['Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0c0c0c;
+            color: #F4F1EA;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            top: 0px !important;
+        }
+
+        /* Dynamic Urdu / RTL Font Application */
+        body.lang-ur, body.lang-ur * {
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif !important;
+            line-height: 2.2 !important;
+        }
+
+        /* Gold Gradient Text */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF8DC 0%, #E5C158 40%, #D4AF37 70%, #997A1B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Glowing Card Borders */
+        .gold-glow-card {
+            background: linear-gradient(145deg, rgba(24, 32, 24, 0.9), rgba(14, 18, 14, 0.95));
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gold-glow-card:hover {
+            border-color: rgba(229, 193, 88, 0.6);
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(212, 175, 55, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Complete Hiding of Google Translate Native UI Bar, Logos & Tooltips */
+        .goog-te-banner-frame,
+        .goog-te-balloon-skin,
+        .goog-te-banner,
+        .skiptranslate,
+        #goog-gt-tt,
+        .goog-te-spinner-pos {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            width: 0 !important;
+            opacity: 0 !important;
+        }
+
+        #google_translate_element {
+            display: none !important;
+            position: absolute !important;
+            top: -9999px !important;
+            left: -9999px !important;
+        }
+
+        body {
+            top: 0px !important;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0c0c0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #273827;
+            border-radius: 4px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-gold-500 selection:text-black">
+
+    <!-- HIDDEN NATIVE GOOGLE TRANSLATE ENGINE CONTAINER -->
+    <div id="google_translate_element"></div>
+
+    <!-- HEADER NAVIGATION BAR -->
+    <header class="bg-botanical-dark/95 backdrop-blur-xl border-b border-gold-500/20 sticky top-0 z-40 py-3.5 px-4 sm:px-8 shadow-2xl">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            <!-- Brand Logo & Name -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-full bg-gold-500/10 border border-gold-500/40 flex items-center justify-center group-hover:border-gold-400 transition-all">
+                    <i class="fa-solid fa-leaf text-gold-400 text-lg group-hover:scale-110 transition-transform"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-cinzel text-lg sm:text-xl font-bold tracking-widest text-gold-300">FANGAM <span class="text-xs font-outfit font-semibold tracking-normal text-botanical-lightGreen border border-botanical-lightGreen/30 px-2 py-0.5 rounded-full bg-botanical-emerald/30">ORGANIC</span></span>
+                    <span class="text-[10px] text-gray-400 font-light tracking-wider uppercase">100% Pure & Authentic Skincare & Haircare</span>
+                </div>
+            </a>
+
+            <!-- Right Controls: Social Links & Custom Pro Language Button -->
+            <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+                
+                <!-- Social Media Links (Updated with exact official links) -->
+                <div class="flex items-center space-x-2 text-sm">
+                    <span class="text-[11px] uppercase tracking-widest text-gray-400 font-medium hidden lg:inline-block">Connect:</span>
+                    <a href="https://www.facebook.com/fangamorganic" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-8 h-8 rounded-full bg-blue-600/10 border border-blue-500/30 text-blue-400 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all hover:scale-110">
+                        <i class="fa-brands fa-facebook-f text-xs"></i>
+                    </a>
+                    <a href="https://www.instagram.com/fangamorganic" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-8 h-8 rounded-full bg-pink-600/10 border border-pink-500/30 text-pink-400 flex items-center justify-center hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-pink-500 hover:to-purple-600 hover:text-white transition-all hover:scale-110">
+                        <i class="fa-brands fa-instagram text-xs"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@fangamorganic" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-8 h-8 rounded-full bg-slate-800 border border-slate-600/40 text-slate-200 flex items-center justify-center hover:bg-black hover:text-white transition-all hover:scale-110">
+                        <i class="fa-brands fa-tiktok text-xs"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@fangamorganic" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="w-8 h-8 rounded-full bg-red-600/10 border border-red-500/30 text-red-400 flex items-center justify-center hover:bg-red-600 hover:text-white transition-all hover:scale-110">
+                        <i class="fa-brands fa-youtube text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- PROFESSIONAL CUSTOM LANGUAGE SELECTOR BUTTON (NO GOOGLE BRANDING) -->
+                <button id="langModalBtn" onclick="toggleLanguageModal()" class="flex items-center space-x-2.5 bg-gradient-to-r from-botanical-card to-botanical-surface border border-gold-500/50 hover:border-gold-400 text-gold-300 hover:text-gold-100 px-4 py-2 rounded-full shadow-lg shadow-black/50 transition-all hover:scale-105 active:scale-95 group">
+                    <i class="fa-solid fa-globe text-gold-400 group-hover:rotate-12 transition-transform"></i>
+                    <span id="currentLangLabel" class="text-xs font-semibold tracking-wide">🌐 Select Language / زبان منتخب کریں</span>
+                    <i class="fa-solid fa-chevron-down text-[10px] text-gold-500/70 group-hover:translate-y-0.5 transition-transform"></i>
+                </button>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO / PRODUCT SHOWCASE DISPLAY -->
+    <section class="relative py-14 px-4 overflow-hidden bg-gradient-to-b from-botanical-dark via-botanical-surface to-botanical-dark border-b border-gold-500/15">
+        <!-- Botanical Ambient Lighting -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold-500/10 blur-[140px] rounded-full pointer-events-none"></div>
+        <div class="absolute top-10 left-10 w-72 h-72 bg-botanical-emerald/20 blur-[100px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10 flex flex-col items-center">
+            
+            <!-- Circular Organic Emblem Display -->
+            <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-botanical-dark border-4 border-gold-500 flex flex-col items-center justify-center p-6 relative my-4 shadow-[0_0_60px_rgba(212,175,55,0.2)] transition-transform duration-500 hover:scale-105">
+                <i class="fa-solid fa-spa text-gold-400 text-3xl sm:text-4xl mb-2 animate-bounce"></i>
+                <span class="font-cinzel text-gold-300 text-lg sm:text-2xl font-bold tracking-[0.25em] uppercase">Organic</span>
+                
+                <div class="my-2 py-1.5 border-y-2 border-gold-500 w-full text-center">
+                    <h1 class="font-cinzel text-2xl sm:text-3xl font-extrabold text-gold-100 tracking-widest">HAIR MASK</h1>
+                </div>
+
+                <span class="font-cinzel text-gold-300 text-xs sm:text-sm font-semibold tracking-widest uppercase">Pure Herbal Treatment</span>
+            </div>
+
+            <!-- Product Title & Tagline (NO SIGNATURE WORD) -->
+            <h2 class="text-2xl sm:text-3xl font-cinzel font-bold text-gold-300 mt-4 tracking-wide">FANGAM ORGANIC HAIR MASK</h2>
+            <p class="text-gray-300 text-sm sm:text-base max-w-2xl mt-3 leading-relaxed font-light">
+                100% Pure & Natural Botanical Hair Treatment Formulation engineered for deep scalp revitalization, hair growth, and follicle strength.
+            </p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT SECTIONS -->
+    <main class="max-w-5xl mx-auto px-4 py-12 space-y-16 flex-grow">
+
+        <!-- SECTION 1: KEY INGREDIENTS BREAKDOWN -->
+        <section class="space-y-6">
+            <div class="flex items-center space-x-3 border-b border-gold-500/20 pb-4">
+                <div class="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/30 text-gold-400 flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-cinzel font-bold text-gold-300">Key Ingredients</h3>
+                    <p class="text-xs text-gray-400">100% Herbal & Botanical Power Blend</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+                <!-- Amla -->
+                <div class="gold-glow-card p-5 rounded-xl flex flex-col items-center text-center space-y-2">
+                    <div class="w-10 h-10 rounded-full bg-gold-500/20 text-gold-300 flex items-center justify-center text-lg mb-1">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <span class="font-bold text-gold-100 text-base">Amla</span>
+                    <span class="text-xs text-gray-400">Strengthens roots & hair vitality</span>
+                </div>
+
+                <!-- Meethi Dana -->
+                <div class="gold-glow-card p-5 rounded-xl flex flex-col items-center text-center space-y-2">
+                    <div class="w-10 h-10 rounded-full bg-gold-500/20 text-gold-300 flex items-center justify-center text-lg mb-1">
+                        <i class="fa-solid fa-spa"></i>
+                    </div>
+                    <span class="font-bold text-gold-100 text-base">Meethi Dana</span>
+                    <span class="text-xs text-gray-400">Reduces hair fall & promotes shine</span>
+                </div>
+
+                <!-- Alsi (Flaxseed) -->
+                <div class="gold-glow-card p-5 rounded-xl flex flex-col items-center text-center space-y-2">
+                    <div class="w-10 h-10 rounded-full bg-gold-500/20 text-gold-300 flex items-center justify-center text-lg mb-1">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <span class="font-bold text-gold-100 text-base">Alsi (Flaxseed)</span>
+                    <span class="text-xs text-gray-400">Deep nourishment & hydration</span>
+                </div>
+
+                <!-- Gudhal (Hibiscus) -->
+                <div class="gold-glow-card p-5 rounded-xl flex flex-col items-center text-center space-y-2">
+                    <div class="w-10 h-10 rounded-full bg-gold-500/20 text-gold-300 flex items-center justify-center text-lg mb-1">
+                        <i class="fa-solid fa-virus-covid"></i>
+                    </div>
+                    <span class="font-bold text-gold-100 text-base">Gudhal (Hibiscus)</span>
+                    <span class="text-xs text-gray-400">Stimulates thick hair growth</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: HOW TO USE (TAILORED SCALP RECIPES) -->
+        <section class="space-y-6">
+            <div class="flex items-center space-x-3 border-b border-gold-500/20 pb-4">
+                <div class="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/30 text-gold-400 flex items-center justify-center text-lg">
+                    <i class="fa-solid fa-mortar-pestle"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-cinzel font-bold text-gold-300">How to Use</h3>
+                    <p class="text-xs text-gray-400">Tailored recipes according to your scalp type</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+                <!-- For Oily Scalp -->
+                <div class="gold-glow-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 bg-gold-500 text-black px-4 py-1.5 rounded-full font-extrabold text-xs uppercase tracking-wider mb-4 shadow-md shadow-gold-500/20">
+                            <i class="fa-solid fa-droplet text-sm"></i>
+                            <span>Oily Scalp</span>
+                        </div>
+                        <p class="text-base text-gray-100 font-medium leading-relaxed">
+                            Mix 2-3 tablespoons with plain water or rose water to form a smooth paste.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- For Normal Scalp -->
+                <div class="gold-glow-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 bg-gold-500 text-black px-4 py-1.5 rounded-full font-extrabold text-xs uppercase tracking-wider mb-4 shadow-md shadow-gold-500/20">
+                            <i class="fa-solid fa-circle-check text-sm"></i>
+                            <span>Normal Scalp</span>
+                        </div>
+                        <p class="text-base text-gray-100 font-medium leading-relaxed">
+                            Mix 2-3 tablespoons with lukewarm water for natural softness and glow.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- For Dry Scalp -->
+                <div class="gold-glow-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 bg-gold-500 text-black px-4 py-1.5 rounded-full font-extrabold text-xs uppercase tracking-wider mb-4 shadow-md shadow-gold-500/20">
+                            <i class="fa-solid fa-sun text-sm"></i>
+                            <span>Dry Scalp</span>
+                        </div>
+                        <p class="text-base text-gray-100 font-medium leading-relaxed">
+                            Mix 2-3 tablespoons with lukewarm water, yogurt, or a few drops of natural herbal oil.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- For Dandruff / Itchy Scalp -->
+                <div class="gold-glow-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 bg-gold-500 text-black px-4 py-1.5 rounded-full font-extrabold text-xs uppercase tracking-wider mb-4 shadow-md shadow-gold-500/20">
+                            <i class="fa-solid fa-shield-halved text-sm"></i>
+                            <span>Dandruff / Itchy Scalp</span>
+                        </div>
+                        <p class="text-base text-gray-100 font-medium leading-relaxed">
+                            Mix 2-3 tablespoons with lukewarm water, yogurt, and a few drops of fresh lemon juice.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: APPLICATION DIRECTIONS HIGHLIGHT BOX -->
+        <section class="gold-glow-card p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-botanical-card via-botanical-surface to-botanical-card border-2 border-gold-500/40">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-gold-500/20 border border-gold-500/50 text-gold-300 flex items-center justify-center text-2xl flex-shrink-0">
+                        <i class="fa-solid fa-hourglass-half animate-pulse"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-cinzel font-bold text-gold-300">Application Directions</h4>
+                        <p class="text-xs text-gray-400 mt-0.5">Crucial steps for maximum efficacy</p>
+                    </div>
+                </div>
+                <div class="text-gray-200 text-sm sm:text-base leading-relaxed max-w-xl">
+                    <span class="font-bold text-gold-400">Step 1:</span> Soak the mixture for <span class="text-white font-semibold">30 minutes</span> prior to application to activate herbal nutrients.<br>
+                    <span class="font-bold text-gold-400">Step 2:</span> Apply thoroughly onto scalp and hair roots, leave for <span class="text-white font-semibold">30 minutes</span>, then rinse thoroughly with plain water or mild organic shampoo.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FLOATING MAIN STORE CTA & FOOTER -->
+    <footer class="bg-botanical-dark border-t border-gold-500/20 py-8 px-4 mt-12 text-center relative z-20">
+        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="text-center sm:text-left">
+                <span class="font-cinzel text-lg font-bold tracking-widest text-gold-300">FANGAM ORGANIC</span>
+                <p class="text-xs text-gray-400 mt-1">Authentic Pure Organic Skincare & Haircare</p>
+            </div>
+
+            <!-- Explore Main Store Button -->
+            <a href="https://www.facebook.com/fangamorganic" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-3 bg-gradient-to-r from-botanical-emerald via-green-800 to-botanical-emerald text-gold-100 font-bold text-sm px-7 py-3.5 rounded-full border border-gold-500/50 shadow-xl shadow-black/80 hover:shadow-gold-500/20 hover:scale-105 active:scale-95 transition-all">
+                <i class="fa-solid fa-bag-shopping text-gold-300 text-base"></i>
+                <span>Explore Official Channels</span>
+            </a>
+        </div>
+    </footer>
+
+    <!-- PRO CUSTOM MULTI-LANGUAGE SELECTION MODAL (50+ LANGUAGES & URDU NASTALIQ SUPPORT) -->
+    <div id="langModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden transition-opacity duration-300 opacity-0">
+        <div class="bg-botanical-surface border border-gold-500/40 rounded-3xl max-w-lg w-full p-6 shadow-2xl relative flex flex-col max-h-[85vh] gold-glow-card">
+            
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between border-b border-gold-500/20 pb-4">
+                <div class="flex items-center space-x-2.5">
+                    <i class="fa-solid fa-globe text-gold-400 text-xl"></i>
+                    <h3 class="text-lg font-cinzel font-bold text-gold-300">Select Language / زبان منتخب کریں</h3>
+                </div>
+                <button onclick="toggleLanguageModal()" class="w-8 h-8 rounded-full bg-botanical-card border border-gold-500/30 text-gray-400 hover:text-gold-300 flex items-center justify-center transition-all">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Search Input Box -->
+            <div class="my-4 relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                <input type="text" id="langSearch" oninput="filterLanguages()" placeholder="Search language... / زبان تلاش کریں..." class="w-full bg-botanical-card border border-gold-500/30 rounded-xl pl-9 pr-4 py-2.5 text-xs text-gray-100 placeholder-gray-500 focus:outline-none focus:border-gold-400">
+            </div>
+
+            <!-- Languages Grid (50+ Languages) -->
+            <div id="langGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-2 overflow-y-auto pr-1 flex-grow">
+                <!-- Urdu (Featured First) -->
+                <button onclick="selectLanguage('ur', 'Urdu (اردو)', true)" class="lang-item text-left px-3 py-2.5 rounded-xl border border-gold-500/50 bg-gold-500/10 text-gold-300 font-semibold text-xs hover:bg-gold-500 hover:text-black transition-all flex items-center justify-between">
+                    <span class="font-nastaliq text-sm">اردو</span>
+                    <span class="text-[10px] opacity-75">Urdu</span>
+                </button>
+                <!-- English -->
+                <button onclick="selectLanguage('en', 'English')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">English</button>
+                <!-- Arabic -->
+                <button onclick="selectLanguage('ar', 'Arabic (العربية)')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">العربية (Arabic)</button>
+                <!-- Hindi -->
+                <button onclick="selectLanguage('hi', 'Hindi (हिन्दी)')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">हिन्दी (Hindi)</button>
+                <!-- Spanish -->
+                <button onclick="selectLanguage('es', 'Spanish')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">Español</button>
+                <!-- French -->
+                <button onclick="selectLanguage('fr', 'French')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">Français</button>
+                <!-- German -->
+                <button onclick="selectLanguage('de', 'German')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">Deutsch</button>
+                <!-- Chinese Simplified -->
+                <button onclick="selectLanguage('zh-CN', 'Chinese')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">中文 (Chinese)</button>
+                <!-- Japanese -->
+                <button onclick="selectLanguage('ja', 'Japanese')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">日本語 (Japanese)</button>
+                <!-- Russian -->
+                <button onclick="selectLanguage('ru', 'Russian')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">Русский</button>
+                <!-- Persian -->
+                <button onclick="selectLanguage('fa', 'Persian (فارسی)')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">فارسی (Persian)</button>
+                <!-- Turkish -->
+                <button onclick="selectLanguage('tr', 'Turkish')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">Türkçe</button>
+                <!-- Portuguese -->
+                <button onclick="selectLanguage('pt', 'Portuguese')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">Português</button>
+                <!-- Italian -->
+                <button onclick="selectLanguage('it', 'Italian')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">Italiano</button>
+                <!-- Bengali -->
+                <button onclick="selectLanguage('bn', 'Bengali')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">বাংলা (Bengali)</button>
+                <!-- Punjabi -->
+                <button onclick="selectLanguage('pa', 'Punjabi')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">ਪੰਜਾਬੀ (Punjabi)</button>
+                <!-- Indonesian -->
+                <button onclick="selectLanguage('id', 'Indonesian')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">Bahasa Indonesia</button>
+                <!-- Malay -->
+                <button onclick="selectLanguage('ms', 'Malay')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">Bahasa Melayu</button>
+                <!-- Korean -->
+                <button onclick="selectLanguage('ko', 'Korean')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">한국어 (Korean)</button>
+                <!-- Thai -->
+                <button onclick="selectLanguage('th', 'Thai')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">ไทย (Thai)</button>
+                <!-- Vietnamese -->
+                <button onclick="selectLanguage('vi', 'Vietnamese')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">Tiếng Việt</button>
+                <!-- Dutch -->
+                <button onclick="selectLanguage('nl', 'Dutch')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">Nederlands</button>
+                <!-- Swedish -->
+                <button onclick="selectLanguage('sv', 'Swedish')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">Svenska</button>
+                <!-- Polish -->
+                <button onclick="selectLanguage('pl', 'Polish')" class="lang-item text-left px-3 py-2 rounded-xl border border-gold-500/20 bg-botanical-card text-gray-200 text-xs hover:border-gold-400 hover:text-gold-300 transition-all">Polski</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRANSLATION & MODAL CONTROLLER SCRIPT -->
+    <script type="text/javascript">
+        // Initialize hidden Google Translate Widget
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,ur,ar,hi,es,fr,de,zh-CN,ja,ru,fa,tr,pt,it,bn,pa,id,ms,ko,th,vi,nl,sv,pl',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        // Toggle Language Modal
+        function toggleLanguageModal() {
+            const modal = document.getElementById('langModal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                }, 10);
+            } else {
+                modal.classList.add('opacity-0');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // Trigger Google Translation from custom modal item
+        function selectLanguage(langCode, langName, isUrdu = false) {
+            document.getElementById('currentLangLabel').innerText = langName;
+            
+            // Toggle Urdu Nastaliq font mode across document
+            if (isUrdu || langCode === 'ur') {
+                document.body.classList.add('lang-ur');
+            } else {
+                document.body.classList.remove('lang-ur');
+            }
+
+            // Execute Google Translation bridge
+            const selectElem = document.querySelector('.goog-te-combo');
+            if (selectElem) {
+                selectElem.value = langCode;
+                selectElem.dispatchEvent(new Event('change'));
+            }
+
+            // Close Modal
+            toggleLanguageModal();
+        }
+
+        // Search Filter for Languages in Modal
+        function filterLanguages() {
+            const query = document.getElementById('langSearch').value.toLowerCase();
+            const items = document.querySelectorAll('.lang-item');
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
