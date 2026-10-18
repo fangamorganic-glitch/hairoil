@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fangam Organic - Pure Organic Ubtan Soap</title>
+
+  <!-- Google Fonts: Inter, Cinzel & Noto Nastaliq Urdu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #0a140d;
+      --bg-card: #132217;
+      --border-gold: #fbc02d;
+      --gold-light: #fff59d;
+      --ubtan-primary: #fdd835;
+      --ubtan-accent: #f57f17;
+      --ubtan-glow: #ffee58;
+      --text-main: #faf8f5;
+      --text-muted: #c9cca0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Urdu Noto Nastaliq Font & RTL Support */
+    body.lang-ur, 
+    body.lang-ur * {
+      font-family: 'Noto Nastaliq Urdu', 'Plus Jakarta Sans', serif !important;
+      direction: rtl;
+      text-align: right;
+    }
+
+    body.lang-ur .social-links {
+      flex-direction: row-reverse;
+    }
+
+    body.lang-ur .card-header,
+    body.lang-ur .card-list li,
+    body.lang-ur .benefit-item h4 {
+      flex-direction: row;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: rgba(10, 20, 13, 0.95);
+      border-bottom: 1px solid rgba(253, 216, 53, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      padding: 14px 24px;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .brand-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 1px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .social-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(253, 216, 53, 0.15);
+      border: 1px solid var(--ubtan-primary);
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: var(--ubtan-primary);
+      color: var(--bg-dark);
+      transform: translateY(-3px);
+    }
+
+    /* Clean Language Switcher Button */
+    .lang-btn {
+      background: linear-gradient(135deg, var(--ubtan-primary), var(--ubtan-accent));
+      border: 1px solid var(--border-gold);
+      color: var(--bg-dark);
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(253, 216, 53, 0.3);
+    }
+
+    .lang-btn:hover {
+      background: var(--gold-light);
+      color: var(--bg-dark);
+      transform: scale(1.03);
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .product-badge {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 20px;
+      background: rgba(253, 216, 53, 0.18);
+      border: 1px solid var(--ubtan-primary);
+      color: var(--ubtan-glow);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .product-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem;
+      color: var(--gold-light);
+      margin-bottom: 15px;
+      text-shadow: 0 0 20px rgba(253, 216, 53, 0.3);
+    }
+
+    .product-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto 30px;
+    }
+
+    /* Product Image Container with Sticker Border Style */
+    .product-image-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
+    }
+
+    .product-image-container {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(253, 216, 53, 0.35) 0%, rgba(10, 20, 13, 0.95) 80%);
+      border: 6px solid var(--gold-light);
+      outline: 2px solid var(--ubtan-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 35px rgba(253, 216, 53, 0.25);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Placeholder style if image fails or before user sets image URL */
+    .product-image-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product-image-placeholder i {
+      font-size: 5.5rem;
+      color: var(--ubtan-primary);
+      filter: drop-shadow(0 0 15px rgba(253, 216, 53, 0.6));
+    }
+
+    .product-image-placeholder span {
+      color: var(--gold-light);
+      font-weight: 700;
+      font-size: 1.2rem;
+      font-family: 'Cinzel', serif;
+    }
+
+    /* Content Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(253, 216, 53, 0.3);
+      border-radius: 16px;
+      padding: 30px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--border-gold);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(253, 216, 53, 0.2);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(251, 192, 45, 0.25);
+      padding-bottom: 12px;
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(253, 216, 53, 0.2);
+      color: var(--ubtan-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      color: var(--gold-light);
+    }
+
+    .card-list {
+      list-style: none;
+    }
+
+    .card-list li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text-main);
+    }
+
+    .card-list li i {
+      color: var(--ubtan-primary);
+      margin-top: 4px;
+    }
+
+    /* Full Width Benefits Grid */
+    .full-width-card {
+      background: linear-gradient(135deg, rgba(30, 42, 25, 0.9), rgba(10, 20, 13, 0.95));
+      border: 1px solid var(--border-gold);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .benefit-item {
+      background: rgba(10, 20, 13, 0.75);
+      border: 1px solid rgba(253, 216, 53, 0.3);
+      padding: 22px;
+      border-radius: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .benefit-item:hover {
+      border-color: var(--ubtan-primary);
+      background: rgba(253, 216, 53, 0.12);
+    }
+
+    .benefit-item h4 {
+      color: var(--gold-light);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.05rem;
+    }
+
+    .benefit-item p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      background: #040805;
+      border-top: 1px solid rgba(253, 216, 53, 0.2);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Google Translate Hidden Element */
+    #google_translate_element {
+      display: none !important;
+    }
+
+    .goog-te-banner-frame,
+    .goog-te-balloon-frame {
+      display: none !important;
+    }
+
+    body {
+      top: 0 !important;
+    }
+
+    /* Modal Overlay for Language Selection */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--bg-card);
+      border: 2px solid var(--border-gold);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 550px;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+    }
+
+    .modal-header {
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(253, 216, 53, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-header h3 {
+      color: var(--gold-light);
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .close-btn:hover {
+      color: var(--gold-light);
+    }
+
+    .search-box {
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(253, 216, 53, 0.2);
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: var(--bg-dark);
+      border: 1px solid var(--ubtan-primary);
+      color: var(--text-main);
+      outline: none;
+      font-size: 0.95rem;
+    }
+
+    .language-list {
+      padding: 20px;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .lang-item {
+      padding: 12px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(253, 216, 53, 0.2);
+      color: var(--text-main);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .lang-item.featured {
+      background: rgba(253, 216, 53, 0.3);
+      border-color: var(--ubtan-primary);
+      color: var(--gold-light);
+      font-weight: bold;
+    }
+
+    .lang-item:hover {
+      border-color: var(--border-gold);
+      background: rgba(253, 216, 53, 0.25);
+      color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google Translate Hidden Div -->
+  <div id="google_translate_element"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="#" class="brand-logo">
+        <i class="fa-solid fa-mortar-pestle" style="color: var(--ubtan-glow); font-size: 1.5rem;"></i>
+        <span class="brand-name">Fangam Organic</span>
+      </a>
+
+      <div class="social-links">
+        <a href="https://www.facebook.com/fangamorganic" target="_blank" class="social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/fangamorganic" target="_blank" class="social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@fangamorganic" target="_blank" class="social-icon" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@fangamorganic" target="_blank" class="social-icon" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+
+        <!-- Clean Language Switcher Button -->
+        <button class="lang-btn" id="openLangBtn">
+          <i class="fa-solid fa-globe"></i>
+          <span>Language / زبان</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-container">
+    
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <span class="product-badge">100% PURE & BOTANICAL HERBAL FORMULA</span>
+      <h1 class="product-title">Pure Organic Ubtan Soap</h1>
+      <p class="product-subtitle">Time-Honored Ayurvedic Blend Infused with Turmeric, Sandalwood, Gram Flour & Golden Botanical Extracts for Radiant Skin Whitening & Deep Natural Glow.</p>
+
+      <!-- Soap Product Image Placeholder Box -->
+      <div class="product-image-wrapper">
+        <div class="product-image-container">
+          <!-- User can easily replace src URL below once Ubtan soap image is ready -->
+          <img src="YOUR_UBTAN_IMAGE_URL_HERE.jpg" alt="Fangam Organic Ubtan Soap" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          
+          <div class="product-image-placeholder" style="display: none;">
+            <i class="fa-solid fa-mortar-pestle"></i>
+            <span>Fangam Organic<br>UBTAN SOAP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="cards-grid">
+      
+      <!-- Key Pure Ingredients -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
+          <h3 class="card-title">Pure Ingredients</h3>
+        </div>
+        <ul class="card-list">
+          <li><i class="fa-solid fa-check-circle"></i> <span>Organic Turmeric Root Extract (Haldi)</span></li>
+          <li><i class="fa-solid fa-check-circle"></i> <span>Sandalwood Powder (Chandan)</span></li>
+          <li><i class="fa-solid fa-check-circle"></i> <span>Chickpea Flour / Besan Granules</span></li>
+          <li><i class="fa-solid fa-check-circle"></i> <span>Pure Botanical Glycerine & Essential Oils</span></li>
+          <li><i class="fa-solid fa-check-circle"></i> <span>0% Sulphates, Parabens & Harmful Chemicals</span></li>
+        </ul>
+      </div>
+
+      <!-- Targeted Skin Problems -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon"><i class="fa-solid fa-sparkles"></i></div>
+          <h3 class="card-title">Specialized Skin Care</h3>
+        </div>
+        <ul class="card-list">
+          <li><i class="fa-solid fa-circle-dot"></i> <span><strong>Brightening & Whitening:</strong> Herbal ubtan active restores radiant skin glow.</span></li>
+          <li><i class="fa-solid fa-circle-dot"></i> <span><strong>Hyperpigmentation (چھائیاں):</strong> Fades freckles, spots & blemishes.</span></li>
+          <li><i class="fa-solid fa-circle-dot"></i> <span><strong>Tan Removal:</strong> Unveils fresh skin by clearing sun tan layers.</span></li>
+          <li><i class="fa-solid fa-circle-dot"></i> <span><strong>Complexion Smoothing:</strong> Evens out skin tone & smoothens texture.</span></li>
+        </ul>
+      </div>
+
+      <!-- How to Use & Routine -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon"><i class="fa-solid fa-shower"></i></div>
+          <h3 class="card-title">How To Use</h3>
+        </div>
+        <ul class="card-list">
+          <li><i class="fa-solid fa-droplet"></i> <span>Wet face & body with lukewarm water.</span></li>
+          <li><i class="fa-solid fa-droplet"></i> <span>Gently massage rich foam in circular motion for 1-2 mins.</span></li>
+          <li><i class="fa-solid fa-droplet"></i> <span>Allow organic herbal actives to penetrate skin layers.</span></li>
+          <li><i class="fa-solid fa-droplet"></i> <span>Rinse thoroughly. Use twice daily for best glow.</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Research-backed Key Benefits Section -->
+    <div class="full-width-card">
+      <h2 style="color: var(--gold-light); font-family: 'Cinzel', serif; text-align: center; margin-bottom: 10px;">
+        Proven Benefits of Traditional Ubtan Formulation
+      </h2>
+      <p style="text-align: center; color: var(--text-muted); max-width: 800px; margin: 0 auto;">
+        Traditional Ubtan blends powerful natural anti-inflammatory turmeric, soothing sandalwood, and fine botanical exfoliants for timeless skin beauty and natural radiance.
+      </p>
+
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <h4><i class="fa-solid fa-sun"></i> Anti-Inflammatory Turmeric</h4>
+          <p>Calms skin irritation, combats acne bacteria, and imparts a natural golden glow.</p>
+        </div>
+        <div class="benefit-item">
+          <h4><i class="fa-solid fa-feather"></i> Micro Exfoliating Scrub</h4>
+          <p>Finely ground gram flour lifts away dead cells without irritating delicate skin.</p>
+        </div>
+        <div class="benefit-item">
+          <h4><i class="fa-solid fa-bolt"></i> Soothing Sandalwood</h4>
+          <p>Cools the skin, refines open pores, and protects against environmental stress.</p>
+        </div>
+        <div class="benefit-item">
+          <h4><i class="fa-solid fa-face-smile"></i> Traditional Aroma</h4>
+          <p>Enchants senses with pure authentic herbal fragrance for a revitalizing bath.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 <strong>Fangam Organic</strong>. All rights reserved.</p>
+  </footer>
+
+  <!-- Language Selection Modal -->
+  <div class="modal-overlay" id="langModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Select Language / زبان منتخب کریں</h3>
+        <button class="close-btn" id="closeLangBtn">&times;</button>
+      </div>
+      <div class="search-box">
+        <input type="text" id="langSearch" placeholder="Search language... / زبان تلاش کریں">
+      </div>
+      <div class="language-list" id="languageList">
+        <div class="lang-item featured" onclick="translatePage('ur')">اردو (Urdu)</div>
+        <div class="lang-item" onclick="translatePage('en')">English</div>
+        <div class="lang-item" onclick="translatePage('ar')">العربية (Arabic)</div>
+        <div class="lang-item" onclick="translatePage('hi')">हिन्दी (Hindi)</div>
+        <div class="lang-item" onclick="translatePage('pa')">ਪੰਜਾਬੀ (Punjabi)</div>
+        <div class="lang-item" onclick="translatePage('es')">Español</div>
+        <div class="lang-item" onclick="translatePage('fr')">Français</div>
+        <div class="lang-item" onclick="translatePage('de')">Deutsch</div>
+        <div class="lang-item" onclick="translatePage('tr')">Türkçe</div>
+        <div class="lang-item" onclick="translatePage('fa')">فارسی</div>
+        <div class="lang-item" onclick="translatePage('zh-CN')">中文</div>
+        <div class="lang-item" onclick="translatePage('ja')">日本語</div>
+        <div class="lang-item" onclick="translatePage('ru')">Русский</div>
+        <div class="lang-item" onclick="translatePage('bn')">বাংলা</div>
+        <div class="lang-item" onclick="translatePage('ms')">Bahasa Melayu</div>
+        <div class="lang-item" onclick="translatePage('id')">Bahasa Indonesia</div>
+        <div class="lang-item" onclick="translatePage('it')">Italiano</div>
+        <div class="lang-item" onclick="translatePage('pt')">Português</div>
+        <div class="lang-item" onclick="translatePage('nl')">Nederlands</div>
+        <div class="lang-item" onclick="translatePage('pl')">Polski</div>
+        <div class="lang-item" onclick="translatePage('sv')">Svenska</div>
+        <div class="lang-item" onclick="translatePage('th')">ไทย</div>
+        <div class="lang-item" onclick="translatePage('vi')">Tiếng Việt</div>
+        <div class="lang-item" onclick="translatePage('ko')">한국어</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Translate Initialization Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'ur,en,ar,hi,pa,es,fr,de,tr,fa,zh-CN,ja,ru,bn,ms,id,it,pt,nl,pl,sv,th,vi,ko',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- Modal and Translation Handler JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const openBtn = document.getElementById('openLangBtn');
+      const closeBtn = document.getElementById('closeLangBtn');
+      const modal = document.getElementById('langModal');
+      const searchInput = document.getElementById('langSearch');
+
+      // Open Language Modal
+      openBtn.addEventListener('click', function() {
+        modal.classList.add('active');
+      });
+
+      // Close Language Modal
+      closeBtn.addEventListener('click', function() {
+        modal.classList.remove('active');
+      });
+
+      // Close modal on clicking outside content
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+        }
+      });
+
+      // Filter Languages in Search Input
+      searchInput.addEventListener('input', function() {
+        const filter = searchInput.value.toLowerCase();
+        const items = document.querySelectorAll('.lang-item');
+        items.forEach(function(item) {
+          const text = item.textContent.toLowerCase();
+          item.style.display = text.includes(filter) ? 'block' : 'none';
+        });
+      });
+    });
+
+    // Translate Page Logic Function
+    function translatePage(langCode) {
+      // Toggle Urdu Noto Nastaliq Font & RTL styling
+      if (langCode === 'ur') {
+        document.body.classList.add('lang-ur');
+      } else {
+        document.body.classList.remove('lang-ur');
+      }
+
+      // Trigger Google Translate Dropdown Select Event
+      const selectBox = document.querySelector('.goog-te-combo');
+      if (selectBox) {
+        selectBox.value = langCode;
+        selectBox.dispatchEvent(new Event('change'));
+      }
+
+      // Close the Modal Overlay
+      const modal = document.getElementById('langModal');
+      if (modal) {
+        modal.classList.remove('active');
+      }
+    }
+  </script>
+</body>
+</html>
