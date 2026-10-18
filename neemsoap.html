@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fangam Organic - Pure Organic Neem Soap</title>
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Inter, Cinzel & Noto Nastaliq Urdu -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -37,16 +37,28 @@
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
-    /* RTL Support for Urdu */
-    body.lang-ur {
+    /* Urdu Noto Nastaliq Font & RTL Support */
+    body.lang-ur, 
+    body.lang-ur * {
+      font-family: 'Noto Nastaliq Urdu', 'Plus Jakarta Sans', serif !important;
       direction: rtl;
       text-align: right;
-      font-family: 'Noto Nastaliq Urdu', 'Plus Jakarta Sans', sans-serif;
     }
 
-    /* Header & Social Navigation */
+    body.lang-ur .social-links {
+      flex-direction: row-reverse;
+    }
+
+    body.lang-ur .card-header,
+    body.lang-ur .card-list li,
+    body.lang-ur .benefit-item h4 {
+      flex-direction: row;
+    }
+
+    /* Header & Navigation */
     header {
       background: rgba(7, 19, 11, 0.95);
       border-bottom: 1px solid rgba(197, 160, 89, 0.3);
@@ -54,7 +66,7 @@
       top: 0;
       z-index: 1000;
       backdrop-filter: blur(10px);
-      padding: 12px 24px;
+      padding: 14px 24px;
     }
 
     .header-container {
@@ -63,6 +75,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
     }
 
     .brand-logo {
@@ -82,7 +96,7 @@
 
     .social-links {
       display: flex;
-      gap: 15px;
+      gap: 12px;
       align-items: center;
     }
 
@@ -106,24 +120,27 @@
       transform: translateY(-3px);
     }
 
-    /* Language Switcher Button */
+    /* Clean Language Switcher Button */
     .lang-btn {
       background: linear-gradient(135deg, #10381d, #1e562c);
       border: 1px solid var(--border-gold);
       color: var(--gold-light);
-      padding: 8px 16px;
+      padding: 8px 18px;
       border-radius: 20px;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 8px;
       font-weight: 600;
+      font-size: 0.95rem;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     .lang-btn:hover {
       background: var(--border-gold);
       color: var(--bg-dark);
+      transform: scale(1.03);
     }
 
     /* Main Container */
@@ -167,33 +184,34 @@
       margin: 0 auto 30px;
     }
 
-    /* Product Image Frame */
+    /* Product Image Container */
     .product-image-container {
       width: 100%;
       max-width: 450px;
-      height: 380px;
+      height: 320px;
       margin: 0 auto;
       border-radius: 20px;
-      background: radial-gradient(circle, rgba(16, 56, 29, 0.6) 0%, rgba(7, 19, 11, 0.9) 100%);
+      background: radial-gradient(circle, rgba(16, 56, 29, 0.8) 0%, rgba(7, 19, 11, 0.95) 100%);
       border: 2px solid var(--border-gold);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      gap: 15px;
     }
 
     .product-image-container i {
-      font-size: 5rem;
-      color: var(--neem-accent);
-      margin-bottom: 15px;
+      font-size: 5.5rem;
+      color: #81c784;
+      filter: drop-shadow(0 0 15px rgba(46, 125, 50, 0.5));
     }
 
     .product-image-container span {
       color: var(--gold-light);
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
     }
 
     /* Content Cards Grid */
@@ -264,7 +282,7 @@
       margin-top: 4px;
     }
 
-    /* Full Width Feature Section */
+    /* Full Width Benefits Grid */
     .full-width-card {
       background: linear-gradient(135deg, rgba(16, 56, 29, 0.4), rgba(13, 33, 20, 0.8));
       border: 1px solid var(--border-gold);
@@ -310,12 +328,13 @@
       font-size: 0.9rem;
     }
 
-    /* Hidden Google Translate Element */
+    /* Hide Default Google Translate Widget Frame */
     #google_translate_element {
-      display: none;
+      display: none !important;
     }
 
-    .goog-te-banner-frame {
+    .goog-te-banner-frame,
+    .goog-te-balloon-frame {
       display: none !important;
     }
 
@@ -323,19 +342,23 @@
       top: 0 !important;
     }
 
-    /* Language Modal */
+    /* Modal Overlay for Language Selection */
     .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(5px);
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
       display: none;
       justify-content: center;
       align-items: center;
       z-index: 2000;
+    }
+
+    .modal-overlay.active {
+      display: flex;
     }
 
     .modal-content {
@@ -343,15 +366,16 @@
       border: 2px solid var(--border-gold);
       border-radius: 20px;
       width: 90%;
-      max-width: 600px;
+      max-width: 550px;
       max-height: 80vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.8);
     }
 
     .modal-header {
-      padding: 20px;
+      padding: 18px 24px;
       border-bottom: 1px solid rgba(197, 160, 89, 0.2);
       display: flex;
       justify-content: space-between;
@@ -361,14 +385,20 @@
     .modal-header h3 {
       color: var(--gold-light);
       font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
     }
 
     .close-btn {
       background: none;
       border: none;
       color: var(--text-muted);
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       cursor: pointer;
+      line-height: 1;
+    }
+
+    .close-btn:hover {
+      color: var(--gold-light);
     }
 
     .search-box {
@@ -378,11 +408,13 @@
 
     .search-box input {
       width: 100%;
-      padding: 10px 15px;
-      border-radius: 8px;
+      padding: 12px 16px;
+      border-radius: 10px;
       background: var(--bg-dark);
       border: 1px solid var(--border-gold);
-      color: #fff;
+      color: var(--text-main);
+      outline: none;
+      font-size: 0.95rem;
     }
 
     .language-list {
@@ -390,24 +422,33 @@
       overflow-y: auto;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 10px;
+      gap: 12px;
     }
 
     .lang-item {
-      padding: 10px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid transparent;
+      padding: 12px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(197, 160, 89, 0.2);
       color: var(--text-main);
       cursor: pointer;
       text-align: center;
       transition: all 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .lang-item.featured {
+      background: rgba(46, 125, 50, 0.2);
+      border-color: var(--neem-accent);
+      color: var(--gold-light);
+      font-weight: bold;
     }
 
     .lang-item:hover {
       border-color: var(--border-gold);
-      background: rgba(197, 160, 89, 0.1);
+      background: rgba(197, 160, 89, 0.2);
       color: var(--gold-light);
+      transform: translateY(-2px);
     }
   </style>
 </head>
@@ -425,14 +466,15 @@
       </a>
 
       <div class="social-links">
-        <a href="https://www.facebook.com/fangamorganic" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/fangamorganic" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@fangamorganic" target="_blank" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
-        <a href="https://www.youtube.com/@fangamorganic" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.facebook.com/fangamorganic" target="_blank" class="social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/fangamorganic" target="_blank" class="social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@fangamorganic" target="_blank" class="social-icon" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@fangamorganic" target="_blank" class="social-icon" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
 
-        <button class="lang-btn" onclick="openLangModal()">
+        <!-- Clean Language Switcher Button -->
+        <button class="lang-btn" id="openLangBtn">
           <i class="fa-solid fa-globe"></i>
-          <span>Language</span>
+          <span>Language / زبان</span>
         </button>
       </div>
     </div>
@@ -447,17 +489,17 @@
       <h1 class="product-title">Fangam Organic Neem Soap</h1>
       <p class="product-subtitle">Authentic Ayurvedic Cold-Pressed Neem Formula Specially Designed for Acne, Skin Infections, and Deep Pore Cleansing.</p>
 
-      <!-- Placeholder Container for Soap Image -->
+      <!-- Soap Image Display Box -->
       <div class="product-image-container">
         <i class="fa-solid fa-soap"></i>
-        <span>Organic Neem Soap Image</span>
+        <span>Fangam Organic Neem Soap</span>
       </div>
     </div>
 
-    <!-- Features & Ingredients Cards Grid -->
+    <!-- Cards Grid -->
     <div class="cards-grid">
       
-      <!-- Key Ingredients Card -->
+      <!-- Key Ingredients -->
       <div class="card">
         <div class="card-header">
           <div class="card-icon"><i class="fa-solid fa-seedling"></i></div>
@@ -472,7 +514,7 @@
         </ul>
       </div>
 
-      <!-- Specialty for Skin Types -->
+      <!-- Targeted Skin Treatments -->
       <div class="card">
         <div class="card-header">
           <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
@@ -480,13 +522,13 @@
         </div>
         <ul class="card-list">
           <li><i class="fa-solid fa-circle-dot"></i> <span><strong>Acne & Pimples:</strong> Fights acne-causing bacteria.</span></li>
-          <li><i class="fa-solid fa-circle-dot"></i> <span><strong>Boils & Rash (پھوڑے، پھنسیاں):</strong> Relieves boils and skin eruptions.</span></li>
+          <li><i class="fa-solid fa-circle-dot"></i> <span><strong>Boils & Rash (پھوڑے، پھنسیاں):</strong> Relieves skin eruptions.</span></li>
           <li><i class="fa-solid fa-circle-dot"></i> <span><strong>Body Acne:</strong> Clears back and chest acne.</span></li>
-          <li><i class="fa-solid fa-circle-dot"></i> <span><strong>Oil Balance:</strong> Controls excessive facial oiliness.</span></li>
+          <li><i class="fa-solid fa-circle-dot"></i> <span><strong>Oil Control:</strong> Balances excessive facial oil.</span></li>
         </ul>
       </div>
 
-      <!-- How to Use / Skin Care Guide -->
+      <!-- Usage & Daily Care -->
       <div class="card">
         <div class="card-header">
           <div class="card-icon"><i class="fa-solid fa-hand-holding-droplet"></i></div>
@@ -494,39 +536,39 @@
         </div>
         <ul class="card-list">
           <li><i class="fa-solid fa-leaf"></i> <span>Gentle daily deep cleansing for all skin types.</span></li>
-          <li><i class="fa-solid fa-leaf"></i> <span>Natural protection against skin pollutants.</span></li>
-          <li><i class="fa-solid fa-leaf"></i> <span>Maintains natural skin hydration balance.</span></li>
-          <li><i class="fa-solid fa-leaf"></i> <span>Safe and effective for regular family use.</span></li>
+          <li><i class="fa-solid fa-leaf"></i> <span>Natural protection against environmental dirt.</span></li>
+          <li><i class="fa-solid fa-leaf"></i> <span>Maintains natural skin moisture balance.</span></li>
+          <li><i class="fa-solid fa-leaf"></i> <span>Safe and herbal for daily family routine.</span></li>
         </ul>
       </div>
 
     </div>
 
-    <!-- Full Width Neem Benefits Showcase -->
+    <!-- Full Width Neem Benefits -->
     <div class="full-width-card">
       <h2 style="color: var(--gold-light); font-family: 'Cinzel', serif; text-align: center; margin-bottom: 10px;">
-        Proven Natural Benefits of Organic Neem
+        Proven Benefits of Organic Neem
       </h2>
       <p style="text-align: center; color: var(--text-muted);">
-        Neem has been used in herbal skincare for centuries due to its powerful antibacterial and restorative properties.
+        Neem has been used in herbal skincare for centuries due to its natural antibacterial and healing properties.
       </p>
 
       <div class="benefits-grid">
         <div class="benefit-item">
-          <h4><i class="fa-solid fa-bug-slash"></i> Antibacterial Power</h4>
-          <p>Kills bacteria embedded deep inside skin pores to prevent recurring acne pimples.</p>
+          <h4><i class="fa-solid fa-bug-slash"></i> Antibacterial Action</h4>
+          <p>Kills deep-seated bacteria inside skin pores to prevent breakouts and pimples.</p>
         </div>
         <div class="benefit-item">
-          <h4><i class="fa-solid fa-wand-magic-sparkles"></i> Calms Skin Irritation</h4>
-          <p>Instantly calms redness, itching, heat rashes, and allergic skin conditions.</p>
+          <h4><i class="fa-solid fa-wand-magic-sparkles"></i> Calms Irritation</h4>
+          <p>Instantly relieves skin redness, itching, heat rash, and allergic breakouts.</p>
         </div>
         <div class="benefit-item">
-          <h4><i class="fa-solid fa-filter"></i> Deep Detoxification</h4>
-          <p>Removes dirt, environmental toxins, and dead skin cells without stripping natural moisture.</p>
+          <h4><i class="fa-solid fa-filter"></i> Deep Pore Detox</h4>
+          <p>Removes excess oil and toxins without stripping skin's natural moisture.</p>
         </div>
         <div class="benefit-item">
           <h4><i class="fa-solid fa-spa"></i> Even Skin Tone</h4>
-          <p>Helps fade acne scars, dark spots, and hyperpigmentation over regular use.</p>
+          <p>Promotes a healthy complexion and helps clear blemishes over time.</p>
         </div>
       </div>
     </div>
@@ -542,80 +584,101 @@
   <div class="modal-overlay" id="langModal">
     <div class="modal-content">
       <div class="modal-header">
-        <h3>Select Language</h3>
-        <button class="close-btn" onclick="closeLangModal()">&times;</button>
+        <h3>Select Language / زبان منتخب کریں</h3>
+        <button class="close-btn" id="closeLangBtn">&times;</button>
       </div>
       <div class="search-box">
-        <input type="text" id="langSearch" placeholder="Search language..." onkeyup="filterLanguages()">
+        <input type="text" id="langSearch" placeholder="Search language... / زبان تلاش کریں">
       </div>
       <div class="language-list" id="languageList">
-        <div class="lang-item" onclick="translatePage('ur', 'Urdu')">اردو (Urdu)</div>
-        <div class="lang-item" onclick="translatePage('en', 'English')">English</div>
-        <div class="lang-item" onclick="translatePage('ar', 'Arabic')">العربية (Arabic)</div>
-        <div class="lang-item" onclick="translatePage('hi', 'Hindi')">हिन्दी (Hindi)</div>
-        <div class="lang-item" onclick="translatePage('es', 'Spanish')">Español</div>
-        <div class="lang-item" onclick="translatePage('fr', 'French')">Français</div>
-        <div class="lang-item" onclick="translatePage('de', 'German')">Deutsch</div>
-        <div class="lang-item" onclick="translatePage('tr', 'Turkish')">Türkçe</div>
-        <div class="lang-item" onclick="translatePage('fa', 'Persian')">فارسی</div>
-        <div class="lang-item" onclick="translatePage('zh-CN', 'Chinese')">中文</div>
-        <div class="lang-item" onclick="translatePage('ja', 'Japanese')">日本語</div>
-        <div class="lang-item" onclick="translatePage('ru', 'Russian')">Русский</div>
-        <div class="lang-item" onclick="translatePage('pt', 'Portuguese')">Português</div>
-        <div class="lang-item" onclick="translatePage('it', 'Italian')">Italiano</div>
-        <div class="lang-item" onclick="translatePage('id', 'Indonesian')">Bahasa Indonesia</div>
-        <div class="lang-item" onclick="translatePage('bn', 'Bengali')">বাংলা</div>
-        <div class="lang-item" onclick="translatePage('pa', 'Punjabi')">ਪੰਜਾਬੀ</div>
-        <div class="lang-item" onclick="translatePage('ms', 'Malay')">Bahasa Melayu</div>
-        <div class="lang-item" onclick="translatePage('ko', 'Korean')">한국어</div>
-        <div class="lang-item" onclick="translatePage('vi', 'Vietnamese')">Tiếng Việt</div>
+        <div class="lang-item featured" onclick="translatePage('ur')">اردو (Urdu)</div>
+        <div class="lang-item" onclick="translatePage('en')">English</div>
+        <div class="lang-item" onclick="translatePage('ar')">العربية (Arabic)</div>
+        <div class="lang-item" onclick="translatePage('hi')">हिन्दी (Hindi)</div>
+        <div class="lang-item" onclick="translatePage('pa')">ਪੰਜਾਬੀ (Punjabi)</div>
+        <div class="lang-item" onclick="translatePage('es')">Español</div>
+        <div class="lang-item" onclick="translatePage('fr')">Français</div>
+        <div class="lang-item" onclick="translatePage('de')">Deutsch</div>
+        <div class="lang-item" onclick="translatePage('tr')">Türkçe</div>
+        <div class="lang-item" onclick="translatePage('fa')">فارسی</div>
+        <div class="lang-item" onclick="translatePage('zh-CN')">中文</div>
+        <div class="lang-item" onclick="translatePage('ja')">日本語</div>
+        <div class="lang-item" onclick="translatePage('ru')">Русский</div>
+        <div class="lang-item" onclick="translatePage('bn')">বাংলা</div>
+        <div class="lang-item" onclick="translatePage('ms')">Bahasa Melayu</div>
       </div>
     </div>
   </div>
 
-  <!-- Google Translate JS Engine -->
+  <!-- Google Translate Initialization Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        includedLanguages: 'ur,en,ar,hi,pa,es,fr,de,tr,fa,zh-CN,ja,ru,bn,ms',
         autoDisplay: false
       }, 'google_translate_element');
     }
   </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+  <!-- Modal and Translation Handler JavaScript -->
   <script>
-    function openLangModal() {
-      document.getElementById('langModal').style.display = 'flex';
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const openBtn = document.getElementById('openLangBtn');
+      const closeBtn = document.getElementById('closeLangBtn');
+      const modal = document.getElementById('langModal');
+      const searchInput = document.getElementById('langSearch');
 
-    function closeLangModal() {
-      document.getElementById('langModal').style.display = 'none';
-    }
-
-    function filterLanguages() {
-      let input = document.getElementById('langSearch').value.toLowerCase();
-      let items = document.querySelectorAll('.lang-item');
-      items.forEach(item => {
-        let text = item.innerText.toLowerCase();
-        item.style.display = text.includes(input) ? 'block' : 'none';
+      // Open Language Modal
+      openBtn.addEventListener('click', function() {
+        modal.classList.add('active');
       });
-    }
 
-    function translatePage(langCode, langName) {
+      // Close Language Modal
+      closeBtn.addEventListener('click', function() {
+        modal.classList.remove('active');
+      });
+
+      // Close modal on clicking outside content
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+        }
+      });
+
+      // Filter Languages in Search Input
+      searchInput.addEventListener('input', function() {
+        const filter = searchInput.value.toLowerCase();
+        const items = document.querySelectorAll('.lang-item');
+        items.forEach(function(item) {
+          const text = item.textContent.toLowerCase();
+          item.style.display = text.includes(filter) ? 'block' : 'none';
+        });
+      });
+    });
+
+    // Translate Page Logic Function
+    function translatePage(langCode) {
+      // Toggle Urdu Noto Nastaliq Font & RTL styling
       if (langCode === 'ur') {
         document.body.classList.add('lang-ur');
       } else {
         document.body.classList.remove('lang-ur');
       }
 
-      var select = document.querySelector('.goog-te-combo');
-      if, (select) {
-        select.value = langCode;
-        select.dispatchEvent(new Event('change'));
+      // Trigger Google Translate Dropdown Select Event
+      const selectBox = document.querySelector('.goog-te-combo');
+      if (selectBox) {
+        selectBox.value = langCode;
+        selectBox.dispatchEvent(new Event('change'));
       }
-      closeLangModal();
+
+      // Close the Modal Overlay
+      const modal = document.getElementById('langModal');
+      if (modal) {
+        modal.classList.remove('active');
+      }
     }
   </script>
 </body>
