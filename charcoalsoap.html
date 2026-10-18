@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fangam Organic - Pure Organic Charcoal Soap</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-charcoal: #0e1111;
+      --bg-card: #161a1d;
+      --bg-card-hover: #1b2024;
+      --border-gold: #c5a059;
+      --gold-light: #f3e5ab;
+      --charcoal-accent: #3a4146;
+      --green-glow: #2e7d32;
+      --text-main: #f0f4f1;
+      --text-muted: #9fa8a3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-charcoal);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: radial-gradient(circle at 50% 20%, rgba(46, 125, 50, 0.08) 0%, transparent 60%);
+    }
+
+    /* RTL Support for Urdu */
+    body.lang-ur {
+      direction: rtl;
+      text-align: right;
+      font-family: 'Noto Nastaliq Urdu', 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: rgba(14, 17, 17, 0.95);
+      border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      padding: 12px 24px;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .brand-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: 1px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .social-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(197, 160, 89, 0.1);
+      border: 1px solid var(--border-gold);
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: var(--border-gold);
+      color: var(--bg-charcoal);
+      transform: translateY(-3px);
+    }
+
+    .lang-btn {
+      background: linear-gradient(135deg, #1b2024, #2a3137);
+      border: 1px solid var(--border-gold);
+      color: var(--gold-light);
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .lang-btn:hover {
+      background: var(--border-gold);
+      color: var(--bg-charcoal);
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .product-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(197, 160, 89, 0.15);
+      border: 1px solid var(--border-gold);
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .product-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem;
+      color: var(--gold-light);
+      margin-bottom: 15px;
+    }
+
+    .product-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto 30px;
+    }
+
+    /* Product Image Display */
+    .product-image-container {
+      width: 100%;
+      max-width: 450px;
+      height: 380px;
+      margin: 0 auto;
+      border-radius: 20px;
+      background: radial-gradient(circle, #22282d 0%, #0e1111 100%);
+      border: 2px solid var(--border-gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      overflow: hidden;
+    }
+
+    .product-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-image-container i {
+      font-size: 5rem;
+      color: var(--gold-light);
+      margin-bottom: 15px;
+    }
+
+    .product-image-container span {
+      color: var(--gold-light);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    /* Grid Layout */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-
