@@ -310,7 +310,7 @@
             transform: translateY(-2px);
         }
 
-        /* --- Customer Reviews Section (Modified like Before/After style slider) --- */
+        /* --- Customer Reviews Section --- */
         .reviews-section {
             margin: 50px 0;
             background: var(--white);
@@ -659,11 +659,11 @@
                 Fangam Organic
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#pure-oils">Pure Oils</a></li>
-                <li><a href="#pure-shampoos">Shampoos</a></li>
-                <li><a href="#pure-soaps">Soaps</a></li>
-                <li><a href="#combo-offers">Special Offers</a></li>
-                <li><a href="#on-demand">On-Demand</a></li>
+                <li id="nav-pure-oils"><a href="#pure-oils">Pure Oils</a></li>
+                <li id="nav-pure-shampoos"><a href="#pure-shampoos">Shampoos</a></li>
+                <li id="nav-pure-soaps"><a href="#pure-soaps">Soaps</a></li>
+                <li id="nav-combo-offers"><a href="#combo-offers">Special Offers</a></li>
+                <li id="nav-on-demand"><a href="#on-demand">On-Demand</a></li>
                 <li><a href="https://fangamorganic.com/aboutus.html">About</a></li>
                 <li><a href="https://fangamorganic.com/contact-us.html">Contact</a></li>
             </ul>
@@ -783,12 +783,12 @@
             </div>
         </section>
 
-        <!-- Customer Reviews Section (Slider with Single or Double Image Support) -->
+        <!-- Customer Reviews Section -->
         <section class="reviews-section" id="reviewsSection">
             <h2 class="section-title"><i class="fa-solid fa-comments"></i> Customer Reviews</h2>
             <div class="reviews-slider-wrapper">
                 <div class="reviews-track" id="reviewsTrack">
-                    <!-- Review Card 1 (Double Image Example: Customer + Product Feedback) -->
+                    <!-- Review Card 1 -->
                     <div class="review-card">
                         <div class="review-img-container">
                             <div style="background-image: url('https://lh3.googleusercontent.com/d/15TKGJXkVCjcDsVxH_qceSYorSgWIKKyz');"></div>
@@ -801,7 +801,7 @@
                         <div class="review-author">Qamar Iqbal Khan, Sialkot</div>
                     </div>
 
-                    <!-- Review Card 2 (Single Image Example) -->
+                    <!-- Review Card 2 -->
                     <div class="review-card">
                         <div class="review-img-container single-img">
                             <div style="background-image: url('https://lh3.googleusercontent.com/d/1IQvcpmCbvLBnPqHsLZxVmOdSLXKEMJnb');"></div>
@@ -813,7 +813,7 @@
                         <div class="review-author">Malik Abdul Rehman, Sialkot</div>
                     </div>
 
-                    <!-- Review Card 3 (Double Image Example) -->
+                    <!-- Review Card 3 -->
                     <div class="review-card">
                         <div class="review-img-container">
                             <div style="background-image: url('https://lh3.googleusercontent.com/d/1nVxbBlcotxEjbQM1WwKj5DfKowYxjFcy');"></div>
@@ -826,7 +826,7 @@
                         <div class="review-author">Malik Muhammad Azad</div>
                     </div>
 
-                    <!-- Review Card 4 (Single Image Example) -->
+                    <!-- Review Card 4 -->
                     <div class="review-card">
                         <div class="review-img-container single-img">
                             <div style="background-image: url('https://lh3.googleusercontent.com/d/1dwOnTTUdz3pyhNcFl9Ui0JjetZWG7-X0');"></div>
@@ -900,12 +900,12 @@
             </div>
             <div class="footer-col">
                 <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#pure-oils">Pure Oils</a></li>
-                    <li><a href="#pure-shampoos">Shampoos</a></li>
-                    <li><a href="#pure-soaps">Soaps</a></li>
-                    <li><a href="#combo-offers">Special Offers</a></li>
-                    <li><a href="#on-demand">On-Demand</a></li>
+                <ul id="footer-quick-links">
+                    <li id="footer-pure-oils"><a href="#pure-oils">Pure Oils</a></li>
+                    <li id="footer-pure-shampoos"><a href="#pure-shampoos">Shampoos</a></li>
+                    <li id="footer-pure-soaps"><a href="#pure-soaps">Soaps</a></li>
+                    <li id="footer-combo-offers"><a href="#combo-offers">Special Offers</a></li>
+                    <li id="footer-on-demand"><a href="#on-demand">On-Demand</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -930,8 +930,108 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JavaScript & Backend Control Center -->
     <script>
+        /* ==========================================================================
+           BACKEND CONTROL CENTER (بیک اینڈ کنٹرول پینل)
+           آپ جب چاہیں یہاں true کو false کر کے کسی بھی سیکشن، ہیرو سلائیڈر،
+           اور ہیدر/فوٹر کے لنکس کو ایک ساتھ آن/آف کر سکتے ہیں۔
+           ========================================================================== */
+        const SITE_SETTINGS = {
+            sections: {
+                heroSlider: true,     // ہیرو سلائیڈر سیکشن
+                pureOils: true,       // پیور آئلز سیکشن
+                pureShampoos: false,  // پیور شیمپوز سیکشن (false کرنے سے ہیدر/فوٹر سے بھی ہٹ جائے گا)
+                pureSoaps: true,      // پیور سوپس سیکشن
+                comboOffers: true,    // سپیشل افز سیکشن
+                onDemand: true,       // آن ڈیمانڈ سیکشن
+                customerReviews: true,// کسٹمر ریویوز سیکشن
+                ourStory: true        // ہماری کہانی اور میڈیا سیکشن
+            },
+            heroSlides: {
+                slide1: true,         // پہلا سلائیڈر
+                slide2: true,         // دوسرا سلائیڈر
+                slide3: true,         // تیسرا سلائیڈر
+                slide4: true          // چوتھا سلائیڈر
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. Pure Oils Control
+            if (!SITE_SETTINGS.sections.pureOils) {
+                const el = document.getElementById('pure-oils');
+                if (el) el.style.display = 'none';
+                const navEl = document.getElementById('nav-pure-oils');
+                if (navEl) navEl.style.display = 'none';
+                const footEl = document.getElementById('footer-pure-oils');
+                if (footEl) footEl.style.display = 'none';
+            }
+
+            // 2. Pure Shampoos Control
+            if (!SITE_SETTINGS.sections.pureShampoos) {
+                const el = document.getElementById('pure-shampoos');
+                if (el) el.style.display = 'none';
+                const navEl = document.getElementById('nav-pure-shampoos');
+                if (navEl) navEl.style.display = 'none';
+                const footEl = document.getElementById('footer-pure-shampoos');
+                if (footEl) footEl.style.display = 'none';
+            }
+
+            // 3. Pure Soaps Control
+            if (!SITE_SETTINGS.sections.pureSoaps) {
+                const el = document.getElementById('pure-soaps');
+                if (el) el.style.display = 'none';
+                const navEl = document.getElementById('nav-pure-soaps');
+                if (navEl) navEl.style.display = 'none';
+                const footEl = document.getElementById('footer-pure-soaps');
+                if (footEl) footEl.style.display = 'none';
+            }
+
+            // 4. Combo Offers Control
+            if (!SITE_SETTINGS.sections.comboOffers) {
+                const el = document.getElementById('combo-offers');
+                if (el) el.style.display = 'none';
+                const navEl = document.getElementById('nav-combo-offers');
+                if (navEl) navEl.style.display = 'none';
+                const footEl = document.getElementById('footer-combo-offers');
+                if (footEl) footEl.style.display = 'none';
+            }
+
+            // 5. On-Demand Control
+            if (!SITE_SETTINGS.sections.onDemand) {
+                const el = document.getElementById('on-demand');
+                if (el) el.style.display = 'none';
+                const navEl = document.getElementById('nav-on-demand');
+                if (navEl) navEl.style.display = 'none';
+                const footEl = document.getElementById('footer-on-demand');
+                if (footEl) footEl.style.display = 'none';
+            }
+
+            // Other Sections Control
+            if (!SITE_SETTINGS.sections.heroSlider) {
+                const el = document.getElementById('heroSliderSection');
+                if (el) el.style.display = 'none';
+            }
+            if (!SITE_SETTINGS.sections.customerReviews) {
+                const el = document.getElementById('reviewsSection');
+                if (el) el.style.display = 'none';
+            }
+            if (!SITE_SETTINGS.sections.ourStory) {
+                const el = document.getElementById('about');
+                if (el) el.style.display = 'none';
+            }
+
+            // Hero Slides Control
+            const slideElements = document.querySelectorAll('.hero-slide');
+            slideElements.forEach(slide => {
+                const idx = slide.getAttribute('data-slide-index');
+                if (idx === '0' && !SITE_SETTINGS.heroSlides.slide1) slide.remove();
+                if (idx === '1' && !SITE_SETTINGS.heroSlides.slide2) slide.remove();
+                if (idx === '2' && !SITE_SETTINGS.heroSlides.slide3) slide.remove();
+                if (idx === '3' && !SITE_SETTINGS.heroSlides.slide4) slide.remove();
+            });
+        });
+
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => {
