@@ -85,7 +85,7 @@
             gap: 40px;
         }
 
-        /* Gallery Side with Proper Zoom Effect */
+        /* Gallery Side with Zoom */
         .product-gallery {
             background: var(--white);
             padding: 20px;
@@ -101,7 +101,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* ضروری ہے تاکہ زوم باہر نہ نکلے */
+            overflow: hidden;
             margin-bottom: 15px;
             position: relative;
             cursor: zoom-in;
@@ -110,11 +110,11 @@
             max-height: 90%;
             max-width: 90%;
             object-fit: contain;
-            transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1); /* فالتو جھٹکے کے بغیر ہموار زوم */
+            transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
             will-change: transform;
         }
         .main-img-box:hover img {
-            transform: scale(1.5); /* مکمل زوم ایفیکٹ */
+            transform: scale(1.5);
         }
         .thumbnail-track {
             display: flex;
@@ -413,7 +413,7 @@
 
     <!-- Main Product Section -->
     <main class="product-detail-container">
-        <!-- Gallery Side with Proper Zoom -->
+        <!-- Gallery Side with Zoom -->
         <div class="product-gallery">
             <div class="main-img-box">
                 <img id="mainProductImg" src="" alt="Product Image">
@@ -425,8 +425,8 @@
         <div class="product-info-side">
             <div>
                 <h1 class="product-title" id="productTitle">Loading...</h1>
-                <div class="product-rating">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (Verified Organic Product)
+                <div class="product-rating" id="productRatingBox">
+                    <!-- Rating & Reviews text will load dynamically -->
                 </div>
                 <p class="short-desc" id="productShortDesc">Loading description...</p>
 
@@ -474,8 +474,8 @@
         </div>
     </div>
 
-    <!-- Hair Growth Before / After Results -->
-    <section class="results-section">
+    <!-- Hair Growth Before / After Results Section -->
+    <section class="results-section" id="beforeAfterSection">
         <h2 style="color: var(--primary-green); font-size: 24px; margin-bottom: 15px;"><i class="fa-solid fa-chart-line"></i> Hair Growth Before & After Results</h2>
         <div class="results-grid">
             <div class="result-card">
@@ -506,7 +506,7 @@
     </section>
 
     <!-- Hair Oil Customer Reviews Section -->
-    <section class="reviews-section">
+    <section class="reviews-section" id="customerReviewsSection">
         <h2 style="color: var(--primary-green); font-size: 24px; margin-bottom: 15px;"><i class="fa-solid fa-comments"></i> Hair Oil Customer Reviews</h2>
         <div class="reviews-grid">
             <div class="review-card">
@@ -549,19 +549,30 @@
         <p>&copy; 2026 Fangam Organic. All Rights Reserved. Sialkot, Punjab, Pakistan.</p>
     </footer>
 
-    <!-- Product Configuration Database -->
+    <!-- ===================================================================================
+         BACKEND CONTROL CENTER & PRODUCT CONFIGURATION 
+         (یہاں سے آپ ہر چیز کو True/False کر کے آن/آف کر سکتے ہیں)
+         =================================================================================== -->
     <script>
         const CURRENT_PRODUCT = {
             name: "Fangam Signature Herbal Hair Oil",
+            reviewsText: "200+ Positive Reviews", // یہاں آپ جب چاہیں تعداد بدل سکتے ہیں (مثلا 300+ Positive Reviews)
             shortDesc: "100% natural ingredients crafted to stop hair fall, eliminate dandruff, and stimulate deep root baby hair growth with over 20 potent organic herbs.",
             ingredients: "Mustard Oil, Castor Oil, Coconut Oil, Sesame Oil, Kalonji, Meethi Dana, Flaxseeds, Amla, Bhringraj, Shikakai, and 20+ botanical herbs.",
             howToUse: "Massage gently into your scalp and hair roots for 10-15 minutes. Leave it for at least 2 hours (or overnight) before washing with a mild herbal shampoo.",
             
+            // کنٹرول پینل: یہاں سے جس سائز کو چاہیں True (آن) یا False (آف) کر دیں
             capacities: [
-                { id: "cap-1", name: "100ml Bachat Pack", oldPrice: "Rs. 1,250", price: 1000 },
-                { id: "cap-2", name: "150ml Classic Pack", oldPrice: "Rs. 1,800", price: 1500 },
-                { id: "cap-3", name: "200ml Prime Pack", oldPrice: "Rs. 2,200", price: 2000 }
+                { id: "cap-1", name: "100ml Bachat Pack", oldPrice: "Rs. 1,250", price: 1000, show: true },
+                { id: "cap-2", name: "150ml Classic Pack", oldPrice: "Rs. 1,800", price: 1500, show: true },
+                { id: "cap-3", name: "200ml Prime Pack", oldPrice: "Rs. 2,200", price: 2000, show: true }
             ],
+
+            // کنٹرول پینل: ہول سیل سیکشنز کو آن/آف کرنے کے لیے
+            sections: {
+                beforeAfter: true,      // True = بیفور/آفٹر رزلٹس نظر آئیں گے, False = غائب ہو جائیں گے
+                customerReviews: true   // True = کسٹمر ریویوز نظر آئेंगे, False = غائب ہو جائیں گے
+            },
 
             galleryViews: [
                 {
@@ -595,25 +606,41 @@
             document.getElementById('productIngredients').innerText = CURRENT_PRODUCT.ingredients;
             document.getElementById('productHowToUse').innerText = CURRENT_PRODUCT.howToUse;
 
+            // ریویوز اور اسٹارز کی سیٹنگ
+            let ratingBox = document.getElementById('productRatingBox');
+            ratingBox.innerHTML = `<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (${CURRENT_PRODUCT.reviewsText})`;
+
+            // کیپیسٹیز لوڈنگ (صرف وہ شو ہوں گی جن کا show: true ہوگا)
             let capContainer = document.getElementById('capacityOptionsContainer');
             capContainer.innerHTML = "";
             CURRENT_PRODUCT.capacities.forEach((cap, index) => {
-                let cardHTML = `
-                    <div class="capacity-card" onclick="toggleSelection(this)">
-                        <div class="capacity-info">
-                            <span class="cap-name">${cap.name}</span>
-                            <span class="cap-price"><span class="old-price">${cap.oldPrice}</span>Rs. ${cap.price.toLocaleString()}</span>
+                if (cap.show) {
+                    let cardHTML = `
+                        <div class="capacity-card" onclick="toggleSelection(this)">
+                            <div class="capacity-info">
+                                <span class="cap-name">${cap.name}</span>
+                                <span class="cap-price"><span class="old-price">${cap.oldPrice}</span>Rs. ${cap.price.toLocaleString()}</span>
+                            </div>
+                            <div class="quantity-control" onclick="event.stopPropagation()">
+                                <button class="qty-btn" onclick="updateQty('qty-${index}', -1)">-</button>
+                                <input type="text" id="qty-${index}" class="qty-input" value="0" readonly data-price="${cap.price}" data-name="${cap.name}">
+                                <button class="qty-btn" onclick="updateQty('qty-${index}', 1)">+</button>
+                            </div>
                         </div>
-                        <div class="quantity-control" onclick="event.stopPropagation()">
-                            <button class="qty-btn" onclick="updateQty('qty-${index}', -1)">-</button>
-                            <input type="text" id="qty-${index}" class="qty-input" value="0" readonly data-price="${cap.price}" data-name="${cap.name}">
-                            <button class="qty-btn" onclick="updateQty('qty-${index}', 1)">+</button>
-                        </div>
-                    </div>
-                `;
-                capContainer.innerHTML += cardHTML;
+                    `;
+                    capContainer.innerHTML += cardHTML;
+                }
             });
 
+            // سیکشنز کنٹرول (Before/After & Reviews On/Off)
+            if (!CURRENT_PRODUCT.sections.beforeAfter) {
+                document.getElementById('beforeAfterSection').style.display = 'none';
+            }
+            if (!CURRENT_PRODUCT.sections.customerReviews) {
+                document.getElementById('customerReviewsSection').style.display = 'none';
+            }
+
+            // گیلری تھمب نیلز لوڈنگ
             let thumbTrack = document.getElementById('thumbnailTrack');
             thumbTrack.innerHTML = "";
             CURRENT_PRODUCT.galleryViews.forEach((view, index) => {
@@ -648,6 +675,7 @@
 
         function updateQty(inputId, change) {
             const input = document.getElementById(inputId);
+            if (!input) return;
             let val = parseInt(input.value) + change;
             if (val < 0) val = 0;
             input.value = val;
@@ -662,8 +690,11 @@
         function calculateTotal() {
             let total = 0;
             CURRENT_PRODUCT.capacities.forEach((cap, index) => {
-                let qty = parseInt(document.getElementById(`qty-${index}`).value) || 0;
-                total += qty * cap.price;
+                let inputElement = document.getElementById(`qty-${index}`);
+                if (inputElement && cap.show) {
+                    let qty = parseInt(inputElement.value) || 0;
+                    total += qty * cap.price;
+                }
             });
             document.getElementById('totalAmount').innerText = "Rs. " + total.toLocaleString();
         }
@@ -673,11 +704,14 @@
             let orderDetails = [];
 
             CURRENT_PRODUCT.capacities.forEach((cap, index) => {
-                let qty = parseInt(document.getElementById(`qty-${index}`).value) || 0;
-                if (qty > 0) {
-                    let subTotal = qty * cap.price;
-                    total += subTotal;
-                    orderDetails.push(`- ${cap.name}: ${qty} Bottle(s) (Rs. ${subTotal})`);
+                let inputElement = document.getElementById(`qty-${index}`);
+                if (inputElement && cap.show) {
+                    let qty = parseInt(inputElement.value) || 0;
+                    if (qty > 0) {
+                        let subTotal = qty * cap.price;
+                        total += subTotal;
+                        orderDetails.push(`- ${cap.name}: ${qty} Bottle(s) (Rs. ${subTotal})`);
+                    }
                 }
             });
 
