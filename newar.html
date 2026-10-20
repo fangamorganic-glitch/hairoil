@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fangam Organic | 100% Pure Organic Hair & Skin Care</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f2419',     // Deepest Forest
+                            forest: '#1b3b2b',   // Primary Forest Green
+                            emerald: '#2e6f40',  // Emerald Highlight
+                            gold: '#d4af37',     // Premium Gold
+                            lightgold: '#f4e8c1',
+                            sand: '#fcfaf6',     // Warm luxury background
+                            sage: '#e8efe9',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Cinzel"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        [x-cloak] { display: none !important; }
+        
+        /* Custom scrollbars */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #2e6f40; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1b3b2b; }
+
+        /* Magnifying Lens / Zoom Styling */
+        .zoom-container {
+            position: relative;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+        
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+        }
+    </style>
+</head>
+
+<body class="bg-brand-sand text-slate-800 font-sans antialiased selection:bg-brand-gold selection:text-brand-dark"
+      x-data="shopApp()"
+      x-init="initApp()">
+
+    <!-- ================= ANNOUNCEMENT BAR ================= -->
+    <div class="bg-brand-dark text-brand-lightgold text-xs sm:text-sm py-2.5 px-4 text-center font-medium tracking-wide flex items-center justify-center gap-2 border-b border-brand-gold/20 sticky top-0 z-50">
+        <span class="inline-block animate-pulse text-brand-gold">🌿</span>
+        <span><strong>Free Nationwide Delivery</strong> on Orders Above PKR 3,000 | 100% Organic & Chemical Free</span>
+        <span class="hidden sm:inline-block text-brand-gold">✨</span>
+    </div>
+
+    <!-- ================= HEADER / NAVIGATION ================= -->
+    <header class="bg-brand-forest/95 backdrop-blur-md text-white sticky top-[37px] z-40 border-b border-white/10 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-brand-gold to-yellow-200 p-0.5 shadow-md group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-brand-dark rounded-full flex items-center justify-center text-brand-gold font-serif font-bold text-xl">
+                        F
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif font-bold text-xl sm:text-2xl tracking-wider text-white group-hover:text-brand-gold transition-colors">
+                        FANGAM <span class="text-brand-gold">ORGANIC</span>
+                    </span>
+                    <span class="text-[10px] text-brand-lightgold/80 tracking-widest uppercase -mt-1">Pure Botanical Care</span>
+                </div>
+            </a>
+
+            <!-- Category Navigation Links -->
+            <nav class="hidden md:flex items-center gap-10 text-sm font-bold tracking-wider uppercase">
+                <a href="#oils-section" class="hover:text-brand-gold transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-droplet text-brand-gold text-xs"></i> Oils
+                </a>
+                <a href="#shampoos-section" class="hover:text-brand-gold transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-pump-soap text-brand-gold text-xs"></i> Shampoos
+                </a>
+                <a href="#soaps-section" class="hover:text-brand-gold transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-soap text-brand-gold text-xs"></i> Soaps
+                </a>
+            </nav>
+
+            <!-- Actions: WhatsApp + Cart Drawer Trigger -->
+            <div class="flex items-center gap-3">
+                <a :href="'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent('Hello Fangam Organic! I would like to inquire about your organic products.')" 
+                   target="_blank"
+                   class="hidden sm:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-full text-xs font-bold tracking-wider shadow-md hover:shadow-emerald-600/30 transition-all">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span>WhatsApp</span>
+                </a>
+
+                <!-- Cart Button -->
+                <button @click="isCartOpen = true" 
+                        class="relative bg-white/10 hover:bg-white/20 p-3 rounded-full text-white transition-all focus:outline-none"
+                        aria-label="View Cart">
+                    <i class="fa-solid fa-bag-shopping text-lg text-brand-gold"></i>
+                    <span x-show="cartTotalItems > 0" 
+                          x-text="cartTotalItems"
+                          class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-brand-forest animate-bounce">
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Quick Sub-Bar -->
+        <div class="flex md:hidden justify-around py-2.5 bg-brand-dark/90 text-xs font-bold border-t border-white/10 tracking-wider uppercase text-brand-lightgold">
+            <a href="#oils-section" class="hover:text-white">Oils</a>
+            <span class="text-white/20">|</span>
+            <a href="#shampoos-section" class="hover:text-white">Shampoos</a>
+            <span class="text-white/20">|</span>
+            <a href="#soaps-section" class="hover:text-white">Soaps</a>
+        </div>
+    </header>
+
+    <!-- ================= SECTION 1: SIGNATURE OILS ================= -->
+    <section id="oils-section" class="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" x-data="productSection('oils')">
+        <div class="text-center max-w-3xl mx-auto mb-8">
+            <span class="text-brand-emerald font-bold text-xs uppercase tracking-widest bg-brand-sage px-3.5 py-1 rounded-full">Signature Hero Product</span>
+            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-dark mt-2">Fangam Signature Botanical Hair Oil</h2>
+            <p class="text-stone-600 text-sm mt-1">100% Organic herbal hair regrowth and anti-hairfall formula made with 20+ botanical cold-pressed extracts.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-4 sm:p-8 lg:p-10 shadow-xl border border-stone-200/80 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            <!-- LEFT: GALLERY WITH HOVER ZOOM & DYNAMIC VARIANT UPDATES -->
+            <div class="lg:col-span-7 flex flex-col-reverse sm:flex-row gap-4" x-data="{
+                zoomActive: false,
+                zoomX: 0,
+                zoomY: 0,
+                handleMouseMove(e) {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    this.zoomX = ((e.clientX - rect.left) / rect.width) * 100;
+                    this.zoomY = ((e.clientY - rect.top) / rect.height) * 100;
+                }
+            }">
+                <!-- Thumbnails -->
+                <div class="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-y-auto max-h-[500px] py-1">
+                    <template x-for="(img, idx) in currentVariant.images" :key="idx">
+                        <button @click="activeImgIndex = idx" 
+                                :class="activeImgIndex === idx ? 'border-brand-emerald ring-2 ring-brand-emerald/30 scale-95' : 'border-stone-200 opacity-70 hover:opacity-100'"
+                                class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border-2 overflow-hidden flex-shrink-0 transition-all bg-stone-100">
+                            <img :src="img" :alt="productData.title" class="w-full h-full object-cover">
+                        </button>
+                    </template>
+                </div>
+
+                <!-- Main Display Image with Zoom Lens -->
+                <div class="flex-1 rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 relative group zoom-container h-[380px] sm:h-[500px]"
+                     @mouseenter="zoomActive = true"
+                     @mouseleave="zoomActive = false"
+                     @mousemove="handleMouseMove($event)">
+                    
+                    <img :src="currentVariant.images[activeImgIndex]" 
+                         :alt="productData.title" 
+                         class="w-full h-full object-cover transition-transform duration-200"
+                         :style="zoomActive ? `transform: scale(2); transform-origin: ${zoomX}% ${zoomY}%;` : 'transform: scale(1); transform-origin: center;'">
+
+                    <div class="absolute bottom-4 right-4 bg-brand-dark/80 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full pointer-events-none flex items-center gap-1.5">
+                        <i class="fa-solid fa-magnifying-glass text-brand-gold"></i>
+                        <span class="hidden sm:inline">Hover to Zoom</span>
+                    </div>
+
+                    <div class="absolute top-4 left-4 bg-amber-500 text-white text-xs font-bold px-3.5 py-1.5 rounded-full shadow-lg uppercase tracking-wider flex items-center gap-1.5">
+                        <i class="fa-solid fa-fire"></i> #1 Best Seller
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: VARIANT SELECTOR & SHOPIFY CONVERSION PANEL -->
+            <div class="lg:col-span-5 flex flex-col justify-between">
+                <div>
+                    <!-- Rating -->
+                    <div class="flex items-center justify-between gap-2 mb-2">
+                        <span class="text-xs font-bold tracking-widest text-brand-emerald uppercase">100% Herbal Formula</span>
+                        <div class="flex items-center gap-1.5 text-amber-500 text-xs font-bold">
+                            <div class="flex text-amber-400">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-slate-600">(4.9/5 from 980+ reviews)</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl sm:text-3xl font-bold text-brand-dark mb-3" x-text="productData.title"></h3>
+                    <p class="text-stone-600 text-xs sm:text-sm leading-relaxed mb-6" x-text="productData.description"></p>
+
+                    <!-- Features checklist -->
+                    <div class="grid grid-cols-2 gap-2 mb-6 text-xs text-brand-forest font-semibold">
+                        <div class="bg-brand-sage/60 p-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-brand-emerald"></i> Stops Hairfall Fast
+                        </div>
+                        <div class="bg-brand-sage/60 p-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-brand-emerald"></i> Stimulates New Hair
+                        </div>
+                        <div class="bg-brand-sage/60 p-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-brand-emerald"></i> Cold-Pressed Oils
+                        </div>
+                        <div class="bg-brand-sage/60 p-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-brand-emerald"></i> No Mineral Oils
+                        </div>
+                    </div>
+
+                    <hr class="border-stone-200 mb-6">
+
+                    <!-- VARIANT / BOTTLE SIZE SELECTOR -->
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">Select Bottle Size (Click to switch pictures):</label>
+                            <span class="text-xs text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded">Save more on 250ml</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                            <template x-for="(variant, vIdx) in productData.variants" :key="vIdx">
+                                <button @click="selectVariant(vIdx)" 
+                                        :class="selectedVariantIdx === vIdx ? 'border-brand-emerald bg-brand-forest text-white shadow-md ring-2 ring-brand-emerald/40' : 'border-stone-200 bg-stone-50 text-slate-700 hover:border-brand-emerald'"
+                                        class="py-3 px-2 rounded-xl border text-center transition-all flex flex-col items-center justify-center">
+                                    <span class="text-xs font-bold" x-text="variant.size"></span>
+                                    <span class="text-[11px] opacity-90 mt-0.5" x-text="'PKR ' + variant.price.toLocaleString()"></span>
+                                </button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- PRICE DISPLAY -->
+                    <div class="flex items-baseline gap-3 mb-6 bg-stone-50 p-4 rounded-2xl border border-stone-200/80">
+                        <span class="text-3xl font-extrabold text-brand-dark" x-text="'PKR ' + currentVariant.price.toLocaleString()"></span>
+                        <span class="text-stone-400 line-through text-sm" x-text="'PKR ' + Math.round(currentVariant.price * 1.35).toLocaleString()"></span>
+                        <span class="bg-red-100 text-red-700 font-bold text-xs px-2.5 py-1 rounded-full ml-auto">SPECIAL OFF</span>
+                    </div>
+
+                    <!-- QUANTITY SELECTOR -->
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-700">Quantity:</span>
+                        <div class="flex items-center border border-stone-300 rounded-full bg-white shadow-sm">
+                            <button @click="qty = Math.max(1, qty - 1)" class="w-10 h-10 flex items-center justify-center text-slate-600 hover:bg-stone-100 rounded-l-full font-bold text-lg">-</button>
+                            <span class="w-12 text-center font-bold text-slate-800 text-base" x-text="qty"></span>
+                            <button @click="qty++" class="w-10 h-10 flex items-center justify-center text-slate-600 hover:bg-stone-100 rounded-r-full font-bold text-lg">+</button>
+                        </div>
+                        <span class="text-xs text-emerald-600 font-semibold flex items-center gap-1">
+                            <i class="fa-solid fa-circle text-[8px] animate-ping"></i> In Stock
+                        </span>
+                    </div>
+
+                    <!-- ACTION BUTTONS -->
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button @click="addCurrentToCart()" 
+                                class="flex-1 bg-brand-forest hover:bg-brand-dark text-white font-bold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group text-xs tracking-wider">
+                            <i class="fa-solid fa-bag-shopping group-hover:scale-110 transition-transform text-brand-gold"></i>
+                            <span>ADD TO CART</span>
+                        </button>
+
+                        <a :href="getWhatsAppBuyLink()" 
+                           target="_blank" 
+                           class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-6 rounded-2xl shadow-lg hover:shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 text-xs tracking-wider">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>BUY NOW VIA WHATSAPP</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 2: BOTANICAL SHAMPOO ================= -->
+    <section id="shampoos-section" class="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-stone-100/70 rounded-3xl my-8 border border-stone-200" x-data="productSection('shampoos')">
+        <div class="text-center max-w-3xl mx-auto mb-8">
+            <span class="text-brand-emerald font-bold text-xs uppercase tracking-widest bg-white px-3.5 py-1 rounded-full shadow-sm">Sulfate & Paraben Free</span>
+            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-dark mt-2">Fangam Organic Botanical Shampoo</h2>
+            <p class="text-stone-600 text-sm mt-1">Gentle daily cleanser enriched with Amla, Reetha, Shikakai, and Argan Oil for silky shine and smooth scalp.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-4 sm:p-8 lg:p-10 shadow-xl border border-stone-200/80 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            <!-- LEFT: GALLERY WITH HOVER ZOOM -->
+            <div class="lg:col-span-7 flex flex-col-reverse sm:flex-row gap-4" x-data="{
+                zoomActive: false,
+                zoomX: 0,
+                zoomY: 0,
+                handleMouseMove(e) {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    this.zoomX = ((e.clientX - rect.left) / rect.width) * 100;
+                    this.zoomY = ((e.clientY - rect.top) / rect.height) * 100;
+                }
+            }">
+                <!-- Thumbnails -->
+                <div class="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-y-auto max-h-[500px] py-1">
+                    <template x-for="(img, idx) in currentVariant.images" :key="idx">
+                        <button @click="activeImgIndex = idx" 
+                                :class="activeImgIndex === idx ? 'border-brand-emerald ring-2 ring-brand-emerald/30 scale-95' : 'border-stone-200 opacity-70 hover:opacity-100'"
+                                class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border-2 overflow-hidden flex-shrink-0 transition-all bg-stone-100">
+                            <img :src="img" :alt="productData.title" class="w-full h-full object-cover">
+                        </button>
+                    </template>
+                </div>
+
+                <!-- Main Display Image -->
+                <div class="flex-1 rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 relative group zoom-container h-[380px] sm:h-[500px]"
+                     @mouseenter="zoomActive = true"
+                     @mouseleave="zoomActive = false"
+                     @mousemove="handleMouseMove($event)">
+                    
+                    <img :src="currentVariant.images[activeImgIndex]" 
+                         :alt="productData.title" 
+                         class="w-full h-full object-cover transition-transform duration-200"
+                         :style="zoomActive ? `transform: scale(2); transform-origin: ${zoomX}% ${zoomY}%;` : 'transform: scale(1); transform-origin: center;'">
+
+                    <div class="absolute bottom-4 right-4 bg-brand-dark/80 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full pointer-events-none flex items-center gap-1.5">
+                        <i class="fa-solid fa-magnifying-glass text-brand-gold"></i>
+                        <span class="hidden sm:inline">Hover to Zoom</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: VARIANT SELECTOR -->
+            <div class="lg:col-span-5 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-2">
+                        <span class="text-xs font-bold tracking-widest text-brand-emerald uppercase">Chemical Free Cleaning</span>
+                        <div class="flex items-center gap-1.5 text-amber-500 text-xs font-bold">
+                            <div class="flex text-amber-400">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-slate-600">(4.8/5 from 420+ reviews)</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl sm:text-3xl font-bold text-brand-dark mb-3" x-text="productData.title"></h3>
+                    <p class="text-stone-600 text-xs sm:text-sm leading-relaxed mb-6" x-text="productData.description"></p>
+
+                    <!-- Features -->
+                    <div class="grid grid-cols-2 gap-2 mb-6 text-xs text-brand-forest font-semibold">
+                        <div class="bg-brand-sage/60 p-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-brand-emerald"></i> 0% Sulfates / Parabens
+                        </div>
+                        <div class="bg-brand-sage/60 p-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-brand-emerald"></i> Moisture Lock Formula
+                        </div>
+                        <div class="bg-brand-sage/60 p-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-brand-emerald"></i> Anti-Dandruff Action
+                        </div>
+                        <div class="bg-brand-sage/60 p-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-brand-emerald"></i> Color Safe Formula
+                        </div>
+                    </div>
+
+                    <hr class="border-stone-200 mb-6">
+
+                    <!-- VARIANT SELECTOR -->
+                    <div class="mb-6">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Select Shampoo Size (Click to switch pictures):</label>
+                        <div class="grid grid-cols-3 gap-2.5">
+                            <template x-for="(variant, vIdx) in productData.variants" :key="vIdx">
+                                <button @click="selectVariant(vIdx)" 
+                                        :class="selectedVariantIdx === vIdx ? 'border-brand-emerald bg-brand-forest text-white shadow-md ring-2 ring-brand-emerald/40' : 'border-stone-200 bg-stone-50 text-slate-700 hover:border-brand-emerald'"
+                                        class="py-3 px-2 rounded-xl border text-center transition-all flex flex-col items-center justify-center">
+                                    <span class="text-xs font-bold" x-text="variant.size"></span>
+                                    <span class="text-[11px] opacity-90 mt-0.5" x-text="'PKR ' + variant.price.toLocaleString()"></span>
+                                </button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- PRICE DISPLAY -->
+                    <div class="flex items-baseline gap-3 mb-6 bg-stone-50 p-4 rounded-2xl border border-stone-200/80">
+                        <span class="text-3xl font-extrabold text-brand-dark" x-text="'PKR ' + currentVariant.price.toLocaleString()"></span>
+                        <span class="text-stone-400 line-through text-sm" x-text="'PKR ' + Math.round(currentVariant.price * 1.3).toLocaleString()"></span>
+                        <span class="bg-red-100 text-red-700 font-bold text-xs px-2.5 py-1 rounded-full ml-auto">SPECIAL OFFER</span>
+                    </div>
+
+                    <!-- QUANTITY SELECTOR -->
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-700">Quantity:</span>
+                        <div class="flex items-center border border-stone-300 rounded-full bg-white shadow-sm">
+                            <button @click="qty = Math.max(1, qty - 1)" class="w-10 h-10 flex items-center justify-center text-slate-600 hover:bg-stone-100 rounded-l-full font-bold text-lg">-</button>
+                            <span class="w-12 text-center font-bold text-slate-800 text-base" x-text="qty"></span>
+                            <button @click="qty++" class="w-10 h-10 flex items-center justify-center text-slate-600 hover:bg-stone-100 rounded-r-full font-bold text-lg">+</button>
+                        </div>
+                    </div>
+
+                    <!-- ACTIONS -->
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button @click="addCurrentToCart()" 
+                                class="flex-1 bg-brand-forest hover:bg-brand-dark text-white font-bold py-4 px-6 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 group text-xs tracking-wider">
+                            <i class="fa-solid fa-bag-shopping group-hover:scale-110 transition-transform text-brand-gold"></i>
+                            <span>ADD TO CART</span>
+                        </button>
+
+                        <a :href="getWhatsAppBuyLink()" 
+                           target="_blank" 
+                           class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-6 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 text-xs tracking-wider">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>BUY NOW VIA WHATSAPP</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECTION 3: ORGANIC SOAPS ================= -->
+    <section id="soaps-section" class="py-10 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" x-data="productSection('soaps')">
+        <div class="text-center max-w-3xl mx-auto mb-8">
+            <span class="text-brand-emerald font-bold text-xs uppercase tracking-widest bg-brand-sage px-3.5 py-1 rounded-full">Artisan Handmade Bars</span>
+            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-dark mt-2">Fangam Botanical Organic Soap Bars</h2>
+            <p class="text-stone-600 text-sm mt-1">Hand-poured organic herbal soap bars designed for soft, glowing skin and deep skin nourishment.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-4 sm:p-8 lg:p-10 shadow-xl border border-stone-200/80 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            <!-- LEFT: GALLERY WITH HOVER ZOOM -->
+            <div class="lg:col-span-7 flex flex-col-reverse sm:flex-row gap-4" x-data="{
+                zoomActive: false,
+                zoomX: 0,
+                zoomY: 0,
+                handleMouseMove(e) {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    this.zoomX = ((e.clientX - rect.left) / rect.width) * 100;
+                    this.zoomY = ((e.clientY - rect.top) / rect.height) * 100;
+                }
+            }">
+                <!-- Thumbnails -->
+                <div class="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-y-auto max-h-[500px] py-1">
+                    <template x-for="(img, idx) in currentVariant.images" :key="idx">
+                        <button @click="activeImgIndex = idx" 
+                                :class="activeImgIndex === idx ? 'border-brand-emerald ring-2 ring-brand-emerald/30 scale-95' : 'border-stone-200 opacity-70 hover:opacity-100'"
+                                class="relative w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border-2 overflow-hidden flex-shrink-0 transition-all bg-stone-100">
+                            <img :src="img" :alt="productData.title" class="w-full h-full object-cover">
+                        </button>
+                    </template>
+                </div>
+
+                <!-- Main Display Image -->
+                <div class="flex-1 rounded-2xl overflow-hidden bg-stone-100 border border-stone-200 relative group zoom-container h-[380px] sm:h-[500px]"
+                     @mouseenter="zoomActive = true"
+                     @mouseleave="zoomActive = false"
+                     @mousemove="handleMouseMove($event)">
+                    
+                    <img :src="currentVariant.images[activeImgIndex]" 
+                         :alt="productData.title" 
+                         class="w-full h-full object-cover transition-transform duration-200"
+                         :style="zoomActive ? `transform: scale(2); transform-origin: ${zoomX}% ${zoomY}%;` : 'transform: scale(1); transform-origin: center;'">
+
+                    <div class="absolute bottom-4 right-4 bg-brand-dark/80 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full pointer-events-none flex items-center gap-1.5">
+                        <i class="fa-solid fa-magnifying-glass text-brand-gold"></i>
+                        <span class="hidden sm:inline">Hover to Zoom</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: VARIANT SELECTOR -->
+            <div class="lg:col-span-5 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-2">
+                        <span class="text-xs font-bold tracking-widest text-brand-emerald uppercase">Handcrafted Skin Treatment</span>
+                        <div class="flex items-center gap-1.5 text-amber-500 text-xs font-bold">
+                            <div class="flex text-amber-400">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <span class="text-slate-600">(4.9/5 from 310+ reviews)</span>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl sm:text-3xl font-bold text-brand-dark mb-3" x-text="productData.title"></h3>
+                    <p class="text-stone-600 text-xs sm:text-sm leading-relaxed mb-6" x-text="productData.description"></p>
+
+                    <!-- Features -->
+                    <div class="grid grid-cols-2 gap-2 mb-6 text-xs text-brand-forest font-semibold">
+                        <div class="bg-brand-sage/60 p-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-brand-emerald"></i> Deep Nourishing
+                        </div>
+                        <div class="bg-brand-sage/60 p-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-brand-emerald"></i> Clears Acne & Spots
+                        </div>
+                        <div class="bg-brand-sage/60 p-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-brand-emerald"></i> Raw Organic Butter
+                        </div>
+                        <div class="bg-brand-sage/60 p-2.5 rounded-xl flex items-center gap-2">
+                            <i class="fa-solid fa-check-circle text-brand-emerald"></i> All Skin Types
+                        </div>
+                    </div>
+
+                    <hr class="border-stone-200 mb-6">
+
+                    <!-- VARIANT SELECTOR -->
+                    <div class="mb-6">
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Select Soap Blend (Click to switch pictures):</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                            <template x-for="(variant, vIdx) in productData.variants" :key="vIdx">
+                                <button @click="selectVariant(vIdx)" 
+                                        :class="selectedVariantIdx === vIdx ? 'border-brand-emerald bg-brand-forest text-white shadow-md ring-2 ring-brand-emerald/40' : 'border-stone-200 bg-stone-50 text-slate-700 hover:border-brand-emerald'"
+                                        class="py-3 px-2 rounded-xl border text-center transition-all flex flex-col items-center justify-center">
+                                    <span class="text-xs font-bold" x-text="variant.size"></span>
+                                    <span class="text-[11px] opacity-90 mt-0.5" x-text="'PKR ' + variant.price.toLocaleString()"></span>
+                                </button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- PRICE DISPLAY -->
+                    <div class="flex items-baseline gap-3 mb-6 bg-stone-50 p-4 rounded-2xl border border-stone-200/80">
+                        <span class="text-3xl font-extrabold text-brand-dark" x-text="'PKR ' + currentVariant.price.toLocaleString()"></span>
+                        <span class="text-stone-400 line-through text-sm" x-text="'PKR ' + Math.round(currentVariant.price * 1.3).toLocaleString()"></span>
+                        <span class="bg-red-100 text-red-700 font-bold text-xs px-2.5 py-1 rounded-full ml-auto">SPECIAL OFFER</span>
+                    </div>
+
+                    <!-- QUANTITY SELECTOR -->
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-700">Quantity:</span>
+                        <div class="flex items-center border border-stone-300 rounded-full bg-white shadow-sm">
+                            <button @click="qty = Math.max(1, qty - 1)" class="w-10 h-10 flex items-center justify-center text-slate-600 hover:bg-stone-100 rounded-l-full font-bold text-lg">-</button>
+                            <span class="w-12 text-center font-bold text-slate-800 text-base" x-text="qty"></span>
+                            <button @click="qty++" class="w-10 h-10 flex items-center justify-center text-slate-600 hover:bg-stone-100 rounded-r-full font-bold text-lg">+</button>
+                        </div>
+                    </div>
+
+                    <!-- ACTIONS -->
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <button @click="addCurrentToCart()" 
+                                class="flex-1 bg-brand-forest hover:bg-brand-dark text-white font-bold py-4 px-6 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 group text-xs tracking-wider">
+                            <i class="fa-solid fa-bag-shopping group-hover:scale-110 transition-transform text-brand-gold"></i>
+                            <span>ADD TO CART</span>
+                        </button>
+
+                        <a :href="getWhatsAppBuyLink()" 
+                           target="_blank" 
+                           class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-6 rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2 text-xs tracking-wider">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            <span>BUY NOW VIA WHATSAPP</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= HOW TO USE & INGREDIENTS SECTION ================= -->
+    <section class="py-16 bg-brand-forest text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-brand-gold font-bold text-xs uppercase tracking-widest bg-white/10 px-3.5 py-1 rounded-full">Easy Application</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mt-2">How To Use Fangam Organic Products</h2>
+                <p class="text-stone-300 text-sm mt-1">Simple application steps for maximum hair regrowth and skin vitality results.</p>
+            </div>
+
+            <!-- Steps Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all">
+                    <div class="w-14 h-14 bg-brand-gold text-brand-dark rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">1</div>
+                    <h3 class="font-bold text-lg mb-2 text-brand-lightgold">Apply Signature Oil</h3>
+                    <p class="text-stone-300 text-xs leading-relaxed">Gently warm 10-15ml oil in palms and massage thoroughly into hair scalp for 10 minutes.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all">
+                    <div class="w-14 h-14 bg-brand-gold text-brand-dark rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">2</div>
+                    <h3 class="font-bold text-lg mb-2 text-brand-lightgold">Leave On Deeply</h3>
+                    <p class="text-stone-300 text-xs leading-relaxed">Allow the herbal nutrients to absorb deeply for 2-3 hours or leave overnight.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all">
+                    <div class="w-14 h-14 bg-brand-gold text-brand-dark rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">3</div>
+                    <h3 class="font-bold text-lg mb-2 text-brand-lightgold">Cleanse with Shampoo</h3>
+                    <p class="text-stone-300 text-xs leading-relaxed">Rinse hair with Fangam Botanical Shampoo for smooth, chemical-free cleanliness.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all">
+                    <div class="w-14 h-14 bg-brand-gold text-brand-dark rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">4</div>
+                    <h3 class="font-bold text-lg mb-2 text-brand-lightgold">Nourish with Soap</h3>
+                    <p class="text-stone-300 text-xs leading-relaxed">Use our handmade organic soap bar daily for soft, moisturized skin.</p>
+                </div>
+            </div>
+
+            <!-- Herbal Ingredients -->
+            <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/10">
+                <h3 class="text-center font-serif text-2xl font-bold text-brand-gold mb-8">Key Pure Organic Ingredients</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+                    <div class="bg-brand-dark/50 p-4 rounded-xl border border-white/5">
+                        <div class="text-3xl mb-2">🌿</div>
+                        <h4 class="font-bold text-sm text-white">Amla & Reetha</h4>
+                        <p class="text-[11px] text-stone-300">Scalp Health</p>
+                    </div>
+                    <div class="bg-brand-dark/50 p-4 rounded-xl border border-white/5">
+                        <div class="text-3xl mb-2">🌱</div>
+                        <h4 class="font-bold text-sm text-white">Shikakai</h4>
+                        <p class="text-[11px] text-stone-300">Natural Shine</p>
+                    </div>
+                    <div class="bg-brand-dark/50 p-4 rounded-xl border border-white/5">
+                        <div class="text-3xl mb-2">🖤</div>
+                        <h4 class="font-bold text-sm text-white">Kalonji Seeds</h4>
+                        <p class="text-[11px] text-stone-300">Hair Growth</p>
+                    </div>
+                    <div class="bg-brand-dark/50 p-4 rounded-xl border border-white/5">
+                        <div class="text-3xl mb-2">🍃</div>
+                        <h4 class="font-bold text-sm text-white">Bhringraj</h4>
+                        <p class="text-[11px] text-stone-300">Stop Hairfall</p>
+                    </div>
+                    <div class="bg-brand-dark/50 p-4 rounded-xl border border-white/5">
+                        <div class="text-3xl mb-2">🌰</div>
+                        <h4 class="font-bold text-sm text-white">Almond Extract</h4>
+                        <p class="text-[11px] text-stone-300">Root Strength</p>
+                    </div>
+                    <div class="bg-brand-dark/50 p-4 rounded-xl border border-white/5">
+                        <div class="text-3xl mb-2">🍯</div>
+                        <h4 class="font-bold text-sm text-white">Pure Honey</h4>
+                        <p class="text-[11px] text-stone-300">Skin Softening</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= BEFORE & AFTER RESULTS CAROUSEL ================= -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto" x-data="{
+        currentSlide: 0,
+        results: [
+            { before: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&q=80', after: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=500&q=80', name: 'Ayesha K.', duration: '4 Weeks Result', comment: 'My severe hair loss stopped by 90% within one month of using the signature oil.' },
+            { before: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500&q=80', after: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=500&q=80', name: 'Usman R.', duration: '8 Weeks Result', comment: 'Baby hair growth visible along my hairline. Truly remarkable organic formula!' },
+            { before: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=500&q=80', after: 'https://images.unsplash.com/photo-1562322140-8baeececf3df?w=500&q=80', name: 'Zainab M.', duration: '6 Weeks Result', comment: 'Combining the organic oil and shampoo gave my hair unbelievable volume and shine.' }
+        ]
+    }">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-brand-emerald font-bold text-xs uppercase tracking-widest bg-brand-sage px-3.5 py-1 rounded-full">Real Transformations</span>
+            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-dark mt-2">Before & After Growth Results</h2>
+            <p class="text-stone-600 text-sm mt-1">Verified customer hair transformations after using Fangam Organic products.</p>
+        </div>
+
+        <div class="relative bg-white rounded-3xl p-6 sm:p-8 border border-stone-200 shadow-xl max-w-4xl mx-auto">
+            <div class="overflow-hidden">
+                <div class="flex transition-transform duration-500 ease-out" :style="`transform: translateX(-${currentSlide * 100}%);`">
+                    <template x-for="(res, index) in results" :key="index">
+                        <div class="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+                            
+                            <!-- Images Side-by-side -->
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="relative rounded-2xl overflow-hidden border border-stone-200">
+                                    <span class="absolute top-2 left-2 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">BEFORE</span>
+                                    <img :src="res.before" alt="Before" class="w-full h-48 sm:h-64 object-cover">
+                                </div>
+                                <div class="relative rounded-2xl overflow-hidden border border-emerald-500 ring-2 ring-emerald-500/30">
+                                    <span class="absolute top-2 left-2 bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">AFTER</span>
+                                    <img :src="res.after" alt="After" class="w-full h-48 sm:h-64 object-cover">
+                                </div>
+                            </div>
+
+                            <!-- Text Description -->
+                            <div class="flex flex-col justify-center">
+                                <span class="text-xs font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-full w-max mb-3" x-text="res.duration"></span>
+                                <h3 class="text-xl font-bold text-brand-dark mb-2" x-text="res.name"></h3>
+                                <p class="text-stone-600 italic text-sm mb-4" x-text="'“' + res.comment + '”'"></p>
+                                <div class="flex items-center gap-1 text-amber-400 text-sm">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    <span class="text-xs text-stone-500 font-bold ml-1">Verified Buyer</span>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <button @click="currentSlide = (currentSlide === 0) ? results.length - 1 : currentSlide - 1" 
+                    class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white text-brand-dark rounded-full shadow-lg flex items-center justify-center border border-stone-200 transition-all">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button @click="currentSlide = (currentSlide === results.length - 1) ? 0 : currentSlide + 1" 
+                    class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white text-brand-dark rounded-full shadow-lg flex items-center justify-center border border-stone-200 transition-all">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- ================= CLIENT REVIEWS & FEEDBACK ================= -->
+    <section class="py-16 bg-brand-sand border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-emerald font-bold text-xs uppercase tracking-widest bg-brand-sage px-3.5 py-1 rounded-full">Customer Love</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-brand-dark mt-2">What Our Clients Say</h2>
+                <p class="text-stone-600 text-sm mt-1">Honest feedback from people who transformed their hair and skin care routine.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <template x-for="(rev, idx) in customerReviews" :key="idx">
+                    <div class="bg-white rounded-2xl p-6 border border-stone-200/80 shadow-md flex flex-col justify-between hover:-translate-y-1 transition-all">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <img :src="rev.avatar" :alt="rev.name" class="w-12 h-12 rounded-full object-cover border-2 border-brand-gold">
+                                    <div>
+                                        <h4 class="font-bold text-brand-dark text-sm" x-text="rev.name"></h4>
+                                        <span class="text-[11px] text-emerald-600 font-semibold flex items-center gap-1">
+                                            <i class="fa-solid fa-circle-check"></i> Verified Buyer
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex text-amber-400 text-xs">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <p class="text-stone-600 text-xs leading-relaxed mb-4" x-text="rev.comment"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FEATURED VIDEO SECTION ================= -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="bg-brand-dark rounded-3xl p-6 sm:p-10 border border-brand-gold/30 gold-glow text-center text-white">
+            <div class="max-w-3xl mx-auto mb-8">
+                <span class="text-brand-gold text-xs font-bold uppercase tracking-widest">Pure Handcrafted Process</span>
+                <h2 class="text-2xl sm:text-4xl font-serif font-bold text-white mt-1">Watch How Fangam Organic Is Prepared</h2>
+                <p class="text-stone-300 text-xs sm:text-sm mt-1">Our cold-pressed extractions maintain 100% nutrient density for rapid hair growth.</p>
+            </div>
+
+            <div class="relative w-full max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-2 border-brand-gold/40 aspect-video">
+                <iframe class="w-full h-full" 
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=sample" 
+                        title="Fangam Organic Product Video" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SHOPIFY-STYLE SLIDE-OUT CART DRAWER ================= -->
+    <div x-show="isCartOpen" 
+         x-cloak
+         class="fixed inset-0 z-50 overflow-hidden" 
+         role="dialog" 
+         aria-modal="true">
+        
+        <!-- Backdrop -->
+        <div x-show="isCartOpen" 
+             x-transition:enter="ease-in-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="ease-in-out duration-300"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             @click="isCartOpen = false" 
+             class="fixed inset-0 bg-brand-dark/70 backdrop-blur-sm transition-opacity"></div>
+
+        <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+            <div x-show="isCartOpen" 
+                 x-transition:enter="transform transition ease-in-out duration-300"
+                 x-transition:enter-start="translate-x-full"
+                 x-transition:enter-end="translate-x-0"
+                 x-transition:leave="transform transition ease-in-out duration-300"
+                 x-transition:leave-start="translate-x-0"
+                 x-transition:leave-end="translate-x-full"
+                 class="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
+                
+                <!-- Header -->
+                <div class="p-6 bg-brand-forest text-white flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-brand-gold text-lg"></i>
+                        <h2 class="text-lg font-bold">Your Shopping Cart</h2>
+                        <span class="bg-brand-gold text-brand-dark text-xs font-bold px-2 py-0.5 rounded-full" x-text="cartTotalItems"></span>
+                    </div>
+                    <button @click="isCartOpen = false" class="text-white hover:text-brand-gold p-1 text-xl">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <!-- Items List -->
+                <div class="p-6 overflow-y-auto flex-1 divide-y divide-stone-100">
+                    <template x-if="cart.length === 0">
+                        <div class="text-center py-16 text-stone-400">
+                            <i class="fa-solid fa-basket-shopping text-5xl mb-3 text-stone-300"></i>
+                            <p class="font-bold text-stone-600">Your Cart is Empty</p>
+                            <p class="text-xs mt-1">Select your desired products and volume sizes to begin.</p>
+                        </div>
+                    </template>
+
+                    <template x-for="(item, index) in cart" :key="index">
+                        <div class="py-4 flex gap-4 items-center">
+                            <img :src="item.image" :alt="item.title" class="w-16 h-16 rounded-xl object-cover bg-stone-100 border">
+                            <div class="flex-1">
+                                <h4 class="font-bold text-sm text-brand-dark" x-text="item.title"></h4>
+                                <p class="text-xs text-stone-500" x-text="'Variant / Size: ' + item.size"></p>
+                                <p class="text-xs font-bold text-brand-emerald mt-1" x-text="'PKR ' + (item.price * item.qty).toLocaleString()"></p>
+                                
+                                <div class="flex items-center gap-3 mt-2">
+                                    <div class="flex items-center border rounded-lg text-xs">
+                                        <button @click="updateCartQty(index, -1)" class="px-2 py-0.5 font-bold hover:bg-stone-100">-</button>
+                                        <span class="px-2 font-semibold" x-text="item.qty"></span>
+                                        <button @click="updateCartQty(index, 1)" class="px-2 py-0.5 font-bold hover:bg-stone-100">+</button>
+                                    </div>
+                                    <button @click="removeFromCart(index)" class="text-xs text-red-500 hover:text-red-700">
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Footer Checkout -->
+                <div class="p-6 bg-stone-50 border-t border-stone-200" x-show="cart.length > 0">
+                    <div class="flex justify-between items-center mb-2 text-sm font-bold text-slate-700">
+                        <span>Subtotal Total:</span>
+                        <span class="text-lg text-brand-dark" x-text="'PKR ' + cartSubtotal.toLocaleString()"></span>
+                    </div>
+                    <p class="text-[11px] text-emerald-600 mb-4 flex items-center gap-1">
+                        <i class="fa-solid fa-truck-fast"></i> Free Nationwide Express Shipping Included
+                    </p>
+
+                    <a :href="getCartWhatsAppCheckoutLink()" 
+                       target="_blank"
+                       class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg flex items-center justify-center gap-2 text-sm tracking-wide transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>CHECKOUT VIA WHATSAPP</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-brand-dark text-stone-300 py-12 px-4 sm:px-6 lg:px-8 border-t border-brand-gold/20">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div>
+                <span class="font-serif font-bold text-2xl text-white tracking-wider">FANGAM <span class="text-brand-gold">ORGANIC</span></span>
+                <p class="text-xs text-stone-400 mt-3 leading-relaxed">Pure 100% natural, chemical-free herbal oil, shampoo, and soap formulations for healthy hair regrowth and soft glowing skin.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white text-sm mb-3 uppercase tracking-wider">Product Categories</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#oils-section" class="hover:text-brand-gold">Signature Herbal Oil</a></li>
+                    <li><a href="#shampoos-section" class="hover:text-brand-gold">Organic Botanical Shampoo</a></li>
+                    <li><a href="#soaps-section" class="hover:text-brand-gold">Artisan Organic Soap Bars</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white text-sm mb-3 uppercase tracking-wider">Support Contact</h4>
+                <p class="text-xs leading-relaxed mb-2">Have a question? Chat with our herbal specialists on WhatsApp for instant order support.</p>
+                <p class="text-xs font-bold text-brand-gold"><i class="fa-solid fa-phone"></i> +92 300 1234567</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white text-sm mb-3 uppercase tracking-wider">Quality Guaranteed</h4>
+                <div class="flex gap-3 text-2xl text-brand-gold">
+                    <i class="fa-solid fa-leaf"></i>
+                    <i class="fa-solid fa-award"></i>
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-6 border-t border-white/10 text-center text-xs text-stone-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Fangam Organic Store. All Rights Reserved.</p>
+            <p>Built for High Conversion E-Commerce</p>
+        </div>
+    </footer>
+
+
+    <!-- ================= SCRIPT & DATA STRUCTURE ================= -->
+    <script>
+        // CENTRAL STORE DATABASE FOR EASY EDITING BY THE USER
+        const STORE_DATA = {
+            oils: {
+                id: 'oil-main',
+                title: 'Fangam Signature Herbal Hair Oil',
+                description: 'Cold-pressed magical hair oil enriched with Kalonji, Bhringraj, Amla, and Almonds to eliminate hair fall and stimulate fast thick regrowth.',
+                variants: [
+                    { 
+                        size: '100ml', 
+                        price: 1250, 
+                        images: [
+                            'https://images.unsplash.com/photo-1608248597263-000799965813?w=800&q=80',
+                            'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800&q=80',
+                            'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=800&q=80'
+                        ] 
+                    },
+                    { 
+                        size: '150ml', 
+                        price: 1750, 
+                        images: [
+                            'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800&q=80',
+                            'https://images.unsplash.com/photo-1608248597263-000799965813?w=800&q=80',
+                            'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=800&q=80'
+                        ] 
+                    },
+                    { 
+                        size: '200ml', 
+                        price: 2250, 
+                        images: [
+                            'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=800&q=80',
+                            'https://images.unsplash.com/photo-1608248597263-000799965813?w=800&q=80',
+                            'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800&q=80'
+                        ] 
+                    },
+                    { 
+                        size: '250ml', 
+                        price: 2750, 
+                        images: [
+                            'https://images.unsplash.com/photo-1608248597263-000799965813?w=800&q=80',
+                            'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=800&q=80',
+                            'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800&q=80'
+                        ] 
+                    }
+                ]
+            },
+            shampoos: {
+                id: 'shampoo-main',
+                title: 'Fangam Botanical Herbal Shampoo',
+                description: '100% SLS and Paraben free daily shampoo formula made with Shikakai, Reetha, and Neem extracts for soft, dandruff-free hair.',
+                variants: [
+                    { 
+                        size: '200ml', 
+                        price: 1100, 
+                        images: [
+                            'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=800&q=80',
+                            'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=80'
+                        ] 
+                    },
+                    { 
+                        size: '350ml', 
+                        price: 1600, 
+                        images: [
+                            'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=80',
+                            'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=800&q=80'
+                        ] 
+                    },
+                    { 
+                        size: '500ml', 
+                        price: 2100, 
+                        images: [
+                            'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=800&q=80',
+                            'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=80'
+                        ] 
+                    }
+                ]
+            },
+            soaps: {
+                id: 'soaps-main',
+                title: 'Fangam Artisan Handmade Soap Bars',
+                description: 'Handcrafted cold-process soap bars packed with essential oils and botanicals to restore glow, remove acne, and hydrate dry skin.',
+                variants: [
+                    { 
+                        size: 'Goat Milk & Honey', 
+                        price: 550, 
+                        images: [
+                            'https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=800&q=80',
+                            'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=800&q=80'
+                        ] 
+                    },
+                    { 
+                        size: 'Neem & Charcoal', 
+                        price: 500, 
+                        images: [
+                            'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=800&q=80',
+                            'https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=800&q=80'
+                        ] 
+                    },
+                    { 
+                        size: 'Saffron & Turmeric', 
+                        price: 600, 
+                        images: [
+                            'https://images.unsplash.com/photo-1607006344380-b6775a0824a7?w=800&q=80',
+                            'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=800&q=80'
+                        ] 
+                    }
+                ]
+            }
+        };
+
+        // Alpine Component for Individual Product Showcase
+        function productSection(categoryKey) {
+            return {
+                productData: STORE_DATA[categoryKey],
+                selectedVariantIdx: 0,
+                activeImgIndex: 0,
+                qty: 1,
+
+                get currentVariant() {
+                    return this.productData.variants[this.selectedVariantIdx];
+                },
+
+                selectVariant(idx) {
+                    this.selectedVariantIdx = idx;
+                    this.activeImgIndex = 0; // reset image thumbnail to first image of new variant
+                },
+
+                addCurrentToCart() {
+                    this.$root._x_dataStack.find(s => s.addToCart).addToCart(
+                        this.productData, 
+                        this.currentVariant, 
+                        this.qty
+                    );
+                },
+
+                getWhatsAppBuyLink() {
+                    const total = this.currentVariant.price * this.qty;
+                    const text = `Hello Fangam Organic!
+I would like to place an order:
+
+Item: ${this.productData.title}
+Variant / Size: ${this.currentVariant.size}
+Quantity: ${this.qty}
+Total Price: PKR ${total.toLocaleString()}
+
+Please confirm my order details!`;
+                    return 'https://wa.me/' + this.$root._x_dataStack.find(s => s.whatsappNumber).whatsappNumber + '?text=' + encodeURIComponent(text);
+                }
+            }
+        }
+
+        // Global Application State
+        function shopApp() {
+            return {
+                whatsappNumber: '923001234567', // Change to your active WhatsApp phone number
+                isCartOpen: false,
+                cart: [],
+
+                customerReviews: [
+                    {
+                        name: 'Ayesha Khan',
+                        avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80',
+                        comment: 'This oil is pure magic! My hair fall completely stopped in just 2 weeks. Ordering my second 250ml bottle now.'
+                    },
+                    {
+                        name: 'Dr. Hamza Ahmed',
+                        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80',
+                        comment: 'Great quality products with zero harsh chemicals. The botanical shampoo leaves scalp remarkably fresh.'
+                    },
+                    {
+                        name: 'Fatima Malik',
+                        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80',
+                        comment: 'The Goat Milk & Honey soap made my skin so smooth and hydrated. I highly recommend Fangam Organic!'
+                    }
+                ],
+
+                get cartTotalItems() {
+                    return this.cart.reduce((sum, item) => sum + item.qty, 0);
+                },
+
+                get cartSubtotal() {
+                    return this.cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                },
+
+                initApp() {
+                    console.log('Fangam Organic Store Initialized');
+                },
+
+                addToCart(product, variant, qty) {
+                    const existingIndex = this.cart.findIndex(i => i.id === product.id && i.size === variant.size);
+                    if (existingIndex > -1) {
+                        this.cart[existingIndex].qty += qty;
+                    } else {
+                        this.cart.push({
+                            id: product.id,
+                            title: product.title,
+                            size: variant.size,
+                            price: variant.price,
+                            image: variant.images[0],
+                            qty: qty
+                        });
+                    }
+                    this.isCartOpen = true;
+                },
+
+                updateCartQty(index, delta) {
+                    this.cart[index].qty += delta;
+                    if (this.cart[index].qty <= 0) {
+                        this.cart.splice(index, 1);
+                    }
+                },
+
+                removeFromCart(index) {
+                    this.cart.splice(index, 1);
+                },
+
+                getCartWhatsAppCheckoutLink() {
+                    let itemsList = '';
+                    this.cart.forEach((item, idx) => {
+                        itemsList += `${idx + 1}. ${item.title} (${item.size}) x ${item.qty} = PKR ${(item.price * item.qty).toLocaleString()}\n`;
+                    });
+
+                    const text = `Hello Fangam Organic!
+I would like to checkout my cart order:
+
+${itemsList}
+----------------------------
+Subtotal Total: PKR ${this.cartSubtotal.toLocaleString()}
+Payment Method: Cash on Delivery
+
+Please process my order shipping details!`;
+                    return 'https://wa.me/' + this.whatsappNumber + '?text=' + encodeURIComponent(text);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
