@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fangam Signature Herbal Shampoo - Fangam Organic</title>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --light-green: #4caf50;
+            --accent-green: #e8f5e9;
+            --dark-text: #2c3e50;
+            --light-bg: #f9fbf9;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            overflow-x: hidden;
+        }
+
+        /* --- Header --- */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo img {
+            height: 35px;
+            width: auto;
+        }
+        .back-home {
+            text-decoration: none;
+            color: var(--primary-green);
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+        .back-home:hover {
+            color: var(--light-green);
+        }
+
+        /* --- Main Product Section --- */
+        .product-detail-container {
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        /* Gallery Side with Zoom */
+        .product-gallery {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+        }
+        .main-img-box {
+            width: 100%;
+            height: 400px;
+            background: var(--accent-green);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+            cursor: zoom-in;
+        }
+        .main-img-box img {
+            max-height: 90%;
+            max-width: 90%;
+            object-fit: contain;
+            transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+            will-change: transform;
+        }
+        .main-img-box:hover img {
+            transform: scale(1.5);
+        }
+        .thumbnail-track {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+        }
+        .thumb-box {
+            width: 80px;
+            height: 80px;
+            background: var(--light-bg);
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .thumb-box.active, .thumb-box:hover {
+            border-color: var(--primary-green);
+        }
+        .thumb-box img {
+            max-height: 90%;
+            max-width: 90%;
+            object-fit: contain;
+        }
+
+        /* Info & Selection Side */
+        .product-info-side {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .product-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 10px;
+        }
+        .product-rating {
+            color: #f39c12;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .short-desc {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Capacity Selector Toggles */
+        .capacity-section {
+            margin-bottom: 25px;
+        }
+        .capacity-label {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--primary-green);
+        }
+        .capacity-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .capacity-card {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--light-bg);
+        }
+        .capacity-card.selected {
+            border-color: var(--primary-green);
+            background: var(--accent-green);
+        }
+        .capacity-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .cap-name {
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .cap-price {
+            font-size: 14px;
+            color: var(--primary-green);
+            font-weight: 700;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 12px;
+            margin-right: 8px;
+        }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .qty-btn {
+            background: #ddd;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .qty-input {
+            width: 35px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Total & Order Button */
+        .order-summary-box {
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-green);
+        }
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+        .btn-whatsapp-order {
+            background: #25d366;
+            color: #fff;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            text-decoration: none;
+        }
+        .btn-whatsapp-order:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
+        }
+
+        /* Dynamic Description Box */
+        .dynamic-desc-section, .static-info-section, .results-section, .reviews-section {
+            max-width: 1300px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .content-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+        }
+        .content-box h3 {
+            color: var(--primary-green);
+            font-size: 22px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .content-box p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Before/After & Reviews Grids */
+        .results-grid, .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .result-card, .review-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            text-align: center;
+            padding-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        .result-img-box {
+            display: flex;
+            height: 180px;
+            background: #ccc;
+        }
+        .result-img-box div {
+            flex: 1;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        .result-img-box span {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+        .result-card h4, .review-card h4 {
+            margin: 12px 0 5px;
+            font-size: 15px;
+            color: var(--primary-green);
+        }
+        .result-card p, .review-card p {
+            font-size: 13px;
+            color: #666;
+            padding: 0 10px;
+        }
+        .review-img-container {
+            display: flex;
+            height: 220px;
+            background: #eee;
+        }
+        .review-img-container.single-img {
+            display: block;
+        }
+        .review-img-container.single-img div {
+            width: 100%;
+            height: 100%;
+        }
+        .review-img-container div {
+            flex: 1;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        .review-stars {
+            color: #f39c12;
+            font-size: 13px;
+            margin: 12px 0 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: #192e1b;
+            color: #d1d5db;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 900px) {
+            .product-detail-container, .results-grid, .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="best.html" class="logo">
+                <img src="https://lh3.googleusercontent.com/d/1D8ZyCUA2QTIPatHd2oV8gxTMr_dPrrH3" alt="Logo">
+                Fangam Organic
+            </a>
+            <a href="best.html" class="back-home"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </header>
+
+    <!-- Main Product Section -->
+    <main class="product-detail-container">
+        <!-- Gallery Side with Zoom -->
+        <div class="product-gallery">
+            <div class="main-img-box">
+                <img id="mainProductImg" src="" alt="Shampoo Product Image">
+            </div>
+            <div class="thumbnail-track" id="thumbnailTrack"></div>
+        </div>
+
+        <!-- Info & Selection Side -->
+        <div class="product-info-side">
+            <div>
+                <h1 class="product-title" id="productTitle">Loading...</h1>
+                <div class="product-rating" id="productRatingBox"></div>
+                <p class="short-desc" id="productShortDesc">Loading description...</p>
+
+                <!-- Capacity Toggles and Quantities -->
+                <div class="capacity-section">
+                    <span class="capacity-label">Select Capacity & Quantity:</span>
+                    <div class="capacity-options" id="capacityOptionsContainer"></div>
+                </div>
+            </div>
+
+            <div>
+                <!-- Order Summary & Total -->
+                <div class="order-summary-box">
+                    <div class="total-row">
+                        <span>Total Amount:</span>
+                        <span id="totalAmount">Rs. 0</span>
+                    </div>
+                </div>
+
+                <!-- WhatsApp Order Button -->
+                <a href="#" id="whatsappOrderBtn" class="btn-whatsapp-order" onclick="sendWhatsAppOrder(event)">
+                    <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> Order via WhatsApp
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Dynamic Description Box -->
+    <div class="dynamic-desc-section">
+        <div class="content-box">
+            <h3 id="dynamicTitle"><i class="fa-solid fa-circle-info"></i> Overview</h3>
+            <p id="dynamicDesc">Select an image above to view specific details.</p>
+        </div>
+    </div>
+
+    <!-- Static Ingredients & How to Use -->
+    <div class="static-info-section">
+        <div class="content-box">
+            <h3><i class="fa-solid fa-seedling"></i> Complete Organic Ingredients</h3>
+            <p id="productIngredients">Loading ingredients...</p>
+        </div>
+        <div class="content-box">
+            <h3><i class="fa-solid fa-circle-check"></i> How to Use</h3>
+            <p id="productHowToUse">Loading instructions...</p>
+        </div>
+    </div>
+
+    <!-- Before / After Results Section -->
+    <section class="results-section" id="beforeAfterSection">
+        <h2 style="color: var(--primary-green); font-size: 24px; margin-bottom: 15px;"><i class="fa-solid fa-chart-line"></i> Herbal Shampoo Before & After Results</h2>
+        <div class="results-grid">
+            <div class="result-card">
+                <div class="result-img-box">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/1y-AA9qc2WQqb51M-jtEMwfVUPTS3uW5W');"><span>Before</span></div>
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/1dh-DMGjAUDAu0EsbOcsZH89gJl8iu64j');"><span>After 3 Washes</span></div>
+                </div>
+                <h4>Frizz Control & Smoothness</h4>
+                <p>Noticeable reduction in hair dryness and smooth silky hair texture after just 3 washes.</p>
+            </div>
+            <div class="result-card">
+                <div class="result-img-box">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/1xeDPnws2xjNy3OhNS-X79BM3eYX8BCau');"><span>Before</span></div>
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/13MKLHyFM4ajVnStq74h3O9PAAksdhk9Q');"><span>After 14 Days</span></div>
+                </div>
+                <h4>Deep Scalp Cleansing</h4>
+                <p>Cleanses natural oils and dirt without stripping hair moisture, strengthening root health.</p>
+            </div>
+            <div class="result-card">
+                <div class="result-img-box">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/1PR7_KbDpIfaCWBSvBVNaMUKmDPTCWVPR');"><span>Before</span></div>
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/1Li22Cjxt-xRIKcQf1c95dsUw4qYoZkLa');"><span>After 2 Weeks</span></div>
+                </div>
+                <h4>100% Dandruff Elimination</h4>
+                <p>Natural antibacterial extracts completely soothe itching and clear persistent flakes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section class="reviews-section" id="customerReviewsSection">
+        <h2 style="color: var(--primary-green); font-size: 24px; margin-bottom: 15px;"><i class="fa-solid fa-comments"></i> Herbal Shampoo Customer Reviews</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-img-container">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/15TKGJXkVCjcDsVxH_qceSYorSgWIKKyz');"></div>
+                </div>
+                <div class="review-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"My daughter used Fangam Organic Herbal Shampoo along with the hair oil. Her hair feels so soft, clean, and healthy. Excellent quality!"</p>
+                <div class="review-author" style="font-weight:600; color:var(--primary-green); font-size:14px;">Qamar Iqbal Khan, Sialkot</div>
+            </div>
+            <div class="review-card">
+                <div class="review-img-container">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/10w03sHRCarqoh-fhYassynGejwFJBtYA');"></div>
+                </div>
+                <div class="review-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"Best chemical-free shampoo! Gives great shine without drying out the scalp. Highly recommended for daily use."</p>
+                <div class="review-author" style="font-weight:600; color:var(--primary-green); font-size:14px;">Abdul Rehman, Sialkot</div>
+            </div>
+            <div class="review-card">
+                <div class="review-img-container single-img">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/1IQvcpmCbvLBnPqHsLZxVmOdSLXKEMJnb');"></div>
+                </div>
+                <div class="review-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"I bought Fangam Organic Herbal Shampoo for my family. Very mild, natural scent, and completely stopped itching and dandruff within days."</p>
+                <div class="review-author" style="font-weight:600; color:var(--primary-green); font-size:14px;">Malik Abdul Rehman, Sialkot</div>
+            </div>
+            <div class="review-card">
+                <div class="review-img-container">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/1nVxbBlcotxEjbQM1WwKj5DfKowYxjFcy');"></div>
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/1nVxbBlcotxEjbQM1WwKj5DfKowYxjFcy');"></div>
+                </div>
+                <div class="review-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"خالص جڑی بوٹیوں سے تیار کردہ فینگم آرگینک شیمپو۔ کیمیکل سے پاک، بالوں کو نرم و ملائم بناتا ہے اور بہترین نتائج دیتا ہے۔"</p>
+                <div class="review-author" style="font-weight:600; color:var(--primary-green); font-size:14px;">Malik Muhammad Azad</div>
+            </div>
+        </div>
+    </section>
+      
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Fangam Organic. All Rights Reserved. Sialkot, Punjab, Pakistan.</p>
+    </footer>
+
+    <!-- ===================================================================================
+         BACKEND CONTROL CENTER & PRODUCT CONFIGURATION 
+         (یہاں سے آپ نام، قیمتیں، کپیسٹیز اور سیکشنز کو اپنی مرضی سے بدل سکتے ہیں)
+         =================================================================================== -->
+    <script>
+        const CURRENT_PRODUCT = {
+            name: "Fangam Signature Herbal Shampoo",
+            reviewsText: "150+ Positive Reviews",
+            shortDesc: "100% SLS-free & Paraben-free organic herbal shampoo crafted with natural herbs to nourish roots, clear dandruff, and leave hair soft, smooth, and naturally shiny.",
+            ingredients: "Amla, Reetha, Shikakai, Aloe Vera Extract, Neem, Brahmi, Bhringraj, Hibiscus, Mulethi, Rose Water, and Botanical Herbal Extracts.",
+            howToUse: "Apply a generous amount of herbal shampoo to wet hair and scalp. Lather well and gently massage for 2-3 minutes. Rinse thoroughly with water. For best results, use after Fangam Signature Hair Oil.",
+            
+            // تینوں کنٹرول شدہ کپیسٹیز اور آپ کی بتائی گئی قیمتیں
+            capacities: [
+                { id: "cap-1", name: "200ml Bachat Pack", oldPrice: "Rs. 1,000", price: 750, show: true },
+                { id: "cap-2", name: "350ml Classic Pack", oldPrice: "Rs. 1,250", price: 1000, show: true },
+                { id: "cap-3", name: "500ml Prime Pack", oldPrice: "Rs. 1,800", price: 1500, show: true }
+            ],
+
+            // سیکشنز کنٹرول (True/False)
+            sections: {
+                beforeAfter: false,      // True = بیفور/آفٹر رزلٹس نظر آئیں گے
+                customerReviews: false   // True = کسٹمر ریویوز نظر آئیں گے
+            },
+
+            galleryViews: [
+                {
+                    img: "https://lh3.googleusercontent.com/d/1Lxq6-4nJsYJV2tZNZoKOCOYCbyFCKqqF",
+                    title: "Fangam Signature Herbal Shampoo Overview",
+                    desc: "Specially formulated with organic herbs like Reetha, Amla, and Shikakai to gently wash away dirt, excess oil, and impurities without stripping scalp moisture."
+                },
+                {
+                    img: "https://lh3.googleusercontent.com/d/1kjxUWW_CIETDVAP88ukszENhcGt8Itji",
+                    title: "SLS-Free & Chemical-Free Formula",
+                    desc: "Free from harmful sulfates, parabens, and harsh chemicals. Safe for everyday wash for men, women, and children."
+                },
+                {
+                    img: "https://lh3.googleusercontent.com/d/1fO-bzQjMLi721jYZOwyrwDMbvNJP8K2f",
+                    title: "Dandruff Relief & Scalp Protection",
+                    desc: "Enriched with anti-bacterial and anti-fungal extracts like Neem and Aloe Vera that effectively fight dandruff and soothe itchy scalp."
+                },
+                {
+                    img: "https://lh3.googleusercontent.com/d/17K7RnIOy6lvmdbYf5cpVbRP0bSG5-cr-",
+                    title: "Natural Gloss & Silkiness",
+                    desc: "Leaves your hair feeling noticeably soft, voluminous, and glossy with every single wash while strengthening weak strands."
+                }
+            ]
+        };
+
+        const WHATSAPP_NUMBER = "923000634445";
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('productTitle').innerText = CURRENT_PRODUCT.name;
+            document.getElementById('productShortDesc').innerText = CURRENT_PRODUCT.shortDesc;
+            document.getElementById('productIngredients').innerText = CURRENT_PRODUCT.ingredients;
+            document.getElementById('productHowToUse').innerText = CURRENT_PRODUCT.howToUse;
+
+            // ریویوز اور اسٹارز کی سیٹنگ
+            let ratingBox = document.getElementById('productRatingBox');
+            ratingBox.innerHTML = `<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (${CURRENT_PRODUCT.reviewsText})`;
+
+            // کیپیسٹیز لوڈنگ
+            let capContainer = document.getElementById('capacityOptionsContainer');
+            capContainer.innerHTML = "";
+            CURRENT_PRODUCT.capacities.forEach((cap, index) => {
+                if (cap.show) {
+                    let cardHTML = `
+                        <div class="capacity-card" onclick="toggleSelection(this)">
+                            <div class="capacity-info">
+                                <span class="cap-name">${cap.name}</span>
+                                <span class="cap-price"><span class="old-price">${cap.oldPrice}</span>Rs. ${cap.price.toLocaleString()}</span>
+                            </div>
+                            <div class="quantity-control" onclick="event.stopPropagation()">
+                                <button class="qty-btn" onclick="updateQty('qty-${index}', -1)">-</button>
+                                <input type="text" id="qty-${index}" class="qty-input" value="0" readonly data-price="${cap.price}" data-name="${cap.name}">
+                                <button class="qty-btn" onclick="updateQty('qty-${index}', 1)">+</button>
+                            </div>
+                        </div>
+                    `;
+                    capContainer.innerHTML += cardHTML;
+                }
+            });
+
+            // سیکشنز کنٹرول (Before/After & Reviews On/Off)
+            if (!CURRENT_PRODUCT.sections.beforeAfter) {
+                document.getElementById('beforeAfterSection').style.display = 'none';
+            }
+            if (!CURRENT_PRODUCT.sections.customerReviews) {
+                document.getElementById('customerReviewsSection').style.display = 'none';
+            }
+
+            // گیلری تھمب نیلز لوڈنگ
+            let thumbTrack = document.getElementById('thumbnailTrack');
+            thumbTrack.innerHTML = "";
+            CURRENT_PRODUCT.galleryViews.forEach((view, index) => {
+                let activeClass = index === 0 ? "active" : "";
+                let thumbHTML = `
+                    <div class="thumb-box ${activeClass}" onclick="changeProductView(${index})">
+                        <img src="${view.img}" alt="Thumbnail">
+                    </div>
+                `;
+                thumbTrack.innerHTML += thumbHTML;
+            });
+
+            changeProductView(0);
+        });
+
+        function changeProductView(index) {
+            let view = CURRENT_PRODUCT.galleryViews[index];
+            document.getElementById('mainProductImg').src = view.img;
+            document.getElementById('dynamicTitle').innerHTML = `<i class="fa-solid fa-circle-info"></i> ${view.title}`;
+            document.getElementById('dynamicDesc').innerText = view.desc;
+
+            const thumbs = document.querySelectorAll('.thumb-box');
+            thumbs.forEach((thumb, idx) => {
+                if (idx === index) thumb.classList.add('active');
+                else thumb.classList.remove('active');
+            });
+        }
+
+        function toggleSelection(cardElement) {
+            cardElement.classList.toggle('selected');
+        }
+
+        function updateQty(inputId, change) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            let val = parseInt(input.value) + change;
+            if (val < 0) val = 0;
+            input.value = val;
+
+            const card = input.closest('.capacity-card');
+            if (val > 0) card.classList.add('selected');
+            else card.classList.remove('selected');
+
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            CURRENT_PRODUCT.capacities.forEach((cap, index) => {
+                let inputElement = document.getElementById(`qty-${index}`);
+                if (inputElement && cap.show) {
+                    let qty = parseInt(inputElement.value) || 0;
+                    total += qty * cap.price;
+                }
+            });
+            document.getElementById('totalAmount').innerText = "Rs. " + total.toLocaleString();
+        }
+
+        function sendWhatsAppOrder(e) {
+            let total = 0;
+            let orderDetails = [];
+
+            CURRENT_PRODUCT.capacities.forEach((cap, index) => {
+                let inputElement = document.getElementById(`qty-${index}`);
+                if (inputElement && cap.show) {
+                    let qty = parseInt(inputElement.value) || 0;
+                    if (qty > 0) {
+                        let subTotal = qty * cap.price;
+                        total += subTotal;
+                        orderDetails.push(`- ${cap.name}: ${qty} Bottle(s) (Rs. ${subTotal})`);
+                    }
+                }
+            });
+
+            if (total === 0) {
+                e.preventDefault();
+                alert("براہ کرم کم از کم ایک پروڈکٹ کی مقدار (Quantity) منتخب کریں!");
+                return;
+            }
+
+            let message = `Hello, I want to place an order for *${CURRENT_PRODUCT.name}*:\n`;
+            message += orderDetails.join('\n') + `\n`;
+            message += `*Total Amount: Rs. ${total.toLocaleString()}*\n\nPlease confirm my order.`;
+
+            let encodedMessage = encodeURIComponent(message);
+            document.getElementById('whatsappOrderBtn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+        }
+    </script>
+</body>
+</html>
