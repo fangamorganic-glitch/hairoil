@@ -425,12 +425,10 @@
         <div class="product-info-side">
             <div>
                 <h1 class="product-title" id="productTitle">Loading...</h1>
-                <div class="product-rating" id="productRatingBox">
-                    <!-- Rating & Reviews text will load dynamically -->
-                </div>
+                <div class="product-rating" id="productRatingBox"></div>
                 <p class="short-desc" id="productShortDesc">Loading description...</p>
 
-                <!-- Capacity Toggles and Quantities (Dynamic) -->
+                <!-- Capacity Toggles and Quantities -->
                 <div class="capacity-section">
                     <span class="capacity-label">Select Capacity & Quantity:</span>
                     <div class="capacity-options" id="capacityOptionsContainer"></div>
@@ -474,7 +472,7 @@
         </div>
     </div>
 
-    <!-- Hair Wash Before / After Results Section -->
+    <!-- Before / After Results Section -->
     <section class="results-section" id="beforeAfterSection">
         <h2 style="color: var(--primary-green); font-size: 24px; margin-bottom: 15px;"><i class="fa-solid fa-chart-line"></i> Herbal Shampoo Before & After Results</h2>
         <div class="results-grid">
@@ -505,7 +503,7 @@
         </div>
     </section>
 
-    <!-- Shampoo Customer Reviews Section -->
+    <!-- Customer Reviews Section -->
     <section class="reviews-section" id="customerReviewsSection">
         <h2 style="color: var(--primary-green); font-size: 24px; margin-bottom: 15px;"><i class="fa-solid fa-comments"></i> Herbal Shampoo Customer Reviews</h2>
         <div class="reviews-grid">
@@ -517,4 +515,226 @@
                     <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 </div>
                 <p>"My daughter used Fangam Organic Herbal Shampoo along with the hair oil. Her hair feels so soft, clean, and healthy. Excellent quality!"</p>
-                <div class="review-author" style="font-
+                <div class="review-author" style="font-weight:600; color:var(--primary-green); font-size:14px;">Qamar Iqbal Khan, Sialkot</div>
+            </div>
+            <div class="review-card">
+                <div class="review-img-container">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/10w03sHRCarqoh-fhYassynGejwFJBtYA');"></div>
+                </div>
+                <div class="review-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"Best chemical-free shampoo! Gives great shine without drying out the scalp. Highly recommended for daily use."</p>
+                <div class="review-author" style="font-weight:600; color:var(--primary-green); font-size:14px;">Abdul Rehman, Sialkot</div>
+            </div>
+            <div class="review-card">
+                <div class="review-img-container single-img">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/1IQvcpmCbvLBnPqHsLZxVmOdSLXKEMJnb');"></div>
+                </div>
+                <div class="review-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"I bought Fangam Organic Herbal Shampoo for my family. Very mild, natural scent, and completely stopped itching and dandruff within days."</p>
+                <div class="review-author" style="font-weight:600; color:var(--primary-green); font-size:14px;">Malik Abdul Rehman, Sialkot</div>
+            </div>
+            <div class="review-card">
+                <div class="review-img-container">
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/1nVxbBlcotxEjbQM1WwKj5DfKowYxjFcy');"></div>
+                    <div style="background-image: url('https://lh3.googleusercontent.com/d/1nVxbBlcotxEjbQM1WwKj5DfKowYxjFcy');"></div>
+                </div>
+                <div class="review-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p>"خالص جڑی بوٹیوں سے تیار کردہ فینگم آرگینک شیمپو۔ کیمیکل سے پاک، بالوں کو نرم و ملائم بناتا ہے اور بہترین نتائج دیتا ہے۔"</p>
+                <div class="review-author" style="font-weight:600; color:var(--primary-green); font-size:14px;">Malik Muhammad Azad</div>
+            </div>
+        </div>
+    </section>
+      
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Fangam Organic. All Rights Reserved. Sialkot, Punjab, Pakistan.</p>
+    </footer>
+
+    <!-- ===================================================================================
+         BACKEND CONTROL CENTER & PRODUCT CONFIGURATION 
+         (یہاں سے آپ نام، قیمتیں، کپیسٹیز اور سیکشنز کو اپنی مرضی سے بدل سکتے ہیں)
+         =================================================================================== -->
+    <script>
+        const CURRENT_PRODUCT = {
+            name: "Fangam Signature Herbal Shampoo",
+            reviewsText: "150+ Positive Reviews",
+            shortDesc: "100% SLS-free & Paraben-free organic herbal shampoo crafted with natural herbs to nourish roots, clear dandruff, and leave hair soft, smooth, and naturally shiny.",
+            ingredients: "Amla, Reetha, Shikakai, Aloe Vera Extract, Neem, Brahmi, Bhringraj, Hibiscus, Mulethi, Rose Water, and Botanical Herbal Extracts.",
+            howToUse: "Apply a generous amount of herbal shampoo to wet hair and scalp. Lather well and gently massage for 2-3 minutes. Rinse thoroughly with water. For best results, use after Fangam Signature Hair Oil.",
+            
+            // تینوں کنٹرول شدہ کپیسٹیز اور آپ کی بتائی گئی قیمتیں
+            capacities: [
+                { id: "cap-1", name: "200ml Bachat Pack", oldPrice: "Rs. 1,000", price: 750, show: true },
+                { id: "cap-2", name: "350ml Classic Pack", oldPrice: "Rs. 1,250", price: 1000, show: true },
+                { id: "cap-3", name: "500ml Prime Pack", oldPrice: "Rs. 1,800", price: 1500, show: true }
+            ],
+
+            // سیکشنز کنٹرول (True/False)
+            sections: {
+                beforeAfter: true,      // True = بیفور/آفٹر رزلٹس نظر آئیں گے
+                customerReviews: true   // True = کسٹمر ریویوز نظر آئیں گے
+            },
+
+            galleryViews: [
+                {
+                    img: "https://lh3.googleusercontent.com/d/1Lxq6-4nJsYJV2tZNZoKOCOYCbyFCKqqF",
+                    title: "Fangam Signature Herbal Shampoo Overview",
+                    desc: "Specially formulated with organic herbs like Reetha, Amla, and Shikakai to gently wash away dirt, excess oil, and impurities without stripping scalp moisture."
+                },
+                {
+                    img: "https://lh3.googleusercontent.com/d/1kjxUWW_CIETDVAP88ukszENhcGt8Itji",
+                    title: "SLS-Free & Chemical-Free Formula",
+                    desc: "Free from harmful sulfates, parabens, and harsh chemicals. Safe for everyday wash for men, women, and children."
+                },
+                {
+                    img: "https://lh3.googleusercontent.com/d/1fO-bzQjMLi721jYZOwyrwDMbvNJP8K2f",
+                    title: "Dandruff Relief & Scalp Protection",
+                    desc: "Enriched with anti-bacterial and anti-fungal extracts like Neem and Aloe Vera that effectively fight dandruff and soothe itchy scalp."
+                },
+                {
+                    img: "https://lh3.googleusercontent.com/d/17K7RnIOy6lvmdbYf5cpVbRP0bSG5-cr-",
+                    title: "Natural Gloss & Silkiness",
+                    desc: "Leaves your hair feeling noticeably soft, voluminous, and glossy with every single wash while strengthening weak strands."
+                }
+            ]
+        };
+
+        const WHATSAPP_NUMBER = "923000634445";
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('productTitle').innerText = CURRENT_PRODUCT.name;
+            document.getElementById('productShortDesc').innerText = CURRENT_PRODUCT.shortDesc;
+            document.getElementById('productIngredients').innerText = CURRENT_PRODUCT.ingredients;
+            document.getElementById('productHowToUse').innerText = CURRENT_PRODUCT.howToUse;
+
+            // ریویوز اور اسٹارز کی سیٹنگ
+            let ratingBox = document.getElementById('productRatingBox');
+            ratingBox.innerHTML = `<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (${CURRENT_PRODUCT.reviewsText})`;
+
+            // کیپیسٹیز لوڈنگ
+            let capContainer = document.getElementById('capacityOptionsContainer');
+            capContainer.innerHTML = "";
+            CURRENT_PRODUCT.capacities.forEach((cap, index) => {
+                if (cap.show) {
+                    let cardHTML = `
+                        <div class="capacity-card" onclick="toggleSelection(this)">
+                            <div class="capacity-info">
+                                <span class="cap-name">${cap.name}</span>
+                                <span class="cap-price"><span class="old-price">${cap.oldPrice}</span>Rs. ${cap.price.toLocaleString()}</span>
+                            </div>
+                            <div class="quantity-control" onclick="event.stopPropagation()">
+                                <button class="qty-btn" onclick="updateQty('qty-${index}', -1)">-</button>
+                                <input type="text" id="qty-${index}" class="qty-input" value="0" readonly data-price="${cap.price}" data-name="${cap.name}">
+                                <button class="qty-btn" onclick="updateQty('qty-${index}', 1)">+</button>
+                            </div>
+                        </div>
+                    `;
+                    capContainer.innerHTML += cardHTML;
+                }
+            });
+
+            // سیکشنز کنٹرول (Before/After & Reviews On/Off)
+            if (!CURRENT_PRODUCT.sections.beforeAfter) {
+                document.getElementById('beforeAfterSection').style.display = 'none';
+            }
+            if (!CURRENT_PRODUCT.sections.customerReviews) {
+                document.getElementById('customerReviewsSection').style.display = 'none';
+            }
+
+            // گیلری تھمب نیلز لوڈنگ
+            let thumbTrack = document.getElementById('thumbnailTrack');
+            thumbTrack.innerHTML = "";
+            CURRENT_PRODUCT.galleryViews.forEach((view, index) => {
+                let activeClass = index === 0 ? "active" : "";
+                let thumbHTML = `
+                    <div class="thumb-box ${activeClass}" onclick="changeProductView(${index})">
+                        <img src="${view.img}" alt="Thumbnail">
+                    </div>
+                `;
+                thumbTrack.innerHTML += thumbHTML;
+            });
+
+            changeProductView(0);
+        });
+
+        function changeProductView(index) {
+            let view = CURRENT_PRODUCT.galleryViews[index];
+            document.getElementById('mainProductImg').src = view.img;
+            document.getElementById('dynamicTitle').innerHTML = `<i class="fa-solid fa-circle-info"></i> ${view.title}`;
+            document.getElementById('dynamicDesc').innerText = view.desc;
+
+            const thumbs = document.querySelectorAll('.thumb-box');
+            thumbs.forEach((thumb, idx) => {
+                if (idx === index) thumb.classList.add('active');
+                else thumb.classList.remove('active');
+            });
+        }
+
+        function toggleSelection(cardElement) {
+            cardElement.classList.toggle('selected');
+        }
+
+        function updateQty(inputId, change) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            let val = parseInt(input.value) + change;
+            if (val < 0) val = 0;
+            input.value = val;
+
+            const card = input.closest('.capacity-card');
+            if (val > 0) card.classList.add('selected');
+            else card.classList.remove('selected');
+
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            let total = 0;
+            CURRENT_PRODUCT.capacities.forEach((cap, index) => {
+                let inputElement = document.getElementById(`qty-${index}`);
+                if (inputElement && cap.show) {
+                    let qty = parseInt(inputElement.value) || 0;
+                    total += qty * cap.price;
+                }
+            });
+            document.getElementById('totalAmount').innerText = "Rs. " + total.toLocaleString();
+        }
+
+        function sendWhatsAppOrder(e) {
+            let total = 0;
+            let orderDetails = [];
+
+            CURRENT_PRODUCT.capacities.forEach((cap, index) => {
+                let inputElement = document.getElementById(`qty-${index}`);
+                if (inputElement && cap.show) {
+                    let qty = parseInt(inputElement.value) || 0;
+                    if (qty > 0) {
+                        let subTotal = qty * cap.price;
+                        total += subTotal;
+                        orderDetails.push(`- ${cap.name}: ${qty} Bottle(s) (Rs. ${subTotal})`);
+                    }
+                }
+            });
+
+            if (total === 0) {
+                e.preventDefault();
+                alert("براہ کرم کم از کم ایک پروڈکٹ کی مقدار (Quantity) منتخب کریں!");
+                return;
+            }
+
+            let message = `Hello, I want to place an order for *${CURRENT_PRODUCT.name}*:\n`;
+            message += orderDetails.join('\n') + `\n`;
+            message += `*Total Amount: Rs. ${total.toLocaleString()}*\n\nPlease confirm my order.`;
+
+            let encodedMessage = encodeURIComponent(message);
+            document.getElementById('whatsappOrderBtn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+        }
+    </script>
+</body>
+</html>
