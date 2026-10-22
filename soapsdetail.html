@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fangam Organic - Product Description & Usage Guide</title>
+  <title>Fangam Organic - Handcrafted Organic Soaps Showcase</title>
 
-  <!-- Google Fonts: Cinzel, Noto Nastaliq Urdu & Plus Jakarta Sans -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
       --transition-speed: 0.5s;
     }
 
-    /* Dynamic Theme Styles per Soap */
+    /* Dynamic Color Themes */
     body[data-theme="neem"] {
       --bg-dark: #06120a;
       --bg-card: #0d2114;
@@ -117,22 +117,23 @@
       align-items: center;
     }
 
-    .inquire-btn {
-      background: #25d366;
-      color: #fff;
+    .contact-btn {
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid #25d366;
+      color: #25d366;
       padding: 8px 18px;
       border-radius: 20px;
       text-decoration: none;
+      font-weight: 600;
       display: flex;
       align-items: center;
       gap: 8px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: transform 0.2s ease;
+      transition: all 0.3s ease;
     }
 
-    .inquire-btn:hover {
-      transform: scale(1.03);
+    .contact-btn:hover {
+      background: #25d366;
+      color: #fff;
     }
 
     .lang-btn {
@@ -145,7 +146,6 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-weight: 600;
     }
 
     /* Main Container */
@@ -155,7 +155,7 @@
       padding: 30px 20px;
     }
 
-    /* Navigation Tabs */
+    /* Tabs Navigation */
     .soap-nav-tabs {
       display: flex;
       justify-content: center;
@@ -168,10 +168,10 @@
       background: rgba(0, 0, 0, 0.4);
       border: 1px solid rgba(197, 160, 89, 0.3);
       color: var(--text-muted);
-      padding: 10px 18px;
+      padding: 10px 20px;
       border-radius: 25px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 600;
       transition: all 0.3s ease;
       display: flex;
@@ -186,7 +186,7 @@
       box-shadow: 0 0 15px var(--glow-color);
     }
 
-    /* Hero Guide Card */
+    /* Hero Section */
     .slider-hero-card {
       background: var(--bg-card);
       border: 2px solid var(--border-gold);
@@ -197,8 +197,6 @@
       grid-template-columns: 1fr 1fr;
       gap: 40px;
       align-items: center;
-      position: relative;
-      overflow: hidden;
       margin-bottom: 50px;
       transition: background-color var(--transition-speed) ease;
     }
@@ -226,7 +224,7 @@
 
     .hero-title {
       font-family: 'Cinzel', serif;
-      font-size: 2.3rem;
+      font-size: 2.4rem;
       color: var(--gold-light);
       margin-bottom: 15px;
     }
@@ -235,7 +233,6 @@
       color: var(--text-muted);
       font-size: 1.05rem;
       margin-bottom: 25px;
-      line-height: 1.7;
     }
 
     .hero-actions {
@@ -244,11 +241,11 @@
       flex-wrap: wrap;
     }
 
-    .btn-ask-wa {
+    .btn-inquire {
       background: #25d366;
       color: #fff;
       text-decoration: none;
-      padding: 12px 26px;
+      padding: 12px 28px;
       border-radius: 30px;
       font-weight: 700;
       display: flex;
@@ -257,7 +254,7 @@
       box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
     }
 
-    /* Product Image Display Circle */
+    /* Product Circle Image Box */
     .hero-image-box {
       width: 280px;
       height: 280px;
@@ -283,11 +280,11 @@
     }
 
     .hero-image-box i {
-      font-size: 5rem;
+      font-size: 5.5rem;
       color: var(--gold-light);
     }
 
-    /* Detailed Content Sections Grid */
+    /* Cards Grid */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -309,9 +306,6 @@
       margin-bottom: 18px;
       border-bottom: 1px solid rgba(197, 160, 89, 0.2);
       padding-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
 
     .card-list {
@@ -322,7 +316,7 @@
       margin-bottom: 12px;
       display: flex;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
     }
 
     .card-list li i {
@@ -330,22 +324,7 @@
       margin-top: 4px;
     }
 
-    /* Step-by-Step Routine Box Highlight */
-    .usage-step-badge {
-      background: rgba(197, 160, 89, 0.2);
-      border: 1px solid var(--border-gold);
-      color: var(--gold-light);
-      font-weight: bold;
-      border-radius: 50%;
-      min-width: 24px;
-      height: 24px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-    }
-
-    /* Full Width Benefits */
+    /* Benefits Section */
     .full-width-card {
       background: var(--bg-card);
       border: 1px solid var(--border-gold);
@@ -371,12 +350,9 @@
     .benefit-item h4 {
       color: var(--gold-light);
       margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
-    /* Language Modal */
+    /* Modal Styling */
     .lang-modal-overlay {
       position: fixed;
       top: 0;
@@ -423,7 +399,6 @@
       gap: 10px;
       overflow-y: auto;
       max-height: 400px;
-      padding-right: 5px;
     }
 
     .lang-item {
@@ -468,9 +443,9 @@
       </a>
 
       <div class="header-actions">
-        <a href="https://wa.me/923006132921?text=Hello%20Fangam%20Organic,%20I%20have%20a%20question%20regarding%20your%20organic%20soaps." target="_blank" class="inquire-btn">
+        <a href="https://wa.me/923006132921?text=Hello%20Fangam%20Organic,%20I%20have%20a%20question%20about%20your%20organic%20soaps." target="_blank" class="contact-btn">
           <i class="fa-brands fa-whatsapp"></i>
-          <span>Inquire / معلومات</span>
+          <span>Inquire Now</span>
         </a>
 
         <button class="lang-btn" id="openLangBtn">
@@ -483,64 +458,64 @@
 
   <div class="main-container">
 
-    <!-- Soap Navigation Tabs (4 Organic Products) -->
+    <!-- 4 Soap Navigation Tabs -->
     <div class="soap-nav-tabs">
       <button class="tab-btn active" onclick="selectSoap(0)"><i class="fa-solid fa-leaf"></i> Neem Soap</button>
-      <button class="tab-btn" onclick="selectSoap(1)"><i class="fa-solid fa-sparkles"></i> Whitening</button>
-      <button class="tab-btn" onclick="selectSoap(2)"><i class="fa-solid fa-gem"></i> Charcoal Detox</button>
-      <button class="tab-btn" onclick="selectSoap(3)"><i class="fa-solid fa-spa"></i> Loofah Scrub</button>
+      <button class="tab-btn" onclick="selectSoap(1)"><i class="fa-solid fa-sparkles"></i> Whitening Soap</button>
+      <button class="tab-btn" onclick="selectSoap(2)"><i class="fa-solid fa-gem"></i> Charcoal Detox Soap</button>
+      <button class="tab-btn" onclick="selectSoap(3)"><i class="fa-solid fa-spa"></i> Loofah Scrub Soap</button>
     </div>
 
-    <!-- Hero Synchronized Guide Slider -->
+    <!-- Hero Synchronized Slider -->
     <div class="slider-hero-card" id="heroCard">
       <div class="hero-text-content">
-        <span class="product-badge" id="heroBadge">ORGANIC USAGE GUIDE</span>
+        <span class="product-badge" id="heroBadge">100% PURE & ORGANIC</span>
         <h1 class="hero-title" id="heroTitle">Fangam Organic Neem Soap</h1>
-        <p class="hero-subtitle" id="heroSubtitle">Authentic Ayurvedic Cold-Pressed Neem Formula Specially Designed for Acne, Skin Infections, and Deep Pore Cleansing.</p>
+        <p class="hero-subtitle" id="heroSubtitle">Authentic Ayurvedic Cold-Pressed Neem Formula Specially Designed for Acne, Skin Infections & Deep Pore Cleansing.</p>
         
         <div class="hero-actions">
-          <a href="#" class="btn-ask-wa" id="heroWaBtn" target="_blank">
-            <i class="fa-brands fa-whatsapp"></i> Consult Product Specialist
+          <a href="#" class="btn-inquire" id="heroWaBtn" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Consult via WhatsApp / معلومات لیں
           </a>
         </div>
       </div>
 
       <!-- Circle Image Container -->
       <div class="hero-image-box" id="heroImgBox">
-        <img id="heroImage" src="" alt="Soap Visual" style="display:none;">
+        <img id="heroImage" src="" alt="Soap Image" style="display:none;">
         <i class="fa-solid fa-soap" id="heroIcon"></i>
       </div>
     </div>
 
-    <!-- Detailed Information Sections Grid -->
+    <!-- Detailed Content Grid -->
     <div class="cards-grid">
       <div class="card">
-        <h3 class="card-title"><i class="fa-solid fa-vial-circle-check"></i> Pure Botanical Ingredients</h3>
+        <h3 class="card-title">Pure Ingredients</h3>
         <ul class="card-list" id="ingredientsList"></ul>
       </div>
 
       <div class="card">
-        <h3 class="card-title"><i class="fa-solid fa-hand-holding-medical"></i> Targeted Skin Care</h3>
+        <h3 class="card-title">Specialized Care</h3>
         <ul class="card-list" id="specialCareList"></ul>
       </div>
 
       <div class="card">
-        <h3 class="card-title"><i class="fa-solid fa-list-check"></i> Step-by-Step Usage Guide</h3>
+        <h3 class="card-title">How To Use</h3>
         <ul class="card-list" id="usageList"></ul>
       </div>
     </div>
 
-    <!-- Full Width Proven Benefits Section -->
+    <!-- Benefits Section -->
     <div class="full-width-card">
       <h2 style="color: var(--gold-light); font-family: 'Cinzel', serif; text-align: center; margin-bottom: 10px;" id="benefitsTitle">
-        Key Benefits & Skin Science
+        Proven Benefits
       </h2>
       <div class="benefits-grid" id="benefitsGrid"></div>
     </div>
 
   </div>
 
-  <!-- Language Selection Modal (30+ International Languages) -->
+  <!-- Language Selection Modal -->
   <div class="lang-modal-overlay" id="langModal">
     <div class="lang-modal">
       <div class="lang-header">
@@ -586,7 +561,7 @@
   </div>
 
   <footer>
-    <p>&copy; 2026 <strong>Fangam Organic</strong>. All rights reserved. | Educational Product Guide</p>
+    <p>&copy; 2026 <strong>Fangam Organic</strong>. All rights reserved.</p>
   </footer>
 
   <script type="text/javascript">
@@ -601,77 +576,92 @@
   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
+    /* =======================================================================
+       یہاں 4 صابنوں کا ڈیٹا اور ان کی تصاویر کے لنکس (Image URLs) کا حصہ ہے
+       ======================================================================= */
     const soapsData = [
       {
         id: "neem",
         theme: "neem",
-        badge: "100% PURE BOTANICAL FORMULA",
+        badge: "100% PURE & CHEMICAL-FREE",
         title: "Fangam Organic Neem Soap",
         icon: "fa-seedling",
-        image: "neem_soap.jpg",
+        
+        // 1. نیم صابن کی تصویر کا لنک یہاں شد و مد سے درج کریں:
+        image: "https://lh3.googleusercontent.com/d/1538Hm63VUyCYhRLLLlJ2lQzL4Hf1csnJ", 
+
         subtitle: "Authentic Ayurvedic Cold-Pressed Neem Formula Specially Designed for Acne, Skin Infections, and Deep Pore Cleansing.",
         ingredients: ["Pure Cold-Pressed Neem Oil", "Organic Neem Leaf Extracts", "Natural Vegetable Oils Base", "Pure Botanical Glycerine", "0% Harmful Chemicals & Detergents"],
-        specialCare: ["<strong>Acne & Pimples:</strong> Fights acne-causing bacteria deep inside pores.", "<strong>Boils & Rash:</strong> Relieves fungal skin eruptions and heat rashes.", "<strong>Body Acne:</strong> Clears stubborn back and chest breakout zones.", "<strong>Oil Balance:</strong> Controls excessive facial sebum production."],
-        usage: ["Wet your face and body with lukewarm water.", "Work soap into a rich lather and massage gently for 1-2 minutes.", "Rinse thoroughly with fresh, cool water.", "Use twice daily (morning & night) for clean, clear skin."],
+        specialCare: ["<strong>Acne & Pimples:</strong> Fights acne-causing bacteria.", "<strong>Boils & Rash:</strong> Relieves skin eruptions.", "<strong>Body Acne:</strong> Clears back and chest acne.", "<strong>Oil Control:</strong> Balances excessive facial oil."],
+        usage: ["Wet face & body with lukewarm water.", "Massage foam gently for 1-2 minutes.", "Rinse thoroughly with fresh water.", "Use twice daily for clear skin."],
         benefits: [
-          { title: "Antibacterial Action", desc: "Kills micro-bacterial impurities harbored inside skin pores." },
-          { title: "Calms Redness & Rash", desc: "Instantly relieves skin redness, irritation, and heat bumps." },
-          { title: "Deep Pore Cleansing", desc: "Removes accumulated dirt and excess sebum naturally." },
-          { title: "Healthy Complexion", desc: "Promotes an even, refreshed, and clear skin texture." }
+          { title: "Antibacterial Action", desc: "Kills deep-seated bacteria inside skin pores." },
+          { title: "Calms Irritation", desc: "Relieves skin redness, itching, and heat rash." },
+          { title: "Deep Pore Detox", desc: "Removes excess oil without drying." },
+          { title: "Even Skin Tone", desc: "Promotes healthy complexion over time." }
         ]
       },
       {
         id: "whitening",
         theme: "whitening",
-        badge: "100% NATURAL RADIANCE GUIDE",
+        badge: "100% PURE & RADIANCE FORMULA",
         title: "Pure Organic Whitening Soap",
         icon: "fa-sparkles",
-        image: "whitening_soap.jpg",
-        subtitle: "Enriched with Natural Skin Actives, Glutathione, Alpha Arbutin, Kojic Acid, Pure Goat Milk & Vitamin C for Glass-Skin Clarity.",
-        ingredients: ["Alpha Arbutin & Kojic Acid", "L-Glutathione Antioxidant Complex", "Pure Goat Milk (Lactic Acid)", "Vitamin C & Niacinamide (B3)", "Licorice Root & Mulberry Extract"],
-        specialCare: ["<strong>Melasma & Dark Spots:</strong> Fades stubborn hyperpigmentation gradually.", "<strong>Sun Tan Removal:</strong> Brightens sun-damaged face, neck, and arms.", "<strong>Dark Joints:</strong> Lightens dark knees, underarms, and knuckles.", "<strong>Acne Scars:</strong> Fades dark spots left behind by healed pimples."],
-        usage: ["Apply the gentle lather evenly onto wet skin.", "Allow the natural active ingredients to sit on skin for 1 to 2 minutes.", "Rinse off thoroughly with cool water.", "For optimal skin brightening, use consistently twice every day."],
+        
+        // 2. وائٹننگ صابن کی تصویر کا لنک یہاں درج کریں:
+        image: "https://lh3.googleusercontent.com/d/1vfv5i8bqC3EGcO7CxKGX-TYZuQDOf8y2", 
+
+        subtitle: "Enriched with Natural Skin Whitening Actives, Glutathione, Alpha Arbutin, Kojic Acid, Pure Goat Milk & Vitamin C for Crystal-Clear Skin.",
+        ingredients: ["Alpha Arbutin & Kojic Acid", "L-Glutathione Antioxidant", "Pure Goat Milk (Lactic Acid)", "Vitamin C & Niacinamide", "Licorice Root & Mulberry Extract"],
+        specialCare: ["<strong>Melasma & Dark Spots:</strong> Fades stubborn pigmentation.", "<strong>Sun Tan Removal:</strong> Brightens face, neck & body.", "<strong>Dark Joints:</strong> Brightens knees, underarms & knuckles.", "<strong>Acne Scars:</strong> Lightens post-acne dark marks."],
+        usage: ["Apply lather gently on wet skin.", "Leave lather on skin for 1 to 2 minutes.", "Rinse thoroughly with cold water.", "Use twice daily for best whitening results."],
         benefits: [
-          { title: "Melanin Regulation", desc: "Helps suppress excessive skin pigmentation naturally." },
-          { title: "Glass-Skin Glow", desc: "Unveils bright, velvety smooth, and radiant skin texture." },
-          { title: "Gentle Micro-Exfoliation", desc: "Softly dissolves dead surface cells without harsh scratching." },
-          { title: "100% Bleach Free", desc: "Completely safe from harsh chemicals, synthetic bleaches, or mercury." }
+          { title: "Melanin Inhibition", desc: "Blocks dark pigment formation naturally." },
+          { title: "Natural Radiance", desc: "Unveils smooth, glass-like skin clarity." },
+          { title: "Gentle Exfoliation", desc: "Lifts dead skin without scratching." },
+          { title: "100% Bleach Free", desc: "Safe from harsh mercury or chemical bleaches." }
         ]
       },
       {
         id: "charcoal",
         theme: "charcoal",
-        badge: "ACTIVATED CHARCOAL DETOX",
-        title: "Pure Organic Activated Charcoal Soap",
+        badge: "100% ACTIVATED CHARCOAL DETOX",
+        title: "Pure Organic Charcoal Detox Soap",
         icon: "fa-gem",
-        image: "charcoal_soap.jpg",
+        
+        // 3. چارکول ڈٹاکس صابن کی تصویر کا لنک یہاں درج کریں:
+        image: "IMAGE_URL_3_HERE.jpg", 
+
         subtitle: "Deep Pore Cleansing & Toxins Extraction Soap Formulated with Activated Bamboo Charcoal, Tea Tree Essential Oil & Botanical Glycerine.",
         ingredients: ["Activated Bamboo Charcoal Powder", "Pure Tea Tree Essential Oil", "Cold-Pressed Neem & Coconut Base", "Pure Botanical Glycerine", "0% Parabens, Sulphates & Detergents"],
-        specialCare: ["<strong>Deep Pore Detox:</strong> Draws out embedded blackheads and urban pollution.", "<strong>Oil Extraction:</strong> Regulates active oil glands for a clean matte feel.", "<strong>Blemish Defense:</strong> Prevents bacterial skin bumps and whiteheads.", "<strong>Body Odor Defense:</strong> Neutralizes odor-causing bacterial build-up."],
-        usage: ["Build a dark rich lather using warm water.", "Gently massage over T-zone (forehead, nose, chin) and oily body areas.", "Rinse completely with clear water.", "Recommended for daily evening cleansing to strip away daily grime."],
+        specialCare: ["<strong>Deep Pore Detox:</strong> Pulls out blackheads, dirt & pollutants.", "<strong>Excess Oil Extraction:</strong> Regulates sebum for matte skin.", "<strong>Blemish Control:</strong> Reduces pimples and skin bumps.", "<strong>Body Odor Defense:</strong> Eliminates odor-causing bacteria."],
+        usage: ["Create rich dark lather with warm water.", "Massage over oily zones, nose & chin.", "Rinse thoroughly with clean water.", "Ideal for daily evening deep cleansing."],
         benefits: [
-          { title: "Magnet-Like Pore Extraction", desc: "Draws out micro-pollutants and heavy grease effortlessly." },
-          { title: "Long-Lasting Matte Finish", desc: "Controls surface shine while leaving skin feeling fresh." },
-          { title: "Tea Tree Antiseptic Shield", desc: "Provides active defense against daily breakouts." },
-          { title: "Smoother Texture", desc: "Unclogs enlarged pores for a refined, balanced feel." }
+          { title: "Magnet-Like Detox", desc: "Extracts deep micro-pollutants effortlessly." },
+          { title: "Matte Finish", desc: "Leaves skin fresh and non-greasy for hours." },
+          { title: "Tea Tree Shield", desc: "Natural antiseptic defense against breakouts." },
+          { title: "Smooth Texture", desc: "Unclogs pores for refined skin feel." }
         ]
       },
       {
         id: "loofah",
         theme: "loofah",
-        badge: "NATURAL LOOFAH EXFOLIATOR",
-        title: "Pure Organic Natural Loofah Scrub Soap",
+        badge: "100% NATURAL LOOFAH EXFOLIATOR",
+        title: "Pure Organic Loofah Scrub Soap",
         icon: "fa-spa",
-        image: "loofah_soap.jpg",
-        subtitle: "Embedded Natural Luffa Plant Sponge Combined with Raw Honey & Sweet Almond Oil for Intense Skin Scrubbing, Rough Elbows & Heel Smoothing.",
-        ingredients: ["Embedded Natural Luffa Plant Sponge Fiber", "Organic Raw Honey Extract", "Sweet Almond & Coconut Oil Base", "Vitamin E & Natural Shea Butter", "0% Synthetic Plastic Micro-Beads"],
-        specialCare: ["<strong>Cracked Heel Repair:</strong> Gently scrubs away hard, dead heel skin.", "<strong>Rough Elbows & Knees:</strong> Smooths dark, dry friction patches.", "<strong>Ingrown Hair Prevention:</strong> Exfoliates dead skin clogging hair follicles.", "<strong>Body Exfoliation:</strong> Invigorates sluggish skin circulation."],
-        usage: ["Soak the soap bar in warm water for 30 seconds to soften the loofah fiber.", "Scrub in circular motions over heels, knees, elbows, and body skin.", "Rinse off thoroughly and apply moisturizer after drying.", "Use 2-3 times per week for velvety smooth skin."],
+        
+        // 4. لوفہ سکرب صابن کی تصویر کا لنک یہاں درج کریں:
+        image: "IMAGE_URL_4_HERE.jpg", 
+
+        subtitle: "Embedded Natural Luffa Plant Sponge Combined with Honey & Sweet Almond Oil for Intense Skin Scrubbing, Rough Elbows & Heel Smoothing.",
+        ingredients: ["Embedded Natural Luffa Plant Fiber", "Organic Raw Honey Extract", "Sweet Almond & Coconut Oil Base", "Vitamin E & Shea Butter", "0% Harsh Synthetic Beads"],
+        specialCare: ["<strong>Cracked Heel Repair:</strong> Softens and smooths rough feet heels.", "<strong>Rough Elbows & Knees:</strong> Scrubs away stubborn dark friction spots.", "<strong>Ingrown Hair Prevention:</strong> Clears dead skin buildup.", "<strong>Body Exfoliation:</strong> Stimulates skin micro-circulation."],
+        usage: ["Soak soap in warm water to soften loofah fiber.", "Scrub gently over feet, heels, knees, and body.", "Rinse thoroughly and pat dry.", "Use 2-3 times weekly for baby-smooth skin."],
         benefits: [
-          { title: "100% Plant Fiber Sponge", desc: "Uses natural luffa sponge without plastic exfoliators." },
-          { title: "Heel & Foot Softening", desc: "Buffs away thick, rough dead skin layers effortlessly." },
-          { title: "Circulation Booster", desc: "Textured scrubbing action stimulates healthy blood flow." },
-          { title: "Honey Hydration", desc: "Raw honey protects skin moisture barrier during scrubbing." }
+          { title: "Plant Exfoliation", desc: "100% natural luffa sponge without micro-plastics." },
+          { title: "Deep Heel Smoothing", desc: "Effortlessly scrubs away cracked dead skin." },
+          { title: "Blood Circulation", desc: "Massaging action boosts skin vitality." },
+          { title: "Honey Nourishment", desc: "Locks in deep moisture after scrubbing." }
         ]
       }
     ];
@@ -683,20 +673,24 @@
       currentSoapIndex = index;
       const soap = soapsData[index];
 
+      // Update Page Theme
       document.body.setAttribute("data-theme", soap.theme);
 
+      // Active Tab
       document.querySelectorAll('.tab-btn').forEach((btn, i) => {
         btn.classList.toggle('active', i === index);
       });
 
+      // Hero Elements
       document.getElementById('heroBadge').textContent = soap.badge;
       document.getElementById('heroTitle').textContent = soap.title;
       document.getElementById('heroSubtitle').textContent = soap.subtitle;
       
+      // Handle Product Image
       const imgElem = document.getElementById('heroImage');
       const iconElem = document.getElementById('heroIcon');
 
-      if (soap.image && soap.image !== "") {
+      if (soap.image && soap.image !== "" && !soap.image.includes("IMAGE_URL")) {
         imgElem.src = soap.image;
         imgElem.style.display = "block";
         iconElem.style.display = "none";
@@ -711,13 +705,16 @@
         iconElem.className = `fa-solid ${soap.icon}`;
       }
 
-      const waInquiryMsg = encodeURIComponent(`Hello Fangam Organic, I am reading the guide for ${soap.title} and would like to ask some questions.`);
-      document.getElementById('heroWaBtn').href = `https://wa.me/923006132921?text=${waInquiryMsg}`;
+      // WhatsApp Button URL
+      const waMsg = encodeURIComponent(`Hello Fangam Organic, I would like to know more details about ${soap.title}.`);
+      document.getElementById('heroWaBtn').href = `https://wa.me/923006132921?text=${waMsg}`;
 
+      // Detailed Lists
       document.getElementById('ingredientsList').innerHTML = soap.ingredients.map(ing => `<li><i class="fa-solid fa-check-circle"></i> <span>${ing}</span></li>`).join('');
       document.getElementById('specialCareList').innerHTML = soap.specialCare.map(care => `<li><i class="fa-solid fa-circle-dot"></i> <span>${care}</span></li>`).join('');
-      document.getElementById('usageList').innerHTML = soap.usage.map((u, idx) => `<li><span class="usage-step-badge">${idx + 1}</span> <span>${u}</span></li>`).join('');
+      document.getElementById('usageList').innerHTML = soap.usage.map(u => `<li><i class="fa-solid fa-droplet"></i> <span>${u}</span></li>`).join('');
 
+      // Benefits
       document.getElementById('benefitsGrid').innerHTML = soap.benefits.map(b => `
         <div class="benefit-item">
           <h4><i class="fa-solid fa-star"></i> ${b.title}</h4>
@@ -736,7 +733,7 @@
       autoSliderInterval = setInterval(() => {
         currentSoapIndex = (currentSoapIndex + 1) % soapsData.length;
         renderSoap(currentSoapIndex);
-      }, 6500);
+      }, 6000);
     }
 
     function translatePage(langCode) {
