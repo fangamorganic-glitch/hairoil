@@ -4,12 +4,13 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://lh3.googleusercontent.com/d/1NJYUBfxZMMcO2Wqh_wzsuyUjeC-mi97V">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fangam Organic - Product Catalog</title>
+    <title>Fangam Organic - Product Categories</title>
     
-    <!-- Google Fonts: Plus Jakarta Sans for clean modern sans-serif branding, Playfair Display for accents, Noto Nastaliq Urdu for Urdu -->
+    <!-- DNS Prefetching for Instant Speed -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,25 +35,19 @@
             background-color: #F0F5F1;
             color: #2D2B29;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* Clean modern heading font matching the branding screenshot */
         .brand-heading {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 800;
         }
 
-        /* Urdu font override when translated or Urdu is selected */
-        html[lang="ur"] *, body[dir="rtl"] * {
-            font-family: 'Noto Nastaliq Urdu', serif !important;
-            line-height: 2.2 !important;
-        }
-
-        /* Hide default Google Translate banner frame */
+        /* Hide Google Translate Banner Frame */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
         .goog-logo-link, .VIpgJd-ZVi9od-ORHb { display: none !important; }
-        #google_translate_element { display: none; } /* Hidden container for backend Google engine */
+        #google_translate_element { display: none; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#1A3320] selection:text-white">
@@ -62,7 +57,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
             <!-- Brand Logo & Name -->
-            <div class="flex items-center space-x-3">
+            <a href="https://fangamorganic.com" class="flex items-center space-x-3">
                 <div class="w-11 h-11 rounded-full bg-white flex items-center justify-center shadow-md overflow-hidden border border-[#D4E2D6]">
                     <img src="https://lh3.googleusercontent.com/d/1NJYUBfxZMMcO2Wqh_wzsuyUjeC-mi97V" alt="Fangam Logo" class="w-full h-full object-cover">
                 </div>
@@ -70,21 +65,21 @@
                     <span class="brand-heading text-lg sm:text-xl tracking-tight text-[#1A3320]">Fangam Organic</span>
                     <p class="text-[10px] tracking-widest text-[#556B5D] uppercase font-semibold">Pure Natural Care</p>
                 </div>
-            </div>
+            </a>
 
-            <!-- Custom Language Dropdown Toggle Button -->
+            <!-- Custom Language Dropdown (50+ Languages) -->
             <div class="relative">
                 <button id="langMenuBtn" onclick="toggleLangMenu()" class="flex items-center space-x-2 bg-white border border-[#C5D6C8] hover:border-[#1A3320] text-[#1A3320] px-4 py-2.5 rounded-full text-sm font-semibold shadow-xs transition-all cursor-pointer">
                     <svg class="w-4 h-4 text-[#1A3320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
                     </svg>
-                    <span id="currentLangLabel">Language / زبان</span>
+                    <span id="currentLangLabel">Language</span>
                     <svg class="w-4 h-4 ml-1 text-[#556B5D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </button>
 
-                <!-- Dropdown Menu (40+ Languages) -->
+                <!-- 50+ Languages List -->
                 <div id="langDropdown" class="hidden absolute right-0 mt-2 w-64 max-h-96 overflow-y-auto bg-white rounded-2xl shadow-xl border border-[#D4E2D6] py-2 z-50">
                     <div class="px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#556B5D] border-b border-gray-100">
                         Select Language
@@ -120,6 +115,26 @@
                         <button onclick="changeLanguage('no', 'Norsk (Norwegian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Norsk</span><span class="text-xs text-gray-400">NO</span></button>
                         <button onclick="changeLanguage('fi', 'Suomi (Finnish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Suomi</span><span class="text-xs text-gray-400">FI</span></button>
                         <button onclick="changeLanguage('da', 'Dansk (Danish)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Dansk</span><span class="text-xs text-gray-400">DA</span></button>
+                        <button onclick="changeLanguage('cs', 'Čeština (Czech)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Čeština</span><span class="text-xs text-gray-400">CS</span></button>
+                        <button onclick="changeLanguage('hu', 'Magyar (Hungarian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Magyar</span><span class="text-xs text-gray-400">HU</span></button>
+                        <button onclick="changeLanguage('ro', 'Română (Romanian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Română</span><span class="text-xs text-gray-400">RO</span></button>
+                        <button onclick="changeLanguage('sk', 'Slovenčina (Slovak)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Slovenčina</span><span class="text-xs text-gray-400">SK</span></button>
+                        <button onclick="changeLanguage('bg', 'Български (Bulgarian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Български</span><span class="text-xs text-gray-400">BG</span></button>
+                        <button onclick="changeLanguage('hr', 'Hrvatski (Croatian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Hrvatski</span><span class="text-xs text-gray-400">HR</span></button>
+                        <button onclick="changeLanguage('sr', 'Српски (Serbian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Српски</span><span class="text-xs text-gray-400">SR</span></button>
+                        <button onclick="changeLanguage('sl', 'Slovenščina (Slovenian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Slovenščina</span><span class="text-xs text-gray-400">SL</span></button>
+                        <button onclick="changeLanguage('et', 'Eesti (Estonian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Eesti</span><span class="text-xs text-gray-400">ET</span></button>
+                        <button onclick="changeLanguage('lv', 'Latviešu (Latvian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Latviešu</span><span class="text-xs text-gray-400">LV</span></button>
+                        <button onclick="changeLanguage('lt', 'Lietuvių (Lithuanian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Lietuvių</span><span class="text-xs text-gray-400">LT</span></button>
+                        <button onclick="changeLanguage('sw', 'Kiswahili (Swahili)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Kiswahili</span><span class="text-xs text-gray-400">SW</span></button>
+                        <button onclick="changeLanguage('af', 'Afrikaans')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Afrikaans</span><span class="text-xs text-gray-400">AF</span></button>
+                        <button onclick="changeLanguage('fil', 'Filipino')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Filipino</span><span class="text-xs text-gray-400">FIL</span></button>
+                        <button onclick="changeLanguage('sq', 'Shqip (Albanian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Shqip</span><span class="text-xs text-gray-400">SQ</span></button>
+                        <button onclick="changeLanguage('ka', 'ქართული (Georgian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>ქართული</span><span class="text-xs text-gray-400">KA</span></button>
+                        <button onclick="changeLanguage('hy', 'Հայերեն (Armenian)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Հայերեն</span><span class="text-xs text-gray-400">HY</span></button>
+                        <button onclick="changeLanguage('az', 'Azərbaycan (Azerbaijani)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Azərbaycan</span><span class="text-xs text-gray-400">AZ</span></button>
+                        <button onclick="changeLanguage('kk', 'Қазақ тілі (Kazakh)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Қазақ</span><span class="text-xs text-gray-400">KK</span></button>
+                        <button onclick="changeLanguage('uz', 'Oʻzbekcha (Uzbek)')" class="w-full text-left px-4 py-2.5 text-sm hover:bg-[#F0F5F1] text-[#2D2B29] font-medium flex items-center justify-between"><span>Oʻzbek</span><span class="text-xs text-gray-400">UZ</span></button>
                     </div>
                 </div>
             </div>
@@ -127,287 +142,139 @@
         </div>
     </header>
 
-    <!-- Hidden Google Translate Element for automatic translation execution -->
+    <!-- Hidden Google Translate Element -->
     <div id="google_translate_element"></div>
 
-    <!-- Main Catalog Container -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 w-full">
+    <!-- Main Catalog Portal -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
         
         <!-- Hero Header -->
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-xs uppercase tracking-widest text-[#556B5D] bg-[#EAF2EC] border border-[#D4E2D6] px-4 py-2 rounded-full inline-block mb-4 font-bold shadow-2xs">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-xs uppercase tracking-widest text-[#556B5D] bg-[#EAF2EC] border border-[#D4E2D6] px-4 py-1.5 rounded-full inline-block mb-3 font-bold shadow-2xs">
                 Nature's Pure Essence
             </span>
-            <h1 class="brand-heading text-4xl sm:text-5xl lg:text-6xl text-[#1A3320] tracking-tight mb-6">
-                Our Premium Organic Product Catalog
+            <h1 class="brand-heading text-3xl sm:text-5xl text-[#1A3320] tracking-tight mb-3">
+                Select Product Lineup
             </h1>
-            <p class="text-[#556B5D] text-base sm:text-lg leading-relaxed font-normal">
-                Explore our handcrafted range of 100% natural oils and body care essentials. Click on any product below to learn more about its benefits and usage.
+            <p class="text-[#556B5D] text-sm sm:text-base leading-relaxed font-normal">
+                Choose a category below to explore details, formulation, and ordering options.
             </p>
         </div>
 
-        <!-- Products Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+        <!-- 5 FAST-LOADING CATEGORY BUTTONS/CARDS -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
 
-            <!-- ================= PRODUCT CARD START (Copy & paste this block to add new products) ================= -->
-            <div class="bg-[#EAF2EC] rounded-3xl p-6 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-[#D4E2D6]">
-                <div>
-                    <!-- Category & Size Header -->
-                    <div class="flex justify-between items-center mb-5">
-                        <span class="text-xs uppercase tracking-wider font-extrabold text-[#556B5D]">Hair Care</span>
-                        <span class="text-xs font-bold px-3 py-1 bg-[#F0F5F1] rounded-md text-[#2D2B29] shadow-2xs border border-[#D4E2D6]">150 ml</span>
+            <!-- 1. OILS -->
+            <a href="https://fangamorganic.com/fshodetails" 
+               class="bg-[#EAF2EC] rounded-3xl p-6 border border-[#D4E2D6] shadow-xs hover:shadow-lg transition-all duration-200 flex items-center justify-between group active:scale-98">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl shadow-2xs group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                        💧
                     </div>
-
-                    <!-- Product Image Container -->
-                    <div class="w-full h-72 bg-[#F0F5F1] rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-[#D4E2D6] relative group shadow-inner p-2">
-                        <img src="https://lh3.googleusercontent.com/d/1c3bra7tkBk564o6ZcbDrECnk0eK3qffT" 
-                             alt="Fangam Sesame Oil" 
-                             class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500">
+                    <div>
+                        <h2 class="brand-heading text-xl text-[#1A3320]">Oils</h2>
+                        <p class="text-xs text-[#556B5D]">Hair & Essential Oils</p>
                     </div>
-
-                    <!-- Product Title -->
-                    <h3 class="brand-heading text-2xl text-[#1A3320] mb-3">Fangam Signature Hair Oil</h3>
-
-                    <!-- Product Short Description -->
-                    <p class="text-[#556B5D] text-sm leading-relaxed mb-8">
-                        100% organic mixed herbs oil formulated to nourish, protect, and provide smooth skin and healthy hair.
-                    </p>
                 </div>
-
-                <!-- Action Button / Link -->
-                <div>
-                    <!-- Replace '#' with your actual product detail URL -->
-                    <a href="https://fangamorganic.com/fshodetails" 
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="w-full bg-[#1A3320] text-white py-4 px-6 rounded-2xl font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#284D2E] transition-all shadow-md group">
-                        <span>Click here to know more</span>
-                        <svg class="w-4 h-4 rtl:rotate-180 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
+                <div class="w-10 h-10 rounded-full bg-white border border-[#D4E2D6] flex items-center justify-center text-[#1A3320] group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
                 </div>
-            </div>
-            <!-- ================= PRODUCT CARD END ================= -->
-            <!-- ================= PRODUCT CARD START (Copy & paste this block to add new products) ================= -->
-            <div class="bg-[#EAF2EC] rounded-3xl p-6 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-[#D4E2D6]">
-                <div>
-                    <!-- Category & Size Header -->
-                    <div class="flex justify-between items-center mb-5">
-                        <span class="text-xs uppercase tracking-wider font-extrabold text-[#556B5D]">Hair Care</span>
-                        <span class="text-xs font-bold px-3 py-1 bg-[#F0F5F1] rounded-md text-[#2D2B29] shadow-2xs border border-[#D4E2D6]">100 gm</span>
+            </a>
+
+            <!-- 2. SHAMPOOS -->
+            <a href="https://fangamorganic.com/shampoolaunch" 
+               class="bg-[#EAF2EC] rounded-3xl p-6 border border-[#D4E2D6] shadow-xs hover:shadow-lg transition-all duration-200 flex items-center justify-between group active:scale-98">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl shadow-2xs group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                        🧴
                     </div>
-
-                    <!-- Product Image Container -->
-                    <div class="w-full h-72 bg-[#F0F5F1] rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-[#D4E2D6] relative group shadow-inner p-2">
-                        <img src="https://lh3.googleusercontent.com/d/1YmYvbCTar2BrQOMOLUCT5ZSmBe8GoawC" 
-                             alt="Fangam Organic Hair Mask" 
-                             class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500">
+                    <div>
+                        <h2 class="brand-heading text-xl text-[#1A3320]">Shampoos</h2>
+                        <p class="text-xs text-[#556B5D]">Organic Herbal Cleansers</p>
                     </div>
-
-                    <!-- Product Title -->
-                    <h3 class="brand-heading text-2xl text-[#1A3320] mb-3">Fangam Organic Hair Mask</h3>
-
-                    <!-- Product Short Description -->
-                    <p class="text-[#556B5D] text-sm leading-relaxed mb-8">
-                        100% organic mixed herbs powder formulated to nourish, protect, and provide smooth, shiny and healthy hair.
-                    </p>
                 </div>
-
-                <!-- Action Button / Link -->
-                <div>
-                    <!-- Replace '#' with your actual product detail URL -->
-                    <a href="https://fangamorganic.com/hairmask" 
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="w-full bg-[#1A3320] text-white py-4 px-6 rounded-2xl font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#284D2E] transition-all shadow-md group">
-                        <span>Click here to know more</span>
-                        <svg class="w-4 h-4 rtl:rotate-180 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
+                <div class="w-10 h-10 rounded-full bg-white border border-[#D4E2D6] flex items-center justify-center text-[#1A3320] group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
                 </div>
-            </div>
-            <!-- ================= PRODUCT CARD END ================= -->
-            <!-- ================= PRODUCT CARD START (Copy & paste this block to add new products) ================= -->
-            <div class="bg-[#EAF2EC] rounded-3xl p-6 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-[#D4E2D6]">
-                <div>
-                    <!-- Category & Size Header -->
-                    <div class="flex justify-between items-center mb-5">
-                        <span class="text-xs uppercase tracking-wider font-extrabold text-[#556B5D]">Skin Care</span>
-                        <span class="text-xs font-bold px-3 py-1 bg-[#F0F5F1] rounded-md text-[#2D2B29] shadow-2xs border border-[#D4E2D6]">50 gm</span>
+            </a>
+
+            <!-- 3. SOAPS -->
+            <a href="https://fangamorganic.com/soapsdetail" 
+               class="bg-[#EAF2EC] rounded-3xl p-6 border border-[#D4E2D6] shadow-xs hover:shadow-lg transition-all duration-200 flex items-center justify-between group active:scale-98">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl shadow-2xs group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                        🧼
                     </div>
-
-                    <!-- Product Image Container -->
-                    <div class="w-full h-72 bg-[#F0F5F1] rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-[#D4E2D6] relative group shadow-inner p-2">
-                        <img src="https://lh3.googleusercontent.com/d/1dAKtaSwS-oGsZgftB3F4DFOvisqLjC9i" 
-                             alt="Fangam Organic Ubtan" 
-                             class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500">
+                    <div>
+                        <h2 class="brand-heading text-xl text-[#1A3320]">Soaps</h2>
+                        <p class="text-xs text-[#556B5D]">Herbal Handcrafted Soaps</p>
                     </div>
-
-                    <!-- Product Title -->
-                    <h3 class="brand-heading text-2xl text-[#1A3320] mb-3">Fangam Organic Ubtan Powder</h3>
-
-                    <!-- Product Short Description -->
-                    <p class="text-[#556B5D] text-sm leading-relaxed mb-8">
-                        100% organic mixed herbs formulated to glow, protect, and provide smooth  and healthy skin.
-                    </p>
                 </div>
-
-                <!-- Action Button / Link -->
-                <div>
-                    <!-- Replace '#' with your actual product detail URL -->
-                    <a href="https://fangamorganic.com/ubtan" 
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="w-full bg-[#1A3320] text-white py-4 px-6 rounded-2xl font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#284D2E] transition-all shadow-md group">
-                        <span>Click here to know more</span>
-                        <svg class="w-4 h-4 rtl:rotate-180 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
+                <div class="w-10 h-10 rounded-full bg-white border border-[#D4E2D6] flex items-center justify-center text-[#1A3320] group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
                 </div>
-            </div>
-            <!-- ================= PRODUCT CARD END ================= -->
-                         <!-- ================= PRODUCT CARD START (Copy & paste this block to add new products) ================= -->
-            <div class="bg-[#EAF2EC] rounded-3xl p-6 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-[#D4E2D6]">
-                <div>
-                    <!-- Category & Size Header -->
-                    <div class="flex justify-between items-center mb-5">
-                        <span class="text-xs uppercase tracking-wider font-extrabold text-[#556B5D]">Skin Care</span>
-                        <span class="text-xs font-bold px-3 py-1 bg-[#F0F5F1] rounded-md text-[#2D2B29] shadow-2xs border border-[#D4E2D6]">95 gm</span>
+            </a>
+
+            <!-- 4. UBTAN -->
+            <a href="https://fangamorganic.com/ubtan" 
+               class="bg-[#EAF2EC] rounded-3xl p-6 border border-[#D4E2D6] shadow-xs hover:shadow-lg transition-all duration-200 flex items-center justify-between group active:scale-98">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl shadow-2xs group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                        ✨
                     </div>
-
-                    <!-- Product Image Container -->
-                    <div class="w-full h-72 bg-[#F0F5F1] rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-[#D4E2D6] relative group shadow-inner p-2">
-                        <img src="https://lh3.googleusercontent.com/d/1538Hm63VUyCYhRLLLlJ2lQzL4Hf1csnJ" 
-                             alt="Fangam Organic Neem Soap" 
-                             class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500">
+                    <div>
+                        <h2 class="brand-heading text-xl text-[#1A3320]">Ubtan</h2>
+                        <p class="text-xs text-[#556B5D]">Radiance Ubtan Powder</p>
                     </div>
-
-                    <!-- Product Title -->
-                    <h3 class="brand-heading text-2xl text-[#1A3320] mb-3">Fangam Organic Neem Soap</h3>
-
-                    <!-- Product Short Description -->
-                    <p class="text-[#556B5D] text-sm leading-relaxed mb-8">
-                        100% organic mixed neem powders formulated to glow, protect, and provide acne free and healthy glowing skin.
-                    </p>
                 </div>
-
-                <!-- Action Button / Link -->
-                <div>
-                    <!-- Replace '#' with your actual product detail URL -->
-                    <a href="https://fangamorganic.com/neemsoap" 
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="w-full bg-[#1A3320] text-white py-4 px-6 rounded-2xl font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#284D2E] transition-all shadow-md group">
-                        <span>Click here to know more</span>
-                        <svg class="w-4 h-4 rtl:rotate-180 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
+                <div class="w-10 h-10 rounded-full bg-white border border-[#D4E2D6] flex items-center justify-center text-[#1A3320] group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
                 </div>
-            </div>
-            <!-- ================= PRODUCT CARD END ================= -->
-                         <!-- ================= PRODUCT CARD START (Copy & paste this block to add new products) ================= -->
-            <div class="bg-[#EAF2EC] rounded-3xl p-6 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-[#D4E2D6]">
-                <div>
-                    <!-- Category & Size Header -->
-                    <div class="flex justify-between items-center mb-5">
-                        <span class="text-xs uppercase tracking-wider font-extrabold text-[#556B5D]">Skin Care</span>
-                        <span class="text-xs font-bold px-3 py-1 bg-[#F0F5F1] rounded-md text-[#2D2B29] shadow-2xs border border-[#D4E2D6]">95 gm</span>
+            </a>
+
+            <!-- 5. HAIR MASKS -->
+            <a href="https://fangamorganic.com/hairmask" 
+               class="bg-[#EAF2EC] rounded-3xl p-6 border border-[#D4E2D6] shadow-xs hover:shadow-lg transition-all duration-200 flex items-center justify-between group active:scale-98 sm:col-span-2 lg:col-span-1">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl shadow-2xs group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                        🌿
                     </div>
-
-                    <!-- Product Image Container -->
-                    <div class="w-full h-72 bg-[#F0F5F1] rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-[#D4E2D6] relative group shadow-inner p-2">
-                        <img src="https://lh3.googleusercontent.com/d/1r06Y5UCh9FAUYCgvQggHkaGD1kVk1RhR" 
-                             alt="Fangam Organic Ubtan" 
-                             class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500">
+                    <div>
+                        <h2 class="brand-heading text-xl text-[#1A3320]">Hair Masks</h2>
+                        <p class="text-xs text-[#556B5D]">Botanical Hair Treatment</p>
                     </div>
-
-                    <!-- Product Title -->
-                    <h3 class="brand-heading text-2xl text-[#1A3320] mb-3">Fangam Organic Ubtan Soap</h3>
-
-                    <!-- Product Short Description -->
-                    <p class="text-[#556B5D] text-sm leading-relaxed mb-8">
-                        100% organic mixed natural powders like besan powder, haldi powder formulated to glow, protect and provide smooth and healthy glowing skin.
-                    </p>
                 </div>
-
-                <!-- Action Button / Link -->
-                <div>
-                    <!-- Replace '#' with your actual product detail URL -->
-                    <a href="https://fangamorganic.com/ubtansoap" 
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="w-full bg-[#1A3320] text-white py-4 px-6 rounded-2xl font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#284D2E] transition-all shadow-md group">
-                        <span>Click here to know more</span>
-                        <svg class="w-4 h-4 rtl:rotate-180 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
+                <div class="w-10 h-10 rounded-full bg-white border border-[#D4E2D6] flex items-center justify-center text-[#1A3320] group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
                 </div>
-            </div>
-            <!-- ================= PRODUCT CARD END ================= -->
-             <!-- ================= PRODUCT CARD START (Copy & paste this block to add new products) ================= -->
-            <div class="bg-[#EAF2EC] rounded-3xl p-6 sm:p-8 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between border border-[#D4E2D6]">
-                <div>
-                    <!-- Category & Size Header -->
-                    <div class="flex justify-between items-center mb-5">
-                        <span class="text-xs uppercase tracking-wider font-extrabold text-[#556B5D]">Skin Care</span>
-                        <span class="text-xs font-bold px-3 py-1 bg-[#F0F5F1] rounded-md text-[#2D2B29] shadow-2xs border border-[#D4E2D6]">95 gm</span>
-                    </div>
-
-                    <!-- Product Image Container -->
-                    <div class="w-full h-72 bg-[#F0F5F1] rounded-2xl mb-6 overflow-hidden flex items-center justify-center border border-[#D4E2D6] relative group shadow-inner p-2">
-                        <img src="https://lh3.googleusercontent.com/d/1vfv5i8bqC3EGcO7CxKGX-TYZuQDOf8y2" 
-                             alt="Fangam Organic Whitening Soap" 
-                             class="w-full h-full object-contain object-center group-hover:scale-105 transition-transform duration-500">
-                    </div>
-
-                    <!-- Product Title -->
-                    <h3 class="brand-heading text-2xl text-[#1A3320] mb-3">Fangam Organic Whitening Soap</h3>
-
-                    <!-- Product Short Description -->
-                    <p class="text-[#556B5D] text-sm leading-relaxed mb-8">
-                        100% organic mixed natural powders like besan powder, sandalwood poder formulated for glowing skin.
-                    </p>
-                </div>
-
-                <!-- Action Button / Link -->
-                <div>
-                    <!-- Replace '#' with your actual product detail URL -->
-                    <a href="https://fangamorganic.com/whiteningsoap" 
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="w-full bg-[#1A3320] text-white py-4 px-6 rounded-2xl font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#284D2E] transition-all shadow-md group">
-                        <span>Click here to know more</span>
-                        <svg class="w-4 h-4 rtl:rotate-180 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <!-- ================= PRODUCT CARD END ================= -->
-
-
+            </a>
 
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="w-full border-t border-[#D4E2D6] mt-20 py-8 bg-[#EAF2EC]/50 text-center">
+    <footer class="w-full border-t border-[#D4E2D6] mt-16 py-6 bg-[#EAF2EC]/50 text-center">
         <p class="text-xs text-[#556B5D] font-medium">
             &copy; 2026 Fangam Organic. All rights reserved. Designed for pure natural wellness.
         </p>
     </footer>
 
-    <!-- Google Translate Script and Custom Dropdown Logic -->
+    <!-- Translation Logic (Asynchronous for maximum speed) -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
-                includedLanguages: 'ur,ar,hi,es,fr,de,zh-CN,ja,ru,pt,it,tr,fa,bn,id,ms,pa,sw,vi,ko,ta,te,mr,gu,kn,ml,pl,uk,ro,nl,el,hu,cs,sv,bg,fi,sk,da,no,hr,he',
+                includedLanguages: 'en,ur,ar,hi,es,fr,de,zh-CN,ja,ru,pt,it,tr,fa,bn,id,ms,pa,sw,vi,ko,ta,te,mr,gu,kn,ml,pl,uk,ro,nl,el,hu,cs,sv,bg,fi,sk,da,no,hr,he,af,fil,sq,ka,hy,az,kk,uz,sr,sl,et,lv,lt',
                 autoDisplay: false
             }, 'google_translate_element');
         }
@@ -417,11 +284,10 @@
             dropdown.classList.toggle('hidden');
         }
 
-        // Close dropdown when clicking outside
         window.addEventListener('click', function(e) {
             const btn = document.getElementById('langMenuBtn');
             const dropdown = document.getElementById('langDropdown');
-            if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+            if (btn && dropdown && !btn.contains(e.target) && !dropdown.contains(e.target)) {
                 dropdown.classList.add('hidden');
             }
         });
@@ -429,23 +295,12 @@
         function changeLanguage(langCode, langName) {
             document.getElementById('currentLangLabel').innerText = langName;
             document.getElementById('langDropdown').classList.add('hidden');
-            
-            // Set text direction and html lang attribute for Urdu/Arabic/Persian
-            if (langCode === 'ur' || langCode === 'ar' || langCode === 'fa' || langCode === 'he') {
-                document.documentElement.setAttribute('dir', 'rtl');
-                document.documentElement.setAttribute('lang', langCode);
-            } else {
-                document.documentElement.setAttribute('dir', 'ltr');
-                document.documentElement.setAttribute('lang', langCode);
-            }
 
-            // Trigger Google Translate cookie and dropdown change
             const selectField = document.querySelector('.goog-te-combo');
             if (selectField) {
                 selectField.value = langCode;
                 selectField.dispatchEvent(new Event('change'));
             } else {
-                // Fallback if google translate script is still loading
                 setTimeout(() => {
                     const retrySelect = document.querySelector('.goog-te-combo');
                     if (retrySelect) {
@@ -456,7 +311,7 @@
             }
         }
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
 
 </body>
 </html>
