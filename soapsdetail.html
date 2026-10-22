@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fangam Organic - Product Description & Usage Guide</title>
+
+  <!-- Google Fonts: Cinzel, Noto Nastaliq Urdu & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #07130b;
+      --bg-card: #0d2114;
+      --border-gold: #c5a059;
+      --gold-light: #f3e5ab;
+      --accent-color: #2e7d32;
+      --glow-color: rgba(46, 125, 50, 0.4);
+      --text-main: #f0f4f1;
+      --text-muted: #a3b8a8;
+      --transition-speed: 0.5s;
+    }
+
+    /* Dynamic Theme Styles per Soap */
+    body[data-theme="neem"] {
+      --bg-dark: #06120a;
+      --bg-card: #0d2114;
+      --accent-color: #2e7d32;
+      --glow-color: rgba(46, 125, 50, 0.4);
+    }
+
+    body[data-theme="whitening"] {
+      --bg-dark: #050f14;
+      --bg-card: #081d26;
+      --accent-color: #00838f;
+      --glow-color: rgba(0, 131, 143, 0.4);
+    }
+
+    body[data-theme="charcoal"] {
+      --bg-dark: #0a0a0c;
+      --bg-card: #141418;
+      --accent-color: #757575;
+      --glow-color: rgba(117, 117, 117, 0.4);
+    }
+
+    body[data-theme="loofah"] {
+      --bg-dark: #120e09;
+      --bg-card: #211a12;
+      --accent-color: #8d6e63;
+      --glow-color: rgba(141, 110, 99, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      transition: background-color var(--transition-speed) ease;
+    }
+
+    body.lang-ur, body.lang-ur * {
+      font-family: 'Noto Nastaliq Urdu', 'Plus Jakarta Sans', serif !important;
+      direction: rtl;
+      text-align: right;
+    }
+
+    /* Header */
+    header {
+      background: rgba(0, 0, 0, 0.85);
+      border-bottom: 1px solid var(--border-gold);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      padding: 14px 24px;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .brand-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .inquire-btn {
+      background: #25d366;
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: transform 0.2s ease;
+    }
+
+    .inquire-btn:hover {
+      transform: scale(1.03);
+    }
+
+    .lang-btn {
+      background: rgba(197, 160, 89, 0.1);
+      border: 1px solid var(--border-gold);
+      color: var(--gold-light);
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    /* Navigation Tabs */
+    .soap-nav-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .tab-btn {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      color: var(--text-muted);
+      padding: 10px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--accent-color);
+      border-color: var(--gold-light);
+      color: #fff;
+      box-shadow: 0 0 15px var(--glow-color);
+    }
+
+    /* Hero Guide Card */
+    .slider-hero-card {
+      background: var(--bg-card);
+      border: 2px solid var(--border-gold);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 30px var(--glow-color);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 50px;
+      transition: background-color var(--transition-speed) ease;
+    }
+
+    @media (max-width: 850px) {
+      .slider-hero-card {
+        grid-template-columns: 1fr;
+        padding: 25px;
+        text-align: center;
+      }
+    }
+
+    .product-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(197, 160, 89, 0.15);
+      border: 1px solid var(--border-gold);
+      color: var(--gold-light);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.3rem;
+      color: var(--gold-light);
+      margin-bottom: 15px;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 25px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn-ask-wa {
+      background: #25d366;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 26px;
+      border-radius: 30px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    /* Product Image Display Circle */
+    .hero-image-box {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--glow-color) 0%, rgba(0,0,0,0.8) 80%);
+      border: 6px solid var(--gold-light);
+      outline: 2px solid var(--accent-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      box-shadow: 0 0 30px var(--glow-color);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-image-box i {
+      font-size: 5rem;
+      color: var(--gold-light);
+    }
+
+    /* Detailed Content Sections Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      color: var(--gold-light);
+      margin-bottom: 18px;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+      padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-list {
+      list-style: none;
+    }
+
+    .card-list li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .card-list li i {
+      color: var(--gold-light);
+      margin-top: 4px;
+    }
+
+    /* Step-by-Step Routine Box Highlight */
+    .usage-step-badge {
+      background: rgba(197, 160, 89, 0.2);
+      border: 1px solid var(--border-gold);
+      color: var(--gold-light);
+      font-weight: bold;
+      border-radius: 50%;
+      min-width: 24px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    /* Full Width Benefits */
+    .full-width-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 20px;
+      padding: 35px;
+      margin-bottom: 50px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .benefit-item {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .benefit-item h4 {
+      color: var(--gold-light);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Language Modal */
+    .lang-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 3000;
+    }
+
+    .lang-modal-overlay.active {
+      display: flex;
+    }
+
+    .lang-modal {
+      background: #0f1c13;
+      border: 2px solid var(--border-gold);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 25px;
+    }
+
+    .lang-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .language-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 10px;
+      overflow-y: auto;
+      max-height: 400px;
+      padding-right: 5px;
+    }
+
+    .lang-item {
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      color: var(--text-main);
+      cursor: pointer;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .lang-item:hover {
+      border-color: var(--border-gold);
+      background: rgba(197, 160, 89, 0.2);
+      color: var(--gold-light);
+    }
+
+    #google_translate_element {
+      display: none !important;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid rgba(197, 160, 89, 0.2);
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+
+<body data-theme="neem">
+
+  <div id="google_translate_element"></div>
+
+  <header>
+    <div class="header-container">
+      <a href="#" class="brand-logo">
+        <i class="fa-solid fa-seedling" style="color: var(--border-gold); font-size: 1.5rem;"></i>
+        <span class="brand-name">Fangam Organic</span>
+      </a>
+
+      <div class="header-actions">
+        <a href="https://wa.me/923006132921?text=Hello%20Fangam%20Organic,%20I%20have%20a%20question%20regarding%20your%20organic%20soaps." target="_blank" class="inquire-btn">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Inquire / معلومات</span>
+        </a>
+
+        <button class="lang-btn" id="openLangBtn">
+          <i class="fa-solid fa-globe"></i>
+          <span>Language / زبان</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-container">
+
+    <!-- Soap Navigation Tabs (4 Organic Products) -->
+    <div class="soap-nav-tabs">
+      <button class="tab-btn active" onclick="selectSoap(0)"><i class="fa-solid fa-leaf"></i> Neem Soap</button>
+      <button class="tab-btn" onclick="selectSoap(1)"><i class="fa-solid fa-sparkles"></i> Whitening</button>
+      <button class="tab-btn" onclick="selectSoap(2)"><i class="fa-solid fa-gem"></i> Charcoal Detox</button>
+      <button class="tab-btn" onclick="selectSoap(3)"><i class="fa-solid fa-spa"></i> Loofah Scrub</button>
+    </div>
+
+    <!-- Hero Synchronized Guide Slider -->
+    <div class="slider-hero-card" id="heroCard">
+      <div class="hero-text-content">
+        <span class="product-badge" id="heroBadge">ORGANIC USAGE GUIDE</span>
+        <h1 class="hero-title" id="heroTitle">Fangam Organic Neem Soap</h1>
+        <p class="hero-subtitle" id="heroSubtitle">Authentic Ayurvedic Cold-Pressed Neem Formula Specially Designed for Acne, Skin Infections, and Deep Pore Cleansing.</p>
+        
+        <div class="hero-actions">
+          <a href="#" class="btn-ask-wa" id="heroWaBtn" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Consult Product Specialist
+          </a>
+        </div>
+      </div>
+
+      <!-- Circle Image Container -->
+      <div class="hero-image-box" id="heroImgBox">
+        <img id="heroImage" src="" alt="Soap Visual" style="display:none;">
+        <i class="fa-solid fa-soap" id="heroIcon"></i>
+      </div>
+    </div>
+
+    <!-- Detailed Information Sections Grid -->
+    <div class="cards-grid">
+      <div class="card">
+        <h3 class="card-title"><i class="fa-solid fa-vial-circle-check"></i> Pure Botanical Ingredients</h3>
+        <ul class="card-list" id="ingredientsList"></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title"><i class="fa-solid fa-hand-holding-medical"></i> Targeted Skin Care</h3>
+        <ul class="card-list" id="specialCareList"></ul>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title"><i class="fa-solid fa-list-check"></i> Step-by-Step Usage Guide</h3>
+        <ul class="card-list" id="usageList"></ul>
+      </div>
+    </div>
+
+    <!-- Full Width Proven Benefits Section -->
+    <div class="full-width-card">
+      <h2 style="color: var(--gold-light); font-family: 'Cinzel', serif; text-align: center; margin-bottom: 10px;" id="benefitsTitle">
+        Key Benefits & Skin Science
+      </h2>
+      <div class="benefits-grid" id="benefitsGrid"></div>
+    </div>
+
+  </div>
+
+  <!-- Language Selection Modal (30+ International Languages) -->
+  <div class="lang-modal-overlay" id="langModal">
+    <div class="lang-modal">
+      <div class="lang-header">
+        <h3 style="color: var(--gold-light); font-family: 'Cinzel', serif;">Select Language / زبان منتخب کریں</h3>
+        <button style="background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer;" id="closeLangBtn">&times;</button>
+      </div>
+
+      <div class="language-grid">
+        <div class="lang-item" onclick="translatePage('ur')">اردو (Urdu)</div>
+        <div class="lang-item" onclick="translatePage('en')">English</div>
+        <div class="lang-item" onclick="translatePage('ar')">العربية (Arabic)</div>
+        <div class="lang-item" onclick="translatePage('hi')">हिन्दी (Hindi)</div>
+        <div class="lang-item" onclick="translatePage('pa')">ਪੰਜਾਬੀ (Punjabi)</div>
+        <div class="lang-item" onclick="translatePage('fa')">فارسی (Persian)</div>
+        <div class="lang-item" onclick="translatePage('es')">Español (Spanish)</div>
+        <div class="lang-item" onclick="translatePage('fr')">Français (French)</div>
+        <div class="lang-item" onclick="translatePage('de')">Deutsch (German)</div>
+        <div class="lang-item" onclick="translatePage('tr')">Türkçe (Turkish)</div>
+        <div class="lang-item" onclick="translatePage('zh-CN')">中文 (Chinese)</div>
+        <div class="lang-item" onclick="translatePage('ja')">日本語 (Japanese)</div>
+        <div class="lang-item" onclick="translatePage('ko')">한국어 (Korean)</div>
+        <div class="lang-item" onclick="translatePage('ru')">Русский (Russian)</div>
+        <div class="lang-item" onclick="translatePage('it')">Italiano (Italian)</div>
+        <div class="lang-item" onclick="translatePage('pt')">Português (Portuguese)</div>
+        <div class="lang-item" onclick="translatePage('nl')">Nederlands (Dutch)</div>
+        <div class="lang-item" onclick="translatePage('pl')">Polski (Polish)</div>
+        <div class="lang-item" onclick="translatePage('id')">Indonesian</div>
+        <div class="lang-item" onclick="translatePage('ms')">Malay</div>
+        <div class="lang-item" onclick="translatePage('th')">ไทย (Thai)</div>
+        <div class="lang-item" onclick="translatePage('vi')">Tiếng Việt (Vietnamese)</div>
+        <div class="lang-item" onclick="translatePage('bn')">বাংলা (Bengali)</div>
+        <div class="lang-item" onclick="translatePage('el')">Ελληνικά (Greek)</div>
+        <div class="lang-item" onclick="translatePage('sv')">Svenska (Swedish)</div>
+        <div class="lang-item" onclick="translatePage('no')">Norsk (Norwegian)</div>
+        <div class="lang-item" onclick="translatePage('da')">Dansk (Danish)</div>
+        <div class="lang-item" onclick="translatePage('fi')">Suomi (Finnish)</div>
+        <div class="lang-item" onclick="translatePage('cs')">Čeština (Czech)</div>
+        <div class="lang-item" onclick="translatePage('ro')">Română (Romanian)</div>
+        <div class="lang-item" onclick="translatePage('hu')">Magyar (Hungarian)</div>
+        <div class="lang-item" onclick="translatePage('uk')">Українська (Ukrainian)</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 <strong>Fangam Organic</strong>. All rights reserved. | Educational Product Guide</p>
+  </footer>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'ur,en,ar,hi,pa,fa,es,fr,de,tr,zh-CN,ja,ko,ru,it,pt,nl,pl,id,ms,th,vi,bn,el,sv,no,da,fi,cs,ro,hu,uk',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script>
+    const soapsData = [
+      {
+        id: "neem",
+        theme: "neem",
+        badge: "100% PURE BOTANICAL FORMULA",
+        title: "Fangam Organic Neem Soap",
+        icon: "fa-seedling",
+        image: "neem_soap.jpg",
+        subtitle: "Authentic Ayurvedic Cold-Pressed Neem Formula Specially Designed for Acne, Skin Infections, and Deep Pore Cleansing.",
+        ingredients: ["Pure Cold-Pressed Neem Oil", "Organic Neem Leaf Extracts", "Natural Vegetable Oils Base", "Pure Botanical Glycerine", "0% Harmful Chemicals & Detergents"],
+        specialCare: ["<strong>Acne & Pimples:</strong> Fights acne-causing bacteria deep inside pores.", "<strong>Boils & Rash:</strong> Relieves fungal skin eruptions and heat rashes.", "<strong>Body Acne:</strong> Clears stubborn back and chest breakout zones.", "<strong>Oil Balance:</strong> Controls excessive facial sebum production."],
+        usage: ["Wet your face and body with lukewarm water.", "Work soap into a rich lather and massage gently for 1-2 minutes.", "Rinse thoroughly with fresh, cool water.", "Use twice daily (morning & night) for clean, clear skin."],
+        benefits: [
+          { title: "Antibacterial Action", desc: "Kills micro-bacterial impurities harbored inside skin pores." },
+          { title: "Calms Redness & Rash", desc: "Instantly relieves skin redness, irritation, and heat bumps." },
+          { title: "Deep Pore Cleansing", desc: "Removes accumulated dirt and excess sebum naturally." },
+          { title: "Healthy Complexion", desc: "Promotes an even, refreshed, and clear skin texture." }
+        ]
+      },
+      {
+        id: "whitening",
+        theme: "whitening",
+        badge: "100% NATURAL RADIANCE GUIDE",
+        title: "Pure Organic Whitening Soap",
+        icon: "fa-sparkles",
+        image: "whitening_soap.jpg",
+        subtitle: "Enriched with Natural Skin Actives, Glutathione, Alpha Arbutin, Kojic Acid, Pure Goat Milk & Vitamin C for Glass-Skin Clarity.",
+        ingredients: ["Alpha Arbutin & Kojic Acid", "L-Glutathione Antioxidant Complex", "Pure Goat Milk (Lactic Acid)", "Vitamin C & Niacinamide (B3)", "Licorice Root & Mulberry Extract"],
+        specialCare: ["<strong>Melasma & Dark Spots:</strong> Fades stubborn hyperpigmentation gradually.", "<strong>Sun Tan Removal:</strong> Brightens sun-damaged face, neck, and arms.", "<strong>Dark Joints:</strong> Lightens dark knees, underarms, and knuckles.", "<strong>Acne Scars:</strong> Fades dark spots left behind by healed pimples."],
+        usage: ["Apply the gentle lather evenly onto wet skin.", "Allow the natural active ingredients to sit on skin for 1 to 2 minutes.", "Rinse off thoroughly with cool water.", "For optimal skin brightening, use consistently twice every day."],
+        benefits: [
+          { title: "Melanin Regulation", desc: "Helps suppress excessive skin pigmentation naturally." },
+          { title: "Glass-Skin Glow", desc: "Unveils bright, velvety smooth, and radiant skin texture." },
+          { title: "Gentle Micro-Exfoliation", desc: "Softly dissolves dead surface cells without harsh scratching." },
+          { title: "100% Bleach Free", desc: "Completely safe from harsh chemicals, synthetic bleaches, or mercury." }
+        ]
+      },
+      {
+        id: "charcoal",
+        theme: "charcoal",
+        badge: "ACTIVATED CHARCOAL DETOX",
+        title: "Pure Organic Activated Charcoal Soap",
+        icon: "fa-gem",
+        image: "charcoal_soap.jpg",
+        subtitle: "Deep Pore Cleansing & Toxins Extraction Soap Formulated with Activated Bamboo Charcoal, Tea Tree Essential Oil & Botanical Glycerine.",
+        ingredients: ["Activated Bamboo Charcoal Powder", "Pure Tea Tree Essential Oil", "Cold-Pressed Neem & Coconut Base", "Pure Botanical Glycerine", "0% Parabens, Sulphates & Detergents"],
+        specialCare: ["<strong>Deep Pore Detox:</strong> Draws out embedded blackheads and urban pollution.", "<strong>Oil Extraction:</strong> Regulates active oil glands for a clean matte feel.", "<strong>Blemish Defense:</strong> Prevents bacterial skin bumps and whiteheads.", "<strong>Body Odor Defense:</strong> Neutralizes odor-causing bacterial build-up."],
+        usage: ["Build a dark rich lather using warm water.", "Gently massage over T-zone (forehead, nose, chin) and oily body areas.", "Rinse completely with clear water.", "Recommended for daily evening cleansing to strip away daily grime."],
+        benefits: [
+          { title: "Magnet-Like Pore Extraction", desc: "Draws out micro-pollutants and heavy grease effortlessly." },
+          { title: "Long-Lasting Matte Finish", desc: "Controls surface shine while leaving skin feeling fresh." },
+          { title: "Tea Tree Antiseptic Shield", desc: "Provides active defense against daily breakouts." },
+          { title: "Smoother Texture", desc: "Unclogs enlarged pores for a refined, balanced feel." }
+        ]
+      },
+      {
+        id: "loofah",
+        theme: "loofah",
+        badge: "NATURAL LOOFAH EXFOLIATOR",
+        title: "Pure Organic Natural Loofah Scrub Soap",
+        icon: "fa-spa",
+        image: "loofah_soap.jpg",
+        subtitle: "Embedded Natural Luffa Plant Sponge Combined with Raw Honey & Sweet Almond Oil for Intense Skin Scrubbing, Rough Elbows & Heel Smoothing.",
+        ingredients: ["Embedded Natural Luffa Plant Sponge Fiber", "Organic Raw Honey Extract", "Sweet Almond & Coconut Oil Base", "Vitamin E & Natural Shea Butter", "0% Synthetic Plastic Micro-Beads"],
+        specialCare: ["<strong>Cracked Heel Repair:</strong> Gently scrubs away hard, dead heel skin.", "<strong>Rough Elbows & Knees:</strong> Smooths dark, dry friction patches.", "<strong>Ingrown Hair Prevention:</strong> Exfoliates dead skin clogging hair follicles.", "<strong>Body Exfoliation:</strong> Invigorates sluggish skin circulation."],
+        usage: ["Soak the soap bar in warm water for 30 seconds to soften the loofah fiber.", "Scrub in circular motions over heels, knees, elbows, and body skin.", "Rinse off thoroughly and apply moisturizer after drying.", "Use 2-3 times per week for velvety smooth skin."],
+        benefits: [
+          { title: "100% Plant Fiber Sponge", desc: "Uses natural luffa sponge without plastic exfoliators." },
+          { title: "Heel & Foot Softening", desc: "Buffs away thick, rough dead skin layers effortlessly." },
+          { title: "Circulation Booster", desc: "Textured scrubbing action stimulates healthy blood flow." },
+          { title: "Honey Hydration", desc: "Raw honey protects skin moisture barrier during scrubbing." }
+        ]
+      }
+    ];
+
+    let currentSoapIndex = 0;
+    let autoSliderInterval;
+
+    function renderSoap(index) {
+      currentSoapIndex = index;
+      const soap = soapsData[index];
+
+      document.body.setAttribute("data-theme", soap.theme);
+
+      document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+      });
+
+      document.getElementById('heroBadge').textContent = soap.badge;
+      document.getElementById('heroTitle').textContent = soap.title;
+      document.getElementById('heroSubtitle').textContent = soap.subtitle;
+      
+      const imgElem = document.getElementById('heroImage');
+      const iconElem = document.getElementById('heroIcon');
+
+      if (soap.image && soap.image !== "") {
+        imgElem.src = soap.image;
+        imgElem.style.display = "block";
+        iconElem.style.display = "none";
+        imgElem.onerror = function() {
+          imgElem.style.display = "none";
+          iconElem.style.display = "block";
+          iconElem.className = `fa-solid ${soap.icon}`;
+        };
+      } else {
+        imgElem.style.display = "none";
+        iconElem.style.display = "block";
+        iconElem.className = `fa-solid ${soap.icon}`;
+      }
+
+      const waInquiryMsg = encodeURIComponent(`Hello Fangam Organic, I am reading the guide for ${soap.title} and would like to ask some questions.`);
+      document.getElementById('heroWaBtn').href = `https://wa.me/923006132921?text=${waInquiryMsg}`;
+
+      document.getElementById('ingredientsList').innerHTML = soap.ingredients.map(ing => `<li><i class="fa-solid fa-check-circle"></i> <span>${ing}</span></li>`).join('');
+      document.getElementById('specialCareList').innerHTML = soap.specialCare.map(care => `<li><i class="fa-solid fa-circle-dot"></i> <span>${care}</span></li>`).join('');
+      document.getElementById('usageList').innerHTML = soap.usage.map((u, idx) => `<li><span class="usage-step-badge">${idx + 1}</span> <span>${u}</span></li>`).join('');
+
+      document.getElementById('benefitsGrid').innerHTML = soap.benefits.map(b => `
+        <div class="benefit-item">
+          <h4><i class="fa-solid fa-star"></i> ${b.title}</h4>
+          <p>${b.desc}</p>
+        </div>
+      `).join('');
+    }
+
+    function selectSoap(index) {
+      renderSoap(index);
+      resetAutoSlider();
+    }
+
+    function resetAutoSlider() {
+      clearInterval(autoSliderInterval);
+      autoSliderInterval = setInterval(() => {
+        currentSoapIndex = (currentSoapIndex + 1) % soapsData.length;
+        renderSoap(currentSoapIndex);
+      }, 6500);
+    }
+
+    function translatePage(langCode) {
+      if (langCode === 'ur') {
+        document.body.classList.add('lang-ur');
+      } else {
+        document.body.classList.remove('lang-ur');
+      }
+
+      const selectBox = document.querySelector('.goog-te-combo');
+      if (selectBox) {
+        selectBox.value = langCode;
+        selectBox.dispatchEvent(new Event('change'));
+      }
+
+      document.getElementById('langModal').classList.remove('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderSoap(0);
+      resetAutoSlider();
+
+      document.getElementById('openLangBtn').addEventListener('click', () => {
+        document.getElementById('langModal').classList.add('active');
+      });
+
+      document.getElementById('closeLangBtn').addEventListener('click', () => {
+        document.getElementById('langModal').classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
