@@ -254,28 +254,37 @@
       box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
     }
 
-    /* Product Circle Image Box */
+    /* Product Display Showcase Box (Replaces Circle Frame) */
     .hero-image-box {
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--glow-color) 0%, rgba(0,0,0,0.8) 80%);
-      border: 6px solid var(--gold-light);
-      outline: 2px solid var(--accent-color);
+      width: 100%;
+      max-width: 320px;
+      height: 320px;
+      border-radius: 20px;
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%);
+      border: 2px solid var(--border-gold);
+      outline: 1px solid var(--accent-color);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       margin: 0 auto;
-      box-shadow: 0 0 30px var(--glow-color);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px var(--glow-color);
       overflow: hidden;
       position: relative;
+      padding: 12px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .hero-image-box:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 35px var(--glow-color);
     }
 
     .hero-image-box img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain; /* صابن کی مکمل تصویر بغیر کٹے نظر آئے گی */
+      border-radius: 12px;
       display: block;
     }
 
@@ -480,7 +489,7 @@
         </div>
       </div>
 
-      <!-- Circle Image Container -->
+      <!-- New Showcase Image Box -->
       <div class="hero-image-box" id="heroImgBox">
         <img id="heroImage" src="" alt="Soap Image" style="display:none;">
         <i class="fa-solid fa-soap" id="heroIcon"></i>
@@ -577,7 +586,7 @@
 
   <script>
     /* =======================================================================
-       یہاں 4 صابنوں کا ڈیٹا اور ان کی تصاویر کے لنکس (Image URLs) کا حصہ ہے
+       یہاں 4 صابنوں کی تصاویر کے لنکس (Image URLs) درج کریں
        ======================================================================= */
     const soapsData = [
       {
@@ -587,7 +596,7 @@
         title: "Fangam Organic Neem Soap",
         icon: "fa-seedling",
         
-        // 1. نیم صابن کی تصویر کا لنک یہاں شد و مد سے درج کریں:
+        // 1. نیم صابن کی تصویر کا لنک درج کریں:
         image: "https://lh3.googleusercontent.com/d/1538Hm63VUyCYhRLLLlJ2lQzL4Hf1csnJ", 
 
         subtitle: "Authentic Ayurvedic Cold-Pressed Neem Formula Specially Designed for Acne, Skin Infections, and Deep Pore Cleansing.",
@@ -608,8 +617,8 @@
         title: "Pure Organic Whitening Soap",
         icon: "fa-sparkles",
         
-        // 2. وائٹننگ صابن کی تصویر کا لنک یہاں درج کریں:
-        image: "https://lh3.googleusercontent.com/d/1vfv5i8bqC3EGcO7CxKGX-TYZuQDOf8y2", 
+        // 2. وائٹننگ صابن کی تصویر کا لنک درج کریں:
+        image: "https://lh3.googleusercontent.com/d/1r06Y5UCh9FAUYCgvQggHkaGD1kVk1RhR", 
 
         subtitle: "Enriched with Natural Skin Whitening Actives, Glutathione, Alpha Arbutin, Kojic Acid, Pure Goat Milk & Vitamin C for Crystal-Clear Skin.",
         ingredients: ["Alpha Arbutin & Kojic Acid", "L-Glutathione Antioxidant", "Pure Goat Milk (Lactic Acid)", "Vitamin C & Niacinamide", "Licorice Root & Mulberry Extract"],
@@ -629,7 +638,7 @@
         title: "Pure Organic Charcoal Detox Soap",
         icon: "fa-gem",
         
-        // 3. چارکول ڈٹاکس صابن کی تصویر کا لنک یہاں درج کریں:
+        // 3. چارکول صابن کی تصویر کا لنک درج کریں:
         image: "IMAGE_URL_3_HERE.jpg", 
 
         subtitle: "Deep Pore Cleansing & Toxins Extraction Soap Formulated with Activated Bamboo Charcoal, Tea Tree Essential Oil & Botanical Glycerine.",
@@ -650,7 +659,7 @@
         title: "Pure Organic Loofah Scrub Soap",
         icon: "fa-spa",
         
-        // 4. لوفہ سکرب صابن کی تصویر کا لنک یہاں درج کریں:
+        // 4. لوفہ سکرب صابن کی تصویر کا لنک درج کریں:
         image: "IMAGE_URL_4_HERE.jpg", 
 
         subtitle: "Embedded Natural Luffa Plant Sponge Combined with Honey & Sweet Almond Oil for Intense Skin Scrubbing, Rough Elbows & Heel Smoothing.",
