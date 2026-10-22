@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fangam Organic - Product Categories</title>
     
-    <!-- Google Fonts -->
+    <!-- DNS Prefetching for Instant Speed -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,6 +35,7 @@
             background-color: #F0F5F1;
             color: #2D2B29;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .brand-heading {
@@ -65,7 +67,7 @@
                 </div>
             </a>
 
-            <!-- Custom Language Dropdown (50+ International Languages) -->
+            <!-- Custom Language Dropdown (50+ Languages) -->
             <div class="relative">
                 <button id="langMenuBtn" onclick="toggleLangMenu()" class="flex items-center space-x-2 bg-white border border-[#C5D6C8] hover:border-[#1A3320] text-[#1A3320] px-4 py-2.5 rounded-full text-sm font-semibold shadow-xs transition-all cursor-pointer">
                     <svg class="w-4 h-4 text-[#1A3320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -77,7 +79,7 @@
                     </svg>
                 </button>
 
-                <!-- 50+ Languages Dropdown List -->
+                <!-- 50+ Languages List -->
                 <div id="langDropdown" class="hidden absolute right-0 mt-2 w-64 max-h-96 overflow-y-auto bg-white rounded-2xl shadow-xl border border-[#D4E2D6] py-2 z-50">
                     <div class="px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#556B5D] border-b border-gray-100">
                         Select Language
@@ -143,156 +145,131 @@
     <!-- Hidden Google Translate Element -->
     <div id="google_translate_element"></div>
 
-    <!-- Main Catalog Navigation Portal -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+    <!-- Main Catalog Portal -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
         
         <!-- Hero Header -->
-        <div class="text-center max-w-3xl mx-auto mb-14">
+        <div class="text-center max-w-2xl mx-auto mb-10">
             <span class="text-xs uppercase tracking-widest text-[#556B5D] bg-[#EAF2EC] border border-[#D4E2D6] px-4 py-1.5 rounded-full inline-block mb-3 font-bold shadow-2xs">
                 Nature's Pure Essence
             </span>
-            <h1 class="brand-heading text-3xl sm:text-5xl text-[#1A3320] tracking-tight mb-4">
-                Explore Our Organic Range
+            <h1 class="brand-heading text-3xl sm:text-5xl text-[#1A3320] tracking-tight mb-3">
+                Select Product Lineup
             </h1>
-            <p class="text-[#556B5D] text-base sm:text-lg leading-relaxed font-normal">
-                Select a category below to view specific product details, formulation ingredients, and usage guides.
+            <p class="text-[#556B5D] text-sm sm:text-base leading-relaxed font-normal">
+                Choose a category below to explore details, formulation, and ordering options.
             </p>
         </div>
 
-        <!-- 5 CLEAN & DIRECT CATEGORY CARDS -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-center max-w-6xl mx-auto">
+        <!-- 5 FAST-LOADING CATEGORY BUTTONS/CARDS -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
 
-            <!-- 1. OILS CARD -->
-            <div class="bg-[#EAF2EC] rounded-3xl p-6 sm:p-8 border border-[#D4E2D6] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                <div>
-                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl mb-6 shadow-xs group-hover:scale-110 transition-transform">
+            <!-- 1. OILS -->
+            <a href="https://fangamorganic.com/fshodetails" 
+               class="bg-[#EAF2EC] rounded-3xl p-6 border border-[#D4E2D6] shadow-xs hover:shadow-lg transition-all duration-200 flex items-center justify-between group active:scale-98">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl shadow-2xs group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
                         💧
                     </div>
-                    <span class="text-xs uppercase tracking-widest font-extrabold text-[#556B5D] mb-1 block">Hair & Body Care</span>
-                    <h2 class="brand-heading text-2xl text-[#1A3320] mb-3">Oils</h2>
-                    <p class="text-[#556B5D] text-sm leading-relaxed mb-8">
-                        100% pure organic oils cold-pressed and infused with traditional herbs to nourish, strengthen hair, and keep skin vibrant.
-                    </p>
+                    <div>
+                        <h2 class="brand-heading text-xl text-[#1A3320]">Oils</h2>
+                        <p class="text-xs text-[#556B5D]">Hair & Essential Oils</p>
+                    </div>
                 </div>
-                <!-- Link to Oils Page -->
-                <a href="https://fangamorganic.com/fshodetails" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="w-full bg-[#1A3320] text-white py-4 px-6 rounded-2xl font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#284D2E] transition-all shadow-md">
-                    <span>View Oils Collection</span>
-                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                <div class="w-10 h-10 rounded-full bg-white border border-[#D4E2D6] flex items-center justify-center text-[#1A3320] group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                     </svg>
-                </a>
-            </div>
+                </div>
+            </a>
 
-            <!-- 2. SHAMPOOS CARD -->
-            <div class="bg-[#EAF2EC] rounded-3xl p-6 sm:p-8 border border-[#D4E2D6] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                <div>
-                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl mb-6 shadow-xs group-hover:scale-110 transition-transform">
+            <!-- 2. SHAMPOOS -->
+            <a href="https://fangamorganic.com" 
+               class="bg-[#EAF2EC] rounded-3xl p-6 border border-[#D4E2D6] shadow-xs hover:shadow-lg transition-all duration-200 flex items-center justify-between group active:scale-98">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl shadow-2xs group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
                         🧴
                     </div>
-                    <span class="text-xs uppercase tracking-widest font-extrabold text-[#556B5D] mb-1 block">Hair Care</span>
-                    <h2 class="brand-heading text-2xl text-[#1A3320] mb-3">Shampoos</h2>
-                    <p class="text-[#556B5D] text-sm leading-relaxed mb-8">
-                        Chemical-free herbal shampoos formulated with natural botanical extracts for gentle scalp cleansing and healthy roots.
-                    </p>
+                    <div>
+                        <h2 class="brand-heading text-xl text-[#1A3320]">Shampoos</h2>
+                        <p class="text-xs text-[#556B5D]">Organic Herbal Cleansers</p>
+                    </div>
                 </div>
-                <!-- Replace with Shampoos Page URL -->
-                <a href="#" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="w-full bg-[#1A3320] text-white py-4 px-6 rounded-2xl font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#284D2E] transition-all shadow-md">
-                    <span>View Shampoos Collection</span>
-                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                <div class="w-10 h-10 rounded-full bg-white border border-[#D4E2D6] flex items-center justify-center text-[#1A3320] group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                     </svg>
-                </a>
-            </div>
+                </div>
+            </a>
 
-            <!-- 3. SOAPS CARD -->
-            <div class="bg-[#EAF2EC] rounded-3xl p-6 sm:p-8 border border-[#D4E2D6] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                <div>
-                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl mb-6 shadow-xs group-hover:scale-110 transition-transform">
+            <!-- 3. SOAPS -->
+            <a href="https://fangamorganic.com/neemsoap" 
+               class="bg-[#EAF2EC] rounded-3xl p-6 border border-[#D4E2D6] shadow-xs hover:shadow-lg transition-all duration-200 flex items-center justify-between group active:scale-98">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl shadow-2xs group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
                         🧼
                     </div>
-                    <span class="text-xs uppercase tracking-widest font-extrabold text-[#556B5D] mb-1 block">Skin Care</span>
-                    <h2 class="brand-heading text-2xl text-[#1A3320] mb-3">Soaps</h2>
-                    <p class="text-[#556B5D] text-sm leading-relaxed mb-8">
-                        Handcrafted organic soap bars enriched with Neem, Ubtan, and Whitening herbs to protect and nourish glowing skin.
-                    </p>
+                    <div>
+                        <h2 class="brand-heading text-xl text-[#1A3320]">Soaps</h2>
+                        <p class="text-xs text-[#556B5D]">Herbal Handcrafted Soaps</p>
+                    </div>
                 </div>
-                <!-- Replace with Soaps Page URL -->
-                <a href="https://fangamorganic.com/neemsoap" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="w-full bg-[#1A3320] text-white py-4 px-6 rounded-2xl font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#284D2E] transition-all shadow-md">
-                    <span>View Soaps Collection</span>
-                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                <div class="w-10 h-10 rounded-full bg-white border border-[#D4E2D6] flex items-center justify-center text-[#1A3320] group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                     </svg>
-                </a>
-            </div>
+                </div>
+            </a>
 
-            <!-- 4. UBTAN CARD -->
-            <div class="bg-[#EAF2EC] rounded-3xl p-6 sm:p-8 border border-[#D4E2D6] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                <div>
-                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl mb-6 shadow-xs group-hover:scale-110 transition-transform">
+            <!-- 4. UBTAN -->
+            <a href="https://fangamorganic.com/ubtan" 
+               class="bg-[#EAF2EC] rounded-3xl p-6 border border-[#D4E2D6] shadow-xs hover:shadow-lg transition-all duration-200 flex items-center justify-between group active:scale-98">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl shadow-2xs group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
                         ✨
                     </div>
-                    <span class="text-xs uppercase tracking-widest font-extrabold text-[#556B5D] mb-1 block">Skin Care</span>
-                    <h2 class="brand-heading text-2xl text-[#1A3320] mb-3">Ubtan</h2>
-                    <p class="text-[#556B5D] text-sm leading-relaxed mb-8">
-                        Traditional organic herbal Ubtan powders blended to restore natural radiance, remove tan, and brighten facial tone.
-                    </p>
+                    <div>
+                        <h2 class="brand-heading text-xl text-[#1A3320]">Ubtan</h2>
+                        <p class="text-xs text-[#556B5D]">Radiance Ubtan Powder</p>
+                    </div>
                 </div>
-                <!-- Replace with Ubtan Page URL -->
-                <a href="https://fangamorganic.com/ubtan" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="w-full bg-[#1A3320] text-white py-4 px-6 rounded-2xl font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#284D2E] transition-all shadow-md">
-                    <span>View Ubtan Collection</span>
-                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                <div class="w-10 h-10 rounded-full bg-white border border-[#D4E2D6] flex items-center justify-center text-[#1A3320] group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                     </svg>
-                </a>
-            </div>
+                </div>
+            </a>
 
-            <!-- 5. HAIR MASKS CARD -->
-            <div class="bg-[#EAF2EC] rounded-3xl p-6 sm:p-8 border border-[#D4E2D6] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
-                <div>
-                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl mb-6 shadow-xs group-hover:scale-110 transition-transform">
+            <!-- 5. HAIR MASKS -->
+            <a href="https://fangamorganic.com/hairmask" 
+               class="bg-[#EAF2EC] rounded-3xl p-6 border border-[#D4E2D6] shadow-xs hover:shadow-lg transition-all duration-200 flex items-center justify-between group active:scale-98 sm:col-span-2 lg:col-span-1">
+                <div class="flex items-center space-x-4">
+                    <div class="w-14 h-14 rounded-2xl bg-white border border-[#D4E2D6] flex items-center justify-center text-2xl shadow-2xs group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
                         🌿
                     </div>
-                    <span class="text-xs uppercase tracking-widest font-extrabold text-[#556B5D] mb-1 block">Hair Care</span>
-                    <h2 class="brand-heading text-2xl text-[#1A3320] mb-3">Hair Masks</h2>
-                    <p class="text-[#556B5D] text-sm leading-relaxed mb-8">
-                        Deep conditioning botanical hair masks designed to repair damaged strands, enhance softness, and promote shine.
-                    </p>
+                    <div>
+                        <h2 class="brand-heading text-xl text-[#1A3320]">Hair Masks</h2>
+                        <p class="text-xs text-[#556B5D]">Botanical Hair Treatment</p>
+                    </div>
                 </div>
-                <!-- Replace with Hair Mask Page URL -->
-                <a href="https://fangamorganic.com/hairmask" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="w-full bg-[#1A3320] text-white py-4 px-6 rounded-2xl font-semibold text-sm flex items-center justify-center space-x-2 hover:bg-[#284D2E] transition-all shadow-md">
-                    <span>View Hair Masks Collection</span>
-                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                <div class="w-10 h-10 rounded-full bg-white border border-[#D4E2D6] flex items-center justify-center text-[#1A3320] group-hover:bg-[#1A3320] group-hover:text-white transition-colors">
+                    <svg class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                     </svg>
-                </a>
-            </div>
+                </div>
+            </a>
 
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="w-full border-t border-[#D4E2D6] mt-20 py-8 bg-[#EAF2EC]/50 text-center">
+    <footer class="w-full border-t border-[#D4E2D6] mt-16 py-6 bg-[#EAF2EC]/50 text-center">
         <p class="text-xs text-[#556B5D] font-medium">
             &copy; 2026 Fangam Organic. All rights reserved. Designed for pure natural wellness.
         </p>
     </footer>
 
-    <!-- JavaScript Logic for Google Translate (50+ Languages) -->
+    <!-- Translation Logic (Asynchronous for maximum speed) -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -334,7 +311,7 @@
             }
         }
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
 
 </body>
 </html>
