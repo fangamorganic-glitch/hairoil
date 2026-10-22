@@ -279,33 +279,36 @@
       gap: 10px;
     }
 
-    /* Product Image Display Circle */
+    /* Perfect Uncropped Product Image Box */
     .hero-image-box {
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--glow-color) 0%, rgba(0,0,0,0.8) 80%);
-      border: 6px solid var(--gold-light);
-      outline: 2px solid var(--accent-color);
+      width: 100%;
+      max-width: 320px;
+      height: 320px;
+      border-radius: 20px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.7) 100%);
+      border: 2px solid var(--border-gold);
+      outline: 1px solid var(--accent-color);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       margin: 0 auto;
-      box-shadow: 0 0 30px var(--glow-color);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px var(--glow-color);
       overflow: hidden;
       position: relative;
+      padding: 12px;
     }
 
     .hero-image-box img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      border-radius: 12px;
       display: block;
     }
 
     .hero-image-box i {
-      font-size: 5rem;
+      font-size: 5.5rem;
       color: var(--gold-light);
     }
 
@@ -377,7 +380,7 @@
       margin-bottom: 8px;
     }
 
-    /* Cart Drawer / Modal & Language Modal */
+    /* Cart Drawer & Language Modal */
     .cart-modal-overlay, .lang-modal-overlay {
       position: fixed;
       top: 0;
@@ -401,7 +404,7 @@
       border: 2px solid var(--border-gold);
       border-radius: 20px;
       width: 90%;
-      max-width: 600px;
+      max-width: 650px;
       max-height: 85vh;
       display: flex;
       flex-direction: column;
@@ -474,13 +477,13 @@
       display: block;
     }
 
-    /* Language List */
+    /* Language Grid (50+ Languages) */
     .language-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
       gap: 10px;
       overflow-y: auto;
-      max-height: 400px;
+      max-height: 420px;
       padding-right: 5px;
     }
 
@@ -492,7 +495,8 @@
       color: var(--text-main);
       cursor: pointer;
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
     }
 
     .lang-item:hover {
@@ -564,7 +568,7 @@
         </div>
       </div>
 
-      <!-- Circle Image Container -->
+      <!-- Image Box Container -->
       <div class="hero-image-box" id="heroImgBox">
         <img id="heroImage" src="" alt="Soap Image" style="display:none;">
         <i class="fa-solid fa-soap" id="heroIcon"></i>
@@ -620,7 +624,7 @@
     </div>
   </div>
 
-  <!-- Language Selection Modal (30+ International Languages) -->
+  <!-- Language Selection Modal (50+ International Languages) -->
   <div class="lang-modal-overlay" id="langModal">
     <div class="lang-modal">
       <div class="lang-header">
@@ -661,6 +665,27 @@
         <div class="lang-item" onclick="translatePage('ro')">Română (Romanian)</div>
         <div class="lang-item" onclick="translatePage('hu')">Magyar (Hungarian)</div>
         <div class="lang-item" onclick="translatePage('uk')">Українська (Ukrainian)</div>
+        <div class="lang-item" onclick="translatePage('tl')">Tagalog (Filipino)</div>
+        <div class="lang-item" onclick="translatePage('sw')">Kiswahili (Swahili)</div>
+        <div class="lang-item" onclick="translatePage('ta')">தமிழ் (Tamil)</div>
+        <div class="lang-item" onclick="translatePage('te')">తెలుగు (Telugu)</div>
+        <div class="lang-item" onclick="translatePage('mr')">मराठी (Marathi)</div>
+        <div class="lang-item" onclick="translatePage('gu')">ગુજરાતી (Gujarati)</div>
+        <div class="lang-item" onclick="translatePage('kn')">ಕನ್ನಡ (Kannada)</div>
+        <div class="lang-item" onclick="translatePage('ml')">മലയാളം (Malayalam)</div>
+        <div class="lang-item" onclick="translatePage('ne')">नेपाली (Nepali)</div>
+        <div class="lang-item" onclick="translatePage('si')">සිංහල (Sinhala)</div>
+        <div class="lang-item" onclick="translatePage('my')">မြန်မာ (Burmese)</div>
+        <div class="lang-item" onclick="translatePage('km')">ខ្មែរ (Khmer)</div>
+        <div class="lang-item" onclick="translatePage('lo')">ລາວ (Lao)</div>
+        <div class="lang-item" onclick="translatePage('am')">አማርኛ (Amharic)</div>
+        <div class="lang-item" onclick="translatePage('he')">עברית (Hebrew)</div>
+        <div class="lang-item" onclick="translatePage('ps')">پښتو (Pashto)</div>
+        <div class="lang-item" onclick="translatePage('sd')">سنڌي (Sindhi)</div>
+        <div class="lang-item" onclick="translatePage('uz')">Oʻzbekcha (Uzbek)</div>
+        <div class="lang-item" onclick="translatePage('az')">Azərbaycan (Azerbaijani)</div>
+        <div class="lang-item" onclick="translatePage('kk')">Қазақша (Kazakh)</div>
+        <div class="lang-item" onclick="translatePage('af')">Afrikaans</div>
       </div>
     </div>
   </div>
@@ -669,16 +694,17 @@
     <p>&copy; 2026 <strong>Fangam Organic</strong>. All rights reserved.</p>
   </footer>
 
+  <!-- Fast & Lightweight Google Translate Integration Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'ur,en,ar,hi,pa,fa,es,fr,de,tr,zh-CN,ja,ko,ru,it,pt,nl,pl,id,ms,th,vi,bn,el,sv,no,da,fi,cs,ro,hu,uk',
+        includedLanguages: 'ur,en,ar,hi,pa,fa,es,fr,de,tr,zh-CN,ja,ko,ru,it,pt,nl,pl,id,ms,th,vi,bn,el,sv,no,da,fi,cs,ro,hu,uk,tl,sw,ta,te,mr,gu,kn,ml,ne,si,my,km,lo,am,he,ps,sd,uz,az,kk,af',
         autoDisplay: false
       }, 'google_translate_element');
     }
   </script>
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 
   <script>
     const soapsData = [
@@ -689,7 +715,7 @@
         title: "Fangam Organic Neem Soap",
         price: 350,
         icon: "fa-seedling",
-        image: "https://lh3.googleusercontent.com/d/1538Hm63VUyCYhRLLLlJ2lQzL4Hf1csnJ", // تصویر کا لنک یہاں لگائیں
+        image: "https://lh3.googleusercontent.com/d/1538Hm63VUyCYhRLLLlJ2lQzL4Hf1csnJ",
         subtitle: "Authentic Ayurvedic Cold-Pressed Neem Formula Specially Designed for Acne, Skin Infections, and Deep Pore Cleansing.",
         ingredients: ["Pure Cold-Pressed Neem Oil", "Organic Neem Leaf Extracts", "Natural Vegetable Oils Base", "Pure Botanical Glycerine", "0% Harmful Chemicals & Detergents"],
         specialCare: ["<strong>Acne & Pimples:</strong> Fights acne-causing bacteria.", "<strong>Boils & Rash:</strong> Relieves skin eruptions.", "<strong>Body Acne:</strong> Clears back and chest acne.", "<strong>Oil Control:</strong> Balances excessive facial oil."],
@@ -708,7 +734,7 @@
         title: "Pure Organic Whitening Soap",
         price: 400,
         icon: "fa-sparkles",
-        image: "whitening_soap.jpg", // تصویر کا لنک یہاں لگائیں
+        image: "whitening_soap.jpg",
         subtitle: "Enriched with Natural Skin Whitening Actives, Glutathione, Alpha Arbutin, Kojic Acid, Pure Goat Milk & Vitamin C for Crystal-Clear Skin.",
         ingredients: ["Alpha Arbutin & Kojic Acid", "L-Glutathione Antioxidant", "Pure Goat Milk (Lactic Acid)", "Vitamin C & Niacinamide", "Licorice Root & Mulberry Extract"],
         specialCare: ["<strong>Melasma & Dark Spots:</strong> Fades stubborn pigmentation.", "<strong>Sun Tan Removal:</strong> Brightens face, neck & body.", "<strong>Dark Joints:</strong> Brightens knees, underarms & knuckles.", "<strong>Acne Scars:</strong> Lightens post-acne dark marks."],
@@ -727,7 +753,7 @@
         title: "Pure Organic Activated Charcoal Soap",
         price: 350,
         icon: "fa-gem",
-        image: "charcoal_soap.jpg", // تصویر کا لنک یہاں لگائیں
+        image: "charcoal_soap.jpg",
         subtitle: "Deep Pore Cleansing & Toxins Extraction Soap Formulated with Activated Bamboo Charcoal, Tea Tree Essential Oil & Botanical Glycerine.",
         ingredients: ["Activated Bamboo Charcoal Powder", "Pure Tea Tree Essential Oil", "Cold-Pressed Neem & Coconut Base", "Pure Botanical Glycerine", "0% Parabens, Sulphates & Detergents"],
         specialCare: ["<strong>Deep Pore Detox:</strong> Pulls out blackheads, dirt & pollutants.", "<strong>Excess Oil Extraction:</strong> Regulates sebum for matte skin.", "<strong>Blemish Control:</strong> Reduces pimples and skin bumps.", "<strong>Body Odor Defense:</strong> Eliminates odor-causing bacteria."],
@@ -746,7 +772,7 @@
         title: "Pure Organic Natural Loofah Scrub Soap",
         price: 400,
         icon: "fa-spa",
-        image: "loofah_soap.jpg", // تصویر کا لنک یہاں لگائیں
+        image: "loofah_soap.jpg",
         subtitle: "Embedded Natural Luffa Plant Sponge Combined with Honey & Sweet Almond Oil for Intense Skin Scrubbing, Rough Elbows & Heel Smoothing.",
         ingredients: ["Embedded Natural Luffa Plant Fiber", "Organic Raw Honey Extract", "Sweet Almond & Coconut Oil Base", "Vitamin E & Shea Butter", "0% Harsh Synthetic Beads"],
         specialCare: ["<strong>Cracked Heel Repair:</strong> Softens and smooths rough feet heels.", "<strong>Rough Elbows & Knees:</strong> Scrubs away stubborn dark friction spots.", "<strong>Ingrown Hair Prevention:</strong> Clears dead skin buildup.", "<strong>Body Exfoliation:</strong> Stimulates skin micro-circulation."],
