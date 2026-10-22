@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fangam Organic - Herbal Shampoo Coming Soon</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-green: #1B3B2B;
+            --accent-gold: #C5A059;
+            --light-gold: #E6C687;
+            --soft-bg: #F9F8F3;
+            --card-bg: #FFFFFF;
+            --text-dark: #2C3531;
+            --text-muted: #5A6561;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--soft-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-green);
+            color: var(--white);
+            text-align: center;
+            padding: 20px 15px;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+
+        .brand-title {
+            font-family: 'Cinzel', serif;
+            font-size: 26px;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .brand-tagline {
+            font-size: 13px;
+            color: #D1E0D7;
+            margin-top: 4px;
+            letter-spacing: 1px;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 25px 15px;
+            flex: 1;
+        }
+
+        /* Floating Icon Visual Circle */
+        .visual-circle-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: -40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .visual-circle {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary-green), #0f241a);
+            border: 3px solid var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(27, 59, 43, 0.25);
+            animation: floatAnim 3s ease-in-out infinite;
+        }
+
+        .visual-circle i {
+            font-size: 38px;
+            color: var(--light-gold);
+        }
+
+        @keyframes floatAnim {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* Main Card */
+        .hero-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 50px 25px 30px 25px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(27, 59, 43, 0.08);
+            border: 1px solid rgba(197, 160, 89, 0.25);
+            margin-bottom: 30px;
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background: rgba(197, 160, 89, 0.15);
+            color: var(--primary-green);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .hero-card h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-green);
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .hero-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+            max-width: 680px;
+            margin: 0 auto 25px auto;
+        }
+
+        /* Trust Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 25px 0 10px 0;
+        }
+
+        .stat-box {
+            background: #F4F6F4;
+            padding: 18px 10px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-gold);
+        }
+
+        .stat-number {
+            font-family: 'Cinzel', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* Section Heading */
+        .section-title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            color: var(--primary-green);
+            font-size: 20px;
+            margin: 30px 0 18px 0;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-gold);
+            margin: 8px auto 0 auto;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .feature-item {
+            background: var(--card-bg);
+            padding: 22px 18px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+            border: 1px solid #EAEAEA;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .feature-item i {
+            font-size: 28px;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+        }
+
+        .feature-item h3 {
+            font-size: 16px;
+            color: var(--primary-green);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .feature-item p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Action Box */
+        .cta-section {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 35px;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .cta-section h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+        }
+
+        .cta-section p {
+            font-size: 14px;
+            color: #D1E0D7;
+            margin-bottom: 20px;
+        }
+
+        .btn-order-oil {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--accent-gold);
+            color: var(--primary-green);
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(197, 160, 89, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-order-oil:hover {
+            background: var(--light-gold);
+            transform: scale(1.03);
+            box-shadow: 0 6px 18px rgba(197, 160, 89, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #11261B;
+            color: #A0B2A6;
+            font-size: 12px;
+            margin-top: auto;
+        }
+
+        @media (max-width: 480px) {
+            .hero-card {
+                padding: 45px 15px 25px 15px;
+            }
+
+            .hero-card h1 {
+                font-size: 22px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="https://fangamorganic.com" class="brand-title">Fangam Organic</a>
+        <div class="brand-tagline">PURE • NATURAL • EFFECTIVE</div>
+    </header>
+
+    <div class="container">
+        <!-- Floating Visual Icon Circle -->
+        <div class="visual-circle-wrapper">
+            <div class="visual-circle">
+                <i class="fa-solid fa-pump-soap"></i>
+            </div>
+        </div>
+
+        <!-- Main Message Card -->
+        <div class="hero-card">
+            <span class="badge-tag"><i class="fa-solid fa-flask"></i> In Development</span>
+            <h1>Herbal Shampoo Coming Soon</h1>
+            
+            <p>
+                Driven by your trust and the overwhelming success of our Signature Hair Oil, we are carefully formulating an ultra-gentle, 100% natural herbal shampoo to complete your hair care journey.
+            </p>
+
+            <!-- Social Proof / Stats -->
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Oil Bottles Sold in Month 1</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">70+</div>
+                    <div class="stat-label">Repeat Orders & Customer Trust</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shampoo Benefits Section -->
+        <h2 class="section-title">What To Expect</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fa-solid fa-ban-smoke"></i>
+                <h3>Sulfate & Paraben Free</h3>
+                <p>Zero harsh chemicals, artificial foaming agents, or synthetic additives.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-sparkles"></i>
+                <h3>Smooth & Shiny Hair</h3>
+                <p>Enhances natural shine and leaves your hair soft, manageable, and frizz-free.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-pump-soap"></i>
+                <h3>Deep Scalp Cleansing</h3>
+                <p>Effectively removes dirt, excess oil, and buildup without drying your scalp.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-seedling"></i>
+                <h3>Hair Fall Control</h3>
+                <p>Botanical extracts strengthen roots to minimize breakage and hair thinning.</p>
+            </div>
+        </div>
+
+        <!-- CTA Box for Website Main Page -->
+        <div class="cta-section">
+            <h2>Looking for Pure Hair Care Now?</h2>
+            <p>Our Signature Herbal Hair Oil is available on our official store.</p>
+            <a href="https://fangamorganic.com" class="btn-order-oil">
+                <i class="fa-solid fa-bag-shopping"></i> Order Hair Oil
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Fangam Organic. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
