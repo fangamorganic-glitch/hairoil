@@ -15,44 +15,44 @@
 
   <style>
     :root {
-      --bg-dark: #07130b;
-      --bg-card: #0d2114;
+      --bg-gradient: radial-gradient(circle at 50% 20%, #10381d 0%, #07130b 70%, #030804 100%);
+      --bg-card: rgba(13, 33, 20, 0.7);
       --border-gold: #c5a059;
       --gold-light: #f3e5ab;
       --accent-color: #2e7d32;
-      --glow-color: rgba(46, 125, 50, 0.4);
+      --glow-color: rgba(46, 125, 50, 0.45);
       --text-main: #f0f4f1;
       --text-muted: #a3b8a8;
-      --transition-speed: 0.5s;
+      --transition-speed: 0.6s;
     }
 
-    /* Dynamic Color Themes */
+    /* Dynamic Theme Gradients & Glows per Soap */
     body[data-theme="neem"] {
-      --bg-dark: #06120a;
-      --bg-card: #0d2114;
+      --bg-gradient: radial-gradient(circle at 50% 20%, #10381d 0%, #07130b 70%, #020804 100%);
+      --bg-card: rgba(13, 33, 20, 0.75);
       --accent-color: #2e7d32;
-      --glow-color: rgba(46, 125, 50, 0.4);
+      --glow-color: rgba(46, 125, 50, 0.5);
     }
 
     body[data-theme="whitening"] {
-      --bg-dark: #050f14;
-      --bg-card: #081d26;
+      --bg-gradient: radial-gradient(circle at 50% 20%, #0a3a40 0%, #05181c 70%, #020b0d 100%);
+      --bg-card: rgba(8, 29, 38, 0.75);
       --accent-color: #00838f;
-      --glow-color: rgba(0, 131, 143, 0.4);
+      --glow-color: rgba(0, 188, 212, 0.45);
     }
 
     body[data-theme="charcoal"] {
-      --bg-dark: #0a0a0c;
-      --bg-card: #141418;
-      --accent-color: #757575;
-      --glow-color: rgba(117, 117, 117, 0.4);
+      --bg-gradient: radial-gradient(circle at 50% 20%, #2b2b36 0%, #0f0f14 70%, #050508 100%);
+      --bg-card: rgba(20, 20, 26, 0.8);
+      --accent-color: #8e8e93;
+      --glow-color: rgba(142, 142, 147, 0.45);
     }
 
     body[data-theme="loofah"] {
-      --bg-dark: #120e09;
-      --bg-card: #211a12;
-      --accent-color: #8d6e63;
-      --glow-color: rgba(141, 110, 99, 0.4);
+      --bg-gradient: radial-gradient(circle at 50% 20%, #3d2a1c 0%, #17110c 70%, #080503 100%);
+      --bg-card: rgba(33, 26, 18, 0.8);
+      --accent-color: #a1785c;
+      --glow-color: rgba(181, 133, 98, 0.45);
     }
 
     * {
@@ -63,12 +63,13 @@
     }
 
     body {
-      background-color: var(--bg-dark);
+      background: var(--bg-gradient);
+      background-attachment: fixed;
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
       min-height: 100vh;
-      transition: background-color var(--transition-speed) ease;
+      transition: background var(--transition-speed) ease;
     }
 
     body.lang-ur, body.lang-ur * {
@@ -79,12 +80,12 @@
 
     /* Header */
     header {
-      background: rgba(0, 0, 0, 0.85);
-      border-bottom: 1px solid var(--border-gold);
+      background: rgba(0, 0, 0, 0.75);
+      border-bottom: 1px solid rgba(197, 160, 89, 0.3);
       position: sticky;
       top: 0;
       z-index: 1000;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
       padding: 14px 24px;
     }
 
@@ -137,7 +138,7 @@
     }
 
     .lang-btn {
-      background: rgba(197, 160, 89, 0.1);
+      background: rgba(197, 160, 89, 0.15);
       border: 1px solid var(--border-gold);
       color: var(--gold-light);
       padding: 8px 16px;
@@ -159,20 +160,21 @@
     .soap-nav-tabs {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
     }
 
     .tab-btn {
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.45);
       border: 1px solid rgba(197, 160, 89, 0.3);
       color: var(--text-muted);
-      padding: 10px 20px;
+      padding: 10px 22px;
       border-radius: 25px;
       cursor: pointer;
       font-size: 0.95rem;
       font-weight: 600;
+      backdrop-filter: blur(8px);
       transition: all 0.3s ease;
       display: flex;
       align-items: center;
@@ -183,22 +185,23 @@
       background: var(--accent-color);
       border-color: var(--gold-light);
       color: #fff;
-      box-shadow: 0 0 15px var(--glow-color);
+      box-shadow: 0 0 20px var(--glow-color);
     }
 
-    /* Hero Section */
+    /* Hero Section Showcase Card with Glassmorphism */
     .slider-hero-card {
       background: var(--bg-card);
-      border: 2px solid var(--border-gold);
+      border: 1px solid rgba(197, 160, 89, 0.4);
       border-radius: 24px;
       padding: 40px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 30px var(--glow-color);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 35px var(--glow-color);
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.1fr 0.9fr;
       gap: 40px;
       align-items: center;
       margin-bottom: 50px;
-      transition: background-color var(--transition-speed) ease;
+      transition: all var(--transition-speed) ease;
     }
 
     @media (max-width: 850px) {
@@ -227,6 +230,7 @@
       font-size: 2.4rem;
       color: var(--gold-light);
       margin-bottom: 15px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .hero-subtitle {
@@ -254,13 +258,13 @@
       box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
     }
 
-    /* Product Display Showcase Box (Replaces Circle Frame) */
+    /* Product Display Showcase Box (Rectangle Uncropped Display) */
     .hero-image-box {
       width: 100%;
       max-width: 320px;
       height: 320px;
       border-radius: 20px;
-      background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.6) 100%);
       border: 2px solid var(--border-gold);
       outline: 1px solid var(--accent-color);
       display: flex;
@@ -268,7 +272,7 @@
       align-items: center;
       justify-content: center;
       margin: 0 auto;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px var(--glow-color);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 30px var(--glow-color);
       overflow: hidden;
       position: relative;
       padding: 12px;
@@ -277,13 +281,13 @@
 
     .hero-image-box:hover {
       transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 35px var(--glow-color);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 40px var(--glow-color);
     }
 
     .hero-image-box img {
       width: 100%;
       height: 100%;
-      object-fit: contain; /* صابن کی مکمل تصویر بغیر کٹے نظر آئے گی */
+      object-fit: contain; /* صابن کا پورا سائز بغیر کٹے ظاہر ہوگا */
       border-radius: 12px;
       display: block;
     }
@@ -303,9 +307,17 @@
 
     .card {
       background: var(--bg-card);
-      border: 1px solid rgba(197, 160, 89, 0.3);
+      border: 1px solid rgba(197, 160, 89, 0.25);
       border-radius: 16px;
       padding: 28px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--border-gold);
+      transform: translateY(-4px);
     }
 
     .card-title {
@@ -339,7 +351,9 @@
       border: 1px solid var(--border-gold);
       border-radius: 20px;
       padding: 35px;
+      backdrop-filter: blur(12px);
       margin-bottom: 50px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
     .benefits-grid {
@@ -350,7 +364,7 @@
     }
 
     .benefit-item {
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.35);
       border: 1px solid rgba(197, 160, 89, 0.2);
       padding: 20px;
       border-radius: 12px;
@@ -369,7 +383,7 @@
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       display: none;
       justify-content: center;
       align-items: center;
@@ -381,7 +395,7 @@
     }
 
     .lang-modal {
-      background: #0f1c13;
+      background: #0d1a10;
       border: 2px solid var(--border-gold);
       border-radius: 20px;
       width: 90%;
@@ -489,7 +503,7 @@
         </div>
       </div>
 
-      <!-- New Showcase Image Box -->
+      <!-- Rectangle Uncropped Display Showcase Box -->
       <div class="hero-image-box" id="heroImgBox">
         <img id="heroImage" src="" alt="Soap Image" style="display:none;">
         <i class="fa-solid fa-soap" id="heroIcon"></i>
@@ -524,7 +538,7 @@
 
   </div>
 
-  <!-- Language Selection Modal -->
+  <!-- Language Selection Modal (30+ Languages) -->
   <div class="lang-modal-overlay" id="langModal">
     <div class="lang-modal">
       <div class="lang-header">
@@ -586,7 +600,7 @@
 
   <script>
     /* =======================================================================
-       یہاں 4 صابنوں کی تصاویر کے لنکس (Image URLs) درج کریں
+       4 صابنوں کی تصاویر کے لنکس (Image URLs) یہاں درج کریں
        ======================================================================= */
     const soapsData = [
       {
@@ -596,7 +610,7 @@
         title: "Fangam Organic Neem Soap",
         icon: "fa-seedling",
         
-        // 1. نیم صابن کی تصویر کا لنک درج کریں:
+        // 1. نیم صابن کی تصویر کا لنک یہاں لگائیں:
         image: "https://lh3.googleusercontent.com/d/1538Hm63VUyCYhRLLLlJ2lQzL4Hf1csnJ", 
 
         subtitle: "Authentic Ayurvedic Cold-Pressed Neem Formula Specially Designed for Acne, Skin Infections, and Deep Pore Cleansing.",
@@ -617,7 +631,7 @@
         title: "Pure Organic Whitening Soap",
         icon: "fa-sparkles",
         
-        // 2. وائٹننگ صابن کی تصویر کا لنک درج کریں:
+        // 2. وائٹننگ صابن کی تصویر کا لنک یہاں لگائیں:
         image: "https://lh3.googleusercontent.com/d/1r06Y5UCh9FAUYCgvQggHkaGD1kVk1RhR", 
 
         subtitle: "Enriched with Natural Skin Whitening Actives, Glutathione, Alpha Arbutin, Kojic Acid, Pure Goat Milk & Vitamin C for Crystal-Clear Skin.",
@@ -638,7 +652,7 @@
         title: "Pure Organic Charcoal Detox Soap",
         icon: "fa-gem",
         
-        // 3. چارکول صابن کی تصویر کا لنک درج کریں:
+        // 3. چارکول صابن کی تصویر کا لنک یہاں لگائیں:
         image: "IMAGE_URL_3_HERE.jpg", 
 
         subtitle: "Deep Pore Cleansing & Toxins Extraction Soap Formulated with Activated Bamboo Charcoal, Tea Tree Essential Oil & Botanical Glycerine.",
@@ -659,7 +673,7 @@
         title: "Pure Organic Loofah Scrub Soap",
         icon: "fa-spa",
         
-        // 4. لوفہ سکرب صابن کی تصویر کا لنک درج کریں:
+        // 4. لوفہ سکرب صابن کی تصویر کا لنک یہاں لگائیں:
         image: "IMAGE_URL_4_HERE.jpg", 
 
         subtitle: "Embedded Natural Luffa Plant Sponge Combined with Honey & Sweet Almond Oil for Intense Skin Scrubbing, Rough Elbows & Heel Smoothing.",
