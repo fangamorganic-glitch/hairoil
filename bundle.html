@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fangam Organic - Exclusive Organic Combos & Bundles</title>
-    <!-- Google Fonts -->
+    <title>Fangam Organic - Custom Organic Bundles</title>
+    <!-- Google Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +14,6 @@
         :root {
             --primary-dark: #0f2e1b;
             --primary-medium: #1b4d2e;
-            --primary-light: #2c6e43;
             --gold-accent: #d4af37;
             --gold-light: #f4e8c1;
             --bg-cream: #fbf9f4;
@@ -22,8 +21,7 @@
             --text-main: #1a241e;
             --text-muted: #5a685d;
             --border-color: #e2e8f0;
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 20px 25px -5px rgba(15, 46, 27, 0.1), 0 10px 10px -5px rgba(15, 46, 27, 0.04);
+            --shadow-lg: 0 20px 25px -5px rgba(15, 46, 27, 0.1);
         }
 
         * {
@@ -41,17 +39,12 @@
             background-size: 24px 24px;
         }
 
-        /* Header / Navbar */
         header {
             background-color: var(--primary-dark);
             color: #ffffff;
             padding: 1.25rem 2rem;
             text-align: center;
             border-bottom: 3px solid var(--gold-accent);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
 
         .brand-logo {
@@ -61,217 +54,118 @@
             letter-spacing: 2px;
             color: #ffffff;
             text-decoration: none;
-            display: inline-block;
         }
 
-        .brand-logo span {
-            color: var(--gold-accent);
-        }
+        .brand-logo span { color: var(--gold-accent); }
 
         .tagline {
             font-size: 0.85rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--gold-light);
-            margin-top: 2px;
         }
 
-        /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 2.5rem 1.5rem;
         }
 
-        /* Hero Section */
         .hero-banner {
             text-align: center;
-            margin-bottom: 3.5rem;
+            margin-bottom: 2.5rem;
         }
 
         .hero-title {
             font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             color: var(--primary-dark);
-            margin-bottom: 0.75rem;
-            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
 
-        .hero-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        .badge-organic {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(27, 77, 46, 0.08);
-            color: var(--primary-dark);
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(27, 77, 46, 0.15);
-        }
-
-        /* Bundles Section */
-        .bundles-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
-
-        /* Bundle Card */
         .bundle-card {
             background: var(--card-bg);
             border-radius: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.4);
             box-shadow: var(--shadow-lg);
             overflow: hidden;
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .bundle-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 25px 30px -5px rgba(15, 46, 27, 0.15);
-        }
-
-        .bundle-ribbon {
-            position: absolute;
-            top: 20px;
-            right: -35px;
-            background: linear-gradient(135deg, #d4af37, #b8860b);
-            color: #fff;
-            padding: 6px 40px;
-            transform: rotate(45deg);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-            z-index: 10;
         }
 
         .bundle-header {
             background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium));
             color: #ffffff;
             padding: 2rem;
-            position: relative;
+            text-align: center;
         }
 
         .bundle-header-title {
             font-family: 'Cinzel', serif;
             font-size: 1.8rem;
-            margin-bottom: 0.5rem;
             color: var(--gold-light);
         }
 
-        .bundle-header-desc {
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
+        .bundle-body { padding: 2rem; }
 
-        .bundle-body {
-            padding: 2.5rem 2rem;
-        }
-
-        .bundle-items-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .bundle-items-title::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border-color);
-        }
-
-        /* Large Product Images Grid */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.75rem;
-            margin-bottom: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .product-item {
             background: #ffffff;
-            border: 1px solid #e8e8e8;
+            border: 2px solid #e8e8e8;
             border-radius: 16px;
             padding: 1.25rem;
             text-align: center;
-            transition: all 0.3s ease;
             position: relative;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .product-item:hover {
+        .product-item.selected {
             border-color: var(--gold-accent);
-            transform: translateY(-50px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            background: #fcfbf7;
         }
 
-        /* LARGE PRODUCT IMAGE DISPLAY */
         .product-img-wrapper {
             width: 100%;
             height: 220px;
             border-radius: 12px;
             overflow: hidden;
             margin-bottom: 1rem;
-            background-color: #f7f9f7;
-            position: relative;
-            border: 2px solid var(--gold-light);
+            border: 1px solid var(--gold-light);
         }
 
         .product-img-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
         }
 
-        .product-item:hover .product-img-wrapper img {
-            transform: scale(1.08);
+        .product-checkbox {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 24px;
+            height: 24px;
+            accent-color: var(--primary-medium);
+            cursor: pointer;
         }
 
         .product-title {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--primary-dark);
-            margin-bottom: 0.4rem;
-        }
-
-        .product-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 0.75rem;
-            min-height: 38px;
         }
 
         .product-price-single {
             font-weight: 700;
             color: var(--primary-medium);
-            font-size: 1rem;
-            background: var(--bg-cream);
-            padding: 4px 12px;
-            border-radius: 20px;
-            display: inline-block;
+            margin-top: 0.5rem;
         }
 
-        /* Bundle Pricing & Order Footer */
         .bundle-footer {
             background: #f8faf8;
             border-top: 1px solid #eaeaea;
@@ -281,13 +175,6 @@
             align-items: center;
             justify-content: space-between;
             gap: 1.5rem;
-            border-radius: 0 0 20px 20px;
-        }
-
-        .price-breakdown {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
         }
 
         .price-original-line {
@@ -305,15 +192,13 @@
             gap: 12px;
         }
 
-        .save-badge {
+        .discount-badge {
             background: #d97706;
             color: #ffffff;
             font-size: 0.85rem;
             font-weight: 700;
             padding: 4px 12px;
             border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .btn-order-whatsapp {
@@ -326,188 +211,177 @@
             font-size: 1.1rem;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            transition: all 0.3s ease;
+            gap: 10px;
         }
 
-        .btn-order-whatsapp:hover {
-            background: linear-gradient(135deg, #128C7E, #075E54);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-dark);
-            color: #ffffff;
-            text-align: center;
-            padding: 2.5rem 1rem;
-            margin-top: 4rem;
-            border-top: 3px solid var(--gold-accent);
-        }
-
-        footer p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero-title { font-size: 1.8rem; }
-            .bundle-header { padding: 1.5rem; }
-            .bundle-body { padding: 1.5rem; }
-            .bundle-footer { flex-direction: column; align-items: stretch; text-align: center; }
-            .price-combo-deal { justify-content: center; }
-            .btn-order-whatsapp { justify-content: center; width: 100%; }
-            .products-grid { grid-template-columns: 1fr; }
+        .btn-order-whatsapp.disabled {
+            background: #ccc;
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header>
         <a href="#" class="brand-logo">FANGAM <span>ORGANIC</span></a>
         <div class="tagline">Pure • Natural • Botanical Care</div>
     </header>
 
     <div class="container">
-        <!-- Hero Banner -->
         <div class="hero-banner">
-            <div class="badge-organic">
-                <i class="fa-solid => fa-leaf"></i> 100% Certified Organic Ingredients
-            </div>
-            <h1 class="hero-title">Exclusive Value Combos & Bundles</h1>
-            <p class="hero-subtitle">Save more when you buy our organic herbal care sets specially formulated for holistic nourishment.</p>
+            <h1 class="hero-title">Build Your Custom Organic Bundle</h1>
+            <p>Select products below to unlock maximum bundle discounts!</p>
         </div>
 
-        <!-- BUNDLES WRAPPER CONTAINER -->
-        <div class="bundles-wrapper" id="bundles-wrapper">
+        <div class="bundle-card">
+            <div class="bundle-header">
+                <h2 class="bundle-header-title">Organic Beauty Essentials</h2>
+            </div>
 
-            <!-- ======================================================= -->
-            <!-- BUNDLE CARD START (Copy this whole block for new combos) -->
-            <!-- ======================================================= -->
-            <div class="bundle-card" data-combo-price="1200">
-                <div class="bundle-ribbon">Best Value</div>
-                
-                <div class="bundle-header">
-                    <h2 class="bundle-header-title">Fangam Special Organic Trio</h2>
-                    <p class="bundle-header-desc">Complete head-to-toe organic routine: Herbal Soap, Traditional Ubtan & Hair Mask.</p>
-                </div>
+            <div class="bundle-body">
+                <div class="products-grid" id="products-grid">
 
-                <div class="bundle-body">
-                    <div class="bundle-items-title">
-                        <i class="fa-solid fa-boxes-packing"></i> Bundle Includes (3 Items)
+                    <!-- Product 1: Organic Soap -->
+                    <div class="product-item selected" onclick="toggleSelection(this)">
+                        <input type="checkbox" class="product-checkbox" data-price="450" data-name="Organic Soap" checked onclick="event.stopPropagation(); updateCalculator();">
+                        <div class="product-img-wrapper">
+                            <img src="https://lh3.googleusercontent.com/d/1ov7-3TubIP5S9tlgHmCjlOOX1kvMveEo" alt="Organic Soap">
+                        </div>
+                        <h3 class="product-title">Organic Soap</h3>
+                        <div class="product-price-single">Rs. <span class="price-text">450</span></div>
                     </div>
 
-                    <!-- Products Grid inside this Bundle -->
-                    <div class="products-grid">
-
-                        <!-- Item 1: Organic Soap -->
-                        <div class="product-item" data-item-price="450">
-                            <div class="product-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1607006344380-b6775a0824a7?auto=format&fit=crop&w=600&q=80" alt="Organic Soap">
-                            </div>
-                            <h3 class="product-title">Organic Soap</h3>
-                            <p class="product-desc">Gentle botanical cleanser made with natural essential oils.</p>
-                            <div class="product-price-single">Rs. <span class="single-price-val">450</span></div>
+                    <!-- Product 2: Organic Ubtan -->
+                    <div class="product-item selected" onclick="toggleSelection(this)">
+                        <input type="checkbox" class="product-checkbox" data-price="550" data-name="Organic Ubtan" checked onclick="event.stopPropagation(); updateCalculator();">
+                        <div class="product-img-wrapper">
+                            <img src="https://lh3.googleusercontent.com/d/1yNfBZzM3DBbmr1ZVplG348uAP-D9ItiM" alt="Organic Ubtan">
                         </div>
-
-                        <!-- Item 2: Organic Ubtan -->
-                        <div class="product-item" data-item-price="550">
-                            <div class="product-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Organic Ubtan">
-                            </div>
-                            <h3 class="product-title">Organic Ubtan</h3>
-                            <p class="product-desc">Traditional herbal blend for glowing skin and anti-tan care.</p>
-                            <div class="product-price-single">Rs. <span class="single-price-val">550</span></div>
-                        </div>
-
-                        <!-- Item 3: Organic Hair Mask -->
-                        <div class="product-item" data-item-price="650">
-                            <div class="product-img-wrapper">
-                                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="Organic Hair Mask">
-                            </div>
-                            <h3 class="product-title">Organic Hair Mask</h3>
-                            <p class="product-desc">Deep conditioning herb repair formula for silky, strong hair.</p>
-                            <div class="product-price-single">Rs. <span class="single-price-val">650</span></div>
-                        </div>
-
+                        <h3 class="product-title">Organic Ubtan</h3>
+                        <div class="product-price-single">Rs. <span class="price-text">550</span></div>
                     </div>
-                </div>
 
-                <!-- Footer with Automated Calculations -->
-                <div class="bundle-footer">
-                    <div class="price-breakdown">
-                        <div class="price-original-line">
-                            Original Total: <s>Rs. <span class="calc-original-price">0</span></s>
+                    <!-- Product 3: Organic Hair Mask (Price updated to 714) -->
+                    <div class="product-item selected" onclick="toggleSelection(this)">
+                        <input type="checkbox" class="product-checkbox" data-price="714" data-name="Organic Hair Mask" checked onclick="event.stopPropagation(); updateCalculator();">
+                        <div class="product-img-wrapper">
+                            <img src="https://lh3.googleusercontent.com/d/1YEzmNQwD8x75mEmA68kMPxOMvGS3GBdk" alt="Organic Hair Mask">
                         </div>
-                        <div class="price-combo-deal">
-                            Rs. <span class="calc-combo-price">1,200</span>
-                            <span class="save-badge">Save Rs. <span class="calc-savings">0</span></span>
-                        </div>
+                        <h3 class="product-title">Organic Hair Mask</h3>
+                        <div class="product-price-single">Rs. <span class="price-text">695</span></div>
                     </div>
-                    <a href="#" class="btn-order-whatsapp whatsapp-btn" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> Order This Combo
-                    </a>
+
                 </div>
             </div>
-            <!-- ======================================================= -->
-            <!-- BUNDLE CARD END                                         -->
-            <!-- ======================================================= -->
 
+            <!-- Footer Calculations -->
+            <div class="bundle-footer">
+                <div class="price-breakdown">
+                    <div class="price-original-line">Original Total: <s>Rs. <span id="original-price">0</span></s></div>
+                    <div class="price-combo-deal">
+                        Rs. <span id="final-price">0</span>
+                        <span class="discount-badge" id="discount-tag">0% OFF</span>
+                    </div>
+                </div>
+                <a href="#" id="whatsapp-btn" class="btn-order-whatsapp" target="_blank">
+                    <i class="fa-brands fa-whatsapp"></i> Order Selected Bundle
+                </a>
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Fangam Organic. All Rights Reserved. Pure Organic Beauty Care.</p>
-    </footer>
-
-    <!-- JavaScript Engine for Auto-Calculation & WhatsApp Order -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const whatsappNumber = "923000000000"; // Replace with your official WhatsApp Number
+        const whatsappNumber = "923000634445"; // اپنا واٹس ایپ نمبر یہاں درج کریں
 
-            const bundleCards = document.querySelectorAll(".bundle-card");
+        function toggleSelection(card) {
+            const checkbox = card.querySelector('.product-checkbox');
+            checkbox.checked = !checkbox.checked;
+            updateCalculator();
+        }
 
-            bundleCards.forEach(card => {
-                let items = card.querySelectorAll(".product-item");
-                let originalTotal = 0;
-                let itemNames = [];
+        function updateCalculator() {
+            const allProducts = document.querySelectorAll('.product-item');
+            const totalAvailableProducts = allProducts.length; // کل پروڈکٹس کی تعداد (3، 4، یا 5)
 
-                items.forEach(item => {
-                    let price = parseFloat(item.getAttribute("data-item-price")) || 0;
-                    let name = item.querySelector(".product-title").innerText.trim();
-                    originalTotal += price;
-                    itemNames.push(`${name} (Rs. ${price})`);
-                });
+            let totalOriginal = 0;
+            let selectedCount = 0;
+            let selectedItems = [];
 
-                let comboPrice = parseFloat(card.getAttribute("data-combo-price")) || originalTotal;
-                let savings = originalTotal - comboPrice;
+            allProducts.forEach(card => {
+                const cb = card.querySelector('.product-checkbox');
+                
+                // HTML کارڈ کے اندر لکھا ہوا پرائس ٹیکسٹ یا data-price دونوں کو سنک کرنا
+                const price = parseFloat(cb.getAttribute('data-price')) || 0;
+                const name = cb.getAttribute('data-name');
+                
+                // پرائس ڈسپلے ٹیکسٹ کو اپ ڈیٹ رکھیں
+                const priceTextElem = card.querySelector('.price-text');
+                if(priceTextElem) priceTextElem.innerText = price;
 
-                // Update UI elements inside card
-                card.querySelector(".calc-original-price").innerText = originalTotal.toLocaleString();
-                card.querySelector(".calc-combo-price").innerText = comboPrice.toLocaleString();
-                card.querySelector(".calc-savings").innerText = savings.toLocaleString();
-
-                // Generate WhatsApp Link
-                let comboName = card.querySelector(".bundle-header-title").innerText.trim();
-                let message = `Hello Fangam Organic! I would like to order the following Combo Bundle:\n\n` +
-                              `📦 *${comboName}*\n` +
-                              `✨ Included Items:\n- ` + itemNames.join("\n- ") + `\n\n` +
-                              `💰 Original Price: Rs. ${originalTotal}\n` +
-                              `🎉 *Discount Price: Rs. ${comboPrice}*\n` +
-                              `💵 Total Savings: Rs. ${savings}\n\n` +
-                              `Please let me know how to proceed with payment and shipping. Thank you!`;
-
-                let encodedMessage = encodeURIComponent(message);
-                let waButton = card.querySelector(".whatsapp-btn");
-                if (waButton) {
-                    waButton.href = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+                if (cb.checked) {
+                    card.classList.add('selected');
+                    totalOriginal += price;
+                    selectedCount++;
+                    selectedItems.push(`${name} (Rs. ${price})`);
+                } else {
+                    card.classList.remove('selected');
                 }
             });
-        });
+
+            // ==========================================
+            // سیانی ڈسکاؤنٹ لاجک (Dynamic Discount Logic)
+            // ==========================================
+            let discountPercent = 0;
+
+            if (totalAvailableProducts >= 5) {
+                // اگر 5 یا اس سے زیادہ آئٹمز ہوں
+                if (selectedCount >= 5) discountPercent = 30;
+                else if (selectedCount === 4) discountPercent = 25;
+                else if (selectedCount === 3) discountPercent = 20;
+                else if (selectedCount === 2) discountPercent = 10;
+                else discountPercent = 0;
+            } else if (totalAvailableProducts === 4) {
+                // اگر 4 آئٹمز ہوں
+                if (selectedCount === 4) discountPercent = 30;
+                else if (selectedCount === 3) discountPercent = 20;
+                else if (selectedCount === 2) discountPercent = 10;
+                else discountPercent = 0;
+            } else {
+                // اگر 3 یا اس سے کم آئٹمز ہوں (موجودہ کیس)
+                if (selectedCount >= 3) discountPercent = 30;
+                else if (selectedCount === 2) discountPercent = 20;
+                else discountPercent = 0;
+            }
+
+            // قیمت اور بچت کا لائیو حساب
+            let discountAmount = (totalOriginal * discountPercent) / 100;
+            let finalPrice = Math.round(totalOriginal - discountAmount);
+
+            // ویب پیج پر قیمتوں کو اپ ڈیٹ کرنا
+            document.getElementById('original-price').innerText = totalOriginal.toLocaleString();
+            document.getElementById('final-price').innerText = finalPrice.toLocaleString();
+            document.getElementById('discount-tag').innerText = `${discountPercent}% OFF`;
+
+            // واٹس ایپ لنک اپ ڈیٹ کرنا
+            const waBtn = document.getElementById('whatsapp-btn');
+            if (selectedCount === 0) {
+                waBtn.classList.add('disabled');
+                waBtn.href = "#";
+            } else {
+                waBtn.classList.remove('disabled');
+                let message = `Hello Fangam Organic!\nI would like to order my Custom Organic Bundle:\n\n` +
+                              `📦 *Items Selected (${selectedCount}):*\n` +
+                              `- ` + selectedItems.join("\n- ") + `\n\n` +
+                              `💵 Original Total: Rs. ${totalOriginal}\n` +
+                              `🎉 *Discount Applied: ${discountPercent}%*\n` +
+                              `🏷️ *Final Price: Rs. ${finalPrice}*\n\n` +
+                              `Please confirm my order details!`;
+                waBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            }
+        }
+
+        // پیج لوڈ ہوتے ہی حساب شروع کریں
+        document.addEventListener('DOMContentLoaded', updateCalculator);
     </script>
 </body>
 </html>
