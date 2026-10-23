@@ -1155,10 +1155,11 @@
   <div class="organic-modal-card">
     <div class="organic-badge">🌿 100% Organic & Handcrafted</div>
     
-    <!-- Dynamic Content Container -->
-    <div id="noticeContent" class="notice-fade">
-      <!-- English Text -->
-      <div id="textEN" class="lang-block active">
+    <!-- Dynamic Content Container (CSS Animation Driven) -->
+    <div class="notice-fade-container">
+      
+      <!-- English Text Block -->
+      <div class="lang-block lang-en">
         <h3 class="organic-title">Important Notice</h3>
         <p class="organic-text">
           Our handmade soaps are available <strong>ONLINE ONLY</strong>. They are not available in any offline market or physical shops.
@@ -1168,8 +1169,8 @@
         </div>
       </div>
 
-      <!-- Urdu Text -->
-      <div id="textUR" class="lang-block">
+      <!-- Urdu Text Block -->
+      <div class="lang-block lang-ur">
         <h3 class="organic-title">اہم اطلاع</h3>
         <p class="organic-text">
           ہمارے تمام ہینڈ میڈ سوپس صرف <strong>آن لائن</strong> دستیاب ہیں۔ یہ کسی بھی آف لائن مارکیٹ یا دکان پر دستیاب نہیں ہیں۔
@@ -1178,6 +1179,7 @@
           📌 تمام ریٹیل قیمتیں فکسڈ ہیں۔ تاہم، <strong>بلک کوانٹٹی (زیادہ تعداد)</strong> کے لیے قیمت میں رعایت ممکن ہے۔
         </div>
       </div>
+
     </div>
 
     <!-- Actions -->
@@ -1237,46 +1239,59 @@
     border: 1px solid #c8e6c9;
   }
 
-  /* Language Switch Styling & Smooth Transition */
-  .notice-fade {
-    min-height: 185px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* Pure CSS Seamless Language Fader (10 Seconds Total: 5s EN, 5s UR) */
+  .notice-fade-container {
     position: relative;
+    min-height: 190px;
+    overflow: hidden;
   }
 
   .lang-block {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    opacity: 0;
+    animation: faderLoop 10s infinite;
   }
 
-  .lang-block.active {
-    display: block;
-    opacity: 1;
+  /* English starts visible (0% to 45%), fades out (45% to 50%) */
+  .lang-en {
+    animation-delay: 0s;
   }
 
-  /* Urdu Nastaliq Styling */
-  #textUR {
+  /* Urdu stays hidden, then fades in (50% to 55%), stays visible (55% to 95%), fades out (95% to 100%) */
+  .lang-ur {
+    animation-delay: 5s;
     direction: rtl;
     font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', 'Mehr Nastaliq', 'Urdu Typesetting', Tahoma, sans-serif;
   }
 
-  #textUR .organic-title {
+  @keyframes faderLoop {
+    0% { opacity: 0; transform: translateY(5px); pointer-events: none; }
+    5% { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    45% { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    50% { opacity: 0; transform: translateY(-5px); pointer-events: none; }
+    100% { opacity: 0; transform: translateY(-5px); pointer-events: none; }
+  }
+
+  /* Typography */
+  .lang-ur .organic-title {
     font-size: 22px;
     line-height: 1.8;
   }
 
-  #textUR .organic-text {
+  .lang-ur .organic-text {
     font-size: 15px;
     line-height: 2;
   }
 
-  #textUR .organic-highlight-box {
+  .lang-ur .organic-highlight-box {
     font-size: 14px;
     line-height: 1.9;
+    border-left: none;
+    border-right: 4px solid #4caf50;
+    text-align: right;
   }
 
   .organic-title {
@@ -1303,12 +1318,6 @@
     color: #2d5a27;
     line-height: 1.4;
     text-align: left;
-  }
-
-  #textUR .organic-highlight-box {
-    border-left: none;
-    border-right: 4px solid #4caf50;
-    text-align: right;
   }
 
   /* Buttons */
@@ -1358,36 +1367,8 @@
 </style>
 
 <script>
-  // Automatic Language Switcher (English <-> Urdu every 5 seconds)
-  var currentLang = 'EN';
-  var langInterval = setInterval(function() {
-    var enBlock = document.getElementById('textEN');
-    var urBlock = document.getElementById('textUR');
-    
-    if (enBlock && urBlock) {
-      if (currentLang === 'EN') {
-        enBlock.classList.remove('active');
-        setTimeout(function() {
-          enBlock.style.display = 'none';
-          urBlock.style.display = 'block';
-          setTimeout(function() { urBlock.classList.add('active'); }, 50);
-        }, 300);
-        currentLang = 'UR';
-      } else {
-        urBlock.classList.remove('active');
-        setTimeout(function() {
-          urBlock.style.display = 'none';
-          enBlock.style.display = 'block';
-          setTimeout(function() { enBlock.classList.add('active'); }, 50);
-        }, 300);
-        currentLang = 'EN';
-      }
-    }
-  }, 5000); // 5000ms = 5 seconds
-
   // Close Modal Function
   function closeOrganicModal() {
-    clearInterval(langInterval);
     var modal = document.getElementById('organicNoticeModal');
     if (modal) {
       modal.style.opacity = '0';
