@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/png" sizes="32x32" href="https://lh3.googleusercontent.com/d/1NJYUBfxZMMcO2Wqh_wzsuyUjeC-mi97V">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fangam Organic - Premium Powder Range</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #2c5e3b;
+            --secondary-color: #d4af37;
+            --dark-bg: #121814;
+            --text-light: #ffffff;
+            --whatsapp-green: #25d366;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Top Header Bar */
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 65px;
+            background: rgba(18, 24, 20, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .brand-title {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .language-picker {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--secondary-color);
+            position: relative;
+        }
+
+        .language-picker i {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+        }
+
+        /* Hide Google Logo, Images & Banners */
+        #google_translate_element {
+            display: inline-block;
+        }
+
+        .goog-te-gadget-simple {
+            background-color: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            font-size: 0.88rem !important;
+            font-family: 'Inter', sans-serif !important;
+            cursor: pointer;
+        }
+
+        .goog-te-gadget-simple img, 
+        .goog-te-gadget-icon,
+        .goog-logo-link {
+            display: none !important;
+        }
+
+        .goog-te-gadget-simple .goog-te-menu-value {
+            color: #ffffff !important;
+        }
+
+        .goog-te-gadget-simple .goog-te-menu-value span {
+            color: #ffffff !important;
+            border: none !important;
+        }
+
+        .goog-te-banner-frame, .skiptranslate > span { 
+            display: none !important; 
+        }
+        
+        body { top: 0 !important; }
+
+        /* Fullscreen Slider Container */
+        .slider-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            padding-top: 65px;
+            overflow: hidden;
+        }
+
+        .slides-wrapper {
+            display: flex;
+            width: 400%;
+            height: calc(100vh - 65px);
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            direction: ltr;
+        }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(18,24,20,0.75) 0%, rgba(18,24,20,0.95) 100%);
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            height: 100%;
+        }
+
+        /* Pure Natural Image Box without Circle or Borders */
+        .product-img-box {
+            width: auto;
+            max-width: 240px;
+            height: 200px;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        .product-img-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+        }
+
+        .slide-title {
+            font-size: 2.2rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slide-desc {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            max-width: 780px;
+        }
+
+        .ingredients-highlight {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            padding: 16px;
+            border-radius: 12px;
+            backdrop-filter: blur(6px);
+            text-align: center;
+        }
+
+        .feature-card i {
+            font-size: 1.6rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .feature-card h4 {
+            font-size: 1.05rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .feature-card p {
+            font-size: 0.88rem;
+            color: #cbd5e1;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            text-decoration: none;
+            padding: 14px 34px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+            background-color: #20ba5a;
+        }
+
+        /* Controls */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
+            color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: var(--secondary-color);
+            color: var(--dark-bg);
+        }
+
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+
+        .dots-container {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background: var(--secondary-color);
+            width: 32px;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .slide-title { font-size: 1.6rem; }
+            .slide-desc { font-size: 0.95rem; line-height: 1.6; }
+            .product-img-box { height: 150px; }
+            .features-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .feature-card { padding: 10px; }
+            .whatsapp-btn { padding: 12px 24px; font-size: 1rem; }
+            .nav-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Clean Language Selector -->
+    <header class="top-header">
+        <div class="brand-title">FANGAM ORGANIC</div>
+        <div class="language-picker">
+            <i class="fa-solid fa-globe"></i>
+            <div id="google_translate_element"></div>
+        </div>
+    </header>
+
+    <!-- Slider Container -->
+    <div class="slider-container" id="sliderContainer">
+
+        <div class="slides-wrapper" id="slidesWrapper">
+            
+            <!-- SLIDE 1: UBTAN POWDER (ENGLISH) -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1608248597260-657d738f66b4?q=80&w=1200');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <div class="product-img-box">
+                        <img src="https://lh3.googleusercontent.com/d/1yNfBZzM3DBbmr1ZVplG348uAP-D9ItiM" alt="Fangam Organic Ubtan Powder">
+                    </div>
+                    <h2 class="slide-title">Fangam Pure Ubtan Powder</h2>
+                    <p class="slide-desc">
+                        Unlike commercial liquid pastes filled with synthetic preservatives, our organic Ubtan comes in a <strong>100% Pure Powder Form</strong> to retain its natural potency and authentic radiance.
+                    </p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <h4>Long-Lasting Quality</h4>
+                            <p>Powder form stays fresh for months without degradation</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fa-solid fa-calendar-check"></i>
+                            <h4>3 to 4 Times Monthly</h4>
+                            <p>Only a few monthly applications deliver glowing results</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fa-solid fa-sparkles"></i>
+                            <h4>Zero Chemicals</h4>
+                            <p>Free from preservatives, parabens, and additives</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: HAIR MASK POWDER (ENGLISH) -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1200');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <div class="product-img-box">
+                        <img src="https://lh3.googleusercontent.com/d/1YEzmNQwD8x75mEmA68kMPxOMvGS3GBdk" alt="Fangam Organic Hair Mask Powder">
+                    </div>
+                    <h2 class="slide-title">Fangam Herbal Hair Mask Powder</h2>
+                    <p class="slide-desc">
+                        Specially formulated in dry botanical powder form to ensure active herbal nourishment. It restores hair elasticity, strengthens roots, and brings natural luster without chemical buildup.
+                    </p>
+
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fa-solid fa-seedling"></i>
+                            <h4>100% Herbal Herbs</h4>
+                            <p>Deep root-to-tip organic nourishment</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fa-solid fa-box-open"></i>
+                            <h4>Active Bio-Formula</h4>
+                            <p>Herbal potency activated only when mixed fresh</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            <h4>Effortless Routine</h4>
+                            <p>Just 3 to 4 treatments complete your monthly care</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: EXCLUSIVE & NEGOTIABLE DETAILS (ENGLISH) -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1617897903246-719242758050?q=80&w=1200');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h2 class="slide-title">Pure, On-Demand & Negotiable</h2>
+                    <p class="slide-desc">
+                        Why isn't this range available in regular retail stores? Because we formulate pure, unadulterated powder products infused with premium rare ingredients like 
+                        <span class="ingredients-highlight">Pure Sandalwood (چندن)</span>, <span class="ingredients-highlight">Organic Turmeric (ہلدی)</span>, and therapeutic herbs.
+                    </p>
+                    <p class="slide-desc" style="font-size: 1rem; color: #cbd5e1;">
+                        Retail outlets often demand compromised formulas for mass margins. We chosen 100% purity. We prepare custom batches strictly <strong>On-Demand</strong> for our valued clients. Prices are custom & <strong>Negotiable</strong> based on your order setup.
+                    </p>
+
+                    <a href="https://wa.me/923000634445?text=Hello%20Fangam%20Organic,%20I%20want%20to%20negotiate%20and%20order%20Ubtan/Hair%20Mask%20Powder." class="whatsapp-btn" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Negotiate & Order via WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: ORDER DIRECTLY ON WHATSAPP (ENGLISH) -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=1200');">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h2 class="slide-title">Custom Craftsmanship Delivered Directly</h2>
+                    <p class="slide-desc">
+                        Due to the high market cost of authentic Sandalwood and rare botanical extracts, we prefer selling directly to clients who value authentic natural care.
+                    </p>
+                    <p class="slide-desc" style="font-size: 1rem; color: #cbd5e1;">
+                        Get in touch with us directly on WhatsApp to set your custom quantity, discuss negotiated pricing, and get your fresh batch crafted on demand.
+                    </p>
+
+                    <a href="https://wa.me/923000634445?text=Hello%20Fangam%20Organic,%20I%20would%20like%20to%20place%20an%20order%20for%20the%20Powder%20Range." class="whatsapp-btn" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Order Now on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button class="nav-btn prev-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="nav-btn next-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+
+        <!-- Dots Indicator -->
+        <div class="dots-container" id="dotsContainer">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+            <div class="dot" data-index="2"></div>
+            <div class="dot" data-index="3"></div>
+        </div>
+
+    </div>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,ur,ar,fa,hi,ps,sd,bn,fr,es,de,it,tr,zh-CN,ru,ja,ko,pt,nl,pl,sv,no,da,fi,cs,el,hu,ro,sk,uk,ms,id,th,vi,tl,sw,am,yo,ig,ha,zu,kn,ml,ta,te,pa,gu,mr',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Slider Script -->
+    <script>
+        const slidesWrapper = document.getElementById('slidesWrapper');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const sliderContainer = document.getElementById('sliderContainer');
+
+        let currentIndex = 0;
+        const totalSlides = 4;
+        let slideInterval;
+        let isPaused = false;
+
+        function goToSlide(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            
+            currentIndex = index;
+            slidesWrapper.style.transform = `translateX(-${currentIndex * 25}%)`;
+            
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentIndex);
+            });
+        }
+
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentIndex - 1);
+        }
+
+        function startAutoplay() {
+            stopAutoplay();
+            slideInterval = setInterval(() => {
+                if (!isPaused) {
+                    nextSlide();
+                }
+            }, 5000);
+        }
+
+        function stopAutoplay() {
+            if (slideInterval) clearInterval(slideInterval);
+        }
+
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                const index = parseInt(e.target.getAttribute('data-index'));
+                goToSlide(index);
+            });
+        });
+
+        // Pause silently on Hover (Desktop)
+        sliderContainer.addEventListener('mouseenter', () => {
+            isPaused = true;
+        });
+
+        sliderContainer.addEventListener('mouseleave', () => {
+            isPaused = false;
+        });
+
+        // Pause silently on Touch (Mobile)
+        sliderContainer.addEventListener('touchstart', () => {
+            isPaused = true;
+        }, {passive: true});
+
+        sliderContainer.addEventListener('touchend', () => {
+            setTimeout(() => {
+                isPaused = false;
+            }, 3000);
+        });
+
+        // Touch Swipe Support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        sliderContainer.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, {passive: true});
+
+        sliderContainer.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 40) nextSlide();
+            if (touchEndX > touchStartX + 40) prevSlide();
+        }, {passive: true});
+
+        startAutoplay();
+    </script>
+</body>
+</html>
