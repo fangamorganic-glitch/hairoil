@@ -500,6 +500,96 @@
             opacity: 1;
         }
 
+        /* --- PRO LIGHT POPUP NOTIFICATION STYLES --- */
+        .pro-feedback-popup {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 320px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e2e8f0;
+            border-left: 5px solid var(--primary-green);
+            padding: 16px;
+            z-index: 9999;
+            transform: translateY(150%);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--dark-text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .pro-feedback-popup.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .pro-popup-icon {
+            width: 42px;
+            height: 42px;
+            background: var(--accent-green);
+            color: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .pro-popup-content {
+            flex-grow: 1;
+        }
+        .pro-popup-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .pro-popup-text {
+            font-size: 12px;
+            color: #4a5568;
+            margin-top: 3px;
+            line-height: 1.4;
+        }
+        .pro-popup-link {
+            font-size: 11px;
+            color: var(--light-green);
+            font-weight: 600;
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .pro-popup-close {
+            position: absolute;
+            top: 8px;
+            right: 10px;
+            color: #a0aec0;
+            font-size: 14px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .pro-popup-close:hover {
+            color: #e53e3e;
+        }
+
+        /* Mobile adjustments for popup */
+        @media (max-width: 480px) {
+            .pro-feedback-popup {
+                right: 15px;
+                left: 15px;
+                width: auto;
+                bottom: 20px;
+            }
+        }
+
         /* --- Professional Footer --- */
         footer {
             background: #192e1b;
@@ -845,14 +935,14 @@
 
                     <div class="review-card">
                         <div class="review-img-container">
-                            <div style="background-image: url('https://lh3.googleusercontent.com/d/1QK_5DV8XYf3TrT0rPH0O-NuGR7RKlha3');"></div>
-                            <div style="background-image: url('https://lh3.googleusercontent.com/d/1gzMuL4omYL078cyd_Y6S0o5sajS-EHlw');"></div>
+                            <div style="background-image: url('https://lh3.googleusercontent.com/d/17mu77Q5KlGWl4O7cdQponvabMU2Ng4vP');"></div>
+                            <div style="background-image: url('https://lh3.googleusercontent.com/d/1aphLtQnFbHp8f0lHPzmdJV5jJb-JWYyi');"></div>
                         </div>
                         <div class="review-stars">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p>"My beloved daughter used Fangam Organic hair oil and her hair fall stopped completely. Extremely wonderful product!"</p>
-                        <div class="review-author">Qamar Iqbal Khan, Sialkot</div>
+                        <p>"I have been using a well-known hair oil brand for years, but after trying this hair oil, I am truly impressed. The thickness, rich texture, and overall quality are far superior to what I was using before. I’ve completely made the switch now. Exceptional product!"</p>
+                        <div class="review-author">Mr. Asif, Gujrat</div>
                     </div>
                 </div>
             </div>
@@ -892,7 +982,7 @@
 
     </main>
 
-    <!-- Floating Fixed Widgets -->
+    <!-- Floating Fixed Widgets (WhatsApp, Quick Products & Live Comments) -->
     <div class="floating-widgets">
         <a href="https://wa.me/923000634445" target="_blank" class="float-btn" data-tooltip="WhatsApp Support" style="background: #25d366;">
             <i class="fa-brands fa-whatsapp"></i>
@@ -900,7 +990,29 @@
         <a href="https://fangamorganic.com/product-details" class="float-btn" data-tooltip="Quick Products">
             <i class="fa-solid fa-bag-shopping"></i>
         </a>
+        <a href="https://fangamorganic.com/comments" target="_blank" class="float-btn" data-tooltip="Live Comments" style="background: var(--primary-green);">
+            <i class="fa-solid fa-comments"></i>
+        </a>
     </div>
+
+    <!-- PRO ELEGANT POPUP NOTIFICATION -->
+    <a href="https://fangamorganic.com/comments" target="_blank" class="pro-feedback-popup" id="proFeedbackPopup">
+        <div class="pro-popup-icon">
+            <i class="fa-solid fa-comments"></i>
+        </div>
+        <div class="pro-popup-content">
+            <div class="pro-popup-title">
+                Real Customer Stories
+            </div>
+            <div class="pro-popup-text">
+                See what real people are saying about our organic products!
+            </div>
+            <div class="pro-popup-link">
+                Read Live Comments <i class="fa-solid fa-arrow-right"></i>
+            </div>
+        </div>
+        <span class="pro-popup-close" id="closeProPopup">&times;</span>
+    </a>
 
     <!-- Footer -->
     <footer id="contact">
@@ -949,33 +1061,27 @@
 
     <!-- JavaScript & Backend Control Center -->
     <script>
-        /* ==========================================================================
-           BACKEND CONTROL CENTER (بیک اینڈ کنٹرول پینل)
-           آپ جب چاہیں یہاں true کو false کر کے کسی بھی سیکشن، ہیرو سلائیڈر،
-           اور ہیدر/فوٹر کے لنکس کو ایک ساتھ آن/آف کر سکتے ہیں۔
-           ========================================================================== */
         const SITE_SETTINGS = {
             sections: {
-                heroSlider: true,     // ہیرو سلائیڈر سیکشن
-                pureOils: true,       // پیور آئلز سیکشن
-                pureShampoos: true,  // پیور شیمپوز سیکشن (false کرنے سے ہیدر/فوٹر سے بھی ہٹ جائے گا)
-                pureSoaps: true,      // پیور سوپس سیکشن
-                comboOffers: true,    // سپیشل افز سیکشن
-                onDemand: true,       // آن ڈیمانڈ سیکشن
-                customerReviews: true,// کسٹمر ریویوز سیکشن
-                ourStory: false        // ہماری کہانی اور میڈیا سیکشن
+                heroSlider: true,
+                pureOils: true,
+                pureShampoos: true,
+                pureSoaps: true,
+                comboOffers: true,
+                onDemand: true,
+                customerReviews: true,
+                ourStory: false
             },
             heroSlides: {
-                slide1: true,         // پہلا سلائیڈر
-                slide2: true,         // دوسرا سلائیڈر
-                slide3: true,         // تیسرا سلائیڈر
-                slide4: true,          // چوتھا سلائیڈر
-                slide5: true          // پانچواں سلائیڈر
+                slide1: true,
+                slide2: true,
+                slide3: true,
+                slide4: true,
+                slide5: true
             }
         };
 
         document.addEventListener("DOMContentLoaded", function() {
-            // 1. Pure Oils Control
             if (!SITE_SETTINGS.sections.pureOils) {
                 const el = document.getElementById('pure-oils');
                 if (el) el.style.display = 'none';
@@ -985,7 +1091,6 @@
                 if (footEl) footEl.style.display = 'none';
             }
 
-            // 2. Pure Shampoos Control
             if (!SITE_SETTINGS.sections.pureShampoos) {
                 const el = document.getElementById('pure-shampoos');
                 if (el) el.style.display = 'none';
@@ -995,7 +1100,6 @@
                 if (footEl) footEl.style.display = 'none';
             }
 
-            // 3. Pure Soaps Control
             if (!SITE_SETTINGS.sections.pureSoaps) {
                 const el = document.getElementById('pure-soaps');
                 if (el) el.style.display = 'none';
@@ -1005,7 +1109,6 @@
                 if (footEl) footEl.style.display = 'none';
             }
 
-            // 4. Combo Offers Control
             if (!SITE_SETTINGS.sections.comboOffers) {
                 const el = document.getElementById('combo-offers');
                 if (el) el.style.display = 'none';
@@ -1015,7 +1118,6 @@
                 if (footEl) footEl.style.display = 'none';
             }
 
-            // 5. On-Demand Control
             if (!SITE_SETTINGS.sections.onDemand) {
                 const el = document.getElementById('on-demand');
                 if (el) el.style.display = 'none';
@@ -1025,7 +1127,6 @@
                 if (footEl) footEl.style.display = 'none';
             }
 
-            // Other Sections Control
             if (!SITE_SETTINGS.sections.heroSlider) {
                 const el = document.getElementById('heroSliderSection');
                 if (el) el.style.display = 'none';
@@ -1039,7 +1140,6 @@
                 if (el) el.style.display = 'none';
             }
 
-            // Hero Slides Control
             const slideElements = document.querySelectorAll('.hero-slide');
             slideElements.forEach(slide => {
                 const idx = slide.getAttribute('data-slide-index');
@@ -1048,6 +1148,31 @@
                 if (idx === '2' && !SITE_SETTINGS.heroSlides.slide3) slide.remove();
                 if (idx === '3' && !SITE_SETTINGS.heroSlides.slide4) slide.remove();
             });
+
+            /* --- PRO POPUP DELAY & AUTO DISMISS LOGIC --- */
+            const popup = document.getElementById('proFeedbackPopup');
+            const closeBtn = document.getElementById('closeProPopup');
+
+            // 30 Seconds (30000 ms) delay for natural user experience
+            const DISPLAY_DELAY = 30000; 
+            const AUTO_DISMISS_TIME = 7000; 
+
+            if (popup) {
+                setTimeout(() => {
+                    popup.classList.add('show');
+
+                    setTimeout(() => {
+                        popup.classList.remove('show');
+                    }, AUTO_DISMISS_TIME);
+
+                }, DISPLAY_DELAY);
+
+                closeBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    popup.classList.remove('show');
+                });
+            }
         });
 
         const hamburger = document.getElementById('hamburger');
@@ -1114,3 +1239,4 @@
     </script>
 </body>
 </html>
+```[cite: 2]
