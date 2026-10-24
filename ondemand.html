@@ -38,7 +38,7 @@
             overflow-x: hidden;
         }
 
-        /* Top Header Bar */
+        /* Top Header Bar - Fixed Mobile Friendly Height */
         .top-header {
             position: fixed;
             top: 0;
@@ -51,23 +51,24 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 25px;
+            padding: 0 20px;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .brand-title {
             color: var(--secondary-color);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 800;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         .language-picker {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: rgba(255, 255, 255, 0.08);
-            padding: 6px 14px;
+            padding: 5px 10px;
             border-radius: 20px;
             border: 1px solid var(--secondary-color);
             position: relative;
@@ -75,7 +76,7 @@
 
         .language-picker i {
             color: var(--secondary-color);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         /* Hide Google Logo, Images & Banners */
@@ -87,7 +88,7 @@
             background-color: transparent !important;
             border: none !important;
             padding: 0 !important;
-            font-size: 0.88rem !important;
+            font-size: 0.85rem !important;
             font-family: 'Inter', sans-serif !important;
             cursor: pointer;
         }
@@ -118,14 +119,14 @@
             position: relative;
             width: 100vw;
             height: 100vh;
-            padding-top: 65px;
+            min-height: 600px;
             overflow: hidden;
         }
 
         .slides-wrapper {
             display: flex;
             width: 400%;
-            height: calc(100vh - 65px);
+            height: 100%;
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -139,14 +140,14 @@
             position: relative;
             background-size: cover;
             background-position: center;
-            padding: 20px;
+            padding: 75px 20px 40px 20px; /* Safe padding for header and dots */
             direction: ltr;
         }
 
         .slide-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, rgba(18,24,20,0.75) 0%, rgba(18,24,20,0.95) 100%);
+            background: linear-gradient(180deg, rgba(18,24,20,0.85) 0%, rgba(18,24,20,0.96) 100%);
             z-index: 1;
         }
 
@@ -161,20 +162,21 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             height: 100%;
         }
 
         /* Pure Natural Image Box without Circle or Borders */
         .product-img-box {
-            width: auto;
-            max-width: 240px;
-            height: 200px;
+            width: 100%;
+            max-width: 220px;
+            height: 180px;
             background: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 5px;
+            flex-shrink: 0;
         }
 
         .product-img-box img {
@@ -185,15 +187,16 @@
         }
 
         .slide-title {
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: var(--secondary-color);
             font-weight: 700;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.2;
         }
 
         .slide-desc {
-            font-size: 1.15rem;
-            line-height: 1.8;
+            font-size: 1.05rem;
+            line-height: 1.7;
             color: #e2e8f0;
             max-width: 780px;
         }
@@ -206,35 +209,35 @@
         /* Features Grid */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
             width: 100%;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         .feature-card {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(212, 175, 55, 0.25);
-            padding: 16px;
+            padding: 12px 15px;
             border-radius: 12px;
             backdrop-filter: blur(6px);
             text-align: center;
         }
 
         .feature-card i {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             color: var(--secondary-color);
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
 
         .feature-card h4 {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             color: #fff;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
 
         .feature-card p {
-            font-size: 0.88rem;
+            font-size: 0.82rem;
             color: #cbd5e1;
         }
 
@@ -243,17 +246,17 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             background-color: var(--whatsapp-green);
             color: white;
             text-decoration: none;
-            padding: 14px 34px;
-            font-size: 1.15rem;
+            padding: 12px 30px;
+            font-size: 1.05rem;
             font-weight: 700;
             border-radius: 50px;
             box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
             transition: all 0.3s ease;
-            margin-top: 15px;
+            margin-top: 10px;
         }
 
         .whatsapp-btn:hover {
@@ -270,8 +273,8 @@
             background: rgba(0, 0, 0, 0.6);
             color: var(--secondary-color);
             border: 1px solid var(--secondary-color);
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -291,7 +294,7 @@
 
         .dots-container {
             position: absolute;
-            bottom: 25px;
+            bottom: 15px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -300,8 +303,8 @@
         }
 
         .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.35);
             cursor: pointer;
@@ -310,18 +313,77 @@
 
         .dot.active {
             background: var(--secondary-color);
-            width: 32px;
+            width: 28px;
             border-radius: 10px;
         }
 
+        /* Mobile Adjustments for Perfect Header Clearance */
         @media (max-width: 768px) {
-            .slide-title { font-size: 1.6rem; }
-            .slide-desc { font-size: 0.95rem; line-height: 1.6; }
-            .product-img-box { height: 150px; }
-            .features-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-            .feature-card { padding: 10px; }
-            .whatsapp-btn { padding: 12px 24px; font-size: 1rem; }
-            .nav-btn { display: none; }
+            .top-header {
+                height: 60px;
+                padding: 0 12px;
+            }
+
+            .brand-title {
+                font-size: 1.05rem;
+                letter-spacing: 0.5px;
+            }
+
+            .language-picker {
+                padding: 4px 8px;
+            }
+
+            .slide {
+                padding-top: 70px; /* Crucial: Prevents overlap under top header */
+                padding-bottom: 45px;
+            }
+
+            .product-img-box {
+                height: 140px;
+                max-width: 170px;
+                margin-bottom: 0px;
+            }
+
+            .slide-title { 
+                font-size: 1.35rem; 
+            }
+
+            .slide-desc { 
+                font-size: 0.88rem; 
+                line-height: 1.5; 
+            }
+
+            .features-grid { 
+                grid-template-columns: 1fr 1fr; 
+                gap: 8px; 
+            }
+
+            .feature-card { 
+                padding: 8px 10px; 
+            }
+
+            .feature-card i {
+                font-size: 1.1rem;
+                margin-bottom: 2px;
+            }
+
+            .feature-card h4 {
+                font-size: 0.82rem;
+            }
+
+            .feature-card p {
+                font-size: 0.72rem;
+            }
+
+            .whatsapp-btn { 
+                padding: 10px 20px; 
+                font-size: 0.9rem; 
+                margin-top: 5px;
+            }
+
+            .nav-btn { 
+                display: none; 
+            }
         }
     </style>
 </head>
@@ -414,7 +476,7 @@
                         Why isn't this range available in regular retail stores? Because we formulate pure, unadulterated powder products infused with premium rare ingredients like 
                         <span class="ingredients-highlight">Pure Sandalwood (چندن)</span>, <span class="ingredients-highlight">Organic Turmeric (ہلدی)</span>, and therapeutic herbs.
                     </p>
-                    <p class="slide-desc" style="font-size: 1rem; color: #cbd5e1;">
+                    <p class="slide-desc" style="font-size: 0.9rem; color: #cbd5e1;">
                         Retail outlets often demand compromised formulas for mass margins. We chosen 100% purity. We prepare custom batches strictly <strong>On-Demand</strong> for our valued clients. Prices are custom & <strong>Negotiable</strong> based on your order setup.
                     </p>
 
@@ -432,7 +494,7 @@
                     <p class="slide-desc">
                         Due to the high market cost of authentic Sandalwood and rare botanical extracts, we prefer selling directly to clients who value authentic natural care.
                     </p>
-                    <p class="slide-desc" style="font-size: 1rem; color: #cbd5e1;">
+                    <p class="slide-desc" style="font-size: 0.9rem; color: #cbd5e1;">
                         Get in touch with us directly on WhatsApp to set your custom quantity, discuss negotiated pricing, and get your fresh batch crafted on demand.
                     </p>
 
