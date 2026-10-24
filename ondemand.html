@@ -121,6 +121,7 @@
             height: 100vh;
             min-height: 600px;
             overflow: hidden;
+            touch-action: pan-y;
         }
 
         .slides-wrapper {
@@ -140,7 +141,7 @@
             position: relative;
             background-size: cover;
             background-position: center;
-            padding: 75px 20px 40px 20px; /* Safe padding for header and dots */
+            padding: 75px 20px 40px 20px;
             direction: ltr;
         }
 
@@ -334,7 +335,7 @@
             }
 
             .slide {
-                padding-top: 70px; /* Crucial: Prevents overlap under top header */
+                padding-top: 70px;
                 padding-bottom: 45px;
             }
 
@@ -408,7 +409,7 @@
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
                     <div class="product-img-box">
-                        <img src="https://lh3.googleusercontent.com/d/1yNfBZzM3DBbmr1ZVplG348uAP-D9ItiM" alt="Fangam Organic Ubtan Powder">
+                        <img src="https://drive.google.com/thumbnail?id=1yNfBZzM3DBbmr1ZVplG348uAP-D9ItiM&sz=w800" alt="Fangam Organic Ubtan Powder">
                     </div>
                     <h2 class="slide-title">Fangam Pure Ubtan Powder</h2>
                     <p class="slide-desc">
@@ -440,7 +441,7 @@
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
                     <div class="product-img-box">
-                        <img src="https://lh3.googleusercontent.com/d/1YEzmNQwD8x75mEmA68kMPxOMvGS3GBdk" alt="Fangam Organic Hair Mask Powder">
+                        <img src="https://drive.google.com/thumbnail?id=1YEzmNQwD8x75mEmA68kMPxOMvGS3GBdk&sz=w800" alt="Fangam Organic Hair Mask Powder">
                     </div>
                     <h2 class="slide-title">Fangam Herbal Hair Mask Powder</h2>
                     <p class="slide-desc">
@@ -533,7 +534,7 @@
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- Slider Script -->
+    <!-- Slider Script with Touch/Click Permanent Hold -->
     <script>
         const slidesWrapper = document.getElementById('slidesWrapper');
         const dots = document.querySelectorAll('.dot');
@@ -544,7 +545,7 @@
         let currentIndex = 0;
         const totalSlides = 4;
         let slideInterval;
-        let isPaused = false;
+        let isManuallyStopped = false;
 
         function goToSlide(index) {
             if (index < 0) index = totalSlides - 1;
@@ -569,7 +570,7 @@
         function startAutoplay() {
             stopAutoplay();
             slideInterval = setInterval(() => {
-                if (!isPaused) {
+                if (!isManuallyStopped) {
                     nextSlide();
                 }
             }, 5000);
@@ -579,35 +580,38 @@
             if (slideInterval) clearInterval(slideInterval);
         }
 
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
+        // Permanently stop autoplay when user interacts
+        function stopPermanently() {
+            isManuallyStopped = true;
+            stopAutoplay();
+        }
+
+        nextBtn.addEventListener('click', () => {
+            stopPermanently();
+            nextSlide();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            stopPermanently();
+            prevSlide();
+        });
 
         dots.forEach(dot => {
             dot.addEventListener('click', (e) => {
+                stopPermanently();
                 const index = parseInt(e.target.getAttribute('data-index'));
                 goToSlide(index);
             });
         });
 
-        // Pause silently on Hover (Desktop)
-        sliderContainer.addEventListener('mouseenter', () => {
-            isPaused = true;
+        // Touch & Click Event to Stop Slider Immediately on Mobile/Desktop
+        sliderContainer.addEventListener('click', () => {
+            stopPermanently();
         });
 
-        sliderContainer.addEventListener('mouseleave', () => {
-            isPaused = false;
-        });
-
-        // Pause silently on Touch (Mobile)
         sliderContainer.addEventListener('touchstart', () => {
-            isPaused = true;
+            stopPermanently();
         }, {passive: true});
-
-        sliderContainer.addEventListener('touchend', () => {
-            setTimeout(() => {
-                isPaused = false;
-            }, 3000);
-        });
 
         // Touch Swipe Support
         let touchStartX = 0;
@@ -619,8 +623,14 @@
 
         sliderContainer.addEventListener('touchend', e => {
             touchEndX = e.changedTouches[0].screenX;
-            if (touchEndX < touchStartX - 40) nextSlide();
-            if (touchEndX > touchStartX + 40) prevSlide();
+            if (touchEndX < touchStartX - 40) {
+                stopPermanently();
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 40) {
+                stopPermanently();
+                prevSlide();
+            }
         }, {passive: true});
 
         startAutoplay();
