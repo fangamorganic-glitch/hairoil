@@ -1,35 +1,3 @@
-<!-- Schema.org SEO Structure -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://fangamorganic.com/#organization",
-      "name": "Fangam Organic",
-      "url": "https://fangamorganic.com/",
-      "logo": "https://fangamorganic.com/logo.png"
-    }
-  ]
-}
-</script>
-
-<!-- FontAwesome for Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-    :root {
-        --primary-green: #2e7d32;
-        --light-green: #4caf50;
-        --accent-green: #e8f5e9;
-        --dark-text: #2c3e50;
-        --light-bg: #f9fbf9;
-        --white: #ffffff;
-        --transition: all 0.3s ease;
-    }
-
     * {
         margin: 0;
         padding: 0;
@@ -38,11 +6,11 @@
         -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
-        max-width: 100%;
-        overflow-x: hidden;
+    body {
         background-color: var(--light-bg);
         color: var(--dark-text);
+        overflow-x: hidden;
+        width: 100%;
     }
 
     /* --- Announcement Top Bar --- */
@@ -113,7 +81,16 @@
         color: var(--primary-green);
     }
 
-    /* --- Hero Slider Section (6 Interactive Slides) --- */
+    /* Mobile Hamburger & 3-Dot Button */
+    .mobile-menu-btn {
+        display: none;
+        font-size: 22px;
+        color: var(--primary-green);
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    /* --- Hero Slider Section (6 Slides) --- */
     .hero-slider-container {
         position: relative;
         max-width: 1300px;
@@ -194,7 +171,7 @@
         background: var(--white);
         border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 4px 18px rgba(0,0,0,0.06); /* Soft Shadow Instead of Cut Outline */
+        box-shadow: 0 4px 18px rgba(0,0,0,0.06);
         margin-bottom: 20px;
         display: grid;
         grid-template-columns: 1fr 1.2fr;
@@ -254,7 +231,7 @@
         margin-bottom: 12px;
     }
 
-    /* Herb Chips (Clickable HD Popups) */
+    /* Herb Chips */
     .herb-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
@@ -432,10 +409,10 @@
         line-height: 1.4;
     }
 
-    /* --- HD Popups (Responsive & Anti-Zoom Out Fix) --- */
+    /* --- HD Popups (Responsive Anti-Zoom Fix) --- */
     .modal-overlay {
         position: fixed;
-        top: 0; left: 0; width: 100vw; height: 100vh;
+        top: 0; left: 0; width: 100%; height: 100%;
         background: rgba(0,0,0,0.85);
         display: none;
         justify-content: center;
@@ -520,16 +497,16 @@
     /* --- Floating Action Widgets (Right Side) --- */
     .floating-widgets {
         position: fixed;
-        right: 20px;
-        bottom: 30px;
+        right: 15px;
+        bottom: 20px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
         z-index: 999;
     }
     .float-btn {
-        width: 48px;
-        height: 48px;
+        width: 45px;
+        height: 45px;
         background: var(--primary-green);
         color: var(--white);
         border-radius: 50%;
@@ -537,7 +514,7 @@
         justify-content: center;
         align-items: center;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 18px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         transition: var(--transition);
     }
@@ -571,13 +548,24 @@
         font-size: 12px;
     }
 
+    /* Responsive Mobile Native View Adjustments */
     @media (max-width: 768px) {
-        .nav-links { display: none; }
-        .hero-slider-container { height: 280px; }
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: 60px; left: 0; width: 100%;
+            background: var(--white);
+            flex-direction: column;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .nav-links.active { display: flex; }
+        .mobile-menu-btn { display: block; }
+        .hero-slider-container { height: 260px; }
         .hero-content h1 { font-size: 22px; }
         .hero-content p { font-size: 12px; }
         .category-showcase-card { grid-template-columns: 1fr; }
-        .product-slider-box { min-height: 260px; margin: 0; }
+        .product-slider-box { min-height: 250px; margin: 0; }
         .btn-google-action { margin-left: 0; width: 100%; justify-content: center; }
     }
 </style>
@@ -595,7 +583,7 @@
             <img src="https://lh3.googleusercontent.com/d/1D8ZyCUA2QTIPatHd2oV8gxTMr_dPrrH3" alt="Logo">
             Fangam Organic
         </a>
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
             <li><a href="#pure-oils">Pure Oils</a></li>
             <li><a href="#pure-shampoos">Shampoos</a></li>
             <li><a href="#pure-soaps">Soaps</a></li>
@@ -603,6 +591,9 @@
             <li><a href="#on-demand">Custom Solution</a></li>
             <li><a href="#making-stories">Making Stories</a></li>
         </ul>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
     </div>
 </header>
 
@@ -716,12 +707,12 @@
             </div>
         </div>
 
-        <!-- Reviews -->
-        <div class="section-reviews-wrapper">
+        <!-- Reviews Block -->
+        <div class="section-reviews-wrapper" id="rev-block-oils">
             <div class="review-tabs-header">
                 <button class="tab-btn active"><i class="fa-solid fa-comments"></i> Customer Reviews</button>
-                <button class="tab-btn" onclick="openSocialModal()"><i class="fa-solid fa-camera"></i> Screenshots</button>
-                <a href="https://search.google.com/local/writereview?placeid=YOUR_GOOGLE_PLACE_ID" target="_blank" class="btn-google-action"><i class="fa-brands fa-google"></i> Google Review</a>
+                <button class="tab-btn social-tab-btn" onclick="openSocialModal()"><i class="fa-solid fa-camera"></i> Screenshots</button>
+                <a href="https://search.google.com/local/writereview?placeid=YOUR_GOOGLE_PLACE_ID" target="_blank" class="btn-google-action google-tab-btn"><i class="fa-brands fa-google"></i> Google Review</a>
             </div>
             <div class="reviews-slider-track auto-scroll-track">
                 <div class="section-review-card">
@@ -804,12 +795,12 @@
             </div>
         </div>
 
-        <!-- Reviews -->
-        <div class="section-reviews-wrapper">
+        <!-- Reviews Block -->
+        <div class="section-reviews-wrapper" id="rev-block-shampoos">
             <div class="review-tabs-header">
                 <button class="tab-btn active"><i class="fa-solid fa-comments"></i> Customer Reviews</button>
-                <button class="tab-btn" onclick="openSocialModal()"><i class="fa-solid fa-camera"></i> Screenshots</button>
-                <a href="https://search.google.com/local/writereview?placeid=YOUR_GOOGLE_PLACE_ID" target="_blank" class="btn-google-action"><i class="fa-brands fa-google"></i> Google Review</a>
+                <button class="tab-btn social-tab-btn" onclick="openSocialModal()"><i class="fa-solid fa-camera"></i> Screenshots</button>
+                <a href="https://search.google.com/local/writereview?placeid=YOUR_GOOGLE_PLACE_ID" target="_blank" class="btn-google-action google-tab-btn"><i class="fa-brands fa-google"></i> Google Review</a>
             </div>
             <div class="reviews-slider-track auto-scroll-track">
                 <div class="section-review-card">
@@ -882,12 +873,12 @@
             </div>
         </div>
 
-        <!-- Reviews -->
-        <div class="section-reviews-wrapper">
+        <!-- Reviews Block -->
+        <div class="section-reviews-wrapper" id="rev-block-soaps">
             <div class="review-tabs-header">
                 <button class="tab-btn active"><i class="fa-solid fa-comments"></i> Customer Reviews</button>
-                <button class="tab-btn" onclick="openSocialModal()"><i class="fa-solid fa-camera"></i> Screenshots</button>
-                <a href="https://search.google.com/local/writereview?placeid=YOUR_GOOGLE_PLACE_ID" target="_blank" class="btn-google-action"><i class="fa-brands fa-google"></i> Google Review</a>
+                <button class="tab-btn social-tab-btn" onclick="openSocialModal()"><i class="fa-solid fa-camera"></i> Screenshots</button>
+                <a href="https://search.google.com/local/writereview?placeid=YOUR_GOOGLE_PLACE_ID" target="_blank" class="btn-google-action google-tab-btn"><i class="fa-brands fa-google"></i> Google Review</a>
             </div>
             <div class="reviews-slider-track auto-scroll-track">
                 <div class="section-review-card">
@@ -939,12 +930,12 @@
             </div>
         </div>
 
-        <!-- Reviews -->
-        <div class="section-reviews-wrapper">
+        <!-- Reviews Block -->
+        <div class="section-reviews-wrapper" id="rev-block-combos">
             <div class="review-tabs-header">
                 <button class="tab-btn active"><i class="fa-solid fa-comments"></i> Customer Reviews</button>
-                <button class="tab-btn" onclick="openSocialModal()"><i class="fa-solid fa-camera"></i> Screenshots</button>
-                <a href="https://search.google.com/local/writereview?placeid=YOUR_GOOGLE_PLACE_ID" target="_blank" class="btn-google-action"><i class="fa-brands fa-google"></i> Google Review</a>
+                <button class="tab-btn social-tab-btn" onclick="openSocialModal()"><i class="fa-solid fa-camera"></i> Screenshots</button>
+                <a href="https://search.google.com/local/writereview?placeid=YOUR_GOOGLE_PLACE_ID" target="_blank" class="btn-google-action google-tab-btn"><i class="fa-brands fa-google"></i> Google Review</a>
             </div>
             <div class="reviews-slider-track auto-scroll-track">
                 <div class="section-review-card">
@@ -1008,12 +999,12 @@
             </div>
         </div>
 
-        <!-- Reviews -->
-        <div class="section-reviews-wrapper">
+        <!-- Reviews Block -->
+        <div class="section-reviews-wrapper" id="rev-block-ondemand">
             <div class="review-tabs-header">
                 <button class="tab-btn active"><i class="fa-solid fa-comments"></i> Customer Reviews</button>
-                <button class="tab-btn" onclick="openSocialModal()"><i class="fa-solid fa-camera"></i> Screenshots</button>
-                <a href="https://search.google.com/local/writereview?placeid=YOUR_GOOGLE_PLACE_ID" target="_blank" class="btn-google-action"><i class="fa-brands fa-google"></i> Google Review</a>
+                <button class="tab-btn social-tab-btn" onclick="openSocialModal()"><i class="fa-solid fa-camera"></i> Screenshots</button>
+                <a href="https://search.google.com/local/writereview?placeid=YOUR_GOOGLE_PLACE_ID" target="_blank" class="btn-google-action google-tab-btn"><i class="fa-brands fa-google"></i> Google Review</a>
             </div>
             <div class="reviews-slider-track auto-scroll-track">
                 <div class="section-review-card">
@@ -1072,7 +1063,7 @@
 </main>
 
 <!-- Floating Action Widgets (WhatsApp, Quick Products & Live Comments) -->
-<div class="floating-widgets">
+<div class="floating-widgets" id="floatingWidgets">
     <a href="https://wa.me/923000634445" target="_blank" class="float-btn" title="WhatsApp Support" style="background: #25d366;">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -1134,8 +1125,67 @@
     </div>
 </footer>
 
-<!-- JavaScript Controls -->
+<!-- Master Central Control Panel (JavaScript Settings) -->
 <script>
+    const SITE_SETTINGS = {
+        // General Controls
+        showFloatingWidgets: true,
+        showMakingStories: true,
+
+        // Global Reviews Controls (Turn On/Off Any Function)
+        showCustomerReviewsBlock: true,
+        showSocialScreenshotsButton: true,
+        showGoogleReviewsButton: true,
+
+        // Individual Section Controls
+        sections: {
+            pureOils: true,
+            pureShampoos: true,
+            pureSoaps: true,
+            comboOffers: true,
+            onDemand: true
+        }
+    };
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Apply On/Off Visibility Rules
+        if (!SITE_SETTINGS.showFloatingWidgets) {
+            const el = document.getElementById('floatingWidgets');
+            if (el) el.style.display = 'none';
+        }
+        if (!SITE_SETTINGS.showMakingStories) {
+            const el = document.getElementById('making-stories');
+            if (el) el.style.display = 'none';
+        }
+
+        if (!SITE_SETTINGS.showCustomerReviewsBlock) {
+            document.querySelectorAll('.section-reviews-wrapper').forEach(el => el.style.display = 'none');
+        } else {
+            if (!SITE_SETTINGS.showSocialScreenshotsButton) {
+                document.querySelectorAll('.social-tab-btn').forEach(el => el.style.display = 'none');
+            }
+            if (!SITE_SETTINGS.showGoogleReviewsButton) {
+                document.querySelectorAll('.google-tab-btn').forEach(el => el.style.display = 'none');
+            }
+        }
+
+        // Section Level Controls
+        if (!SITE_SETTINGS.sections.pureOils) document.getElementById('pure-oils').style.display = 'none';
+        if (!SITE_SETTINGS.sections.pureShampoos) document.getElementById('pure-shampoos').style.display = 'none';
+        if (!SITE_SETTINGS.sections.pureSoaps) document.getElementById('pure-soaps').style.display = 'none';
+        if (!SITE_SETTINGS.sections.comboOffers) document.getElementById('combo-offers').style.display = 'none';
+        if (!SITE_SETTINGS.sections.onDemand) document.getElementById('on-demand').style.display = 'none';
+    });
+
     // 1. Top Hero Auto Slider
     let currentSlide = 0;
     const slides = document.querySelectorAll('.hero-slide');
