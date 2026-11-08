@@ -1139,28 +1139,28 @@
             </div>
         </section>
 
-        <!-- Our Making Stories Section (5 Videos) -->
-        <section class="making-stories-section" id="making-stories">
+        <!-- Our Making Stories Section (Controlled via JavaScript Settings Below) -->
+        <section class="making-stories-section" id="making-stories" data-section="makingStories">
             <h2 class="section-title" style="border: none; margin-bottom: 5px;"><i class="fa-solid fa-film"></i> Our Making Stories</h2>
             <p style="font-size: 13px; color: #666;">Watch how we handcraft pure organic hair oils, shampoos, soaps, masks, and ubtan.</p>
             <div class="story-video-grid">
-                <div class="story-video-card">
+                <div class="story-video-card" data-video="video1">
                     <h4>1. Organic Hair Oil Making</h4>
                     <div class="video-box"><iframe src="https://youtube.com/embed/SPNBt55J1XY" allowfullscreen></iframe></div>
                 </div>
-                <div class="story-video-card">
+                <div class="story-video-card" data-video="video2">
                     <h4>2. Herbal Shampoo Making</h4>
                     <div class="video-box"><iframe src="https://youtube.com/embed/SPNBt55J1XY" allowfullscreen></iframe></div>
                 </div>
-                <div class="story-video-card">
+                <div class="story-video-card" data-video="video3">
                     <h4>3. Soap Crafting Story</h4>
                     <div class="video-box"><iframe src="https://youtube.com/embed/SPNBt55J1XY" allowfullscreen></iframe></div>
                 </div>
-                <div class="story-video-card">
+                <div class="story-video-card" data-video="video4">
                     <h4>4. Hair Mask Preparation</h4>
                     <div class="video-box"><iframe src="https://youtube.com/embed/SPNBt55J1XY" allowfullscreen></iframe></div>
                 </div>
-                <div class="story-video-card">
+                <div class="story-video-card" data-video="video5">
                     <h4>5. Organic Ubtan Recipe</h4>
                     <div class="video-box"><iframe src="https://youtube.com/embed/SPNBt55J1XY" allowfullscreen></iframe></div>
                 </div>
@@ -1264,6 +1264,8 @@
     <script>
         /* ========================================================
            🌟 CENTRAL CONTROL PANEL (TRUE / FALSE SWITCHES) 🌟
+           You can turn ON (true) or OFF (false) any section, review, 
+           or individual making video from right here!
            ======================================================== */
         const SITE_SETTINGS = {
             sections: {
@@ -1271,7 +1273,15 @@
                 pureShampoos: true,
                 pureSoaps: true,
                 comboOffers: true,
-                onDemand: true
+                onDemand: true,
+                makingStories: true  // 전체 Making Stories سیکشن کو آن/آف کرنے کے لیے
+            },
+            makingVideos: {
+                video1: true,  // 1. Organic Hair Oil Making
+                video2: false, // 2. Herbal Shampoo Making (ابھی ویڈیو نہیں ہے تو false کر دیا ہے، بننے پر true کر دیں)
+                video3: false, // 3. Soap Crafting Story
+                video4: false, // 4. Hair Mask Preparation
+                video5: false  // 5. Organic Ubtan Recipe
             },
             reviews: {
                 oilReviews: { customer: true, socialScreenshots: true, googleReview: false },
@@ -1282,12 +1292,21 @@
 
         // Apply Control Settings on Load
         document.addEventListener("DOMContentLoaded", () => {
+            // Sections Visibility
             for (let secKey in SITE_SETTINGS.sections) {
                 const el = document.querySelector(`[data-section="${secKey}"]`);
                 if (el) {
                     el.style.display = SITE_SETTINGS.sections[secKey] ? "block" : "none";
                 }
             }
+            // Individual Making Stories Videos Visibility
+            for (let vidKey in SITE_SETTINGS.makingVideos) {
+                const vEl = document.querySelector(`[data-video="${vidKey}"]`);
+                if (vEl) {
+                    vEl.style.display = SITE_SETTINGS.makingVideos[vidKey] ? "block" : "none";
+                }
+            }
+            // Reviews Configuration
             for (let revKey in SITE_SETTINGS.reviews) {
                 const revBlock = document.querySelector(`[data-review-sec="${revKey}"]`);
                 if (revBlock) {
@@ -1395,7 +1414,7 @@
             track.addEventListener('mouseleave', resumeScroll);
             track.addEventListener('touchstart', stopScroll);
             track.addEventListener('touchend', () => {
-                setTimeout(resumeScroll, 3000); // Resume after 3 seconds of releasing touch
+                setTimeout(resumeScroll, 3000);
             });
         });
 
