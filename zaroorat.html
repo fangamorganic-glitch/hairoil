@@ -67,14 +67,14 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 18px;
             align-items: center;
         }
         .nav-links a {
             text-decoration: none;
             color: var(--dark-text);
             font-weight: 500;
-            font-size: 14px;
+            font-size: 13.5px;
             transition: var(--transition);
         }
         .nav-links a:hover {
@@ -203,12 +203,15 @@
         }
         .product-slide.active { opacity: 1; }
         .product-slide img {
-            max-height: 250px;
-            max-width: 85%;
+            max-height: 270px;
+            max-width: 90%;
             object-fit: contain;
             border-radius: 8px;
             display: block;
             margin: 0 auto;
+        }
+        @media (min-width: 900px) {
+            .product-slide img { max-height: 310px; }
         }
         /* Mobile Optimized Bold Dynamic Title/Caption */
         .slide-caption {
@@ -374,6 +377,10 @@
             overflow-x: auto;
             scroll-behavior: smooth;
             padding-bottom: 8px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .reviews-slider-track::-webkit-scrollbar {
+            display: none;
         }
         .section-review-card {
             min-width: 260px;
@@ -386,6 +393,12 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .section-review-card:hover {
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.15);
         }
         .review-user-info {
             display: flex;
@@ -437,11 +450,11 @@
             padding: 20px;
             text-align: center;
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            overflow: hidden;
+            overflow-y: auto;
         }
         .modal-content img {
             max-width: 100%;
-            max-height: 60vh;
+            max-height: 50vh;
             border-radius: 8px;
             object-fit: contain;
             display: block;
@@ -614,6 +627,7 @@
                 <li id="nav-combo-offers"><a href="#combo-offers">Offers</a></li>
                 <li id="nav-on-demand"><a href="#on-demand">Custom Solution</a></li>
                 <li><a href="#making-stories">Making Stories</a></li>
+                <li><a href="#">About Us</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -675,11 +689,6 @@
             <h2 class="section-title"><i class="fa-solid fa-bottle-droplet"></i> Pure Organic Hair Oils</h2>
             <div class="category-showcase-card">
                 <div class="product-slider-box auto-prod-slider">
-                    <!-- 
-                        Note: You can add as many images as you like (e.g., 10 or more). 
-                        To add a title/caption above an image, simply add data-title="Your Title Here" 
-                        If you leave data-title empty or omit it, no title will show.
-                    -->
                     <div class="product-slide active" data-title="Fangam Signature Oil Bottle">
                         <img src="https://lh3.googleusercontent.com/d/1Lxq6-4nJsYJV2tZNZoKOCOYCbyFCKqqF" alt="Oil 1">
                     </div>
@@ -819,12 +828,12 @@
             <!-- Reviews Wrapper -->
             <div class="section-reviews-wrapper review-control-block" data-review-sec="oilReviews">
                 <div class="review-tabs-header">
-                    <button class="tab-btn active"><i class="fa-solid fa-comments"></i> Customer Reviews</button>
+                    <button class="tab-btn active"><i class="fa-solid fa-comments"></i> Customer Reviews (Tap to read)</button>
                     <button class="tab-btn social-review-trigger" onclick="openSocialModal()"><i class="fa-solid fa-camera"></i> Social Screenshots</button>
                     <a href="https://search.google.com/local/writereview?placeid=YOUR_GOOGLE_PLACE_ID" target="_blank" class="btn-google-action google-review-trigger"><i class="fa-brands fa-google"></i> Google Review</a>
                 </div>
                 <div class="reviews-slider-track auto-scroll-track">
-                    <div class="section-review-card">
+                    <div class="section-review-card" onclick="openReviewPopup(this)">
                         <div class="review-user-info">
                             <img src="https://lh3.googleusercontent.com/d/1nVxbBlcotxEjbQM1WwKj5DfKowYxjFcy" class="review-user-img" alt="Malik Azad">
                             <div class="review-user-details">
@@ -834,9 +843,9 @@
                         </div>
                         <p>"Brought this oil for the whole family, and it did wonders! Everyone's hair is now super smooth, healthy, and full of volume. Highly satisfied!"</p>
                     </div>
-                    <div class="section-review-card">
+                    <div class="section-review-card" onclick="openReviewPopup(this)">
                         <div class="review-user-info">
-                            <img src="https://lh3.googleusercontent.com/d/1IQvcpmCbvLBnPqHsLZxVmOdSLXKEMJnb" class="review-user-img" alt="Malik Azad">
+                            <img src="https://lh3.googleusercontent.com/d/1IQvcpmCbvLBnPqHsLZxVmOdSLXKEMJnb" class="review-user-img" alt="Abdul Rehman">
                             <div class="review-user-details">
                                 <h5>Abdul Rehman</h5>
                                 <div class="stars">★★★★★</div>
@@ -844,9 +853,9 @@
                         </div>
                         <p>"Unbelievable results! My daughter started seeing noticeable hair regrowth after using just her first bottle of this oil. Truly a miraculous product—highly recommended!"</p>
                     </div>
-                    <div class="section-review-card">
+                    <div class="section-review-card" onclick="openReviewPopup(this)">
                         <div class="review-user-info">
-                            <img src="https://lh3.googleusercontent.com/d/17mu77Q5KlGWl4O7cdQponvabMU2Ng4vP" class="review-user-img" alt="Malik Azad">
+                            <img src="https://lh3.googleusercontent.com/d/17mu77Q5KlGWl4O7cdQponvabMU2Ng4vP" class="review-user-img" alt="M Asif">
                             <div class="review-user-details">
                                 <h5>M Asif Gujrat</h5>
                                 <div class="stars">★★★★★</div>
@@ -854,7 +863,7 @@
                         </div>
                         <p>"I used a leading market brand's hair oil for years, but switching to this oil was the best decision! My entire family and I love how healthy and strong our hair feels now. Never going back!"</p>
                     </div>
-                     <div class="section-review-card">
+                     <div class="section-review-card" onclick="openReviewPopup(this)">
                         <div class="review-user-info">
                             <img src="https://lh3.googleusercontent.com/d/15TKGJXkVCjcDsVxH_qceSYorSgWIKKyz" class="review-user-img" alt="Qamar Iqbal Khan">
                             <div class="review-user-details">
@@ -938,11 +947,11 @@
             </div>
             <div class="section-reviews-wrapper review-control-block" data-review-sec="shampooReviews">
                 <div class="review-tabs-header">
-                    <button class="tab-btn active"><i class="fa-solid fa-comments"></i> Customer Reviews</button>
+                    <button class="tab-btn active"><i class="fa-solid fa-comments"></i> Customer Reviews (Tap to read)</button>
                     <a href="https://search.google.com/local/writereview?placeid=YOUR_GOOGLE_PLACE_ID" target="_blank" class="btn-google-action google-review-trigger"><i class="fa-brands fa-google"></i> Google Review</a>
                 </div>
                 <div class="reviews-slider-track auto-scroll-track">
-                    <div class="section-review-card">
+                    <div class="section-review-card" onclick="openReviewPopup(this)">
                         <div class="review-user-info">
                             <img src="https://lh3.googleusercontent.com/d/1QK_5DV8XYf3TrT0rPH0O-NuGR7RKlha3" class="review-user-img" alt="Qari Abid">
                             <div class="review-user-details">
@@ -1023,10 +1032,10 @@
             </div>
             <div class="section-reviews-wrapper review-control-block" data-review-sec="soapReviews">
                 <div class="review-tabs-header">
-                    <button class="tab-btn active"><i class="fa-solid fa-comments"></i> Customer Reviews</button>
+                    <button class="tab-btn active"><i class="fa-solid fa-comments"></i> Customer Reviews (Tap to read)</button>
                 </div>
                 <div class="reviews-slider-track auto-scroll-track">
-                    <div class="section-review-card">
+                    <div class="section-review-card" onclick="openReviewPopup(this)">
                         <div class="review-user-info">
                             <img src="https://lh3.googleusercontent.com/d/1gzMuL4omYL078cyd_Y6S0o5sajS-EHlw" class="review-user-img" alt="User">
                             <div class="review-user-details">
@@ -1194,7 +1203,17 @@
         </div>
     </div>
 
-    <!-- Footer with Updated Social Links (Facebook, TikTok, Instagram, YouTube) -->
+    <!-- Review Popup Modal -->
+    <div class="modal-overlay" id="reviewModal" onclick="closeReviewPopup()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="modal-close" onclick="closeReviewPopup()">&times;</span>
+            <div id="reviewModalBody" style="text-align: center; padding-top: 10px;">
+                <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer with About Us, Quick Links & Social Media Icons -->
     <footer>
         <div class="footer-container">
             <div class="footer-col">
@@ -1217,6 +1236,7 @@
                     <li><a href="#combo-offers">Offers</a></li>
                     <li><a href="#on-demand">Custom Solution</a></li>
                     <li><a href="#making-stories">Making Stories</a></li>
+                    <li><a href="#">About Us</a></li>
                 </ul>
             </div>
 
@@ -1244,16 +1264,14 @@
     <script>
         /* ========================================================
            🌟 CENTRAL CONTROL PANEL (TRUE / FALSE SWITCHES) 🌟
-           Turn ON (true) or OFF (false) any section or 
-           review component instantly from here!
            ======================================================== */
         const SITE_SETTINGS = {
             sections: {
-                pureOils: true,       // Pure Organic Hair Oils section
-                pureShampoos: true,   // Pure Shampoos section
-                pureSoaps: true,      // Pure Soaps section
-                comboOffers: true,    // Special Offers & Bundles section
-                onDemand: true        // On-Demand Custom Solutions section
+                pureOils: true,
+                pureShampoos: true,
+                pureSoaps: true,
+                comboOffers: true,
+                onDemand: true
             },
             reviews: {
                 oilReviews: { customer: true, socialScreenshots: true, googleReview: false },
@@ -1314,7 +1332,6 @@
             let pIndex = 0;
             let sliderTimer;
 
-            // Automatically inject caption element if data-title is present
             pSlides.forEach(slide => {
                 const titleText = slide.getAttribute('data-title');
                 if(titleText && titleText.trim() !== "") {
@@ -1344,29 +1361,56 @@
             sliderBox.addEventListener('touchend', startProdSlide);
         });
 
-        // 4. Customer Reviews Scroll
+        // 4. Smooth Fluid Customer Reviews Scroll with Pause on Touch/Hover
         const tracks = document.querySelectorAll('.auto-scroll-track');
         tracks.forEach(track => {
             let scrollInterval;
+            let isPaused = false;
+
             const startScroll = () => {
+                if (isPaused) return;
                 scrollInterval = setInterval(() => {
-                    if (track.scrollLeft + track.clientWidth >= track.scrollWidth) {
-                        track.scrollLeft = 0;
-                    } else {
-                        track.scrollLeft += 1;
+                    if (!isPaused) {
+                        if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) {
+                            track.scrollLeft = 0;
+                        } else {
+                            track.scrollLeft += 1.2;
+                        }
                     }
-                }, 30);
+                }, 35);
             };
-            const stopScroll = () => clearInterval(scrollInterval);
+
+            const stopScroll = () => {
+                isPaused = true;
+                clearInterval(scrollInterval);
+            };
+
+            const resumeScroll = () => {
+                isPaused = false;
+                startScroll();
+            };
 
             startScroll();
             track.addEventListener('mouseenter', stopScroll);
-            track.addEventListener('mouseleave', startScroll);
+            track.addEventListener('mouseleave', resumeScroll);
             track.addEventListener('touchstart', stopScroll);
-            track.addEventListener('touchend', startScroll);
+            track.addEventListener('touchend', () => {
+                setTimeout(resumeScroll, 3000); // Resume after 3 seconds of releasing touch
+            });
         });
 
-        // 5. Social Screenshots Modal
+        // 5. Customer Review Popup Modal on Touch/Click
+        function openReviewPopup(cardElement) {
+            const bodyContent = document.getElementById('reviewModalBody');
+            bodyContent.innerHTML = cardElement.innerHTML;
+            document.getElementById('reviewModal').classList.add('active');
+        }
+
+        function closeReviewPopup() {
+            document.getElementById('reviewModal').classList.remove('active');
+        }
+
+        // 6. Social Screenshots Modal
         const socialScreenshots = [
             "https://lh3.googleusercontent.com/d/1QK_5DV8XYf3TrT0rPH0O-NuGR7RKlha3",
             "https://lh3.googleusercontent.com/d/1gzMuL4omYL078cyd_Y6S0o5sajS-EHlw",
@@ -1389,7 +1433,7 @@
             document.getElementById('modalImg').src = socialScreenshots[screenshotIndex];
         }
 
-        // 6. Herb / Powder Click Popup Zoom
+        // 7. Herb / Powder Click Popup Zoom
         function openHerbPopup(imgSrc, herbName) {
             document.getElementById('herbModalImg').src = imgSrc;
             document.getElementById('herbTitle').innerText = herbName;
