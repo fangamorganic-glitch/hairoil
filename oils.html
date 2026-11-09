@@ -52,6 +52,15 @@
       background-color: rgba(15, 23, 42, 0.7);
       backdrop-filter: blur(4px);
     }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+    .blinking-dot {
+      animation: blink 1.5s infinite;
+      display: inline-block;
+    }
   </style>
 </head>
 <body class="bg-brand-cream text-gray-800 font-sans antialiased min-h-screen flex flex-col">
@@ -232,8 +241,16 @@
     </div>
 
     <!-- Cart Items Container -->
-    <div id="cart-items-container" class="flex-grow p-4 overflow-y-auto space-y-4 divide-y divide-gray-100">
-      <!-- Items dynamically injected -->
+    <div class="p-4 sm:p-6 overflow-y-auto custom-scrollbar flex-1">
+      
+      <!-- 🔴 Blinking Notice Added Here inside Cart Drawer 🔴 -->
+      <div style="background-color: #f8d7da; color: #721c24; padding: 12px; border-radius: 8px; font-weight: bold; text-align: center; margin-bottom: 15px; border: 1px dashed #f5c6cb; font-size: 13px; line-height: 1.5;">
+        <span class="blinking-dot">🔴</span> 
+        <strong>Important Notice:</strong> Delivery charges are <strong>not included</strong> and must be paid in <strong>advance</strong> (JazzCash, EasyPaisa, or Bank Transfer) to confirm your order. Our team will share the account details on WhatsApp.
+      </div>
+
+      <div id="cart-items-container" class="space-y-3"></div>
+
     </div>
 
     <!-- Cart Totals & Checkout Section -->
@@ -510,23 +527,34 @@
           </div>
         `;
       } else {
+        // 📱 MOBILE-FRIENDLY CART ITEM LAYOUT 📱
         container.innerHTML = cart.map(item => `
-          <div class="pt-3 flex items-center justify-between">
-            <div class="flex-grow pr-3">
-              <h4 class="font-bold text-gray-800 text-xs">${item.title}</h4>
-              <p class="text-[11px] text-gray-500">PKR ${item.price.toLocaleString()} x ${item.quantity}</p>
-              <p class="text-xs font-semibold text-brand-dark mt-0.5">PKR ${(item.price * item.quantity).toLocaleString()}</p>
-            </div>
-            
-            <div class="flex items-center gap-2">
-              <div class="flex items-center border border-gray-200 rounded-lg overflow-hidden bg-gray-50">
-                <button onclick="updateQuantity('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center text-gray-600 hover:bg-gray-200 text-xs font-bold">-</button>
-                <span class="w-7 text-center text-xs font-bold text-gray-800">${item.quantity}</span>
-                <button onclick="updateQuantity('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center text-gray-600 hover:bg-gray-200 text-xs font-bold">+</button>
+          <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
+            <!-- Top Row: Image, Name & Delete Button -->
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center space-x-3 flex-1 min-w-0">
+                <img src="${item.imageUrl}" class="w-12 h-12 rounded-lg object-contain bg-white border border-gray-200 flex-shrink-0 p-1">
+                <div class="min-w-0 flex-1">
+                  <h4 class="font-bold text-gray-800 text-sm truncate">${item.title}</h4>
+                  <div class="text-xs text-brand-dark font-semibold">PKR ${item.price} each</div>
+                </div>
               </div>
-              <button onclick="removeFromCart('${item.id}')" class="text-red-400 hover:text-red-600 text-xs p-1">
-                <i class="fa-solid fa-trash"></i>
+              <!-- Direct Delete Button -->
+              <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-lg transition flex-shrink-0" title="Remove Item">
+                <i class="fa-solid fa-trash-alt text-sm"></i>
               </button>
+            </div>
+
+            <!-- Bottom Row: Price Total & Quantity Controls -->
+            <div class="flex items-center justify-between pt-2 border-t border-gray-200/60">
+              <div class="text-xs text-gray-500">
+                Total: <span class="font-bold text-brand-dark text-sm">PKR ${(item.price * item.quantity).toLocaleString()}</span>
+              </div>
+              <div class="flex items-center border border-gray-300 rounded-lg bg-white overflow-hidden shadow-sm">
+                <button onclick="updateQuantity('${item.id}', -1)" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold">-</button>
+                <span class="px-3 text-xs font-bold text-brand-dark">${item.quantity}</span>
+                <button onclick="updateQuantity('${item.id}', 1)" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold">+</button>
+              </div>
             </div>
           </div>
         `).join('');
@@ -649,6 +677,8 @@
       }
 
       message += `💰 *GRAND TOTAL:* PKR ${grandTotal.toLocaleString()}\n`;
+      message += `------------------------------------\n`;
+      message += `*Note:* Delivery charges are not included and must be paid in advance via JazzCash, EasyPaisa, or Bank Transfer to confirm the order.\n`;
       message += `------------------------------------\n\n`;
 
       message += `👤 *CUSTOMER DELIVERY DETAILS:*\n`;
