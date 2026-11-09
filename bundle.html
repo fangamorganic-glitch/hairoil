@@ -207,15 +207,15 @@
                 </button>
             </div>
 
-            <div class="p-6 overflow-y-auto custom-scrollbar flex-1">
+            <div class="p-4 sm:p-6 overflow-y-auto custom-scrollbar flex-1">
                 
                 <!-- 🔴 Blinking Notice 🔴 -->
                 <div style="background-color: #f8d7da; color: #721c24; padding: 12px; border-radius: 8px; font-weight: bold; text-align: center; margin-bottom: 15px; border: 1px dashed #f5c6cb; font-size: 13px; line-height: 1.5;">
                   <span class="blinking-dot">🔴</span> 
-                  <strong>Important Note:</strong> Delivery charges are <strong>not included</strong> and must be paid in <strong>advance</strong> (JazzCash, EasyPaisa, or Bank Transfer) to confirm your order. Our team will share the account details on WhatsApp.
+                  <strong>Important Notice:</strong> Delivery charges are <strong>not included</strong> and must be paid in <strong>advance</strong> (JazzCash, EasyPaisa, or Bank Transfer) to confirm your order. Our team will share the account details on WhatsApp.
                 </div>
 
-                <div id="cart-items-container" class="space-y-4"></div>
+                <div id="cart-items-container" class="space-y-3"></div>
 
                 <div id="empty-cart-msg" class="text-center py-8 text-gray-400">
                     <i class="fas fa-basket-shopping text-4xl mb-2 text-gray-300"></i>
@@ -642,28 +642,36 @@
                 emptyMsg.classList.add('hidden');
                 custForm.classList.remove('hidden');
 
+                // 📱 MOBILE-FRIENDLY CART ITEM LAYOUT 📱
                 container.innerHTML = cartKeys.map(id => {
                     const item = cart[id];
                     return `
-                        <div class="flex items-center justify-between bg-gray-50 p-3 rounded-xl border border-gray-200">
-                            <div class="flex items-center space-x-3 flex-1">
-                                <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover border border-gray-200">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 text-sm">${item.name}</h4>
-                                    <div class="text-xs text-gray-500">PKR ${item.price} x ${item.qty}</div>
+                        <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
+                            <!-- Top Row: Image, Name & Delete Button -->
+                            <div class="flex items-start justify-between gap-2">
+                                <div class="flex items-center space-x-3 flex-1 min-w-0">
+                                    <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover border border-gray-200 flex-shrink-0">
+                                    <div class="min-w-0 flex-1">
+                                        <h4 class="font-bold text-gray-800 text-sm truncate">${item.name}</h4>
+                                        <div class="text-xs text-brand-primary font-semibold">PKR ${item.price} each</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex items-center space-x-3">
-                                <div class="font-bold text-brand-dark text-sm">PKR ${item.price * item.qty}</div>
-                                <div class="flex items-center border border-gray-300 rounded-lg bg-white">
-                                    <button onclick="updateCartQty('${item.id}', ${item.qty - 1})" class="px-2 py-0.5 text-xs text-gray-600 hover:bg-gray-100">-</button>
-                                    <span class="px-2 text-xs font-bold">${item.qty}</span>
-                                    <button onclick="updateCartQty('${item.id}', ${item.qty + 1})" class="px-2 py-0.5 text-xs text-gray-600 hover:bg-gray-100">+</button>
-                                </div>
-                                <!-- 🔴 Direct Delete Button Added Here 🔴 -->
-                                <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 p-1.5 rounded-lg hover:bg-red-50 transition" title="Remove Item">
+                                <!-- Direct Delete Button -->
+                                <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-lg transition flex-shrink-0" title="Remove Item">
                                     <i class="fas fa-trash-alt text-sm"></i>
                                 </button>
+                            </div>
+
+                            <!-- Bottom Row: Price Total & Quantity Controls -->
+                            <div class="flex items-center justify-between pt-2 border-t border-gray-200/60">
+                                <div class="text-xs text-gray-500">
+                                    Total: <span class="font-bold text-brand-dark text-sm">PKR ${item.price * item.qty}</span>
+                                </div>
+                                <div class="flex items-center border border-gray-300 rounded-lg bg-white overflow-hidden shadow-sm">
+                                    <button onclick="updateCartQty('${item.id}', ${item.qty - 1})" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold">-</button>
+                                    <span class="px-3 text-xs font-bold text-brand-dark">${item.qty}</span>
+                                    <button onclick="updateCartQty('${item.id}', ${item.qty + 1})" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold">+</button>
+                                </div>
                             </div>
                         </div>
                     `;
@@ -706,29 +714,12 @@
 
             const { subtotal, discount, total, isDiscountApplied } = calculateTotals();
 
-            let message = `*NEW ORDER - FANGAM ORGANIC*\n`;
-            message += `---------------------------------\n`;
-            message += `*Customer:* ${name}\n`;
-            message += `*Phone:* ${phone}\n`;
-            message += `*Address:* ${address}\n`;
-            message += `---------------------------------\n`;
-            message += `*ORDER DETAILS:*\n`;
-
-            cartItems.locate ? null : cartItems.forEach((item, idx) => {
-                message += `${idx + 1}. ${item.name} x ${item.qty} = PKR ${item.price * item.qty}\n`;
-            });
-            // Fixed loop syntax safety
-            cartItems.forEach((item, idx) => {
-                // Already handled above properly
-            });
-
-            // Re-building message loop cleanly
             let itemsText = '';
             cartItems.forEach((item, idx) => {
                 itemsText += `${idx + 1}. ${item.name} x ${item.qty} = PKR ${item.price * item.qty}\n`;
             });
 
-            message = `*NEW ORDER - FANGAM ORGANIC*\n`;
+            let message = `*NEW ORDER - FANGAM ORGANIC*\n`;
             message += `---------------------------------\n`;
             message += `*Customer:* ${name}\n`;
             message += `*Phone:* ${phone}\n`;
