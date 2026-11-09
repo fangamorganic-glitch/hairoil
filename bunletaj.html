@@ -195,7 +195,7 @@
         <div class="bg-white rounded-2xl max-w-xl w-full overflow-hidden shadow-2xl border border-gray-100 flex flex-col max-h-[90vh]">
             
             <!-- Clean Header with Beautifully Aligned Order ID -->
-            <div class="bg-brand-dark text-white p-4 flex items-center justify-between">
+            <div class="bg-brand-dark text-white p-4 flex items-center justify-between flex-shrink-0">
                 <div class="flex items-center gap-2">
                     <i class="fas fa-shopping-cart text-brand-accent"></i>
                     <span class="font-bold text-base sm:text-lg">Your Shopping Cart</span>
@@ -208,6 +208,7 @@
                 </div>
             </div>
 
+            <!-- Scrollable Cart Items Container -->
             <div class="p-4 sm:p-6 overflow-y-auto custom-scrollbar flex-1">
                 
                 <!-- 🔴 Blinking Notice 🔴 -->
@@ -222,26 +223,26 @@
                     <i class="fas fa-basket-shopping text-4xl mb-2 text-gray-300"></i>
                     <p>Your cart is empty.</p>
                 </div>
-
-                <div id="customer-form" class="mt-6 pt-6 border-t border-gray-200 hidden space-y-3">
-                    <h4 class="font-bold text-gray-800 text-sm">Delivery Information</h4>
-                    <div>
-                        <input type="text" id="cust-name" placeholder="Full Name" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
-                    </div>
-                    <div>
-                        <input type="text" id="cust-phone" placeholder="WhatsApp Phone Number" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
-                    </div>
-                    <div>
-                        <input type="text" id="cust-city" placeholder="City" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
-                    </div>
-                    <div>
-                        <textarea id="cust-address" rows="2" placeholder="Complete Shipping Address" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary"></textarea>
-                    </div>
-                </div>
             </div>
 
-            <div class="p-4 bg-gray-50 border-t border-gray-100">
-                <div class="space-y-1 mb-4 text-sm">
+            <!-- Fixed Bottom Footer (Totals & Customer Delivery Form) -->
+            <div class="p-4 bg-gray-50 border-t border-gray-100 flex-shrink-0 shadow-lg space-y-3">
+                
+                <!-- Customer Delivery Form (Always visible when items in cart) -->
+                <div id="customer-form" class="space-y-2 hidden border-b border-gray-200 pb-3">
+                    <h4 class="font-bold text-gray-800 text-xs uppercase tracking-wider">Delivery Information</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <input type="text" id="cust-name" placeholder="Full Name *" class="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
+                        <input type="text" id="cust-phone" placeholder="WhatsApp Phone # *" class="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <input type="text" id="cust-city" placeholder="City *" class="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
+                        <input type="text" id="cust-address" placeholder="Complete Shipping Address *" class="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
+                    </div>
+                </div>
+
+                <!-- Totals Summary -->
+                <div class="space-y-1 text-xs">
                     <div class="flex justify-between text-gray-600">
                         <span>Subtotal:</span>
                         <span id="cart-subtotal" class="font-semibold">PKR 0</span>
@@ -250,14 +251,15 @@
                         <span>15% Special Discount (3+ Products):</span>
                         <span id="cart-discount">- PKR 0</span>
                     </div>
-                    <div class="flex justify-between text-lg font-bold text-brand-dark pt-2 border-t border-gray-200">
+                    <div class="flex justify-between text-sm sm:text-base font-bold text-brand-dark pt-1 border-t border-gray-200">
                         <span>Total Payable:</span>
                         <span id="cart-total">PKR 0</span>
                     </div>
                 </div>
 
-                <button onclick="sendWhatsAppOrder()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold transition shadow-lg flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp text-xl"></i>
+                <!-- Place Order Button -->
+                <button onclick="sendWhatsAppOrder()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold text-sm transition shadow-lg flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-lg"></i>
                     <span>Place Order via WhatsApp</span>
                 </button>
             </div>
