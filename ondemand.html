@@ -1,639 +1,706 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-<link rel="icon" type="image/png" sizes="32x32" href="https://lh3.googleusercontent.com/d/1NJYUBfxZMMcO2Wqh_wzsuyUjeC-mi97V">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fangam Organic - Premium Powder Range</title>
-
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
+    <title>Fangam Organic - Custom Herbal Powders, Ubtan & Hair Masks</title>
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary-color: #2c5e3b;
-            --secondary-color: #d4af37;
-            --dark-bg: #121814;
-            --text-light: #ffffff;
-            --whatsapp-green: #25d366;
+            --primary-green: #2d5a27;
+            --light-green: #eef7ee;
+            --accent-gold: #d4af37;
+            --text-dark: #222222;
+            --text-muted: #555555;
+            --bg-light: #f9fbf8;
+            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --border-radius: 16px;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Poppins', sans-serif;
         }
 
-        body, html {
-            height: 100%;
-            width: 100%;
-            font-family: 'Inter', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            overflow-x: hidden;
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            top: 0px !important;
         }
 
-        /* Top Header Bar - Fixed Mobile Friendly Height */
-        .top-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 65px;
-            background: rgba(18, 24, 20, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Top Bar Container for Custom Language Button */
+        .top-lang-bar {
             display: flex;
+            justify-content: flex-end;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .brand-title {
-            color: var(--secondary-color);
-            font-size: 1.2rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            white-space: nowrap;
-        }
-
-        .language-picker {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 5px 10px;
-            border-radius: 20px;
-            border: 1px solid var(--secondary-color);
+            margin-bottom: 15px;
             position: relative;
         }
 
-        .language-picker i {
-            color: var(--secondary-color);
-            font-size: 0.9rem;
-        }
-
-        /* Hide Google Logo, Images & Banners */
-        #google_translate_element {
+        /* Premium Custom Language Button & Dropdown */
+        .custom-lang-wrapper {
+            position: relative;
             display: inline-block;
         }
 
-        .goog-te-gadget-simple {
-            background-color: transparent !important;
-            border: none !important;
-            padding: 0 !important;
-            font-size: 0.85rem !important;
-            font-family: 'Inter', sans-serif !important;
+        .custom-lang-btn {
+            background: linear-gradient(135deg, #2d5a27 0%, #1e3d1a 100%);
+            color: #ffffff;
+            border: 1px solid var(--accent-gold);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
             cursor: pointer;
-        }
-
-        .goog-te-gadget-simple img, 
-        .goog-te-gadget-icon,
-        .goog-logo-link {
-            display: none !important;
-        }
-
-        .goog-te-gadget-simple .goog-te-menu-value {
-            color: #ffffff !important;
-        }
-
-        .goog-te-gadget-simple .goog-te-menu-value span {
-            color: #ffffff !important;
-            border: none !important;
-        }
-
-        .goog-te-banner-frame, .skiptranslate > span { 
-            display: none !important; 
-        }
-        
-        body { top: 0 !important; }
-
-        /* Fullscreen Slider Container */
-        .slider-container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            min-height: 600px;
-            overflow: hidden;
-            touch-action: pan-y;
-        }
-
-        .slides-wrapper {
             display: flex;
-            width: 400%;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .slide {
-            width: 100vw;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            position: relative;
-            background-size: cover;
-            background-position: center;
-            padding: 75px 20px 40px 20px;
-            direction: ltr;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(45, 90, 39, 0.2);
+            transition: all 0.3s ease;
         }
 
-        .slide-overlay {
+        .custom-lang-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(45, 90, 39, 0.3);
+            background: #1e3d1a;
+        }
+
+        .custom-lang-dropdown {
+            display: none;
             position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(18,24,20,0.85) 0%, rgba(18,24,20,0.96) 100%);
-            z-index: 1;
+            right: 0;
+            top: 115%;
+            background: #ffffff;
+            min-width: 170px;
+            max-height: 260px;
+            overflow-y: auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            border: 1px solid #e2ece0;
+            z-index: 1000;
+            padding: 6px 0;
         }
 
-        .slide-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            width: 100%;
-            text-align: center;
-            color: var(--text-light);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            height: 100%;
+        .custom-lang-dropdown.show {
+            display: block;
+            animation: fadeIn 0.2s ease-in-out;
         }
 
-        /* Pure Natural Image Box without Circle or Borders */
-        .product-img-box {
-            width: 100%;
-            max-width: 220px;
-            height: 180px;
-            background: transparent;
+        .custom-lang-option {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: background 0.2s ease;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 5px;
-            flex-shrink: 0;
+            justify-content: space-between;
         }
 
-        .product-img-box img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
-        }
-
-        .slide-title {
-            font-size: 2rem;
-            color: var(--secondary-color);
-            font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-            line-height: 1.2;
-        }
-
-        .slide-desc {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: #e2e8f0;
-            max-width: 780px;
-        }
-
-        .ingredients-highlight {
-            color: var(--secondary-color);
+        .custom-lang-option:hover {
+            background: var(--light-green);
+            color: var(--primary-green);
             font-weight: 600;
         }
 
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            width: 100%;
-            margin-top: 5px;
+        /* Completely Hide Native Google Translate Widgets & Branding */
+        #google_translate_element {
+            display: none !important;
+        }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+        .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+
+        /* Hero Wrapper */
+        .product-section-wrapper {
+            background: #ffffff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            padding: 25px 20px;
+            margin-bottom: 30px;
+            border: 1px solid #e2ece0;
         }
 
-        .feature-card {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            padding: 12px 15px;
-            border-radius: 12px;
-            backdrop-filter: blur(6px);
+        .section-title {
             text-align: center;
-        }
-
-        .feature-card i {
-            font-size: 1.4rem;
-            color: var(--secondary-color);
-            margin-bottom: 6px;
-        }
-
-        .feature-card h4 {
-            font-size: 0.95rem;
-            color: #fff;
-            margin-bottom: 3px;
-        }
-
-        .feature-card p {
-            font-size: 0.82rem;
-            color: #cbd5e1;
-        }
-
-        /* WhatsApp Button */
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background-color: var(--whatsapp-green);
-            color: white;
-            text-decoration: none;
-            padding: 12px 30px;
-            font-size: 1.05rem;
+            color: var(--primary-green);
+            font-size: 1.6rem;
             font-weight: 700;
-            border-radius: 50px;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
-            background-color: #20ba5a;
-        }
-
-        /* Controls */
-        .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            color: var(--secondary-color);
-            border: 1px solid var(--secondary-color);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            transition: 0.3s;
-        }
-
-        .nav-btn:hover {
-            background: var(--secondary-color);
-            color: var(--dark-bg);
-        }
-
-        .prev-btn { left: 20px; }
-        .next-btn { right: 20px; }
-
-        .dots-container {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
             gap: 10px;
-            z-index: 10;
         }
 
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.35);
+        /* Hero Image Container */
+        .product-hero-box {
+            width: 100%;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: var(--light-green);
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.03);
+        }
+
+        .product-hero-box img {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            display: block;
+            border-radius: var(--border-radius);
+            transition: transform 0.4s ease;
+        }
+
+        .product-hero-box:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Concept Highlight Card */
+        .powder-concept-card {
+            background: linear-gradient(135deg, #2d5a27 0%, #1e3d1a 100%);
+            color: #ffffff;
+            padding: 22px;
+            border-radius: 14px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .powder-concept-card h3 {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .powder-concept-card p {
+            font-size: 0.95rem;
+            color: #f0f0f0;
+            margin-bottom: 8px;
+        }
+
+        /* Herb Grid Section */
+        .herb-section-header {
+            text-align: left;
+            margin-bottom: 12px;
+        }
+
+        .herb-section-header h4 {
+            font-size: 1.1rem;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .herb-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .herb-chip {
+            background: #ffffff;
+            border: 1px solid #d5e5d3;
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
 
-        .dot.active {
-            background: var(--secondary-color);
-            width: 28px;
-            border-radius: 10px;
+        .herb-chip:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-green);
+            box-shadow: 0 6px 15px rgba(45, 90, 39, 0.15);
         }
 
-        /* Mobile Adjustments for Perfect Header Clearance */
-        @media (max-width: 768px) {
-            .top-header {
-                height: 60px;
-                padding: 0 12px;
-            }
+        .herb-chip img {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
 
-            .brand-title {
-                font-size: 1.05rem;
-                letter-spacing: 0.5px;
-            }
+        .herb-chip span {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.3;
+        }
 
-            .language-picker {
-                padding: 4px 8px;
-            }
+        /* Benefits Grid (3 Blocks) */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
 
-            .slide {
-                padding-top: 70px;
-                padding-bottom: 45px;
-            }
+        .benefit-card {
+            background: var(--light-green);
+            padding: 15px 18px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-green);
+            text-align: left;
+        }
 
-            .product-img-box {
-                height: 140px;
-                max-width: 170px;
-                margin-bottom: 0px;
-            }
+        .benefit-card h4 {
+            color: var(--primary-green);
+            font-size: 1rem;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-            .slide-title { 
-                font-size: 1.35rem; 
-            }
+        .benefit-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
 
-            .slide-desc { 
-                font-size: 0.88rem; 
-                line-height: 1.5; 
-            }
+        /* Customer Reviews Box */
+        .reviews-feedback-box {
+            background: #fdfaf2;
+            border: 2px solid #e6d5b8;
+            border-radius: var(--border-radius);
+            padding: 22px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
 
-            .features-grid { 
-                grid-template-columns: 1fr 1fr; 
-                gap: 8px; 
-            }
+        .reviews-feedback-box h3 {
+            color: #8a6d0b;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-            .feature-card { 
-                padding: 8px 10px; 
-            }
+        .reviews-feedback-box p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
 
-            .feature-card i {
-                font-size: 1.1rem;
-                margin-bottom: 2px;
-            }
+        .rating-stars {
+            color: #ffc107;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
 
-            .feature-card h4 {
-                font-size: 0.82rem;
-            }
+        /* Video Making Section */
+        .making-video-section {
+            background: #f1f7f0;
+            border: 1px solid #d5e5d3;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            display: none; /* Controlled by JavaScript flag */
+        }
 
-            .feature-card p {
-                font-size: 0.72rem;
-            }
+        .video-header-bar {
+            margin-bottom: 15px;
+        }
 
-            .whatsapp-btn { 
-                padding: 10px 20px; 
-                font-size: 0.9rem; 
-                margin-top: 5px;
-            }
+        .video-header-bar h3 {
+            color: var(--primary-green);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
 
-            .nav-btn { 
-                display: none; 
-            }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Bundle Order Note / CTA */
+        .bundle-cta-box {
+            background: #fff9e6;
+            border: 2px dashed var(--accent-gold);
+            border-radius: var(--border-radius);
+            padding: 22px;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .bundle-cta-box h3 {
+            color: #8a6d0b;
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .bundle-cta-box p {
+            font-size: 0.92rem;
+            color: #555;
+            margin-bottom: 18px;
+        }
+
+        .btn-order-now {
+            display: inline-block;
+            background: var(--primary-green);
+            color: #ffffff;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 6px 18px rgba(45, 90, 39, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-order-now:hover {
+            background: #1e3d1a;
+            transform: translateY(-2px);
+        }
+
+        /* Popup Modal */
+        .herb-popup-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .popup-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 16px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .popup-content img {
+            width: 100%;
+            max-height: 280px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .popup-content h4 {
+            color: var(--primary-green);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 600px) {
+            .container { padding: 10px; }
+            .product-section-wrapper { padding: 18px 12px; }
+            .section-title { font-size: 1.3rem; }
+            .top-lang-bar { justify-content: flex-end; }
+            .herb-grid { grid-template-columns: repeat(auto-fill, minmax(105px, 1fr)); gap: 8px; }
+            .herb-chip img { height: 75px; }
+            .herb-chip span { font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header with Clean Language Selector -->
-    <header class="top-header">
-        <div class="brand-title">FANGAM ORGANIC</div>
-        <div class="language-picker">
-            <i class="fa-solid fa-globe"></i>
-            <div id="google_translate_element"></div>
-        </div>
-    </header>
+<div class="container">
 
-    <!-- Slider Container -->
-    <div class="slider-container" id="sliderContainer">
-
-        <div class="slides-wrapper" id="slidesWrapper">
-            
-            <!-- SLIDE 1: UBTAN POWDER (ENGLISH) -->
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1608248597260-657d738f66b4?q=80&w=1200');">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <div class="product-img-box">
-                        <img src="https://drive.google.com/thumbnail?id=1yNfBZzM3DBbmr1ZVplG348uAP-D9ItiM&sz=w800" alt="Fangam Organic Ubtan Powder">
-                    </div>
-                    <h2 class="slide-title">Fangam Pure Ubtan Powder</h2>
-                    <p class="slide-desc">
-                        Unlike commercial liquid pastes filled with synthetic preservatives, our organic Ubtan comes in a <strong>100% Pure Powder Form</strong> to retain its natural potency and authentic radiance.
-                    </p>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <h4>Long-Lasting Quality</h4>
-                            <p>Powder form stays fresh for months without degradation</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fa-solid fa-calendar-check"></i>
-                            <h4>3 to 4 Times Monthly</h4>
-                            <p>Only a few monthly applications deliver glowing results</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fa-solid fa-sparkles"></i>
-                            <h4>Zero Chemicals</h4>
-                            <p>Free from preservatives, parabens, and additives</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- Premium Custom Language Switcher Button -->
+    <div class="top-lang-bar">
+        <div class="custom-lang-wrapper">
+            <button class="custom-lang-btn" onclick="toggleLangMenu()">
+                <i class="fa-solid fa-globe"></i>
+                <span id="currentLangLabel">Choose Language</span>
+                <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+            </button>
+            <div class="custom-lang-dropdown" id="customLangDropdown">
+                <div class="custom-lang-option" onclick="changeLanguage('en', 'English')">English</div>
+                <div class="custom-lang-option" onclick="changeLanguage('ur', 'اردو')">اردو (Urdu)</div>
+                <div class="custom-lang-option" onclick="changeLanguage('ar', 'العربية')">العربية (Arabic)</div>
+                <div class="custom-lang-option" onclick="changeLanguage('hi', 'हिन्दी')">हिन्दी (Hindi)</div>
+                <div class="custom-lang-option" onclick="changeLanguage('fa', 'فارسی')">فارسی (Persian)</div>
+                <div class="custom-lang-option" onclick="changeLanguage('es', 'Español')">Español (Spanish)</div>
+                <div class="custom-lang-option" onclick="changeLanguage('fr', 'Français')">Français (French)</div>
+                <div class="custom-lang-option" onclick="changeLanguage('de', 'Deutsch')">Deutsch (German)</div>
+                <div class="custom-lang-option" onclick="changeLanguage('tr', 'Türkçe')">Türkçe (Turkish)</div>
+                <div class="custom-lang-option" onclick="changeLanguage('zh-CN', '中文')">中文 (Chinese)</div>
+                <div class="custom-lang-option" onclick="changeLanguage('bn', 'বাংলা')">বাংলা (Bengali)</div>
+                <div class="custom-lang-option" onclick="changeLanguage('ru', 'Русский')">Русский (Russian)</div>
+                <div class="custom-lang-option" onclick="changeLanguage('pt', 'Português')">Português</div>
+                <div class="custom-lang-option" onclick="changeLanguage('ja', '日本語')">日本語 (Japanese)</div>
+                <div class="custom-lang-option" onclick="changeLanguage('ko', '한국어')">한국어 (Korean)</div>
             </div>
-
-            <!-- SLIDE 2: HAIR MASK POWDER (ENGLISH) -->
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=1200');">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <div class="product-img-box">
-                        <img src="https://drive.google.com/thumbnail?id=1YEzmNQwD8x75mEmA68kMPxOMvGS3GBdk&sz=w800" alt="Fangam Organic Hair Mask Powder">
-                    </div>
-                    <h2 class="slide-title">Fangam Herbal Hair Mask Powder</h2>
-                    <p class="slide-desc">
-                        Specially formulated in dry botanical powder form to ensure active herbal nourishment. It restores hair elasticity, strengthens roots, and brings natural luster without chemical buildup.
-                    </p>
-
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <i class="fa-solid fa-seedling"></i>
-                            <h4>100% Herbal Herbs</h4>
-                            <p>Deep root-to-tip organic nourishment</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fa-solid fa-box-open"></i>
-                            <h4>Active Bio-Formula</h4>
-                            <p>Herbal potency activated only when mixed fresh</p>
-                        </div>
-                        <div class="feature-card">
-                            <i class="fa-solid fa-clock-rotate-left"></i>
-                            <h4>Effortless Routine</h4>
-                            <p>Just 3 to 4 treatments complete your monthly care</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 3: EXCLUSIVE & NEGOTIABLE DETAILS (ENGLISH) -->
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1617897903246-719242758050?q=80&w=1200');">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <h2 class="slide-title">Pure, On-Demand & Negotiable</h2>
-                    <p class="slide-desc">
-                        Why isn't this range available in regular retail stores? Because we formulate pure, unadulterated powder products infused with premium rare ingredients like 
-                        <span class="ingredients-highlight">Pure Sandalwood (چندن)</span>, <span class="ingredients-highlight">Organic Turmeric (ہلدی)</span>, and therapeutic herbs.
-                    </p>
-                    <p class="slide-desc" style="font-size: 0.9rem; color: #cbd5e1;">
-                        Retail outlets often demand compromised formulas for mass margins. We chosen 100% purity. We prepare custom batches strictly <strong>On-Demand</strong> for our valued clients. Prices are custom & <strong>Negotiable</strong> based on your order setup.
-                    </p>
-
-                    <a href="https://wa.me/923000634445?text=Hello%20Fangam%20Organic,%20I%20want%20to%20negotiate%20and%20order%20Ubtan/Hair%20Mask%20Powder." class="whatsapp-btn" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> Negotiate & Order via WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- SLIDE 4: ORDER DIRECTLY ON WHATSAPP (ENGLISH) -->
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?q=80&w=1200');">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <h2 class="slide-title">Custom Craftsmanship Delivered Directly</h2>
-                    <p class="slide-desc">
-                        Due to the high market cost of authentic Sandalwood and rare botanical extracts, we prefer selling directly to clients who value authentic natural care.
-                    </p>
-                    <p class="slide-desc" style="font-size: 0.9rem; color: #cbd5e1;">
-                        Get in touch with us directly on WhatsApp to set your custom quantity, discuss negotiated pricing, and get your fresh batch crafted on demand.
-                    </p>
-
-                    <a href="https://wa.me/923000634445?text=Hello%20Fangam%20Organic,%20I%20would%20like%20to%20place%20an%20order%20for%20the%20Powder%20Range." class="whatsapp-btn" target="_blank">
-                        <i class="fa-brands fa-whatsapp"></i> Order Now on WhatsApp
-                    </a>
-                </div>
-            </div>
-
         </div>
 
-        <!-- Navigation Buttons -->
-        <button class="nav-btn prev-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
-        <button class="nav-btn next-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
-
-        <!-- Dots Indicator -->
-        <div class="dots-container" id="dotsContainer">
-            <div class="dot active" data-index="0"></div>
-            <div class="dot" data-index="1"></div>
-            <div class="dot" data-index="2"></div>
-            <div class="dot" data-index="3"></div>
-        </div>
-
+        <!-- Hidden Native Google Translate Dropdown Engine -->
+        <div id="google_translate_element"></div>
     </div>
 
-    <!-- Google Translate Script -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,ur,ar,fa,hi,ps,sd,bn,fr,es,de,it,tr,zh-CN,ru,ja,ko,pt,nl,pl,sv,no,da,fi,cs,el,hu,ro,sk,uk,ms,id,th,vi,tl,sw,am,yo,ig,ha,zu,kn,ml,ta,te,pa,gu,mr',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
+    <section id="on-demand" class="product-section-wrapper">
+        
+        <!-- Header -->
+        <h2 class="section-title">
+            <i class="fa-solid fa-seedling"></i> 100% Pure Organic Powder Ubtan & Hair Masks
+        </h2>
+
+        <!-- 1. Main Product Hero Image -->
+        <div class="product-hero-box">
+            <img src="https://lh3.googleusercontent.com/d/1Iw87wQ55Xg09zlZ44_ZxQ3Ie4SKSLDDx" alt="Fangam Organic Custom Powder Ubtan & Hair Mask">
+        </div>
+
+        <!-- 2. Powder Concept Explanation -->
+        <div class="powder-concept-card">
+            <h3><i class="fa-solid fa-leaf"></i> Why We Create in Pure Powder Form?</h3>
+            <p>Ordinary commercial ready-made ubtans and hair masks contain added water and harsh chemicals, which significantly reduce their effectiveness. Fangam Organic hair masks and ubtans are crafted in 100% pure, dry powder form to preserve maximum natural potency.</p>
+            <p><strong>Long Shelf Life:</strong> Being completely dry, our powders stay fresh for months without requiring any artificial chemical preservatives.</p>
+            <p><strong>Extraordinary Results:</strong> Delivers such deep nourishment and natural shine to hair and skin that you won't even need expensive chemical keratin treatments or salon procedures.</p>
+        </div>
+
+        <!-- 3. Natural Herbs & Powders Section -->
+        <div class="herb-section-header">
+            <h4><i class="fa-solid fa-mortar-pestle"></i> Natural Herbs & Powders (Click any herb to zoom):</h4>
+        </div>
+
+        <div class="herb-grid">
+            <div class="herb-chip" onclick="openHerbPopup('https://lh3.googleusercontent.com/d/1fPsd0t4gbwxoRpIAKw5QdOYt6L1J2qfC', 'Turmeric Powder (ہلدی پاؤڈر)')">
+                <img src="https://lh3.googleusercontent.com/d/1fPsd0t4gbwxoRpIAKw5QdOYt6L1J2qfC" alt="Turmeric Powder">
+                <span>Turmeric Powder</span>
+            </div>
+
+            <div class="herb-chip" onclick="openHerbPopup('https://lh3.googleusercontent.com/d/1bawaynIT2-KLBuHJ3MAuIr0XwyXDL08G', 'Orange Peel Powder (مالٹے کے چھلکے کا پاؤڈر)')">
+                <img src="https://lh3.googleusercontent.com/d/1bawaynIT2-KLBuHJ3MAuIr0XwyXDL08G" alt="Orange Peel Powder">
+                <span>Orange Peel</span>
+            </div>
+
+            <div class="herb-chip" onclick="openHerbPopup('https://lh3.googleusercontent.com/d/1zKjV2fO94NiXdFSOSgEd63rKe-9579eF', 'Hibiscus Powder (گڑہل پاؤڈر)')">
+                <img src="https://lh3.googleusercontent.com/d/1zKjV2fO94NiXdFSOSgEd63rKe-9579eF" alt="Hibiscus Powder">
+                <span>Hibiscus Powder</span>
+            </div>
+
+            <div class="herb-chip" onclick="openHerbPopup('https://lh3.googleusercontent.com/d/1fFlrO5LdXj3BjZZBe_NZKOy0QpplZpDT', 'Sandalwood Powder (صندل کا پاؤڈر)')">
+                <img src="https://lh3.googleusercontent.com/d/1fFlrO5LdXj3BjZZBe_NZKOy0QpplZpDT" alt="Sandalwood Powder">
+                <span>Sandalwood</span>
+            </div>
+
+            <div class="herb-chip" onclick="openHerbPopup('https://lh3.googleusercontent.com/d/1ZN14nSiZKcmgW81BiTXJTroDqJqr1wRp', 'Mulethi Powder (ملہٹھی پاؤڈر)')">
+                <img src="https://lh3.googleusercontent.com/d/1ZN14nSiZKcmgW81BiTXJTroDqJqr1wRp" alt="Mulethi Powder">
+                <span>Mulethi Powder</span>
+            </div>
+
+            <div class="herb-chip" onclick="openHerbPopup('https://lh3.googleusercontent.com/d/1q_yDdRZpHh7lFBy_vjJDSQkLIctqfZNK', 'Besan Powder (بیسن پاؤڈر)')">
+                <img src="https://lh3.googleusercontent.com/d/1q_yDdRZpHh7lFBy_vjJDSQkLIctqfZNK" alt="Besan Powder">
+                <span>Besan Powder</span>
+            </div>
+
+            <div class="herb-chip" onclick="openHerbPopup('https://lh3.googleusercontent.com/d/1djJXtj1NThQ8mvnOapoB-Xzkv2cz00e-', 'Rose Petal Powder (گلاب کے پھول کا پاؤڈر)')">
+                <img src="https://lh3.googleusercontent.com/d/1djJXtj1NThQ8mvnOapoB-Xzkv2cz00e-" alt="Rose Petal Powder">
+                <span>Rose Petal</span>
+            </div>
+
+            <div class="herb-chip" onclick="openHerbPopup('https://lh3.googleusercontent.com/d/1DsweR1Xv3UhG72m-Xe8TB9013hakraVe', 'Oats Powder (اوٹس پاؤڈر)')">
+                <img src="https://lh3.googleusercontent.com/d/1DsweR1Xv3UhG72m-Xe8TB9013hakraVe" alt="Oats Powder">
+                <span>Oats Powder</span>
+            </div>
+
+            <div class="herb-chip" onclick="openHerbPopup('https://lh3.googleusercontent.com/d/1VRNbgxO6AYJqvtzJ0273v_mvCgyZk7ND', 'Manjistha Powder (منجسٹھا پاؤڈر)')">
+                <img src="https://lh3.googleusercontent.com/d/1VRNbgxO6AYJqvtzJ0273v_mvCgyZk7ND" alt="Manjistha Powder">
+                <span>Manjistha</span>
+            </div>
+
+            <div class="herb-chip" onclick="openHerbPopup('https://lh3.googleusercontent.com/d/1BMWkUH_OUSz46KZiBlTdX4h6F1sxaHz1', 'Rice Powder (چاول کا پاؤڈر)')">
+                <img src="https://lh3.googleusercontent.com/d/1BMWkUH_OUSz46KZiBlTdX4h6F1sxaHz1" alt="Rice Powder">
+                <span>Rice Powder</span>
+            </div>
+
+            <div class="herb-chip" onclick="openHerbPopup('https://lh3.googleusercontent.com/d/1ClaJH8KrKsxF9VDw6oqPRPbki-JjDx5a', 'Husn-e-Yousuf Powder (حسنِ یوسف پاؤڈر)')">
+                <img src="https://lh3.googleusercontent.com/d/1ClaJH8KrKsxF9VDw6oqPRPbki-JjDx5a" alt="Husn-e-Yousuf Powder">
+                <span>Husn-e-Yousuf</span>
+            </div>
+        </div>
+
+        <!-- 4. Key Benefits (3 Blocks) -->
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <h4><i class="fa-solid fa-circle-check"></i> Zero Preservatives</h4>
+                <p>No harmful chemicals, artificial colors, or synthetics. 100% natural herbal ingredients.</p>
+            </div>
+            <div class="benefit-card">
+                <h4><i class="fa-solid fa-wand-magic-sparkles"></i> Keratin-Like Natural Glow</h4>
+                <p>Restores natural smoothness, silkiness, and minimizes hair fall with authentic herbal recipes.</p>
+            </div>
+            <div class="benefit-card">
+                <h4><i class="fa-solid fa-store-slash"></i> Direct Online Supply</h4>
+                <p>To preserve uncompromised organic quality, we bypass regular retail shelves and ship direct to you.</p>
+            </div>
+        </div>
+
+        <!-- 5. Customer Reviews & Feedback Box -->
+        <div class="reviews-feedback-box">
+            <h3><i class="fa-solid fa-comments"></i> What Our Customers Say</h3>
+            <div class="rating-stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <p><strong>Real Experience from Valued Buyers:</strong> Many of our customers who previously spent heavily on chemical salon treatments like <em>Keratin</em> have completely switched to our natural hair mask! They shared that the softness, silky smoothness, and radiant shine delivered by our pure herbal powders are far superior without any side effects.</p>
+            <p>Because of these remarkable results, customers regularly reorder and trust our 100% organic formulation.</p>
+        </div>
+
+        <!-- 6. Watch How It Made Production Preparation Video Section (Currently TRUE) -->
+        <div class="making-video-section" id="makingVideoSection">
+            <div class="video-header-bar">
+                <h3><i class="fa-solid fa-video"></i> Watch How It Made Production Preparation Video</h3>
+            </div>
+            <div class="video-container">
+                <!-- Replace src with your embedded video URL (YouTube, Vimeo, etc.) -->
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- 7. Bundle Order Note / CTA Banner -->
+        <div class="bundle-cta-box">
+            <h3><i class="fa-solid fa-basket-shopping"></i> How to Order:</h3>
+            <p>These specialized organic products are not available in regular local retail stores. To purchase our original herbal hair mask or ubtan, please order directly from our <strong>Bundle Section</strong>.</p>
+            <a href="https://fangamorganic.com/bundle" class="btn-order-now">
+                <i class="fa-solid fa-bag-shopping"></i> Order From Bundle Section
+            </a>
+        </div>
+
+    </section>
+</div>
+
+<!-- Image Zoom Popup Modal -->
+<div id="herbModal" class="herb-popup-modal" onclick="closeHerbPopup()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+        <span class="close-popup" onclick="closeHerbPopup()">&times;</span>
+        <img id="popupImg" src="" alt="Herb Image">
+        <h4 id="popupTitle"></h4>
+    </div>
+</div>
+
+<!-- Google Translate Native Init Script -->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+    // ==========================================
+    // 🎥 VIDEO DISPLAY CONTROL (TRUE / FALSE)
+    // ==========================================
+    const SHOW_MAKING_VIDEO = false; 
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const videoSection = document.getElementById('makingVideoSection');
+        if (SHOW_MAKING_VIDEO) {
+            videoSection.style.display = 'block';
+        } else {
+            videoSection.style.display = 'none';
         }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    });
 
-    <!-- Slider Script with Touch/Click Permanent Hold -->
-    <script>
-        const slidesWrapper = document.getElementById('slidesWrapper');
-        const dots = document.querySelectorAll('.dot');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const sliderContainer = document.getElementById('sliderContainer');
+    // Custom Language Switcher Dropdown Logic
+    function toggleLangMenu() {
+        const dropdown = document.getElementById('customLangDropdown');
+        dropdown.classList.toggle('show');
+    }
 
-        let currentIndex = 0;
-        const totalSlides = 4;
-        let slideInterval;
-        let isManuallyStopped = false;
-
-        function goToSlide(index) {
-            if (index < 0) index = totalSlides - 1;
-            if (index >= totalSlides) index = 0;
-            
-            currentIndex = index;
-            slidesWrapper.style.transform = `translateX(-${currentIndex * 25}%)`;
-            
-            dots.forEach((dot, idx) => {
-                dot.classList.toggle('active', idx === currentIndex);
-            });
-        }
-
-        function nextSlide() {
-            goToSlide(currentIndex + 1);
-        }
-
-        function prevSlide() {
-            goToSlide(currentIndex - 1);
-        }
-
-        function startAutoplay() {
-            stopAutoplay();
-            slideInterval = setInterval(() => {
-                if (!isManuallyStopped) {
-                    nextSlide();
-                }
-            }, 5000);
-        }
-
-        function stopAutoplay() {
-            if (slideInterval) clearInterval(slideInterval);
-        }
-
-        // Permanently stop autoplay when user interacts
-        function stopPermanently() {
-            isManuallyStopped = true;
-            stopAutoplay();
-        }
-
-        nextBtn.addEventListener('click', () => {
-            stopPermanently();
-            nextSlide();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            stopPermanently();
-            prevSlide();
-        });
-
-        dots.forEach(dot => {
-            dot.addEventListener('click', (e) => {
-                stopPermanently();
-                const index = parseInt(e.target.getAttribute('data-index'));
-                goToSlide(index);
-            });
-        });
-
-        // Touch & Click Event to Stop Slider Immediately on Mobile/Desktop
-        sliderContainer.addEventListener('click', () => {
-            stopPermanently();
-        });
-
-        sliderContainer.addEventListener('touchstart', () => {
-            stopPermanently();
-        }, {passive: true});
-
-        // Touch Swipe Support
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        sliderContainer.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, {passive: true});
-
-        sliderContainer.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchEndX < touchStartX - 40) {
-                stopPermanently();
-                nextSlide();
+    // Close language dropdown if clicked outside
+    window.onclick = function(event) {
+        if (!event.target.closest('.custom-lang-wrapper')) {
+            const dropdown = document.getElementById('customLangDropdown');
+            if (dropdown && dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
             }
-            if (touchEndX > touchStartX + 40) {
-                stopPermanently();
-                prevSlide();
-            }
-        }, {passive: true});
+        }
+    }
 
-        startAutoplay();
-    </script>
+    // Programmatically trigger Google Translate via Custom Button Options
+    function changeLanguage(langCode, langName) {
+        document.getElementById('currentLangLabel').innerText = langName;
+        document.getElementById('customLangDropdown').classList.remove('show');
+        
+        const googleSelect = document.querySelector('.goog-te-combo');
+        if (googleSelect) {
+            googleSelect.value = langCode;
+            googleSelect.dispatchEvent(new Event('change'));
+        }
+    }
+
+    // Image Zoom Popup Functions
+    function openHerbPopup(imgUrl, title) {
+        document.getElementById('popupImg').src = imgUrl;
+        document.getElementById('popupTitle').innerText = title;
+        document.getElementById('herbModal').style.display = 'flex';
+    }
+
+    function closeHerbPopup() {
+        document.getElementById('herbModal').style.display = 'none';
+    }
+</script>
+
 </body>
 </html>
