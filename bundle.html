@@ -36,6 +36,16 @@
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #2d5a42; border-radius: 4px; }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        .blinking-dot {
+            animation: blink 1.5s infinite;
+            display: inline-block;
+        }
     </style>
 </head>
 <body class="text-gray-800 antialiased pb-24">
@@ -198,6 +208,13 @@
             </div>
 
             <div class="p-6 overflow-y-auto custom-scrollbar flex-1">
+                
+                <!-- 🔴 Blinking Notice 🔴 -->
+                <div style="background-color: #f8d7da; color: #721c24; padding: 12px; border-radius: 8px; font-weight: bold; text-align: center; margin-bottom: 15px; border: 1px dashed #f5c6cb; font-size: 13px; line-height: 1.5;">
+                  <span class="blinking-dot">🔴</span> 
+                  <strong>Important Note:</strong> Delivery charges are <strong>not included</strong> and must be paid in <strong>advance</strong> (JazzCash, EasyPaisa, or Bank Transfer) to confirm your order. Our team will share the account details on WhatsApp.
+                </div>
+
                 <div id="cart-items-container" class="space-y-4"></div>
 
                 <div id="empty-cart-msg" class="text-center py-8 text-gray-400">
@@ -557,6 +574,13 @@
             updateCartUI();
         }
 
+        // Direct Remove Function for Cart Item
+        function removeFromCart(productId) {
+            delete cart[productId];
+            renderProducts();
+            updateCartUI();
+        }
+
         function calculateTotals() {
             let subtotal = 0;
             let totalItemCount = 0;
@@ -636,6 +660,10 @@
                                     <span class="px-2 text-xs font-bold">${item.qty}</span>
                                     <button onclick="updateCartQty('${item.id}', ${item.qty + 1})" class="px-2 py-0.5 text-xs text-gray-600 hover:bg-gray-100">+</button>
                                 </div>
+                                <!-- 🔴 Direct Delete Button Added Here 🔴 -->
+                                <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 p-1.5 rounded-lg hover:bg-red-50 transition" title="Remove Item">
+                                    <i class="fas fa-trash-alt text-sm"></i>
+                                </button>
                             </div>
                         </div>
                     `;
@@ -686,16 +714,36 @@
             message += `---------------------------------\n`;
             message += `*ORDER DETAILS:*\n`;
 
-            cartItems.forEach((item, idx) => {
+            cartItems.locate ? null : cartItems.forEach((item, idx) => {
                 message += `${idx + 1}. ${item.name} x ${item.qty} = PKR ${item.price * item.qty}\n`;
             });
+            // Fixed loop syntax safety
+            cartItems.forEach((item, idx) => {
+                // Already handled above properly
+            });
 
+            // Re-building message loop cleanly
+            let itemsText = '';
+            cartItems.forEach((item, idx) => {
+                itemsText += `${idx + 1}. ${item.name} x ${item.qty} = PKR ${item.price * item.qty}\n`;
+            });
+
+            message = `*NEW ORDER - FANGAM ORGANIC*\n`;
+            message += `---------------------------------\n`;
+            message += `*Customer:* ${name}\n`;
+            message += `*Phone:* ${phone}\n`;
+            message += `*Address:* ${address}\n`;
+            message += `---------------------------------\n`;
+            message += `*ORDER DETAILS:*\n`;
+            message += itemsText;
             message += `---------------------------------\n`;
             message += `Subtotal: PKR ${subtotal}\n`;
             if (isDiscountApplied) {
                 message += `*Special Discount (15% OFF for 3+ items): -PKR ${discount}*\n`;
             }
             message += `*TOTAL PAYABLE: PKR ${total}*\n`;
+            message += `---------------------------------\n`;
+            message += `*Note:* Delivery charges are not included and must be paid in advance via JazzCash, EasyPaisa, or Bank Transfer to confirm the order.\n`;
             message += `---------------------------------\n`;
             message += `Thank you for ordering with Fangam Organic!`;
 
