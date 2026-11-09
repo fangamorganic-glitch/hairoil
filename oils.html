@@ -199,7 +199,6 @@
             <i class="fa-solid fa-circle-play text-red-500"></i> Watch How It's Made
           </h4>
           <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-inner flex items-center justify-center">
-            <!-- Dynamic Video Embed Container -->
             <iframe id="modal-video" class="w-full h-full" src="" title="Oil Making Process" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <p class="text-[11px] text-gray-400 mt-2 italic text-center">Watch our authentic cold-press preparation ensuring zero chemicals and maximum nutrition.</p>
@@ -223,15 +222,18 @@
   
   <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
     
-    <!-- Cart Header -->
+    <!-- Cart Header with Beautifully Aligned Order ID -->
     <div class="bg-brand-dark text-white p-5 flex justify-between items-center border-b border-emerald-950">
       <div class="flex items-center gap-2">
         <i class="fa-solid fa-basket-shopping text-brand-gold"></i>
         <h3 class="font-heading text-lg font-bold">Shopping Cart</h3>
       </div>
-      <button onclick="toggleCartDrawer()" class="text-gray-300 hover:text-white p-1">
-        <i class="fa-solid fa-xmark text-xl"></i>
-      </button>
+      <div class="flex items-center gap-2">
+        <span id="active-order-id-label" class="bg-brand-gold/20 border border-brand-gold/40 text-brand-gold text-xs font-bold px-2.5 py-1 rounded-lg tracking-wider">#FO-0000</span>
+        <button onclick="toggleCartDrawer()" class="text-gray-300 hover:text-white p-1">
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+      </div>
     </div>
 
     <!-- Discount Status Alert Banner -->
@@ -243,7 +245,7 @@
     <!-- Cart Items Container -->
     <div class="p-4 sm:p-6 overflow-y-auto custom-scrollbar flex-1">
       
-      <!-- 🔴 Blinking Notice Added Here inside Cart Drawer 🔴 -->
+      <!-- 🔴 Blinking Notice 🔴 -->
       <div style="background-color: #f8d7da; color: #721c24; padding: 12px; border-radius: 8px; font-weight: bold; text-align: center; margin-bottom: 15px; border: 1px dashed #f5c6cb; font-size: 13px; line-height: 1.5;">
         <span class="blinking-dot">🔴</span> 
         <strong>Important Notice:</strong> Delivery charges are <strong>not included</strong> and must be paid in <strong>advance</strong> (JazzCash, EasyPaisa, or Bank Transfer) to confirm your order. Our team will share the account details on WhatsApp.
@@ -262,7 +264,7 @@
         <span id="cart-subtotal" class="font-semibold text-gray-800">PKR 0</span>
       </div>
 
-      <!-- 10% Discount Line (Visible when total > 5000 PKR) -->
+      <!-- 10% Discount Line -->
       <div id="cart-discount-row" class="flex justify-between text-xs text-emerald-800 font-bold hidden bg-emerald-100/80 p-2 rounded-lg border border-emerald-200">
         <span class="flex items-center gap-1.5">
           <i class="fa-solid fa-badge-percent text-emerald-600"></i> 10% Concession Applied
@@ -366,15 +368,16 @@
 
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
-    /* Target WhatsApp Number: 03000634445 -> International Format: 923000634445 */
+    // ==========================================
+    // GOOGLE APPS SCRIPT WEB APP URL
+    // ==========================================
+    const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzmsiyp0jcFAPakhDeFuILBypF92Jl_YvMBQqefeAyK5fJKAUWmrAivC9cIAhZac4mdZg/exec";
+
     const WHATSAPP_NUMBER = "923000634445";
 
-    // REPLACE THESE URL PLACEHOLDERS WITH YOUR OWN IMAGE LINKS:
     const URL_PLACEHOLDER_100ML = "https://lh3.googleusercontent.com/d/1RGjNSqSGB3MkhanqPuShzkdRN6vHsN-F";
     const URL_PLACEHOLDER_150ML = "https://lh3.googleusercontent.com/d/1BHf-AcXqZX8FJHcAl_5wP8V9_8-QzNLX";
     const URL_PLACEHOLDER_200ML = "https://lh3.googleusercontent.com/d/1SUbcMrjMheEwKur9XnIF2G7jKqrSXtox";
-
-    // REPLACE THIS WITH YOUR PRODUCT MAKING YOUTUBE / VIDEO EMBED URL:
     const MAKING_VIDEO_URL = "https://youtube.com/embed/SPNBt55J1XY";
 
     const PRODUCTS = [
@@ -410,14 +413,21 @@
       }
     ];
 
-    /* Global Cart State */
     let cart = [];
+    let currentOrderId = '';
 
-    // Set Footer Year safely
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    /* 1. Render Product Cards */
+    window.addEventListener('DOMContentLoaded', () => {
+      currentOrderId = '#FO-OIL-' + Math.floor(1000 + Math.random() * 9000);
+      const orderIdLabel = document.getElementById('active-order-id-label');
+      if (orderIdLabel) orderIdLabel.innerText = currentOrderId;
+
+      renderProducts();
+      updateCartUI();
+    });
+
     function renderProducts() {
       const grid = document.getElementById('product-grid');
       if (!grid) return;
@@ -454,7 +464,6 @@
       `).join('');
     }
 
-    /* 2. Description Modal Handlers */
     function openModal(productId) {
       const product = PRODUCTS.find(p => p.id === productId);
       if (!product) return;
@@ -481,7 +490,6 @@
       document.getElementById('modal-video').src = "";
     }
 
-    /* 3. Cart & 10% Discount Formula */
     function addToCart(productId) {
       const product = PRODUCTS.find(p => p.id === productId);
       if (!product) return;
@@ -527,10 +535,8 @@
           </div>
         `;
       } else {
-        // 📱 MOBILE-FRIENDLY CART ITEM LAYOUT 📱
         container.innerHTML = cart.map(item => `
           <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
-            <!-- Top Row: Image, Name & Delete Button -->
             <div class="flex items-start justify-between gap-2">
               <div class="flex items-center space-x-3 flex-1 min-w-0">
                 <img src="${item.imageUrl}" class="w-12 h-12 rounded-lg object-contain bg-white border border-gray-200 flex-shrink-0 p-1">
@@ -539,13 +545,11 @@
                   <div class="text-xs text-brand-dark font-semibold">PKR ${item.price} each</div>
                 </div>
               </div>
-              <!-- Direct Delete Button -->
               <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-lg transition flex-shrink-0" title="Remove Item">
                 <i class="fa-solid fa-trash-alt text-sm"></i>
               </button>
             </div>
 
-            <!-- Bottom Row: Price Total & Quantity Controls -->
             <div class="flex items-center justify-between pt-2 border-t border-gray-200/60">
               <div class="text-xs text-gray-500">
                 Total: <span class="font-bold text-brand-dark text-sm">PKR ${(item.price * item.quantity).toLocaleString()}</span>
@@ -560,7 +564,6 @@
         `).join('');
       }
 
-      /* Dynamic Discount Calculation */
       const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       const discountThreshold = 5000;
       let discountAmount = 0;
@@ -591,7 +594,6 @@
       document.getElementById('cart-grand-total').textContent = `PKR ${grandTotal.toLocaleString()}`;
     }
 
-    /* 4. Drawer & Banner Controls */
     function toggleCartDrawer() {
       const drawer = document.getElementById('cart-drawer');
       const backdrop = document.getElementById('cart-drawer-backdrop');
@@ -610,7 +612,6 @@
       if (banner) banner.style.display = 'none';
     }
 
-    /* 5. Checkout & WhatsApp Integration */
     function openCheckoutModal() {
       if (cart.length === 0) {
         alert("Your cart is empty. Please add products to cart before placing an order!");
@@ -640,7 +641,7 @@
       document.getElementById('checkout-modal').classList.add('hidden');
     }
 
-    function submitWhatsAppOrder(event) {
+    async function submitWhatsAppOrder(event) {
       event.preventDefault();
 
       if (cart.length === 0) {
@@ -655,10 +656,34 @@
 
       const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       const discount = subtotal >= 5000 ? subtotal * 0.10 : 0;
-      const grandTotal = subtotal - discount;
+      let itemsSummaryText = cart.map(i => `${i.title} (x${i.quantity})`).join(', ');
 
-      // Construct Formatted WhatsApp Message
-      let message = `🌿 *NEW ORDER - FANGAM ORGANIC OILS* 🌿\n\n`;
+      // 1. Send Data to Google Sheet automatically in Background
+      const payload = {
+        orderId: currentOrderId,
+        productType: "Oils",
+        customerName: name,
+        phone: phone,
+        city: city,
+        address: address,
+        orderItems: itemsSummaryText,
+        subtotal: subtotal,
+        discount: discount
+      };
+
+      try {
+        await fetch(GOOGLE_SHEET_API_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.error("Sheet sync error:", err);
+      }
+
+      // 2. WhatsApp Message Construction
+      let message = `🌿 *NEW ORDER - FANGAM ORGANIC OILS (${currentOrderId})* 🌿\n\n`;
       message += `📋 *ORDER DETAILS:*\n`;
       
       cart.forEach((item, index) => {
@@ -667,13 +692,12 @@
         message += `   - Price: PKR ${item.price.toLocaleString()} x ${item.quantity} = PKR ${(item.price * item.quantity).toLocaleString()}\n\n`;
       });
 
+      const grandTotal = subtotal - discount;
       message += `------------------------------------\n`;
       message += `💵 *Subtotal:* PKR ${subtotal.toLocaleString()}\n`;
       
       if (discount > 0) {
         message += `🎉 *10% Discount (> 5,000 PKR):* - PKR ${discount.toLocaleString()}\n`;
-      } else {
-        message += `🏷️ *Discount:* PKR 0 (Shop over PKR 5,000 for 10% OFF)\n`;
       }
 
       message += `💰 *GRAND TOTAL:* PKR ${grandTotal.toLocaleString()}\n`;
@@ -688,22 +712,14 @@
       message += `• *Address:* ${address}\n\n`;
       message += `Please confirm my order as soon as possible. Thank you!`;
 
-      // Open WhatsApp URL safely
       const encodedMessage = encodeURIComponent(message);
       const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
       window.open(whatsappUrl, '_blank');
 
-      // Close Modals
       closeCheckoutModal();
       toggleCartDrawer();
     }
-
-    // Initialize page
-    window.onload = function() {
-      renderProducts();
-      updateCartUI();
-    };
   </script>
 
 </body>
