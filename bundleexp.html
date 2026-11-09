@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fangam Organic - Premium Products</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#1b382b',
+                            primary: '#2d5a42',
+                            light: '#4a8b66',
+                            accent: '#d4af37',
+                            bg: '#f8fdf9'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Jameel+Noori+Nastaleeq&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f8fdf9; }
+        .urdu-text { font-family: 'Jameel Noori Nastaleeq', 'Urdu Typesetting', serif; line-height: 1.8; direction: rtl; }
+        .product-card { transition: all 0.3s ease; }
+        .product-card:hover { transform: translateY(-5px); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #2d5a42; border-radius: 4px; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased pb-24">
+
+    <!-- Header / Navbar -->
+    <header class="bg-brand-dark text-white shadow-lg sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Dynamic Logo -->
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-full bg-brand-accent/20 border-2 border-brand-accent flex items-center justify-center text-brand-accent text-2xl font-bold">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-wide text-brand-accent">Fangam Organic</h1>
+                    <p class="text-xs text-gray-300 tracking-wider uppercase">Pure & Natural Care</p>
+                </div>
+            </div>
+
+            <!-- Cart Badge -->
+            <button onclick="toggleCartModal()" class="relative bg-brand-primary hover:bg-brand-light px-4 py-2 rounded-full transition flex items-center gap-2 border border-brand-accent/30">
+                <i class="fas fa-shopping-basket text-brand-accent"></i>
+                <span class="font-medium text-sm hidden sm:inline">Cart</span>
+                <span id="cart-count" class="bg-brand-accent text-brand-dark text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="bg-gradient-to-b from-brand-dark to-brand-primary text-white py-10 px-4 text-center">
+        <div class="max-w-3xl mx-auto">
+            <span class="bg-brand-accent/20 text-brand-accent border border-brand-accent/40 text-xs px-3 py-1 rounded-full uppercase tracking-widest font-semibold inline-block mb-3">Special Offer</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-3">100% Organic Products</h2>
+            <p class="text-gray-200 text-sm md:text-base max-w-xl mx-auto">
+                Get <span class="text-brand-accent font-bold">15% OFF</span> automatically when you order <span class="underline underline-offset-4 font-semibold">3 or more products</span>!
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 py-10">
+        <!-- Filter Tabs -->
+        <div id="category-filters" class="flex flex-wrap justify-center gap-2 mb-8">
+            <!-- Categories generated dynamically -->
+        </div>
+
+        <!-- Products Grid -->
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Product Cards inserted via JS -->
+        </div>
+    </main>
+
+    <!-- Fixed Bottom Cart Bar -->
+    <div id="bottom-cart-bar" class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl p-4 z-30 transform translate-y-full transition-transform duration-300">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <i class="fas fa-shopping-bag text-2xl text-brand-primary"></i>
+                    <span id="bar-cart-count" class="absolute -top-2 -right-2 bg-brand-accent text-brand-dark text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </div>
+                <div>
+                    <div class="text-xs text-gray-500 uppercase tracking-wider">Total Amount</div>
+                    <div class="flex items-baseline space-x-2">
+                        <span id="bar-total-price" class="text-xl font-bold text-brand-dark">PKR 0</span>
+                        <span id="bar-discount-badge" class="hidden text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded font-bold">15% OFF Applied!</span>
+                    </div>
+                </div>
+            </div>
+            <button onclick="toggleCartModal()" class="bg-brand-primary hover:bg-brand-dark text-white px-6 py-2.5 rounded-xl font-medium transition shadow-md flex items-center gap-2">
+                <span>View Order</span>
+                <i class="fas fa-arrow-right text-xs"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Product Description Popup Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black/60 z-50 hidden backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl border border-gray-100 flex flex-col max-h-[90vh]">
+            
+            <!-- Modal Header -->
+            <div class="bg-brand-dark text-white p-4 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <span id="modal-category" class="bg-brand-accent/20 text-brand-accent text-xs px-2.5 py-1 rounded-md font-semibold border border-brand-accent/30">Category</span>
+                </div>
+                <button onclick="closeProductModal()" class="text-gray-300 hover:text-white text-xl w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/10">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 overflow-y-auto custom-scrollbar flex-1" onclick="pauseLanguageSwitch()">
+                <!-- Product Image in Modal -->
+                <div class="w-full h-48 rounded-xl overflow-hidden mb-4 bg-gray-100 border border-gray-200">
+                    <img id="modal-img" src="" alt="Product Image" class="w-full h-full object-cover">
+                </div>
+
+                <div class="flex items-center justify-between mb-2">
+                    <h3 id="modal-title" class="text-2xl font-bold text-brand-dark">Product Name</h3>
+                    <span id="modal-price" class="text-xl font-bold text-brand-primary">PKR 0</span>
+                </div>
+
+                <!-- Language Mode Indicator & Toggle -->
+                <div class="flex items-center justify-between bg-gray-50 p-2.5 rounded-xl mb-4 border border-gray-100">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xs text-gray-500 font-medium">Language:</span>
+                        <span id="lang-indicator" class="text-xs bg-brand-primary text-white px-2 py-0.5 rounded font-bold">English</span>
+                        <span id="pause-status" class="hidden text-xs text-amber-600 font-semibold flex items-center gap-1">
+                            <i class="fas fa-pause-circle"></i> Paused
+                        </span>
+                    </div>
+                    <button id="toggle-pause-btn" onclick="event.stopPropagation(); togglePauseLanguage();" class="text-xs bg-white border border-gray-300 hover:bg-gray-100 px-3 py-1 rounded-lg text-gray-700 font-medium transition">
+                        Pause Switch
+                    </button>
+                </div>
+
+                <!-- Description Text Container -->
+                <div class="min-h-[120px] bg-emerald-50/40 p-4 rounded-xl border border-emerald-100 flex items-center justify-center">
+                    <div id="modal-desc-en" class="text-gray-700 text-sm leading-relaxed w-full"></div>
+                    <div id="modal-desc-ur" class="urdu-text text-gray-800 text-base leading-loose w-full hidden text-right"></div>
+                </div>
+            </div>
+
+            <!-- Modal Footer (with Side-by-Side Video & Add to Cart Buttons) -->
+            <div class="p-4 bg-gray-50 border-t border-gray-100 flex flex-col gap-3">
+                <div class="flex items-center gap-2">
+                    <!-- Quantity Controls -->
+                    <div class="flex items-center border border-gray-300 rounded-xl bg-white overflow-hidden">
+                        <button onclick="adjustModalQty(-1)" class="px-3 py-2.5 text-gray-600 hover:bg-gray-100"><i class="fas fa-minus text-xs"></i></button>
+                        <span id="modal-qty" class="px-3 font-bold text-gray-800 text-sm">1</span>
+                        <button onclick="adjustModalQty(1)" class="px-3 py-2.5 text-gray-600 hover:bg-gray-100"><i class="fas fa-plus text-xs"></i></button>
+                    </div>
+
+                    <!-- Making Video Button (Placed directly in footer) -->
+                    <a id="modal-video-btn" href="#" target="_blank" class="hidden bg-red-600 hover:bg-red-700 text-white font-semibold text-xs px-3 py-3 rounded-xl shadow transition flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="fab fa-youtube text-sm"></i>
+                        <span>Making Video</span>
+                    </a>
+
+                    <!-- Add to Cart Button -->
+                    <button id="modal-add-btn" class="flex-1 bg-brand-primary hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition shadow-md flex items-center justify-center gap-2">
+                        <i class="fas fa-cart-plus"></i>
+                        <span>Add to Cart</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart / Checkout Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/60 z-50 hidden backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-xl w-full overflow-hidden shadow-2xl border border-gray-100 flex flex-col max-h-[90vh]">
+            
+            <div class="bg-brand-dark text-white p-4 flex items-center justify-between">
+                <h3 class="text-lg font-bold flex items-center gap-2">
+                    <i class="fas fa-shopping-cart text-brand-accent"></i>
+                    Your Shopping Cart
+                </h3>
+                <button onclick="toggleCartModal()" class="text-gray-300 hover:text-white text-xl w-8 h-8 rounded-full flex items-center justify-center">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto custom-scrollbar flex-1">
+                <div id="cart-items-container" class="space-y-4"></div>
+
+                <div id="empty-cart-msg" class="text-center py-8 text-gray-400">
+                    <i class="fas fa-basket-shopping text-4xl mb-2 text-gray-300"></i>
+                    <p>Your cart is empty.</p>
+                </div>
+
+                <div id="customer-form" class="mt-6 pt-6 border-t border-gray-200 hidden space-y-3">
+                    <h4 class="font-bold text-gray-800 text-sm">Delivery Information</h4>
+                    <div>
+                        <input type="text" id="cust-name" placeholder="Full Name" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
+                    </div>
+                    <div>
+                        <input type="text" id="cust-phone" placeholder="WhatsApp Phone Number" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
+                    </div>
+                    <div>
+                        <textarea id="cust-address" rows="2" placeholder="Complete Shipping Address" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 bg-gray-50 border-t border-gray-100">
+                <div class="space-y-1 mb-4 text-sm">
+                    <div class="flex justify-between text-gray-600">
+                        <span>Subtotal:</span>
+                        <span id="cart-subtotal" class="font-semibold">PKR 0</span>
+                    </div>
+                    <div id="discount-row" class="flex justify-between text-emerald-600 font-bold hidden">
+                        <span>15% Special Discount (3+ Products):</span>
+                        <span id="cart-discount">- PKR 0</span>
+                    </div>
+                    <div class="flex justify-between text-lg font-bold text-brand-dark pt-2 border-t border-gray-200">
+                        <span>Total Payable:</span>
+                        <span id="cart-total">PKR 0</span>
+                    </div>
+                </div>
+
+                <button onclick="sendWhatsAppOrder()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold transition shadow-lg flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                    <span>Place Order via WhatsApp</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // EASY EDITABLE PRODUCTS DATA ARRAY
+        // ==========================================
+        const products = [
+            // Hair Oils
+            {
+                id: 'oil-100',
+                name: 'Organic Hair Oil (100ml)',
+                category: 'Oils',
+                price: 750,
+                image: 'https://images.unsplash.com/photo-1608248597349-4c11e6879266?w=500&q=80',
+                video_url: 'https://youtube.com', // Put your video URL here
+                desc_en: 'Pure blend of 15 essential natural herbs. Promotes fast hair growth, stops hair fall completely, and repairs damaged hair naturally.',
+                desc_ur: '15 اہم قدرتی جڑی بوٹیوں کا خالص مرکب۔ بالوں کی نشوونما کو تیز کرتا ہے، بالوں کو گرنے سے مکمل روکتا ہے اور خراب بالوں کی قدرتی مرمت کرتا ہے۔'
+            },
+            {
+                id: 'oil-150',
+                name: 'Organic Hair Oil (150ml)',
+                category: 'Oils',
+                price: 1050,
+                image: 'https://images.unsplash.com/photo-1608248597349-4c11e6879266?w=500&q=80',
+                video_url: '',
+                desc_en: 'Medium value pack of rich herbal hair oil formula. Strengthens hair roots, removes dandruff, and provides long-lasting shine.',
+                desc_ur: 'ہربل ہیئر آئل کا درمیانہ فائدہ مند پیک۔ بالوں کی جڑوں کو مضبوط بناتا ہے، خشکی اور سکری کا خاتمہ کرتا ہے اور لمبی چمک فراہم کرتا ہے۔'
+            },
+            {
+                id: 'oil-200',
+                name: 'Organic Hair Oil (200ml)',
+                category: 'Oils',
+                price: 1350,
+                image: 'https://images.unsplash.com/photo-1608248597349-4c11e6879266?w=500&q=80',
+                video_url: '',
+                desc_en: 'Family mega pack of premium natural oil formula. Deeply nourishes hair roots, fights dryness, and prevents premature graying.',
+                desc_ur: 'پریمیئم نیچرل آئل کا فیملی میگا پیک۔ بالوں کو گہرائی سے غذائیت دیتا ہے، خشک پن دور کرتا ہے اور بالوں کو وقت سے پہلے سفید ہونے سے بچاتا ہے۔'
+            },
+
+            // Herbal Shampoos
+            {
+                id: 'shampoo-100',
+                name: 'Herbal Shampoo (100ml)',
+                category: 'Shampoos',
+                price: 450,
+                image: 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=500&q=80',
+                video_url: 'https://youtube.com',
+                desc_en: 'Sulfate and paraben-free natural shampoo. Cleans scalp gently without stripping away natural moisture.',
+                desc_ur: 'سلفیٹ اور پیرابین سے پاک قدرتی شیمپو۔ قدرتی نمی کو متاثر کیے بغیر سر کی جلد کی بہترین اور نرمی سے صفائی کرتا ہے۔'
+            },
+            {
+                id: 'shampoo-220',
+                name: 'Herbal Shampoo (220ml)',
+                category: 'Shampoos',
+                price: 850,
+                image: 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=500&q=80',
+                video_url: '',
+                desc_en: 'Regular size organic formula shampoo. Leaves hair super soft, silky, naturally voluminous, and easy to manage.',
+                desc_ur: 'اورگینک فارمولا شیمپو کا باقاعدہ سائز۔ بالوں کو انتہائی نرم، ریشمی، گھنا اور چمکدار بناتا ہے۔'
+            },
+
+            // Organic Soaps
+            {
+                id: 'soap-whitening',
+                name: 'Whitening Soap',
+                category: 'Soaps',
+                price: 280,
+                image: 'https://images.unsplash.com/photo-1607006482602-76ca97ac8813?w=500&q=80',
+                video_url: '',
+                desc_en: 'Enriched with natural botanical extracts. Brightens skin tone, reduces dark spots, and imparts a natural healthy glow.',
+                desc_ur: 'قدرتی نباتاتی عرق سے بھرپور۔ جلد کی رنگت کو نکھارتا ہے، کالے دھبوں کو کم کرتا ہے اور قدرتی چمک دیتا ہے۔'
+            },
+            {
+                id: 'soap-rose',
+                name: 'Whitening with Rose Soap',
+                category: 'Soaps',
+                price: 320,
+                image: 'https://images.unsplash.com/photo-1607006482602-76ca97ac8813?w=500&q=80',
+                video_url: '',
+                desc_en: 'Pure rose petal extract mixed with whitening agents. Provides fresh skin, soothing fragrance, and deep skin hydrated moisture.',
+                desc_ur: 'گلاب کی پتیاں اور وائٹننگ ایجنٹس۔ جلد کو تروتازگی، بہترین خوشبو اور گہری نمی فراہم کرتا ہے۔'
+            },
+            {
+                id: 'soap-neem',
+                name: 'Neem Soap',
+                category: 'Soaps',
+                price: 260,
+                image: 'https://images.unsplash.com/photo-1607006482602-76ca97ac8813?w=500&q=80',
+                video_url: '',
+                desc_en: 'Anti-bacterial organic neem soap. Highly effective against acne, pimples, skin itchiness, and unwanted infections.',
+                desc_ur: 'اینٹی بیکٹیریل نامیاتی نیم صابن۔ دانے، مہاسے، خارش اور جلد کے دیگر مسائل کے لیے انتہائی مفید ہے۔'
+            },
+            {
+                id: 'soap-loofah',
+                name: 'Natural Loofah Soap',
+                category: 'Soaps',
+                price: 350,
+                image: 'https://images.unsplash.com/photo-1607006482602-76ca97ac8813?w=500&q=80',
+                video_url: '',
+                desc_en: 'Exfoliating soap embedded with natural loofah fiber. Gently removes dead skin cells and improves overall skin texture.',
+                desc_ur: 'قدرتی لوفہ فائبر پر مشتمل صابن۔ مردہ جلد کے خلیوں کو آہستہ سے صاف کرتا ہے اور جلد کو ملائم بناتا ہے۔'
+            },
+
+            // Skin & Hair Care Essentials
+            {
+                id: 'ubtan-powder',
+                name: 'Special Ubtan Powder',
+                category: 'Care',
+                price: 490,
+                image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=500&q=80',
+                video_url: '',
+                desc_en: 'Traditional wedding glow formula with turmeric & sandalwood. Brightens skin, removes facial tan, and softens skin texture.',
+                desc_ur: 'ہلدی اور صندل پر مشتمل روایتی ابٹن۔ چہرے کی رنگت کو صاف کرتا ہے، ٹیننگ ختم کرتا ہے اور جلد کو تروتازہ بناتا ہے۔'
+            },
+            {
+                id: 'hair-mask',
+                name: 'Nourishing Hair Mask',
+                category: 'Care',
+                price: 650,
+                image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=500&q=80',
+                video_url: '',
+                desc_en: 'Deep conditioning organic treatment for dry, frizzy, and damaged hair. Restores natural softness and hair elasticity.',
+                desc_ur: 'خشک اور بے رونق بالوں کے لیے گہرا کنڈیشننگ علاج۔ بالوں کی قدرتی نرمی اور لچک کو بحال کرتا ہے۔'
+            }
+        ];
+
+        // State Management
+        let cart = {};
+        let activeCategory = 'All';
+        let currentModalProductId = null;
+        let modalQtyVal = 1;
+
+        let languageInterval = null;
+        let isUrduMode = false;
+        let isSwitchPaused = false;
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderProducts();
+            updateCartUI();
+        });
+
+        function renderCategories() {
+            const categories = ['All', ...new Set(products.map(p => p.category))];
+            const container = document.getElementById('category-filters');
+            
+            container.innerHTML = categories.map(cat => `
+                <button onclick="filterCategory('${cat}')" 
+                        class="px-4 py-1.5 rounded-full text-xs font-semibold transition ${activeCategory === cat ? 'bg-brand-primary text-white shadow-md' : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'}">
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        function filterCategory(cat) {
+            activeCategory = cat;
+            renderCategories();
+            renderProducts();
+        }
+
+        function renderProducts() {
+            const container = document.getElementById('products-grid');
+            const filtered = activeCategory === 'All' ? products : products.filter(p => p.category === activeCategory);
+
+            container.innerHTML = filtered.map(p => {
+                const qty = cart[p.id] ? cart[p.id].qty : 0;
+                return `
+                    <div class="product-card bg-white rounded-2xl p-4 shadow-sm hover:shadow-xl border border-gray-100 flex flex-col justify-between">
+                        <div>
+                            <!-- Product Image -->
+                            <div class="w-full h-44 rounded-xl overflow-hidden mb-3 bg-gray-50 border border-gray-100 relative">
+                                <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                                <span class="absolute top-2 left-2 text-[10px] font-bold uppercase tracking-wider bg-white/90 text-brand-primary px-2 py-0.5 rounded-md shadow-sm border border-emerald-100">${p.category}</span>
+                            </div>
+
+                            <h3 class="text-base font-bold text-gray-800 mb-1 line-clamp-1">${p.name}</h3>
+                            <div class="text-lg font-extrabold text-brand-dark mb-3">PKR ${p.price}</div>
+                        </div>
+
+                        <div class="space-y-2 pt-2 border-t border-gray-100">
+                            <button onclick="openProductModal('${p.id}')" class="w-full text-xs bg-gray-50 hover:bg-emerald-50 text-brand-primary font-semibold py-2 rounded-xl transition border border-gray-200 flex items-center justify-center gap-1.5">
+                                <i class="fas fa-info-circle text-brand-light"></i>
+                                <span>Description</span>
+                            </button>
+
+                            ${qty === 0 ? `
+                                <button onclick="updateCartQty('${p.id}', 1)" class="w-full bg-brand-primary hover:bg-brand-dark text-white text-sm font-semibold py-2.5 rounded-xl transition shadow-sm flex items-center justify-center gap-2">
+                                    <i class="fas fa-plus text-xs"></i>
+                                    <span>Add to Cart</span>
+                                </button>
+                            ` : `
+                                <div class="flex items-center justify-between bg-emerald-50 border border-emerald-200 rounded-xl p-1">
+                                    <button onclick="updateCartQty('${p.id}', ${qty - 1})" class="w-8 h-8 rounded-lg bg-white text-brand-dark font-bold hover:bg-gray-100 flex items-center justify-center shadow-sm">-</button>
+                                    <span class="font-bold text-brand-dark text-sm">${qty}</span>
+                                    <button onclick="updateCartQty('${p.id}', ${qty + 1})" class="w-8 h-8 rounded-lg bg-white text-brand-dark font-bold hover:bg-gray-100 flex items-center justify-center shadow-sm">+</button>
+                                </div>
+                            `}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            currentModalProductId = productId;
+            modalQtyVal = cart[productId] ? cart[productId].qty : 1;
+
+            document.getElementById('modal-title').innerText = product.name;
+            document.getElementById('modal-category').innerText = product.category;
+            document.getElementById('modal-price').innerText = `PKR ${product.price}`;
+            document.getElementById('modal-img').src = product.image;
+            document.getElementById('modal-desc-en').innerText = product.desc_en;
+            document.getElementById('modal-desc-ur').innerText = product.desc_ur;
+            document.getElementById('modal-qty').innerText = modalQtyVal;
+
+            // Video Link Dynamic Visibility Logic
+            const videoBtn = document.getElementById('modal-video-btn');
+            if (product.video_url && product.video_url.trim() !== '') {
+                videoBtn.href = product.video_url;
+                videoBtn.classList.remove('hidden');
+                videoBtn.classList.add('flex');
+            } else {
+                videoBtn.classList.add('hidden');
+                videoBtn.classList.remove('flex');
+            }
+
+            const addBtn = document.getElementById('modal-add-btn');
+            addBtn.onclick = () => {
+                updateCartQty(productId, modalQtyVal);
+                closeProductModal();
+            };
+
+            isUrduMode = false;
+            isSwitchPaused = false;
+            updateModalLanguageUI();
+
+            document.getElementById('product-modal').classList.remove('hidden');
+
+            clearInterval(languageInterval);
+            languageInterval = setInterval(() => {
+                if (!isSwitchPaused) {
+                    isUrduMode = !isUrduMode;
+                    updateModalLanguageUI();
+                }
+            }, 4000);
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+            clearInterval(languageInterval);
+        }
+
+        function updateModalLanguageUI() {
+            const descEn = document.getElementById('modal-desc-en');
+            const descUr = document.getElementById('modal-desc-ur');
+            const indicator = document.getElementById('lang-indicator');
+
+            if (isUrduMode) {
+                descEn.classList.add('hidden');
+                descUr.classList.remove('hidden');
+                indicator.innerText = 'اردو (Urdu)';
+                indicator.className = 'text-xs bg-amber-600 text-white px-2 py-0.5 rounded font-bold';
+            } else {
+                descUr.classList.add('hidden');
+                descEn.classList.remove('hidden');
+                indicator.innerText = 'English';
+                indicator.className = 'text-xs bg-brand-primary text-white px-2 py-0.5 rounded font-bold';
+            }
+
+            const pauseStatus = document.getElementById('pause-status');
+            const pauseBtn = document.getElementById('toggle-pause-btn');
+
+            if (isSwitchPaused) {
+                pauseStatus.classList.remove('hidden');
+                pauseBtn.innerText = 'Resume Switch';
+                pauseBtn.classList.add('bg-amber-50', 'border-amber-300', 'text-amber-800');
+            } else {
+                pauseStatus.classList.add('hidden');
+                pauseBtn.innerText = 'Pause Switch';
+                pauseBtn.classList.remove('bg-amber-50', 'border-amber-300', 'text-amber-800');
+            }
+        }
+
+        function pauseLanguageSwitch() {
+            isSwitchPaused = true;
+            updateModalLanguageUI();
+        }
+
+        function togglePauseLanguage() {
+            isSwitchPaused = !isSwitchPaused;
+            updateModalLanguageUI();
+        }
+
+        function adjustModalQty(delta) {
+            modalQtyVal = Math.max(1, modalQtyVal + delta);
+            document.getElementById('modal-qty').innerText = modalQtyVal;
+        }
+
+        function updateCartQty(productId, qty) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            if (qty <= 0) {
+                delete cart[productId];
+            } else {
+                cart[productId] = { ...product, qty: qty };
+            }
+
+            renderProducts();
+            updateCartUI();
+        }
+
+        function calculateTotals() {
+            let subtotal = 0;
+            let totalItemCount = 0;
+
+            Object.values(cart).forEach(item => {
+                subtotal += item.price * item.qty;
+                totalItemCount += item.qty;
+            });
+
+            let discount = 0;
+            let isDiscountApplied = false;
+
+            if (totalItemCount >= 3) {
+                discount = Math.round(subtotal * 0.15);
+                isDiscountApplied = true;
+            }
+
+            const total = subtotal - discount;
+
+            return { subtotal, discount, total, totalItemCount, isDiscountApplied };
+        }
+
+        function updateCartUI() {
+            const { subtotal, discount, total, totalItemCount, isDiscountApplied } = calculateTotals();
+
+            document.getElementById('cart-count').innerText = totalItemCount;
+            document.getElementById('bar-cart-count').innerText = totalItemCount;
+            document.getElementById('bar-total-price').innerText = `PKR ${total}`;
+
+            const bottomBar = document.getElementById('bottom-cart-bar');
+            const discountBadge = document.getElementById('bar-discount-badge');
+
+            if (totalItemCount > 0) {
+                bottomBar.classList.remove('translate-y-full');
+            } else {
+                bottomBar.classList.add('translate-y-full');
+            }
+
+            if (isDiscountApplied) {
+                discountBadge.classList.remove('hidden');
+            } else {
+                discountBadge.classList.add('hidden');
+            }
+
+            renderCartModalItems();
+        }
+
+        function renderCartModalItems() {
+            const container = document.getElementById('cart-items-container');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+            const custForm = document.getElementById('customer-form');
+            const cartKeys = Object.keys(cart);
+
+            if (cartKeys.length === 0) {
+                container.innerHTML = '';
+                emptyMsg.classList.remove('hidden');
+                custForm.classList.add('hidden');
+            } else {
+                emptyMsg.classList.add('hidden');
+                custForm.classList.remove('hidden');
+
+                container.innerHTML = cartKeys.map(id => {
+                    const item = cart[id];
+                    return `
+                        <div class="flex items-center justify-between bg-gray-50 p-3 rounded-xl border border-gray-200">
+                            <div class="flex items-center space-x-3 flex-1">
+                                <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover border border-gray-200">
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm">${item.name}</h4>
+                                    <div class="text-xs text-gray-500">PKR ${item.price} x ${item.qty}</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="font-bold text-brand-dark text-sm">PKR ${item.price * item.qty}</div>
+                                <div class="flex items-center border border-gray-300 rounded-lg bg-white">
+                                    <button onclick="updateCartQty('${item.id}', ${item.qty - 1})" class="px-2 py-0.5 text-xs text-gray-600 hover:bg-gray-100">-</button>
+                                    <span class="px-2 text-xs font-bold">${item.qty}</span>
+                                    <button onclick="updateCartQty('${item.id}', ${item.qty + 1})" class="px-2 py-0.5 text-xs text-gray-600 hover:bg-gray-100">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            const { subtotal, discount, total, isDiscountApplied } = calculateTotals();
+            document.getElementById('cart-subtotal').innerText = `PKR ${subtotal}`;
+            document.getElementById('cart-total').innerText = `PKR ${total}`;
+
+            const discountRow = document.getElementById('discount-row');
+            if (isDiscountApplied) {
+                discountRow.classList.remove('hidden');
+                document.getElementById('cart-discount').innerText = `- PKR ${discount}`;
+            } else {
+                discountRow.classList.add('hidden');
+            }
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function sendWhatsAppOrder() {
+            const cartItems = Object.values(cart);
+            if (cartItems.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+
+            if (!name || !phone || !address) {
+                alert('Please complete your name, phone number, and address.');
+                return;
+            }
+
+            const { subtotal, discount, total, isDiscountApplied } = calculateTotals();
+
+            let message = `*NEW ORDER - FANGAM ORGANIC*\n`;
+            message += `---------------------------------\n`;
+            message += `*Customer:* ${name}\n`;
+            message += `*Phone:* ${phone}\n`;
+            message += `*Address:* ${address}\n`;
+            message += `---------------------------------\n`;
+            message += `*ORDER DETAILS:*\n`;
+
+            cartItems.forEach((item, idx) => {
+                message += `${idx + 1}. ${item.name} x ${item.qty} = PKR ${item.price * item.qty}\n`;
+            });
+
+            message += `---------------------------------\n`;
+            message += `Subtotal: PKR ${subtotal}\n`;
+            if (isDiscountApplied) {
+                message += `*Special Discount (15% OFF for 3+ items): -PKR ${discount}*\n`;
+            }
+            message += `*TOTAL PAYABLE: PKR ${total}*\n`;
+            message += `---------------------------------\n`;
+            message += `Thank you for ordering with Fangam Organic!`;
+
+            const whatsappNumber = '923000634445';
+            const encodedUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(encodedUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
