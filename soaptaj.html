@@ -85,7 +85,7 @@
 
     <!-- Main Content Container -->
     <main class="max-w-7xl mx-auto px-4 py-10">
-        <div id="category-filters" class="flex flex-wrap justify-center gap-2 mb-8"></div>
+        <!-- Products Grid -->
         <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
     </main>
 
@@ -246,7 +246,6 @@
         ];
 
         let cart = {};
-        let activeCategory = 'All';
         let currentModalProductId = null;
         let modalQtyVal = 1;
         let currentOrderId = '';
@@ -254,30 +253,14 @@
         window.addEventListener('DOMContentLoaded', () => {
             currentOrderId = '#FO-SOP-' + Math.floor(1000 + Math.random() * 9000);
             document.getElementById('active-order-id-label').innerText = currentOrderId;
-            renderCategories();
             renderProducts();
             updateCartUI();
         });
 
-        function renderCategories() {
-            const categories = ['All', ...new Set(products.map(p => p.category))];
-            const container = document.getElementById('category-filters');
-            container.innerHTML = categories.map(cat => `
-                <button onclick="filterCategory('${cat}')" class="px-4 py-1.5 rounded-full text-xs font-semibold transition ${activeCategory === cat ? 'bg-brand-primary text-white shadow-md' : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'}">${cat}</button>
-            `).join('');
-        }
-
-        function filterCategory(cat) {
-            activeCategory = cat;
-            renderCategories();
-            renderProducts();
-        }
-
         function renderProducts() {
             const container = document.getElementById('products-grid');
-            const filtered = activeCategory === 'All' ? products : products.filter(p => p.category === activeCategory);
 
-            container.innerHTML = filtered.map(p => {
+            container.innerHTML = products.map(p => {
                 const qty = cart[p.id] ? cart[p.id].qty : 0;
                 return `
                     <div class="product-card bg-white rounded-2xl p-4 shadow-sm hover:shadow-xl border border-gray-100 flex flex-col justify-between">
