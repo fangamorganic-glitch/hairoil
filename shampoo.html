@@ -40,6 +40,15 @@
         .custom-shadow {
             box-shadow: 0 10px 30px -5px rgba(27, 56, 43, 0.08);
         }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        .blinking-dot {
+            animation: blink 1.5s infinite;
+            display: inline-block;
+        }
     </style>
 </head>
 <body class="font-sans antialiased min-h-screen flex flex-col justify-between">
@@ -89,7 +98,6 @@
                     <span class="text-xs font-bold uppercase tracking-wider text-brand-accent bg-brand-dark px-2.5 py-1 rounded-full">Shampoos</span>
                     <!-- Image Placeholder -->
                     <div class="my-4 h-56 rounded-xl bg-gray-100 overflow-hidden flex items-center justify-center relative border border-gray-100">
-                        <!-- REPLACE THE SRC BELOW WITH YOUR IMAGE URL -->
                         <img src="https://lh3.googleusercontent.com/d/1dk7FOdiiDCP51uzwF0wyN-3jB2C_dXo3" alt="Organic Shampoo (100 ml)" class="w-full h-full object-contain p-4" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=Organic+Shampoo+100ml';">
                     </div>
                     <h3 class="text-lg font-bold text-brand-dark">Organic Hair Shampoo (100 ml)</h3>
@@ -115,7 +123,6 @@
                     <span class="text-xs font-bold uppercase tracking-wider text-brand-accent bg-brand-dark px-2.5 py-1 rounded-full">Shampoos</span>
                     <!-- Image Placeholder -->
                     <div class="my-4 h-56 rounded-xl bg-gray-100 overflow-hidden flex items-center justify-center relative border border-gray-100">
-                        <!-- REPLACE THE SRC BELOW WITH YOUR IMAGE URL -->
                         <img src="https://lh3.googleusercontent.com/d/1usTfMvx-EqBEGkF-cbK9qYvWMGEYcXsB" alt="Organic Shampoo (220 ml approx)" class="w-full h-full object-contain p-4" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x300?text=Organic+Shampoo+220ml';">
                     </div>
                     <h3 class="text-lg font-bold text-brand-dark">Organic Hair Shampoo (220 ml approx)</h3>
@@ -181,7 +188,6 @@
                         <i class="fa-solid fa-circle-play text-brand-accent"></i> Watch Making Process
                     </h4>
                     <div class="w-full aspect-video bg-gray-900 rounded-xl overflow-hidden flex items-center justify-center relative shadow-inner">
-                        <!-- REPLACE SRC WITH YOUR YOUTUBE/VIDEO EMBED URL -->
                         <iframe id="modalVideoIframe" class="w-full h-full" src="" title="Shampoo Making Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
@@ -198,14 +204,18 @@
         <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
             <div class="w-screen max-w-md bg-white shadow-xl flex flex-col">
                 
+                <!-- Clean Header with Beautifully Aligned Order ID -->
                 <div class="bg-brand-dark text-white p-4 flex justify-between items-center">
                     <div class="flex items-center space-x-2">
                         <i class="fa-solid fa-cart-shopping text-brand-accent"></i>
-                        <h3 class="font-bold text-lg">Your Cart</h3>
+                        <h3 class="font-bold text-base sm:text-lg">Your Cart</h3>
                     </div>
-                    <button onclick="toggleCartDrawer()" class="text-gray-300 hover:text-white">
-                        <i class="fa-solid fa-xmark text-lg"></i>
-                    </button>
+                    <div class="flex items-center gap-2">
+                        <span id="active-order-id-label" class="bg-brand-accent/20 border border-brand-accent/40 text-brand-accent text-xs font-bold px-2.5 py-1 rounded-lg tracking-wider">#FO-0000</span>
+                        <button onclick="toggleCartDrawer()" class="text-gray-300 hover:text-white">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Cart Items List -->
@@ -215,6 +225,13 @@
 
                 <!-- Cart Summary Footer -->
                 <div class="border-t p-4 bg-gray-50 space-y-3">
+                    
+                    <!-- 🔴 Blinking Notice 🔴 -->
+                    <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 8px; font-weight: bold; text-align: center; border: 1px dashed #f5c6cb; font-size: 11px; line-height: 1.4;">
+                      <span class="blinking-dot">🔴</span> 
+                      <strong>Notice:</strong> Delivery charges are <strong>not included</strong> and must be paid in <strong>advance</strong> (JazzCash/EasyPaisa) to confirm your order.
+                    </div>
+
                     <div class="flex justify-between text-sm text-gray-600">
                         <span>Subtotal:</span>
                         <span id="subtotalText" class="font-semibold text-gray-800">PKR 0</span>
@@ -288,16 +305,28 @@
 
     <!-- JavaScript Logic -->
     <script>
+        // ==========================================
+        // GOOGLE APPS SCRIPT WEB APP URL
+        // ==========================================
+        const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzmsiyp0jcFAPakhDeFuILBypF92Jl_YvMBQqefeAyK5fJKAUWmrAivC9cIAhZac4mdZg/exec";
+
         // Products Database
         const products = {
             100: { id: 100, name: 'Organic Hair Shampoo', size: '100 ml', price: 700, videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE' },
             220: { id: 220, name: 'Organic Hair Shampoo', size: '220 ml approx', price: 1400, videoUrl: 'https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE' }
         };
 
-        // Cart State
+        // Cart State & Order ID
         let cart = {};
+        let currentOrderId = '';
 
-        // Add Product to Cart (does NOT open drawer automatically now)
+        window.addEventListener('DOMContentLoaded', () => {
+            currentOrderId = '#FO-SHP-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('active-order-id-label').innerText = currentOrderId;
+            updateCartUI();
+        });
+
+        // Add Product to Cart
         function addToCart(size) {
             if (cart[size]) {
                 cart[size].qty += 1;
@@ -419,8 +448,8 @@
             document.getElementById('checkoutModal').classList.add('hidden');
         }
 
-        // Submit & Direct to WhatsApp (03000634445)
-        function submitWhatsAppOrder(e) {
+        // Submit & Direct to WhatsApp (03000634445) + Background Google Sheet Sync
+        async function submitWhatsAppOrder(e) {
             e.preventDefault();
 
             const name = document.getElementById('custName').value.trim();
@@ -430,11 +459,13 @@
 
             let subtotal = 0;
             let orderLines = "";
+            let itemsSummaryText = [];
 
             Object.values(cart).forEach((item, index) => {
                 const itemTotal = item.price * item.qty;
                 subtotal += itemTotal;
                 orderLines += `${index + 1}. ${item.name} (${item.size}) x ${item.qty} = PKR ${itemTotal.toLocaleString()}\n`;
+                itemsSummaryText.push(`${item.name} (${item.size}) x${item.qty}`);
             });
 
             let discount = 0;
@@ -443,8 +474,32 @@
             }
             const grandTotal = subtotal - discount;
 
-            // Formatted Message Text
-            let message = `*NEW ORDER - FANGAM ORGANIC SHAMPOOS*\n`;
+            // 1. Send Data to Google Sheet automatically in Background
+            const payload = {
+                orderId: currentOrderId,
+                productType: "Shampoos",
+                customerName: name,
+                phone: phone,
+                city: city,
+                address: address,
+                orderItems: itemsSummaryText.join(', '),
+                subtotal: subtotal,
+                discount: discount
+            };
+
+            try {
+                await fetch(GOOGLE_SHEET_API_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (err) {
+                console.error("Sheet sync error:", err);
+            }
+
+            // 2. WhatsApp Message Text
+            let message = `*NEW ORDER - FANGAM ORGANIC (${currentOrderId})*\n`;
             message += `----------------------------------\n`;
             message += `*Customer Name:* ${name}\n`;
             message += `*Phone:* ${phone}\n`;
@@ -459,9 +514,9 @@
 
             message += `*GRAND TOTAL:* PKR ${grandTotal.toLocaleString()}\n`;
             message += `----------------------------------\n`;
-            message += `Please confirm my order. Thank you!`;
+            message += `*Note:* Delivery charges are not included and must be paid in advance via JazzCash/EasyPaisa to confirm the order.\n`;
+            message += `Thank you!`;
 
-            // WhatsApp Redirect Link for 03000634445
             const whatsappNumber = "923000634445";
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
