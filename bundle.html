@@ -36,6 +36,10 @@
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #2d5a42; border-radius: 4px; }
+        .modal-backdrop {
+            background-color: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+        }
         
         @keyframes blink {
             0% { opacity: 1; }
@@ -190,12 +194,12 @@
         </div>
     </div>
 
-    <!-- Cart / Checkout Modal -->
+    <!-- Cart Sliding Drawer / Modal -->
     <div id="cart-modal" class="fixed inset-0 bg-black/60 z-50 hidden backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-xl w-full overflow-hidden shadow-2xl border border-gray-100 flex flex-col max-h-[90vh]">
             
-            <!-- Clean Header with Beautifully Aligned Order ID -->
-            <div class="bg-brand-dark text-white p-4 flex items-center justify-between">
+            <!-- Clean Header with Order ID -->
+            <div class="bg-brand-dark text-white p-4 flex items-center justify-between flex-shrink-0">
                 <div class="flex items-center gap-2">
                     <i class="fas fa-shopping-cart text-brand-accent"></i>
                     <span class="font-bold text-base sm:text-lg">Your Shopping Cart</span>
@@ -208,6 +212,7 @@
                 </div>
             </div>
 
+            <!-- Scrollable Cart Items Container -->
             <div class="p-4 sm:p-6 overflow-y-auto custom-scrollbar flex-1">
                 
                 <!-- 🔴 Blinking Notice 🔴 -->
@@ -222,26 +227,13 @@
                     <i class="fas fa-basket-shopping text-4xl mb-2 text-gray-300"></i>
                     <p>Your cart is empty.</p>
                 </div>
-
-                <div id="customer-form" class="mt-6 pt-6 border-t border-gray-200 hidden space-y-3">
-                    <h4 class="font-bold text-gray-800 text-sm">Delivery Information</h4>
-                    <div>
-                        <input type="text" id="cust-name" placeholder="Full Name" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
-                    </div>
-                    <div>
-                        <input type="text" id="cust-phone" placeholder="WhatsApp Phone Number" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
-                    </div>
-                    <div>
-                        <input type="text" id="cust-city" placeholder="City" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
-                    </div>
-                    <div>
-                        <textarea id="cust-address" rows="2" placeholder="Complete Shipping Address" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary"></textarea>
-                    </div>
-                </div>
             </div>
 
-            <div class="p-4 bg-gray-50 border-t border-gray-100">
-                <div class="space-y-1 mb-4 text-sm">
+            <!-- Fixed Bottom Footer (Totals & Proceed to Checkout Button) -->
+            <div class="p-4 bg-gray-50 border-t border-gray-100 flex-shrink-0 shadow-lg space-y-3">
+                
+                <!-- Totals Summary -->
+                <div class="space-y-1 text-xs">
                     <div class="flex justify-between text-gray-600">
                         <span>Subtotal:</span>
                         <span id="cart-subtotal" class="font-semibold">PKR 0</span>
@@ -250,17 +242,97 @@
                         <span>15% Special Discount (3+ Products):</span>
                         <span id="cart-discount">- PKR 0</span>
                     </div>
-                    <div class="flex justify-between text-lg font-bold text-brand-dark pt-2 border-t border-gray-200">
+                    <div class="flex justify-between text-sm sm:text-base font-bold text-brand-dark pt-1 border-t border-gray-200">
                         <span>Total Payable:</span>
                         <span id="cart-total">PKR 0</span>
                     </div>
                 </div>
 
-                <button onclick="sendWhatsAppOrder()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold transition shadow-lg flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp text-xl"></i>
-                    <span>Place Order via WhatsApp</span>
+                <!-- Proceed to Checkout Button -->
+                <button onclick="openCheckoutModal()" id="proceed-checkout-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold text-sm transition shadow-lg flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span>Proceed to WhatsApp Checkout</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
                 </button>
             </div>
+
+        </div>
+    </div>
+
+    <!-- ================= DELIVERY DETAILS & WHATSAPP CHECKOUT MODAL ================= -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop transition-opacity">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden flex flex-col max-h-[90vh] border border-gray-100">
+            
+            <!-- Header -->
+            <div class="bg-brand-dark text-white px-6 py-4 flex justify-between items-center flex-shrink-0">
+                <div class="flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-brand-accent text-xl"></i>
+                    <div>
+                        <h3 class="text-base font-heading font-bold">Delivery Information</h3>
+                        <p class="text-[11px] text-gray-300">Complete details to automatically generate order message</p>
+                    </div>
+                </div>
+                <button onclick="closeCheckoutModal()" class="text-gray-300 hover:text-white p-1">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Form Content (Scrollable for Mobile) -->
+            <form id="checkout-form" onsubmit="sendWhatsAppOrder(event)" class="p-6 space-y-4 overflow-y-auto flex-1">
+                
+                <!-- Summary Box -->
+                <div class="bg-brand-bg p-3 rounded-xl text-xs space-y-1 border border-emerald-900/10">
+                    <div class="flex justify-between text-gray-700">
+                        <span>Order Subtotal:</span>
+                        <span id="modal-summary-subtotal" class="font-bold">PKR 0</span>
+                    </div>
+                    <div id="modal-summary-discount-row" class="flex justify-between text-emerald-800 font-bold hidden">
+                        <span>15% Special Discount (3+ Products):</span>
+                        <span id="modal-summary-discount">- PKR 0</span>
+                    </div>
+                    <div class="flex justify-between text-gray-900 font-extrabold text-sm pt-1 border-t border-emerald-900/10">
+                        <span>Final Payable Amount:</span>
+                        <span id="modal-summary-total" class="text-brand-dark">PKR 0</span>
+                    </div>
+                </div>
+
+                <!-- Full Name -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Full Name *</label>
+                    <input type="text" id="cust-name" required placeholder="e.g. Muhammad Ali" 
+                           class="w-full px-3 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary">
+                </div>
+
+                <!-- Phone Number -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">WhatsApp / Phone Number *</label>
+                    <input type="tel" id="cust-phone" required placeholder="e.g. 0300 1234567" 
+                           class="w-full px-3 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary">
+                </div>
+
+                <!-- City -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">City *</label>
+                    <input type="text" id="cust-city" required placeholder="e.g. Sialkot, Lahore, Karachi" 
+                           class="w-full px-3 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary">
+                </div>
+
+                <!-- Complete Address -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Full Delivery Address *</label>
+                    <textarea id="cust-address" required rows="2" placeholder="House/Street #, Area, Landmarks..." 
+                              class="w-full px-3 py-2 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                        <span>Send Order on WhatsApp</span>
+                    </button>
+                </div>
+
+            </form>
 
         </div>
     </div>
@@ -641,16 +713,16 @@
         function renderCartModalItems() {
             const container = document.getElementById('cart-items-container');
             const emptyMsg = document.getElementById('empty-cart-msg');
-            const custForm = document.getElementById('customer-form');
+            const proceedBtn = document.getElementById('proceed-checkout-btn');
             const cartKeys = Object.keys(cart);
 
             if (cartKeys.length === 0) {
                 container.innerHTML = '';
                 emptyMsg.classList.remove('hidden');
-                custForm.classList.add('hidden');
+                if(proceedBtn) proceedBtn.classList.add('hidden');
             } else {
                 emptyMsg.classList.add('hidden');
-                custForm.classList.remove('hidden');
+                if(proceedBtn) proceedBtn.classList.remove('hidden');
 
                 container.innerHTML = cartKeys.map(id => {
                     const item = cart[id];
@@ -702,7 +774,44 @@
             modal.classList.toggle('hidden');
         }
 
-        async function sendWhatsAppOrder() {
+        function openCheckoutModal() {
+            const cartKeys = Object.keys(cart);
+            if (cartKeys.length === 0) {
+                alert("Your cart is empty. Please add products to cart before placing an order!");
+                return;
+            }
+
+            const { subtotal, discount, total, isDiscountApplied } = calculateTotals();
+
+            document.getElementById('modal-summary-subtotal').textContent = `PKR ${subtotal.toLocaleString()}`;
+            
+            const discountRow = document.getElementById('modal-summary-discount-row');
+            if (isDiscountApplied) {
+                discountRow.classList.remove('hidden');
+                document.getElementById('modal-summary-discount').textContent = `- PKR ${discount.toLocaleString()}`;
+            } else {
+                discountRow.classList.add('hidden');
+            }
+
+            document.getElementById('modal-summary-total').textContent = `PKR ${total.toLocaleString()}`;
+
+            // Close cart drawer and open checkout modal
+            toggleCartModal();
+            document.getElementById('checkout-modal').classList.remove('hidden');
+            
+            setTimeout(() => {
+                const nameInput = document.getElementById('cust-name');
+                if(nameInput) nameInput.focus();
+            }, 100);
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        async function sendWhatsAppOrder(event) {
+            event.preventDefault();
+
             const cartItems = Object.values(cart);
             if (cartItems.length === 0) {
                 alert('Your cart is empty!');
@@ -775,6 +884,8 @@
             const whatsappNumber = '923000634445';
             const encodedUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
             window.open(encodedUrl, '_blank');
+
+            closeCheckoutModal();
         }
     </script>
 </body>
