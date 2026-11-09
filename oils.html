@@ -19,11 +19,11 @@
         extend: {
           colors: {
             brand: {
-              dark: '#1d3a2a',        // Deep organic forest green matching reference photo
+              dark: '#1c3a27',        // Deep organic forest green matching reference photo
               green: '#254a36',       // Secondary green for hover & buttons
               lightGreen: '#325d45',  // Lighter hover state green
               gold: '#d8ab50',        // Gold accent / badges
-              cream: '#f4efe4',       // Warm paper/cream background from photo
+              cream: '#f7f4ed',       // Warm paper/cream background from photo
               card: '#eae4d6',        // Inner card accent color
               whiteCard: '#ffffff'
             }
@@ -42,14 +42,14 @@
       width: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #f4efe4;
+      background: #f7f4ed;
     }
     ::-webkit-scrollbar-thumb {
-      background: #1d3a2a;
+      background: #1c3a27;
       border-radius: 4px;
     }
     .modal-backdrop {
-      background-color: rgba(15, 23, 42, 0.65);
+      background-color: rgba(15, 23, 42, 0.7);
       backdrop-filter: blur(4px);
     }
   </style>
@@ -115,9 +115,9 @@
   <!-- ================= MAIN CATALOG CONTENT ================= -->
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-    <!-- Product Grid (Oils Category) -->
+    <!-- Product Grid (Oils Category Only) -->
     <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-      <!-- Generated via JS below -->
+      <!-- Generated dynamically via JS -->
     </div>
 
   </main>
@@ -259,10 +259,10 @@
         <span id="cart-grand-total" class="text-brand-dark">PKR 0</span>
       </div>
 
-      <!-- Order Now / Checkout Button -->
+      <!-- Proceed to Checkout Button -->
       <button onclick="openCheckoutModal()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3.5 rounded-xl font-bold text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 mt-2">
         <i class="fa-brands fa-whatsapp text-lg text-emerald-300"></i>
-        <span>Order via WhatsApp</span>
+        <span>Proceed to WhatsApp Checkout</span>
         <i class="fa-solid fa-arrow-right text-xs"></i>
       </button>
     </div>
@@ -279,7 +279,7 @@
           <i class="fa-brands fa-whatsapp text-brand-gold text-xl"></i>
           <div>
             <h3 class="text-base font-heading font-bold">Delivery Information</h3>
-            <p class="text-[11px] text-gray-300">Complete your details to send order via WhatsApp</p>
+            <p class="text-[11px] text-gray-300">Complete details to automatically generate order message</p>
           </div>
         </div>
         <button onclick="closeCheckoutModal()" class="text-gray-300 hover:text-white p-1">
@@ -338,7 +338,7 @@
         <div class="pt-2">
           <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2">
             <i class="fa-brands fa-whatsapp text-lg"></i>
-            <span>Confirm & Send Order on WhatsApp</span>
+            <span>Send Order on WhatsApp</span>
           </button>
         </div>
 
@@ -349,17 +349,13 @@
 
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
-    /* =====================================================================
-    /* WhatsApp Target Number: 03000634445 -> International Format: 923000634445 */
+    /* Target WhatsApp Number: 03000634445 -> International Format: 923000634445 */
     const WHATSAPP_NUMBER = "923000634445";
 
-       Insert your custom image links into URL_PLACEHOLDER_100ML, etc.
-    ===================================================================== */
-    
     // REPLACE THESE URL PLACEHOLDERS WITH YOUR OWN IMAGE LINKS:
-    const URL_PLACEHOLDER_100ML = "https://placehold.co/400x500/1d3a2a/ffffff?text=Hair+Oil+100ml";
-    const URL_PLACEHOLDER_150ML = "https://placehold.co/400x500/1d3a2a/ffffff?text=Hair+Oil+150ml";
-    const URL_PLACEHOLDER_200ML = "https://placehold.co/400x500/1d3a2a/ffffff?text=Hair+Oil+200ml";
+    const URL_PLACEHOLDER_100ML = "https://placehold.co/400x500/1c3a27/ffffff?text=Hair+Oil+100ml";
+    const URL_PLACEHOLDER_150ML = "https://placehold.co/400x500/1c3a27/ffffff?text=Hair+Oil+150ml";
+    const URL_PLACEHOLDER_200ML = "https://placehold.co/400x500/1c3a27/ffffff?text=Hair+Oil+200ml";
 
     // REPLACE THIS WITH YOUR PRODUCT MAKING YOUTUBE / VIDEO EMBED URL:
     const MAKING_VIDEO_URL = "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ";
@@ -397,46 +393,40 @@
       }
     ];
 
-    /* State */
+    /* Global Cart State */
     let cart = [];
 
-    // Set Footer Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Set Footer Year safely
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    /* =====================================================================
-       2. RENDER PRODUCTS GRID (MATCHING REFERENCE DESIGN)
-    ===================================================================== */
+    /* 1. Render Product Cards */
     function renderProducts() {
       const grid = document.getElementById('product-grid');
+      if (!grid) return;
+
       grid.innerHTML = PRODUCTS.map(product => `
         <div class="bg-white rounded-2xl p-5 shadow-sm hover:shadow-md transition border border-gray-200/70 flex flex-col justify-between items-center text-center">
           
-          <!-- Category & Image Container -->
           <div class="w-full flex flex-col items-center">
             <span class="text-[10px] font-bold tracking-widest text-gray-400 uppercase self-start mb-2">${product.category}</span>
             <div class="w-36 h-48 sm:w-44 sm:h-56 mb-4 flex items-center justify-center overflow-hidden rounded-xl bg-gray-50 border border-gray-100 p-2">
               <img src="${product.imageUrl}" 
                    alt="${product.title}" 
                    class="max-h-full max-w-full object-contain hover:scale-105 transition duration-300"
-                   onerror="this.onerror=null; this.src='https://placehold.co/400x500/1d3a2a/ffffff?text=Hair+Oil';">
+                   onerror="this.onerror=null; this.src='https://placehold.co/400x500/1c3a27/ffffff?text=Hair+Oil';">
             </div>
             
-            <!-- Product Title -->
             <h3 class="font-heading font-bold text-gray-800 text-base mb-1">${product.title}</h3>
-            
-            <!-- PKR Price -->
             <p class="font-extrabold text-gray-900 text-sm mb-4">PKR ${product.price.toLocaleString()}</p>
           </div>
 
-          <!-- Buttons -->
           <div class="w-full space-y-2 mt-2">
-            <!-- Info / Description Trigger -->
             <button onclick="openModal('${product.id}')" 
                     class="w-full bg-emerald-50 hover:bg-emerald-100 text-brand-dark font-semibold py-2 px-4 rounded-xl text-xs transition flex items-center justify-center gap-1.5 border border-emerald-200/60">
               <i class="fa-solid fa-circle-info text-brand-dark text-xs"></i> Description
             </button>
             
-            <!-- Add to Cart Trigger -->
             <button onclick="addToCart('${product.id}')" 
                     class="w-full bg-brand-dark hover:bg-brand-green text-white font-bold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-sm active:scale-95">
               <i class="fa-solid fa-plus text-xs"></i> Add to Cart
@@ -447,9 +437,7 @@
       `).join('');
     }
 
-    /* =====================================================================
-       3. DESCRIPTION MODAL & VIDEO LOGIC
-    ===================================================================== */
+    /* 2. Description Modal Handlers */
     function openModal(productId) {
       const product = PRODUCTS.find(p => p.id === productId);
       if (!product) return;
@@ -476,9 +464,7 @@
       document.getElementById('modal-video').src = "";
     }
 
-    /* =====================================================================
-       4. CART CALCULATIONS & 10% DISCOUNT FORMULA
-    ===================================================================== */
+    /* 3. Cart & 10% Discount Formula */
     function addToCart(productId) {
       const product = PRODUCTS.find(p => p.id === productId);
       if (!product) return;
@@ -510,12 +496,12 @@
     }
 
     function updateCartUI() {
-      // Total Quantity Count for Badge
       const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
       document.getElementById('cart-badge').textContent = totalItems;
 
-      // Populate Items List
       const container = document.getElementById('cart-items-container');
+      if (!container) return;
+
       if (cart.length === 0) {
         container.innerHTML = `
           <div class="text-center py-12 text-gray-400">
@@ -546,7 +532,7 @@
         `).join('');
       }
 
-      /* Calculate Subtotal & 10% Discount Threshold (PKR 5000) */
+      /* Dynamic Discount Calculation */
       const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
       const discountThreshold = 5000;
       let discountAmount = 0;
@@ -556,7 +542,6 @@
       const discountRow = document.getElementById('cart-discount-row');
 
       if (subtotal >= discountThreshold) {
-        // Apply 10% discount
         discountAmount = subtotal * 0.10;
         discountRow.classList.remove('hidden');
         document.getElementById('cart-discount-amount').textContent = `- PKR ${discountAmount.toLocaleString()}`;
@@ -578,9 +563,7 @@
       document.getElementById('cart-grand-total').textContent = `PKR ${grandTotal.toLocaleString()}`;
     }
 
-    /* =====================================================================
-       5. INTERACTION HELPERS
-    ===================================================================== */
+    /* 4. Drawer & Banner Controls */
     function toggleCartDrawer() {
       const drawer = document.getElementById('cart-drawer');
       const backdrop = document.getElementById('cart-drawer-backdrop');
@@ -595,12 +578,11 @@
     }
 
     function dismissPromo() {
-      document.getElementById('promo-bar').style.display = 'none';
+      const banner = document.getElementById('promo-bar');
+      if (banner) banner.style.display = 'none';
     }
 
-    /* =====================================================================
-       5. WHATSAPP CHECKOUT LOGIC & MODAL HANDLING
-    ===================================================================== */
+    /* 5. Checkout & WhatsApp Integration */
     function openCheckoutModal() {
       if (cart.length === 0) {
         alert("Your cart is empty. Please add products to cart before placing an order!");
@@ -647,7 +629,7 @@
       const discount = subtotal >= 5000 ? subtotal * 0.10 : 0;
       const grandTotal = subtotal - discount;
 
-      // Construct Formatted Order Message
+      // Construct Formatted WhatsApp Message
       let message = `🌿 *NEW ORDER - FANGAM ORGANIC OILS* 🌿\n\n`;
       message += `📋 *ORDER DETAILS:*\n`;
       
@@ -676,19 +658,18 @@
       message += `• *Address:* ${address}\n\n`;
       message += `Please confirm my order as soon as possible. Thank you!`;
 
-      // Build WhatsApp URL
+      // Open WhatsApp URL safely
       const encodedMessage = encodeURIComponent(message);
       const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
-      // Open WhatsApp in new window/app
       window.open(whatsappUrl, '_blank');
 
-      // Clear Modal & Close Drawers
+      // Close Modals
       closeCheckoutModal();
       toggleCartDrawer();
     }
 
-    /* Init */
+    // Initialize page
     window.onload = function() {
       renderProducts();
       updateCartUI();
