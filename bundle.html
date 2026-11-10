@@ -343,6 +343,9 @@
         // ==========================================
         const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzmsiyp0jcFAPakhDeFuILBypF92Jl_YvMBQqefeAyK5fJKAUWmrAivC9cIAhZac4mdZg/exec";
 
+        // Shared Cart Storage Key for all Fangam Organic pages
+        const CART_STORAGE_KEY = 'fangam_organic_shared_cart';
+
         // ==========================================
         // EASY EDITABLE PRODUCTS DATA ARRAY
         // ==========================================
@@ -406,7 +409,7 @@
                 id: 'soap-whitening',
                 name: 'Whitening Soap',
                 category: 'Soaps',
-                price: 450,
+                price: 500,
                 image: 'https://lh3.googleusercontent.com/d/1lSJ-g5KTkeS3Dert8Z1oESmnus5TvEDc',
                 video_url: '',
                 desc_en: 'Enriched with natural botanical extracts. Brightens skin tone, reduces dark spots, and imparts a natural healthy glow.',
@@ -416,7 +419,7 @@
                 id: 'soap-rose',
                 name: 'Whitening with Rose Soap',
                 category: 'Soaps',
-                price: 450,
+                price: 500,
                 image: 'https://lh3.googleusercontent.com/d/10-6J7Jl0zftLwNYI0ZNOOMJ4GevjcOHe',
                 video_url: '',
                 desc_en: 'Pure rose petal extract mixed with whitening agents. Provides fresh skin, soothing fragrance, and deep skin hydrated moisture.',
@@ -426,7 +429,7 @@
                 id: 'soap-neem',
                 name: 'Neem Soap',
                 category: 'Soaps',
-                price: 450,
+                price: 500,
                 image: 'https://lh3.googleusercontent.com/d/1Tt0ujYxi1WReW_HupPp90ynKMeEjD0kQ',
                 video_url: '',
                 desc_en: 'Anti-bacterial organic neem soap. Highly effective against acne, pimples, skin itchiness, and unwanted infections.',
@@ -480,10 +483,36 @@
         window.addEventListener('DOMContentLoaded', () => {
             currentOrderId = '#FO-' + Math.floor(1000 + Math.random() * 9000);
             document.getElementById('active-order-id-label').innerText = currentOrderId;
+            
+            // Load cart from localStorage
+            loadCartFromStorage();
             renderCategories();
             renderProducts();
             updateCartUI();
         });
+
+        // Load Cart from localStorage
+        function loadCartFromStorage() {
+            try {
+                const storedCart = localStorage.getItem(CART_STORAGE_KEY);
+                if (storedCart) {
+                    cart = JSON.parse(storedCart);
+                } else {
+                    cart = {};
+                }
+            } catch (e) {
+                cart = {};
+            }
+        }
+
+        // Save Cart to localStorage
+        function saveCartToStorage() {
+            try {
+                localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+            } catch (e) {
+                console.error("Error saving cart to localStorage", e);
+            }
+        }
 
         function renderCategories() {
             const categories = ['All', ...new Set(products.map(p => p.category))];
@@ -645,20 +674,25 @@
 
         function updateCartQty(productId, qty) {
             const product = products.find(p => p.id === productId);
-            if (!product) return;
 
             if (qty <= 0) {
                 delete cart[productId];
             } else {
-                cart[productId] = { ...product, qty: qty };
+                if (product) {
+                    cart[productId] = { ...product, qty: qty };
+                } else if (cart[productId]) {
+                    cart[productId].qty = qty;
+                }
             }
 
+            saveCartToStorage();
             renderProducts();
             updateCartUI();
         }
 
         function removeFromCart(productId) {
             delete cart[productId];
+            saveCartToStorage();
             renderProducts();
             updateCartUI();
         }
@@ -730,7 +764,7 @@
                         <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
                             <div class="flex items-start justify-between gap-2">
                                 <div class="flex items-center space-x-3 flex-1 min-w-0">
-                                    <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover border border-gray-200 flex-shrink-0">
+                                    <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover border border-gray-200 flex-shrink-0" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
                                     <div class="min-w-0 flex-1">
                                         <h4 class="font-bold text-gray-800 text-sm truncate">${item.name}</h4>
                                         <div class="text-xs text-brand-primary font-semibold">PKR ${item.price} each</div>
@@ -882,10 +916,16 @@
             message += `Thank you for ordering with Fangam Organic!`;
 
             const whatsappNumber = '923000634445';
+            
+            // Clear cart from localStorage ONLY after order is submitted
+            cart = {};
+            saveCartToStorage();
+
             const encodedUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
             window.open(encodedUrl, '_blank');
 
             closeCheckoutModal();
+            updateCartUI();
         }
     </script>
 </body>
