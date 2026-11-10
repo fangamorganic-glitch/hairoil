@@ -19,12 +19,12 @@
         extend: {
           colors: {
             brand: {
-              dark: '#1c3a27',        // Deep organic forest green matching reference photo
-              green: '#254a36',       // Secondary green for hover & buttons
-              lightGreen: '#325d45',  // Lighter hover state green
-              gold: '#d8ab50',        // Gold accent / badges
-              cream: '#f7f4ed',       // Warm paper/cream background from photo
-              card: '#eae4d6',        // Inner card accent color
+              dark: '#1c3a27',
+              green: '#254a36',
+              lightGreen: '#325d45',
+              gold: '#d8ab50',
+              cream: '#f7f4ed',
+              card: '#eae4d6',
               whiteCard: '#ffffff'
             }
           },
@@ -37,17 +37,9 @@
     }
   </script>
   <style>
-    /* Custom Scrollbars */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f7f4ed;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1c3a27;
-      border-radius: 4px;
-    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f7f4ed; }
+    ::-webkit-scrollbar-thumb { background: #1c3a27; border-radius: 4px; }
     .modal-backdrop {
       background-color: rgba(15, 23, 42, 0.7);
       backdrop-filter: blur(4px);
@@ -78,7 +70,6 @@
   <header class="bg-brand-dark text-white sticky top-0 z-30 shadow-lg border-b border-emerald-950/40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Logo Branding -->
       <div class="flex items-center space-x-3 cursor-pointer">
         <div class="w-10 h-10 rounded-full border-2 border-brand-gold flex items-center justify-center bg-brand-green shadow-inner">
           <i class="fa-solid fa-seedling text-brand-gold text-lg"></i>
@@ -90,7 +81,7 @@
       </div>
 
       <!-- Cart Trigger Button -->
-      <button id="cart-btn" onclick="toggleCartDrawer()" class="relative flex items-center gap-2 bg-brand-green hover:bg-brand-lightGreen border border-emerald-700/60 px-4 py-2 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-gold shadow-md">
+      <button id="cart-btn" onclick="toggleCartDrawer()" class="relative flex items-center gap-2 bg-brand-green hover:bg-brand-lightGreen border border-emerald-700/60 px-4 py-2 rounded-full transition-all duration-200 focus:outline-none shadow-md cursor-pointer">
         <i class="fa-solid fa-basket-shopping text-brand-gold"></i>
         <span class="font-semibold text-sm">Cart</span>
         <span id="cart-badge" class="bg-brand-gold text-brand-dark font-extrabold text-xs w-5 h-5 rounded-full flex items-center justify-center ml-1">0</span>
@@ -102,33 +93,21 @@
   <!-- ================= HERO BANNER ================= -->
   <section class="bg-brand-dark text-white py-10 px-4 text-center border-b border-emerald-950/30">
     <div class="max-w-3xl mx-auto space-y-3">
-      
-      <!-- Offer Badge -->
       <div class="inline-block">
         <span class="bg-brand-gold/20 border border-brand-gold/60 text-brand-gold text-xs font-extrabold uppercase px-4 py-1 rounded-full tracking-wider">
           SPECIAL OFFER
         </span>
       </div>
-
-      <!-- Title -->
       <h2 class="text-3xl md:text-4xl font-heading font-extrabold tracking-tight">100% Organic Products</h2>
-      
-      <!-- Subtext -->
       <p class="text-gray-300 text-sm md:text-base font-light max-w-xl mx-auto">
         Get <span class="text-brand-gold font-bold underline decoration-brand-gold underline-offset-4">10% OFF</span> automatically when your order total exceeds <strong class="text-white">PKR 5,000</strong>!
       </p>
-
     </div>
   </section>
 
   <!-- ================= MAIN CATALOG CONTENT ================= -->
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
-
-    <!-- Product Grid (Oils Category Only) -->
-    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-      <!-- Generated dynamically via JS -->
-    </div>
-
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"></div>
   </main>
 
   <!-- ================= FOOTER ================= -->
@@ -143,21 +122,17 @@
   <div id="description-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop transition-opacity">
     <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full overflow-hidden flex flex-col max-h-[90vh] border border-gray-100">
       
-      <!-- Modal Header -->
       <div class="bg-brand-dark text-white px-6 py-4 flex justify-between items-center">
         <div>
           <span id="modal-category" class="text-[10px] font-bold uppercase tracking-widest text-brand-gold">Oils</span>
           <h3 id="modal-title" class="text-xl font-heading font-bold">Organic Hair Oil</h3>
         </div>
-        <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-emerald-900/60 hover:bg-emerald-900 flex items-center justify-center text-gray-300 hover:text-white transition">
+        <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-emerald-900/60 hover:bg-emerald-900 flex items-center justify-center text-gray-300 hover:text-white transition cursor-pointer">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <!-- Modal Content (Scrollable) -->
       <div class="p-6 overflow-y-auto space-y-6">
-        
-        <!-- Capacity & Price Info -->
         <div class="flex items-center justify-between border-b pb-4">
           <div>
             <span class="text-xs text-gray-500 block font-medium">Capacity / Size</span>
@@ -169,7 +144,6 @@
           </div>
         </div>
 
-        <!-- Short Appealing Description -->
         <div>
           <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Product Description</h4>
           <p id="modal-description" class="text-gray-600 text-sm leading-relaxed">
@@ -177,23 +151,13 @@
           </p>
         </div>
 
-        <!-- Key Features Checklist -->
         <div class="grid grid-cols-2 gap-3 text-xs bg-brand-cream/60 p-4 rounded-xl border border-amber-950/10">
-          <div class="flex items-center gap-2 text-gray-700 font-medium">
-            <i class="fa-solid fa-circle-check text-brand-dark"></i> 100% Cold-Pressed Purity
-          </div>
-          <div class="flex items-center gap-2 text-gray-700 font-medium">
-            <i class="fa-solid fa-circle-check text-brand-dark"></i> Stops Hair Fall & Dandruff
-          </div>
-          <div class="flex items-center gap-2 text-gray-700 font-medium">
-            <i class="fa-solid fa-circle-check text-brand-dark"></i> Promotes Thick Hair Growth
-          </div>
-          <div class="flex items-center gap-2 text-gray-700 font-medium">
-            <i class="fa-solid fa-circle-check text-brand-dark"></i> Chemical & Paraben Free
-          </div>
+          <div class="flex items-center gap-2 text-gray-700 font-medium"><i class="fa-solid fa-circle-check text-brand-dark"></i> 100% Cold-Pressed Purity</div>
+          <div class="flex items-center gap-2 text-gray-700 font-medium"><i class="fa-solid fa-circle-check text-brand-dark"></i> Stops Hair Fall & Dandruff</div>
+          <div class="flex items-center gap-2 text-gray-700 font-medium"><i class="fa-solid fa-circle-check text-brand-dark"></i> Promotes Thick Hair Growth</div>
+          <div class="flex items-center gap-2 text-gray-700 font-medium"><i class="fa-solid fa-circle-check text-brand-dark"></i> Chemical & Paraben Free</div>
         </div>
 
-        <!-- Product Making Video Section -->
         <div>
           <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-2">
             <i class="fa-solid fa-circle-play text-red-500"></i> Watch How It's Made
@@ -201,15 +165,12 @@
           <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-inner flex items-center justify-center">
             <iframe id="modal-video" class="w-full h-full" src="" title="Oil Making Process" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
-          <p class="text-[11px] text-gray-400 mt-2 italic text-center">Watch our authentic cold-press preparation ensuring zero chemicals and maximum nutrition.</p>
         </div>
-
       </div>
 
-      <!-- Modal Footer -->
       <div class="bg-gray-50 px-6 py-4 border-t flex justify-end gap-3">
-        <button onclick="closeModal()" class="px-4 py-2 text-xs font-semibold text-gray-600 hover:text-gray-800">Close</button>
-        <button id="modal-add-btn" class="bg-brand-dark hover:bg-brand-green text-white px-6 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-sm">
+        <button onclick="closeModal()" class="px-4 py-2 text-xs font-semibold text-gray-600 hover:text-gray-800 cursor-pointer">Close</button>
+        <button id="modal-add-btn" class="bg-brand-dark hover:bg-brand-green text-white px-6 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-sm cursor-pointer">
           <i class="fa-solid fa-cart-plus"></i> Add to Cart
         </button>
       </div>
@@ -222,7 +183,6 @@
   
   <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
     
-    <!-- Cart Header with Beautifully Aligned Order ID -->
     <div class="bg-brand-dark text-white p-5 flex justify-between items-center border-b border-emerald-950">
       <div class="flex items-center gap-2">
         <i class="fa-solid fa-basket-shopping text-brand-gold"></i>
@@ -230,56 +190,42 @@
       </div>
       <div class="flex items-center gap-2">
         <span id="active-order-id-label" class="bg-brand-gold/20 border border-brand-gold/40 text-brand-gold text-xs font-bold px-2.5 py-1 rounded-lg tracking-wider">#FO-0000</span>
-        <button onclick="toggleCartDrawer()" class="text-gray-300 hover:text-white p-1">
+        <button onclick="toggleCartDrawer()" class="text-gray-300 hover:text-white p-1 cursor-pointer">
           <i class="fa-solid fa-xmark text-xl"></i>
         </button>
       </div>
     </div>
 
-    <!-- Discount Status Alert Banner -->
     <div id="cart-discount-banner" class="bg-amber-50 border-b border-amber-200 p-3 text-xs text-amber-900 flex items-center gap-2">
       <i class="fa-solid fa-circle-info text-amber-600 text-sm"></i>
       <span id="cart-discount-text">Add items worth PKR 5,000 to unlock 10% Flat Discount!</span>
     </div>
 
-    <!-- Cart Items Container -->
     <div class="p-4 sm:p-6 overflow-y-auto custom-scrollbar flex-1">
-      
-      <!-- 🔴 Blinking Notice 🔴 -->
       <div style="background-color: #f8d7da; color: #721c24; padding: 12px; border-radius: 8px; font-weight: bold; text-align: center; margin-bottom: 15px; border: 1px dashed #f5c6cb; font-size: 13px; line-height: 1.5;">
         <span class="blinking-dot">🔴</span> 
         <strong>Important Notice:</strong> Delivery charges are <strong>not included</strong> and must be paid in <strong>advance</strong> (JazzCash, EasyPaisa, or Bank Transfer) to confirm your order. Our team will share the account details on WhatsApp.
       </div>
-
       <div id="cart-items-container" class="space-y-3"></div>
-
     </div>
 
-    <!-- Cart Totals & Checkout Section -->
     <div class="p-5 border-t border-gray-100 bg-gray-50 space-y-3">
-      
-      <!-- Subtotal -->
       <div class="flex justify-between text-xs text-gray-600">
         <span>Subtotal</span>
         <span id="cart-subtotal" class="font-semibold text-gray-800">PKR 0</span>
       </div>
 
-      <!-- 10% Discount Line -->
       <div id="cart-discount-row" class="flex justify-between text-xs text-emerald-800 font-bold hidden bg-emerald-100/80 p-2 rounded-lg border border-emerald-200">
-        <span class="flex items-center gap-1.5">
-          <i class="fa-solid fa-badge-percent text-emerald-600"></i> 10% Concession Applied
-        </span>
+        <span class="flex items-center gap-1.5"><i class="fa-solid fa-badge-percent text-emerald-600"></i> 10% Concession Applied</span>
         <span id="cart-discount-amount">- PKR 0</span>
       </div>
 
-      <!-- Final Total -->
       <div class="flex justify-between text-base font-extrabold text-gray-900 pt-1 border-t border-gray-200">
         <span>Grand Total</span>
         <span id="cart-grand-total" class="text-brand-dark">PKR 0</span>
       </div>
 
-      <!-- Proceed to Checkout Button -->
-      <button onclick="openCheckoutModal()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3.5 rounded-xl font-bold text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 mt-2">
+      <button onclick="openCheckoutModal()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3.5 rounded-xl font-bold text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 mt-2 cursor-pointer">
         <i class="fa-brands fa-whatsapp text-lg text-emerald-300"></i>
         <span>Proceed to WhatsApp Checkout</span>
         <i class="fa-solid fa-arrow-right text-xs"></i>
@@ -292,7 +238,6 @@
   <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop transition-opacity">
     <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden flex flex-col border border-gray-100">
       
-      <!-- Header -->
       <div class="bg-brand-dark text-white px-6 py-4 flex justify-between items-center">
         <div class="flex items-center gap-2">
           <i class="fa-brands fa-whatsapp text-brand-gold text-xl"></i>
@@ -301,15 +246,12 @@
             <p class="text-[11px] text-gray-300">Complete details to automatically generate order message</p>
           </div>
         </div>
-        <button onclick="closeCheckoutModal()" class="text-gray-300 hover:text-white p-1">
+        <button onclick="closeCheckoutModal()" class="text-gray-300 hover:text-white p-1 cursor-pointer">
           <i class="fa-solid fa-xmark text-lg"></i>
         </button>
       </div>
 
-      <!-- Form Content -->
       <form id="checkout-form" onsubmit="submitWhatsAppOrder(event)" class="p-6 space-y-4">
-        
-        <!-- Summary Box -->
         <div class="bg-brand-cream/70 p-3 rounded-xl text-xs space-y-1 border border-amber-900/10">
           <div class="flex justify-between text-gray-700">
             <span>Order Subtotal:</span>
@@ -325,42 +267,36 @@
           </div>
         </div>
 
-        <!-- Full Name -->
         <div>
           <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Full Name *</label>
           <input type="text" id="customer-name" required placeholder="e.g. Muhammad Ali" 
                  class="w-full px-3 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-dark">
         </div>
 
-        <!-- Phone Number -->
         <div>
           <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">WhatsApp / Phone Number *</label>
           <input type="tel" id="customer-phone" required placeholder="e.g. 0300 1234567" 
                  class="w-full px-3 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-dark">
         </div>
 
-        <!-- City -->
         <div>
           <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">City *</label>
           <input type="text" id="customer-city" required placeholder="e.g. Lahore, Karachi, Rawalpindi" 
                  class="w-full px-3 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-dark">
         </div>
 
-        <!-- Complete Address -->
         <div>
           <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Full Delivery Address *</label>
           <textarea id="customer-address" required rows="2" placeholder="House/Street #, Area, Landmarks..." 
                     class="w-full px-3 py-2 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-dark"></textarea>
         </div>
 
-        <!-- Submit Button -->
         <div class="pt-2">
-          <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2">
+          <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 rounded-xl text-sm transition shadow-md flex items-center justify-center gap-2 cursor-pointer">
             <i class="fa-brands fa-whatsapp text-lg"></i>
             <span>Send Order on WhatsApp</span>
           </button>
         </div>
-
       </form>
 
     </div>
@@ -368,14 +304,8 @@
 
   <!-- ================= JAVASCRIPT LOGIC ================= -->
   <script>
-    // ==========================================
-    // GOOGLE APPS SCRIPT WEB APP URL
-    // ==========================================
     const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzmsiyp0jcFAPakhDeFuILBypF92Jl_YvMBQqefeAyK5fJKAUWmrAivC9cIAhZac4mdZg/exec";
-
-    // Shared Cart Storage Key for all Fangam Organic pages
     const CART_STORAGE_KEY = 'fangam_organic_shared_cart';
-
     const WHATSAPP_NUMBER = "923000634445";
 
     const URL_PLACEHOLDER_100ML = "https://lh3.googleusercontent.com/d/1RGjNSqSGB3MkhanqPuShzkdRN6vHsN-F";
@@ -388,9 +318,11 @@
         id: "oil-100ml",
         category: "Oils",
         title: "Organic Hair Oil (100 ml)",
+        name: "Organic Hair Oil (100 ml)",
         capacity: "100 ml",
         price: 1000,
         imageUrl: URL_PLACEHOLDER_100ML,
+        image: URL_PLACEHOLDER_100ML,
         videoUrl: MAKING_VIDEO_URL,
         description: "Our 100 ml Organic Hair Oil pack is perfect for daily scalp nourishment. Cold-pressed with pure botanical extracts to nourish hair roots and enhance natural shine."
       },
@@ -398,9 +330,11 @@
         id: "oil-150ml",
         category: "Oils",
         title: "Organic Hair Oil (150 ml)",
+        name: "Organic Hair Oil (150 ml)",
         capacity: "150 ml",
         price: 1500,
         imageUrl: URL_PLACEHOLDER_150ML,
+        image: URL_PLACEHOLDER_150ML,
         videoUrl: MAKING_VIDEO_URL,
         description: "Our signature 150 ml classic edition. Rich in natural vitamins and active organic ingredients engineered to curb hair loss, eradicate dandruff, and accelerate follicle growth."
       },
@@ -408,9 +342,11 @@
         id: "oil-200ml",
         category: "Oils",
         title: "Organic Hair Oil (200 ml)",
+        name: "Organic Hair Oil (200 ml)",
         capacity: "200 ml",
         price: 2000,
         imageUrl: URL_PLACEHOLDER_200ML,
+        image: URL_PLACEHOLDER_200ML,
         videoUrl: MAKING_VIDEO_URL,
         description: "The 200 ml regular care pack provides maximum value. Formulated for deep root conditioning, preventing premature thinning, and giving hair long-lasting strength."
       }
@@ -427,13 +363,11 @@
       const orderIdLabel = document.getElementById('active-order-id-label');
       if (orderIdLabel) orderIdLabel.innerText = currentOrderId;
 
-      // Load shared cart from localStorage
       loadCartFromStorage();
       renderProducts();
       updateCartUI();
     });
 
-    // Load Cart from localStorage
     function loadCartFromStorage() {
       try {
         const storedCart = localStorage.getItem(CART_STORAGE_KEY);
@@ -447,7 +381,6 @@
       }
     }
 
-    // Save Cart to localStorage
     function saveCartToStorage() {
       try {
         localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
@@ -477,13 +410,13 @@
           </div>
 
           <div class="w-full space-y-2 mt-2">
-            <button onclick="openModal('${product.id}')" 
-                    class="w-full bg-emerald-50 hover:bg-emerald-100 text-brand-dark font-semibold py-2 px-4 rounded-xl text-xs transition flex items-center justify-center gap-1.5 border border-emerald-200/60">
+            <button type="button" onclick="openModal('${product.id}')" 
+                    class="w-full bg-emerald-50 hover:bg-emerald-100 text-brand-dark font-semibold py-2 px-4 rounded-xl text-xs transition flex items-center justify-center gap-1.5 border border-emerald-200/60 cursor-pointer">
               <i class="fa-solid fa-circle-info text-brand-dark text-xs"></i> Description
             </button>
             
-            <button onclick="addToCart('${product.id}')" 
-                    class="w-full bg-brand-dark hover:bg-brand-green text-white font-bold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-sm active:scale-95">
+            <button type="button" onclick="addToCart('${product.id}')" 
+                    class="w-full bg-brand-dark hover:bg-brand-green text-white font-bold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-sm active:scale-95 cursor-pointer">
               <i class="fa-solid fa-plus text-xs"></i> Add to Cart
             </button>
           </div>
@@ -522,13 +455,20 @@
       const product = PRODUCTS.find(p => p.id === productId);
       if (!product) return;
 
-      // Ensure quantity property is consistently used
       const existing = cart.find(item => item.id === productId);
       if (existing) {
         existing.quantity = (existing.quantity || existing.qty || 1) + 1;
-        delete existing.qty; // clean up old naming if any
+        existing.qty = existing.quantity;
       } else {
-        cart.push({ ...product, quantity: 1 });
+        cart.push({ 
+          ...product, 
+          title: product.title || product.name,
+          name: product.title || product.name,
+          image: product.imageUrl || product.image,
+          imageUrl: product.imageUrl || product.image,
+          quantity: 1, 
+          qty: 1 
+        });
       }
 
       saveCartToStorage();
@@ -546,7 +486,7 @@
         cart = cart.filter(i => i.id !== productId);
       } else {
         item.quantity = currentQty;
-        delete item.qty;
+        item.qty = currentQty;
       }
 
       saveCartToStorage();
@@ -576,17 +516,19 @@
       } else {
         container.innerHTML = cart.map(item => {
           const qty = item.quantity || item.qty || 1;
+          const itemName = item.title || item.name || "Product";
+          const itemImg = item.imageUrl || item.image || "https://placehold.co/150";
           return `
             <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
               <div class="flex items-start justify-between gap-2">
                 <div class="flex items-center space-x-3 flex-1 min-w-0">
-                  <img src="${item.imageUrl || item.image}" class="w-12 h-12 rounded-lg object-contain bg-white border border-gray-200 flex-shrink-0 p-1" onerror="this.onerror=null; this.src='https://placehold.co/150';">
+                  <img src="${itemImg}" class="w-12 h-12 rounded-lg object-contain bg-white border border-gray-200 flex-shrink-0 p-1" onerror="this.onerror=null; this.src='https://placehold.co/150';">
                   <div class="min-w-0 flex-1">
-                    <h4 class="font-bold text-gray-800 text-sm truncate">${item.title || item.name}</h4>
+                    <h4 class="font-bold text-gray-800 text-sm truncate">${itemName}</h4>
                     <div class="text-xs text-brand-dark font-semibold">PKR ${item.price} each</div>
                   </div>
                 </div>
-                <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-lg transition flex-shrink-0" title="Remove Item">
+                <button type="button" onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-lg transition flex-shrink-0 cursor-pointer" title="Remove Item">
                   <i class="fa-solid fa-trash-alt text-sm"></i>
                 </button>
               </div>
@@ -596,9 +538,9 @@
                   Total: <span class="font-bold text-brand-dark text-sm">PKR ${(item.price * qty).toLocaleString()}</span>
                 </div>
                 <div class="flex items-center border border-gray-300 rounded-lg bg-white overflow-hidden shadow-sm">
-                  <button onclick="updateQuantity('${item.id}', -1)" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold">-</button>
+                  <button type="button" onclick="updateQuantity('${item.id}', -1)" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold cursor-pointer">-</button>
                   <span class="px-3 text-xs font-bold text-brand-dark">${qty}</span>
-                  <button onclick="updateQuantity('${item.id}', 1)" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold">+</button>
+                  <button type="button" onclick="updateQuantity('${item.id}', 1)" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold cursor-pointer">+</button>
                 </div>
               </div>
             </div>
@@ -700,7 +642,6 @@
       const discount = subtotal >= 5000 ? subtotal * 0.10 : 0;
       let itemsSummaryText = cart.map(i => `${i.title || i.name} (x${i.quantity || i.qty || 1})`).join(', ');
 
-      // 1. Send Data to Google Sheet automatically in Background
       const payload = {
         orderId: currentOrderId,
         productType: "Oils",
@@ -724,13 +665,12 @@
         console.error("Sheet sync error:", err);
       }
 
-      // 2. WhatsApp Message Construction
       let message = `🌿 *NEW ORDER - FANGAM ORGANIC OILS (${currentOrderId})* 🌿\n\n`;
       message += `📋 *ORDER DETAILS:*\n`;
       
       cart.forEach((item, index) => {
         const q = item.quantity || item.qty || 1;
-        const title = item.title || item.name;
+        const title = item.title || item.name || "Product";
         message += `${index + 1}. *${title}*\n`;
         message += `   - Quantity: ${q}\n`;
         message += `   - Price: PKR ${item.price.toLocaleString()} x ${q} = PKR ${(item.price * q).toLocaleString()}\n\n`;
@@ -761,7 +701,6 @@
 
       window.open(whatsappUrl, '_blank');
 
-      // Clear cart from localStorage ONLY after successful order checkout
       cart = [];
       saveCartToStorage();
 
