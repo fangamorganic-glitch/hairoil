@@ -61,7 +61,7 @@
   <div id="promo-bar" class="bg-brand-gold text-brand-dark px-4 py-2.5 text-xs md:text-sm text-center font-semibold flex items-center justify-center gap-2 shadow-sm transition-all duration-300">
     <i class="fa-solid fa-tags text-brand-dark"></i>
     <span><strong>Special Discount:</strong> Get <strong>10% OFF</strong> automatically when your order total exceeds <strong>PKR 5,000</strong>!</span>
-    <button onclick="dismissPromo()" class="ml-4 text-brand-dark hover:opacity-75 focus:outline-none">
+    <button onclick="dismissPromo()" class="ml-4 text-brand-dark hover:opacity-75 focus:outline-none cursor-pointer">
       <i class="fa-solid fa-xmark"></i>
     </button>
   </div>
@@ -410,12 +410,12 @@
           </div>
 
           <div class="w-full space-y-2 mt-2">
-            <button type="button" onclick="openModal('${product.id}')" 
+            <button type="button" onclick="openModal('${product.id}')" ontouchend="openModal('${product.id}'); event.preventDefault();"
                     class="w-full bg-emerald-50 hover:bg-emerald-100 text-brand-dark font-semibold py-2 px-4 rounded-xl text-xs transition flex items-center justify-center gap-1.5 border border-emerald-200/60 cursor-pointer">
               <i class="fa-solid fa-circle-info text-brand-dark text-xs"></i> Description
             </button>
             
-            <button type="button" onclick="addToCart('${product.id}')" 
+            <button type="button" onclick="addToCart('${product.id}')" ontouchend="addToCart('${product.id}'); event.preventDefault();"
                     class="w-full bg-brand-dark hover:bg-brand-green text-white font-bold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-sm active:scale-95 cursor-pointer">
               <i class="fa-solid fa-plus text-xs"></i> Add to Cart
             </button>
@@ -441,6 +441,12 @@
         addToCart(product.id);
         closeModal();
         toggleCartDrawer();
+      };
+      modalAddBtn.ontouchend = function(e) {
+        addToCart(product.id);
+        closeModal();
+        toggleCartDrawer();
+        e.preventDefault();
       };
 
       document.getElementById('description-modal').classList.remove('hidden');
@@ -528,7 +534,7 @@
                     <div class="text-xs text-brand-dark font-semibold">PKR ${item.price} each</div>
                   </div>
                 </div>
-                <button type="button" onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-lg transition flex-shrink-0 cursor-pointer" title="Remove Item">
+                <button type="button" onclick="removeFromCart('${item.id}')" ontouchend="removeFromCart('${item.id}'); event.preventDefault();" class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-lg transition flex-shrink-0 cursor-pointer" title="Remove Item">
                   <i class="fa-solid fa-trash-alt text-sm"></i>
                 </button>
               </div>
@@ -538,9 +544,9 @@
                   Total: <span class="font-bold text-brand-dark text-sm">PKR ${(item.price * qty).toLocaleString()}</span>
                 </div>
                 <div class="flex items-center border border-gray-300 rounded-lg bg-white overflow-hidden shadow-sm">
-                  <button type="button" onclick="updateQuantity('${item.id}', -1)" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold cursor-pointer">-</button>
+                  <button type="button" onclick="updateQuantity('${item.id}', -1)" ontouchend="updateQuantity('${item.id}', -1); event.preventDefault();" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold cursor-pointer">-</button>
                   <span class="px-3 text-xs font-bold text-brand-dark">${qty}</span>
-                  <button type="button" onclick="updateQuantity('${item.id}', 1)" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold cursor-pointer">+</button>
+                  <button type="button" onclick="updateQuantity('${item.id}', 1)" ontouchend="updateQuantity('${item.id}', 1); event.preventDefault();" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold cursor-pointer">+</button>
                 </div>
               </div>
             </div>
