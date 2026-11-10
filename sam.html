@@ -256,6 +256,9 @@
             }
         ];
 
+        // Shared Cart Storage Key for all Fangam Organic pages
+        const CART_STORAGE_KEY = 'fangam_organic_shared_cart';
+
         let cart = {};
         let currentModalProductId = null;
         let modalQtyVal = 1;
@@ -264,9 +267,35 @@
         window.addEventListener('DOMContentLoaded', () => {
             currentOrderId = '#FO-SOP-' + Math.floor(1000 + Math.random() * 9000);
             document.getElementById('active-order-id-label').innerText = currentOrderId;
+            
+            // Load cart from localStorage so it persists across pages & sessions
+            loadCartFromStorage();
             renderProducts();
             updateCartUI();
         });
+
+        // Load Cart from localStorage
+        function loadCartFromStorage() {
+            try {
+                const storedCart = localStorage.getItem(CART_STORAGE_KEY);
+                if (storedCart) {
+                    cart = JSON.parse(storedCart);
+                } else {
+                    cart = {};
+                }
+            } catch (e) {
+                cart = {};
+            }
+        }
+
+        // Save Cart to localStorage
+        function saveCartToStorage() {
+            try {
+                localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+            } catch (e) {
+                console.error("Error saving cart to localStorage", e);
+            }
+        }
 
         function renderProducts() {
             const container = document.getElementById('products-grid');
@@ -339,12 +368,14 @@
             } else {
                 cart[productId] = { ...products.find(p => p.id === productId), qty };
             }
+            saveCartToStorage();
             renderProducts();
             updateCartUI();
         }
 
         function removeFromCart(productId) {
             delete cart[productId];
+            saveCartToStorage();
             renderProducts();
             updateCartUI();
         }
@@ -497,7 +528,13 @@
             message += `*Note:* Delivery charges are not included and must be paid in advance via JazzCash, EasyPaisa, or Bank Transfer to confirm the order.\n`;
             
             const whatsappNumber = '923000634445';
+            
+            // Clear cart from localStorage ONLY after successful order checkout trigger
+            cart = {};
+            saveCartToStorage();
+
             window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            toggleCartModal();
         }
     </script>
 </body>
