@@ -522,9 +522,11 @@
       const product = PRODUCTS.find(p => p.id === productId);
       if (!product) return;
 
+      // Ensure quantity property is consistently used
       const existing = cart.find(item => item.id === productId);
       if (existing) {
-        existing.quantity += 1;
+        existing.quantity = (existing.quantity || existing.qty || 1) + 1;
+        delete existing.qty; // clean up old naming if any
       } else {
         cart.push({ ...product, quantity: 1 });
       }
@@ -537,10 +539,16 @@
       const item = cart.find(i => i.id === productId);
       if (!item) return;
 
-      item.quantity += delta;
-      if (item.quantity <= 0) {
+      let currentQty = item.quantity || item.qty || 1;
+      currentQty += delta;
+      
+      if (currentQty <= 0) {
         cart = cart.filter(i => i.id !== productId);
+      } else {
+        item.quantity = currentQty;
+        delete item.qty;
       }
+
       saveCartToStorage();
       updateCartUI();
     }
@@ -552,7 +560,7 @@
     }
 
     function updateCartUI() {
-      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const totalItems = cart.reduce((sum, item) => sum + (item.quantity || item.qty || 1), 0);
       document.getElementById('cart-badge').textContent = totalItems;
 
       const container = document.getElementById('cart-items-container');
@@ -566,36 +574,39 @@
           </div>
         `;
       } else {
-        container.innerHTML = cart.map(item => `
-          <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
-            <div class="flex items-start justify-between gap-2">
-              <div class="flex items-center space-x-3 flex-1 min-w-0">
-                <img src="${item.imageUrl}" class="w-12 h-12 rounded-lg object-contain bg-white border border-gray-200 flex-shrink-0 p-1" onerror="this.onerror=null; this.src='https://placehold.co/150';">
-                <div class="min-w-0 flex-1">
-                  <h4 class="font-bold text-gray-800 text-sm truncate">${item.title}</h4>
-                  <div class="text-xs text-brand-dark font-semibold">PKR ${item.price} each</div>
+        container.innerHTML = cart.map(item => {
+          const qty = item.quantity || item.qty || 1;
+          return `
+            <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col gap-2.5">
+              <div class="flex items-start justify-between gap-2">
+                <div class="flex items-center space-x-3 flex-1 min-w-0">
+                  <img src="${item.imageUrl || item.image}" class="w-12 h-12 rounded-lg object-contain bg-white border border-gray-200 flex-shrink-0 p-1" onerror="this.onerror=null; this.src='https://placehold.co/150';">
+                  <div class="min-w-0 flex-1">
+                    <h4 class="font-bold text-gray-800 text-sm truncate">${item.title || item.name}</h4>
+                    <div class="text-xs text-brand-dark font-semibold">PKR ${item.price} each</div>
+                  </div>
+                </div>
+                <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-lg transition flex-shrink-0" title="Remove Item">
+                  <i class="fa-solid fa-trash-alt text-sm"></i>
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between pt-2 border-t border-gray-200/60">
+                <div class="text-xs text-gray-500">
+                  Total: <span class="font-bold text-brand-dark text-sm">PKR ${(item.price * qty).toLocaleString()}</span>
+                </div>
+                <div class="flex items-center border border-gray-300 rounded-lg bg-white overflow-hidden shadow-sm">
+                  <button onclick="updateQuantity('${item.id}', -1)" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold">-</button>
+                  <span class="px-3 text-xs font-bold text-brand-dark">${qty}</span>
+                  <button onclick="updateQuantity('${item.id}', 1)" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold">+</button>
                 </div>
               </div>
-              <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-2 rounded-lg transition flex-shrink-0" title="Remove Item">
-                <i class="fa-solid fa-trash-alt text-sm"></i>
-              </button>
             </div>
-
-            <div class="flex items-center justify-between pt-2 border-t border-gray-200/60">
-              <div class="text-xs text-gray-500">
-                Total: <span class="font-bold text-brand-dark text-sm">PKR ${(item.price * item.quantity).toLocaleString()}</span>
-              </div>
-              <div class="flex items-center border border-gray-300 rounded-lg bg-white overflow-hidden shadow-sm">
-                <button onclick="updateQuantity('${item.id}', -1)" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold">-</button>
-                <span class="px-3 text-xs font-bold text-brand-dark">${item.quantity}</span>
-                <button onclick="updateQuantity('${item.id}', 1)" class="px-2.5 py-1 text-xs text-gray-700 hover:bg-gray-100 font-bold">+</button>
-              </div>
-            </div>
-          </div>
-        `).join('');
+          `;
+        }).join('');
       }
 
-      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || item.qty || 1)), 0);
       const discountThreshold = 5000;
       let discountAmount = 0;
 
@@ -649,7 +660,7 @@
         return;
       }
 
-      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || item.qty || 1)), 0);
       const discount = subtotal >= 5000 ? subtotal * 0.10 : 0;
       const grandTotal = subtotal - discount;
 
@@ -685,9 +696,9 @@
       const city = document.getElementById('customer-city').value.trim();
       const address = document.getElementById('customer-address').value.trim();
 
-      const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      const subtotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || item.qty || 1)), 0);
       const discount = subtotal >= 5000 ? subtotal * 0.10 : 0;
-      let itemsSummaryText = cart.map(i => `${i.title} (x${i.quantity})`).join(', ');
+      let itemsSummaryText = cart.map(i => `${i.title || i.name} (x${i.quantity || i.qty || 1})`).join(', ');
 
       // 1. Send Data to Google Sheet automatically in Background
       const payload = {
@@ -718,9 +729,11 @@
       message += `📋 *ORDER DETAILS:*\n`;
       
       cart.forEach((item, index) => {
-        message += `${index + 1}. *${item.title}*\n`;
-        message += `   - Quantity: ${item.quantity}\n`;
-        message += `   - Price: PKR ${item.price.toLocaleString()} x ${item.quantity} = PKR ${(item.price * item.quantity).toLocaleString()}\n\n`;
+        const q = item.quantity || item.qty || 1;
+        const title = item.title || item.name;
+        message += `${index + 1}. *${title}*\n`;
+        message += `   - Quantity: ${q}\n`;
+        message += `   - Price: PKR ${item.price.toLocaleString()} x ${q} = PKR ${(item.price * q).toLocaleString()}\n\n`;
       });
 
       const grandTotal = subtotal - discount;
