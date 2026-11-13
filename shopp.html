@@ -2,53 +2,6 @@
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" sizes="32x32" href="https://lh3.googleusercontent.com/d/1NJYUBfxZMMcO2Wqh_wzsuyUjeC-mi97V">
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://fangamorganic.com/#organization",
-      "name": "Fangam Organic",
-      "url": "https://fangamorganic.com/",
-      "logo": "https://fangamorganic.com/logo.png",
-      "sameAs": [
-        "https://www.facebook.com/fangamorganic",
-        "https://www.instagram.com/fangamorganic",
-        "https://www.youtube.com/@fangamorganic",
-        "https://www.tiktok.com/@fangamorganic"
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://fangamorganic.com/#website",
-      "url": "https://fangamorganic.com/",
-      "name": "Fangam Organic",
-      "publisher": {
-        "@id": "https://fangamorganic.com/#organization"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://fangamorganic.com/?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://fangamorganic.com/#webpage",
-      "url": "https://fangamorganic.com/",
-      "name": "Fangam Organic - Pure Herbal Hair Oil",
-      "isPartOf": {
-        "@id": "https://fangamorganic.com/#website"
-      },
-      "about": {
-        "@id": "https://fangamorganic.com/#organization"
-      },
-      "description": "Discover 100% pure organic herbal hair oils and natural wellness products crafted by Fangam Organic for healthy and strong hair."
-    }
-  ]
-}
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fangam Organic - Unified Store</title>
@@ -90,7 +43,7 @@
 </head>
 <body class="text-gray-800 antialiased pb-24">
 
-    <!-- Header / Navbar with Updated Order -->
+    <!-- Header / Navbar (Original Clean Layout) -->
     <header class="bg-brand-dark text-white shadow-lg sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-3">
@@ -102,20 +55,6 @@
                     <p class="text-xs text-gray-300 tracking-wider uppercase">Pure & Natural Care</p>
                 </div>
             </div>
-
-            <!-- Navigation Links -->
-            <ul class="hidden lg:flex items-center space-x-6 text-sm font-medium">
-                <li><a href="index.html#pure-oils" class="hover:text-brand-accent transition">Pure Oils</a></li>
-                <li><a href="index.html#pure-shampoos" class="hover:text-brand-accent transition">Shampoos</a></li>
-                <li><a href="index.html#pure-soaps" class="hover:text-brand-accent transition">Soaps</a></li>
-                <li><a href="index.html#combo-offers" class="hover:text-brand-accent transition">Offers</a></li>
-                <li><a href="index.html#on-demand" class="hover:text-brand-accent transition">Custom Solution</a></li>
-                <li><a href="index.html#making-stories" class="hover:text-brand-accent transition">Making Stories</a></li>
-                <li><a href="product-details" class="hover:text-brand-accent transition flex items-center gap-1"><i class="fa-solid fa-bag-shopping"></i> Quick Products</a></li>
-                <li><a href="comments" target="_blank" class="hover:text-brand-accent transition flex items-center gap-1"><i class="fa-solid fa-comments"></i> Live Comments</a></li>
-                <li><a href="aboutus" class="hover:text-brand-accent transition">About Us</a></li>
-                <li><a href="javascript:void(0)" onclick="openTrackingModal()" class="text-brand-accent font-bold hover:underline flex items-center gap-1"><i class="fa-solid fa-truck-fast"></i> Track Order</a></li>
-            </ul>
 
             <!-- Cart Badge Button -->
             <button onclick="toggleCartModal()" class="relative bg-brand-primary hover:bg-brand-light px-4 py-2 rounded-full transition flex items-center gap-2 border border-brand-accent/30 shadow-md">
@@ -184,20 +123,6 @@
                 <i class="fas fa-arrow-right text-xs"></i>
             </button>
         </div>
-    </div>
-
-    <!-- Floating Action Widgets (Only 3 clean buttons) -->
-    <div class="fixed right-4 bottom-24 flex flex-col gap-3 z-30">
-        <a href="https://wa.me/923000634445" target="_blank" class="w-12 h-12 bg-[#25d366] text-white rounded-full flex items-center justify-center text-xl shadow-lg hover:scale-110 transition" title="WhatsApp Support">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <button onclick="toggleCartModal()" class="w-12 h-12 bg-brand-primary text-white rounded-full flex items-center justify-center text-xl shadow-lg hover:scale-110 transition relative" title="Shopping Cart">
-            <i class="fa-solid fa-shopping-bag"></i>
-            <span id="float-cart-count" class="absolute -top-1 -right-1 bg-brand-accent text-brand-dark text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
-        </button>
-        <button onclick="openTrackingModal()" class="w-12 h-12 bg-brand-accent text-brand-dark rounded-full flex items-center justify-center text-xl shadow-lg hover:scale-110 transition font-bold" title="Track Your Order">
-            <i class="fa-solid fa-truck-fast"></i>
-        </button>
     </div>
 
     <!-- Product Description & Video Popup Modal -->
@@ -307,50 +232,6 @@
                     <i class="fab fa-whatsapp text-lg"></i>
                     <span id="order-btn-text">Place Order via WhatsApp</span>
                 </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Order Tracking Modal (Clean Courier Logos Grid) -->
-    <div class="fixed inset-0 bg-black/60 z-50 hidden backdrop-blur-sm flex items-center justify-center p-4" id="trackingModal" onclick="closeTrackingModal()">
-        <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl border border-gray-100 p-6 relative" onclick="event.stopPropagation()">
-            <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center" onclick="closeTrackingModal()">&times;</button>
-            <h3 class="text-xl font-bold text-brand-dark mb-2 flex items-center gap-2">
-                <i class="fa-solid fa-truck-fast text-brand-primary"></i> Track Your Order
-            </h3>
-            <p class="text-xs text-gray-500 mb-5">Select your courier partner below to open their official tracking page:</p>
-            
-            <div class="grid grid-cols-2 gap-3">
-                <!-- 1. TCS -->
-                <a href="https://www.tcsexpress.com/track/" target="_blank" class="flex flex-col items-center justify-center p-3 border border-gray-200 rounded-xl hover:border-red-500 hover:bg-red-50/30 transition">
-                    <div class="bg-red-600 text-white font-extrabold text-xs px-3 py-1 rounded mb-1.5">TCS</div>
-                    <span class="text-xs font-semibold text-gray-700">TCS Express</span>
-                </a>
-                <!-- 2. Leopards -->
-                <a href="https://www.leopardscourier.com/leopards-tracking" target="_blank" class="flex flex-col items-center justify-center p-3 border border-gray-200 rounded-xl hover:border-yellow-500 hover:bg-yellow-50/30 transition">
-                    <div class="bg-yellow-400 text-gray-900 font-extrabold text-xs px-2 py-1 rounded mb-1.5">LEOPARDS</div>
-                    <span class="text-xs font-semibold text-gray-700">Leopards Courier</span>
-                </a>
-                <!-- 3. PostEx -->
-                <a href="https://postex.pk/tracking" target="_blank" class="flex flex-col items-center justify-center p-3 border border-gray-200 rounded-xl hover:border-black hover:bg-gray-50 transition">
-                    <div class="bg-black text-emerald-400 font-extrabold text-xs px-2.5 py-1 rounded mb-1.5">PostEx</div>
-                    <span class="text-xs font-semibold text-gray-700">PostEx Logistics</span>
-                </a>
-                <!-- 4. M&P -->
-                <a href="https://www.mulphilog.com/tracking/" target="_blank" class="flex flex-col items-center justify-center p-3 border border-gray-200 rounded-xl hover:border-orange-500 hover:bg-orange-50/30 transition">
-                    <div class="bg-orange-600 text-white font-extrabold text-xs px-3 py-1 rounded mb-1.5">M&P</div>
-                    <span class="text-xs font-semibold text-gray-700">M&P Express</span>
-                </a>
-                <!-- 5. TRAX -->
-                <a href="https://trax.pk/tracking/" target="_blank" class="flex flex-col items-center justify-center p-3 border border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50/30 transition">
-                    <div class="bg-sky-600 text-white font-extrabold text-xs px-3 py-1 rounded mb-1.5">TRAX</div>
-                    <span class="text-xs font-semibold text-gray-700">TRAX Logistics</span>
-                </a>
-                <!-- 6. Pakistan Post -->
-                <a href="https://ep.gov.pk/track.asp" target="_blank" class="flex flex-col items-center justify-center p-3 border border-gray-200 rounded-xl hover:border-emerald-600 hover:bg-emerald-50/30 transition">
-                    <div class="bg-emerald-700 text-white font-extrabold text-xs px-2 py-1 rounded mb-1.5">PAK POST</div>
-                    <span class="text-xs font-semibold text-gray-700">Pakistan Post</span>
-                </a>
             </div>
         </div>
     </div>
@@ -812,7 +693,6 @@
             const { subtotal, totalCount, isFreeDelivery } = calculateTotals();
             document.getElementById('cart-count').innerText = totalCount;
             document.getElementById('bar-cart-count').innerText = totalCount;
-            document.getElementById('float-cart-count').innerText = totalCount;
             document.getElementById('bar-total-price').innerText = `PKR ${subtotal.toLocaleString()}`;
 
             const bottomBar = document.getElementById('bottom-cart-bar');
@@ -896,14 +776,6 @@
 
         function toggleCartModal() {
             document.getElementById('cart-modal').classList.toggle('hidden');
-        }
-
-        function openTrackingModal() {
-            document.getElementById('trackingModal').classList.remove('hidden');
-        }
-
-        function closeTrackingModal() {
-            document.getElementById('trackingModal').classList.add('hidden');
         }
 
         async function sendWhatsAppOrder() {
