@@ -114,14 +114,15 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 18px;
+            gap: 15px;
             align-items: center;
+            flex-wrap: wrap;
         }
         .nav-links a {
             text-decoration: none;
             color: var(--dark-text);
             font-weight: 500;
-            font-size: 13.5px;
+            font-size: 13px;
             transition: var(--transition);
         }
         .nav-links a:hover {
@@ -260,7 +261,6 @@
         @media (min-width: 900px) {
             .product-slide img { max-height: 310px; }
         }
-        /* Mobile Optimized Bold Dynamic Title/Caption */
         .slide-caption {
             margin-top: 8px;
             font-size: 13.5px;
@@ -560,7 +560,7 @@
             border: 0;
         }
 
-        /* --- Floating Action Widgets (3 Buttons) --- */
+        /* --- Floating Action Widgets (Only 3 Buttons) --- */
         .floating-widgets {
             position: fixed;
             right: 18px;
@@ -582,8 +582,26 @@
             font-size: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
             transition: var(--transition);
+            position: relative;
         }
         .float-btn:hover { transform: scale(1.1); }
+
+        .float-cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #d4af37;
+            color: #1b382b;
+            font-size: 11px;
+            font-weight: 700;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #fff;
+        }
 
         /* Footer */
         footer {
@@ -660,7 +678,7 @@
 </head>
 <body>
 
-    <!-- Header & Navigation with Mobile 3-Dot Menu -->
+    <!-- Header & Navigation -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">
@@ -674,7 +692,10 @@
                 <li id="nav-combo-offers"><a href="#combo-offers">Offers</a></li>
                 <li id="nav-on-demand"><a href="#on-demand">Custom Solution</a></li>
                 <li><a href="#making-stories">Making Stories</a></li>
+                <li><a href="https://fangamorganic.com/product-details"><i class="fa-solid fa-bag-shopping"></i> Quick Products</a></li>
+                <li><a href="https://fangamorganic.com/comments" target="_blank"><i class="fa-solid fa-comments"></i> Live Comments</a></li>
                 <li><a href="https://fangamorganic.com/aboutus">About Us</a></li>
+                <li><a href="javascript:void(0)" onclick="openTrackingModal()" style="color: var(--primary-green); font-weight: 600;"><i class="fa-solid fa-truck-fast"></i> Track Order</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -1293,16 +1314,17 @@
 
     </main>
 
-    <!-- Floating Action Widgets (3 Buttons) -->
+    <!-- Floating Action Widgets (Only 3 clean buttons) -->
     <div class="floating-widgets">
         <a href="https://wa.me/923000634445" target="_blank" class="float-btn" style="background: #25d366;" title="WhatsApp Support">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
-        <a href="https://fangamorganic.com/product-details" class="float-btn" title="Quick Products">
-            <i class="fa-solid fa-bag-shopping"></i>
+        <a href="shop.html" class="float-btn" title="Shopping Cart" style="background: #2d5a42;">
+            <i class="fa-solid fa-shopping-bag"></i>
+            <span id="float-cart-count" class="float-cart-badge">0</span>
         </a>
-        <a href="https://fangamorganic.com/comments" target="_blank" class="float-btn" title="Live Comments">
-            <i class="fa-solid fa-comments"></i>
+        <a href="javascript:void(0)" onclick="openTrackingModal()" class="float-btn" title="Track Your Order" style="background: #d4af37; color: #1b382b;">
+            <i class="fa-solid fa-truck-fast"></i>
         </a>
     </div>
 
@@ -1333,6 +1355,58 @@
             <span class="modal-close" onclick="closeReviewPopup()">&times;</span>
             <div id="reviewModalBody" style="text-align: center; padding-top: 10px;">
                 <!-- Populated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Tracking Modal (Clean Courier Logos Grid) -->
+    <div class="modal-overlay" id="trackingModal" onclick="closeTrackingModal()">
+        <div class="modal-content" onclick="event.stopPropagation()" style="max-width: 440px;">
+            <span class="modal-close" onclick="closeTrackingModal()">&times;</span>
+            <h3 style="color: var(--primary-green); margin-bottom: 6px; font-size: 19px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <i class="fa-solid fa-truck-fast"></i> Track Your Order
+            </h3>
+            <p style="font-size: 12.5px; color: #666; margin-bottom: 16px;">Select your courier partner below to open their official tracking page:</p>
+            
+            <!-- 6 Courier Company Cards Grid (You can easily edit URLs inside href="") -->
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; text-align: center;">
+                
+                <!-- 1. TCS -->
+                <a href="https://www.tcsexpress.com/track/" target="_blank" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; border: 1.5px solid #e0e0e0; border-radius: 10px; text-decoration: none; background: #fff; transition: 0.2s;" onmouseover="this.style.borderColor='#d32f2f'; this.style.background='#fff8f8';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.background='#fff';">
+                    <div style="background: #d32f2f; color: #fff; font-weight: 800; font-size: 16px; padding: 4px 14px; border-radius: 6px; letter-spacing: 1px; margin-bottom: 6px;">TCS</div>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #333;">TCS Express</span>
+                </a>
+
+                <!-- 2. Leopards -->
+                <a href="https://pk.leopardscourier.com/tracking" target="_blank" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; border: 1.5px solid #e0e0e0; border-radius: 10px; text-decoration: none; background: #fff; transition: 0.2s;" onmouseover="this.style.borderColor='#f57c00'; this.style.background='#fffaf0';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.background='#fff';">
+                    <div style="background: #fbc02d; color: #111; font-weight: 800; font-size: 15px; padding: 4px 12px; border-radius: 6px; margin-bottom: 6px;">LEOPARDS</div>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #333;">Leopards Courier</span>
+                </a>
+
+                <!-- 3. PostEx -->
+                <a href="https://postex.pk/tracking" target="_blank" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; border: 1.5px solid #e0e0e0; border-radius: 10px; text-decoration: none; background: #fff; transition: 0.2s;" onmouseover="this.style.borderColor='#111'; this.style.background='#f5f5f5';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.background='#fff';">
+                    <div style="background: #111; color: #00e676; font-weight: 800; font-size: 15px; padding: 4px 14px; border-radius: 6px; margin-bottom: 6px;">PostEx</div>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #333;">PostEx Logistics</span>
+                </a>
+
+                <!-- 4. M&P -->
+                <a href="https://www.mulphilog.com/tracking/" target="_blank" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; border: 1.5px solid #e0e0e0; border-radius: 10px; text-decoration: none; background: #fff; transition: 0.2s;" onmouseover="this.style.borderColor='#ef6c00'; this.style.background='#fff8f0';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.background='#fff';">
+                    <div style="background: #ef6c00; color: #fff; font-weight: 800; font-size: 16px; padding: 4px 14px; border-radius: 6px; margin-bottom: 6px;">M&amp;P</div>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #333;">M&amp;P Express</span>
+                </a>
+
+                <!-- 5. TRAX -->
+                <a href="https://trax.pk/tracking/" target="_blank" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; border: 1.5px solid #e0e0e0; border-radius: 10px; text-decoration: none; background: #fff; transition: 0.2s;" onmouseover="this.style.borderColor='#0288d1'; this.style.background='#f0f9ff';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.background='#fff';">
+                    <div style="background: #0288d1; color: #fff; font-weight: 800; font-size: 15px; padding: 4px 14px; border-radius: 6px; letter-spacing: 1px; margin-bottom: 6px;">TRAX</div>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #333;">TRAX Logistics</span>
+                </a>
+
+                <!-- 6. Pakistan Post -->
+                <a href="https://ep.gov.pk/track.asp" target="_blank" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; border: 1.5px solid #e0e0e0; border-radius: 10px; text-decoration: none; background: #fff; transition: 0.2s;" onmouseover="this.style.borderColor='#2e7d32'; this.style.background='#f1f8f1';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.background='#fff';">
+                    <div style="background: #2e7d32; color: #fff; font-weight: 800; font-size: 14px; padding: 4px 10px; border-radius: 6px; margin-bottom: 6px;">PAK POST</div>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #333;">Pakistan Post</span>
+                </a>
+
             </div>
         </div>
     </div>
@@ -1386,11 +1460,6 @@
 
     <!-- CENTRAL CONTROL PANEL & JAVASCRIPT LOGIC -->
     <script>
-        /* ========================================================
-           🌟 CENTRAL CONTROL PANEL (TRUE / FALSE SWITCHES) 🌟
-           You can turn ON (true) or OFF (false) any section, review, 
-           or individual making video from right here!
-           ======================================================== */
         const SITE_SETTINGS = {
             sections: {
                 pureOils: true,
@@ -1398,14 +1467,14 @@
                 pureSoaps: true,
                 comboOffers: true,
                 onDemand: true,
-                makingStories: true  // 전체 Making Stories سیکشن کو آن/آف کرنے کے لیے
+                makingStories: true  
             },
             makingVideos: {
-                video1: true,  // 1. Organic Hair Oil Making
-                video2: false, // 2. Herbal Shampoo Making (ابھی ویڈیو نہیں ہے تو false کر دیا ہے، بننے پر true کر دیں)
-                video3: false, // 3. Soap Crafting Story
-                video4: false, // 4. Hair Mask Preparation
-                video5: false  // 5. Organic Ubtan Recipe
+                video1: true,  
+                video2: false, 
+                video3: false, 
+                video4: false, 
+                video5: false  
             },
             reviews: {
                 oilReviews: { customer: true, socialScreenshots: true, googleReview: false },
@@ -1414,23 +1483,21 @@
             }
         };
 
-        // Apply Control Settings on Load
+        const CART_STORAGE_KEY = 'fangam_organic_unified_cart_final';
+
         document.addEventListener("DOMContentLoaded", () => {
-            // Sections Visibility
             for (let secKey in SITE_SETTINGS.sections) {
                 const el = document.querySelector(`[data-section="${secKey}"]`);
                 if (el) {
                     el.style.display = SITE_SETTINGS.sections[secKey] ? "block" : "none";
                 }
             }
-            // Individual Making Stories Videos Visibility
             for (let vidKey in SITE_SETTINGS.makingVideos) {
                 const vEl = document.querySelector(`[data-video="${vidKey}"]`);
                 if (vEl) {
                     vEl.style.display = SITE_SETTINGS.makingVideos[vidKey] ? "block" : "none";
                 }
             }
-            // Reviews Configuration
             for (let revKey in SITE_SETTINGS.reviews) {
                 const revBlock = document.querySelector(`[data-review-sec="${revKey}"]`);
                 if (revBlock) {
@@ -1446,9 +1513,32 @@
                     if (gooBtn) gooBtn.style.display = cfg.googleReview ? "inline-flex" : "none";
                 }
             }
+            updateFloatingCartCount();
         });
 
-        // 1. Mobile 3-Dot Menu Toggle
+        function updateFloatingCartCount() {
+            try {
+                const stored = localStorage.getItem(CART_STORAGE_KEY);
+                const cart = stored ? JSON.parse(stored) : {};
+                let totalCount = 0;
+                Object.values(cart).forEach(item => {
+                    totalCount += item.qty;
+                });
+                const badge = document.getElementById('float-cart-count');
+                if (badge) {
+                    badge.innerText = totalCount;
+                }
+            } catch(e) {}
+        }
+
+        function openTrackingModal() {
+            document.getElementById('trackingModal').classList.add('active');
+        }
+
+        function closeTrackingModal() {
+            document.getElementById('trackingModal').classList.remove('active');
+        }
+
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         if(hamburger) {
@@ -1457,7 +1547,6 @@
             });
         }
 
-        // 2. Hero Main Auto Slider
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         setInterval(() => {
@@ -1468,7 +1557,6 @@
             }
         }, 4000);
 
-        // 3. Product Auto Slider with Dynamic Title / Caption Support
         const prodSliders = document.querySelectorAll('.auto-prod-slider');
         prodSliders.forEach(sliderBox => {
             const pSlides = sliderBox.querySelectorAll('.product-slide');
@@ -1504,7 +1592,6 @@
             sliderBox.addEventListener('touchend', startProdSlide);
         });
 
-        // 4. Smooth Fluid Customer Reviews Scroll with Pause on Touch/Hover
         const tracks = document.querySelectorAll('.auto-scroll-track');
         tracks.forEach(track => {
             let scrollInterval;
@@ -1542,7 +1629,6 @@
             });
         });
 
-        // 5. Customer Review Popup Modal on Touch/Click
         function openReviewPopup(cardElement) {
             const bodyContent = document.getElementById('reviewModalBody');
             bodyContent.innerHTML = cardElement.innerHTML;
@@ -1553,7 +1639,6 @@
             document.getElementById('reviewModal').classList.remove('active');
         }
 
-        // 6. Social Screenshots Modal
         const socialScreenshots = [
             "https://lh3.googleusercontent.com/d/1KeJsuHq-oxd29k0E_SlvQxY8KT4mhXTe",
             "https://lh3.googleusercontent.com/d/1oBltcmYy6IxGQirYNg6t-SYaLnl90-C5",
@@ -1580,7 +1665,6 @@
             document.getElementById('modalImg').src = socialScreenshots[screenshotIndex];
         }
 
-        // 7. Herb / Powder Click Popup Zoom
         function openHerbPopup(imgSrc, herbName) {
             document.getElementById('herbModalImg').src = imgSrc;
             document.getElementById('herbTitle').innerText = herbName;
