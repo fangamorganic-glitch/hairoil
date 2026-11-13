@@ -114,14 +114,15 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 18px;
+            gap: 15px;
             align-items: center;
+            flex-wrap: wrap;
         }
         .nav-links a {
             text-decoration: none;
             color: var(--dark-text);
             font-weight: 500;
-            font-size: 13.5px;
+            font-size: 13px;
             transition: var(--transition);
         }
         .nav-links a:hover {
@@ -560,7 +561,7 @@
             border: 0;
         }
 
-        /* --- Floating Action Widgets (3 Buttons + New Floating Cart/Track Integration) --- */
+        /* --- Floating Action Widgets (Only 3 Buttons Now) --- */
         .floating-widgets {
             position: fixed;
             right: 18px;
@@ -679,7 +680,7 @@
 </head>
 <body>
 
-    <!-- Header & Navigation with Mobile 3-Dot Menu -->
+    <!-- Header & Navigation with Updated Order -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">
@@ -693,8 +694,9 @@
                 <li id="nav-combo-offers"><a href="#combo-offers">Offers</a></li>
                 <li id="nav-on-demand"><a href="#on-demand">Custom Solution</a></li>
                 <li><a href="#making-stories">Making Stories</a></li>
+                <li><a href="https://fangamorganic.com/product-details"><i class="fa-solid fa-bag-shopping"></i> Quick Products</a></li>
+                <li><a href="https://fangamorganic.com/comments" target="_blank"><i class="fa-solid fa-comments"></i> Live Comments</a></li>
                 <li><a href="https://fangamorganic.com/aboutus">About Us</a></li>
-                <!-- Track Order & Cart links for desktop nav if needed -->
                 <li><a href="javascript:void(0)" onclick="openTrackingModal()" style="color: var(--primary-green); font-weight: 600;"><i class="fa-solid fa-truck-fast"></i> Track Order</a></li>
             </ul>
             <div class="hamburger" id="hamburger">
@@ -1314,7 +1316,7 @@
 
     </main>
 
-    <!-- Floating Action Widgets (3 Original Buttons + 2 New Added: Cart & Track Order) -->
+    <!-- Floating Action Widgets (Only 3 clean buttons now) -->
     <div class="floating-widgets">
         <a href="https://wa.me/923000634445" target="_blank" class="float-btn" style="background: #25d366;" title="WhatsApp Support">
             <i class="fa-brands fa-whatsapp"></i>
@@ -1325,12 +1327,6 @@
         </a>
         <a href="javascript:void(0)" onclick="openTrackingModal()" class="float-btn" title="Track Your Order" style="background: #d4af37; color: #1b382b;">
             <i class="fa-solid fa-truck-fast"></i>
-        </a>
-        <a href="https://fangamorganic.com/product-details" class="float-btn" title="Quick Products">
-            <i class="fa-solid fa-bag-shopping"></i>
-        </a>
-        <a href="https://fangamorganic.com/comments" target="_blank" class="float-btn" title="Live Comments">
-            <i class="fa-solid fa-comments"></i>
         </a>
     </div>
 
@@ -1443,11 +1439,6 @@
 
     <!-- CENTRAL CONTROL PANEL & JAVASCRIPT LOGIC -->
     <script>
-        /* ========================================================
-           🌟 CENTRAL CONTROL PANEL (TRUE / FALSE SWITCHES) 🌟
-           You can turn ON (true) or OFF (false) any section, review, 
-           or individual making video from right here!
-           ======================================================== */
         const SITE_SETTINGS = {
             sections: {
                 pureOils: true,
@@ -1473,23 +1464,19 @@
 
         const CART_STORAGE_KEY = 'fangam_organic_unified_cart_final';
 
-        // Apply Control Settings & Persistent Cart Counter on Load
         document.addEventListener("DOMContentLoaded", () => {
-            // Sections Visibility
             for (let secKey in SITE_SETTINGS.sections) {
                 const el = document.querySelector(`[data-section="${secKey}"]`);
                 if (el) {
                     el.style.display = SITE_SETTINGS.sections[secKey] ? "block" : "none";
                 }
             }
-            // Individual Making Stories Videos Visibility
             for (let vidKey in SITE_SETTINGS.makingVideos) {
                 const vEl = document.querySelector(`[data-video="${vidKey}"]`);
                 if (vEl) {
                     vEl.style.display = SITE_SETTINGS.makingVideos[vidKey] ? "block" : "none";
                 }
             }
-            // Reviews Configuration
             for (let revKey in SITE_SETTINGS.reviews) {
                 const revBlock = document.querySelector(`[data-review-sec="${revKey}"]`);
                 if (revBlock) {
@@ -1505,8 +1492,6 @@
                     if (gooBtn) gooBtn.style.display = cfg.googleReview ? "inline-flex" : "none";
                 }
             }
-
-            // Update Floating Cart Count from localStorage
             updateFloatingCartCount();
         });
 
@@ -1525,7 +1510,6 @@
             } catch(e) {}
         }
 
-        // 🚛 Order Tracking Modal Functions
         function openTrackingModal() {
             document.getElementById('trackingModal').classList.add('active');
         }
@@ -1558,7 +1542,6 @@
             }
         }
 
-        // 1. Mobile 3-Dot Menu Toggle
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         if(hamburger) {
@@ -1567,7 +1550,6 @@
             });
         }
 
-        // 2. Hero Main Auto Slider
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
         setInterval(() => {
@@ -1578,7 +1560,6 @@
             }
         }, 4000);
 
-        // 3. Product Auto Slider with Dynamic Title / Caption Support
         const prodSliders = document.querySelectorAll('.auto-prod-slider');
         prodSliders.forEach(sliderBox => {
             const pSlides = sliderBox.querySelectorAll('.product-slide');
@@ -1614,7 +1595,6 @@
             sliderBox.addEventListener('touchend', startProdSlide);
         });
 
-        // 4. Smooth Fluid Customer Reviews Scroll with Pause on Touch/Hover
         const tracks = document.querySelectorAll('.auto-scroll-track');
         tracks.forEach(track => {
             let scrollInterval;
@@ -1652,7 +1632,6 @@
             });
         });
 
-        // 5. Customer Review Popup Modal on Touch/Click
         function openReviewPopup(cardElement) {
             const bodyContent = document.getElementById('reviewModalBody');
             bodyContent.innerHTML = cardElement.innerHTML;
@@ -1663,7 +1642,6 @@
             document.getElementById('reviewModal').classList.remove('active');
         }
 
-        // 6. Social Screenshots Modal
         const socialScreenshots = [
             "https://lh3.googleusercontent.com/d/1KeJsuHq-oxd29k0E_SlvQxY8KT4mhXTe",
             "https://lh3.googleusercontent.com/d/1oBltcmYy6IxGQirYNg6t-SYaLnl90-C5",
@@ -1690,7 +1668,6 @@
             document.getElementById('modalImg').src = socialScreenshots[screenshotIndex];
         }
 
-        // 7. Herb / Powder Click Popup Zoom
         function openHerbPopup(imgSrc, herbName) {
             document.getElementById('herbModalImg').src = imgSrc;
             document.getElementById('herbTitle').innerText = herbName;
