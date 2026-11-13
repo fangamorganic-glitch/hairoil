@@ -43,7 +43,7 @@
 </head>
 <body class="text-gray-800 antialiased pb-24">
 
-    <!-- Header / Navbar -->
+    <!-- Header / Navbar (Original Clean Layout) -->
     <header class="bg-brand-dark text-white shadow-lg sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-3">
@@ -135,7 +135,6 @@
                 </button>
             </div>
             <div class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-4">
-                <!-- Clean Image Container for Modal -->
                 <div class="w-full h-56 rounded-xl overflow-hidden bg-gray-50 border border-gray-200 flex items-center justify-center p-3">
                     <img id="modal-img" src="" alt="Product Image" class="max-h-full max-w-full object-contain">
                 </div>
@@ -297,46 +296,88 @@
                 desc: 'Regular size organic formula shampoo. Leaves hair super soft, silky, naturally voluminous, and easy to manage.',
                 desc_ur: 'اورگینک فارمولا شیمپو کا باقاعدہ سائز۔ بالوں کو انتہائی نرم، ریشمی اور چمکدار بناتا ہے۔'
             },
+            // SOAPS - SMALL & LARGE SIZES
             {
-                id: 'soap-whitening',
+                id: 'soap-whitening-sm',
                 category: 'soaps',
-                name: 'Whitening Soap',
+                name: 'Whitening Soap (Small)',
+                price: 250,
+                image: 'https://lh3.googleusercontent.com/d/1lSJ-g5KTkeS3Dert8Z1oESmnus5TvEDc',
+                videoEmbed: 'https://www.youtube.com/embed/SPNBt55J1XY',
+                desc: 'Pure blend botanical whitening soap (Small size). Brightens skin tone, reduces dark spots, and imparts a natural healthy glow.',
+                desc_ur: 'قدرتی نباتاتی عرق سے بھرپور وائٹننگ صابن (چھوٹا سائز)۔ رنگت کو نکھارتا ہے اور کالے دھبوں کو کم کرتا ہے۔'
+            },
+            {
+                id: 'soap-whitening-lg',
+                category: 'soaps',
+                name: 'Whitening Soap (Large)',
                 price: 500,
                 image: 'https://lh3.googleusercontent.com/d/1lSJ-g5KTkeS3Dert8Z1oESmnus5TvEDc',
                 videoEmbed: 'https://www.youtube.com/embed/SPNBt55J1XY',
-                desc: 'Enriched with natural botanical extracts. Brightens skin tone, reduces dark spots, and imparts a natural healthy glow.',
-                desc_ur: 'قدرتی نباتاتی عرق سے بھرپور۔ جلد کی رنگت کو نکھارتا ہے اور کالے دھبوں کو کم کرتا ہے۔'
+                desc: 'Pure blend botanical whitening soap (Large size). Brightens skin tone, reduces dark spots, and imparts a natural healthy glow.',
+                desc_ur: 'قدرتی نباتاتی عرق سے بھرپور وائٹننگ صابن (بڑا سائز)۔ رنگت کو نکھارتا ہے اور کالے دھبوں کو کم کرتا ہے۔'
             },
             {
-                id: 'soap-rose',
+                id: 'soap-rose-sm',
                 category: 'soaps',
-                name: 'Whitening with Rose Soap',
+                name: 'Whitening with Rose Soap (Small)',
+                price: 250,
+                image: 'https://lh3.googleusercontent.com/d/10-6J7Jl0zftLwNYI0ZNOOMJ4GevjcOHe',
+                videoEmbed: 'https://www.youtube.com/embed/SPNBt55J1XY',
+                desc: 'Pure rose petal extract mixed with whitening agents (Small size). Fresh skin, soothing fragrance, and deep moisture.',
+                desc_ur: 'گلاب کی پتیاں اور وائٹننگ ایجنٹس (چھوٹا سائز)۔ جلد کو تروتازگی اور بہترین خوشبو فراہم کرتا ہے۔'
+            },
+            {
+                id: 'soap-rose-lg',
+                category: 'soaps',
+                name: 'Whitening with Rose Soap (Large)',
                 price: 500,
                 image: 'https://lh3.googleusercontent.com/d/10-6J7Jl0zftLwNYI0ZNOOMJ4GevjcOHe',
                 videoEmbed: 'https://www.youtube.com/embed/SPNBt55J1XY',
-                desc: 'Pure rose petal extract mixed with whitening agents. Provides fresh skin, soothing fragrance, and deep skin hydrated moisture.',
-                desc_ur: 'گلاب کی پتیاں اور وائٹننگ ایجنٹس۔ جلد کو تروتازگی اور بہترین خوشبو فراہم کرتا ہے۔'
+                desc: 'Pure rose petal extract mixed with whitening agents (Large size). Fresh skin, soothing fragrance, and deep moisture.',
+                desc_ur: 'گلاب کی پتیاں اور وائٹننگ ایجنٹس (بڑا سائز)۔ جلد کو تروتازگی اور بہترین خوشبو فراہم کرتا ہے۔'
             },
             {
-                id: 'soap-neem',
+                id: 'soap-neem-sm',
                 category: 'soaps',
-                name: 'Neem Soap',
+                name: 'Neem Soap (Small)',
+                price: 250,
+                image: 'https://lh3.googleusercontent.com/d/1Tt0ujYxi1WReW_HupPp90ynKMeEjD0kQ',
+                videoEmbed: 'https://www.youtube.com/embed/SPNBt55J1XY',
+                desc: 'Anti-bacterial organic neem soap (Small size). Highly effective against acne, pimples, and skin itchiness.',
+                desc_ur: 'اینٹی بیکٹیریل نامیاتی نیم صابن (چھوٹا سائز)۔ دانے، مہاسے اور جلد کے مسائل کے لیے مفید ہے۔'
+            },
+            {
+                id: 'soap-neem-lg',
+                category: 'soaps',
+                name: 'Neem Soap (Large)',
                 price: 500,
                 image: 'https://lh3.googleusercontent.com/d/1Tt0ujYxi1WReW_HupPp90ynKMeEjD0kQ',
                 videoEmbed: 'https://www.youtube.com/embed/SPNBt55J1XY',
-                desc: 'Anti-bacterial organic neem soap. Highly effective against acne, pimples, skin itchiness, and unwanted infections.',
-                desc_ur: 'اینٹی بیکٹیریل نامیاتی نیم صابن۔ دانے، مہاسے اور جلد کے دیگر مسائل کے لیے انتہائی مفید ہے۔'
+                desc: 'Anti-bacterial organic neem soap (Large size). Highly effective against acne, pimples, and skin itchiness.',
+                desc_ur: 'اینٹی بیکٹیریل نامیاتی نیم صابن (بڑا سائز)۔ دانے، مہاسے اور جلد کے مسائل کے لیے مفید ہے۔'
             },
             {
-                id: 'soap-loofah',
+                id: 'soap-loofah-sm',
                 category: 'soaps',
-                name: 'Natural Loofah Soap',
+                name: 'Natural Loofah Soap (Small)',
+                price: 250,
+                image: 'https://lh3.googleusercontent.com/d/1UBQlfw4glvDFULu5-3fnnvm7XIwPI1az',
+                videoEmbed: 'https://www.youtube.com/embed/SPNBt55J1XY',
+                desc: 'Exfoliating soap embedded with natural loofah fiber (Small size). Gently removes dead skin cells.',
+                desc_ur: 'قدرتی لوفہ فائبر پر مشتمل صابن (چھوٹا سائز)۔ مردہ جلد کے خلیوں کو آہستہ سے صاف کرتا ہے۔'
+            },
+            {
+                id: 'soap-loofah-lg',
+                category: 'soaps',
+                name: 'Natural Loofah Soap (Large)',
                 price: 500,
                 image: 'https://lh3.googleusercontent.com/d/1UBQlfw4glvDFULu5-3fnnvm7XIwPI1az',
                 videoEmbed: 'https://www.youtube.com/embed/SPNBt55J1XY',
-                desc: 'Exfoliating soap embedded with natural loofah fiber. Gently removes dead skin cells and improves overall skin texture.',
-                desc_ur: 'قدرتی لوفہ فائبر پر مشتمل صابن۔ مردہ جلد کے خلیوں کو آہستہ سے صاف کرتا ہے۔'
+                desc: 'Exfoliating soap embedded with natural loofah fiber (Large size). Gently removes dead skin cells.',
+                desc_ur: 'قدرتی لوفہ فائبر پر مشتمل صابن (بڑا سائز)۔ مردہ جلد کے خلیوں کو آہستہ سے صاف کرتا ہے۔'
             },
+            // BUNDLES & POWDERS
             {
                 id: 'ubtan-powder',
                 category: 'bundles',
@@ -375,7 +416,7 @@
                 name: 'Complete Skin Care Bundle (3-in-1)',
                 badge: '5% OFF BUNDLE',
                 discountPercent: 5,
-                itemIds: ['ubtan-powder', 'soap-whitening', 'soap-neem']
+                itemIds: ['ubtan-powder', 'soap-whitening-lg', 'soap-neem-lg']
             }
         ];
 
@@ -439,7 +480,7 @@
             const titles = {
                 oils: { title: 'Pure Organic Hair Oils', desc: 'Cold-pressed botanical oils for thick and strong hair growth.' },
                 shampoos: { title: '100% Organic Shampoos', desc: 'Sulfate and paraben-free natural shampoos.' },
-                soaps: { title: 'Pure Organic Herbal Soaps', desc: 'Botanical and exfoliating soaps for glowing skin.' },
+                soaps: { title: 'Pure Organic Herbal Soaps (Small & Large Sizes)', desc: 'Available in Small (PKR 250) and Large (PKR 500) sizes.' },
                 bundles: { title: 'Special Offers & 3-Item Combo Bundles', desc: 'Save 5% automatically on our curated Hair Care & Skin Care 3-in-1 bundles!' }
             };
 
@@ -468,7 +509,6 @@
             try { localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart)); } catch(e){}
         }
 
-        // Render 3-Item Combo Bundle Trays (object-contain used so bottles fit properly)
         function renderBundleTrays() {
             const container = document.getElementById('bundles-trays-grid');
             const computedBundles = getComputedBundles();
@@ -521,7 +561,6 @@
             }).join('');
         }
 
-        // Render Standard Products (object-contain used so shampoo & oil bottles fit properly inside frames)
         function renderProducts() {
             const container = document.getElementById('products-grid');
             const filtered = allProducts.filter(p => p.category === currentTab);
@@ -636,15 +675,10 @@
             return { subtotal, totalCount, isFreeDelivery };
         }
 
-        // ==========================================
-        // SMART PRODUCT TYPE DETECTOR FOR GOOGLE SHEET
-        // ==========================================
         function getSmartProductType() {
             const items = Object.values(cart);
             if (items.length === 0) return "All Products";
-
             const categories = [...new Set(items.map(i => i.category))];
-
             if (categories.length === 1) {
                 const cat = categories[0];
                 if (cat === 'oils') return "Oils";
@@ -652,8 +686,6 @@
                 if (cat === 'soaps') return "Soaps";
                 if (cat === 'bundles') return "Special Bundles";
             }
-
-            // If mixed items from multiple categories
             return "All Products";
         }
 
@@ -769,7 +801,6 @@
             const itemsText = items.map(i => `${i.name} (x${i.qty})`).join(', ');
             const smartProductType = getSmartProductType();
 
-            // 1. Push Order to Google Sheet with #FO-XXXX & Smart Product Type
             const payload = {
                 orderId: currentOrderId,
                 productType: smartProductType,
@@ -793,7 +824,6 @@
                 console.error("Google Sheet Sync Error:", err);
             }
 
-            // 2. Construct WhatsApp Message
             let msg = `*NEW ORDER - FANGAM ORGANIC (${currentOrderId})*\n`;
             msg += `---------------------------------\n`;
             msg += `*Category:* ${smartProductType}\n`;
@@ -812,7 +842,6 @@
             msg += `---------------------------------\n`;
             msg += `Thank you for shopping with Fangam Organic!`;
 
-            // Clear Cart & Generate Next #FO-XXXX Order ID
             cart = {};
             saveCartToStorage();
             updateCartUI();
