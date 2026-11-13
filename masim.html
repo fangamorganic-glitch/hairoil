@@ -261,7 +261,6 @@
         @media (min-width: 900px) {
             .product-slide img { max-height: 310px; }
         }
-        /* Mobile Optimized Bold Dynamic Title/Caption */
         .slide-caption {
             margin-top: 8px;
             font-size: 13.5px;
@@ -561,7 +560,7 @@
             border: 0;
         }
 
-        /* --- Floating Action Widgets (Only 3 Buttons Now) --- */
+        /* --- Floating Action Widgets (Only 3 Buttons) --- */
         .floating-widgets {
             position: fixed;
             right: 18px;
@@ -587,7 +586,6 @@
         }
         .float-btn:hover { transform: scale(1.1); }
 
-        /* Floating Cart Badge styling */
         .float-cart-badge {
             position: absolute;
             top: -5px;
@@ -680,7 +678,7 @@
 </head>
 <body>
 
-    <!-- Header & Navigation with Updated Order -->
+    <!-- Header & Navigation -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">
@@ -1316,7 +1314,7 @@
 
     </main>
 
-    <!-- Floating Action Widgets (Only 3 clean buttons now) -->
+    <!-- Floating Action Widgets (Only 3 clean buttons) -->
     <div class="floating-widgets">
         <a href="https://wa.me/923000634445" target="_blank" class="float-btn" style="background: #25d366;" title="WhatsApp Support">
             <i class="fa-brands fa-whatsapp"></i>
@@ -1361,7 +1359,7 @@
         </div>
     </div>
 
-    <!-- Order Tracking Modal (TCS, Leopards, PostEx Auto-Routing) -->
+    <!-- Order Tracking Modal (TCS, Leopards, PostEx Auto-Routing & Auto-Copy) -->
     <div class="modal-overlay" id="trackingModal" onclick="closeTrackingModal()">
         <div class="modal-content" onclick="event.stopPropagation()" style="text-align: left; max-width: 400px;">
             <span class="modal-close" onclick="closeTrackingModal()">&times;</span>
@@ -1527,13 +1525,18 @@
                 return;
             }
 
+            // Copy tracking number to clipboard automatically as a helpful backup
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(trackingNum).catch(() => {});
+            }
+
             let trackingUrl = '';
             if (courier === 'tcs') {
-                trackingUrl = `https://www.tcsexpress.com/tracking?tracking_no=${encodeURIComponent(trackingNum)}`;
+                trackingUrl = `https://www.tcsexpress.com/track/?consignmentNo=${encodeURIComponent(trackingNum)}`;
             } else if (courier === 'leopards') {
-                trackingUrl = `https://www.leopardscourier.com/tracking?track_no=${encodeURIComponent(trackingNum)}`;
+                trackingUrl = `https://www.leopardscourier.com/leopards-tracking?tracking_number=${encodeURIComponent(trackingNum)}`;
             } else if (courier === 'postex') {
-                trackingUrl = `https://postex.pk/tracking?trackingNo=${encodeURIComponent(trackingNum)}`;
+                trackingUrl = `https://postex.pk/tracking?trackingNumber=${encodeURIComponent(trackingNum)}`;
             }
 
             if (trackingUrl) {
