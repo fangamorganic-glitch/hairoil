@@ -1359,32 +1359,55 @@
         </div>
     </div>
 
-    <!-- Order Tracking Modal (TCS, Leopards, PostEx Auto-Routing & Auto-Copy) -->
+    <!-- Order Tracking Modal (Clean Courier Logos Grid) -->
     <div class="modal-overlay" id="trackingModal" onclick="closeTrackingModal()">
-        <div class="modal-content" onclick="event.stopPropagation()" style="text-align: left; max-width: 400px;">
+        <div class="modal-content" onclick="event.stopPropagation()" style="max-width: 440px;">
             <span class="modal-close" onclick="closeTrackingModal()">&times;</span>
-            <h3 style="color: var(--primary-green); margin-bottom: 15px; font-size: 18px; display: flex; align-items: center; gap: 8px;">
+            <h3 style="color: var(--primary-green); margin-bottom: 6px; font-size: 19px; display: flex; align-items: center; justify-content: center; gap: 8px;">
                 <i class="fa-solid fa-truck-fast"></i> Track Your Order
             </h3>
-            <p style="font-size: 12.5px; color: #666; margin-bottom: 15px;">Select your courier company and enter your tracking / consignment number below:</p>
+            <p style="font-size: 12.5px; color: #666; margin-bottom: 16px;">Select your courier partner below to open their official tracking page:</p>
             
-            <div style="margin-bottom: 12px;">
-                <label style="font-size: 12px; font-weight: 600; color: #333; display: block; margin-bottom: 5px;">Select Courier Company:</label>
-                <select id="courierSelect" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 13px; outline: none; background: #fff;">
-                    <option value="tcs">TCS Express</option>
-                    <option value="leopards">Leopards Courier (LCS)</option>
-                    <option value="postex">PostEx Logistics</option>
-                </select>
-            </div>
+            <!-- 6 Courier Company Cards Grid (You can easily edit URLs inside href="") -->
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; text-align: center;">
+                
+                <!-- 1. TCS -->
+                <a href="https://www.tcsexpress.com/track/" target="_blank" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; border: 1.5px solid #e0e0e0; border-radius: 10px; text-decoration: none; background: #fff; transition: 0.2s;" onmouseover="this.style.borderColor='#d32f2f'; this.style.background='#fff8f8';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.background='#fff';">
+                    <div style="background: #d32f2f; color: #fff; font-weight: 800; font-size: 16px; padding: 4px 14px; border-radius: 6px; letter-spacing: 1px; margin-bottom: 6px;">TCS</div>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #333;">TCS Express</span>
+                </a>
 
-            <div style="margin-bottom: 15px;">
-                <label style="font-size: 12px; font-weight: 600; color: #333; display: block; margin-bottom: 5px;">Tracking Number / Consignment ID:</label>
-                <input type="text" id="trackingNumberInput" placeholder="e.g. 71234567 or tracking code" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 13px; outline: none;">
-            </div>
+                <!-- 2. Leopards -->
+                <a href="https://www.leopardscourier.com/leopards-tracking" target="_blank" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; border: 1.5px solid #e0e0e0; border-radius: 10px; text-decoration: none; background: #fff; transition: 0.2s;" onmouseover="this.style.borderColor='#f57c00'; this.style.background='#fffaf0';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.background='#fff';">
+                    <div style="background: #fbc02d; color: #111; font-weight: 800; font-size: 15px; padding: 4px 12px; border-radius: 6px; margin-bottom: 6px;">LEOPARDS</div>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #333;">Leopards Courier</span>
+                </a>
 
-            <button onclick="executeTrackingRedirect()" style="width: 100%; background: var(--primary-green); color: white; border: none; padding: 11px; border-radius: 8px; font-weight: 600; font-size: 13.5px; cursor: pointer; box-shadow: 0 4px 10px rgba(46,125,50,0.2);">
-                Track Now on Courier Website
-            </button>
+                <!-- 3. PostEx -->
+                <a href="https://postex.pk/tracking" target="_blank" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; border: 1.5px solid #e0e0e0; border-radius: 10px; text-decoration: none; background: #fff; transition: 0.2s;" onmouseover="this.style.borderColor='#111'; this.style.background='#f5f5f5';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.background='#fff';">
+                    <div style="background: #111; color: #00e676; font-weight: 800; font-size: 15px; padding: 4px 14px; border-radius: 6px; margin-bottom: 6px;">PostEx</div>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #333;">PostEx Logistics</span>
+                </a>
+
+                <!-- 4. M&P -->
+                <a href="https://www.mulphilog.com/tracking/" target="_blank" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; border: 1.5px solid #e0e0e0; border-radius: 10px; text-decoration: none; background: #fff; transition: 0.2s;" onmouseover="this.style.borderColor='#ef6c00'; this.style.background='#fff8f0';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.background='#fff';">
+                    <div style="background: #ef6c00; color: #fff; font-weight: 800; font-size: 16px; padding: 4px 14px; border-radius: 6px; margin-bottom: 6px;">M&amp;P</div>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #333;">M&amp;P Express</span>
+                </a>
+
+                <!-- 5. TRAX -->
+                <a href="https://trax.pk/tracking/" target="_blank" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; border: 1.5px solid #e0e0e0; border-radius: 10px; text-decoration: none; background: #fff; transition: 0.2s;" onmouseover="this.style.borderColor='#0288d1'; this.style.background='#f0f9ff';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.background='#fff';">
+                    <div style="background: #0288d1; color: #fff; font-weight: 800; font-size: 15px; padding: 4px 14px; border-radius: 6px; letter-spacing: 1px; margin-bottom: 6px;">TRAX</div>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #333;">TRAX Logistics</span>
+                </a>
+
+                <!-- 6. Pakistan Post -->
+                <a href="https://ep.gov.pk/track.asp" target="_blank" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 14px 10px; border: 1.5px solid #e0e0e0; border-radius: 10px; text-decoration: none; background: #fff; transition: 0.2s;" onmouseover="this.style.borderColor='#2e7d32'; this.style.background='#f1f8f1';" onmouseout="this.style.borderColor='#e0e0e0'; this.style.background='#fff';">
+                    <div style="background: #2e7d32; color: #fff; font-weight: 800; font-size: 14px; padding: 4px 10px; border-radius: 6px; margin-bottom: 6px;">PAK POST</div>
+                    <span style="font-size: 11.5px; font-weight: 600; color: #333;">Pakistan Post</span>
+                </a>
+
+            </div>
         </div>
     </div>
 
@@ -1514,35 +1537,6 @@
 
         function closeTrackingModal() {
             document.getElementById('trackingModal').classList.remove('active');
-        }
-
-        function executeTrackingRedirect() {
-            const courier = document.getElementById('courierSelect').value;
-            const trackingNum = document.getElementById('trackingNumberInput').value.trim();
-
-            if (!trackingNum) {
-                alert('Please enter your tracking / consignment number.');
-                return;
-            }
-
-            // Copy tracking number to clipboard automatically as a helpful backup
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(trackingNum).catch(() => {});
-            }
-
-            let trackingUrl = '';
-            if (courier === 'tcs') {
-                trackingUrl = `https://www.tcsexpress.com/track/?consignmentNo=${encodeURIComponent(trackingNum)}`;
-            } else if (courier === 'leopards') {
-                trackingUrl = `https://www.leopardscourier.com/leopards-tracking?tracking_number=${encodeURIComponent(trackingNum)}`;
-            } else if (courier === 'postex') {
-                trackingUrl = `https://postex.pk/tracking?trackingNumber=${encodeURIComponent(trackingNum)}`;
-            }
-
-            if (trackingUrl) {
-                window.open(trackingUrl, '_blank');
-                closeTrackingModal();
-            }
         }
 
         const hamburger = document.getElementById('hamburger');
