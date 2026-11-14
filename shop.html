@@ -91,7 +91,7 @@
             <p id="current-category-desc" class="text-xs text-gray-500">Pure cold-pressed herbal hair oils for complete root nourishment.</p>
         </div>
 
-        <!-- Bundles Special 3-Item Trays Container -->
+        <!-- Bundles Special 5-Item Trays Container -->
         <div id="bundles-trays-section" class="hidden mb-10">
             <div id="bundles-trays-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
             <hr class="my-8 border-gray-200">
@@ -170,7 +170,7 @@
         </div>
     </div>
 
-    <!-- Cart & Checkout Modal -->
+    <!-- Step 1: Shopping Cart Review Modal (Clean Items View) -->
     <div id="cart-modal" class="fixed inset-0 bg-black/60 z-50 hidden backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-xl w-full overflow-hidden shadow-2xl border border-gray-100 flex flex-col max-h-[90vh]">
             <div class="bg-brand-dark text-white p-4 flex items-center justify-between flex-shrink-0">
@@ -204,22 +204,10 @@
                 </div>
             </div>
 
-            <!-- Footer & Checkout Form -->
+            <!-- Cart Summary Footer (Triggers Separate Checkout Popup) -->
             <div class="p-4 bg-gray-50 border-t border-gray-100 flex-shrink-0 shadow-lg space-y-3">
-                <div id="customer-form" class="space-y-2 hidden border-b border-gray-200 pb-3">
-                    <h4 class="font-bold text-gray-800 text-xs uppercase tracking-wider">Delivery Information</h4>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <input type="text" id="cust-name" placeholder="Full Name *" class="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
-                        <input type="tel" id="cust-phone" placeholder="WhatsApp Phone # *" class="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        <input type="text" id="cust-city" placeholder="City *" class="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
-                        <input type="text" id="cust-address" placeholder="Complete Shipping Address *" class="w-full px-3 py-2 text-xs border border-gray-300 rounded-lg focus:outline-none focus:border-brand-primary">
-                    </div>
-                </div>
-
                 <div class="space-y-1 text-xs">
-                    <div class="flex justify-between text-gray-800 font-bold text-sm">
+                    <div class="flex justify-between text-gray-800 font-bold text-base">
                         <span>Total Payable:</span>
                         <span id="cart-subtotal" class="text-brand-dark">PKR 0</span>
                     </div>
@@ -228,9 +216,60 @@
                     </div>
                 </div>
 
+                <button onclick="openCheckoutModal()" id="proceed-checkout-btn" class="w-full bg-brand-primary hover:bg-brand-dark text-white py-3 rounded-xl font-bold text-sm transition shadow-lg flex items-center justify-center gap-2">
+                    <span>Place Order</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 2: Separate Delivery Details Popup Modal -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black/70 z-50 hidden backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl border border-gray-100 flex flex-col max-h-[90vh]">
+            <div class="bg-brand-dark text-white p-4 flex items-center justify-between flex-shrink-0">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-map-marker-alt text-brand-accent"></i>
+                    <h3 class="font-bold text-base sm:text-lg">Delivery Information</h3>
+                </div>
+                <button onclick="closeCheckoutModal()" class="text-gray-300 hover:text-white text-xl w-8 h-8 rounded-full flex items-center justify-center">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="p-5 overflow-y-auto custom-scrollbar space-y-3">
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3 flex items-center justify-between text-xs">
+                    <span class="font-semibold text-gray-700">Order ID: <strong id="checkout-order-id" class="text-brand-dark">#FO-0000</strong></span>
+                    <span class="font-bold text-brand-primary text-sm" id="checkout-total-display">PKR 0</span>
+                </div>
+
+                <div class="space-y-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Full Name *</label>
+                        <input type="text" id="cust-name" placeholder="Enter your full name" class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:outline-none focus:border-brand-primary">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">WhatsApp Phone # *</label>
+                        <input type="tel" id="cust-phone" placeholder="03XX-XXXXXXX" class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:outline-none focus:border-brand-primary">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">City *</label>
+                        <input type="text" id="cust-city" placeholder="Enter your city" class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:outline-none focus:border-brand-primary">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-700 mb-1">Complete Shipping Address *</label>
+                        <textarea id="cust-address" rows="2" placeholder="House #, Street, Area / Landmark" class="w-full px-3.5 py-2.5 text-sm border border-gray-300 rounded-xl focus:outline-none focus:border-brand-primary"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 bg-gray-50 border-t border-gray-100 flex flex-col gap-2">
                 <button onclick="sendWhatsAppOrder()" id="place-order-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-bold text-sm transition shadow-lg flex items-center justify-center gap-2">
                     <i class="fab fa-whatsapp text-lg"></i>
-                    <span id="order-btn-text">Place Order via WhatsApp</span>
+                    <span id="order-btn-text">Submit Order via WhatsApp</span>
+                </button>
+                <button type="button" onclick="backToCartModal()" class="w-full text-xs text-gray-500 hover:text-brand-dark font-semibold py-1.5">
+                    <i class="fas fa-arrow-left mr-1"></i> Back to Cart
                 </button>
             </div>
         </div>
@@ -401,22 +440,22 @@
         ];
 
         // ==========================================
-        // 2. SPECIAL 3-ITEM COMBO BUNDLES
+        // 2. SPECIAL COMBO BUNDLES (SMALL & LARGE WITH SOAP + UBTAN)
         // ==========================================
         const bundlesList = [
             {
-                id: 'bundle-hair-care',
-                name: 'Complete Hair Care Bundle (3-in-1)',
+                id: 'bundle-small',
+                name: 'Small Bundle',
                 badge: '5% OFF BUNDLE',
                 discountPercent: 5,
-                itemIds: ['oil-150', 'shampoo-220', 'hair-mask']
+                itemIds: ['oil-100', 'shampoo-100', 'soap-whitening-sm', 'ubtan-powder', 'hair-mask']
             },
             {
-                id: 'bundle-skin-care',
-                name: 'Complete Skin Care Bundle (3-in-1)',
+                id: 'bundle-large',
+                name: 'Large Bundle',
                 badge: '5% OFF BUNDLE',
                 discountPercent: 5,
-                itemIds: ['ubtan-powder', 'soap-whitening-lg', 'soap-neem-lg']
+                itemIds: ['oil-150', 'shampoo-220', 'soap-whitening-lg', 'ubtan-powder', 'hair-mask']
             }
         ];
 
@@ -481,7 +520,7 @@
                 oils: { title: 'Pure Organic Hair Oils', desc: 'Cold-pressed botanical oils for thick and strong hair growth.' },
                 shampoos: { title: '100% Organic Shampoos', desc: 'Sulfate and paraben-free natural shampoos.' },
                 soaps: { title: 'Pure Organic Herbal Soaps (Small & Large Sizes)', desc: 'Available in Small (PKR 250) and Large (PKR 500) sizes.' },
-                bundles: { title: 'Special Offers & 3-Item Combo Bundles', desc: 'Save 5% automatically on our curated Hair Care & Skin Care 3-in-1 bundles!' }
+                bundles: { title: 'Special Offers & Combo Bundles', desc: 'Save 5% automatically on our Small Bundle & Large Bundle!' }
             };
 
             document.getElementById('current-category-title').innerText = titles[tabKey].title;
@@ -524,10 +563,10 @@
 
                         <h3 class="text-lg sm:text-xl font-bold text-brand-dark mb-3">${b.name}</h3>
 
-                        <div class="grid grid-cols-3 gap-2.5 bg-brand-bg p-3 rounded-xl border border-emerald-100 mb-4">
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 bg-brand-bg p-3 rounded-xl border border-emerald-100 mb-4">
                             ${b.items.map(item => `
                                 <div class="flex flex-col items-center text-center bg-white p-2 rounded-lg border border-gray-100 shadow-sm">
-                                    <div class="w-full h-28 sm:h-32 flex items-center justify-center bg-gray-50/60 rounded-md mb-1.5 p-1.5 overflow-hidden">
+                                    <div class="w-full h-24 sm:h-28 flex items-center justify-center bg-gray-50/60 rounded-md mb-1.5 p-1 overflow-hidden">
                                         <img src="${item.image}" alt="${item.name}" class="max-h-full max-w-full object-contain" onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
                                     </div>
                                     <span class="text-[11px] font-bold text-gray-800 line-clamp-2 leading-tight">${item.name}</span>
@@ -710,16 +749,16 @@
         function renderCartModalItems() {
             const container = document.getElementById('cart-items-container');
             const emptyMsg = document.getElementById('empty-cart-msg');
-            const custForm = document.getElementById('customer-form');
+            const proceedBtn = document.getElementById('proceed-checkout-btn');
             const keys = Object.keys(cart);
 
             if (keys.length === 0) {
                 container.innerHTML = '';
                 emptyMsg.classList.remove('hidden');
-                custForm.classList.add('hidden');
+                proceedBtn.classList.add('hidden');
             } else {
                 emptyMsg.classList.add('hidden');
-                custForm.classList.remove('hidden');
+                proceedBtn.classList.remove('hidden');
 
                 container.innerHTML = keys.map(id => {
                     const item = cart[id];
@@ -776,6 +815,29 @@
 
         function toggleCartModal() {
             document.getElementById('cart-modal').classList.toggle('hidden');
+        }
+
+        function openCheckoutModal() {
+            const items = Object.values(cart);
+            if (items.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            const { subtotal } = calculateTotals();
+            document.getElementById('checkout-order-id').innerText = currentOrderId;
+            document.getElementById('checkout-total-display').innerText = `PKR ${subtotal.toLocaleString()}`;
+
+            document.getElementById('cart-modal').classList.add('hidden');
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        function backToCartModal() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+            document.getElementById('cart-modal').classList.remove('hidden');
         }
 
         async function sendWhatsAppOrder() {
@@ -852,8 +914,8 @@
             document.getElementById('active-order-id-label').innerText = currentOrderId;
 
             btn.disabled = false;
-            btnText.innerText = 'Place Order via WhatsApp';
-            toggleCartModal();
+            btnText.innerText = 'Submit Order via WhatsApp';
+            closeCheckoutModal();
 
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
         }
