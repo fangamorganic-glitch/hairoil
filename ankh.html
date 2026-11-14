@@ -91,7 +91,7 @@
             <p id="current-category-desc" class="text-xs text-gray-500">Pure cold-pressed herbal hair oils for complete root nourishment.</p>
         </div>
 
-        <!-- Bundles Special 4-Item Trays Container -->
+        <!-- Bundles Special 5-Item Trays Container -->
         <div id="bundles-trays-section" class="hidden mb-10">
             <div id="bundles-trays-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
             <hr class="my-8 border-gray-200">
@@ -440,7 +440,7 @@
         ];
 
         // ==========================================
-        // 2. SPECIAL COMBO BUNDLES (SMALL & LARGE)
+        // 2. SPECIAL COMBO BUNDLES (SMALL & LARGE WITH SOAP + UBTAN)
         // ==========================================
         const bundlesList = [
             {
@@ -448,14 +448,14 @@
                 name: 'Small Bundle',
                 badge: '5% OFF BUNDLE',
                 discountPercent: 5,
-                itemIds: ['oil-100', 'shampoo-100', 'soap-whitening-sm', 'hair-mask']
+                itemIds: ['oil-100', 'shampoo-100', 'soap-whitening-sm', 'ubtan-powder', 'hair-mask']
             },
             {
                 id: 'bundle-large',
                 name: 'Large Bundle',
                 badge: '5% OFF BUNDLE',
                 discountPercent: 5,
-                itemIds: ['oil-150', 'shampoo-220', 'soap-whitening-lg', 'hair-mask']
+                itemIds: ['oil-150', 'shampoo-220', 'soap-whitening-lg', 'ubtan-powder', 'hair-mask']
             }
         ];
 
@@ -563,7 +563,7 @@
 
                         <h3 class="text-lg sm:text-xl font-bold text-brand-dark mb-3">${b.name}</h3>
 
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-brand-bg p-3 rounded-xl border border-emerald-100 mb-4">
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 bg-brand-bg p-3 rounded-xl border border-emerald-100 mb-4">
                             ${b.items.map(item => `
                                 <div class="flex flex-col items-center text-center bg-white p-2 rounded-lg border border-gray-100 shadow-sm">
                                     <div class="w-full h-24 sm:h-28 flex items-center justify-center bg-gray-50/60 rounded-md mb-1.5 p-1 overflow-hidden">
