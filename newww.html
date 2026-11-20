@@ -16,18 +16,15 @@
 
   <style>
     :root {
-      --bg-page: #f7f9f7;
-      --bg-card: #ffffff;
-      --bg-soft: #eef3ef;
+      --bg-organic-white: linear-gradient(180deg, #fafbf8 0%, #f1f5ee 55%, #e8efe3 100%);
+      --bg-card: rgba(255, 255, 255, 0.92);
       --border-gold: #b89246;
-      --gold-dark: #8a6824;
-      --accent-color: #2e6f40;
-      --accent-hover: #225430;
-      --text-main: #18221b;
-      --text-muted: #58695d;
-      --border-light: #dce5de;
-      --shadow-soft: 0 10px 30px rgba(24, 34, 27, 0.06);
-      --shadow-hover: 0 14px 34px rgba(46, 111, 64, 0.14);
+      --gold-dark: #7a5c1f;
+      --accent-color: #2e7d32;
+      --accent-soft: rgba(46, 125, 50, 0.12);
+      --glow-color: rgba(46, 125, 50, 0.16);
+      --text-main: #1b261e;
+      --text-muted: #526356;
     }
 
     * {
@@ -37,8 +34,13 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: var(--bg-page);
+      background: var(--bg-organic-white);
+      background-attachment: fixed;
       color: var(--text-main);
       line-height: 1.65;
       overflow-x: hidden;
@@ -54,12 +56,13 @@
     /* Header */
     header {
       background: rgba(255, 255, 255, 0.94);
-      border-bottom: 1px solid var(--border-light);
+      border-bottom: 1px solid rgba(184, 146, 70, 0.35);
       position: sticky;
       top: 0;
       z-index: 1000;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
       padding: 14px 24px;
+      box-shadow: 0 4px 20px rgba(27, 38, 30, 0.05);
     }
 
     .header-container {
@@ -83,7 +86,7 @@
       font-family: 'Cinzel', serif;
       font-size: 1.4rem;
       font-weight: 700;
-      color: var(--text-main);
+      color: var(--gold-dark);
     }
 
     .header-actions {
@@ -112,13 +115,13 @@
     }
 
     .lang-btn {
-      background: var(--bg-card);
+      background: rgba(184, 146, 70, 0.12);
       border: 1px solid var(--border-gold);
       color: var(--gold-dark);
+      font-weight: 600;
       padding: 8px 16px;
       border-radius: 20px;
       cursor: pointer;
-      font-weight: 600;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -126,34 +129,34 @@
     }
 
     .lang-btn:hover {
-      background: var(--bg-soft);
+      background: rgba(184, 146, 70, 0.22);
     }
 
     /* Main Container */
     .main-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 34px 20px 50px;
+      padding: 32px 20px 45px;
     }
 
-    .page-intro {
+    .section-heading {
       text-align: center;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
-    .page-intro h2 {
+    .section-heading h1 {
       font-family: 'Cinzel', serif;
-      font-size: 1.9rem;
+      font-size: 2.1rem;
       color: var(--text-main);
       margin-bottom: 6px;
     }
 
-    .page-intro p {
+    .section-heading p {
       color: var(--text-muted);
       font-size: 0.98rem;
     }
 
-    /* 3 Soaps Front Selector Cards */
+    /* 3 Visible Soap Selector Cards on Screen */
     .soaps-selector-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -164,22 +167,24 @@
     @media (max-width: 850px) {
       .soaps-selector-grid {
         grid-template-columns: 1fr;
+        gap: 14px;
+        margin-bottom: 26px;
       }
     }
 
     .soap-select-card {
       background: var(--bg-card);
-      border: 1.5px solid var(--border-light);
-      border-radius: 18px;
+      border: 1.5px solid rgba(184, 146, 70, 0.35);
+      border-radius: 20px;
       padding: 18px;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 16px;
-      box-shadow: var(--shadow-soft);
+      box-shadow: 0 8px 24px rgba(27, 38, 30, 0.06);
       transition: all 0.25s ease;
       text-align: left;
-      width: 100%;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body.lang-ur .soap-select-card {
@@ -187,24 +192,24 @@
     }
 
     .soap-select-card:hover {
-      border-color: var(--border-gold);
+      border-color: var(--accent-color);
       transform: translateY(-3px);
-      box-shadow: var(--shadow-hover);
+      box-shadow: 0 12px 28px var(--glow-color);
     }
 
     .soap-select-card.active {
       background: #ffffff;
-      border-color: var(--accent-color);
-      box-shadow: 0 0 0 2px rgba(46, 111, 64, 0.16), var(--shadow-hover);
+      border: 2px solid var(--accent-color);
+      box-shadow: 0 12px 30px var(--glow-color);
     }
 
     .soap-thumb-box {
-      width: 72px;
-      height: 72px;
-      min-width: 72px;
+      width: 78px;
+      height: 78px;
+      min-width: 78px;
       border-radius: 14px;
-      background: var(--bg-soft);
-      border: 1px solid var(--border-light);
+      background: #f6f8f4;
+      border: 1px solid rgba(184, 146, 70, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -220,70 +225,82 @@
     }
 
     .soap-thumb-box i {
-      font-size: 1.8rem;
+      font-size: 2rem;
       color: var(--accent-color);
     }
 
     .soap-card-info h3 {
+      font-family: 'Cinzel', serif;
       font-size: 1.08rem;
-      font-weight: 700;
       color: var(--text-main);
       margin-bottom: 4px;
     }
 
     .soap-card-info span {
       display: inline-block;
-      font-size: 0.82rem;
-      font-weight: 600;
+      font-size: 0.78rem;
+      font-weight: 700;
       color: var(--accent-color);
+      background: var(--accent-soft);
+      padding: 3px 10px;
+      border-radius: 12px;
     }
 
-    /* Selected Soap Showcase Card */
-    .detail-hero-card {
+    /* Selected Soap Details & Making Video Banner */
+    .selected-banner-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-light);
-      border-radius: 22px;
+      border: 1px solid rgba(184, 146, 70, 0.45);
+      border-radius: 24px;
       padding: 36px;
-      box-shadow: var(--shadow-soft);
+      box-shadow: 0 14px 34px rgba(27, 38, 30, 0.08);
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 36px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 32px;
       align-items: center;
       margin-bottom: 36px;
+      scroll-margin-top: 85px;
     }
 
     @media (max-width: 850px) {
-      .detail-hero-card {
+      .selected-banner-card {
         grid-template-columns: 1fr;
-        padding: 24px;
+        padding: 22px;
         text-align: center;
+        gap: 24px;
+        scroll-margin-top: 78px;
       }
     }
 
     .product-badge {
       display: inline-block;
-      padding: 6px 14px;
+      padding: 6px 15px;
       border-radius: 20px;
-      background: var(--bg-soft);
-      border: 1px solid rgba(184, 146, 70, 0.45);
-      color: var(--gold-dark);
+      background: var(--accent-soft);
+      border: 1px solid rgba(46, 125, 50, 0.35);
+      color: var(--accent-color);
       font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 1.5px;
-      margin-bottom: 14px;
+      letter-spacing: 1.4px;
+      margin-bottom: 12px;
     }
 
     .hero-title {
       font-family: 'Cinzel', serif;
-      font-size: 2.15rem;
+      font-size: 2.05rem;
       color: var(--text-main);
       margin-bottom: 12px;
     }
 
+    @media (max-width: 850px) {
+      .hero-title {
+        font-size: 1.65rem;
+      }
+    }
+
     .hero-subtitle {
       color: var(--text-muted);
-      font-size: 1.03rem;
-      margin-bottom: 24px;
+      font-size: 1.02rem;
+      margin-bottom: 22px;
     }
 
     .hero-actions {
@@ -299,7 +316,7 @@
     }
 
     .btn-inquire {
-      background: var(--accent-color);
+      background: #1ea952;
       color: #fff;
       text-decoration: none;
       padding: 12px 26px;
@@ -308,66 +325,71 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      transition: background 0.25s ease;
+      box-shadow: 0 6px 18px rgba(30, 169, 82, 0.25);
+      transition: all 0.25s ease;
     }
 
     .btn-inquire:hover {
-      background: var(--accent-hover);
+      background: #15803d;
     }
 
-    /* Product Display Showcase Box */
-    .hero-image-box {
+    /* Making Video Embed Container */
+    .hero-video-wrapper {
       width: 100%;
-      max-width: 310px;
-      height: 310px;
-      border-radius: 18px;
-      background: var(--bg-soft);
-      border: 1.5px solid var(--border-light);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-      padding: 14px;
     }
 
-    .hero-image-box img {
+    .video-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--gold-dark);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .hero-video-box {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 18px;
+      background: #101712;
+      border: 2px solid rgba(184, 146, 70, 0.55);
+      box-shadow: 0 12px 28px rgba(27, 38, 30, 0.14);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-video-box iframe {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      border-radius: 10px;
+      border: none;
       display: block;
     }
 
-    .hero-image-box i {
-      font-size: 5rem;
-      color: var(--accent-color);
-    }
-
-    /* Cards Grid */
+    /* Detailed Content Grid */
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 24px;
       margin-bottom: 36px;
     }
 
     .card {
       background: var(--bg-card);
-      border: 1px solid var(--border-light);
+      border: 1px solid rgba(184, 146, 70, 0.35);
       border-radius: 18px;
       padding: 26px;
-      box-shadow: var(--shadow-soft);
+      box-shadow: 0 8px 24px rgba(27, 38, 30, 0.06);
     }
 
     .card-title {
       font-family: 'Cinzel', serif;
       font-size: 1.2rem;
-      color: var(--text-main);
+      color: var(--gold-dark);
       margin-bottom: 16px;
-      border-bottom: 1px solid var(--border-light);
+      border-bottom: 1px solid rgba(184, 146, 70, 0.25);
       padding-bottom: 10px;
     }
 
@@ -381,7 +403,6 @@
       align-items: flex-start;
       gap: 10px;
       color: var(--text-main);
-      font-size: 0.95rem;
     }
 
     .card-list li i {
@@ -392,10 +413,10 @@
     /* Benefits Section */
     .full-width-card {
       background: var(--bg-card);
-      border: 1px solid var(--border-light);
+      border: 1px solid rgba(184, 146, 70, 0.45);
       border-radius: 20px;
       padding: 32px;
-      box-shadow: var(--shadow-soft);
+      box-shadow: 0 10px 28px rgba(27, 38, 30, 0.07);
     }
 
     .benefits-grid {
@@ -406,26 +427,20 @@
     }
 
     .benefit-item {
-      background: var(--bg-soft);
-      border: 1px solid var(--border-light);
+      background: #f8faf6;
+      border: 1px solid rgba(184, 146, 70, 0.3);
       padding: 18px;
       border-radius: 14px;
     }
 
     .benefit-item h4 {
-      color: var(--text-main);
-      margin-bottom: 6px;
-      font-size: 1rem;
-    }
-
-    .benefit-item h4 i {
       color: var(--gold-dark);
-      margin-right: 6px;
+      margin-bottom: 6px;
     }
 
     .benefit-item p {
       color: var(--text-muted);
-      font-size: 0.92rem;
+      font-size: 0.94rem;
     }
 
     /* Modal Styling */
@@ -435,8 +450,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(15, 23, 18, 0.55);
-      backdrop-filter: blur(6px);
+      background: rgba(18, 28, 21, 0.65);
+      backdrop-filter: blur(8px);
       display: none;
       justify-content: center;
       align-items: center;
@@ -448,8 +463,8 @@
     }
 
     .lang-modal {
-      background: var(--bg-card);
-      border: 1.5px solid var(--border-gold);
+      background: #ffffff;
+      border: 2px solid var(--border-gold);
       border-radius: 20px;
       width: 90%;
       max-width: 600px;
@@ -457,17 +472,17 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      padding: 24px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      padding: 25px;
+      color: var(--text-main);
     }
 
     .lang-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--border-light);
-      padding-bottom: 14px;
-      margin-bottom: 18px;
+      border-bottom: 1px solid rgba(184, 146, 70, 0.3);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .language-grid {
@@ -481,8 +496,8 @@
     .lang-item {
       padding: 10px;
       border-radius: 8px;
-      background: var(--bg-soft);
-      border: 1px solid var(--border-light);
+      background: #f6f8f4;
+      border: 1px solid rgba(184, 146, 70, 0.25);
       color: var(--text-main);
       cursor: pointer;
       text-align: center;
@@ -491,7 +506,7 @@
 
     .lang-item:hover {
       border-color: var(--border-gold);
-      background: #e3ece5;
+      background: rgba(184, 146, 70, 0.16);
       color: var(--gold-dark);
       font-weight: 600;
     }
@@ -503,9 +518,9 @@
     footer {
       text-align: center;
       padding: 28px;
-      border-top: 1px solid var(--border-light);
-      background: var(--bg-card);
+      border-top: 1px solid rgba(184, 146, 70, 0.28);
       color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.7);
     }
   </style>
 </head>
@@ -537,53 +552,20 @@
 
   <div class="main-container">
 
-    <div class="page-intro">
-      <h2>Our Organic Soaps</h2>
-      <p>Select any soap below to view its ingredients, specialized care, usage, and benefits.</p>
+    <div class="section-heading">
+      <h1>Handcrafted Organic Soaps</h1>
+      <p>Select any soap below to watch its making process and view complete ingredients & usage details.</p>
     </div>
 
-    <!-- 3 Soaps Visible on Screen -->
-    <div class="soaps-selector-grid" id="soapsSelectorGrid">
-      <button type="button" class="soap-select-card active" onclick="selectSoap(0)">
-        <div class="soap-thumb-box">
-          <img src="https://lh3.googleusercontent.com/d/1538Hm63VUyCYhRLLLlJ2lQzL4Hf1csnJ" alt="Neem Soap" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <i class="fa-solid fa-seedling" style="display:none;"></i>
-        </div>
-        <div class="soap-card-info">
-          <h3>Neem Soap</h3>
-          <span>View Details &rarr;</span>
-        </div>
-      </button>
+    <!-- All 3 Soaps Visible on Screen Together (With Product Pictures) -->
+    <div class="soaps-selector-grid" id="soapsSelectorGrid"></div>
 
-      <button type="button" class="soap-select-card" onclick="selectSoap(1)">
-        <div class="soap-thumb-box">
-          <img src="https://lh3.googleusercontent.com/d/1r06Y5UCh9FAUYCgvQggHkaGD1kVk1RhR" alt="Whitening Soap" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <i class="fa-solid fa-sparkles" style="display:none;"></i>
-        </div>
-        <div class="soap-card-info">
-          <h3>Whitening Soap</h3>
-          <span>View Details &rarr;</span>
-        </div>
-      </button>
-
-      <button type="button" class="soap-select-card" onclick="selectSoap(2)">
-        <div class="soap-thumb-box">
-          <img src="IMAGE_URL_LOOFAH_HERE.jpg" alt="Loofah Scrub Soap" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <i class="fa-solid fa-spa" style="display:none;"></i>
-        </div>
-        <div class="soap-card-info">
-          <h3>Loofah Scrub Soap</h3>
-          <span>View Details &rarr;</span>
-        </div>
-      </button>
-    </div>
-
-    <!-- Selected Soap Showcase -->
-    <div class="detail-hero-card" id="heroCard">
+    <!-- Selected Soap Details + Making Video Embed Banner -->
+    <div class="selected-banner-card" id="heroCard">
       <div class="hero-text-content">
         <span class="product-badge" id="heroBadge">100% PURE & CHEMICAL-FREE</span>
-        <h1 class="hero-title" id="heroTitle">Fangam Organic Neem Soap</h1>
-        <p class="hero-subtitle" id="heroSubtitle">Authentic Ayurvedic Cold-Pressed Neem Formula Specially Designed for Acne, Skin Infections, and Deep Pore Cleansing.</p>
+        <h2 class="hero-title" id="heroTitle">Fangam Organic Neem Soap</h2>
+        <p class="hero-subtitle" id="heroSubtitle">Authentic Ayurvedic Cold-Pressed Neem Formula Specially Designed for Acne, Skin Infections & Deep Pore Cleansing.</p>
 
         <div class="hero-actions">
           <a href="#" class="btn-inquire" id="heroWaBtn" target="_blank">
@@ -592,10 +574,21 @@
         </div>
       </div>
 
-      <!-- Product Display Showcase Box -->
-      <div class="hero-image-box" id="heroImgBox">
-        <img id="heroImage" src="" alt="Soap Image" style="display:none;">
-        <i class="fa-solid fa-soap" id="heroIcon"></i>
+      <!-- Making Video Embed Box -->
+      <div class="hero-video-wrapper">
+        <div class="video-label">
+          <i class="fa-solid fa-circle-play"></i>
+          <span>Handmade Making Process / تیاری کی ویڈیو</span>
+        </div>
+        <div class="hero-video-box">
+          <iframe
+            id="heroVideoFrame"
+            src=""
+            title="Soap Making Video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
     </div>
 
@@ -619,7 +612,7 @@
 
     <!-- Benefits Section -->
     <div class="full-width-card">
-      <h2 style="color: var(--text-main); font-family: 'Cinzel', serif; text-align: center; margin-bottom: 10px;" id="benefitsTitle">
+      <h2 style="color: var(--gold-dark); font-family: 'Cinzel', serif; text-align: center; margin-bottom: 10px;" id="benefitsTitle">
         Proven Benefits
       </h2>
       <div class="benefits-grid" id="benefitsGrid"></div>
@@ -631,8 +624,8 @@
   <div class="lang-modal-overlay" id="langModal">
     <div class="lang-modal">
       <div class="lang-header">
-        <h3 style="color: var(--text-main); font-family: 'Cinzel', serif;">Select Language / زبان منتخب کریں</h3>
-        <button type="button" style="background:none; border:none; color:var(--text-main); font-size:1.5rem; cursor:pointer;" id="closeLangBtn">&times;</button>
+        <h3 style="color: var(--gold-dark); font-family: 'Cinzel', serif;">Select Language / زبان منتخب کریں</h3>
+        <button style="background:none; border:none; color:#1b261e; font-size:1.5rem; cursor:pointer;" id="closeLangBtn">&times;</button>
       </div>
 
       <div class="language-grid">
@@ -688,33 +681,25 @@
   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
+    /* =========================================================================
+       تینوں صابنوں کی تصاویر (image) اور میکنگ ویڈیو کے ایمبیڈ لنکس (videoEmbed)
+       جب آپ اپنی میکنگ ویڈیوز اپلوڈ کریں تو صرف videoEmbed کا لنک تبدیل کر دیں
+       ========================================================================= */
     const soapsData = [
       {
         id: "neem",
+        shortName: "Neem Soap",
         badge: "100% PURE & CHEMICAL-FREE",
         title: "Fangam Organic Neem Soap",
         icon: "fa-seedling",
+        // اوپر سلیکشن کارڈ کی تصویر:
         image: "https://lh3.googleusercontent.com/d/1538Hm63VUyCYhRLLLlJ2lQzL4Hf1csnJ",
+        // نیچے میکنگ ویڈیو کا ایمبیڈ لنک (فرضی ڈیمو لنک، یہاں اپنا یوٹیوب ایمبیڈ لنک لگائیں):
+        videoEmbed: "https://www.youtube.com/embed/LXb3EKWsInQ?rel=0",
         subtitle: "Authentic Ayurvedic Cold-Pressed Neem Formula Specially Designed for Acne, Skin Infections, and Deep Pore Cleansing.",
-        ingredients: [
-          "Pure Cold-Pressed Neem Oil",
-          "Organic Neem Leaf Extracts",
-          "Natural Vegetable Oils Base",
-          "Pure Botanical Glycerine",
-          "0% Harmful Chemicals & Detergents"
-        ],
-        specialCare: [
-          "<strong>Acne & Pimples:</strong> Fights acne-causing bacteria.",
-          "<strong>Boils & Rash:</strong> Relieves skin eruptions.",
-          "<strong>Body Acne:</strong> Clears back and chest acne.",
-          "<strong>Oil Control:</strong> Balances excessive facial oil."
-        ],
-        usage: [
-          "Wet face & body with lukewarm water.",
-          "Massage foam gently for 1-2 minutes.",
-          "Rinse thoroughly with fresh water.",
-          "Use twice daily for clear skin."
-        ],
+        ingredients: ["Pure Cold-Pressed Neem Oil", "Organic Neem Leaf Extracts", "Natural Vegetable Oils Base", "Pure Botanical Glycerine", "0% Harmful Chemicals & Detergents"],
+        specialCare: ["<strong>Acne & Pimples:</strong> Fights acne-causing bacteria.", "<strong>Boils & Rash:</strong> Relieves skin eruptions.", "<strong>Body Acne:</strong> Clears back and chest acne.", "<strong>Oil Control:</strong> Balances excessive facial oil."],
+        usage: ["Wet face & body with lukewarm water.", "Massage foam gently for 1-2 minutes.", "Rinse thoroughly with fresh water.", "Use twice daily for clear skin."],
         benefits: [
           { title: "Antibacterial Action", desc: "Kills deep-seated bacteria inside skin pores." },
           { title: "Calms Irritation", desc: "Relieves skin redness, itching, and heat rash." },
@@ -724,30 +709,18 @@
       },
       {
         id: "whitening",
+        shortName: "Whitening Soap",
         badge: "100% PURE & RADIANCE FORMULA",
         title: "Pure Organic Whitening Soap",
         icon: "fa-sparkles",
+        // اوپر سلیکشن کارڈ کی تصویر:
         image: "https://lh3.googleusercontent.com/d/1r06Y5UCh9FAUYCgvQggHkaGD1kVk1RhR",
+        // نیچے میکنگ ویڈیو کا ایمبیڈ لنک (فرضی ڈیمو لنک، یہاں اپنا یوٹیوب ایمبیڈ لنک لگائیں):
+        videoEmbed: "https://www.youtube.com/embed/aqz-KE-bpKQ?rel=0",
         subtitle: "Enriched with Natural Skin Whitening Actives, Glutathione, Alpha Arbutin, Kojic Acid, Pure Goat Milk & Vitamin C for Crystal-Clear Skin.",
-        ingredients: [
-          "Alpha Arbutin & Kojic Acid",
-          "L-Glutathione Antioxidant",
-          "Pure Goat Milk (Lactic Acid)",
-          "Vitamin C & Niacinamide",
-          "Licorice Root & Mulberry Extract"
-        ],
-        specialCare: [
-          "<strong>Melasma & Dark Spots:</strong> Fades stubborn pigmentation.",
-          "<strong>Sun Tan Removal:</strong> Brightens face, neck & body.",
-          "<strong>Dark Joints:</strong> Brightens knees, underarms & knuckles.",
-          "<strong>Acne Scars:</strong> Lightens post-acne dark marks."
-        ],
-        usage: [
-          "Apply lather gently on wet skin.",
-          "Leave lather on skin for 1 to 2 minutes.",
-          "Rinse thoroughly with cold water.",
-          "Use twice daily for best whitening results."
-        ],
+        ingredients: ["Alpha Arbutin & Kojic Acid", "L-Glutathione Antioxidant", "Pure Goat Milk (Lactic Acid)", "Vitamin C & Niacinamide", "Licorice Root & Mulberry Extract"],
+        specialCare: ["<strong>Melasma & Dark Spots:</strong> Fades stubborn pigmentation.", "<strong>Sun Tan Removal:</strong> Brightens face, neck & body.", "<strong>Dark Joints:</strong> Brightens knees, underarms & knuckles.", "<strong>Acne Scars:</strong> Lightens post-acne dark marks."],
+        usage: ["Apply lather gently on wet skin.", "Leave lather on skin for 1 to 2 minutes.", "Rinse thoroughly with cold water.", "Use twice daily for best whitening results."],
         benefits: [
           { title: "Melanin Inhibition", desc: "Blocks dark pigment formation naturally." },
           { title: "Natural Radiance", desc: "Unveils smooth, glass-like skin clarity." },
@@ -757,30 +730,18 @@
       },
       {
         id: "loofah",
+        shortName: "Loofah Scrub Soap",
         badge: "100% NATURAL LOOFAH EXFOLIATOR",
         title: "Pure Organic Loofah Scrub Soap",
         icon: "fa-spa",
-        image: "IMAGE_URL_LOOFAH_HERE.jpg",
+        // اوپر سلیکشن کارڈ کی تصویر:
+        image: "IMAGE_URL_4_HERE.jpg",
+        // نیچے میکنگ ویڈیو کا ایمبیڈ لنک (فرضی ڈیمو لنک، یہاں اپنا یوٹیوب ایمبیڈ لنک لگائیں):
+        videoEmbed: "https://www.youtube.com/embed/jNQXAC9IVRw?rel=0",
         subtitle: "Embedded Natural Luffa Plant Sponge Combined with Honey & Sweet Almond Oil for Intense Skin Scrubbing, Rough Elbows & Heel Smoothing.",
-        ingredients: [
-          "Embedded Natural Luffa Plant Fiber",
-          "Organic Raw Honey Extract",
-          "Sweet Almond & Coconut Oil Base",
-          "Vitamin E & Shea Butter",
-          "0% Harsh Synthetic Beads"
-        ],
-        specialCare: [
-          "<strong>Cracked Heel Repair:</strong> Softens and smooths rough feet heels.",
-          "<strong>Rough Elbows & Knees:</strong> Scrubs away stubborn dark friction spots.",
-          "<strong>Ingrown Hair Prevention:</strong> Clears dead skin buildup.",
-          "<strong>Body Exfoliation:</strong> Stimulates skin micro-circulation."
-        ],
-        usage: [
-          "Soak soap in warm water to soften loofah fiber.",
-          "Scrub gently over feet, heels, knees, and body.",
-          "Rinse thoroughly and pat dry.",
-          "Use 2-3 times weekly for baby-smooth skin."
-        ],
+        ingredients: ["Embedded Natural Luffa Plant Fiber", "Organic Raw Honey Extract", "Sweet Almond & Coconut Oil Base", "Vitamin E & Shea Butter", "0% Harsh Synthetic Beads"],
+        specialCare: ["<strong>Cracked Heel Repair:</strong> Softens and smooths rough feet heels.", "<strong>Rough Elbows & Knees:</strong> Scrubs away stubborn dark friction spots.", "<strong>Ingrown Hair Prevention:</strong> Clears dead skin buildup.", "<strong>Body Exfoliation:</strong> Stimulates skin micro-circulation."],
+        usage: ["Soak soap in warm water to soften loofah fiber.", "Scrub gently over feet, heels, knees, and body.", "Rinse thoroughly and pat dry.", "Use 2-3 times weekly for baby-smooth skin."],
         benefits: [
           { title: "Plant Exfoliation", desc: "100% natural luffa sponge without micro-plastics." },
           { title: "Deep Heel Smoothing", desc: "Effortlessly scrubs away cracked dead skin." },
@@ -790,62 +751,76 @@
       }
     ];
 
+    let currentSoapIndex = 0;
+
+    function buildSelectorCards() {
+      const grid = document.getElementById('soapsSelectorGrid');
+      grid.innerHTML = soapsData.map((soap, idx) => {
+        const hasValidImg = soap.image && soap.image !== "" && !soap.image.includes("IMAGE_URL");
+        return `
+          <div class="soap-select-card ${idx === currentSoapIndex ? 'active' : ''}" onclick="selectSoap(${idx})">
+            <div class="soap-thumb-box">
+              ${hasValidImg
+                ? `<img src="${soap.image}" alt="${soap.shortName}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                   <i class="fa-solid ${soap.icon}" style="display:none;"></i>`
+                : `<i class="fa-solid ${soap.icon}"></i>`
+              }
+            </div>
+            <div class="soap-card-info">
+              <h3>${soap.shortName}</h3>
+              <span>${idx === currentSoapIndex ? 'Selected • View Below' : 'Click for Details'}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
     function renderSoap(index) {
+      currentSoapIndex = index;
       const soap = soapsData[index];
 
-      document.querySelectorAll('.soap-select-card').forEach((card, i) => {
-        card.classList.toggle('active', i === index);
-      });
+      buildSelectorCards();
 
       document.getElementById('heroBadge').textContent = soap.badge;
       document.getElementById('heroTitle').textContent = soap.title;
       document.getElementById('heroSubtitle').textContent = soap.subtitle;
 
-      const imgElem = document.getElementById('heroImage');
-      const iconElem = document.getElementById('heroIcon');
-
-      if (soap.image && soap.image !== "" && !soap.image.includes("IMAGE_URL")) {
-        imgElem.src = soap.image;
-        imgElem.style.display = "block";
-        iconElem.style.display = "none";
-        imgElem.onerror = function() {
-          imgElem.style.display = "none";
-          iconElem.style.display = "block";
-          iconElem.className = `fa-solid ${soap.icon}`;
-        };
-      } else {
-        imgElem.style.display = "none";
-        iconElem.style.display = "block";
-        iconElem.className = `fa-solid ${soap.icon}`;
+      // Update Making Video Embed URL
+      const videoFrame = document.getElementById('heroVideoFrame');
+      if (videoFrame.src !== soap.videoEmbed) {
+        videoFrame.src = soap.videoEmbed;
       }
 
       const waMsg = encodeURIComponent(`Hello Fangam Organic, I would like to know more details about ${soap.title}.`);
       document.getElementById('heroWaBtn').href = `https://wa.me/923006132921?text=${waMsg}`;
 
-      document.getElementById('ingredientsList').innerHTML = soap.ingredients
-        .map(ing => `<li><i class="fa-solid fa-check-circle"></i> <span>${ing}</span></li>`)
-        .join('');
+      document.getElementById('ingredientsList').innerHTML = soap.ingredients.map(ing => `<li><i class="fa-solid fa-check-circle"></i> <span>${ing}</span></li>`).join('');
+      document.getElementById('specialCareList').innerHTML = soap.specialCare.map(care => `<li><i class="fa-solid fa-circle-dot"></i> <span>${care}</span></li>`).join('');
+      document.getElementById('usageList').innerHTML = soap.usage.map(u => `<li><i class="fa-solid fa-droplet"></i> <span>${u}</span></li>`).join('');
 
-      document.getElementById('specialCareList').innerHTML = soap.specialCare
-        .map(care => `<li><i class="fa-solid fa-circle-dot"></i> <span>${care}</span></li>`)
-        .join('');
-
-      document.getElementById('usageList').innerHTML = soap.usage
-        .map(u => `<li><i class="fa-solid fa-droplet"></i> <span>${u}</span></li>`)
-        .join('');
-
-      document.getElementById('benefitsGrid').innerHTML = soap.benefits
-        .map(b => `
-          <div class="benefit-item">
-            <h4><i class="fa-solid fa-star"></i> ${b.title}</h4>
-            <p>${b.desc}</p>
-          </div>
-        `)
-        .join('');
+      document.getElementById('benefitsGrid').innerHTML = soap.benefits.map(b => `
+        <div class="benefit-item">
+          <h4><i class="fa-solid fa-star"></i> ${b.title}</h4>
+          <p>${b.desc}</p>
+        </div>
+      `).join('');
     }
 
     function selectSoap(index) {
       renderSoap(index);
+
+      // موبائل اسکرین پر کلک کرنے پر خود بخود تفصیلات اور ویڈیو والے حصے کو اوپر لے آئے
+      if (window.innerWidth <= 850) {
+        const heroSection = document.getElementById('heroCard');
+        const headerOffset = 75;
+        const elementPosition = heroSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
     }
 
     function translatePage(langCode) {
