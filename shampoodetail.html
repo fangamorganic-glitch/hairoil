@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fengam Organic | Sulphate & Paraben Free Herbal Shampoo</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cormorant Garamond, Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Botanical & UI Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            950: '#0C2418',
+                            900: '#123524',
+                            800: '#1B4332',
+                            700: '#275943',
+                            100: '#E8EFEA',
+                            50:  '#F3F7F4'
+                        },
+                        cream: {
+                            50:  '#FAF7F2',
+                            100: '#F2ECE1',
+                            200: '#E4DAC8'
+                        },
+                        gold: {
+                            400: '#D8B878',
+                            500: '#C5A059',
+                            600: '#A6823E'
+                        }
+                    },
+                    fontFamily: {
+                        serifDisplay: ['"Cormorant Garamond"', '"Playfair Display"', 'serif'],
+                        sansMain: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styling for Luxury Organic Aesthetic & Clean Google Translate Integration -->
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #FAF7F2;
+            color: #1E293B;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            top: 0 !important;
+        }
+        .botanical-bg {
+            background-image: radial-gradient(rgba(197, 160, 89, 0.14) 1px, transparent 1px),
+                              radial-gradient(rgba(18, 53, 36, 0.07) 1px, #FAF7F2 1px);
+            background-size: 36px 36px;
+            background-position: 0 0, 18px 18px;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0C2418 0%, #123524 55%, #1B4332 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(197, 160, 89, 0.32);
+        }
+        .video-glow {
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(197, 160, 89, 0.35);
+        }
+        @keyframes pulseSlow {
+            0%, 100% { transform: scale(1); opacity: 0.92; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+        .animate-pulse-slow {
+            animation: pulseSlow 3.5s infinite ease-in-out;
+        }
+
+        /* Hide default Google Translate top banner & widget chrome so our custom switcher stays clean */
+        .goog-te-banner-frame.skiptranslate,
+        .goog-te-gadget-icon,
+        #goog-gt-tt,
+        .goog-te-balloon-frame,
+        .VIpgJd-ZVi9od-ORHb-OEVmcd,
+        .VIpgJd-ZVi9od-l4eHX-hSRGPd {
+            display: none !important;
+        }
+        body > .skiptranslate {
+            display: none !important;
+        }
+        font {
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+        /* Custom scrollbar for language dropdown */
+        .lang-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .lang-scroll::-webkit-scrollbar-track {
+            background: #0C2418;
+        }
+        .lang-scroll::-webkit-scrollbar-thumb {
+            background: #C5A059;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="botanical-bg antialiased selection:bg-forest-900 selection:text-gold-400">
+
+    <!-- Hidden container required by Google Translate engine -->
+    <div id="google_translate_element" class="hidden"></div>
+
+    <!-- ===================================================================== -->
+    <!-- MINIMAL TOP HEADER (BRAND LEFT + 28-LANGUAGE SELECTOR RIGHT)          -->
+    <!-- ===================================================================== -->
+    <header class="sticky top-0 z-50 bg-forest-950/95 backdrop-blur-md border-b border-gold-500/20 text-cream-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Brand Identity (Left) -->
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-gold-400 to-gold-600 flex items-center justify-center text-forest-950 shadow-lg">
+                    <i class="fa-solid fa-seedling text-xl"></i>
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-serifDisplay text-2xl sm:text-3xl font-bold tracking-wider text-white">FENGAM</span>
+                        <span class="text-[11px] uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-gold-500/20 text-gold-400 border border-gold-500/30 font-semibold">Organic</span>
+                    </div>
+                    <p class="text-[11px] text-cream-200/75 tracking-wide -mt-0.5">Pure Botanical Hair Care</p>
+                </div>
+            </div>
+
+            <!-- Multi-Language Selector Button & Dropdown (Right) -->
+            <div class="relative notranslate" translate="no">
+                <button 
+                    id="lang-menu-btn"
+                    type="button"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    class="inline-flex items-center gap-2.5 bg-forest-900 hover:bg-forest-800 text-cream-50 border border-gold-500/40 px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium shadow-md transition-all cursor-pointer">
+                    <i class="fa-solid fa-globe text-gold-400 text-sm sm:text-base"></i>
+                    <span id="current-lang-label">English</span>
+                    <i id="lang-chevron" class="fa-solid fa-chevron-down text-[10px] text-gold-400 transition-transform duration-200"></i>
+                </button>
+
+                <!-- Dropdown Menu (28 Major World & Regional Languages) -->
+                <div 
+                    id="lang-dropdown"
+                    class="hidden absolute right-0 mt-2.5 w-64 sm:w-72 rounded-2xl bg-forest-950 border border-gold-500/40 shadow-2xl overflow-hidden z-50">
+                    <div class="px-4 py-2.5 bg-forest-900/90 border-b border-gold-500/20 flex items-center justify-between">
+                        <span class="text-[11px] font-semibold uppercase tracking-wider text-gold-400">Select Language</span>
+                        <span class="text-[10px] text-cream-200/60">28 Languages</span>
+                    </div>
+                    <div id="lang-list" class="max-h-80 overflow-y-auto lang-scroll divide-y divide-white/5 py-1">
+                        <!-- Language options populated cleanly via JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ===================================================================== -->
+    <!-- HERO SECTION: PRODUCT TITLE + LARGE CINEMATIC MAKING VIDEO SCREEN     -->
+    <!-- ===================================================================== -->
+    <section class="hero-gradient text-cream-50 relative overflow-hidden pt-10 pb-16 sm:pt-14 sm:pb-24">
+        <!-- Decorative Subtle Botanical Watermarks -->
+        <div class="absolute top-10 right-10 text-gold-500/10 text-9xl pointer-events-none select-none">
+            <i class="fa-solid fa-leaf"></i>
+        </div>
+        <div class="absolute bottom-10 left-10 text-gold-500/10 text-9xl pointer-events-none select-none rotate-45">
+            <i class="fa-solid fa-spa"></i>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Top Purity Pill Badges -->
+            <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 mb-8">
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-gold-400/40 text-gold-400 text-xs sm:text-sm font-semibold">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>100% Sulphate & Paraben Free • Botanical Formula</span>
+                </span>
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-cream-100 text-xs sm:text-sm">
+                    <i class="fa-solid fa-mortar-pestle text-gold-400"></i>
+                    <span>Small-Batch Herbal Infusion</span>
+                </span>
+            </div>
+
+            <!-- Main Hero Layout: Product Story + Large Making Video Frame -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+                
+                <!-- Product Title & Description Column (5 Cols) -->
+                <div class="lg:col-span-5 text-center lg:text-left space-y-5">
+                    <div class="inline-block px-3 py-1 rounded-lg bg-gold-500/20 text-gold-400 text-xs uppercase tracking-widest font-bold">
+                        FENGAM ORGANIC SIGNATURE FORMULATION
+                    </div>
+                    
+                    <h1 class="font-serifDisplay text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                        Fengam Organic
+                        <span class="block text-gold-400 italic mt-1">Herbal Shampoo</span>
+                    </h1>
+                    
+                    <p class="text-sm sm:text-base font-medium text-cream-200/90 tracking-wide">
+                        Sulphate-Free • Paraben-Free • Silicone-Free • Cold-Infused
+                    </p>
+
+                    <p class="text-cream-100/90 text-base leading-relaxed">
+                        Crafted without harsh synthetic detergents, artificial fragrances, or toxic preservatives. Our pure botanical decoction gently cleanses the scalp, strengthens hair follicles from the root, eliminates dandruff, and restores natural shine and volume.
+                    </p>
+
+                    <!-- Highlights Mini Grid -->
+                    <div class="grid grid-cols-2 gap-3 pt-2 text-left">
+                        <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+                            <i class="fa-solid fa-droplet-slash text-gold-400 text-lg"></i>
+                            <span class="text-xs sm:text-sm font-medium">Zero SLS / SLES & Parabens</span>
+                        </div>
+                        <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+                            <i class="fa-solid fa-leaf text-gold-400 text-lg"></i>
+                            <span class="text-xs sm:text-sm font-medium">Active Whole-Herb Extracts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LARGE CINEMATIC MAKING VIDEO SCREEN (7 Cols) -->
+                <div class="lg:col-span-7 w-full">
+                    <div class="rounded-3xl overflow-hidden bg-forest-950 border-2 border-gold-500/40 video-glow relative">
+                        
+                        <!-- Video Header Bar -->
+                        <div class="bg-forest-950/95 px-4 sm:px-6 py-3 border-b border-gold-500/20 flex items-center justify-between">
+                            <div class="flex items-center gap-2.5">
+                                <span id="video-status-dot" class="w-2.5 h-2.5 rounded-full bg-gold-400 animate-pulse"></span>
+                                <span id="video-status-label" class="text-xs sm:text-sm font-semibold text-gold-400">
+                                    Artisanal Formulation Showcase
+                                </span>
+                            </div>
+                            <span class="text-xs text-cream-200/60">Fengam Botanical Lab</span>
+                        </div>
+
+                        <!-- 16:9 Responsive Widescreen Container -->
+                        <div class="relative w-full aspect-video bg-forest-950 flex items-center justify-center">
+                            
+                            <!-- STATE 1: VIDEO PLAYER (Shown automatically when isVideoActive = true) -->
+                            <div id="video-embed-container" class="hidden w-full h-full">
+                                <iframe 
+                                    id="making-video-iframe"
+                                    class="w-full h-full border-0"
+                                    src=""
+                                    title="Fengam Organic Herbal Shampoo Making Process"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+
+                            <!-- STATE 2: OFFLINE / UPLOADING SOON SCREEN (Shown when isVideoActive = false) -->
+                            <div id="video-offline-screen" class="w-full h-full p-6 sm:p-10 flex flex-col items-center justify-center text-center bg-gradient-to-b from-forest-900/90 to-forest-950 relative">
+                                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gold-500/15 border border-gold-400/40 flex items-center justify-center mb-5 animate-pulse-slow">
+                                    <i class="fa-solid fa-mortar-pestle text-3xl sm:text-4xl text-gold-400"></i>
+                                </div>
+
+                                <span class="px-3.5 py-1 rounded-full bg-gold-500/20 text-gold-400 text-xs font-bold tracking-wider mb-3 border border-gold-500/30">
+                                    FENGAM ORGANIC BOTANICAL LAB
+                                </span>
+
+                                <!-- Dynamic Placeholder Title (Controlled by VIDEO_CONFIG) -->
+                                <h2 id="offline-title-display" class="font-serifDisplay text-2xl sm:text-4xl font-bold text-white max-w-xl mb-3">
+                                    Making Video Uploading Soon
+                                </h2>
+
+                                <!-- Dynamic Placeholder Subtitle (Controlled by VIDEO_CONFIG) -->
+                                <p id="offline-subtitle-display" class="text-cream-200/85 text-sm sm:text-base max-w-lg leading-relaxed">
+                                    We are currently filming our small-batch herbal extraction and cold-blending process. Check back soon to watch how Fengam Organic Herbal Shampoo is crafted.
+                                </p>
+
+                                <div class="mt-6 flex items-center gap-2 text-xs text-gold-400/90 bg-white/5 px-4 py-2 rounded-full border border-white/10">
+                                    <i class="fa-solid fa-seedling"></i>
+                                    <span>100% Pure Botanical Extraction in Progress</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- PURITY STANDARDS STRIP                                                -->
+    <!-- ===================================================================== -->
+    <section class="py-9 bg-cream-100 border-y border-cream-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="flex flex-col items-center gap-2">
+                    <div class="w-12 h-12 rounded-2xl bg-forest-900 text-gold-400 flex items-center justify-center text-xl shadow-sm">
+                        <i class="fa-solid fa-droplet-slash"></i>
+                    </div>
+                    <h3 class="font-bold text-forest-900 text-sm sm:text-base">0% Sulphates (SLS / SLES)</h3>
+                    <p class="text-xs text-slate-600">Preserves natural scalp oils & moisture</p>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                    <div class="w-12 h-12 rounded-2xl bg-forest-900 text-gold-400 flex items-center justify-center text-xl shadow-sm">
+                        <i class="fa-solid fa-shield-heart"></i>
+                    </div>
+                    <h3 class="font-bold text-forest-900 text-sm sm:text-base">0% Parabens & Silicones</h3>
+                    <p class="text-xs text-slate-600">Free from synthetic buildup & toxins</p>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                    <div class="w-12 h-12 rounded-2xl bg-forest-900 text-gold-400 flex items-center justify-center text-xl shadow-sm">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="font-bold text-forest-900 text-sm sm:text-base">Pure Botanical Extracts</h3>
+                    <p class="text-xs text-slate-600">Slow-simmered whole organic herbs</p>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                    <div class="w-12 h-12 rounded-2xl bg-forest-900 text-gold-400 flex items-center justify-center text-xl shadow-sm">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h3 class="font-bold text-forest-900 text-sm sm:text-base">pH 5.5 Scalp Balanced</h3>
+                    <p class="text-xs text-slate-600">Gentle on sensitive & treated hair</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- ARTISANAL SMALL-BATCH MAKING PROCESS (4 STAGES)                       -->
+    <!-- ===================================================================== -->
+    <section class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+            <span class="text-xs font-bold uppercase tracking-widest text-gold-600 bg-gold-500/15 px-4 py-1.5 rounded-full border border-gold-500/30">
+                THE ART OF HERBAL EXTRACTION
+            </span>
+            <h2 class="font-serifDisplay text-3xl sm:text-5xl font-bold text-forest-900 mt-4">
+                Artisanal Small-Batch Making Process
+            </h2>
+            <p class="text-slate-600 text-base sm:text-lg mt-3 leading-relaxed">
+                Unlike mass-produced chemical shampoos made with harsh industrial detergents, every batch of Fengam Organic Herbal Shampoo is crafted through four deliberate botanical stages.
+            </p>
+        </div>
+
+        <!-- 4-Stage Process Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <!-- Stage 1 -->
+            <div class="glass-card rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all relative overflow-hidden group">
+                <div class="text-5xl font-serifDisplay font-bold text-forest-900/10 absolute top-4 right-5 group-hover:text-gold-500/25 transition-colors">01</div>
+                <div class="w-14 h-14 rounded-2xl bg-forest-100 text-forest-900 flex items-center justify-center text-2xl mb-5">
+                    <i class="fa-solid fa-sun-plant-wilt"></i>
+                </div>
+                <h3 class="text-xl font-bold text-forest-900 mb-2">Herbal Selection & Sun-Curing</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Hand-picked organic Amla, Shikakai, Reetha, Brahmi, Rosemary, and Neem leaves are carefully sorted, washed, and naturally sun-cured to concentrate their active phytonutrients.
+                </p>
+            </div>
+
+            <!-- Stage 2 -->
+            <div class="glass-card rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all relative overflow-hidden group">
+                <div class="text-5xl font-serifDisplay font-bold text-forest-900/10 absolute top-4 right-5 group-hover:text-gold-500/25 transition-colors">02</div>
+                <div class="w-14 h-14 rounded-2xl bg-forest-100 text-forest-900 flex items-center justify-center text-2xl mb-5">
+                    <i class="fa-solid fa-fire-flame-curved"></i>
+                </div>
+                <h3 class="text-xl font-bold text-forest-900 mb-2">Slow Botanical Decoction</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    The whole herbs undergo low-heat simmering in triple-purified water for hours, gently drawing out vitamins, saponins, and minerals without scorching delicate antioxidants.
+                </p>
+            </div>
+
+            <!-- Stage 3 -->
+            <div class="glass-card rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all relative overflow-hidden group">
+                <div class="text-5xl font-serifDisplay font-bold text-forest-900/10 absolute top-4 right-5 group-hover:text-gold-500/25 transition-colors">03</div>
+                <div class="w-14 h-14 rounded-2xl bg-forest-100 text-forest-900 flex items-center justify-center text-2xl mb-5">
+                    <i class="fa-solid fa-flask"></i>
+                </div>
+                <h3 class="text-xl font-bold text-forest-900 mb-2">Cold-Infusion & Mild Plant Cleansers</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Once cooled, the herbal infusion is blended with coconut-derived gentle surfactants, pure Aloe Vera juice, and Mulethi—with zero SLS/SLES, zero parabens, and zero silicones.
+                </p>
+            </div>
+
+            <!-- Stage 4 -->
+            <div class="glass-card rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all relative overflow-hidden group">
+                <div class="text-5xl font-serifDisplay font-bold text-forest-900/10 absolute top-4 right-5 group-hover:text-gold-500/25 transition-colors">04</div>
+                <div class="w-14 h-14 rounded-2xl bg-forest-100 text-forest-900 flex items-center justify-center text-2xl mb-5">
+                    <i class="fa-solid fa-bottle-droplet"></i>
+                </div>
+                <h3 class="text-xl font-bold text-forest-900 mb-2">pH Balancing & Cold-Fill Bottling</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Each batch is micro-filtered, calibrated to match the scalp's natural pH (~5.5), and cold-filled into protective bottles to preserve peak botanical potency.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- KEY BOTANICAL INGREDIENTS (6 CARDS)                                   -->
+    <!-- ===================================================================== -->
+    <section class="py-16 sm:py-24 bg-forest-950 text-cream-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-gold-400 bg-gold-500/15 px-4 py-1.5 rounded-full border border-gold-500/30">
+                    PURE BOTANICAL BLEND
+                </span>
+                <h2 class="font-serifDisplay text-3xl sm:text-5xl font-bold text-white mt-4">
+                    Key Botanical Ingredients
+                </h2>
+                <p class="text-cream-200/80 text-base sm:text-lg mt-3">
+                    Every drop delivers concentrated plant nutrition engineered to revitalize both scalp and hair strands.
+                </p>
+            </div>
+
+            <!-- 6 Botanical Ingredient Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Ingredient 1: Amla -->
+                <div class="p-6 rounded-3xl bg-white/5 border border-gold-500/20 hover:border-gold-400/60 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-12 h-12 rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-apple-whole"></i>
+                        </span>
+                        <span class="text-xs uppercase tracking-wider text-gold-400/85 font-semibold">Vitamin C & Antioxidants</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Amla (Indian Gooseberry)</h3>
+                    <p class="text-sm text-cream-200/80 leading-relaxed">
+                        Naturally rich in bio-available Vitamin C and polyphenols, Amla fortifies hair follicles, boosts collagen around the roots, and helps prevent premature greying.
+                    </p>
+                </div>
+
+                <!-- Ingredient 2: Shikakai & Reetha -->
+                <div class="p-6 rounded-3xl bg-white/5 border border-gold-500/20 hover:border-gold-400/60 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-12 h-12 rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-soap"></i>
+                        </span>
+                        <span class="text-xs uppercase tracking-wider text-gold-400/85 font-semibold">Natural Plant Saponins</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Shikakai & Reetha (Soapnut)</h3>
+                    <p class="text-sm text-cream-200/80 leading-relaxed">
+                        Time-honored botanical cleansers loaded with natural saponins that lift excess sebum and buildup cleanly without stripping the scalp's protective lipid barrier.
+                    </p>
+                </div>
+
+                <!-- Ingredient 3: Rosemary Leaf -->
+                <div class="p-6 rounded-3xl bg-white/5 border border-gold-500/20 hover:border-gold-400/60 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-12 h-12 rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-spa"></i>
+                        </span>
+                        <span class="text-xs uppercase tracking-wider text-gold-400/85 font-semibold">Follicle Stimulation</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Rosemary Leaf</h3>
+                    <p class="text-sm text-cream-200/80 leading-relaxed">
+                        Stimulates healthy scalp micro-circulation, awakens dormant hair roots, and supports visibly thicker, fuller hair growth over consistent use.
+                    </p>
+                </div>
+
+                <!-- Ingredient 4: Brahmi & Bhringraj -->
+                <div class="p-6 rounded-3xl bg-white/5 border border-gold-500/20 hover:border-gold-400/60 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-12 h-12 rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-seedling"></i>
+                        </span>
+                        <span class="text-xs uppercase tracking-wider text-gold-400/85 font-semibold">Deep Root Repair</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Brahmi & Bhringraj</h3>
+                    <p class="text-sm text-cream-200/80 leading-relaxed">
+                        Revered in traditional herbalism as the premier tonics for hair longevity, deeply nourishing weakened roots to curb breakage and reduce excessive hair fall.
+                    </p>
+                </div>
+
+                <!-- Ingredient 5: Neem & Coriander -->
+                <div class="p-6 rounded-3xl bg-white/5 border border-gold-500/20 hover:border-gold-400/60 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-12 h-12 rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-shield-virus"></i>
+                        </span>
+                        <span class="text-xs uppercase tracking-wider text-gold-400/85 font-semibold">Scalp Purification</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Neem & Coriander</h3>
+                    <p class="text-sm text-cream-200/80 leading-relaxed">
+                        A clarifying herbal duo with natural antimicrobial properties that calms scalp irritation, balances excess oil, and keeps flakiness and dandruff away naturally.
+                    </p>
+                </div>
+
+                <!-- Ingredient 6: Aloe Vera & Mulethi -->
+                <div class="p-6 rounded-3xl bg-white/5 border border-gold-500/20 hover:border-gold-400/60 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-12 h-12 rounded-2xl bg-gold-500/20 text-gold-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-droplet"></i>
+                        </span>
+                        <span class="text-xs uppercase tracking-wider text-gold-400/85 font-semibold">Moisture & Silkiness</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Aloe Vera & Mulethi (Licorice Root)</h3>
+                    <p class="text-sm text-cream-200/80 leading-relaxed">
+                        Delivers soothing hydration to dry, brittle strands, smooths the hair cuticle to tame frizz, and imparts effortless slip and silky softness.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- CORE BENEFITS & SPECIALIZED CARE GUIDE                              -->
+    <!-- ===================================================================== -->
+    <section class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            
+            <!-- Core Benefits Column (7 Cols) -->
+            <div class="lg:col-span-7 space-y-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-gold-600 bg-gold-500/15 px-4 py-1.5 rounded-full border border-gold-500/30">
+                    WHY SULPHATE & PARABEN FREE MATTERS
+                </span>
+                <h2 class="font-serifDisplay text-3xl sm:text-5xl font-bold text-forest-900">
+                    Core Benefits for Scalp & Hair Health
+                </h2>
+                <p class="text-slate-600 leading-relaxed">
+                    Conventional sulphates strip away essential natural sebum, triggering rebound oiliness, dryness, and follicle stress. Switching to a pure botanical cleanser restores your hair's natural equilibrium.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                    <div class="p-5 rounded-2xl bg-white border border-cream-200 shadow-sm flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-forest-900 text-gold-400 flex items-center justify-center shrink-0 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-forest-900 text-base">Preserves Natural Sebum</h4>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">Cleanses impurities gently without drying out your scalp or causing post-wash tightness.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white border border-cream-200 shadow-sm flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-forest-900 text-gold-400 flex items-center justify-center shrink-0 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-forest-900 text-base">Reduces Hair Fall & Breakage</h4>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">Strengthens weak hair shafts and nourishes roots with Amla, Bhringraj, and Rosemary.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white border border-cream-200 shadow-sm flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-forest-900 text-gold-400 flex items-center justify-center shrink-0 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-forest-900 text-base">Safe for Color & Keratin Hair</h4>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">Zero harsh salts or sulphates mean hair color, protein, and keratin treatments last significantly longer.</p>
+                        </div>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-white border border-cream-200 shadow-sm flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-forest-900 text-gold-400 flex items-center justify-center shrink-0 mt-1">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-forest-900 text-base">Eliminates Dry Frizz & Flakes</h4>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">Calms itchy, flaky scalps with Neem while Aloe Vera leaves hair smooth and manageable.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specialized Care & Usage Guide Box (5 Cols) -->
+            <div class="lg:col-span-5 bg-forest-900 text-cream-50 rounded-3xl p-7 sm:p-8 shadow-xl border border-gold-500/30">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-11 h-11 rounded-2xl bg-gold-500 text-forest-950 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-hand-sparkles"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs text-gold-400 uppercase tracking-wider font-bold">SPECIALIZED CARE GUIDE</span>
+                        <h3 class="text-xl font-bold text-white">How to Use Sulphate-Free Shampoo</h3>
+                    </div>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-white/10 border border-gold-400/30 text-xs sm:text-sm text-cream-100 leading-relaxed mb-6">
+                    <strong class="text-gold-400 block mb-1"><i class="fa-solid fa-circle-info mr-1"></i> Botanical Lather Note:</strong>
+                    Because Fengam Organic Herbal Shampoo is 100% free from synthetic sulphates, it creates a rich, creamy botanical emulsion rather than harsh chemical bubbles. This gentle lather cleanses deeply while keeping hair hydrated.
+                </div>
+
+                <ul class="space-y-4 text-sm">
+                    <li class="flex items-start gap-3">
+                        <span class="w-6 h-6 rounded-full bg-gold-500 text-forest-950 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                        <span><strong>Thoroughly Wet Hair:</strong> Saturate your hair and scalp completely with lukewarm water for 30–60 seconds to open hair cuticles.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="w-6 h-6 rounded-full bg-gold-500 text-forest-950 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+                        <span><strong>Emulsify in Palms First:</strong> Pour a small amount into wet palms and rub your hands together with a splash of water to activate the creamy herbal lather before applying.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="w-6 h-6 rounded-full bg-gold-500 text-forest-950 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+                        <span><strong>2-Minute Scalp Massage:</strong> Massage gently with your fingertips for 2 minutes so the Amla, Rosemary, and Neem extracts absorb into the roots.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="w-6 h-6 rounded-full bg-gold-500 text-forest-950 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">4</span>
+                        <span><strong>Rinse Cool:</strong> Rinse thoroughly with cool or room-temperature water to seal the hair cuticle and lock in natural shine.</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- CLEAN INFORMATIONAL FOOTER (NO ORDER BUTTONS)                         -->
+    <!-- ===================================================================== -->
+    <footer class="bg-forest-950 text-cream-50 py-12 border-t border-gold-500/20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gold-500/15 border border-gold-400/40 text-gold-400 text-2xl mb-4">
+                <i class="fa-solid fa-seedling"></i>
+            </div>
+            
+            <h2 class="font-serifDisplay text-2xl sm:text-3xl font-bold text-white mb-2">
+                Fengam Organic Herbal Shampoo
+            </h2>
+            <p class="text-cream-200/75 max-w-lg mx-auto text-sm mb-8">
+                100% Sulphate-Free • Paraben-Free • Silicone-Free • Pure Botanical Formulation
+            </p>
+
+            <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream-200/60">
+                <p>© Fengam Organic • Pure Botanical Care</p>
+                <p>fangamorganic.com • Product Formulation & Care Guide</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- JAVASCRIPT: VIDEO ON/OFF CONTROLLER + 28-LANGUAGE TRANSLATION SYSTEM  -->
+    <!-- ===================================================================== -->
+    <script>
+        /**
+         * ====================================================================
+         *  FENGAM ORGANIC MAKING VIDEO CONTROL SETTINGS (EASY ON / OFF SWITCH)
+         * ====================================================================
+         * 
+         *  HOW TO USE:
+         *  1. OFF MODE (Default):
+         *     Keep `isVideoActive: false`. Visitors will see the luxury botanical
+         *     frame with the "Making Video Uploading Soon" message.
+         * 
+         *  2. ON MODE (When your video is ready):
+         *     - Paste your YouTube / Vimeo embed URL into `embedUrl` below.
+         *       (Example: "https://www.youtube.com/embed/AbCdEfGhIjK")
+         *     - Change `isVideoActive: false` to `isVideoActive: true`.
+         *     - The placeholder message disappears automatically and your video plays.
+         */
+        const VIDEO_CONFIG = {
+            isVideoActive: false,
+            embedUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID",
+            placeholderTitle: "Making Video Uploading Soon",
+            placeholderSubtitle: "We are currently filming our small-batch herbal extraction and cold-blending process. Check back soon to watch how Fengam Organic Herbal Shampoo is crafted."
+        };
+
+        /**
+         * Initializes the Making Video screen based on VIDEO_CONFIG
+         */
+        function initMakingVideoScreen() {
+            const videoContainer = document.getElementById('video-embed-container');
+            const offlineScreen = document.getElementById('video-offline-screen');
+            const iframe = document.getElementById('making-video-iframe');
+            const titleEl = document.getElementById('offline-title-display');
+            const subtitleEl = document.getElementById('offline-subtitle-display');
+            const statusDot = document.getElementById('video-status-dot');
+            const statusLabel = document.getElementById('video-status-label');
+
+            if (titleEl) titleEl.textContent = VIDEO_CONFIG.placeholderTitle;
+            if (subtitleEl) subtitleEl.textContent = VIDEO_CONFIG.placeholderSubtitle;
+
+            const hasValidUrl = VIDEO_CONFIG.embedUrl &&
+                                VIDEO_CONFIG.embedUrl.trim() !== "" &&
+                                !VIDEO_CONFIG.embedUrl.includes("YOUR_VIDEO_ID");
+
+            if (VIDEO_CONFIG.isVideoActive && hasValidUrl) {
+                iframe.src = VIDEO_CONFIG.embedUrl;
+                videoContainer.classList.remove('hidden');
+                offlineScreen.classList.add('hidden');
+                statusDot.classList.remove('bg-gold-400');
+                statusDot.classList.add('bg-emerald-400');
+                statusLabel.textContent = "Making Process Video";
+            } else {
+                iframe.src = "";
+                videoContainer.classList.add('hidden');
+                offlineScreen.classList.remove('hidden');
+                statusDot.classList.remove('bg-emerald-400');
+                statusDot.classList.add('bg-gold-400');
+                statusLabel.textContent = "Artisanal Formulation Showcase";
+            }
+        }
+
+        /**
+         * ====================================================================
+         *  MULTI-LANGUAGE SWITCHER (ENGLISH DEFAULT + 28 MAJOR LANGUAGES)
+         * ====================================================================
+         */
+        const SUPPORTED_LANGUAGES = [
+            { code: 'en', name: 'English', native: 'English (Default)', rtl: false },
+            { code: 'ur', name: 'Urdu', native: 'اردو', rtl: true },
+            { code: 'ar', name: 'Arabic', native: 'العربية', rtl: true },
+            { code: 'hi', name: 'Hindi', native: 'हिन्दी', rtl: false },
+            { code: 'pa', name: 'Punjabi', native: 'ਪੰਜਾਬੀ / پنجابی', rtl: false },
+            { code: 'ps', name: 'Pashto', native: 'پښتو', rtl: true },
+            { code: 'sd', name: 'Sindhi', native: 'سنڌي', rtl: true },
+            { code: 'fa', name: 'Persian', native: 'فارسی', rtl: true },
+            { code: 'tr', name: 'Turkish', native: 'Türkçe', rtl: false },
+            { code: 'es', name: 'Spanish', native: 'Español', rtl: false },
+            { code: 'fr', name: 'French', native: 'Français', rtl: false },
+            { code: 'de', name: 'German', native: 'Deutsch', rtl: false },
+            { code: 'it', name: 'Italian', native: 'Italiano', rtl: false },
+            { code: 'pt', name: 'Portuguese', native: 'Português', rtl: false },
+            { code: 'ru', name: 'Russian', native: 'Русский', rtl: false },
+            { code: 'zh-CN', name: 'Chinese', native: '中文 (简体)', rtl: false },
+            { code: 'ja', name: 'Japanese', native: '日本語', rtl: false },
+            { code: 'ko', name: 'Korean', native: '한국어', rtl: false },
+            { code: 'ms', name: 'Malay', native: 'Bahasa Melayu', rtl: false },
+            { code: 'id', name: 'Indonesian', native: 'Bahasa Indonesia', rtl: false },
+            { code: 'bn', name: 'Bengali', native: 'বাংলা', rtl: false },
+            { code: 'ta', name: 'Tamil', native: 'தமிழ்', rtl: false },
+            { code: 'th', name: 'Thai', native: 'ไทย', rtl: false },
+            { code: 'vi', name: 'Vietnamese', native: 'Tiếng Việt', rtl: false },
+            { code: 'nl', name: 'Dutch', native: 'Nederlands', rtl: false },
+            { code: 'pl', name: 'Polish', native: 'Polski', rtl: false },
+            { code: 'sw', name: 'Swahili', native: 'Kiswahili', rtl: false },
+            { code: 'el', name: 'Greek', native: 'Ελληνικά', rtl: false },
+            { code: 'sv', name: 'Swedish', native: 'Svenska', rtl: false }
+        ];
+
+        // Ensure English is strictly the master language on initial landing
+        function resetToMasterEnglishOnLoad() {
+            // Clear any leftover Google Translate cookies so landing page is always English
+            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + window.location.hostname + ";";
+            document.documentElement.lang = 'en';
+            document.documentElement.dir = 'ltr';
+        }
+
+        // Google Translate Engine Callback
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: SUPPORTED_LANGUAGES.map(l => l.code).join(','),
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        // Apply selected language seamlessly
+        function selectLanguage(langObj) {
+            const labelEl = document.getElementById('current-lang-label');
+            if (labelEl) {
+                labelEl.textContent = langObj.name;
+            }
+
+            // Adjust text direction for RTL vs LTR languages
+            document.documentElement.lang = langObj.code;
+            document.documentElement.dir = langObj.rtl ? 'rtl' : 'ltr';
+
+            // Close dropdown
+            closeLanguageDropdown();
+
+            if (langObj.code === 'en') {
+                // Restore original English cleanly
+                resetToMasterEnglishOnLoad();
+                const gtCombo = document.querySelector('.goog-te-combo');
+                if (gtCombo) {
+                    gtCombo.value = 'en';
+                    gtCombo.dispatchEvent(new Event('change'));
+                }
+                // Reload cleanly if Google Translate modified DOM nodes
+                if (document.documentElement.classList.contains('translated-ltr') ||
+                    document.documentElement.classList.contains('translated-rtl')) {
+                    window.location.reload();
+                }
+                return;
+            }
+
+            // Set googtrans cookie and trigger Google Translate combo box
+            const cookieVal = `/en/${langObj.code}`;
+            document.cookie = `googtrans=${cookieVal}; path=/;`;
+            document.cookie = `googtrans=${cookieVal}; path=/; domain=${window.location.hostname};`;
+
+            const triggerTranslation = (attempts = 0) => {
+                const gtCombo = document.querySelector('.goog-te-combo');
+                if (gtCombo) {
+                    gtCombo.value = langObj.code;
+                    gtCombo.dispatchEvent(new Event('change'));
+                } else if (attempts < 15) {
+                    setTimeout(() => triggerTranslation(attempts + 1), 250);
+                }
+            };
+            triggerTranslation();
+        }
+
+        // Build Language Dropdown UI
+        function buildLanguageMenu() {
+            const listContainer = document.getElementById('lang-list');
+            const menuBtn = document.getElementById('lang-menu-btn');
+            const dropdown = document.getElementById('lang-dropdown');
+            const chevron = document.getElementById('lang-chevron');
+
+            if (!listContainer || !menuBtn || !dropdown) return;
+
+            SUPPORTED_LANGUAGES.forEach(lang => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'w-full px-4 py-2.5 text-left hover:bg-forest-900 flex items-center justify-between text-xs sm:text-sm text-cream-100 transition-colors cursor-pointer';
+                btn.innerHTML = `
+                    <span class="font-medium">${lang.name}</span>
+                    <span class="text-xs text-gold-400/90">${lang.native}</span>
+                `;
+                btn.addEventListener('click', () => selectLanguage(lang));
+                listContainer.appendChild(btn);
+            });
+
+            menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isHidden = dropdown.classList.contains('hidden');
+                if (isHidden) {
+                    dropdown.classList.remove('hidden');
+                    menuBtn.setAttribute('aria-expanded', 'true');
+                    chevron.classList.add('rotate-180');
+                } else {
+                    closeLanguageDropdown();
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target) && !menuBtn.contains(e.target)) {
+                    closeLanguageDropdown();
+                }
+            });
+        }
+
+        function closeLanguageDropdown() {
+            const dropdown = document.getElementById('lang-dropdown');
+            const menuBtn = document.getElementById('lang-menu-btn');
+            const chevron = document.getElementById('lang-chevron');
+            if (dropdown) dropdown.classList.add('hidden');
+            if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+            if (chevron) chevron.classList.remove('rotate-180');
+        }
+
+        // Initialize on page load
+        resetToMasterEnglishOnLoad();
+        window.addEventListener('DOMContentLoaded', () => {
+            initMakingVideoScreen();
+            buildLanguageMenu();
+        });
+    </script>
+
+    <!-- Google Translate Script for Instant Multi-Language Support -->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
