@@ -281,22 +281,43 @@
         const CART_STORAGE_KEY = 'fangam_organic_unified_cart_final';
         const WHATSAPP_NUMBER = '923000634445';
 
-        // ==========================================
-        // 0. EASY PRODUCT STATUS / STOCK CONTROL
-        // Allowed values:
-        //   'in-stock'        -> Normal "Add to Cart" button
-        //   'out-of-stock'    -> "Out of Stock" button (disabled)
-        //   'restocking-soon' -> "Restocking Soon" button (disabled)
-        //   'in-preparation'  -> "In Preparation" button (disabled)
-        //   'coming-soon'     -> "Coming Soon" button (disabled)
-        // Any product not listed here defaults to 'in-stock'.
-        // ==========================================
+        // =========================================================================
+        // 🟢 تمام پروڈکٹس اور بنڈلز کا اسٹیٹس یہاں سے بدلیں (ALL 17 ITEMS LISTED)
+        // =========================================================================
+        // ہر آئٹم کے آگے ان 5 آپشنز میں سے کوئی ایک لکھیں:
+        //   'in-stock'        -> نارمل (Add to Cart بٹن چالو رہے گا)
+        //   'out-of-stock'    -> Out of Stock (بٹن بند ہو جائے گا)
+        //   'restocking-soon' -> Restocking Soon (بٹن بند ہو جائے گا)
+        //   'in-preparation'  -> In Preparation (بٹن بند ہو جائے گا)
+        //   'coming-soon'     -> Coming Soon (بٹن بند ہو جائے گا)
+        // =========================================================================
         const PRODUCT_STATUS_CONFIG = {
-            // Examples (change or remove anytime):
-            // 'soap-loofah-lg': 'out-of-stock',
-            // 'soap-whitening-sm': 'restocking-soon',
-            // 'ubtan-powder': 'in-preparation',
-            // 'hair-mask': 'coming-soon',
+            // --- 1. HAIR OILS (تیل) ---
+            'oil-100':           'in-stock',   // Organic Hair Oil (100 ml - PKR 1000)
+            'oil-150':           'in-stock',   // Organic Hair Oil (150 ml - PKR 1500)
+            'oil-200':           'in-stock',   // Organic Hair Oil (200 ml - PKR 2000)
+
+            // --- 2. SHAMPOOS (شیمپو) ---
+            'shampoo-100':       'in-stock',   // Organic Hair Shampoo (100 ml - PKR 1000)
+            'shampoo-220':       'in-stock',   // Organic Hair Shampoo (220 ml - PKR 1500)
+
+            // --- 3. ORGANIC SOAPS - SMALL & LARGE (تمام چھوٹے اور بڑے صابن الگ الگ) ---
+            'soap-whitening-sm': 'in-stock',   // Whitening Soap (Small - PKR 250)
+            'soap-whitening-lg': 'in-stock',   // Whitening Soap (Large - PKR 500)
+            'soap-rose-sm':      'in-stock',   // Whitening with Rose Soap (Small - PKR 250)
+            'soap-rose-lg':      'in-stock',   // Whitening with Rose Soap (Large - PKR 500)
+            'soap-neem-sm':      'in-stock',   // Neem Soap (Small - PKR 250)
+            'soap-neem-lg':      'in-stock',   // Neem Soap (Large - PKR 500)
+            'soap-loofah-sm':    'in-stock',   // Natural Loofah Soap (Small - PKR 250)
+            'soap-loofah-lg':    'in-stock',   // Natural Loofah Soap (Large - PKR 500)
+
+            // --- 4. UBTAN & HAIR MASK (ابٹن اور ہیئر ماسک) ---
+            'ubtan-powder':      'in-stock',   // Special Ubtan Powder (PKR 550)
+            'hair-mask':         'in-stock',   // Nourishing Hair Mask (PKR 850)
+
+            // --- 5. SPECIAL COMBO BUNDLES (بنڈلز) ---
+            'bundle-small':      'in-stock',   // Small Bundle (5% OFF)
+            'bundle-large':      'in-stock'    // Large Bundle (5% OFF)
         };
 
         const STATUS_BUTTON_STYLES = {
