@@ -39,6 +39,13 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #2d5a42; border-radius: 4px; }
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
         .blinking-dot { animation: blink 1.5s infinite; display: inline-block; }
+        @keyframes cornerBadgeBlink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.55; transform: scale(0.97); }
+        }
+        .corner-badge-blink {
+            animation: cornerBadgeBlink 1.6s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="text-gray-800 antialiased pb-24">
@@ -158,7 +165,7 @@
                 </div>
             </div>
             <div class="p-4 bg-gray-50 border-t border-gray-100 flex gap-2 items-center">
-                <div class="flex items-center border border-gray-300 rounded-xl bg-white overflow-hidden">
+                <div id="modal-qty-box" class="flex items-center border border-gray-300 rounded-xl bg-white overflow-hidden">
                     <button onclick="adjustModalQty(-1)" class="px-3 py-2.5 text-gray-600 hover:bg-gray-100"><i class="fas fa-minus text-xs"></i></button>
                     <span id="modal-qty" class="px-3 font-bold text-gray-800 text-sm">1</span>
                     <button onclick="adjustModalQty(1)" class="px-3 py-2.5 text-gray-600 hover:bg-gray-100"><i class="fas fa-plus text-xs"></i></button>
@@ -280,6 +287,191 @@
         const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbzmsiyp0jcFAPakhDeFuILBypF92Jl_YvMBQqefeAyK5fJKAUWmrAivC9cIAhZac4mdZg/exec";
         const CART_STORAGE_KEY = 'fangam_organic_unified_cart_final';
         const WHATSAPP_NUMBER = '923000634445';
+
+        // =========================================================================
+        // 🟢 تمام پروڈکٹس اور بنڈلز کا اسٹیٹس یہاں سے بدلیں (ALL 17 ITEMS LISTED)
+        // =========================================================================
+        // ہر آئٹم کے آگے ان 5 آپشنز میں سے کوئی ایک لکھیں:
+        //   'in-stock'        -> نارمل (Add to Cart بٹن چالو رہے گا)
+        //   'out-of-stock'    -> Out of Stock (بٹن بند ہو جائے گا)
+        //   'restocking-soon' -> Restocking Soon (بٹن بند ہو جائے گا)
+        //   'in-preparation'  -> In Preparation (بٹن بند ہو جائے گا)
+        //   'coming-soon'     -> Coming Soon (بٹن بند ہو جائے گا)
+        // =========================================================================
+        const PRODUCT_STATUS_CONFIG = {
+            // --- 1. HAIR OILS (تیل) ---
+            'oil-100':           'in-stock',   // Organic Hair Oil (100 ml - PKR 1000)
+            'oil-150':           'in-stock',   // Organic Hair Oil (150 ml - PKR 1500)
+            'oil-200':           'in-stock',   // Organic Hair Oil (200 ml - PKR 2000)
+
+            // --- 2. SHAMPOOS (شیمپو) ---
+            'shampoo-100':       'in-stock',   // Organic Hair Shampoo (100 ml - PKR 1000)
+            'shampoo-220':       'in-stock',   // Organic Hair Shampoo (220 ml - PKR 1500)
+
+            // --- 3. ORGANIC SOAPS - SMALL & LARGE (تمام چھوٹے اور بڑے صابن الگ الگ) ---
+            'soap-whitening-sm': 'in-stock',   // Whitening Soap (Small - PKR 250)
+            'soap-whitening-lg': 'in-stock',   // Whitening Soap (Large - PKR 500)
+            'soap-rose-sm':      'Out of Stock',   // Whitening with Rose Soap (Small - PKR 250)
+            'soap-rose-lg':      'Out of Stock',   // Whitening with Rose Soap (Large - PKR 500)
+            'soap-neem-sm':      'in-stock',   // Neem Soap (Small - PKR 250)
+            'soap-neem-lg':      'in-stock',   // Neem Soap (Large - PKR 250 / 500)
+            'soap-loofah-sm':    'in-stock',   // Natural Loofah Soap (Small - PKR 250)
+            'soap-loofah-lg':    'in-stock',   // Natural Loofah Soap (Large - PKR 500)
+
+            // --- 4. UBTAN & HAIR MASK (ابٹن اور ہیئر ماسک) ---
+            'ubtan-powder':      'in-stock',   // Special Ubtan Powder (PKR 550)
+            'hair-mask':         'in-stock',   // Nourishing Hair Mask (PKR 850)
+
+            // --- 5. SPECIAL COMBO BUNDLES (بنڈلز) ---
+            'bundle-small':      'in-stock',   // Small Bundle (5% OFF)
+            'bundle-large':      'in-stock'    // Large Bundle (5% OFF)
+        };
+
+        // =========================================================================
+        // 🟡 پروڈکٹ کے اوپر کونے میں بلنکنگ بیج / میسج کنٹرول (CORNER BADGES)
+        // =========================================================================
+        // ڈیفالٹ پر سب '' (خالی) ہیں تاکہ پروڈکٹ سادی نظر آئے۔
+        // کسی بھی پروڈکٹ کے آگے آپ یہ لکھ سکتے ہیں:
+        //   'sale'          -> SALE
+        //   'save-pkr'      -> SAVE PKR (یا 'save-250' لکھیں تو SAVE PKR 250)
+        //   'flash-deal'    -> FLASH DEAL
+        //   'hot-seller'    -> HOT SELLER
+        //   'best-selling'  -> BEST SELLING
+        //   'trending'      -> TRENDING
+        //   'top-rated'     -> TOP RATED
+        //   'no-1-pick'     -> #1 PICK
+        //   'new'           -> NEW
+        //   'new-arrival'   -> NEW ARRIVAL
+        //   'just-launched' -> JUST LAUNCHED
+        //   'back-in-stock' -> BACK IN STOCK
+        //   یا اپنا کوئی بھی میسج، مثلاً 'BEST SELLER' یا 'SAVE 5%'
+        // نوٹ: اگر کسی بیج کو بلنک نہیں کرنا تو ساتھ 'no-blink' لگا دیں، مثلاً 'hot-seller no-blink'
+        // =========================================================================
+        const PRODUCT_BADGE_CONFIG = {
+            // --- 1. HAIR OILS ---
+            'oil-100':           'HOT SELLER',
+            'oil-150':           '',
+            'oil-200':           '',
+
+            // --- 2. SHAMPOOS ---
+            'shampoo-100':       '',
+            'shampoo-220':       '',
+
+            // --- 3. ORGANIC SOAPS - SMALL & LARGE ---
+            'soap-whitening-sm': '',
+            'soap-whitening-lg': '',
+            'soap-rose-sm':      '',
+            'soap-rose-lg':      '',
+            'soap-neem-sm':      '',
+            'soap-neem-lg':      '',
+            'soap-loofah-sm':    '',
+            'soap-loofah-lg':    '',
+
+            // --- 4. UBTAN & HAIR MASK ---
+            'ubtan-powder':      '',
+            'hair-mask':         '',
+
+            // --- 5. SPECIAL COMBO BUNDLES ---
+            'bundle-small':      '',
+            'bundle-large':      ''
+        };
+
+        const BADGE_PRESETS = {
+            'sale':          { label: 'SALE',          icon: 'fas fa-tag',          classes: 'bg-rose-600 text-white border-rose-700' },
+            'save-pkr':      { label: 'SAVE PKR',      icon: 'fas fa-piggy-bank',   classes: 'bg-emerald-600 text-white border-emerald-700' },
+            'flash-deal':    { label: 'FLASH DEAL',    icon: 'fas fa-bolt',         classes: 'bg-amber-500 text-gray-950 border-amber-600' },
+            'hot-seller':    { label: 'HOT SELLER',    icon: 'fas fa-fire',         classes: 'bg-orange-600 text-white border-orange-700' },
+            'best-selling':  { label: 'BEST SELLING',  icon: 'fas fa-crown',        classes: 'bg-brand-dark text-brand-accent border-brand-accent' },
+            'trending':      { label: 'TRENDING',      icon: 'fas fa-arrow-trend-up', classes: 'bg-indigo-600 text-white border-indigo-700' },
+            'top-rated':     { label: 'TOP RATED',     icon: 'fas fa-star',         classes: 'bg-amber-400 text-gray-950 border-amber-500' },
+            'no-1-pick':     { label: '#1 PICK',       icon: 'fas fa-award',        classes: 'bg-teal-700 text-white border-teal-800' },
+            'new':           { label: 'NEW',           icon: 'fas fa-sparkles',     classes: 'bg-sky-600 text-white border-sky-700' },
+            'new-arrival':   { label: 'NEW ARRIVAL',   icon: 'fas fa-box-open',     classes: 'bg-cyan-700 text-white border-cyan-800' },
+            'just-launched': { label: 'JUST LAUNCHED', icon: 'fas fa-rocket',       classes: 'bg-purple-600 text-white border-purple-700' },
+            'back-in-stock': { label: 'BACK IN STOCK', icon: 'fas fa-check-circle', classes: 'bg-emerald-700 text-white border-emerald-800' }
+        };
+
+        function getCornerBadgeHtml(id) {
+            const raw = (PRODUCT_BADGE_CONFIG[id] || '').trim();
+            if (!raw) return '';
+
+            const shouldBlink = !/\bno-blink\b/i.test(raw);
+            const cleanKey = raw.replace(/\bno-blink\b/i, '').trim();
+            if (!cleanKey) return '';
+
+            const lowerKey = cleanKey.toLowerCase();
+            let label = cleanKey;
+            let icon = 'fas fa-sparkles';
+            let classes = 'bg-brand-dark text-brand-accent border-brand-accent';
+
+            if (BADGE_PRESETS[lowerKey]) {
+                label = BADGE_PRESETS[lowerKey].label;
+                icon = BADGE_PRESETS[lowerKey].icon;
+                classes = BADGE_PRESETS[lowerKey].classes;
+            } else if (/^save[-_\s]+pkr(?:\s+(.+))?$/i.test(cleanKey)) {
+                const match = cleanKey.match(/^save[-_\s]+pkr(?:\s+(.+))?$/i);
+                label = match && match[1] ? `SAVE PKR ${match[1].trim()}` : 'SAVE PKR';
+                icon = BADGE_PRESETS['save-pkr'].icon;
+                classes = BADGE_PRESETS['save-pkr'].classes;
+            } else if (/^save[-_\s]+(.+)$/i.test(cleanKey)) {
+                const match = cleanKey.match(/^save[-_\s]+(.+)$/i);
+                label = `SAVE ${match[1].trim().toUpperCase()}`;
+                icon = BADGE_PRESETS['save-pkr'].icon;
+                classes = BADGE_PRESETS['save-pkr'].classes;
+            }
+
+            const blinkClass = shouldBlink ? 'corner-badge-blink' : '';
+            return `
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider border shadow-md ${classes} ${blinkClass}">
+                    <i class="${icon} text-[9px]"></i>
+                    <span>${label}</span>
+                </span>
+            `;
+        }
+
+        const STATUS_BUTTON_STYLES = {
+            'out-of-stock': {
+                label: 'Out of Stock',
+                icon: 'fas fa-ban',
+                classes: 'bg-red-50 text-red-700 border border-red-200 cursor-not-allowed opacity-95'
+            },
+            'restocking-soon': {
+                label: 'Restocking Soon',
+                icon: 'fas fa-rotate',
+                classes: 'bg-amber-50 text-amber-800 border border-amber-300 cursor-not-allowed opacity-95'
+            },
+            'in-preparation': {
+                label: 'In Preparation',
+                icon: 'fas fa-flask',
+                classes: 'bg-sky-50 text-sky-800 border border-sky-200 cursor-not-allowed opacity-95'
+            },
+            'coming-soon': {
+                label: 'Coming Soon',
+                icon: 'fas fa-clock',
+                classes: 'bg-purple-50 text-purple-800 border border-purple-200 cursor-not-allowed opacity-95'
+            }
+        };
+
+        function getProductStatus(id) {
+            const status = (PRODUCT_STATUS_CONFIG[id] || 'in-stock').toLowerCase().trim();
+            return STATUS_BUTTON_STYLES[status] ? status : 'in-stock';
+        }
+
+        function isProductAvailable(id) {
+            return getProductStatus(id) === 'in-stock';
+        }
+
+        function renderStatusBadgeButton(id, sizeClasses = 'py-2.5 text-sm') {
+            const status = getProductStatus(id);
+            const cfg = STATUS_BUTTON_STYLES[status];
+            if (!cfg) return '';
+            return `
+                <button type="button" disabled aria-disabled="true" class="w-full ${sizeClasses} px-4 rounded-xl font-semibold flex items-center justify-center gap-2 ${cfg.classes}">
+                    <i class="${cfg.icon} text-xs"></i>
+                    <span>${cfg.label}</span>
+                </button>
+            `;
+        }
 
         // ==========================================
         // 1. INDIVIDUAL PRODUCTS DATABASE
@@ -484,11 +676,23 @@
             return '#FO-' + Math.floor(1000 + Math.random() * 9000);
         }
 
+        function sanitizeCartAgainstStatus() {
+            let changed = false;
+            Object.keys(cart).forEach(id => {
+                if (!isProductAvailable(id)) {
+                    delete cart[id];
+                    changed = true;
+                }
+            });
+            if (changed) saveCartToStorage();
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
             currentOrderId = generateOrderId();
             document.getElementById('active-order-id-label').innerText = currentOrderId;
 
             loadCartFromStorage();
+            sanitizeCartAgainstStatus();
             handleUrlHash();
             window.addEventListener('hashchange', handleUrlHash);
             updateCartUI();
@@ -553,12 +757,37 @@
             const computedBundles = getComputedBundles();
 
             container.innerHTML = computedBundles.map(b => {
-                const qty = cart[b.id] ? cart[b.id].qty : 0;
+                const available = isProductAvailable(b.id);
+                const qty = available && cart[b.id] ? cart[b.id].qty : 0;
+                const cornerBadgeHtml = getCornerBadgeHtml(b.id);
+
+                let actionHtml = '';
+                if (!available) {
+                    actionHtml = renderStatusBadgeButton(b.id, 'py-2.5 text-sm');
+                } else if (qty === 0) {
+                    actionHtml = `
+                        <button onclick="updateCartQty('${b.id}', 1)" class="w-full bg-brand-primary hover:bg-brand-dark text-white text-sm font-bold py-2.5 px-4 rounded-xl transition shadow-md flex items-center justify-center gap-2">
+                            <i class="fas fa-cart-plus"></i> Add Bundle
+                        </button>
+                    `;
+                } else {
+                    actionHtml = `
+                        <div class="flex items-center justify-between bg-emerald-50 border border-emerald-300 rounded-xl p-1">
+                            <button onclick="updateCartQty('${b.id}', ${qty - 1})" class="w-9 h-8 rounded-lg bg-white text-brand-dark font-bold hover:bg-gray-100 flex items-center justify-center shadow-sm">-</button>
+                            <span class="font-bold text-brand-dark text-sm">${qty}</span>
+                            <button onclick="updateCartQty('${b.id}', ${qty + 1})" class="w-9 h-8 rounded-lg bg-white text-brand-dark font-bold hover:bg-gray-100 flex items-center justify-center shadow-sm">+</button>
+                        </div>
+                    `;
+                }
+
                 return `
                     <div class="product-card bg-white rounded-2xl p-5 shadow-md hover:shadow-xl border-2 border-brand-accent/40 flex flex-col justify-between relative overflow-hidden">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="bg-brand-dark text-brand-accent text-xs font-extrabold px-3 py-1 rounded-full tracking-wider uppercase">${b.badge}</span>
-                            <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">Save PKR ${(b.originalPrice - b.price).toLocaleString()}</span>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <div class="flex items-center flex-wrap gap-1.5">
+                                <span class="bg-brand-dark text-brand-accent text-xs font-extrabold px-3 py-1 rounded-full tracking-wider uppercase">${b.badge}</span>
+                                ${cornerBadgeHtml}
+                            </div>
+                            <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200 flex-shrink-0">Save PKR ${(b.originalPrice - b.price).toLocaleString()}</span>
                         </div>
 
                         <h3 class="text-lg sm:text-xl font-bold text-brand-dark mb-3">${b.name}</h3>
@@ -582,17 +811,7 @@
                             </div>
 
                             <div class="w-full sm:w-44">
-                                ${qty === 0 ? `
-                                    <button onclick="updateCartQty('${b.id}', 1)" class="w-full bg-brand-primary hover:bg-brand-dark text-white text-sm font-bold py-2.5 px-4 rounded-xl transition shadow-md flex items-center justify-center gap-2">
-                                        <i class="fas fa-cart-plus"></i> Add Bundle
-                                    </button>
-                                ` : `
-                                    <div class="flex items-center justify-between bg-emerald-50 border border-emerald-300 rounded-xl p-1">
-                                        <button onclick="updateCartQty('${b.id}', ${qty - 1})" class="w-9 h-8 rounded-lg bg-white text-brand-dark font-bold hover:bg-gray-100 flex items-center justify-center shadow-sm">-</button>
-                                        <span class="font-bold text-brand-dark text-sm">${qty}</span>
-                                        <button onclick="updateCartQty('${b.id}', ${qty + 1})" class="w-9 h-8 rounded-lg bg-white text-brand-dark font-bold hover:bg-gray-100 flex items-center justify-center shadow-sm">+</button>
-                                    </div>
-                                `}
+                                ${actionHtml}
                             </div>
                         </div>
                     </div>
@@ -605,11 +824,34 @@
             const filtered = allProducts.filter(p => p.category === currentTab);
 
             container.innerHTML = filtered.map(p => {
-                const qty = cart[p.id] ? cart[p.id].qty : 0;
+                const available = isProductAvailable(p.id);
+                const qty = available && cart[p.id] ? cart[p.id].qty : 0;
+                const cornerBadgeHtml = getCornerBadgeHtml(p.id);
+
+                let cartActionHtml = '';
+                if (!available) {
+                    cartActionHtml = renderStatusBadgeButton(p.id, 'py-2.5 text-sm');
+                } else if (qty === 0) {
+                    cartActionHtml = `
+                        <button onclick="updateCartQty('${p.id}', 1)" class="w-full bg-brand-primary hover:bg-brand-dark text-white text-sm font-semibold py-2.5 rounded-xl transition shadow-sm flex items-center justify-center gap-2">
+                            <i class="fas fa-plus text-xs"></i> Add to Cart
+                        </button>
+                    `;
+                } else {
+                    cartActionHtml = `
+                        <div class="flex items-center justify-between bg-emerald-50 border border-emerald-200 rounded-xl p-1">
+                            <button onclick="updateCartQty('${p.id}', ${qty - 1})" class="w-8 h-8 rounded-lg bg-white text-brand-dark font-bold hover:bg-gray-100 flex items-center justify-center shadow-sm">-</button>
+                            <span class="font-bold text-brand-dark text-sm">${qty}</span>
+                            <button onclick="updateCartQty('${p.id}', ${qty + 1})" class="w-8 h-8 rounded-lg bg-white text-brand-dark font-bold hover:bg-gray-100 flex items-center justify-center shadow-sm">+</button>
+                        </div>
+                    `;
+                }
+
                 return `
-                    <div class="product-card bg-white rounded-2xl p-4 shadow-sm hover:shadow-xl border border-gray-100 flex flex-col justify-between">
+                    <div class="product-card bg-white rounded-2xl p-4 shadow-sm hover:shadow-xl border border-gray-100 flex flex-col justify-between relative">
                         <div>
-                            <div class="w-full h-52 rounded-xl overflow-hidden mb-3 bg-gray-50/70 border border-gray-100 flex items-center justify-center p-3">
+                            <div class="w-full h-52 rounded-xl overflow-hidden mb-3 bg-gray-50/70 border border-gray-100 flex items-center justify-center p-3 relative">
+                                ${cornerBadgeHtml ? `<div class="absolute top-2.5 left-2.5 z-10">${cornerBadgeHtml}</div>` : ''}
                                 <img src="${p.image}" alt="${p.name}" class="max-h-full max-w-full object-contain hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://via.placeholder.com/300';">
                             </div>
                             <h3 class="text-base font-bold text-gray-800 mb-1 line-clamp-1">${p.name}</h3>
@@ -619,17 +861,7 @@
                             <button onclick="openProductModal('${p.id}')" class="w-full text-xs bg-gray-50 hover:bg-emerald-50 text-brand-primary font-semibold py-2 rounded-xl transition border border-gray-200 flex items-center justify-center gap-1.5">
                                 <i class="fas fa-info-circle"></i> Description
                             </button>
-                            ${qty === 0 ? `
-                                <button onclick="updateCartQty('${p.id}', 1)" class="w-full bg-brand-primary hover:bg-brand-dark text-white text-sm font-semibold py-2.5 rounded-xl transition shadow-sm flex items-center justify-center gap-2">
-                                    <i class="fas fa-plus text-xs"></i> Add to Cart
-                                </button>
-                            ` : `
-                                <div class="flex items-center justify-between bg-emerald-50 border border-emerald-200 rounded-xl p-1">
-                                    <button onclick="updateCartQty('${p.id}', ${qty - 1})" class="w-8 h-8 rounded-lg bg-white text-brand-dark font-bold hover:bg-gray-100 flex items-center justify-center shadow-sm">-</button>
-                                    <span class="font-bold text-brand-dark text-sm">${qty}</span>
-                                    <button onclick="updateCartQty('${p.id}', ${qty + 1})" class="w-8 h-8 rounded-lg bg-white text-brand-dark font-bold hover:bg-gray-100 flex items-center justify-center shadow-sm">+</button>
-                                </div>
-                            `}
+                            ${cartActionHtml}
                         </div>
                     </div>
                 `;
@@ -665,11 +897,29 @@
                 videoSec.classList.add('hidden');
             }
 
-            document.getElementById('modal-qty').innerText = modalQtyVal;
-            document.getElementById('modal-add-btn').onclick = () => {
-                updateCartQty(id, modalQtyVal);
-                closeProductModal();
-            };
+            const qtyBox = document.getElementById('modal-qty-box');
+            const addBtn = document.getElementById('modal-add-btn');
+            const status = getProductStatus(id);
+
+            if (status !== 'in-stock') {
+                const cfg = STATUS_BUTTON_STYLES[status];
+                qtyBox.classList.add('hidden');
+                addBtn.disabled = true;
+                addBtn.className = `flex-1 px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 ${cfg.classes}`;
+                addBtn.innerHTML = `<i class="${cfg.icon} text-xs"></i><span>${cfg.label}</span>`;
+                addBtn.onclick = null;
+            } else {
+                qtyBox.classList.remove('hidden');
+                addBtn.disabled = false;
+                addBtn.className = 'flex-1 bg-brand-primary hover:bg-brand-dark text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition shadow-md flex items-center justify-center gap-2';
+                addBtn.innerHTML = `<i class="fas fa-cart-plus"></i> Add to Cart`;
+                document.getElementById('modal-qty').innerText = modalQtyVal;
+                addBtn.onclick = () => {
+                    updateCartQty(id, modalQtyVal);
+                    closeProductModal();
+                };
+            }
+
             document.getElementById('product-modal').classList.remove('hidden');
         }
 
@@ -684,6 +934,15 @@
         }
 
         function updateCartQty(id, qty) {
+            if (!isProductAvailable(id)) {
+                delete cart[id];
+                saveCartToStorage();
+                if (currentTab === 'bundles') renderBundleTrays();
+                renderProducts();
+                updateCartUI();
+                return;
+            }
+
             if (qty <= 0) {
                 delete cart[id];
             } else {
@@ -818,6 +1077,8 @@
         }
 
         function openCheckoutModal() {
+            sanitizeCartAgainstStatus();
+            updateCartUI();
             const items = Object.values(cart);
             if (items.length === 0) {
                 alert('Your cart is empty!');
@@ -841,6 +1102,8 @@
         }
 
         async function sendWhatsAppOrder() {
+            sanitizeCartAgainstStatus();
+            updateCartUI();
             const items = Object.values(cart);
             if (items.length === 0) { alert('Your cart is empty!'); return; }
 
