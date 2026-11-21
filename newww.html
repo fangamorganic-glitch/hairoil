@@ -246,7 +246,7 @@
       border-radius: 12px;
     }
 
-    /* Selected Soap Details & Making Video Banner */
+    /* Selected Soap Details & Making Video/Image Banner */
     .selected-banner-card {
       background: var(--bg-card);
       border: 1px solid rgba(184, 146, 70, 0.45);
@@ -333,7 +333,7 @@
       background: #15803d;
     }
 
-    /* Making Video Embed Container */
+    /* Making Video / Product Image Container */
     .hero-video-wrapper {
       width: 100%;
     }
@@ -359,6 +359,15 @@
       box-shadow: 0 12px 28px rgba(27, 38, 30, 0.14);
       overflow: hidden;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* جب ویڈیو آف ہو اور تصویر دکھانی ہو تو بیک گراؤنڈ صاف اور خوبصورت رہے */
+    .hero-video-box.image-mode {
+      background: radial-gradient(circle at center, #ffffff 0%, #f3f7f0 100%);
+      padding: 18px;
     }
 
     .hero-video-box iframe {
@@ -366,6 +375,32 @@
       height: 100%;
       border: none;
       display: block;
+    }
+
+    .hero-fallback-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: none;
+      filter: drop-shadow(0 10px 20px rgba(27, 38, 30, 0.14));
+      transition: transform 0.3s ease;
+    }
+
+    .hero-video-box.image-mode:hover .hero-fallback-img {
+      transform: scale(1.03);
+    }
+
+    .hero-fallback-icon {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--accent-color);
+    }
+
+    .hero-fallback-icon i {
+      font-size: 3.4rem;
     }
 
     /* Detailed Content Grid */
@@ -560,7 +595,7 @@
     <!-- All 3 Soaps Visible on Screen Together (With Product Pictures) -->
     <div class="soaps-selector-grid" id="soapsSelectorGrid"></div>
 
-    <!-- Selected Soap Details + Making Video Embed Banner -->
+    <!-- Selected Soap Details + Making Video / Image Banner -->
     <div class="selected-banner-card" id="heroCard">
       <div class="hero-text-content">
         <span class="product-badge" id="heroBadge">100% PURE & CHEMICAL-FREE</span>
@@ -574,13 +609,14 @@
         </div>
       </div>
 
-      <!-- Making Video Embed Box -->
+      <!-- Making Video OR Soap Picture Box -->
       <div class="hero-video-wrapper">
-        <div class="video-label">
+        <div class="video-label" id="mediaLabel">
           <i class="fa-solid fa-circle-play"></i>
           <span>Handmade Making Process / تیاری کی ویڈیو</span>
         </div>
-        <div class="hero-video-box">
+        <div class="hero-video-box" id="heroMediaBox">
+          <!-- 1. ویڈیو فریم (جب showVideo: true ہو اور لنک موجود ہو) -->
           <iframe
             id="heroVideoFrame"
             src=""
@@ -588,6 +624,14 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen>
           </iframe>
+
+          <!-- 2. صابن کی تصویر (جب تک ویڈیو نہ لگائی جائے) -->
+          <img id="heroFallbackImg" class="hero-fallback-img" src="" alt="Soap Image">
+
+          <!-- 3. آئیکن (اگر نہ ویڈیو ہو اور نہ تصویر) -->
+          <div id="heroFallbackIcon" class="hero-fallback-icon">
+            <i class="fa-solid fa-seedling"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -682,8 +726,9 @@
 
   <script>
     /* =========================================================================
-       تینوں صابنوں کی تصاویر (image) اور میکنگ ویڈیو کے ایمبیڈ لنکس (videoEmbed)
-       جب آپ اپنی میکنگ ویڈیوز اپلوڈ کریں تو صرف videoEmbed کا لنک تبدیل کر دیں
+       ویڈیو اور تصویر کنٹرول سیٹنگز (EASY SWITCH):
+       1) جب تک ویڈیو نہیں لگانی: showVideo: false رکھیں -> صابن کی تصویر نظر آئے گی۔
+       2) جب ویڈیو لگانی ہو: videoEmbed میں یوٹیوب ایمبیڈ لنک ڈالیں اور showVideo: true کر دیں۔
        ========================================================================= */
     const soapsData = [
       {
@@ -692,10 +737,12 @@
         badge: "100% PURE & CHEMICAL-FREE",
         title: "Fangam Organic Neem Soap",
         icon: "fa-seedling",
-        // اوپر سلیکشن کارڈ کی تصویر:
+        // صابن کی تصویر (اوپر اور نیچے دونوں جگہ نظر آئے گی جب تک ویڈیو آن نہ ہو):
         image: "https://lh3.googleusercontent.com/d/1538Hm63VUyCYhRLLLlJ2lQzL4Hf1csnJ",
-        // نیچے میکنگ ویڈیو کا ایمبیڈ لنک (فرضی ڈیمو لنک، یہاں اپنا یوٹیوب ایمبیڈ لنک لگائیں):
-        videoEmbed: "https://www.youtube.com/embed/LXb3EKWsInQ?rel=0",
+        // ویڈیو آن/آف سوئچ (true = ویڈیو چلے گی | false = تصویر نظر آئے گی):
+        showVideo: false,
+        // یوٹیوب ایمبیڈ لنک یہاں پیسٹ کریں (مثال: "https://www.youtube.com/embed/VIDEO_ID?rel=0"):
+        videoEmbed: "",
         subtitle: "Authentic Ayurvedic Cold-Pressed Neem Formula Specially Designed for Acne, Skin Infections, and Deep Pore Cleansing.",
         ingredients: ["Pure Cold-Pressed Neem Oil", "Organic Neem Leaf Extracts", "Natural Vegetable Oils Base", "Pure Botanical Glycerine", "0% Harmful Chemicals & Detergents"],
         specialCare: ["<strong>Acne & Pimples:</strong> Fights acne-causing bacteria.", "<strong>Boils & Rash:</strong> Relieves skin eruptions.", "<strong>Body Acne:</strong> Clears back and chest acne.", "<strong>Oil Control:</strong> Balances excessive facial oil."],
@@ -713,10 +760,12 @@
         badge: "100% PURE & RADIANCE FORMULA",
         title: "Pure Organic Whitening Soap",
         icon: "fa-sparkles",
-        // اوپر سلیکشن کارڈ کی تصویر:
+        // صابن کی تصویر:
         image: "https://lh3.googleusercontent.com/d/1r06Y5UCh9FAUYCgvQggHkaGD1kVk1RhR",
-        // نیچے میکنگ ویڈیو کا ایمبیڈ لنک (فرضی ڈیمو لنک، یہاں اپنا یوٹیوب ایمبیڈ لنک لگائیں):
-        videoEmbed: "https://www.youtube.com/embed/aqz-KE-bpKQ?rel=0",
+        // ویڈیو آن/آف سوئچ (true = ویڈیو چلے گی | false = تصویر نظر آئے گی):
+        showVideo: false,
+        // یوٹیوب ایمبیڈ لنک یہاں پیسٹ کریں:
+        videoEmbed: "",
         subtitle: "Enriched with Natural Skin Whitening Actives, Glutathione, Alpha Arbutin, Kojic Acid, Pure Goat Milk & Vitamin C for Crystal-Clear Skin.",
         ingredients: ["Alpha Arbutin & Kojic Acid", "L-Glutathione Antioxidant", "Pure Goat Milk (Lactic Acid)", "Vitamin C & Niacinamide", "Licorice Root & Mulberry Extract"],
         specialCare: ["<strong>Melasma & Dark Spots:</strong> Fades stubborn pigmentation.", "<strong>Sun Tan Removal:</strong> Brightens face, neck & body.", "<strong>Dark Joints:</strong> Brightens knees, underarms & knuckles.", "<strong>Acne Scars:</strong> Lightens post-acne dark marks."],
@@ -734,10 +783,12 @@
         badge: "100% NATURAL LOOFAH EXFOLIATOR",
         title: "Pure Organic Loofah Scrub Soap",
         icon: "fa-spa",
-        // اوپر سلیکشن کارڈ کی تصویر:
+        // صابن کی تصویر (جب تصویر اپلوڈ کریں تو یہاں لنک لگا دیں):
         image: "IMAGE_URL_4_HERE.jpg",
-        // نیچے میکنگ ویڈیو کا ایمبیڈ لنک (فرضی ڈیمو لنک، یہاں اپنا یوٹیوب ایمبیڈ لنک لگائیں):
-        videoEmbed: "https://www.youtube.com/embed/jNQXAC9IVRw?rel=0",
+        // ویڈیو آن/آف سوئچ (true = ویڈیو چلے گی | false = تصویر نظر آئے گی):
+        showVideo: false,
+        // یوٹیوب ایمبیڈ لنک یہاں پیسٹ کریں:
+        videoEmbed: "",
         subtitle: "Embedded Natural Luffa Plant Sponge Combined with Honey & Sweet Almond Oil for Intense Skin Scrubbing, Rough Elbows & Heel Smoothing.",
         ingredients: ["Embedded Natural Luffa Plant Fiber", "Organic Raw Honey Extract", "Sweet Almond & Coconut Oil Base", "Vitamin E & Shea Butter", "0% Harsh Synthetic Beads"],
         specialCare: ["<strong>Cracked Heel Repair:</strong> Softens and smooths rough feet heels.", "<strong>Rough Elbows & Knees:</strong> Scrubs away stubborn dark friction spots.", "<strong>Ingrown Hair Prevention:</strong> Clears dead skin buildup.", "<strong>Body Exfoliation:</strong> Stimulates skin micro-circulation."],
@@ -753,10 +804,14 @@
 
     let currentSoapIndex = 0;
 
+    function isValidUrl(str) {
+      return str && str.trim() !== "" && !str.includes("IMAGE_URL");
+    }
+
     function buildSelectorCards() {
       const grid = document.getElementById('soapsSelectorGrid');
       grid.innerHTML = soapsData.map((soap, idx) => {
-        const hasValidImg = soap.image && soap.image !== "" && !soap.image.includes("IMAGE_URL");
+        const hasValidImg = isValidUrl(soap.image);
         return `
           <div class="soap-select-card ${idx === currentSoapIndex ? 'active' : ''}" onclick="selectSoap(${idx})">
             <div class="soap-thumb-box">
@@ -785,10 +840,51 @@
       document.getElementById('heroTitle').textContent = soap.title;
       document.getElementById('heroSubtitle').textContent = soap.subtitle;
 
-      // Update Making Video Embed URL
+      // ویڈیو یا تصویر کا خودکار انتخاب
+      const mediaBox = document.getElementById('heroMediaBox');
+      const mediaLabel = document.getElementById('mediaLabel');
       const videoFrame = document.getElementById('heroVideoFrame');
-      if (videoFrame.src !== soap.videoEmbed) {
-        videoFrame.src = soap.videoEmbed;
+      const fallbackImg = document.getElementById('heroFallbackImg');
+      const fallbackIcon = document.getElementById('heroFallbackIcon');
+
+      const canPlayVideo = soap.showVideo === true && isValidUrl(soap.videoEmbed);
+      const hasValidImg = isValidUrl(soap.image);
+
+      if (canPlayVideo) {
+        // ویڈیو موڈ آن کریں
+        mediaBox.classList.remove('image-mode');
+        mediaLabel.innerHTML = `<i class="fa-solid fa-circle-play"></i> <span>Handmade Making Process / تیاری کی ویڈیو</span>`;
+
+        fallbackImg.style.display = 'none';
+        fallbackIcon.style.display = 'none';
+        videoFrame.style.display = 'block';
+
+        if (videoFrame.src !== soap.videoEmbed) {
+          videoFrame.src = soap.videoEmbed;
+        }
+      } else {
+        // تصویر موڈ آن کریں (ویڈیو روک دیں)
+        mediaBox.classList.add('image-mode');
+        mediaLabel.innerHTML = `<i class="fa-solid fa-leaf"></i> <span>Handcrafted Soap / خالص نامیاتی صابن</span>`;
+
+        videoFrame.style.display = 'none';
+        videoFrame.src = ""; // بیک گراؤنڈ میں کوئی ویڈیو نہ چلے
+
+        if (hasValidImg) {
+          fallbackIcon.style.display = 'none';
+          fallbackImg.style.display = 'block';
+          fallbackImg.src = soap.image;
+          fallbackImg.alt = soap.title;
+          fallbackImg.onerror = function() {
+            this.style.display = 'none';
+            fallbackIcon.innerHTML = `<i class="fa-solid ${soap.icon}"></i>`;
+            fallbackIcon.style.display = 'flex';
+          };
+        } else {
+          fallbackImg.style.display = 'none';
+          fallbackIcon.innerHTML = `<i class="fa-solid ${soap.icon}"></i>`;
+          fallbackIcon.style.display = 'flex';
+        }
       }
 
       const waMsg = encodeURIComponent(`Hello Fangam Organic, I would like to know more details about ${soap.title}.`);
