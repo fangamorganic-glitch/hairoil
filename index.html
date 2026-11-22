@@ -1061,7 +1061,7 @@
                     <div class="product-slide active" data-title="Handmade Soap Bar">
                         <img src="https://lh3.googleusercontent.com/d/1Vts9owN6GNpgROFsS3uS1_KgIuElcCkq" alt="Soap 1">
                     </div>
-                       <div class="product-slide active" data-title="Loofah Soap">
+                       <div class="product-slide" data-title="Loofah Soap">
                         <img src="https://lh3.googleusercontent.com/d/1UBQlfw4glvDFULu5-3fnnvm7XIwPI1az" alt="Soap 2">
                     </div>
                       <div class="product-slide" data-title="Whitening">
@@ -1070,10 +1070,10 @@
                     <div class="product-slide" data-title="Whitening Soap (Small)">
                         <img src="https://lh3.googleusercontent.com/d/1qFLDAalF1z8cAIXzLmbQbPwxwRYvcfCF" alt="Soap 4">
                     </div>
-                        <div class="product-slide active" data-title="Neem">
+                        <div class="product-slide" data-title="Neem">
                         <img src="https://lh3.googleusercontent.com/d/1Tt0ujYxi1WReW_HupPp90ynKMeEjD0kQ" alt="Soap 5">
                     </div>
-                    <div class="product-slide active" data-title="Neem Soap (Small)">
+                    <div class="product-slide" data-title="Neem Soap (Small)">
                         <img src="https://lh3.googleusercontent.com/d/1g1lths4t5oA_SAObJ2dDleUkrlVR4RL5" alt="Soap 6">
                     </div>
                     <div class="product-slide" data-title="Loofah Foot Care">
@@ -1157,7 +1157,7 @@
                         </div>
                         <p>""This organic whitening soap is an absolute game-changer! Knowing it's packed with 7 pure herbal powders gives me 
                             total peace of mind. My skin feels incredibly smooth, fresh, and naturally radiant after every wash. You can literally 
-                            feel the magic of pure botanicals on your skin. Truly loved it! ✨🌿"— Miss Khushnood"</p>
+                            feel the magic of pure botanicals on your skin. Truly loved it!"</p>
                     </div>
                 </div>
             </div>
@@ -1307,6 +1307,31 @@
                     <a href="shop.html#bundles" target="_blank" class="btn-order-now">Request Custom Formula</a>
                 </div>
             </div>
+
+            <!-- Reviews Wrapper (Duplicate .section-review-card below to add more reviews) -->
+            <div class="section-reviews-wrapper review-control-block" data-review-sec="onDemandReviews">
+                <div class="review-tabs-header">
+                    <button class="tab-btn active"><i class="fa-solid fa-comments"></i> Customer Reviews (Tap to read)</button>
+                </div>
+                <div class="reviews-slider-track auto-scroll-track">
+                    <div class="section-review-card" onclick="openReviewPopup(this)">
+                        <div class="review-user-info">
+                            <img src="https://lh3.googleusercontent.com/d/1CfpYSLShKgSYScIq8SGQn5PIPhaD_O2X" class="review-user-img" alt="Customer">
+                            <div class="review-user-details">
+                                <h5>Mrs. Khurram</h5>
+                                <div class="stars">★★★★★</div>
+                            </div>
+                        </div>
+                        <p>"I recently tried the Fangam Organic Hair Mask, and 
+                            the results are simply unbelievable! My hair used to 
+                            be very frizzy and dry, and I was seriously considering 
+                            getting a chemical keratin treatment. However, after using 
+                            this hair mask, my hair has become so naturally smooth, silky, and 
+                            manageable that I completely dropped the idea of keratin! It feels 
+                            healthy, soft, and full of shine without any harsh chemicals. Highly recommended!"</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Our Making Stories Section (Controlled via JavaScript Settings Below) -->
@@ -1391,7 +1416,12 @@
             <h3 style="color: var(--primary-green); margin-bottom: 6px; font-size: 19px; display: flex; align-items: center; justify-content: center; gap: 8px;">
                 <i class="fa-solid fa-truck-fast"></i> Track Your Order
             </h3>
-            <p style="font-size: 12.5px; color: #666; margin-bottom: 16px;">Select your courier partner below to open their official tracking page:</p>
+            <p style="font-size: 12.5px; color: #666; margin-bottom: 12px;">Select your courier partner below to open their official tracking page:</p>
+
+            <!-- Previous Orders History Button (Add your page URL inside href="") -->
+            <a href="YOUR_PREVIOUS_ORDERS_PAGE_URL_HERE" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 11px 14px; margin-bottom: 14px; background: var(--primary-green); color: #ffffff; text-decoration: none; border-radius: 9px; font-size: 13px; font-weight: 600; box-shadow: 0 3px 8px rgba(46, 125, 50, 0.25); transition: 0.2s;">
+                <i class="fa-solid fa-clock-rotate-left"></i> Previous Orders History
+            </a>
             
             <!-- 6 Courier Company Cards Grid (You can easily edit URLs inside href="") -->
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; text-align: center;">
