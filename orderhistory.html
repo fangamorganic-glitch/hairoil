@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fangam Organic — My Orders History</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --forest: #022c22;
+      --emerald: #065f46;
+      --mint: #ecfdf5;
+      --mint-border: #a7f3d0;
+      --gold: #d97706;
+      --gold-light: #fef3c7;
+      --bg: #f4f7f5;
+      --card: #ffffff;
+      --text: #1c1917;
+      --muted: #57534e;
+      --border: #e7e5e4;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif;
+      padding: 16px;
+      line-height: 1.5;
+    }
+
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .top-banner {
+      background: linear-gradient(135deg, #022c22 0%, #064e3b 100%);
+      color: #ffffff;
+      border-radius: 14px;
+      padding: 22px 20px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(2, 44, 34, 0.14);
+      margin-bottom: 18px;
+    }
+
+    .top-banner .brand-pill {
+      display: inline-block;
+      background: rgba(251, 191, 36, 0.16);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.4);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .top-banner h1 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .top-banner p {
+      font-size: 13px;
+      color: #d1fae5;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    .search-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+      margin-bottom: 20px;
+    }
+
+    .search-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--emerald);
+      margin-bottom: 8px;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .phone-input {
+      flex: 1;
+      min-width: 220px;
+      padding: 12px 14px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .phone-input:focus {
+      border-color: var(--emerald);
+      box-shadow: 0 0 0 3px rgba(6, 95, 70, 0.12);
+    }
+
+    .btn-search {
+      background: var(--emerald);
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 22px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-search:hover { background: var(--forest); }
+    .btn-search:disabled { opacity: 0.65; cursor: not-allowed; }
+
+    .helper-note {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .summary-bar {
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      background: var(--mint);
+      border: 1px solid var(--mint-border);
+      color: var(--forest);
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .orders-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .order-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .order-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed #d6d3d1;
+      margin-bottom: 12px;
+    }
+
+    .order-id {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--forest);
+    }
+
+    .order-date {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .status-badge {
+      background: var(--mint);
+      color: var(--emerald);
+      border: 1px solid var(--mint-border);
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .items-box {
+      background: #fafaf9;
+      border: 1px solid #e7e5e4;
+      border-radius: 10px;
+      padding: 11px 13px;
+      margin-bottom: 12px;
+    }
+
+    .items-box .box-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+      letter-spacing: 0.4px;
+    }
+
+    .items-box .box-value {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .meta-grid { grid-template-columns: repeat(2, 1fr); }
+      .btn-search { width: 100%; }
+    }
+
+    .meta-tile {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 9px;
+      padding: 9px 11px;
+    }
+
+    .meta-tile .m-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+    }
+
+    .meta-tile .m-val {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      margin-top: 2px;
+      display: block;
+      word-break: break-word;
+    }
+
+    .dispatch-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 10px;
+      padding: 10px 13px;
+      font-size: 12.5px;
+    }
+
+    .dispatch-strip strong { color: #92400e; }
+
+    .tracking-code {
+      font-family: monospace;
+      font-size: 13px;
+      font-weight: 800;
+      background: #ffffff;
+      border: 1px solid #fcd34d;
+      padding: 2px 8px;
+      border-radius: 6px;
+      color: var(--text);
+    }
+
+    .empty-state {
+      text-align: center;
+      background: var(--card);
+      border: 1px dashed #cbd5e1;
+      border-radius: 14px;
+      padding: 36px 20px;
+      color: var(--muted);
+    }
+
+    .empty-state i {
+      font-size: 30px;
+      color: var(--emerald);
+      margin-bottom: 10px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+  <div class="top-banner">
+    <div class="brand-pill">Fangam Organic</div>
+    <h1>Order History Lookup</h1>
+    <p>Enter your phone or WhatsApp number to view all your orders, payment status, courier, and tracking details.</p>
+  </div>
+
+  <div class="search-card">
+    <label for="customerPhoneInput" class="search-label">Phone / WhatsApp Number</label>
+    <div class="search-row">
+      <input
+        type="tel"
+        id="customerPhoneInput"
+        class="phone-input"
+        placeholder="e.g. 03000634445 or 923000634445"
+        onkeypress="if(event.key === 'Enter') searchOrdersByPhone()"
+      >
+      <button type="button" id="searchBtn" class="btn-search" onclick="searchOrdersByPhone()">
+        <i class="fa-solid fa-magnifying-glass"></i> View My Orders
+      </button>
+    </div>
+    <div class="helper-note">Tip: You can enter your number with or without leading zero (03xx or 923xx).</div>
+  </div>
+
+  <div id="summaryBar" class="summary-bar">
+    <span id="summaryCustomerText">Customer Orders</span>
+    <span id="summaryCountText">0 Orders</span>
+  </div>
+
+  <div id="ordersContainer" class="orders-list">
+    <div class="empty-state">
+      <i class="fa-solid fa-box-open"></i>
+      <p><strong>No search performed yet.</strong> Enter your phone number above to see your order history.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const ORDERS_SHEET_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbytkWXUtMMN-LG_sxWID0t0XELncPorGtTMjMr4K3mbi2rxiS9_DSgZOFjRTzwV3B7i/exec";
+
+  function escapeHtml(str) {
+    return String(str ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function formatRs(val) {
+    const clean = String(val ?? "").trim();
+    if (!clean) return "Rs. 0";
+    if (/^rs\.?/i.test(clean) || /pkr/i.test(clean)) return clean;
+    const num = Number(clean.replace(/,/g, ""));
+    return isNaN(num) ? clean : "Rs. " + num.toLocaleString();
+  }
+
+  function formatDelivery(val) {
+    const clean = String(val ?? "").trim();
+    if (!clean || clean === "0") return "FREE";
+    return formatRs(clean);
+  }
+
+  async function searchOrdersByPhone() {
+    const phoneInput = document.getElementById("customerPhoneInput").value.trim();
+    const container = document.getElementById("ordersContainer");
+    const summaryBar = document.getElementById("summaryBar");
+    const btn = document.getElementById("searchBtn");
+
+    if (!phoneInput) {
+      alert("Please enter a phone or WhatsApp number.");
+      return;
+    }
+
+    if (!ORDERS_SHEET_WEB_APP_URL || ORDERS_SHEET_WEB_APP_URL === "YOUR_NEW_WEB_APP_URL_HERE") {
+      alert("Please set ORDERS_SHEET_WEB_APP_URL in the code first.");
+      return;
+    }
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Searching...';
+    summaryBar.style.display = "none";
+    container.innerHTML = `
+      <div class="empty-state">
+        <i class="fa-solid fa-spinner fa-spin"></i>
+        <p>Fetching your orders...</p>
+      </div>
+    `;
+
+    try {
+      const url = `${ORDERS_SHEET_WEB_APP_URL}?phone=${encodeURIComponent(phoneInput)}`;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if (data.status !== "success") {
+        throw new Error(data.message || "Unable to fetch orders");
+      }
+
+      const orders = Array.isArray(data.orders) ? data.orders : [];
+
+      if (orders.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <i class="fa-solid fa-circle-info"></i>
+            <p><strong>No orders found</strong> for <strong>${escapeHtml(phoneInput)}</strong>.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const firstName = orders[0].custName || "Valued Customer";
+      document.getElementById("summaryCustomerText").textContent = `Customer: ${firstName}`;
+      document.getElementById("summaryCountText").textContent = `${orders.length} Order${orders.length > 1 ? "s" : ""} Found`;
+      summaryBar.style.display = "flex";
+
+      container.innerHTML = orders.map(ord => {
+        const courierText = ord.courierCompany && ord.courierCompany.trim() !== ""
+          ? escapeHtml(ord.courierCompany)
+          : "Not Assigned";
+        const trackingText = ord.trackingNo && ord.trackingNo.trim() !== ""
+          ? `<span class="tracking-code">${escapeHtml(ord.trackingNo)}</span>`
+          : `<span>Pending</span>`;
+
+        return `
+          <article class="order-card">
+            <div class="order-top">
+              <div>
+                <div class="order-id">Order #${escapeHtml(ord.orderId || "-")}</div>
+                <div class="order-date"><i class="fa-regular fa-calendar"></i> ${escapeHtml(ord.bookDate || "-")} ${ord.custCity ? "• " + escapeHtml(ord.custCity) : ""}</div>
+              </div>
+              <span class="status-badge">${escapeHtml(ord.paymentStatus || "COD")}</span>
+            </div>
+
+            <div class="items-box">
+              <div class="box-title">Order Items</div>
+              <div class="box-value">${escapeHtml(ord.orderItems || "--")}</div>
+            </div>
+
+            <div class="meta-grid">
+              <div class="meta-tile">
+                <span class="m-label">Grand Total</span>
+                <span class="m-val">${escapeHtml(formatRs(ord.grandTotal))}</span>
+              </div>
+              <div class="meta-tile">
+                <span class="m-label">Delivery Charges</span>
+                <span class="m-val">${escapeHtml(formatDelivery(ord.deliveryCharges))}</span>
+              </div>
+              <div class="meta-tile">
+                <span class="m-label">Advance Paid</span>
+                <span class="m-val">${escapeHtml(formatRs(ord.advancePaid))}</span>
+              </div>
+              <div class="meta-tile">
+                <span class="m-label">Remaining COD</span>
+                <span class="m-val">${escapeHtml(formatRs(ord.remainingCod))}</span>
+              </div>
+              <div class="meta-tile">
+                <span class="m-label">Service Type</span>
+                <span class="m-val">${escapeHtml(ord.parcelType || "STANDARD")}</span>
+              </div>
+              <div class="meta-tile">
+                <span class="m-label">Product Type</span>
+                <span class="m-val">${escapeHtml(ord.productType || "-")}</span>
+              </div>
+            </div>
+
+            <div class="dispatch-strip">
+              <div><strong>Courier:</strong> ${courierText}</div>
+              <div><strong>Tracking #:</strong> ${trackingText}</div>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+    } catch (err) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <i class="fa-solid fa-triangle-exclamation" style="color:#dc2626;"></i>
+          <p><strong>Could not load orders:</strong> ${escapeHtml(err.message)}</p>
+        </div>
+      `;
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> View My Orders';
+    }
+  }
+</script>
+</body>
+</html>
