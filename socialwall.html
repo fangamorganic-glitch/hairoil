@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <link rel="icon" type="image/png" sizes="32x32" href="https://lh3.googleusercontent.com/d/1NJYUBfxZMMcO2Wqh_wzsuyUjeC-mi97V">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://lh3.googleusercontent.com/d/1NJYUBfxZMMcO2Wqh_wzsuyUjeC-mi97V">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fangam Organic | Social Links</title>
-   <!-- SEO & Social Media Share Meta Tags -->
+  <!-- SEO & Social Media Share Meta Tags -->
   <meta name="description" content="Discover 100% Pure & Natural Hair & Skin Care products by Fangam Organic. Explore our official social links and order now!">
   <meta name="keywords" content="Fangam, Fangam Organic, Organic Hair Oil, Natural Care, Herbal Shampoo, Fangam Organic Ubtan, Fangam Organic Hair Mask, Sialkot">
   <meta name="author" content="Fangam Organic">
@@ -47,17 +47,18 @@
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Nastaliq+Urdu:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      --primary-gold: #e5c158;
-      --secondary-gold: #f3d884;
-      --accent-green: #2e6f40;
+      --primary-gold: #e6c25b;
+      --secondary-gold: #f8e39d;
+      --deep-emerald: #0b2414;
+      --rich-forest: #164025;
       --text-light: #ffffff;
-      --card-bg: rgba(255, 255, 255, 0.12);
-      --card-border: rgba(255, 255, 255, 0.25);
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(230, 194, 91, 0.25);
     }
 
     * {
@@ -77,11 +78,14 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      /* تر و تازہ اور روشن آرگینک گرین کا خوبصورت میلان (Gradient) */
-      background: linear-gradient(135deg, #183e23 0%, #225430 40%, #15381e 100%);
+      /* پہلے والی لگژری ایمرالڈ گرین اور نرم سنہری روشنی والی بیک گراؤنڈ */
+      background:
+        radial-gradient(circle at 50% 12%, rgba(230, 194, 91, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 15% 85%, rgba(46, 125, 75, 0.35) 0%, transparent 50%),
+        linear-gradient(160deg, #0b2213 0%, #153c23 48%, #091c10 100%);
     }
 
-    /* پودوں اور شاخوں کا بیک گراؤنڈ شیڈو */
+    /* پودوں اور شاخوں کا نرم سایہ */
     .branch-shadows {
       position: absolute;
       top: 0;
@@ -95,28 +99,28 @@
 
     .branch {
       position: absolute;
-      background: rgba(0, 0, 0, 0.15);
-      filter: blur(20px);
+      background: rgba(0, 0, 0, 0.25);
+      filter: blur(28px);
       border-radius: 50%;
     }
 
     .branch-1 {
-      width: 300px;
-      height: 600px;
-      top: -100px;
-      left: -100px;
+      width: 320px;
+      height: 620px;
+      top: -110px;
+      left: -110px;
       transform: rotate(-35deg);
     }
 
     .branch-2 {
-      width: 350px;
-      height: 700px;
-      bottom: -150px;
-      right: -120px;
+      width: 360px;
+      height: 720px;
+      bottom: -160px;
+      right: -130px;
       transform: rotate(45deg);
     }
 
-    /* اڑتے ہوئے پتے (Floating Leaves Container) */
+    /* بڑے گرتے ہوئے پتے (Large Floating Leaves Container) */
     .leaves-container {
       position: absolute;
       top: 0;
@@ -130,34 +134,34 @@
 
     .leaf {
       position: absolute;
-      color: rgba(255, 255, 255, 0.25);
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
       animation: floatLeaf linear infinite;
     }
 
     @keyframes floatLeaf {
       0% {
-        transform: translateY(-10vh) rotate(0deg) translateX(0);
+        transform: translateY(-14vh) rotate(0deg) translateX(0);
         opacity: 0;
       }
-      10% {
-        opacity: 0.8;
+      12% {
+        opacity: 0.78;
       }
-      90% {
-        opacity: 0.8;
+      88% {
+        opacity: 0.78;
       }
       100% {
-        transform: translateY(105vh) rotate(360deg) translateX(50px);
+        transform: translateY(108vh) rotate(360deg) translateX(65px);
         opacity: 0;
       }
     }
 
-    /* مین کارڈ کنٹینر (Glassmorphism Main Container) */
+    /* مین کارڈ کنٹینر - موبائل میں تمام آئٹمز آسانی سے سما جائیں */
     .container {
       position: relative;
       z-index: 10;
       width: 100%;
       max-width: 440px;
-      padding: 24px 20px;
+      padding: 12px 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -168,18 +172,18 @@
     /* برانڈ پروٹوکول اور لوگو */
     .profile-section {
       text-align: center;
-      margin-bottom: 22px;
+      margin-bottom: 10px;
       width: 100%;
     }
 
     .logo-wrapper {
-      width: 95px;
-      height: 95px;
-      margin: 0 auto 12px;
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 6px;
       border-radius: 50%;
-      padding: 3px;
-      background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      padding: 2.5px;
+      background: linear-gradient(135deg, #f8e39d, #c59526, #f8e39d);
+      box-shadow: 0 0 22px rgba(230, 194, 91, 0.32), 0 6px 18px rgba(0, 0, 0, 0.4);
       position: relative;
     }
 
@@ -188,51 +192,57 @@
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
-      background: #112d18;
+      background: #0d2616;
     }
 
     .brand-title {
       font-family: 'Cinzel', serif;
-      font-size: 22px;
+      font-size: 19px;
       font-weight: 700;
       letter-spacing: 1.5px;
       color: #ffffff;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
-      margin-bottom: 4px;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+      margin-bottom: 1px;
     }
 
     .brand-tagline {
-      font-size: 13px;
+      font-size: 11.5px;
       color: var(--secondary-gold);
       font-weight: 500;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
       opacity: 0.95;
     }
 
-    /* سوشل بٹنز کی لسٹ */
+    /* بٹنز کی لسٹ */
     .links-wrapper {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 11px;
+      gap: 7px;
     }
 
     .link-btn {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 13px 18px;
-      background: var(--card-bg);
+      padding: 8.5px 14px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.05) 100%);
       border: 1px solid var(--card-border);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 14px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 13px;
       color: var(--text-light);
       text-decoration: none;
       font-weight: 600;
-      font-size: 14.5px;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      font-size: 13.5px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    .link-btn:hover {
+      border-color: rgba(248, 227, 157, 0.65);
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
     }
 
     .link-btn:active {
@@ -240,80 +250,198 @@
       background: rgba(255, 255, 255, 0.2);
     }
 
+    /* وسیع پروڈکٹ ڈیٹیلز بٹن */
+    .link-btn.product-details-wide {
+      background: linear-gradient(135deg, rgba(230, 194, 91, 0.2) 0%, rgba(22, 64, 37, 0.72) 100%);
+      border: 1.5px solid rgba(248, 227, 157, 0.62);
+      padding: 9px 13px;
+      box-shadow: 0 5px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .link-btn.featured-tab {
+      background: linear-gradient(135deg, rgba(230, 194, 91, 0.16) 0%, rgba(255, 255, 255, 0.07) 100%);
+      border: 1px solid rgba(230, 194, 91, 0.42);
+    }
+
     .link-info {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 11px;
+      flex: 1;
     }
 
     .icon-box {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
-      background: rgba(255, 255, 255, 0.12);
+      font-size: 15px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      flex-shrink: 0;
     }
 
-    /* آئیکنز کے مخصوص رنگ */
-    .youtube .icon-box { color: #ff4d4d; }
-    .instagram .icon-box { color: #ff76b2; }
-    .facebook .icon-box { color: #4292ff; }
-    .tiktok .icon-box { color: #00f2fe; }
-    .pinterest .icon-box { color: #e60023; }
-    .whatsapp .icon-box { color: #25d366; }
+    /* آئیکنز کے مخصوص چمکدار رنگ */
+    .product-details-wide .icon-box { color: #f8e39d; }
+    .website .icon-box { color: #6ee7b7; }
+    .youtube .icon-box { color: #ff5252; }
+    .instagram .icon-box { color: #ff79b0; }
+    .facebook .icon-box { color: #5ca4ff; }
+    .tiktok .icon-box { color: #2af5ff; }
+    .pinterest .icon-box { color: #ff4d6d; }
+    .whatsapp .icon-box { color: #34eb77; }
 
-    /* خاص آرڈر بٹن (Order Now Highlight) */
+    /* اردو اور انگلش ٹیکسٹ تبدیلی کا نرم اینیمیشن */
+    .bilingual-text {
+      display: inline-block;
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .bilingual-text.fade-out {
+      opacity: 0;
+      transform: translateY(-2px);
+    }
+
+    .product-msg-text {
+      font-size: 11.8px;
+      line-height: 1.38;
+      font-weight: 600;
+      color: #ffffff;
+    }
+    .product-msg-text.urdu-font {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      font-size: 11.2px;
+      line-height: 1.72;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .urdu-font {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      font-size: 12.2px;
+      line-height: 1.55;
+    }
+
+    /* ویب سائٹ کے نیچے وائٹ کارڈ نوٹس سیگمنٹ (آپ کی پسند کے مطابق برقرار) */
+    .video-promo-box {
+      width: 100%;
+      padding: 7px 11px;
+      background: #ffffff;
+      border: 1.5px solid rgba(230, 194, 91, 0.85);
+      border-radius: 12px;
+      text-align: center;
+      font-size: 11.2px;
+      line-height: 1.42;
+      color: #113b20;
+      font-weight: 600;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+      animation: gentleWhiteGlow 4.5s infinite ease-in-out;
+    }
+
+    .video-promo-box i {
+      margin: 0 4px;
+      color: #1b5430;
+    }
+
+    .video-promo-box.urdu-promo {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      font-size: 11px;
+      line-height: 1.75;
+      direction: rtl;
+    }
+
+    @keyframes gentleWhiteGlow {
+      0%, 100% {
+        border-color: rgba(248, 227, 157, 0.95);
+        box-shadow: 0 5px 16px rgba(230, 194, 91, 0.28);
+      }
+      50% {
+        border-color: rgba(230, 194, 91, 0.45);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+      }
+    }
+
+    /* خاص آرڈر بٹن (Luxury Champagne Gold + Shimmer Effect) */
     .order-now {
-      background: linear-gradient(135deg, var(--primary-gold) 0%, #c89c29 100%);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f8e39d 0%, #e0b446 50%, #c69320 100%);
       border: none;
-      color: #0d2313;
+      color: #0b2213;
       font-weight: 700;
-      font-size: 15.5px;
-      box-shadow: 0 6px 20px rgba(229, 193, 88, 0.35);
-      margin-top: 4px;
+      font-size: 14.5px;
+      padding: 9.5px 15px;
+      box-shadow: 0 6px 20px rgba(224, 180, 70, 0.38);
+      margin-top: 2px;
+    }
+
+    .order-now::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+      animation: shimmerSweep 4s infinite ease-in-out;
+    }
+
+    @keyframes shimmerSweep {
+      0% { left: -100%; }
+      40%, 100% { left: 150%; }
     }
 
     .order-now .icon-box {
-      background: rgba(13, 35, 19, 0.15);
-      color: #0d2313;
+      background: rgba(11, 34, 19, 0.14);
+      border: none;
+      color: #0b2213;
     }
 
     .arrow-icon {
-      font-size: 12px;
-      opacity: 0.6;
+      font-size: 11px;
+      opacity: 0.75;
+      margin-left: 6px;
+      flex-shrink: 0;
     }
 
     /* نیچے کا فوٹر */
     .footer {
-      margin-top: 20px;
-      font-size: 11px;
-      color: rgba(255, 255, 255, 0.6);
-      letter-spacing: 1px;
+      margin-top: 9px;
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 0.9px;
       text-transform: uppercase;
+      text-align: center;
     }
 
-    /* موبائل اسکرین کی موافقت */
-    @media (max-height: 700px) {
-      .container { padding: 15px; }
-      .profile-section { margin-bottom: 14px; }
-      .logo-wrapper { width: 80px; height: 80px; margin-bottom: 8px; }
-      .links-wrapper { gap: 8px; }
-      .link-btn { padding: 10px 14px; font-size: 13.5px; }
+    /* چھوٹی موبائل اسکرینز کے لیے مکمل موافقت */
+    @media (max-height: 750px) {
+      .container { padding: 9px 14px; }
+      .profile-section { margin-bottom: 7px; }
+      .logo-wrapper { width: 60px; height: 60px; margin-bottom: 4px; }
+      .brand-title { font-size: 17px; }
+      .links-wrapper { gap: 5.5px; }
+      .link-btn { padding: 7px 12px; font-size: 12.8px; }
+      .link-btn.product-details-wide { padding: 7.5px 11px; }
+      .product-msg-text { font-size: 11px; }
+      .product-msg-text.urdu-font { font-size: 10.5px; line-height: 1.65; }
+      .icon-box { width: 27px; height: 27px; font-size: 14px; }
+      .video-promo-box { padding: 5.5px 9px; font-size: 10.5px; }
+      .video-promo-box.urdu-promo { font-size: 10.2px; line-height: 1.68; }
+      .footer { margin-top: 6px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- بیک گراؤنڈ پر شاخوں کے ساۓ -->
+  <!-- بیک گراؤنڈ پر شاخوں کے سائے -->
   <div class="branch-shadows">
     <div class="branch branch-1"></div>
     <div class="branch branch-2"></div>
   </div>
 
-  <!-- اڑتے ہوئے پتے -->
+  <!-- بڑے گرتے ہوئے پتے -->
   <div class="leaves-container" id="leavesContainer"></div>
 
   <!-- مرکزی کنٹینر -->
@@ -329,11 +457,35 @@
       <p class="brand-tagline">100% Pure & Natural Care</p>
     </div>
 
-    <!-- سوشل میڈیا لنکس -->
+    <!-- تمام بٹنز، پیغام سیگمنٹ اور سوشل میڈیا لنکس -->
     <div class="links-wrapper">
 
-      <!-- 1. یوٹیوب -->
-      <!-- نیچے href میں اپنا یوٹیوب لنک ڈالیں -->
+      <!-- 1. پروڈکٹ ڈیٹیلز (وسیع پیغام + اردو/انگلش تبدیلی) -->
+      <!-- نیچے href میں اپنا پروڈکٹ ڈیٹیلز والا URL ڈالیں -->
+      <a href="YOUR_PRODUCT_DETAILS_URL_HERE" target="_blank" class="link-btn product-details-wide">
+        <div class="link-info">
+          <div class="icon-box"><i class="fa-solid fa-leaf"></i></div>
+          <span class="bilingual-text product-msg-text" id="productDetailsText">Click here to explore product details — complete info on oils, shampoos, soaps, ubtan & hair masks</span>
+        </div>
+        <i class="fa-solid fa-chevron-right arrow-icon"></i>
+      </a>
+
+      <!-- 2. ویب سائٹ وزٹ کریں (اردو / انگلش تبدیلی کے ساتھ) -->
+      <a href="https://fangamorganic.com/" target="_blank" class="link-btn website featured-tab">
+        <div class="link-info">
+          <div class="icon-box"><i class="fa-solid fa-globe"></i></div>
+          <span class="bilingual-text" id="websiteVisitText">Visit Our Website</span>
+        </div>
+        <i class="fa-solid fa-chevron-right arrow-icon"></i>
+      </a>
+
+      <!-- وائٹ کارڈ نوٹس سیگمنٹ (ہر 7 سیکنڈ بعد آرام سے انگلش اور اردو میں بدلے گا) -->
+      <div class="video-promo-box" id="videoPromoBox">
+        <i class="fa-solid fa-circle-play"></i>
+        <span class="bilingual-text" id="videoPromoText">Want to see how we craft our organic products? Visit our social media links below to watch all making videos!</span>
+      </div>
+
+      <!-- 3. یوٹیوب -->
       <a href="https://youtube.com/@fangamorganic" target="_blank" class="link-btn youtube">
         <div class="link-info">
           <div class="icon-box"><i class="fa-brands fa-youtube"></i></div>
@@ -342,8 +494,7 @@
         <i class="fa-solid fa-chevron-right arrow-icon"></i>
       </a>
 
-      <!-- 2. انسٹاگرام -->
-      <!-- نیچے href میں اپنا انسٹاگرام لنک ڈالیں -->
+      <!-- 4. انسٹاگرام -->
       <a href="https://instagram.com/fangamorganic" target="_blank" class="link-btn instagram">
         <div class="link-info">
           <div class="icon-box"><i class="fa-brands fa-instagram"></i></div>
@@ -352,8 +503,7 @@
         <i class="fa-solid fa-chevron-right arrow-icon"></i>
       </a>
 
-      <!-- 3. فیس بک -->
-      <!-- نیچے href میں اپنا فیس بک لنک ڈالیں -->
+      <!-- 5. فیس بک -->
       <a href="https://facebook.com/fangamorganic" target="_blank" class="link-btn facebook">
         <div class="link-info">
           <div class="icon-box"><i class="fa-brands fa-facebook-f"></i></div>
@@ -362,8 +512,7 @@
         <i class="fa-solid fa-chevron-right arrow-icon"></i>
       </a>
 
-      <!-- 4. ٹک ٹاک -->
-      <!-- نیچے href میں اپنا ٹک ٹاک لنک ڈالیں -->
+      <!-- 6. ٹک ٹاک -->
       <a href="https://tiktok.com/@fangamorganic" target="_blank" class="link-btn tiktok">
         <div class="link-info">
           <div class="icon-box"><i class="fa-brands fa-tiktok"></i></div>
@@ -372,8 +521,7 @@
         <i class="fa-solid fa-chevron-right arrow-icon"></i>
       </a>
 
-      <!-- 5. پنٹرسٹ -->
-      <!-- نیچے href میں اپنا پنٹرسٹ لنک ڈالیں -->
+      <!-- 7. پنٹرسٹ -->
       <a href="https://pinterest.com/fangamorganic" target="_blank" class="link-btn pinterest">
         <div class="link-info">
           <div class="icon-box"><i class="fa-brands fa-pinterest-p"></i></div>
@@ -382,8 +530,7 @@
         <i class="fa-solid fa-chevron-right arrow-icon"></i>
       </a>
 
-      <!-- 6. واٹس ایپ چینل -->
-      <!-- نیچے href میں اپنے واٹس ایپ چینل کا لنک ڈالیں -->
+      <!-- 8. واٹس ایپ چینل -->
       <a href="https://whatsapp.com/channel/0029VbDCZRQG3R3hcpupsL2q" target="_blank" class="link-btn whatsapp">
         <div class="link-info">
           <div class="icon-box"><i class="fa-brands fa-whatsapp"></i></div>
@@ -392,8 +539,7 @@
         <i class="fa-solid fa-chevron-right arrow-icon"></i>
       </a>
 
-      <!-- 7. آرڈر ناؤ (واٹس ایپ ڈائریکٹ) -->
-      <!-- نیچے href میں اپنے واٹس ایپ آرڈر کا لنک (wa.me/92300XXXXXXX) ڈالیں -->
+      <!-- 9. آرڈر ناؤ (شیمپین گولڈ بٹن) -->
       <a href="https://fangamorganic.com/" target="_blank" class="link-btn order-now">
         <div class="link-info">
           <div class="icon-box"><i class="fa-solid fa-bag-shopping"></i></div>
@@ -410,26 +556,73 @@
 
   </div>
 
-  <!-- پتوں کا ڈائنامک اینیمیشن اسکرپٹ -->
+  <!-- بڑے گرتے ہوئے پتوں اور آرام دہ رفتار سے اردو/انگلش تبدیلی کا اسکرپٹ -->
   <script>
+    // 1. بڑے اور واضح گرتے ہوئے سنہری، سبز اور شبنمی پتے
     const container = document.getElementById('leavesContainer');
-    const leafIcons = ['fa-leaf', 'fa-seedling', 'fa-plant-wilt'];
-    const numberOfLeaves = 18; // پتوں کی تعداد
+    const leafIcons = ['fa-leaf', 'fa-seedling', 'fa-spa', 'fa-clover'];
+    const leafColors = [
+      'rgba(248, 227, 157, 0.34)', // واضح سنہری پتا
+      'rgba(110, 231, 183, 0.30)', // تازہ سبز پتا
+      'rgba(255, 255, 255, 0.24)'  // نرم شبنمی پتا
+    ];
+    const numberOfLeaves = 20;
 
     for (let i = 0; i < numberOfLeaves; i++) {
       const leaf = document.createElement('i');
       const randomIcon = leafIcons[Math.floor(Math.random() * leafIcons.length)];
+      const randomColor = leafColors[Math.floor(Math.random() * leafColors.length)];
       
       leaf.classList.add('fa-solid', randomIcon, 'leaf');
-      
-      // رینڈم پوزیشننگ اور سائز
+      leaf.style.color = randomColor;
       leaf.style.left = Math.random() * 100 + '%';
-      leaf.style.fontSize = (Math.random() * 12 + 10) + 'px';
-      leaf.style.animationDuration = (Math.random() * 8 + 6) + 's';
+      // بڑے پتوں کا سائز 20px سے 36px تک
+      leaf.style.fontSize = (Math.random() * 16 + 20) + 'px';
+      leaf.style.animationDuration = (Math.random() * 9 + 7) + 's';
       leaf.style.animationDelay = (Math.random() * 5) + 's';
       
       container.appendChild(leaf);
     }
+
+    // 2. ہر 7 سیکنڈ بعد آرام سے اردو اور انگلش بدلنے والا سسٹم
+    let isUrdu = false;
+    const productDetailsEl = document.getElementById('productDetailsText');
+    const websiteVisitEl = document.getElementById('websiteVisitText');
+    const videoPromoBoxEl = document.getElementById('videoPromoBox');
+    const videoPromoTextEl = document.getElementById('videoPromoText');
+
+    setInterval(() => {
+      productDetailsEl.classList.add('fade-out');
+      websiteVisitEl.classList.add('fade-out');
+      videoPromoTextEl.classList.add('fade-out');
+
+      setTimeout(() => {
+        isUrdu = !isUrdu;
+        if (isUrdu) {
+          productDetailsEl.textContent = 'مصنوعات کی تفصیلات جاننے کے لیے یہاں کلک کریں — آئل، شیمپو، صابن، ابٹن اور ہیئر ماسک کی مکمل معلومات';
+          productDetailsEl.classList.add('urdu-font');
+
+          websiteVisitEl.textContent = 'ہماری ویب سائٹ دیکھیں';
+          websiteVisitEl.classList.add('urdu-font');
+
+          videoPromoTextEl.textContent = 'اگر آپ دیکھنا چاہتے ہیں کہ ہم کس طرح اپنی مصنوعات کو تیار کر رہے ہیں، تو نیچے دیے ہوئے ہمارے سوشل میڈیا لنکس کو وزٹ کریں، آپ کو وہاں پر تمام ویڈیوز مل جائیں گی۔';
+          videoPromoBoxEl.classList.add('urdu-promo');
+        } else {
+          productDetailsEl.textContent = 'Click here to explore product details — complete info on oils, shampoos, soaps, ubtan & hair masks';
+          productDetailsEl.classList.remove('urdu-font');
+
+          websiteVisitEl.textContent = 'Visit Our Website';
+          websiteVisitEl.classList.remove('urdu-font');
+
+          videoPromoTextEl.textContent = 'Want to see how we craft our organic products? Visit our social media links below to watch all making videos!';
+          videoPromoBoxEl.classList.remove('urdu-promo');
+        }
+
+        productDetailsEl.classList.remove('fade-out');
+        websiteVisitEl.classList.remove('fade-out');
+        videoPromoTextEl.classList.remove('fade-out');
+      }, 550);
+    }, 7000);
   </script>
 </body>
 </html>
